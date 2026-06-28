@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backups locais (não vão para o deploy)
+*.bak
+index-v1.html
+index-v2.html
+
+# Pasta dos scrapers e dados que NÃO devem ir para o site
+Imoveis/
+imoveis_backup.json
+
+# Logs e temporários
+*.log
+*.tmp
+debug_*.png
+
+# Sensitive
+*.env
+.env.local

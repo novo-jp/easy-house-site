@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Apartamentos para alugar em Aichi — EASY HOUSE. Atendimento em português."/>
+  <title>Apartamentos em Aichi | EASY HOUSE</title>
+  <link rel="stylesheet" href="theme-v2.css"/>
+  <style>
+  /* Reduzir min-height do hero pra essa página */
+  .hero--imoveis { min-height: 52vh; padding-top: 100px; padding-bottom: 40px; }
+
+  .hero__count-pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 100px; background: rgba(79,209,197,0.12); border: 1px solid rgba(79,209,197,0.3); color: var(--teal); font-size: 0.86rem; font-weight: 500; margin-top: 28px; opacity: 0; animation: revealUp 1s var(--ease) 1.1s forwards; }
+  .hero__count-pill .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); animation: pulseSm 1.6s ease-in-out infinite; }
+
+  /* ── FILTERS BAR ── */
+  .filters-bar { position: sticky; top: 0; z-index: 90; background: rgba(8,7,15,0.85); backdrop-filter: blur(24px) saturate(180%); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 0; }
+  .filters-inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; row-gap: 10px; }
+  .filter-label { font-size: 0.72rem; font-weight: 600; color: var(--pearl-muted); letter-spacing: 0.2em; text-transform: uppercase; margin-right: 4px; white-space: nowrap; }
+  .filter-chip { padding: 8px 16px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--pearl-dim); font-size: 0.84rem; font-weight: 500; transition: all 0.3s; white-space: nowrap; font-family: var(--font-body); }
+  .filter-chip:hover { border-color: var(--gold-bright); color: var(--gold-bright); background: rgba(212,165,116,0.08); }
+  .filter-chip.active { background: var(--pearl); color: var(--ink); border-color: var(--pearl); }
+  .filter-chip.pet.active { background: linear-gradient(135deg, var(--gold), var(--gold-bright)); color: var(--ink); border-color: transparent; }
+  .filter-sep { width: 1px; height: 22px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+  .sort-select { margin-left: auto; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; font-size: 0.84rem; font-family: var(--font-body); color: var(--pearl); background: rgba(255,255,255,0.04); cursor: pointer; }
+  .sort-select option { background: var(--ink); color: var(--pearl); }
+  @media (max-width: 800px) { .filters-inner { padding: 0 20px; } }
+
+  /* ── LISTING ── */
+  .listing-section { padding: 50px 40px 90px; max-width: 1400px; margin: 0 auto; }
+  .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+  .results-count { font-size: 0.92rem; color: var(--pearl-dim); }
+  .results-count strong { color: var(--gold-bright); font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-right: 4px; }
+  .listing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 22px; }
+
+  /* ── PROP CARD ── */
+  .prop-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; overflow: hidden; transition: transform 0.5s var(--ease), border-color 0.3s, box-shadow 0.4s; display: flex; flex-direction: column; backdrop-filter: blur(12px); }
+  .prop-card:hover { transform: translateY(-5px); border-color: rgba(212,165,116,0.3); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+
+  .prop-card__photos { position: relative; aspect-ratio: 16/10; overflow: hidden; background: rgba(255,255,255,0.02); }
+  .photo-slides { display: flex; width: 200%; height: 100%; transition: transform 0.5s var(--ease); }
+  .photo-slide { width: 50%; height: 100%; flex-shrink: 0; overflow: hidden; }
+  .photo-slide img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+  .prop-card:hover .photo-slide img { transform: scale(1.06); }
+  .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 4rem; color: rgba(255,255,255,0.1); background: linear-gradient(135deg, rgba(74,46,140,0.15), rgba(31,111,139,0.15)); }
+
+  .photo-nav { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
+  .photo-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.5); transition: all 0.3s; padding: 0; }
+  .photo-dot.active { background: var(--pearl); transform: scale(1.3); }
+  .photo-label { position: absolute; bottom: 12px; right: 14px; background: rgba(8,7,15,0.8); backdrop-filter: blur(12px); color: var(--pearl); font-size: 0.68rem; font-weight: 500; padding: 4px 10px; border-radius: 100px; pointer-events: none; z-index: 3; letter-spacing: 0.05em; }
+
+  .prop-card__badges { position: absolute; top: 14px; left: 14px; display: flex; flex-direction: column; gap: 6px; z-index: 3; }
+  .badge { padding: 4px 11px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; backdrop-filter: blur(12px); }
+  .badge--destaque { background: rgba(212,165,116,0.85); color: var(--ink); }
+  .badge--pet { background: rgba(244,182,194,0.85); color: var(--ink); }
+  .badge--internet { background: rgba(8,7,15,0.7); color: var(--pearl); border: 1px solid rgba(255,255,255,0.2); }
+
+  .prop-card__body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .prop-card__location { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--pearl-muted); margin-bottom: 8px; flex-wrap: wrap; }
+  .prop-card__location .dot { width: 3px; height: 3px; background: var(--pearl-muted); border-radius: 50%; }
+  .prop-card__title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--pearl); margin-bottom: 14px; line-height: 1.3; }
+
+  .prop-card__price-block { margin: 6px 0 10px; padding: 14px 16px; background: rgba(255,255,255,0.03); border-radius: 14px; border: 1px solid rgba(255,255,255,0.06); }
+  .prop-card__price-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .prop-card__price-row:first-child { margin-bottom: 8px; }
+  .prop-card__price-row strong { font-size: 1.4rem; color: var(--gold-bright); font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }
+  .prop-card__price-row.sub { font-size: 0.75rem; color: var(--pearl-muted); }
+  .price-label { color: var(--pearl-muted); font-size: 0.78rem; font-family: var(--font-jp); }
+  .price-unit { font-size: 0.74rem; color: var(--pearl-muted); margin-left: 4px; }
+  .prop-card__price-total { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding: 10px 12px; background: linear-gradient(135deg, rgba(79,209,197,0.15), rgba(212,165,116,0.1)); border-radius: 10px; border: 1px solid rgba(79,209,197,0.25); }
+  .prop-card__price-total span { font-size: 0.78rem; font-weight: 500; color: var(--pearl); display: inline-flex; align-items: center; gap: 6px; }
+  .prop-card__price-total strong { font-size: 1.05rem; color: var(--teal); font-family: var(--font-display); font-weight: 700; }
+
+  .prop-card__details { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 12px; }
+  .detail-chip { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 5px 10px; font-size: 0.74rem; color: var(--pearl-dim); display: inline-flex; align-items: center; gap: 5px; }
+  .chip-planta { background: rgba(244,182,194,0.18) !important; color: var(--sakura) !important; border-color: rgba(244,182,194,0.3) !important; font-weight: 600; }
+  .chip-park { background: rgba(79,209,197,0.18) !important; color: var(--teal) !important; border-color: rgba(79,209,197,0.3) !important; }
+
+  .prop-card__address { font-size: 0.75rem; margin: 6px 0 12px; line-height: 1.4; }
+  .prop-card__address a { color: var(--pearl-muted); display: inline-flex; align-items: center; gap: 6px; transition: color 0.3s; }
+  .prop-card__address a:hover { color: var(--teal); }
+
+  .prop-card__footer { margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 8px; }
+  .btn-wa { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; background: linear-gradient(135deg, #25D366, #1EBE57); color: white; padding: 11px 14px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; transition: all 0.3s; }
+  .btn-wa:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37,211,102,0.35); }
+  .btn-dk { display: flex; align-items: center; justify-content: center; gap: 6px; background: rgba(255,255,255,0.08); color: var(--pearl); padding: 11px 16px; border-radius: 100px; font-size: 0.82rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.12); transition: all 0.3s; white-space: nowrap; }
+  .btn-dk:hover { background: rgba(212,165,116,0.18); border-color: var(--gold-bright); color: var(--gold-bright); }
+
+  /* ── SKELETON ── */
+  .skeleton { border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+  .skeleton-img { height: 200px; background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+  .skeleton-body { padding: 22px; }
+  .skeleton-line { height: 12px; background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px; margin-bottom: 10px; }
+  .skeleton-line.short { width: 60%; }
+  .skeleton-line.medium { width: 80%; }
+  @keyframes shimmer { 0%{background-position: 200% 0} 100%{background-position: -200% 0} }
+
+  /* ── EMPTY ── */
+  .empty-state { grid-column: 1/-1; text-align: center; padding: 100px 20px; color: var(--pearl-dim); position: relative; }
+  .empty-state__kanji { font-family: var(--font-jp); font-size: 14rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 0.85; margin-bottom: 0; user-select: none; pointer-events: none; }
+  .empty-state h3 { font-family: var(--font-display); color: var(--pearl); font-size: 1.6rem; margin: -40px 0 12px; position: relative; }
+  .empty-state p { color: var(--pearl-dim); }
+  .empty-state a { color: var(--teal); }
+
+  /* ── PAGINATION ── */
+  .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 50px; flex-wrap: wrap; }
+  .page-btn { padding: 10px 16px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--pearl-dim); font-weight: 500; font-size: 0.86rem; transition: all 0.3s; min-width: 42px; }
+  .page-btn:hover { border-color: var(--gold-bright); color: var(--gold-bright); }
+  .page-btn.active { background: var(--pearl); color: var(--ink); border-color: var(--pearl); font-weight: 600; }
+
+  /* ── CTA BOTTOM ── */
+  .cta-wa-section { position: relative; padding: 90px 40px; text-align: center; overflow: hidden; background: linear-gradient(180deg, var(--ink), var(--indigo), var(--ink)); }
+  .cta-wa-section::before { content: '探'; position: absolute; right: -5vw; bottom: -8vw; font-family: var(--font-jp); font-size: 35rem; font-weight: 900; color: rgba(255,255,255,0.03); line-height: 0.85; pointer-events: none; }
+  .cta-wa-section .inner { position: relative; max-width: 720px; margin: 0 auto; }
+  .cta-wa-section h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--pearl); margin-bottom: 18px; line-height: 1.2; letter-spacing: -0.02em; }
+  .cta-wa-section h2 em { font-style: italic; color: var(--sakura); }
+  .cta-wa-section p { color: var(--pearl-dim); margin-bottom: 36px; font-size: 1.02rem; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="loader" id="loader"><div class="loader__kanji">部</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="images/logo.png" alt="EASY HOUSE"/>
+    <span class="nav__brand-text">EASY<em>HOUSE</em></span>
+  </a>
+  <div class="nav__links">
+    <a href="landingvendas.html">Comprar</a>
+    <a href="landingaluguel.html">Alugar</a>
+    <a href="imoveis.html" class="active">Apartamentos</a>
+    <a href="sobre.html">Sobre</a>
+  </div>
+  <a href="https://wa.me/818028867708" class="nav__cta">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Conversar
+  </a>
+</nav>
+
+<!-- HERO COMPACT -->
+<section class="hero hero--imoveis">
+  <div class="hero__bg">
+    <img src="images/flat35.jpg" alt="Apartamentos em Aichi" class="hero__img"/>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__kanji">部</div>
+
+  <div class="hero__inner">
+    <div class="hero__line">
+      <div class="hero__line-bar"></div>
+      <span class="hero__line-text">Aichi · 愛知県 · Listagem ao vivo</span>
+    </div>
+    <h1 class="hero__title" style="font-size:clamp(2.4rem,6vw,4.6rem);">
+      <span class="hero__title-line"><span>Apartamentos em</span></span>
+      <span class="hero__title-line"><span><em>Aichi.</em></span></span>
+    </h1>
+    <p class="hero__sub">Kariya, Toyota, Okazaki, Hekinan, Handa, Nishio, Anjo, Nagoya e mais. Atendimento 100% em português.</p>
+    <div class="hero__count-pill" id="heroCount"><span class="pulse"></span>Carregando imóveis...</div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters-bar" id="filtersBar">
+  <div class="filters-inner">
+    <span class="filter-label">Cidade</span>
+    <button class="filter-chip" data-filter="cidade" data-val="刈谷市">Kariya</button>
+    <button class="filter-chip" data-filter="cidade" data-val="豊田市">Toyota</button>
+    <button class="filter-chip" data-filter="cidade" data-val="岡崎市">Okazaki</button>
+    <button class="filter-chip" data-filter="cidade" data-val="碧南市">Hekinan</button>
+    <button class="filter-chip" data-filter="cidade" data-val="半田市">Handa</button>
+    <button class="filter-chip" data-filter="cidade" data-val="西尾市">Nishio</button>
+    <button class="filter-chip" data-filter="cidade" data-val="安城市">Anjo</button>
+    <button class="filter-chip" data-filter="cidade" data-val="名古屋市">Nagoya</button>
+    <button class="filter-chip" data-filter="cidade" data-val="豊橋市">Toyohashi</button>
+    <button class="filter-chip" data-filter="cidade" data-val="豊川市">Toyokawa</button>
+    <button class="filter-chip" data-filter="cidade" data-val="春日井市">Kasugai</button>
+    <button class="filter-chip" data-filter="cidade" data-val="一宮市">Ichinomiya</button>
+    <button class="filter-chip" data-filter="cidade" data-val="蒲郡市">Gamagori</button>
+    <button class="filter-chip" data-filter="cidade" data-val="知立市">Chiryu</button>
+    <button class="filter-chip" data-filter="cidade" data-val="高浜市">Takahama</button>
+    <button class="filter-chip" data-filter="cidade" data-val="大府市">Obu</button>
+    <button class="filter-chip" data-filter="cidade" data-val="東海市">Tokai</button>
+    <button class="filter-chip" data-filter="cidade" data-val="みよし市">Miyoshi</button>
+    <button class="filter-chip" data-filter="cidade" data-val="all">Todas</button>
+
+    <div class="filter-sep"></div>
+    <span class="filter-label">Quartos</span>
+    <button class="filter-chip active" data-filter="planta" data-val="all">Todos</button>
+    <button class="filter-chip" data-filter="planta" data-val="1">1 Quarto</button>
+    <button class="filter-chip" data-filter="planta" data-val="2">2 Quartos</button>
+    <button class="filter-chip" data-filter="planta" data-val="3+">3+ Quartos</button>
+
+    <div class="filter-sep"></div>
+    <button class="filter-chip pet" data-filter="pet" data-val="true" id="petBtn">Pet OK</button>
+
+    <select class="sort-select" id="sortSelect">
+      <option value="menor">Menor aluguel</option>
+      <option value="maior">Maior aluguel</option>
+      <option value="area">Maior área</option>
+    </select>
+  </div>
+</div>
+
+<!-- LISTING -->
+<section class="listing-section">
+  <div class="results-header">
+    <div class="results-count" id="resultsCount"></div>
+    <div id="paginationTop"></div>
+  </div>
+  <div class="listing-grid" id="listingGrid"></div>
+  <div id="paginationBottom" class="pagination"></div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-wa-section">
+  <div class="inner">
+    <h2>Não encontrou <em>o que procura?</em></h2>
+    <p>Fale conosco pelo WhatsApp — buscamos o imóvel ideal para o seu perfil em toda a região de Aichi.</p>
+    <a href="https://wa.me/818028867708?text=Ol%C3%A1!%20Vi%20os%20im%C3%B3veis%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" class="btn-mag btn-mag--wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      Falar com especialista
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <div class="foot__brand"><img src="images/logo.png" alt="EASY HOUSE"/><span class="foot__brand-text">EASY<em>HOUSE</em></span></div>
+      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros.</p>
+      <div class="foot__license">沖縄県知事(1)第5984号</div>
+    </div>
+    <div><div class="foot__col-title">Site</div><div class="foot__col-links"><a href="landingvendas.html">Comprar</a><a href="landingaluguel.html">Alugar</a><a href="imoveis.html">Apartamentos</a><a href="sobre.html">Sobre nós</a></div></div>
+    <div><div class="foot__col-title">Contato</div><div class="foot__col-links"><a href="https://wa.me/818028867708">WhatsApp</a><a href="tel:+818028867708">080-2886-7708</a><a href="https://www.instagram.com/easyhousejp/">Instagram</a></div></div>
+    <div><div class="foot__col-title">Legal</div><div class="foot__col-links"><a href="terms.html">Termos de uso</a><a href="privacy.html">Privacidade</a></div></div>
+  </div>
+  <div class="foot__bottom"><span>© EASY HOUSE · Sua casa no Japão, em português.</span><span>家・夢・縁</span></div>
+</footer>
+
+<a href="https://wa.me/818028867708" class="wa-fab">
+  <span class="wa-fab__pulse"></span>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  <span class="txt">Conversar</span>
+</a>
+
+<script src="theme-v2.js"></script>
+<script>
+// ── SUPABASE CONFIG ─────────────────────────────────────────
+const SUPABASE_URL = "https://igtqdhesorahhdyvsjrl.supabase.co";
+const SUPABASE_KEY = "sb_publishable_jYJGgS4CfLkRbUFkSWI5PQ_qEYgFmLZ";
+const TABLE = "imoveis_aichi";
+
+// ── STATE ──────────────────────────────────────────────────
+let allImoveis = [];
+let filters = { cidade: 'none', planta: 'all', pet: false };
+let sortBy = 'menor';
+let currentPage = 1;
+const PER_PAGE = 20;
+
+// ── FETCH ──────────────────────────────────────────────────
+async function loadImoveis() {
+  document.getElementById('listingGrid').innerHTML = Array(6).fill(`
+    <div class="skeleton">
+      <div class="skeleton-img"></div>
+      <div class="skeleton-body">
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line medium"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+    </div>`).join('');
+
+  try {
+    allImoveis = [];
+    let offset = 0;
+    const limit = 1000;
+    while (true) {
+      const url = `${SUPABASE_URL}/rest/v1/${TABLE}?select=*&order=aluguel.asc&limit=${limit}&offset=${offset}`;
+      const resp = await fetch(url, {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
+          "Range-Unit": "items",
+          "Range": `${offset}-${offset + limit - 1}`
+        }
+      });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const chunk = await resp.json();
+      if (!Array.isArray(chunk) || chunk.length === 0) break;
+      allImoveis = allImoveis.concat(chunk);
+      if (chunk.length < limit) break;
+      offset += limit;
+      if (offset > 10000) break;
+    }
+
+    if (allImoveis.length === 0) throw new Error("Supabase vazio");
+
+    document.getElementById('heroCount').innerHTML =
+      `<span class="pulse"></span>${allImoveis.length.toLocaleString('pt-BR')} apartamentos disponíveis em Aichi`;
+
+    showCityPrompt();
+
+  } catch(e) {
+    console.warn("Supabase:", e.message);
+    try {
+      const r2 = await fetch('imoveis.json');
+      allImoveis = await r2.json();
+      showCityPrompt();
+    } catch(e2) {
+      document.getElementById('listingGrid').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state__kanji">⚠</div>
+          <h3>Imóveis temporariamente indisponíveis</h3>
+          <p>Entre em contato pelo WhatsApp.</p>
+          <a href="https://wa.me/818028867708" class="btn-mag btn-mag--wa" style="margin-top:24px;">Falar pelo WhatsApp</a>
+        </div>`;
+    }
+  }
+}
+
+function showCityPrompt() {
+  document.getElementById('resultsCount').innerHTML = '';
+  document.getElementById('listingGrid').innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state__kanji">市</div>
+      <h3>Selecione uma cidade</h3>
+      <p>Escolha uma cidade nos filtros acima para ver os apartamentos disponíveis.</p>
+    </div>`;
+  document.getElementById('paginationBottom').innerHTML = '';
+}
+
+// ── HELPERS ────────────────────────────────────────────────
+function formatYen(val) { return Number(val).toLocaleString('ja-JP') + '円'; }
+
+function getWaMsg(im) {
+  return encodeURIComponent(
+    `Olá! Vi o imóvel "${im.titulo}" (${im.cidade_pt || im.cidade}) no site da EASY HOUSE e gostaria de mais informações.\nAluguel: ${formatYen(im.aluguel)}/mês`
+  );
+}
+
+function fotoSlide(url, alt, label) {
+  if (url && url.startsWith('http')) {
+    return `<div class="photo-slide">
+      <img src="${url}" alt="${alt}" loading="lazy"
+           onerror="this.parentElement.innerHTML='<div class=img-placeholder>家</div>'"/>
+    </div>`;
+  }
+  return `<div class="photo-slide"><div class="img-placeholder">${label === '間取' ? '図' : '家'}</div></div>`;
+}
+
+// ── RENDER ──────────────────────────────────────────────────
+function render() {
+  if (filters.cidade === 'none') { showCityPrompt(); return; }
+
+  let list = [...allImoveis];
+
+  if (filters.cidade !== 'all') list = list.filter(i => (i.cidade||'').includes(filters.cidade));
+
+  if (filters.planta === '1') {
+    list = list.filter(i => /^(1R|1K|1DK|1LDK)$/.test(i.planta||''));
+  } else if (filters.planta === '2') {
+    list = list.filter(i => /^(2K|2DK|2LDK)$/.test(i.planta||''));
+  } else if (filters.planta === '3+') {
+    list = list.filter(i => /^[3-9]/.test(i.planta||''));
+  }
+
+  if (filters.pet) list = list.filter(i => i.pet === true);
+
+  if      (sortBy === 'menor') list.sort((a,b) => a.aluguel - b.aluguel);
+  else if (sortBy === 'maior') list.sort((a,b) => b.aluguel - a.aluguel);
+  else if (sortBy === 'area')  list.sort((a,b) => (b.area||0) - (a.area||0));
+
+  const total = list.length;
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+  if (currentPage > totalPages) currentPage = 1;
+
+  const start = (currentPage - 1) * PER_PAGE;
+  const pageItems = list.slice(start, start + PER_PAGE);
+
+  document.getElementById('resultsCount').innerHTML =
+    `<strong>${total.toLocaleString('pt-BR')}</strong> apartamento${total!==1?'s':''} · página ${currentPage}/${totalPages}`;
+
+  const grid = document.getElementById('listingGrid');
+
+  if (pageItems.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state__kanji">無</div>
+        <h3>Nenhum apartamento encontrado</h3>
+        <p>Tente outros filtros ou <a href="https://wa.me/818028867708">fale conosco</a>.</p>
+      </div>`;
+    document.getElementById('paginationBottom').innerHTML = '';
+    return;
+  }
+
+  grid.innerHTML = pageItems.map((im, idx) => {
+    const hasPlanta = im.foto_planta && im.foto_planta.startsWith('http');
+    const hasFoto   = im.foto_url   && im.foto_url.startsWith('http');
+    const twoPhotos = hasFoto && hasPlanta;
+    const cardIdx = start + idx;
+    return `
+    <div class="prop-card">
+      <div class="prop-card__photos" id="card-${cardIdx}">
+        <div class="photo-slides" id="slides-${cardIdx}">
+          ${fotoSlide(im.foto_url, im.titulo, '外観')}
+          ${hasPlanta ? fotoSlide(im.foto_planta, im.titulo+' 間取', '間取') : ''}
+        </div>
+        <div class="prop-card__badges">
+          ${im.destaque?'<span class="badge badge--destaque">Destaque</span>':''}
+          ${im.pet?'<span class="badge badge--pet">Pet OK</span>':''}
+          ${im.planta?`<span class="badge badge--internet">${im.planta}</span>`:''}
+        </div>
+        ${twoPhotos?`
+        <div class="photo-nav">
+          <button class="photo-dot active" onclick="showSlide(${cardIdx},0)"></button>
+          <button class="photo-dot" onclick="showSlide(${cardIdx},1)"></button>
+        </div>
+        <span class="photo-label" id="label-${cardIdx}">外観</span>`:''}
+      </div>
+      <div class="prop-card__body">
+        <div class="prop-card__location">
+          <span>${im.cidade_pt||im.cidade||'Aichi'}</span>
+          ${im.estacao?`<div class="dot"></div><span>${im.estacao} ${im.minutos_estacao||''}min</span>`:''}
+        </div>
+        <div class="prop-card__title">${im.titulo}</div>
+
+        ${(() => {
+          const base = (im.aluguel||0) + (im.condominio||0) + (im.jichikai||0);
+          const hosho = Math.ceil(base * 0.025);
+          const total = base + hosho + 1980;
+          return `
+          <div class="prop-card__price-block">
+            <div class="prop-card__price-row">
+              <span class="price-label">家賃</span>
+              <div><strong>${formatYen(im.aluguel)}</strong><span class="price-unit">/mês</span></div>
+            </div>
+            ${im.condominio>0?`<div class="prop-card__price-row sub">
+              <span class="price-label">+ 共益費</span>
+              <span>${formatYen(im.condominio)}</span>
+            </div>`:''}
+            ${im.jichikai>0?`<div class="prop-card__price-row sub">
+              <span class="price-label">+ 自治会費</span>
+              <span>${formatYen(im.jichikai)}</span>
+            </div>`:''}
+            <div class="prop-card__price-row sub">
+              <span class="price-label">+ 保証料(2.5%)</span>
+              <span>${formatYen(hosho)}</span>
+            </div>
+            <div class="prop-card__price-row sub">
+              <span class="price-label">+ サービス料</span>
+              <span>¥1,980</span>
+            </div>
+            <div class="prop-card__price-total">
+              <span>Total mensal</span>
+              <strong>${formatYen(total)}</strong>
+            </div>
+          </div>`;
+        })()}
+
+        <div class="prop-card__details">
+          ${im.planta?`<span class="detail-chip chip-planta">${im.planta}</span>`:''}
+          ${im.area?`<span class="detail-chip">${im.area}m²</span>`:''}
+          ${im.andar?`<span class="detail-chip">${im.andar}</span>`:''}
+          ${im.estacionamento?`<span class="detail-chip chip-park">🚗 ${im.estacionamento}</span>`:''}
+          ${im.disponivel_de?`<span class="detail-chip">${im.disponivel_de}</span>`:''}
+        </div>
+
+        ${im.endereco?`
+        <div class="prop-card__address">
+          <a href="https://www.google.com/maps/search/${encodeURIComponent(im.endereco)}" target="_blank" rel="noopener">
+            ${im.endereco}
+          </a>
+        </div>`:''}
+
+        <div class="prop-card__footer">
+          <a href="https://wa.me/818028867708?text=${getWaMsg(im)}" class="btn-wa" target="_blank">Tenho interesse</a>
+          ${im.dk_url && /\/(p|g)\/h\/|\/personalize\//.test(im.dk_url) ? `<a href="${im.dk_url}" class="btn-dk" target="_blank">Ver detalhes</a>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Pagination
+  const pb = document.getElementById('paginationBottom');
+  if (totalPages <= 1) { pb.innerHTML = ''; }
+  else {
+    let html = '';
+    for (let p = 1; p <= totalPages; p++) {
+      const active = p === currentPage;
+      html += `<button onclick="goPage(${p})" class="page-btn${active?' active':''}">${p}</button>`;
+    }
+    pb.innerHTML = html;
+  }
+
+  // Touch swipe nas fotos
+  document.querySelectorAll('.prop-card__photos').forEach((el, i) => {
+    let sx = 0;
+    el.addEventListener('touchstart', e=>{sx=e.touches[0].clientX;},{passive:true});
+    el.addEventListener('touchend', e=>{
+      const dx=e.changedTouches[0].clientX-sx;
+      if(Math.abs(dx)>40) showSlide(start+i, dx<0?1:0);
+    },{passive:true});
+  });
+
+  // Re-bind cursor para novos elementos
+  if (window.__cursorRefresh) window.__cursorRefresh();
+
+  window.scrollTo({top: document.querySelector('.filters-bar').offsetTop - 80, behavior:'smooth'});
+}
+
+function goPage(p) { currentPage=p; render(); }
+
+// ── CAROUSEL ───────────────────────────────────────────────
+function showSlide(cardIdx, slideIdx) {
+  const slides = document.getElementById(`slides-${cardIdx}`);
+  if (!slides) return;
+  slides.style.transform = slideIdx===1?'translateX(-50%)':'translateX(0)';
+  slides.dataset.cur = slideIdx;
+  const lbl = document.getElementById(`label-${cardIdx}`);
+  if (lbl) lbl.textContent = ['外観','間取'][slideIdx]||'';
+  slides.closest('.prop-card__photos').querySelectorAll('.photo-dot')
+        .forEach((d,i)=>d.classList.toggle('active',i===slideIdx));
+}
+
+// ── FILTERS ────────────────────────────────────────────────
+document.querySelectorAll('.filter-chip[data-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter, v = btn.dataset.val;
+    if (f === 'pet') {
+      filters.pet = !filters.pet;
+      btn.classList.toggle('active', filters.pet);
+    } else {
+      document.querySelectorAll(`.filter-chip[data-filter="${f}"]`).forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      filters[f] = v;
+    }
+    currentPage = 1;
+    render();
+  });
+});
+
+document.getElementById('sortSelect').addEventListener('change', e => {
+  sortBy = e.target.value; currentPage=1; render();
+});
+
+// ── INIT ───────────────────────────────────────────────────
+loadImoveis();
+</script>
+</body>
+</html>

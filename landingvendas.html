@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Compre sua casa no Japão com a EASY HOUSE. Financiamento Flat 35 para estrangeiros, atendimento 100% em português."/>
+  <title>Comprar Casa no Japão | EASY HOUSE</title>
+  <link rel="stylesheet" href="theme-v2.css"/>
+  <style>
+  .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 50px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0; animation: revealUp 1s var(--ease) 1.4s forwards; }
+  .hero-stat strong { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); display: block; line-height: 1; margin-bottom: 6px; }
+  .hero-stat span { font-size: 0.8rem; color: var(--pearl-muted); }
+
+  .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  @media (max-width: 900px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+  .split__img { border-radius: 28px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid rgba(255,255,255,0.08); }
+  .split__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+  .split__img:hover img { transform: scale(1.05); }
+
+  .processo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; position: relative; }
+  @media (max-width: 900px) { .processo { grid-template-columns: 1fr; } }
+  .processo::before { content: ''; position: absolute; top: 36px; left: 7%; right: 7%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), var(--sakura), var(--gold), transparent); opacity: 0.5; z-index: 0; }
+  @media (max-width: 900px) { .processo::before { display: none; } }
+  .processo-step { position: relative; padding: 20px 16px; text-align: center; z-index: 1; }
+  .processo-step__num { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 18px; box-shadow: 0 0 0 6px rgba(8,7,15,1), 0 0 0 7px rgba(212,165,116,0.4); transition: all 0.4s; }
+  .processo-step:hover .processo-step__num { transform: scale(1.08); }
+  .processo-step h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--pearl); margin-bottom: 8px; }
+  .processo-step p { font-size: 0.85rem; color: var(--pearl-dim); line-height: 1.55; }
+
+  .provas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 900px) { .provas-grid { grid-template-columns: 1fr; } }
+  .prova { position: relative; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); aspect-ratio: 4/5; transition: transform 0.5s var(--ease); }
+  .prova:hover { transform: translateY(-4px); }
+  .prova img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+  .prova:hover img { transform: scale(1.06); }
+  .prova__shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(8,7,15,0.95) 100%); }
+  .prova__body { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 26px; }
+  .prova__tag { display: inline-block; padding: 5px 12px; border-radius: 100px; background: rgba(212,165,116,0.18); color: var(--gold-bright); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; border: 1px solid rgba(212,165,116,0.3); }
+  .prova__title { font-family: var(--font-display); font-size: 1.2rem; color: var(--pearl); margin-bottom: 6px; }
+  .prova__desc { font-size: 0.86rem; color: var(--pearl-dim); line-height: 1.55; }
+
+  .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .doc { padding: 22px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; display: flex; align-items: center; gap: 16px; transition: all 0.3s; }
+  .doc:hover { border-color: rgba(79,209,197,0.3); background: rgba(255,255,255,0.05); }
+  .doc__jp { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(79,209,197,0.18), rgba(79,209,197,0.05)); display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 0.95rem; font-weight: 700; color: var(--teal); flex-shrink: 0; }
+  .doc__text { font-size: 0.92rem; color: var(--pearl); line-height: 1.5; }
+  .doc__text small { display: block; color: var(--pearl-muted); font-size: 0.78rem; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="loader" id="loader"><div class="loader__kanji">家</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="images/logo.png" alt="EASY HOUSE"/>
+    <span class="nav__brand-text">EASY<em>HOUSE</em></span>
+  </a>
+  <div class="nav__links">
+    <a href="landingvendas.html" class="active">Comprar</a>
+    <a href="landingaluguel.html">Alugar</a>
+    <a href="imoveis.html">Apartamentos</a>
+    <a href="sobre.html">Sobre</a>
+  </div>
+  <a href="https://wa.me/818028867708" class="nav__cta">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Quero comprar
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="images/chave-porta.jpg" alt="Chave na porta de uma nova casa" class="hero__img"/>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__overlay-side"></div>
+  <div class="hero__kanji">家</div>
+
+  <div class="hero__inner">
+    <div class="hero__line">
+      <div class="hero__line-bar"></div>
+      <span class="hero__line-text">Compra · Flat 35 · 家を買う</span>
+    </div>
+    <h1 class="hero__title">
+      <span class="hero__title-line"><span>Sua casa</span></span>
+      <span class="hero__title-line"><span><em>própria</em> no Japão,</span></span>
+      <span class="hero__title-line"><span>em português.</span></span>
+    </h1>
+    <p class="hero__sub">Financiamento aprovado, documentação explicada passo a passo e atendimento humano do início ao fim. Você não precisa falar japonês para ter a sua casa.</p>
+    <div class="hero__ctas">
+      <a href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20comprar%20uma%20casa" class="btn-mag btn-mag--primary">
+        Quero minha casa
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#processo" class="btn-mag btn-mag--ghost">Como funciona</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong data-target="200" data-suffix="+">0</strong><span>Famílias atendidas</span></div>
+      <div class="hero-stat"><strong>100<span style="font-size:0.6em">%</span></strong><span>Atendimento em português</span></div>
+      <div class="hero-stat"><strong>全国</strong><span>Todo o Japão</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span class="marquee__item">Flat 35 <span class="marquee__item-jp">フラット35</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Financiamento 35 anos <span class="marquee__item-jp">住宅ローン</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Sem fiador <span class="marquee__item-jp">保証人不要</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Entrada 10% <span class="marquee__item-jp">頭金</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Estrangeiro pode comprar <span class="marquee__item-jp">外国人OK</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Flat 35 <span class="marquee__item-jp">フラット35</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Financiamento 35 anos <span class="marquee__item-jp">住宅ローン</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Sem fiador <span class="marquee__item-jp">保証人不要</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Entrada 10% <span class="marquee__item-jp">頭金</span></span><span class="marquee__dot"></span>
+    <span class="marquee__item">Estrangeiro pode comprar <span class="marquee__item-jp">外国人OK</span></span><span class="marquee__dot"></span>
+  </div>
+</div>
+
+<!-- BENEFÍCIOS -->
+<section class="section">
+  <div class="section-head">
+    <span class="eyebrow">Por que Easy House</span>
+    <h2 class="h-section">Comprar casa no Japão ficou <em>mais simples.</em></h2>
+    <p class="lead">A única imobiliária que combina atendimento em português, conhecimento do mercado japonês e suporte completo no financiamento.</p>
+  </div>
+  <div class="benefits-grid reveal-stagger">
+    <div class="reason">
+      <div class="reason__kanji">語</div>
+      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/equipe-contrato.jpg" alt=""/><div class="reason__icon-shade"></div></div>
+      <h3 class="reason__title">Atendimento em <em>português</em></h3>
+      <p class="reason__text">Do primeiro contato à assinatura do contrato — tudo no seu idioma, sem surpresas e sem mal-entendidos.</p>
+    </div>
+    <div class="reason">
+      <div class="reason__kanji">金</div>
+      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/flat35.jpg" alt=""/><div class="reason__icon-shade"></div></div>
+      <h3 class="reason__title">Financiamento <em>Flat 35</em></h3>
+      <p class="reason__text">Assessoria especializada no Flat 35 — o melhor financiamento imobiliário do Japão. Parcelas que geralmente cabem dentro do que você paga de aluguel.</p>
+    </div>
+    <div class="reason">
+      <div class="reason__kanji">国</div>
+      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/chave-porta.jpg" alt=""/><div class="reason__icon-shade"></div></div>
+      <h3 class="reason__title">Todo o <em>Japão</em></h3>
+      <p class="reason__text">Equipe distribuída pelo país inteiro. Encontramos o imóvel ideal para você — de Hokkaidō a Okinawa.</p>
+    </div>
+    <div class="reason">
+      <div class="reason__kanji">完</div>
+      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/familia-chave.jpg" alt=""/><div class="reason__icon-shade"></div></div>
+      <h3 class="reason__title">Assessoria <em>completa</em></h3>
+      <p class="reason__text">Cuidamos de toda burocracia: documentação, tradução, negociação com o banco e acompanhamento até a entrega das chaves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT FLAT 35 -->
+<section class="section">
+  <div class="split reveal">
+    <div class="split__img">
+      <img src="images/flat35.jpg" alt="Consultoria de financiamento"/>
+    </div>
+    <div>
+      <span class="eyebrow">Financiamento</span>
+      <h2 class="h-section">Pagar aluguel ou <em>financiar?</em></h2>
+      <p class="lead" style="margin-bottom:8px;">Em muitas cidades do Japão, a parcela mensal de financiamento de uma casa é <strong style="color:var(--gold-bright)">igual ou menor</strong> que o aluguel equivalente. E no final, o imóvel é seu.</p>
+      <ul class="checklist">
+        <li>Estrangeiros podem financiar no Japão</li>
+        <li>Flat 35 com taxas fixas por até 35 anos</li>
+        <li>Entrada a partir de 10% do valor do imóvel</li>
+        <li>Suporte completo com Zairyū Card e documentação</li>
+        <li>Simulação gratuita e sem compromisso</li>
+      </ul>
+      <a href="https://wa.me/818028867708?text=Quero%20fazer%20uma%20simula%C3%A7%C3%A3o" class="btn-mag btn-mag--gold" style="margin-top:14px;">
+        Simulação grátis
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="section" id="processo">
+  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
+    <span class="eyebrow">Passo a passo</span>
+    <h2 class="h-section">Como <em>funciona.</em></h2>
+    <p class="lead">Do primeiro contato às chaves na mão — acompanhamos cada etapa.</p>
+  </div>
+  <div class="processo reveal-stagger">
+    <div class="processo-step">
+      <div class="processo-step__num">1</div>
+      <h3>Conversa</h3>
+      <p>Entendemos seu perfil, renda, região desejada e sonho.</p>
+    </div>
+    <div class="processo-step">
+      <div class="processo-step__num">2</div>
+      <h3>Simulação</h3>
+      <p>Calculamos a parcela ideal e os documentos necessários.</p>
+    </div>
+    <div class="processo-step">
+      <div class="processo-step__num">3</div>
+      <h3>Busca</h3>
+      <p>Encontramos as opções mais adequadas ao seu perfil.</p>
+    </div>
+    <div class="processo-step">
+      <div class="processo-step__num">4</div>
+      <h3>Aprovação</h3>
+      <p>Acompanhamos o processo junto ao banco até a aprovação.</p>
+    </div>
+    <div class="processo-step">
+      <div class="processo-step__num">鍵</div>
+      <h3>Chaves na mão</h3>
+      <p>Assinatura do contrato e entrega do seu novo lar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROVAS -->
+<section class="section">
+  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
+    <span class="eyebrow">Histórias reais</span>
+    <h2 class="h-section">Famílias que <em>realizaram o sonho.</em></h2>
+    <p class="lead">Cada chave entregue é uma história de conquista.</p>
+  </div>
+  <div class="provas-grid reveal-stagger">
+    <div class="prova">
+      <img src="images/equipe-contrato.jpg" alt="Assinatura do contrato"/>
+      <div class="prova__shade"></div>
+      <div class="prova__body">
+        <span class="prova__tag">Compra concluída</span>
+        <div class="prova__title">Contrato assinado</div>
+        <div class="prova__desc">Mais uma família realizando o sonho da casa própria no Japão.</div>
+      </div>
+    </div>
+    <div class="prova">
+      <img src="images/familia-chave.jpg" alt="Entrega de chaves"/>
+      <div class="prova__shade"></div>
+      <div class="prova__body">
+        <span class="prova__tag">Chaves entregues</span>
+        <div class="prova__title">Novo lar da família</div>
+        <div class="prova__desc">Do primeiro contato ao sorriso na entrega das chaves.</div>
+      </div>
+    </div>
+    <div class="prova">
+      <img src="images/flat35.jpg" alt="Consultoria de financiamento"/>
+      <div class="prova__shade"></div>
+      <div class="prova__body">
+        <span class="prova__tag">Flat 35</span>
+        <div class="prova__title">Aprovado pelo banco</div>
+        <div class="prova__desc">Assessoria especializada para estrangeiros conseguirem aprovação.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTOS -->
+<section class="section">
+  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
+    <span class="eyebrow">Documentação</span>
+    <h2 class="h-section">O que você precisa para <em>financiar.</em></h2>
+    <p class="lead">Documentos básicos. A gente te orienta em cada um.</p>
+  </div>
+  <div class="docs-grid reveal-stagger">
+    <div class="doc">
+      <div class="doc__jp">在留</div>
+      <div class="doc__text">Zairyū Card<small>Carteira de Residência</small></div>
+    </div>
+    <div class="doc">
+      <div class="doc__jp">源泉</div>
+      <div class="doc__text">源泉徴収票<small>Comprovante de renda (2~3 anos)</small></div>
+    </div>
+    <div class="doc">
+      <div class="doc__jp">通帳</div>
+      <div class="doc__text">Extrato bancário<small>Últimos 6 meses</small></div>
+    </div>
+    <div class="doc">
+      <div class="doc__jp">住民</div>
+      <div class="doc__text">住民票<small>Jūminhyō (comprovante de residência)</small></div>
+    </div>
+    <div class="doc">
+      <div class="doc__jp">マイ</div>
+      <div class="doc__text">My Number<small>Documento com foto</small></div>
+    </div>
+    <div class="doc">
+      <div class="doc__jp">雇用</div>
+      <div class="doc__text">雇用契約書<small>Contrato de trabalho (se aplicável)</small></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:50px;">
+    <a href="https://wa.me/818028867708?text=Tenho%20d%C3%BAvidas%20sobre%20documentos" class="btn-mag btn-mag--wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      Tenho dúvidas sobre documentos
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="h-section">Dúvidas <em>frequentes.</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q">Estrangeiro pode comprar casa no Japão?</button><div class="faq-a"><p>Sim. Não existe restrição legal para estrangeiros comprarem imóveis no Japão. Com a assessoria da Easy House, o processo fica muito mais claro e simples.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Preciso falar japonês para comprar?</button><div class="faq-a"><p>De jeito nenhum. Nosso atendimento é 100% em português — da primeira conversa à assinatura do contrato. Você não precisa saber japonês.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Qual visto preciso ter para financiar?</button><div class="faq-a"><p>Em geral, vistos permanentes ou de longa duração têm mais facilidade. Mas cada banco tem critérios diferentes — avaliamos seu caso gratuitamente.</p></div></div>
+    <div class="faq-item"><button class="faq-q">A parcela vai ser maior que meu aluguel atual?</button><div class="faq-a"><p>Na maioria dos casos, não. Em muitas regiões do Japão, a parcela do financiamento é igual ou menor que o aluguel equivalente. Fazemos uma simulação gratuita para você comparar.</p></div></div>
+    <div class="faq-item"><button class="faq-q">E se eu voltar para o Brasil futuramente?</button><div class="faq-a"><p>Seu imóvel continua sendo seu. Você pode vender, alugar e continuar recebendo renda do Japão. É um investimento que trabalha por você.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Vocês atendem em qual região do Japão?</button><div class="faq-a"><p>Em todo o Japão. Temos agentes distribuídos pelo país. Não importa onde você mora — encontramos o imóvel ideal para você.</p></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div style="position:relative;padding:80px 48px;border-radius:32px;overflow:hidden;text-align:center;background:linear-gradient(135deg,rgba(74,46,140,0.5),rgba(212,165,116,0.25),rgba(244,182,194,0.35));border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);">
+    <div style="position:absolute;right:-8vw;bottom:-10vw;font-family:var(--font-jp);font-size:35rem;font-weight:900;color:rgba(255,255,255,0.04);line-height:0.85;pointer-events:none;">家</div>
+    <h2 class="h-section" style="position:relative;max-width:680px;margin:0 auto 18px;">Não deixe seu sonho<br/>para <em>depois.</em></h2>
+    <p class="lead" style="position:relative;margin:0 auto 36px;max-width:520px;">Cada mês de aluguel é dinheiro que poderia estar no SEU futuro. Fale agora com um especialista.</p>
+    <a href="https://wa.me/818028867708?text=Quero%20conversar%20sobre%20comprar%20casa" class="btn-mag btn-mag--primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      Falar com especialista agora
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <div class="foot__brand"><img src="images/logo.png" alt="EASY HOUSE"/><span class="foot__brand-text">EASY<em>HOUSE</em></span></div>
+      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros.</p>
+      <div class="foot__license">沖縄県知事(1)第5984号</div>
+    </div>
+    <div><div class="foot__col-title">Site</div><div class="foot__col-links"><a href="landingvendas.html">Comprar</a><a href="landingaluguel.html">Alugar</a><a href="imoveis.html">Apartamentos</a><a href="sobre.html">Sobre nós</a></div></div>
+    <div><div class="foot__col-title">Contato</div><div class="foot__col-links"><a href="https://wa.me/818028867708">WhatsApp</a><a href="tel:+818028867708">080-2886-7708</a><a href="https://www.instagram.com/easyhousejp/">Instagram</a></div></div>
+    <div><div class="foot__col-title">Legal</div><div class="foot__col-links"><a href="terms.html">Termos de uso</a><a href="privacy.html">Privacidade</a></div></div>
+  </div>
+  <div class="foot__bottom"><span>© EASY HOUSE · Sua casa no Japão, em português.</span><span>家・夢・縁</span></div>
+</footer>
+
+<a href="https://wa.me/818028867708" class="wa-fab">
+  <span class="wa-fab__pulse"></span>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  <span class="txt">Conversar</span>
+</a>
+
+<script src="theme-v2.js"></script>
+</body>
+</html>
