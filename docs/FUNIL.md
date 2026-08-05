@@ -46,13 +46,15 @@ build-pages.mjs              gera as páginas por cidade
 
 ### 3.1 Banco
 
-No SQL Editor do Supabase, executar `sql/schema.sql`.
+No SQL Editor do Supabase, executar **`sql/instalar.sql`** — ele traz o schema
+completo e já publica a configuração ativa. É um único arquivo, cole e execute.
 
-Depois, publicar a primeira configuração:
+(`sql/schema.sql` contém apenas as tabelas, caso queira separar.)
 
-```sql
-insert into financing_configuration (version, config, valid_from, is_active, note, updated_by)
-values (1, '<conteúdo de lib/financing-config.json>'::jsonb, current_date, true, 'Configuração inicial', 'implantacao');
+Para conferir se ficou tudo certo:
+
+```bash
+bash verificar-funil.sh
 ```
 
 ### 3.2 Variáveis de ambiente (Netlify → Site configuration → Environment variables)
@@ -61,6 +63,14 @@ values (1, '<conteúdo de lib/financing-config.json>'::jsonb, current_date, true
 |---|---|---|
 | `SUPABASE_URL` | Endereço do projeto | Supabase → Project Settings → API |
 | `SUPABASE_SERVICE_KEY` | Gravar leads e simulações | Supabase → API → `service_role` |
+
+Pela CLI (a chave é pedida na hora, sem ficar em arquivo nem no histórico):
+
+```bash
+vercel env add SUPABASE_SERVICE_KEY production
+vercel env add SUPABASE_SERVICE_KEY preview
+vercel --prod          # nova publicação para as variáveis valerem
+```
 
 > A `service_role` ignora o RLS. Ela só pode existir nas variáveis do Netlify —
 > nunca no HTML, no JS do browser ou no repositório.
@@ -106,7 +116,7 @@ Todas as fórmulas ficam em `lib/financing.js`, sem dependência de interface.
 
 ### Regras aplicadas
 
-- **Flat 35** — autônomo, ou empreiteira com menos de 3 anos. Taxa 2,5%, prazo máximo 35 anos,
+- **Flat 35** — autônomo, ou empreiteira com menos de 3 anos. Taxa 2,9%, prazo máximo 35 anos,
   quitação até 80 anos, comprometimento de 30% abaixo de ¥4.000.000 e 35% a partir daí.
 - **Cenário bancário** — funcionário efetivo, ou empreiteira com 3 anos ou mais. Taxa 1,4%,
   prazo máximo 50 anos, quitação até 80 anos. **A regra de comprometimento ainda não está
@@ -114,6 +124,11 @@ Todas as fórmulas ficam em `lib/financing.js`, sem dependência de interface.
 - **Análise manual** — dono de empresa, contrato temporário, outro, ou residência fora da lista
   aceita. Ainda simula pela parcela desejada, deixando claro que não é análise de capacidade.
 - **Faixa** — o resultado é sempre um intervalo (margem de 7%, configurável), nunca um valor exato.
+
+> O teto de 35 anos do Flat 35 é aplicado dentro do motor
+> (`FLAT35_ABSOLUTE_MAX_TERM_YEARS`), não apenas na configuração. Mesmo que alguém
+> edite a configuração por engano, o produto nunca aparece com prazo maior.
+> Existe no mercado japonês um Flat 50; ele é outro produto e não é oferecido aqui.
 
 ---
 
@@ -185,9 +200,9 @@ Depois de mudar `simular.html`, rodar `node build-pages.mjs` para regerar as pá
 
 1. **Regra de comprometimento de renda do cenário bancário.** Não foi configurada por não ter
    sido validada. Enquanto isso, o simulador não estima capacidade nesse cenário.
-2. **Base de imóveis à venda.** A tabela `imoveis_aichi` existente é de aluguel. A tabela
-   `property` foi criada e está vazia — sem ela, o funil não recomenda imóveis (e diz isso
-   honestamente ao cliente, em vez de inventar quantidade).
+2. **Imóveis.** Por decisão da Easy House, o funil não consulta base nem mostra contagem.
+   Exibe sempre: *"Temos imóveis disponíveis na região, o corretor irá lhe apresentar as
+   opções que se enquadram."* A tabela `property` existe no schema para uso futuro.
 3. **Percentual da segunda renda.** Configurado em 50% como ponto de partida. Confirmar com
    as instituições.
 4. **Produto de análise conjunta de dívidas.** Limite de ¥5.000.000 e prazo de 50 anos são

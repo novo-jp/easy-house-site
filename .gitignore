@@ -31,3 +31,5 @@ debug_*.png
 # Funil
 .env
 .netlify/
+.vercel
+.env*
