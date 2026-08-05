@@ -1,1028 +1,445 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Tem cashing, ribo, cartão ou financiamento de carro e quer comprar casa no Japão? A Easy House analisa sua situação e verifica opções de おまとめ・借り換え e planejamento para 住宅ローン. Consulta gratuita em português."/>
-  <meta name="keywords" content="financiamento no Japão, refinanciamento de dívidas Japão, おまとめローン, 借り換え, まとめトク, リボ払い, キャッシング, financiamento imobiliário Japão, brasileiros no Japão, 住宅ローン, 返済比率"/>
-  <meta property="og:title" content="Refinanciamento e Organização de Dívidas no Japão | Easy House"/>
-  <meta property="og:description" content="Antes de desistir do financiamento da sua casa, veja se é possível reorganizar suas dívidas com apoio da Easy House."/>
-  <title>Refinanciamento e Organização de Dívidas no Japão | Easy House</title>
-  <link rel="stylesheet" href="theme-v2.css"/>
-  <style>
-  /* ── HERO COMPARATIVO ── */
-  .hero__compare { margin-top: 36px; opacity: 0; animation: revealUp 1s var(--ease) 1.4s forwards; }
-  .hero-comp-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: stretch; max-width: 720px; }
-  @media (max-width: 700px) { .hero-comp-row { grid-template-columns: 1fr; } .hero-comp-arrow { transform: rotate(90deg); } }
-  .hero-comp { padding: 18px 20px; border-radius: 18px; backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
-  .hero-comp--before { background: rgba(231,76,60,0.06); border-color: rgba(231,76,60,0.18); }
-  .hero-comp--after { background: rgba(79,209,197,0.1); border-color: rgba(79,209,197,0.3); }
-  .hero-comp__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
-  .hero-comp--before .hero-comp__label { color: #FF8B7E; }
-  .hero-comp--after .hero-comp__label { color: var(--teal); }
-  .hero-comp ul { display: flex; flex-direction: column; gap: 6px; }
-  .hero-comp li { font-size: 0.83rem; color: var(--pearl-dim); line-height: 1.4; padding-left: 16px; position: relative; }
-  .hero-comp--before li::before { content: '×'; position: absolute; left: 0; color: rgba(231,76,60,0.7); font-weight: 700; }
-  .hero-comp--after li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
-  .hero-comp-arrow { display: flex; align-items: center; justify-content: center; padding: 0 6px; }
-  .hero-comp-arrow svg { width: 32px; height: 32px; color: var(--gold-bright); }
-
-  /* ── PAIN SECTION ── */
-  .pains-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  @media (max-width: 900px) { .pains-grid { grid-template-columns: 1fr; } }
-  .pain { padding: 30px 26px; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); transition: all 0.4s; position: relative; }
-  .pain:hover { transform: translateY(-4px); border-color: rgba(231,76,60,0.25); }
-  .pain__icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(231,76,60,0.12); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; border: 1px solid rgba(231,76,60,0.25); }
-  .pain__icon svg { width: 22px; height: 22px; color: #FF8B7E; }
-  .pain__text { font-size: 0.96rem; color: var(--pearl); line-height: 1.6; font-family: var(--font-display); font-weight: 400; }
-  .pain-close { margin-top: 50px; padding: 36px 40px; border-radius: 24px; background: linear-gradient(135deg, rgba(212,165,116,0.15), rgba(79,209,197,0.1)); border: 1px solid rgba(212,165,116,0.3); text-align: center; }
-  .pain-close p { font-family: var(--font-display); font-size: clamp(1.15rem, 2.2vw, 1.5rem); color: var(--pearl); line-height: 1.4; }
-  .pain-close em { font-style: italic; color: var(--gold-bright); }
-
-  /* ── SOLUTION SECTION ── */
-  .solution { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-  @media (max-width: 900px) { .solution { grid-template-columns: 1fr; } }
-  .solution__visual { position: relative; aspect-ratio: 1/1; max-width: 420px; margin: 0 auto; }
-  .solution__visual::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(212,165,116,0.2), transparent 60%); animation: pulseSlow 4s ease-in-out infinite; }
-  @keyframes pulseSlow { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.05); opacity: 0.8; } }
-  .solution__kanji { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 16rem; font-weight: 900; background: linear-gradient(135deg, var(--gold-bright), var(--sakura), var(--teal)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
-  .solution__text p { font-size: 1.05rem; line-height: 1.85; color: var(--pearl-dim); margin-bottom: 18px; }
-  .solution__text strong { color: var(--gold-bright); font-weight: 600; }
-  .solution-not-list { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; padding: 24px 26px; background: rgba(255,255,255,0.03); border-left: 3px solid var(--gold); border-radius: 0 14px 14px 0; }
-  .solution-not-list li { font-size: 0.95rem; color: var(--pearl-dim); display: flex; align-items: flex-start; gap: 10px; }
-  .solution-not-list li::before { content: '·'; color: var(--gold); font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
-  .solution-not-list li strong { color: var(--pearl); }
-
-  /* ── STRATEGIES (2 cards grandes) ── */
-  .strategies { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-  @media (max-width: 900px) { .strategies { grid-template-columns: 1fr; } }
-  .strategy { position: relative; padding: 44px 38px 38px; border-radius: 28px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s var(--ease); overflow: hidden; }
-  .strategy:hover { transform: translateY(-6px); border-color: rgba(212,165,116,0.3); }
-  .strategy__tag { display: inline-block; padding: 5px 12px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 18px; }
-  .strategy--a .strategy__tag { background: rgba(212,165,116,0.15); color: var(--gold-bright); border: 1px solid rgba(212,165,116,0.3); }
-  .strategy--b .strategy__tag { background: rgba(79,209,197,0.15); color: var(--teal); border: 1px solid rgba(79,209,197,0.3); }
-  .strategy__kanji { position: absolute; top: 26px; right: 34px; font-family: var(--font-jp); font-size: 6rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1; }
-  .strategy__title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; color: var(--pearl); margin-bottom: 12px; line-height: 1.2; position: relative; max-width: 80%; }
-  .strategy__sub { font-size: 0.96rem; color: var(--pearl-dim); line-height: 1.6; margin-bottom: 26px; position: relative; }
-  .strategy__list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 26px; position: relative; }
-  .strategy__list li { font-size: 0.93rem; line-height: 1.6; color: var(--pearl); display: flex; align-items: flex-start; gap: 10px; padding-left: 0; }
-  .strategy__list li::before { content: ''; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F0CFA0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; }
-  .strategy--b .strategy__list li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234FD1C5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); }
-  .strategy__disclaimer { padding: 14px 16px; background: rgba(0,0,0,0.25); border-radius: 12px; font-size: 0.8rem; color: var(--pearl-muted); line-height: 1.55; border-left: 2px solid rgba(255,255,255,0.15); }
-
-  /* ── CERTIFIED ADVISOR SECTION ── */
-  .advisor { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; padding: 50px; border-radius: 32px; background: linear-gradient(135deg, rgba(74,46,140,0.3), rgba(212,165,116,0.18)); border: 1px solid rgba(212,165,116,0.35); position: relative; overflow: hidden; }
-  @media (max-width: 900px) { .advisor { grid-template-columns: 1fr; padding: 36px 30px; gap: 40px; } }
-  .advisor::before { content: '認'; position: absolute; right: -4vw; bottom: -8vw; font-family: var(--font-jp); font-size: 30rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 0.85; pointer-events: none; }
-  .advisor__cert-frame { position: relative; aspect-ratio: 4/5; max-width: 360px; margin: 0 auto; border-radius: 22px; overflow: hidden; border: 2px solid rgba(212,165,116,0.4); box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05) inset; background: rgba(255,255,255,0.04); }
-  .advisor__cert-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-  .advisor__cert-frame:hover img { transform: scale(1.04); }
-  .advisor__cert-badge { position: absolute; top: 14px; left: 14px; padding: 6px 12px; border-radius: 100px; background: rgba(8,7,15,0.85); backdrop-filter: blur(12px); color: var(--gold-bright); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; border: 1px solid rgba(212,165,116,0.4); z-index: 2; }
-  .advisor__rare-stamp { position: absolute; bottom: 18px; right: 18px; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-display); color: var(--ink); transform: rotate(-8deg); box-shadow: 0 12px 30px rgba(212,165,116,0.5); z-index: 2; }
-  .advisor__rare-stamp strong { font-size: 0.95rem; line-height: 1; }
-  .advisor__rare-stamp span { font-size: 0.6rem; letter-spacing: 0.05em; margin-top: 3px; }
-  .advisor__content { position: relative; }
-  .advisor__eyebrow { display: inline-block; padding: 6px 14px; border-radius: 100px; background: rgba(212,165,116,0.2); border: 1px solid rgba(212,165,116,0.4); color: var(--gold-bright); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 22px; }
-  .advisor__title { font-family: var(--font-display); font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 700; line-height: 1.15; margin-bottom: 18px; }
-  .advisor__title em { font-style: italic; color: var(--gold-bright); }
-  .advisor__text { font-size: 1rem; line-height: 1.75; color: var(--pearl-dim); margin-bottom: 18px; }
-  .advisor__text strong { color: var(--pearl); font-weight: 600; }
-  .advisor__contrast { padding: 18px 22px; background: rgba(0,0,0,0.3); border-radius: 14px; border-left: 3px solid var(--gold-bright); margin-top: 24px; font-size: 0.93rem; line-height: 1.65; color: var(--pearl); }
-  .advisor__contrast strong { color: var(--gold-bright); }
-
-  /* ── BENEFITS 6 ── */
-  .benefits6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .benefits6 { grid-template-columns: 1fr; } }
-  .benef6 { padding: 32px 28px; border-radius: 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); transition: all 0.4s; position: relative; }
-  .benef6:hover { transform: translateY(-4px); border-color: rgba(79,209,197,0.25); background: rgba(255,255,255,0.05); }
-  .benef6__num { font-family: var(--font-display); font-size: 0.78rem; color: var(--gold); letter-spacing: 0.2em; font-weight: 600; margin-bottom: 14px; }
-  .benef6__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--pearl); margin-bottom: 12px; line-height: 1.3; }
-  .benef6__title em { font-style: italic; color: var(--teal); }
-  .benef6__text { font-size: 0.93rem; color: var(--pearl-dim); line-height: 1.7; }
-
-  /* ── COMPARISON TABLE ── */
-  .compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 1080px; margin: 0 auto; }
-  @media (max-width: 760px) { .compare-table { grid-template-columns: 1fr; } }
-  .compare-col { padding: 36px 32px; border-radius: 26px; backdrop-filter: blur(16px); }
-  .compare-col--bad { background: linear-gradient(180deg, rgba(231,76,60,0.06), rgba(255,255,255,0.01)); border: 1px solid rgba(231,76,60,0.2); }
-  .compare-col--good { background: linear-gradient(180deg, rgba(79,209,197,0.1), rgba(255,255,255,0.02)); border: 1px solid rgba(79,209,197,0.35); }
-  .compare-col__head { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .compare-col__circle { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; }
-  .compare-col--bad .compare-col__circle { background: rgba(231,76,60,0.2); color: #FF8B7E; border: 1px solid rgba(231,76,60,0.4); }
-  .compare-col--good .compare-col__circle { background: linear-gradient(135deg, var(--teal), #3AB5AA); color: var(--ink); }
-  .compare-col__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--pearl); }
-  .compare-col__list { display: flex; flex-direction: column; gap: 14px; }
-  .compare-col__list li { font-size: 0.95rem; line-height: 1.55; color: var(--pearl-dim); padding-left: 26px; position: relative; }
-  .compare-col--bad li::before { content: '×'; position: absolute; left: 0; top: -2px; color: rgba(231,76,60,0.8); font-size: 1.2rem; font-weight: 700; }
-  .compare-col--good li::before { content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234FD1C5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; }
-
-  /* ── SIMULATOR ── */
-  .simulator { max-width: 760px; margin: 0 auto; padding: 44px 40px; border-radius: 28px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); }
-  @media (max-width: 640px) { .simulator { padding: 30px 24px; } }
-  .sim-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  @media (max-width: 600px) { .sim-form { grid-template-columns: 1fr; } }
-  .sim-field { display: flex; flex-direction: column; gap: 8px; }
-  .sim-field--full { grid-column: 1 / -1; }
-  .sim-field label { font-size: 0.84rem; color: var(--pearl-dim); font-weight: 500; }
-  .sim-field label .req { color: var(--sakura); margin-left: 2px; }
-  .sim-field input, .sim-field select, .sim-field textarea { padding: 13px 16px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.12); color: var(--pearl); font-family: var(--font-body); font-size: 0.94rem; transition: all 0.3s; cursor: none; }
-  .sim-field input:focus, .sim-field select:focus, .sim-field textarea:focus { outline: none; border-color: var(--gold-bright); background: rgba(0,0,0,0.4); }
-  .sim-field select option { background: var(--ink); color: var(--pearl); }
-  .sim-checkboxes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  @media (max-width: 500px) { .sim-checkboxes { grid-template-columns: 1fr; } }
-  .sim-check { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); cursor: none; transition: all 0.3s; font-size: 0.88rem; color: var(--pearl); }
-  .sim-check:hover { border-color: var(--gold-bright); background: rgba(212,165,116,0.08); }
-  .sim-check input { accent-color: var(--gold-bright); cursor: none; }
-  .sim-submit-row { grid-column: 1 / -1; margin-top: 8px; display: flex; flex-direction: column; gap: 14px; align-items: center; }
-  .sim-result { display: none; padding: 26px 28px; border-radius: 20px; background: linear-gradient(135deg, rgba(79,209,197,0.15), rgba(212,165,116,0.1)); border: 1px solid rgba(79,209,197,0.35); margin-top: 24px; }
-  .sim-result.show { display: block; animation: revealUp 0.5s var(--ease) both; }
-  .sim-result h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--pearl); margin-bottom: 10px; }
-  .sim-result p { font-size: 0.93rem; color: var(--pearl-dim); line-height: 1.65; margin-bottom: 14px; }
-  .sim-result__notice { font-size: 0.78rem; color: var(--pearl-muted); padding: 12px 14px; background: rgba(0,0,0,0.3); border-radius: 10px; border-left: 2px solid var(--gold); line-height: 1.55; margin-top: 14px; }
-
-  /* ── CASE STUDIES ── */
-  .cases3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .cases3 { grid-template-columns: 1fr; } }
-  .case3 { padding: 32px 28px; border-radius: 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); transition: all 0.4s; }
-  .case3:hover { transform: translateY(-4px); border-color: rgba(244,182,194,0.25); }
-  .case3__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sakura); margin-bottom: 14px; }
-  .case3__title { font-family: var(--font-display); font-size: 1.15rem; color: var(--pearl); margin-bottom: 20px; line-height: 1.3; }
-  .case3__row { padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem; line-height: 1.6; }
-  .case3__row:first-of-type { border-top: none; padding-top: 0; }
-  .case3__row strong { display: block; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 4px; font-weight: 600; }
-  .case3__row p { color: var(--pearl-dim); }
-
-  /* ── WHY EH ── */
-  .why-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 1000px; margin: 0 auto; }
-  @media (max-width: 700px) { .why-list { grid-template-columns: 1fr; } }
-  .why-item { padding: 18px 22px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); display: flex; align-items: flex-start; gap: 14px; font-size: 0.94rem; color: var(--pearl); line-height: 1.55; transition: all 0.3s; }
-  .why-item:hover { background: rgba(255,255,255,0.05); border-color: rgba(79,209,197,0.25); }
-  .why-item::before { content: ''; width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234FD1C5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; }
-
-  /* ── PROCESS 5 STEPS ── */
-  .proc5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
-  @media (max-width: 1000px) { .proc5 { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .proc5 { grid-template-columns: 1fr; } }
-  .proc5::before { content: ''; position: absolute; top: 36px; left: 8%; right: 8%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), var(--teal), transparent); opacity: 0.4; z-index: 0; }
-  @media (max-width: 1000px) { .proc5::before { display: none; } }
-  .proc5-step { text-align: center; padding: 20px 14px; position: relative; z-index: 1; }
-  .proc5-step__num { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 20px; box-shadow: 0 0 0 6px var(--ink), 0 0 0 7px rgba(212,165,116,0.35); transition: transform 0.4s; }
-  .proc5-step:hover .proc5-step__num { transform: scale(1.08); }
-  .proc5-step__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--pearl); margin-bottom: 8px; }
-  .proc5-step__text { font-size: 0.85rem; color: var(--pearl-dim); line-height: 1.55; }
-
-  /* ── FORM ── */
-  .lead-form { max-width: 880px; margin: 0 auto; padding: 50px 48px; border-radius: 32px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); }
-  @media (max-width: 700px) { .lead-form { padding: 32px 26px; } }
-  .lead-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  @media (max-width: 600px) { .lead-form__grid { grid-template-columns: 1fr; } }
-  .lead-section-title { font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-bright); margin: 14px 0 6px; grid-column: 1 / -1; }
-  .lead-section-title:first-child { margin-top: 0; }
-  .lead-consent { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px; background: rgba(0,0,0,0.25); border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); margin-top: 8px; }
-  .lead-consent input { margin-top: 4px; accent-color: var(--gold-bright); cursor: none; flex-shrink: 0; }
-  .lead-consent label { font-size: 0.86rem; color: var(--pearl-dim); line-height: 1.65; }
-
-  /* ── COMPLIANCE ── */
-  .compliance { max-width: 1080px; margin: 40px auto 0; padding: 28px 32px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; font-size: 0.82rem; line-height: 1.7; color: var(--pearl-muted); }
-  .compliance strong { color: var(--pearl-dim); }
-
-  /* ── MOBILE STICKY CTA ── */
-  .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; padding: 14px 16px; background: rgba(8,7,15,0.95); backdrop-filter: blur(24px); border-top: 1px solid rgba(255,255,255,0.08); }
-  .mobile-cta a { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 100px; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); color: var(--ink); font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 20px rgba(212,165,116,0.35); }
-  @media (max-width: 800px) { .mobile-cta { display: block; } .wa-fab { display: none; } body { padding-bottom: 70px; } }
-
-  /* ── MICROTEXTOS ── */
-  .micro { text-align: center; max-width: 720px; margin: 0 auto; padding: 36px 0; font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--pearl-dim); line-height: 1.5; }
-  .micro span { color: var(--gold-bright); }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Organizar dívidas antes de financiar uma casa no Japão | EASY HOUSE</title>
+<meta name="description" content="Cartão, cashing, ribo ou financiamento de carro apertando? Analisamos sua situação em português, com sigilo e sem julgamento, para entender se dá para organizar antes do 住宅ローン."/>
+<link rel="canonical" href="https://easyhouse.homes/omatome.html"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easyhouse.homes/omatome.html"/>
+<meta property="og:title" content="Organizar dívidas antes de financiar uma casa no Japão | EASY HOUSE"/>
+<meta property="og:description" content="Conversa reservada, em português, para entender sua situação e os caminhos possíveis."/>
+<meta property="og:image" content="https://easyhouse.homes/images/opt/equipe-contrato-1024.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preload" as="image" href="images/opt/equipe-contrato-1024.webp" fetchpriority="high"/>
+<link rel="stylesheet" href="theme-v2.css?v=3"/>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="loader" id="loader"><div class="loader__kanji">整</div></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
 
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="images/logo.png" alt="EASY HOUSE"/>
+<nav class="nav" id="nav" aria-label="Menu principal">
+  <a href="index.html" class="nav__brand" aria-label="EASY HOUSE — página inicial">
+    <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto"/>
     <span class="nav__brand-text">EASY<em>HOUSE</em></span>
   </a>
   <div class="nav__links">
     <a href="landingvendas.html">Comprar</a>
     <a href="landingaluguel.html">Alugar</a>
     <a href="imoveis.html">Apartamentos</a>
+    <a href="refinanciamento.html">Refinanciar</a>
+    <a href="omatome.html" class="active" aria-current="page">Dívidas</a>
     <a href="sobre.html">Sobre</a>
   </div>
-  <a href="#form" class="nav__cta">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-    Análise gratuita
+  <a class="nav__cta" href="#analise">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
   </a>
+  <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navDrawer" aria-label="Abrir menu">
+    <span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero__bg">
-    <img src="images/equipe-contrato.jpg" alt="Consultoria de organização de dívidas Easy House" class="hero__img"/>
-  </div>
-  <div class="hero__overlay"></div>
-  <div class="hero__overlay-side"></div>
-  <div class="hero__kanji">整</div>
-
-  <div class="hero__inner">
-    <div class="hero__line">
-      <div class="hero__line-bar"></div>
-      <span class="hero__line-text">整理 · Reorganizar · Consultoria em português</span>
-    </div>
-    <h1 class="hero__title">
-      <span class="hero__title-line"><span>Cartão, cashing,</span></span>
-      <span class="hero__title-line"><span>ribo, carro... <em>tudo</em></span></span>
-      <span class="hero__title-line"><span>apertando ao mesmo tempo?</span></span>
-    </h1>
-    <p class="hero__sub">Antes de desistir do financiamento da sua casa, veja se é possível reorganizar suas dívidas em uma estratégia mais inteligente com apoio da Easy House. Analisamos seu caso com <strong style="color:var(--pearl)">sigilo</strong> e verificamos opções como まとめ, おまとめ e 借り換え com bancos parceiros — sempre conforme as regras e aprovação de cada instituição.</p>
-    <div class="hero__ctas">
-      <a href="#form" class="btn-mag btn-mag--primary">
-        Fazer análise gratuita
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20entender%20se%20minhas%20d%C3%ADvidas%20atrapalham%20o%20financiamento" class="btn-mag btn-mag--ghost">Quero entender se atrapalha</a>
-    </div>
-    <div class="hero__chips">
-      <span class="hero__chip"><strong>Consulta gratuita</strong></span>
-      <span class="hero__chip">Atendimento <strong>em português</strong></span>
-      <span class="hero__chip"><strong>Sigilo total</strong></span>
-      <span class="hero__chip">Aichi, Gifu, Mie e <strong>regiões atendidas</strong></span>
-    </div>
-
-    <div class="hero__compare">
-      <div class="hero-comp-row">
-        <div class="hero-comp hero-comp--before">
-          <div class="hero-comp__label">Hoje</div>
-          <ul>
-            <li>Cartão de crédito</li>
-            <li>キャッシング (cashing)</li>
-            <li>リボ払い (ribo)</li>
-            <li>Financiamento de carro</li>
-            <li>Várias datas de pagamento</li>
-          </ul>
-        </div>
-        <div class="hero-comp-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-        <div class="hero-comp hero-comp--after">
-          <div class="hero-comp__label">Estratégia organizada</div>
-          <ul>
-            <li>Visão única do orçamento</li>
-            <li>Parcela mais previsível</li>
-            <li>Planejamento para o 住宅ローン</li>
-            <li>Menos confusão mensal</li>
-            <li>Caminho claro pra casa própria</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee__track">
-    <span class="marquee__item">Reorganizar dívidas <span class="marquee__item-jp">借金整理</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">おまとめ <span class="marquee__item-jp">複数返済の統合</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">借り換え <span class="marquee__item-jp">条件見直し</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">住宅ローン <span class="marquee__item-jp">マイホーム準備</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">返済比率 <span class="marquee__item-jp">審査の鍵</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Reorganizar dívidas <span class="marquee__item-jp">借金整理</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">おまとめ <span class="marquee__item-jp">複数返済の統合</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">借り換え <span class="marquee__item-jp">条件見直し</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">住宅ローン <span class="marquee__item-jp">マイホーム準備</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">返済比率 <span class="marquee__item-jp">審査の鍵</span></span><span class="marquee__dot"></span>
-  </div>
+<div class="nav__drawer" id="navDrawer">
+  <a href="landingvendas.html">Comprar uma casa <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="landingaluguel.html">Alugar um imóvel <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="imoveis.html">Ver apartamentos em Aichi <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="refinanciamento.html">Refinanciar meu financiamento <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="omatome.html">Organizar minhas dívidas <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="sobre.html">Sobre a Easy House <span class="arrow" aria-hidden="true">→</span></a>
+  <a class="drawer-cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20analisar%20minha%20situa%C3%A7%C3%A3o">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <p class="drawer-note">Atendimento em português · 080-2886-7708</p>
 </div>
 
-<!-- PAIN SECTION -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Você está vivendo isso?</span>
-    <h2 class="h-section">Quando as parcelas começam a apertar,<br/>o sonho da casa <em>parece ficar longe.</em></h2>
+<main id="main">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__bg">
+    <picture>
+      <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w, images/opt/equipe-contrato-1920.webp 1920w" sizes="100vw"/>
+      <img src="images/opt/equipe-contrato-1024.jpg" alt="Atendimento reservado para organização da situação financeira" class="hero__img" width="1024" height="834" fetchpriority="high"/>
+    </picture>
+  </div>
+  <div class="hero__overlay"></div>
+
+  <div class="hero__inner">
+    <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span>Conversa reservada · Sem julgamento</p>
+    <h1 class="hero__title">Várias parcelas apertando? Vamos <em>entender sua situação</em></h1>
+    <p class="hero__sub">Cartão, キャッシング, リボ払い, financiamento de carro. Antes de desistir da casa própria, vale olhar os números com calma e ver quais caminhos existem.</p>
+
+    <ul class="hero__points">
+      <li>Conversa reservada, em português e sem julgamento</li>
+      <li>Explicamos como as dívidas entram na análise do banco</li>
+      <li>Primeira análise gratuita, sem compromisso</li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn btn--gold" href="#analise">Quero analisar minha situação</a>
+      <a class="btn btn--ghost" href="#o-que-e">Entender como funciona</a>
+    </div>
+    <p class="cta-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Suas informações ficam entre você e a nossa equipe.
+    </p>
+
+    <p class="hero__trust">
+      <strong>Consultor certificado 住宅ローンアドバイザー</strong><span class="sep">·</span>
+      Licença 沖縄県知事(1)第5984号
+    </p>
+  </div>
+</header>
+
+<!-- DORES -->
+<section class="section" aria-labelledby="dores-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Você se reconhece aqui?</p>
+    <h2 class="h-section" id="dores-t">Situações que a gente <em>escuta todo dia</em></h2>
   </div>
 
-  <div class="pains-grid reveal-stagger">
-    <div class="pain">
-      <div class="pain__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-      </div>
-      <p class="pain__text">"Todo mês sobra pouco porque o cartão virou リボ払い."</p>
+  <div class="grid grid--3 reveal-group">
+    <div class="card">
+      <h3>"O cartão virou リボ払い"</h3>
+      <p>Você paga todo mês, mas o saldo quase não diminui.</p>
     </div>
-    <div class="pain">
-      <div class="pain__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </div>
-      <p class="pain__text">"O cashing parece pequeno, mas os juros não deixam a dívida baixar."</p>
+    <div class="card">
+      <h3>"Peguei キャッシング e não consigo quitar"</h3>
+      <p>Parecia pouco, mas o juro faz a dívida andar devagar.</p>
     </div>
-    <div class="pain">
-      <div class="pain__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V15c0 .55.45 1 1 1h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
-      </div>
-      <p class="pain__text">"O financiamento do carro pesa no 返済比率."</p>
+    <div class="card">
+      <h3>"O carro pesa no orçamento"</h3>
+      <p>A parcela do carro entra na conta que o banco faz quando você pede financiamento da casa.</p>
     </div>
-    <div class="pain">
-      <div class="pain__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <p class="pain__text">"São várias parcelas, várias datas e nenhuma clareza."</p>
+    <div class="card">
+      <h3>"São muitas datas diferentes"</h3>
+      <p>Cada dívida vence em um dia, e fica difícil enxergar o total.</p>
     </div>
-    <div class="pain">
-      <div class="pain__icon">
+    <div class="card">
+      <h3>"Tenho medo de o banco recusar"</h3>
+      <p>Você quer comprar a casa, mas evita tentar por receio da resposta.</p>
+    </div>
+    <div class="card">
+      <h3>"Tenho vergonha de falar disso"</h3>
+      <p>Dívida é assunto delicado. Aqui ninguém vai te julgar — o objetivo é organizar.</p>
+    </div>
+  </div>
+
+  <div class="note mt-m center" style="max-width:640px;margin-inline:auto">
+    Ter dívida não é vergonha. O que costuma complicar é seguir sem enxergar o quadro completo.
+  </div>
+</section>
+
+<!-- O QUE É -->
+<section class="section" id="o-que-e" aria-labelledby="oque-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Explicando simples</p>
+    <h2 class="h-section" id="oque-t">O que significa <em>reorganizar dívidas</em></h2>
+  </div>
+
+  <div class="section--narrow" style="margin-inline:auto;padding:0">
+    <p class="lead">É olhar para <strong>todas as parcelas que você paga hoje</strong> — cartão, cashing, ribo, carro, empréstimos — e verificar se existe uma forma mais organizada de tratar isso: juntando em menos pagamentos, trocando condições ou apenas ajustando a ordem em que você resolve cada uma.</p>
+
+    <div class="grid grid--2 mt-m reveal-group">
+      <div class="card">
+        <span class="card__icon card__icon--teal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <h3>O que a análise faz</h3>
+        <p>Reúne suas parcelas em um quadro só, mostra o peso delas na sua renda e indica quais caminhos existem — inclusive o de esperar e se preparar melhor.</p>
+      </div>
+      <div class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </span>
+        <h3>O que a análise não é</h3>
+        <p>Não é limpeza de nome, não é aprovação garantida e não serve para criar mais dívida. Também não substitui a decisão do banco.</p>
+      </div>
+    </div>
+
+    <p class="note mt-m">
+      <strong>Importante:</strong> reorganizar pode aliviar a parcela mensal em alguns casos, mas também pode aumentar o custo total se o prazo aumentar. É por isso que a conta precisa ser feita antes de qualquer decisão.
+    </p>
+  </div>
+</section>
+
+<!-- CAMINHOS -->
+<section class="section" aria-labelledby="cam-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Caminhos possíveis</p>
+    <h2 class="h-section" id="cam-t">O que costuma ser <em>analisado</em></h2>
+    <p class="lead">Existem produtos diferentes no mercado japonês, com regras próprias. Na conversa, vemos qual pode se aplicar ao seu caso.</p>
+  </div>
+
+  <div class="grid grid--2 reveal-group">
+    <div class="card">
+      <span class="card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <p class="pain__text">"Quer financiar uma casa, mas tem medo do banco reprovar."</p>
+      </span>
+      <h3>Junto com o financiamento da casa</h3>
+      <p>Alguns bancos permitem tratar parte das dívidas dentro do planejamento do 住宅ローン, quando a finalidade e as regras do produto permitem. Serve para quem pretende comprar e precisa organizar antes.</p>
+      <p class="muted mt-s">Disponibilidade, limite, prazo e aprovação dependem do banco e da análise de crédito.</p>
     </div>
-    <div class="pain">
-      <div class="pain__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      </div>
-      <p class="pain__text">"Você não sabe se deve quitar, refinanciar ou esperar."</p>
+    <div class="card">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      </span>
+      <h3>Reunir dívidas separadamente</h3>
+      <p>Há produtos voltados a juntar várias parcelas em um único pagamento (おまとめ) ou trocar as condições de um empréstimo atual (借り換え), sem depender da compra de imóvel.</p>
+      <p class="muted mt-s">As condições variam conforme renda, região de residência ou trabalho, status de residência e análise da garantia.</p>
     </div>
   </div>
 
-  <div class="pain-close reveal">
-    <p>Não é vergonha ter dívidas.<br/>O problema é continuar <em>sem estratégia.</em></p>
-  </div>
+  <p class="muted center mt-m" style="max-width:640px;margin-inline:auto">
+    Cada instituição tem critérios próprios. Falamos sobre os produtos específicos e as condições atuais durante a conversa, depois de entender o seu caso.
+  </p>
 </section>
 
-<!-- SOLUTION -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">A solução</span>
-    <h2 class="h-section">O que é <em>reorganizar dívidas?</em></h2>
-  </div>
-
-  <div class="solution reveal">
-    <div class="solution__visual">
-      <div class="solution__kanji">整</div>
+<!-- CONFIANÇA -->
+<section class="section" aria-labelledby="conf-t">
+  <div class="trust-block reveal">
+    <div class="trust-block__media">
+      <picture>
+        <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w" sizes="(max-width: 880px) 100vw, 420px"/>
+        <img src="images/opt/equipe-contrato-1024.jpg" alt="Consultor da Easy House durante atendimento" loading="lazy" width="1024" height="834"/>
+      </picture>
     </div>
-    <div class="solution__text">
-      <p>Reorganizar dívidas significa olhar para <strong>todas as parcelas atuais</strong> — cartão, cashing, ribo, carro, empréstimos — e verificar se existe uma forma mais inteligente de juntar, trocar ou ajustar essas dívidas, reduzindo a bagunça mensal e melhorando o planejamento para o financiamento da casa.</p>
-      <ul class="solution-not-list">
-        <li><strong>Não é mágica.</strong></li>
-        <li><strong>Não é promessa de aprovação.</strong></li>
-        <li><strong>Não é para criar mais dívida.</strong></li>
-        <li><strong>É uma análise séria</strong> para entender se há um caminho melhor.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- MICRO -->
-<p class="micro">"Dívida escondida vira problema. <span>Dívida organizada vira estratégia.</span>"</p>
-
-<!-- STRATEGIES (2 caminhos) -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Caminhos possíveis</span>
-    <h2 class="h-section">Quais caminhos podemos <em>analisar?</em></h2>
-    <p class="lead">Dois tipos de estratégia, dependendo do seu momento e objetivo. Cada um tem regras específicas — vamos verificar qual faz sentido pro seu caso.</p>
-  </div>
-
-  <div class="strategies reveal-stagger">
-    <div class="strategy strategy--a">
-      <div class="strategy__kanji">家</div>
-      <span class="strategy__tag">Estratégia A · Para quem quer comprar casa</span>
-      <h3 class="strategy__title">Reorganizar dívidas <em>junto com o 住宅ローン</em></h3>
-      <p class="strategy__sub">Para quem quer comprar casa e precisa reorganizar dívidas dentro do mesmo planejamento de financiamento imobiliário.</p>
-      <ul class="strategy__list">
-        <li>Pode ser estruturado em conjunto com o financiamento imobiliário.</li>
-        <li>Pode permitir incluir parte de empréstimos sem garantia e card loans, conforme regras do banco.</li>
-        <li>Pode ajudar a organizar dívidas que afetariam o 返済比率.</li>
-        <li>Pode incluir despesas ligadas à nova moradia (mudança, móveis, eletrodomésticos), conforme finalidade aceita.</li>
-        <li>Ideal para analisar junto com a compra da casa.</li>
-      </ul>
-      <div class="strategy__disclaimer">
-        Disponibilidade, limite, taxa, prazo e aprovação dependem da análise do banco. Trata-se de produto vinculado ao 住宅ローン, com regras específicas de elegibilidade, finalidade, área e análise de crédito.
-      </div>
-    </div>
-
-    <div class="strategy strategy--b">
-      <div class="strategy__kanji">替</div>
-      <span class="strategy__tag">Estratégia B · おまとめ / 借り換え</span>
-      <h3 class="strategy__title">Reorganizar dívidas <em>de forma independente</em></h3>
-      <p class="strategy__sub">Para quem quer juntar dívidas em uma só parcela, refinanciar empréstimos existentes ou avaliar uma condição mais adequada.</p>
-      <ul class="strategy__list">
-        <li>Pode ajudar a reunir várias parcelas em uma só.</li>
-        <li>Pode facilitar a organização do orçamento familiar.</li>
-        <li>Pode reduzir a parcela mensal, dependendo da taxa e do prazo.</li>
-        <li>Pode ser alternativa para cashing, ribo, empréstimos e financiamentos, conforme análise.</li>
-        <li>Em alguns casos, processo WEB disponível.</li>
-      </ul>
-      <div class="strategy__disclaimer">
-        Condições variam conforme produto, renda, residência/trabalho na área atendida, status de residência e análise da garantia oferecida pela instituição.
+    <div>
+      <p class="eyebrow">Quem vai te atender</p>
+      <h2 id="conf-t">Consultor com <em>certificação japonesa</em> em financiamento</h2>
+      <p>Sua situação é analisada por profissional registrado como <strong>住宅ローンアドバイザー</strong> pela 一般財団法人住宅金融普及協会 — formação técnica em financiamento imobiliário japonês.</p>
+      <p>A maior parte dos corretores no Japão não tem essa certificação. Isso muda o tipo de conversa: em vez de apenas mostrar imóveis, dá para analisar o peso das suas parcelas e o que o banco costuma considerar.</p>
+      <div class="trust-facts">
+        <span>株式会社EASY HOUSE</span>
+        <span>沖縄県知事(1)第5984号</span>
+        <span>愛知県碧南市</span>
+        <span>Sigilo no atendimento</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFIED ADVISOR -->
-<section class="section">
-  <div class="advisor reveal">
-    <div class="advisor__cert-frame">
-      <span class="advisor__cert-badge">住宅ローンアドバイザー</span>
-      <img src="images/equipe-contrato.jpg" alt="Certificado de Consultor de Financiamento Imobiliário 住宅ローンアドバイザー"/>
-      <div class="advisor__rare-stamp">
-        <strong>RARO</strong>
-        <span>NO MERCADO</span>
-      </div>
-    </div>
-
-    <div class="advisor__content">
-      <span class="advisor__eyebrow">認定 · Certificação oficial</span>
-      <h2 class="advisor__title">Seu caso será analisado por um <em>Consultor de Financiamento Certificado</em> no Japão.</h2>
-      <p class="advisor__text">A Easy House conta com profissionais registrados como <strong>住宅ローンアドバイザー</strong> (Housing Loan Advisor) pela <strong>一般財団法人住宅金融普及協会</strong> — principal entidade de financiamento habitacional do Japão.</p>
-      <p class="advisor__text">Isso significa que sua situação não vai ser avaliada por um corretor comum, e sim por alguém com formação técnica oficial em análise de crédito imobiliário, 返済比率, produtos vinculados ao 住宅ローン e estratégias de reorganização.</p>
-      <div class="advisor__contrast">
-        A <strong>maioria dos corretores</strong> no Japão atua sem essa certificação — então o atendimento se limita a apresentar imóveis. Aqui você fala com alguém preparado para <strong>analisar dívidas, renda, visto e planejar a aplicação no banco</strong> com seriedade técnica.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFITS 6 -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Por que fazer essa análise</span>
-    <h2 class="h-section">6 motivos pra <em>entender o caminho</em><br/>antes de aplicar no banco.</h2>
+<!-- COMO FUNCIONA -->
+<section class="section" aria-labelledby="passos-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Passo a passo</p>
+    <h2 class="h-section" id="passos-t">Como a análise <em>acontece</em></h2>
   </div>
 
-  <div class="benefits6 reveal-stagger">
-    <div class="benef6">
-      <div class="benef6__num">01</div>
-      <h3 class="benef6__title">Você <em>entende sua situação</em> antes de aplicar</h3>
-      <p class="benef6__text">Antes de enviar o financiamento, analisamos dívidas, renda, parcelas e pontos que podem pesar na aprovação.</p>
+  <div class="steps reveal-group">
+    <div class="step">
+      <div class="step__n">1</div>
+      <h3>Primeiro contato</h3>
+      <p>Você só precisa dizer quem é, onde mora e qual é a sua situação em linhas gerais.</p>
     </div>
-    <div class="benef6">
-      <div class="benef6__num">02</div>
-      <h3 class="benef6__title">Menos parcelas <em>espalhadas</em></h3>
-      <p class="benef6__text">Juntar ou reorganizar dívidas pode deixar o orçamento mais claro e fácil de controlar.</p>
+    <div class="step">
+      <div class="step__n">2</div>
+      <h3>Conversa reservada</h3>
+      <p>Aí sim falamos de números: parcelas, saldos e renda. Explicamos por que cada dado importa.</p>
     </div>
-    <div class="benef6">
-      <div class="benef6__num">03</div>
-      <h3 class="benef6__title">Planejamento para o <em>住宅ローン</em></h3>
-      <p class="benef6__text">Dívidas de carro, cashing e cartão podem afetar o 返済比率. Por isso, a estratégia precisa vir antes da aplicação.</p>
+    <div class="step">
+      <div class="step__n">3</div>
+      <h3>Quadro organizado</h3>
+      <p>Montamos a visão completa da sua situação e mostramos o que costuma pesar na análise do banco.</p>
     </div>
-    <div class="benef6">
-      <div class="benef6__num">04</div>
-      <h3 class="benef6__title">Possibilidade de juros <em>mais adequados</em></h3>
-      <p class="benef6__text">Se a nova condição for melhor que a atual, pode haver redução de carga mensal. Tudo depende da análise.</p>
-    </div>
-    <div class="benef6">
-      <div class="benef6__num">05</div>
-      <h3 class="benef6__title">Atendimento <em>em português</em></h3>
-      <p class="benef6__text">Você entende cada etapa sem depender de japonês técnico bancário.</p>
-    </div>
-    <div class="benef6">
-      <div class="benef6__num">06</div>
-      <h3 class="benef6__title">Sigilo e <em>orientação sem julgamento</em></h3>
-      <p class="benef6__text">Falar de dívida é delicado. Nosso papel é organizar, orientar e buscar o melhor caminho possível.</p>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">A diferença que faz diferença</span>
-    <h2 class="h-section">Sem estratégia <em>vs</em> com estratégia.</h2>
-  </div>
-
-  <div class="compare-table reveal-stagger">
-    <div class="compare-col compare-col--bad">
-      <div class="compare-col__head">
-        <div class="compare-col__circle">×</div>
-        <h3 class="compare-col__title">Sem estratégia</h3>
-      </div>
-      <ul class="compare-col__list">
-        <li>Paga várias parcelas sem visão total</li>
-        <li>Continua usando cashing quando aperta</li>
-        <li>Aplica no banco sem preparar o caso</li>
-        <li>O financiamento do carro pesa sem planejamento</li>
-        <li>Não sabe explicar a situação financeira</li>
-      </ul>
-    </div>
-    <div class="compare-col compare-col--good">
-      <div class="compare-col__head">
-        <div class="compare-col__circle">✓</div>
-        <h3 class="compare-col__title">Com estratégia Easy House</h3>
-      </div>
-      <ul class="compare-col__list">
-        <li>Levanta saldo, parcela, taxa e prazo</li>
-        <li>Simula possibilidades antes da aplicação</li>
-        <li>Verifica opções de おまとめ / 借り換え</li>
-        <li>Organiza documentos e informações</li>
-        <li>Apresenta um plano mais claro para o banco</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- SIMULATOR -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Simulação inicial</span>
-    <h2 class="h-section">Simule sua <em>situação atual.</em></h2>
-    <p class="lead">Esta simulação é apenas educativa — não calcula aprovação. Serve pra você (e pra gente) ter um retrato rápido do seu cenário.</p>
-  </div>
-
-  <div class="simulator reveal">
-    <form class="sim-form" id="simForm" onsubmit="return runSim(event)">
-      <div class="sim-field">
-        <label for="simTotal">Total aproximado das dívidas (¥)</label>
-        <input type="text" id="simTotal" inputmode="numeric" placeholder="ex: 2.500.000"/>
-      </div>
-      <div class="sim-field">
-        <label for="simMonthly">Soma das parcelas mensais (¥)</label>
-        <input type="text" id="simMonthly" inputmode="numeric" placeholder="ex: 65.000"/>
-      </div>
-      <div class="sim-field">
-        <label for="simCount">Quantas dívidas diferentes</label>
-        <select id="simCount">
-          <option value="">Selecione</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5 ou mais</option>
-        </select>
-      </div>
-      <div class="sim-field">
-        <label for="simIncome">Renda mensal familiar aproximada (¥)</label>
-        <input type="text" id="simIncome" inputmode="numeric" placeholder="ex: 320.000"/>
-      </div>
-      <div class="sim-field sim-field--full">
-        <label>Tipos de dívida</label>
-        <div class="sim-checkboxes">
-          <label class="sim-check"><input type="checkbox" name="simType" value="cartao"/> Cartão</label>
-          <label class="sim-check"><input type="checkbox" name="simType" value="ribo"/> リボ払い</label>
-          <label class="sim-check"><input type="checkbox" name="simType" value="cashing"/> キャッシング</label>
-          <label class="sim-check"><input type="checkbox" name="simType" value="carro"/> Financiamento de carro</label>
-          <label class="sim-check"><input type="checkbox" name="simType" value="pessoal"/> Empréstimo pessoal</label>
-          <label class="sim-check"><input type="checkbox" name="simType" value="outro"/> Outro</label>
-        </div>
-      </div>
-      <div class="sim-field">
-        <label for="simBuy">Pretende comprar casa?</label>
-        <select id="simBuy">
-          <option value="">Selecione</option>
-          <option value="sim">Sim</option>
-          <option value="talvez">Estou avaliando</option>
-          <option value="nao">Não</option>
-        </select>
-      </div>
-      <div class="sim-field">
-        <label for="simWhen">Quando pretende comprar?</label>
-        <select id="simWhen">
-          <option value="">Selecione</option>
-          <option value="agora">Agora</option>
-          <option value="3m">3 meses</option>
-          <option value="6m">6 meses</option>
-          <option value="1a">1 ano</option>
-          <option value="pesq">Apenas pesquisando</option>
-        </select>
-      </div>
-      <div class="sim-submit-row">
-        <button type="submit" class="btn-mag btn-mag--gold">Ver minha análise educativa</button>
-      </div>
-    </form>
-
-    <div class="sim-result" id="simResult">
-      <h4 id="simResultTitle">Análise inicial</h4>
-      <p id="simResultText"></p>
-      <div class="sim-result__notice">
-        <strong style="color:var(--gold-bright)">Aviso:</strong> esta simulação é apenas informativa. A análise real depende de documentos, banco, garantia, renda, residência, tipo de dívida e histórico de crédito. Recomendamos uma conversa com nosso consultor certificado pra avaliar seu caso.
-      </div>
-      <div style="margin-top:18px;text-align:center;">
-        <a href="#form" class="btn-mag btn-mag--primary">Quero análise completa gratuita</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Exemplos ilustrativos</span>
-    <h2 class="h-section">Situações que <em>ajudamos a organizar.</em></h2>
-    <p class="lead">Os casos abaixo são exemplos didáticos. Cada situação real depende de análise individual.</p>
-  </div>
-
-  <div class="cases3 reveal-stagger">
-    <div class="case3">
-      <span class="case3__label">Caso 1 · Família</span>
-      <h3 class="case3__title">Família com financiamento de carro + cartão</h3>
-      <div class="case3__row">
-        <strong>Situação</strong>
-        <p>Pagava carro, cartão e cashing em datas diferentes.</p>
-      </div>
-      <div class="case3__row">
-        <strong>Estratégia</strong>
-        <p>Análise do 返済比率 e verificação da possibilidade de reorganizar antes do 住宅ローン.</p>
-      </div>
-      <div class="case3__row">
-        <strong>Resultado</strong>
-        <p>Conseguiu entender o caminho antes de aplicar no banco.</p>
-      </div>
-    </div>
-
-    <div class="case3">
-      <span class="case3__label">Caso 2 · Trabalhador</span>
-      <h3 class="case3__title">Trabalhador com リボ払い acumulado</h3>
-      <div class="case3__row">
-        <strong>Situação</strong>
-        <p>Usava cartão em parcelas pequenas, mas o saldo não baixava.</p>
-      </div>
-      <div class="case3__row">
-        <strong>Estratégia</strong>
-        <p>Levantamento de saldo, taxa, parcela e alternativas de 借り換え.</p>
-      </div>
-      <div class="case3__row">
-        <strong>Resultado</strong>
-        <p>Passou a ter clareza sobre o valor real da dívida e os próximos passos.</p>
-      </div>
-    </div>
-
-    <div class="case3">
-      <span class="case3__label">Caso 3 · Casal</span>
-      <h3 class="case3__title">Casal que queria comprar casa</h3>
-      <div class="case3__row">
-        <strong>Situação</strong>
-        <p>Tinha renda, mas várias parcelas reduziam a margem disponível.</p>
-      </div>
-      <div class="case3__row">
-        <strong>Estratégia</strong>
-        <p>Análise de bancos compatíveis, dívidas existentes e possibilidade de usar produto vinculado ao 住宅ローン.</p>
-      </div>
-      <div class="case3__row">
-        <strong>Resultado</strong>
-        <p>Recebeu um plano de preparação antes da aplicação.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY EASY HOUSE -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Por que falar com a gente antes do banco</span>
-    <h2 class="h-section">Você não precisa <em>resolver isso sozinho.</em></h2>
-  </div>
-
-  <div class="why-list reveal-stagger">
-    <div class="why-item">Atendimento em português, sem tradução automática.</div>
-    <div class="why-item">Experiência específica com estrangeiros no Japão.</div>
-    <div class="why-item">Conhecimento técnico de financiamento imobiliário japonês.</div>
-    <div class="why-item">Análise de documentos, renda, visto, tipo de contrato e dívidas.</div>
-    <div class="why-item">Tradução de termos como 返済比率, CIC, リボ払い, キャッシング e 住宅ローン.</div>
-    <div class="why-item">Encaminhamento organizado para bancos/parceiros quando faz sentido.</div>
-    <div class="why-item">Consultor certificado 住宅ローンアドバイザー, não corretor comum.</div>
-    <div class="why-item">Sem julgamento, com sigilo absoluto.</div>
-  </div>
-</section>
-
-<!-- MICRO -->
-<p class="micro">"Antes de aplicar no banco, <span>organize o caminho.</span>"</p>
-
-<!-- PROCESS 5 STEPS -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Como funciona</span>
-    <h2 class="h-section">5 passos. <em>Zero pressão.</em></h2>
-  </div>
-
-  <div class="proc5 reveal-stagger">
-    <div class="proc5-step">
-      <div class="proc5-step__num">1</div>
-      <h3 class="proc5-step__title">Consulta gratuita</h3>
-      <p class="proc5-step__text">Você envia uma mensagem e explica sua situação.</p>
-    </div>
-    <div class="proc5-step">
-      <div class="proc5-step__num">2</div>
-      <h3 class="proc5-step__title">Levantamento</h3>
-      <p class="proc5-step__text">Listamos parcelas, saldos, bancos, cartões e financiamentos.</p>
-    </div>
-    <div class="proc5-step">
-      <div class="proc5-step__num">3</div>
-      <h3 class="proc5-step__title">Análise técnica</h3>
-      <p class="proc5-step__text">Verificamos renda, contrato, visto, região e objetivo de comprar casa.</p>
-    </div>
-    <div class="proc5-step">
-      <div class="proc5-step__num">4</div>
-      <h3 class="proc5-step__title">Estratégia possível</h3>
-      <p class="proc5-step__text">Indicamos se faz sentido tentar まとめ, おまとめ, 借り換え ou primeiro organizar documentos.</p>
-    </div>
-    <div class="proc5-step">
-      <div class="proc5-step__num">道</div>
-      <h3 class="proc5-step__title">Próximo passo</h3>
-      <p class="proc5-step__text">Se houver caminho, orientamos o processo. Se não for o momento, explicamos o que preparar.</p>
+    <div class="step">
+      <div class="step__n">4</div>
+      <h3>Caminhos possíveis</h3>
+      <p>Indicamos as opções realistas — inclusive quando o melhor é se preparar antes de tentar.</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">FAQ</span>
-    <h2 class="h-section">Dúvidas <em>frequentes.</em></h2>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Tenho cashing. Ainda posso tentar financiar uma casa?</button><div class="faq-a"><p>Depende do saldo, parcela, renda, tipo de contrato, histórico e banco. O cashing pode afetar a análise, mas o ideal é verificar antes de desistir.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">O リボ払い atrapalha o financiamento?</button><div class="faq-a"><p>Pode atrapalhar, principalmente se a parcela pesa no 返済比率 ou se o saldo está alto. Mas cada caso precisa ser analisado.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">O まとめ quita qualquer dívida?</button><div class="faq-a"><p>Não. Esse tipo de produto vinculado ao 住宅ローン possui regras específicas de finalidade, limite e aprovação. A Easy House analisa se ele pode fazer sentido dentro do planejamento da compra da casa.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Dá para juntar financiamento de carro?</button><div class="faq-a"><p>Em alguns casos, o financiamento de carro pode entrar na análise de reorganização ou afetar o 返済比率. Precisamos verificar contrato, saldo, parcela e regras do banco.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Estrangeiro pode usar esses produtos?</button><div class="faq-a"><p>Depende do banco, visto, renda, residência, tempo de trabalho e garantia. Alguns produtos exigem 永住. Por isso analisamos antes.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">A consulta é gratuita?</button><div class="faq-a"><p>Sim, a primeira análise é gratuita e sem compromisso.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">A Easy House garante aprovação?</button><div class="faq-a"><p>Não. Nenhuma empresa séria pode garantir aprovação bancária. O que fazemos é analisar o caso, organizar a estratégia e orientar o caminho mais adequado.</p></div></div>
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">Minha família vai saber das minhas dívidas?</button><div class="faq-a"><p>O atendimento é feito com sigilo. Porém, se houver aplicação conjunta com cônjuge ou banco, algumas informações podem precisar ser declaradas oficialmente.</p></div></div>
-  </div>
-</section>
-
-<!-- MICRO -->
-<p class="micro">"Nem sempre a resposta é comprar agora.<br/>Às vezes, a estratégia certa é <span>preparar primeiro.</span>"</p>
-
-<!-- CTA FINAL + FORM -->
-<section class="section" id="form">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">第一歩 · O primeiro passo</span>
-    <h2 class="h-section">Antes de desistir da casa própria,<br/><em>descubra se existe um caminho.</em></h2>
-    <p class="lead">Envie sua situação para a Easy House. Vamos analisar suas dívidas, renda e objetivo de financiamento para verificar se uma estratégia de おまとめ / 借り換え pode ajudar.</p>
+<section class="section" aria-labelledby="faq-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Dúvidas frequentes</p>
+    <h2 class="h-section" id="faq-t">Perguntas <em>mais comuns</em></h2>
   </div>
 
-  <form class="lead-form reveal" id="leadForm" onsubmit="return submitLead(event)">
-    <div class="lead-form__grid">
-      <div class="lead-section-title">Contato</div>
-      <div class="sim-field">
-        <label for="lfName">Nome <span class="req">*</span></label>
-        <input type="text" id="lfName" name="nome" required/>
-      </div>
-      <div class="sim-field">
-        <label for="lfPhone">Telefone <span class="req">*</span></label>
-        <input type="tel" id="lfPhone" name="telefone" required placeholder="080-XXXX-XXXX"/>
-      </div>
-      <div class="sim-field">
-        <label for="lfWa">WhatsApp ou LINE ID</label>
-        <input type="text" id="lfWa" name="whatsapp"/>
-      </div>
-      <div class="sim-field">
-        <label for="lfCity">Cidade / província <span class="req">*</span></label>
-        <input type="text" id="lfCity" name="cidade" required placeholder="ex: Toyota · Aichi"/>
-      </div>
-
-      <div class="lead-section-title">Sobre você</div>
-      <div class="sim-field">
-        <label for="lfVisa">Tipo de visto</label>
-        <select id="lfVisa" name="visto">
-          <option value="">Selecione</option>
-          <option>永住 (Permanente)</option>
-          <option>定住</option>
-          <option>日本人の配偶者</option>
-          <option>技術・人文知識・国際業務</option>
-          <option>技能</option>
-          <option>特定技能</option>
-          <option>家族滞在</option>
-          <option>Outro</option>
-        </select>
-      </div>
-      <div class="sim-field">
-        <label for="lfPr">Tem 永住?</label>
-        <select id="lfPr" name="eijuu">
-          <option value="">Selecione</option>
-          <option>Sim</option>
-          <option>Não</option>
-          <option>Em processo</option>
-        </select>
-      </div>
-      <div class="sim-field">
-        <label for="lfWork">Tipo de trabalho</label>
-        <select id="lfWork" name="trabalho">
-          <option value="">Selecione</option>
-          <option>正社員</option>
-          <option>契約社員</option>
-          <option>派遣</option>
-          <option>パート</option>
-          <option>自営業</option>
-          <option>Outro</option>
-        </select>
-      </div>
-      <div class="sim-field">
-        <label for="lfIncome">Renda mensal aproximada (¥)</label>
-        <input type="text" id="lfIncome" name="renda" inputmode="numeric" placeholder="ex: 320.000"/>
-      </div>
-
-      <div class="lead-section-title">Sobre comprar casa</div>
-      <div class="sim-field">
-        <label for="lfBuy">Pretende comprar casa?</label>
-        <select id="lfBuy" name="comprarCasa">
-          <option value="">Selecione</option>
-          <option>Sim</option>
-          <option>Estou avaliando</option>
-          <option>Não</option>
-        </select>
-      </div>
-      <div class="sim-field">
-        <label for="lfWhen">Quando?</label>
-        <select id="lfWhen" name="quando">
-          <option value="">Selecione</option>
-          <option>Agora</option>
-          <option>3 meses</option>
-          <option>6 meses</option>
-          <option>1 ano</option>
-          <option>Apenas pesquisando</option>
-        </select>
-      </div>
-
-      <div class="lead-section-title">Sobre suas dívidas</div>
-      <div class="sim-field sim-field--full">
-        <label>Quais dívidas você possui? (marque todas)</label>
-        <div class="sim-checkboxes">
-          <label class="sim-check"><input type="checkbox" name="dividas" value="Cartão"/> Cartão de crédito</label>
-          <label class="sim-check"><input type="checkbox" name="dividas" value="リボ払い"/> リボ払い</label>
-          <label class="sim-check"><input type="checkbox" name="dividas" value="キャッシング"/> キャッシング</label>
-          <label class="sim-check"><input type="checkbox" name="dividas" value="Financiamento carro"/> Financiamento de carro</label>
-          <label class="sim-check"><input type="checkbox" name="dividas" value="Empréstimo pessoal"/> Empréstimo pessoal</label>
-          <label class="sim-check"><input type="checkbox" name="dividas" value="教育ローン"/> 教育ローン</label>
-          <label class="sim-check"><input type="checkbox" name="dividas" value="Outro"/> Outro</label>
-        </div>
-      </div>
-      <div class="sim-field">
-        <label for="lfSumPar">Soma das parcelas mensais (¥)</label>
-        <input type="text" id="lfSumPar" name="parcelasTotal" inputmode="numeric" placeholder="ex: 65.000"/>
-      </div>
-      <div class="sim-field">
-        <label for="lfSaldoT">Saldo total aproximado (¥)</label>
-        <input type="text" id="lfSaldoT" name="saldoTotal" inputmode="numeric" placeholder="ex: 2.500.000"/>
-      </div>
-      <div class="sim-field sim-field--full">
-        <label for="lfMsg">Mensagem livre</label>
-        <textarea id="lfMsg" name="mensagem" rows="4" placeholder="Conte qualquer coisa que ache importante. Ex: você já tentou financiamento antes, situação familiar, urgência, etc."></textarea>
-      </div>
-      <div class="sim-field sim-field--full">
-        <div class="lead-consent">
-          <input type="checkbox" id="lfConsent" name="consent" required/>
-          <label for="lfConsent">Concordo em enviar meus dados para análise inicial da Easy House. Entendo que a aprovação depende exclusivamente da análise das instituições financeiras.</label>
-        </div>
-      </div>
-      <div class="sim-submit-row" style="margin-top:14px;">
-        <button type="submit" class="btn-mag btn-mag--gold" style="width:100%;justify-content:center;">
-          Enviar análise gratuita
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-          <a href="https://wa.me/818028867708?text=Quero%20fazer%20an%C3%A1lise%20gratuita%20de%20reorganiza%C3%A7%C3%A3o%20de%20d%C3%ADvidas" class="btn-mag btn-mag--ghost btn-mag--sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-            Falar pelo WhatsApp
-          </a>
-          <a href="https://line.me/R/ti/p/@easyhousejp" class="btn-mag btn-mag--ghost btn-mag--sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C5.4 2 0 6.5 0 12c0 4.9 4.4 9 10.3 9.8.4.1 1 .2 1.1.6.1.3.1.8 0 1.1l-.2 1.1c0 .3-.3 1.3 1.1.7 1.4-.6 7.7-4.5 10.5-7.8 2-2.2 2.9-4.4 2.9-7.4 0-5.5-5.4-10-12-10z"/></svg>
-            Falar pelo LINE
-          </a>
-        </div>
-      </div>
+  <div class="faq reveal">
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Tenho キャッシング. Ainda posso tentar financiar uma casa?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Pode. O cashing entra na análise do banco, e o peso disso depende do saldo, da parcela, da sua renda e do histórico. Não dá para saber sem olhar o conjunto — e é justamente isso que a análise faz.</p></div></div>
     </div>
-  </form>
-
-  <div class="compliance">
-    <strong>Aviso importante:</strong> A Easy House não é instituição financeira e não garante aprovação de crédito. As informações desta página são educativas e de orientação inicial. Condições como taxa, prazo, limite, elegibilidade e aprovação dependem exclusivamente da análise de cada instituição financeira, garantia, renda, histórico de crédito, finalidade do empréstimo, residência, visto e demais critérios internos. A reorganização de dívidas pode reduzir a parcela mensal em alguns casos, mas também pode aumentar o custo total dependendo do prazo e da taxa aplicada.
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">O リボ払い atrapalha?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Pode atrapalhar, principalmente quando o saldo é alto ou a parcela ocupa uma fatia grande da renda. Cada caso é avaliado individualmente.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Estrangeiro consegue esse tipo de produto?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Depende do banco, do visto, da renda, do tempo de trabalho e da região onde você mora. Alguns produtos exigem 永住. Por isso a análise vem antes de qualquer aplicação.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">A conversa é confidencial? Minha família fica sabendo?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>O atendimento é reservado. Se em algum momento houver aplicação conjunta com cônjuge, ou exigência do banco, essas informações precisarão ser declaradas oficialmente — e avisamos antes.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">A Easy House garante aprovação?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Não. A decisão é sempre da instituição financeira. O que fazemos é organizar sua situação, explicar em português e indicar o caminho mais adequado — mesmo quando a resposta honesta é "ainda não é a hora".</p></div></div>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FORMULÁRIO -->
+<section class="section" id="analise" aria-labelledby="form-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Primeiro contato</p>
+    <h2 class="h-section" id="form-t">Comece com o <em>básico</em></h2>
+    <p class="lead">Neste primeiro passo não pedimos valores de dívida nem renda. Só o suficiente para te responder. Os números entram depois, na conversa reservada, quando você já souber com quem está falando.</p>
+  </div>
+
+  <div class="form-wrap reveal">
+    <form id="leadForm" novalidate>
+      <div class="form-grid">
+        <div class="field">
+          <label for="lfName">Como podemos te chamar? <span aria-hidden="true">*</span></label>
+          <input type="text" id="lfName" name="nome" required autocomplete="name" placeholder="Seu nome ou apelido"/>
+          <span class="field__error">Escreva um nome para começarmos.</span>
+        </div>
+
+        <div class="field">
+          <label for="lfPhone">Telefone ou WhatsApp <span aria-hidden="true">*</span></label>
+          <input type="tel" id="lfPhone" name="contato" required autocomplete="tel" inputmode="tel" placeholder="080-XXXX-XXXX"/>
+          <span class="field__error">Precisamos de um contato para te responder.</span>
+        </div>
+
+        <div class="field">
+          <label for="lfCity">Cidade ou província <span aria-hidden="true">*</span></label>
+          <input type="text" id="lfCity" name="cidade" required placeholder="Ex.: Toyota, Aichi"/>
+          <span class="field__error">Informe a cidade onde você mora.</span>
+        </div>
+
+        <div class="field">
+          <label for="lfLang">Idioma de atendimento</label>
+          <select id="lfLang" name="idioma">
+            <option>Português</option>
+            <option>Español</option>
+            <option>English</option>
+            <option>日本語</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="lfTopic">Qual é a sua situação hoje? <span aria-hidden="true">*</span></label>
+          <select id="lfTopic" name="assunto" required>
+            <option value="">Escolha uma opção</option>
+            <option>Quero comprar casa, mas tenho outras parcelas</option>
+            <option>Quero juntar minhas dívidas em menos pagamentos</option>
+            <option>Quero entender quanto minhas parcelas pesam</option>
+            <option>Já tenho financiamento e quero rever as condições</option>
+            <option>Ainda não sei, quero conversar</option>
+          </select>
+          <span class="field__error">Escolha a opção mais parecida com o seu caso.</span>
+        </div>
+
+        <div class="field">
+          <label for="lfMsg">Quer contar mais alguma coisa? <span class="opt">(opcional)</span></label>
+          <textarea id="lfMsg" name="mensagem" placeholder="Escreva à vontade. Se preferir, deixe em branco e conversamos no WhatsApp."></textarea>
+        </div>
+
+        <div class="form-privacy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Usamos estes dados apenas para entrar em contato e entender seu caso. Não compartilhamos com terceiros e não enviamos suas informações a nenhum banco sem a sua autorização.</span>
+        </div>
+
+        <button type="submit" class="btn btn--gold btn--block">Quero analisar minha situação</button>
+
+        <p class="muted center">Ao enviar, abrimos o WhatsApp com sua mensagem já escrita. Você confere antes de mandar.</p>
+
+        <div class="form-status" aria-live="polite"></div>
+      </div>
+    </form>
+  </div>
+
+  <p class="foot__legal" style="margin-top:32px">
+    A Easy House não é instituição financeira e não garante aprovação de crédito. As informações desta página são educativas e de orientação inicial. Condições como taxa, prazo, limite, elegibilidade e aprovação dependem exclusivamente da análise de cada instituição financeira, considerando garantia, renda, histórico de crédito, finalidade, residência, visto e critérios internos. A reorganização de dívidas pode reduzir a parcela mensal em alguns casos, mas também pode aumentar o custo total dependendo do prazo e da taxa aplicada.
+  </p>
+</section>
+
+</main>
+
 <footer class="foot">
   <div class="foot__grid">
     <div>
-      <div class="foot__brand"><img src="images/logo.png" alt="EASY HOUSE"/><span class="foot__brand-text">EASY<em>HOUSE</em></span></div>
-      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros. Consultor certificado 住宅ローンアドバイザー.</p>
-      <div class="foot__license">沖縄県知事(1)第5984号</div>
+      <div class="foot__brand">
+        <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto" loading="lazy"/>
+        <span class="foot__brand-text">EASY<em>HOUSE</em></span>
+      </div>
+      <p class="foot__desc">Imobiliária no Japão com atendimento em português para quem quer comprar, alugar ou organizar a vida financeira antes de financiar.</p>
+      <p class="foot__meta">
+        株式会社EASY HOUSE<br/>
+        愛知県碧南市入船町４丁目３７−２<br/>
+        <a href="tel:+818028867708">080-2886-7708</a> · <a href="mailto:info@easyhouse.homes">info@easyhouse.homes</a><br/>
+        沖縄県知事(1)第5984号
+      </p>
     </div>
-    <div><div class="foot__col-title">Site</div><div class="foot__col-links"><a href="landingvendas.html">Comprar</a><a href="landingaluguel.html">Alugar</a><a href="omatome.html">Reorganizar dívidas</a><a href="imoveis.html">Apartamentos</a><a href="sobre.html">Sobre nós</a></div></div>
-    <div><div class="foot__col-title">Contato</div><div class="foot__col-links"><a href="https://wa.me/818028867708">WhatsApp</a><a href="tel:+818028867708">080-2886-7708</a><a href="https://line.me/R/ti/p/@easyhousejp">LINE</a><a href="https://www.instagram.com/easyhousejp/">Instagram</a></div></div>
-    <div><div class="foot__col-title">Legal</div><div class="foot__col-links"><a href="terms.html">Termos de uso</a><a href="privacy.html">Privacidade</a></div></div>
+    <div>
+      <p class="foot__col-title">Serviços</p>
+      <div class="foot__links">
+        <a href="landingvendas.html">Comprar uma casa</a>
+        <a href="landingaluguel.html">Alugar um imóvel</a>
+        <a href="imoveis.html">Apartamentos em Aichi</a>
+        <a href="refinanciamento.html">Refinanciamento</a>
+        <a href="omatome.html">Organizar dívidas</a>
+      </div>
+    </div>
+    <div>
+      <p class="foot__col-title">Contato</p>
+      <div class="foot__links">
+        <a href="https://wa.me/818028867708">WhatsApp</a>
+        <a href="tel:+818028867708">080-2886-7708</a>
+        <a href="https://www.instagram.com/easyhousejp/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61553143095845" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <p class="foot__col-title">Institucional</p>
+      <div class="foot__links">
+        <a href="sobre.html">Sobre a Easy House</a>
+        <a href="terms.html">Termos de uso</a>
+        <a href="privacy.html">Privacidade</a>
+      </div>
+    </div>
   </div>
-  <div class="foot__bottom"><span>© EASY HOUSE · Sua casa no Japão, em português.</span><span>家・夢・縁・整</span></div>
+
+  <div class="foot__bottom">
+    <span>© EASY HOUSE · Atendimento em português no Japão</span>
+    <span>全国対応</span>
+  </div>
 </footer>
 
-<!-- MOBILE STICKY CTA -->
-<div class="mobile-cta">
-  <a href="#form">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-    Análise gratuita
+<div class="sticky-cta">
+  <a class="btn btn--wa" href="#analise">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Quero analisar minha situação
   </a>
 </div>
 
-<a href="https://wa.me/818028867708?text=Quero%20an%C3%A1lise%20gratuita%20de%20reorganiza%C3%A7%C3%A3o%20de%20d%C3%ADvidas" class="wa-fab">
-  <span class="wa-fab__pulse"></span>
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-  <span class="txt">Análise grátis</span>
-</a>
-
-<script src="theme-v2.js"></script>
+<script src="theme-v2.js?v=3" defer></script>
 <script>
-// FAQ aria
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.closest('.faq-item');
-    setTimeout(() => q.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false'), 10);
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('leadForm');
+  if (form && window.EH) {
+    window.EH.handleForm(form, function (f) {
+      var v = function (id) {
+        var el = document.getElementById(id);
+        return el && el.value.trim() ? el.value.trim() : '—';
+      };
+      return 'Olá! Quero analisar minha situação.\n\n' +
+             'Nome: ' + v('lfName') + '\n' +
+             'Contato: ' + v('lfPhone') + '\n' +
+             'Cidade: ' + v('lfCity') + '\n' +
+             'Idioma: ' + v('lfLang') + '\n' +
+             'Situação: ' + v('lfTopic') + '\n' +
+             (v('lfMsg') !== '—' ? '\nMensagem: ' + v('lfMsg') : '');
+    });
+  }
 });
-
-// Format input numbers with dots
-['simTotal','simMonthly','simIncome','lfIncome','lfSumPar','lfSaldoT'].forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener('input', e => {
-    const raw = e.target.value.replace(/[^\d]/g, '');
-    e.target.value = raw ? Number(raw).toLocaleString('pt-BR') : '';
-  });
-});
-
-function num(v) { return parseInt(String(v).replace(/[^\d]/g, ''), 10) || 0; }
-
-function runSim(e) {
-  e.preventDefault();
-  const total = num(document.getElementById('simTotal').value);
-  const monthly = num(document.getElementById('simMonthly').value);
-  const count = document.getElementById('simCount').value;
-  const income = num(document.getElementById('simIncome').value);
-  const buy = document.getElementById('simBuy').value;
-  const types = [...document.querySelectorAll('input[name="simType"]:checked')].map(c => c.value);
-
-  let msg = '';
-  const ratio = income > 0 ? Math.round((monthly / income) * 100) : null;
-
-  if (income > 0 && monthly > 0) {
-    if (ratio >= 35) msg += `Suas parcelas atuais representam aproximadamente <strong style="color:var(--gold-bright)">${ratio}% da renda</strong>. Esse nível pode pesar bastante no 返済比率 do 住宅ローン. Vale conversar sobre reorganização antes de aplicar.<br/><br/>`;
-    else if (ratio >= 25) msg += `Suas parcelas atuais ocupam aproximadamente <strong style="color:var(--gold-bright)">${ratio}% da renda</strong>. É uma zona intermediária — dependendo do banco, pode ou não comprometer o 返済比率.<br/><br/>`;
-    else msg += `Suas parcelas atuais ocupam aproximadamente <strong style="color:var(--teal)">${ratio}% da renda</strong>. Em geral é uma faixa mais confortável, mas é importante ver detalhes como tipo de dívida e prazo.<br/><br/>`;
-  }
-
-  if (types.includes('ribo') || types.includes('cashing')) {
-    msg += `Você marcou <strong>${types.includes('ribo') ? 'リボ払い' : ''}${types.includes('ribo') && types.includes('cashing') ? ' e ' : ''}${types.includes('cashing') ? 'キャッシング' : ''}</strong>. Esses produtos costumam ter juros altos e são prioridade em qualquer plano de reorganização. `;
-  }
-
-  if (count === '4' || count === '5') {
-    msg += `Com ${count === '5' ? '5 ou mais' : count} dívidas diferentes, costuma fazer sentido analisar uma estratégia de おまとめ para reduzir complexidade. `;
-  }
-
-  if (buy === 'sim') {
-    msg += `<br/><br/>Como você pretende comprar casa, o ideal é começar pelo planejamento conjunto — analisando se faz sentido reorganizar dívidas dentro do mesmo 住宅ローン.`;
-  } else if (buy === 'talvez') {
-    msg += `<br/><br/>Como você está avaliando comprar casa, este é o melhor momento pra organizar tudo antes da aplicação no banco.`;
-  }
-
-  if (!msg) msg = 'Com os dados informados, a Easy House pode verificar se existe uma estratégia de reorganização e se suas dívidas podem estar afetando seu 返済比率.';
-
-  document.getElementById('simResultText').innerHTML = msg;
-  const r = document.getElementById('simResult');
-  r.classList.add('show');
-  r.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  return false;
-}
-
-function submitLead(e) {
-  e.preventDefault();
-  const f = e.target;
-  const get = id => (document.getElementById(id) || {}).value || '—';
-  const dividas = [...f.querySelectorAll('input[name="dividas"]:checked')].map(c => c.value).join(', ') || '—';
-
-  const txt =
-`*Nova solicitação — Reorganização de dívidas*
-
-*Contato*
-Nome: ${get('lfName')}
-Telefone: ${get('lfPhone')}
-WhatsApp/LINE: ${get('lfWa')}
-Cidade: ${get('lfCity')}
-
-*Sobre*
-Visto: ${get('lfVisa')}
-Eijuu (永住): ${get('lfPr')}
-Trabalho: ${get('lfWork')}
-Renda: ¥${get('lfIncome')}
-
-*Compra de casa*
-Pretende comprar: ${get('lfBuy')}
-Quando: ${get('lfWhen')}
-
-*Dívidas*
-Tipos: ${dividas}
-Parcelas mensais: ¥${get('lfSumPar')}
-Saldo total: ¥${get('lfSaldoT')}
-
-*Mensagem*
-${get('lfMsg')}`;
-
-  // Abre WhatsApp com info pré-preenchida — substituir por endpoint backend quando disponível
-  const wa = 'https://wa.me/818028867708?text=' + encodeURIComponent(txt);
-  window.open(wa, '_blank');
-  return false;
-}
 </script>
 </body>
 </html>

@@ -1,298 +1,297 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Conheça a EASY HOUSE — imobiliária licenciada no Japão, atendimento 100% em português."/>
-  <title>Sobre Nós | EASY HOUSE</title>
-  <link rel="stylesheet" href="theme-v2.css"/>
-  <style>
-  .missao { display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px; align-items: center; }
-  @media (max-width: 900px) { .missao { grid-template-columns: 1fr; } }
-  .missao__visual { position: relative; aspect-ratio: 4/5; border-radius: 32px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-  .missao__visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-  .missao__visual:hover img { transform: scale(1.04); }
-  .missao__visual::after { content: '縁'; position: absolute; right: -3vw; bottom: -3vw; font-family: var(--font-jp); font-size: 22rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1; }
-  .missao__text p { font-size: 1.02rem; line-height: 1.85; color: var(--pearl-dim); margin-bottom: 16px; }
-  .missao__text p strong { color: var(--gold-bright); font-weight: 600; }
-
-  .dados-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
-  .dado-row { padding: 22px 26px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 14px; align-items: center; transition: all 0.4s; }
-  .dado-row:hover { border-color: rgba(212,165,116,0.25); background: rgba(255,255,255,0.05); }
-  .dado-label { font-family: var(--font-jp); font-size: 0.92rem; color: var(--gold-bright); font-weight: 700; line-height: 1.3; }
-  .dado-label small { display: block; color: var(--pearl-muted); font-weight: 400; font-size: 0.72rem; letter-spacing: 0; font-family: var(--font-body); margin-top: 2px; }
-  .dado-value { font-size: 0.9rem; color: var(--pearl); font-weight: 400; line-height: 1.5; }
-  .dado-value a { color: var(--teal); }
-
-  .cert { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: center; }
-  @media (max-width: 900px) { .cert { grid-template-columns: 1fr; } }
-  .cert__img { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); aspect-ratio: 4/5; background: rgba(255,255,255,0.03); }
-  .cert__img img { width: 100%; height: 100%; object-fit: cover; }
-  .cert__badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .cert__badge { padding: 8px 16px; border-radius: 100px; background: rgba(212,165,116,0.12); border: 1px solid rgba(212,165,116,0.3); color: var(--gold-bright); font-size: 0.82rem; font-weight: 500; }
-
-  .valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .valores-grid { grid-template-columns: 1fr; } }
-  .valor { position: relative; padding: 50px 32px; border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); transition: all 0.4s; overflow: hidden; }
-  .valor:hover { transform: translateY(-6px); border-color: rgba(244,182,194,0.25); }
-  .valor__kanji { position: absolute; top: 24px; right: 30px; font-family: var(--font-jp); font-size: 6rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
-  .valor__title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; position: relative; }
-  .valor__title em { font-style: italic; color: var(--sakura); }
-  .valor__text { font-size: 0.95rem; line-height: 1.7; color: var(--pearl-dim); position: relative; }
-
-  .fotos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .fotos-grid { grid-template-columns: 1fr; } }
-  .foto { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/5; border: 1px solid rgba(255,255,255,0.08); cursor: pointer; }
-  .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-  .foto:hover img { transform: scale(1.06); }
-  .foto__shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(8,7,15,0.9) 100%); }
-  .foto__cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 26px; }
-  .foto__cap-tag { display: inline-block; padding: 4px 11px; border-radius: 100px; background: rgba(244,182,194,0.18); border: 1px solid rgba(244,182,194,0.3); color: var(--sakura); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-  .foto__cap-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; line-height: 1.3; color: var(--pearl); }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sobre a EASY HOUSE | Imobiliária em português no Japão</title>
+<meta name="description" content="株式会社EASY HOUSE — imobiliária licenciada no Japão (沖縄県知事(1)第5984号), sediada em Hekinan, Aichi, com atendimento em português para estrangeiros."/>
+<link rel="canonical" href="https://easyhouse.homes/sobre.html"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easyhouse.homes/sobre.html"/>
+<meta property="og:title" content="Sobre a EASY HOUSE | Imobiliária em português no Japão"/>
+<meta property="og:description" content="Quem somos, onde ficamos, quais serviços prestamos e como falar conosco."/>
+<meta property="og:image" content="https://easyhouse.homes/images/opt/equipe-contrato-1024.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="stylesheet" href="theme-v2.css?v=3"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "株式会社EASY HOUSE",
+  "alternateName": "EASY HOUSE",
+  "url": "https://easyhouse.homes/",
+  "telephone": "+81-80-2886-7708",
+  "email": "info@easyhouse.homes",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "入船町4-37-2",
+    "addressLocality": "碧南市",
+    "addressRegion": "愛知県",
+    "addressCountry": "JP"
+  },
+  "areaServed": "JP",
+  "availableLanguage": ["pt-BR", "ja"]
+}
+</script>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="loader" id="loader"><div class="loader__kanji">縁</div></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
 
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="images/logo.png" alt="EASY HOUSE"/>
+<nav class="nav" id="nav" aria-label="Menu principal">
+  <a href="index.html" class="nav__brand" aria-label="EASY HOUSE — página inicial">
+    <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto"/>
     <span class="nav__brand-text">EASY<em>HOUSE</em></span>
   </a>
   <div class="nav__links">
     <a href="landingvendas.html">Comprar</a>
     <a href="landingaluguel.html">Alugar</a>
     <a href="imoveis.html">Apartamentos</a>
-    <a href="sobre.html" class="active">Sobre</a>
+    <a href="refinanciamento.html">Refinanciar</a>
+    <a href="omatome.html">Dívidas</a>
+    <a href="sobre.html" class="active" aria-current="page">Sobre</a>
   </div>
-  <a href="https://wa.me/818028867708" class="nav__cta">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-    Conversar
+  <a class="nav__cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
   </a>
+  <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navDrawer" aria-label="Abrir menu">
+    <span></span>
+  </button>
 </nav>
 
-<!-- HERO compact -->
-<section class="hero hero--compact">
+<div class="nav__drawer" id="navDrawer">
+  <a href="landingvendas.html">Comprar uma casa <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="landingaluguel.html">Alugar um imóvel <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="imoveis.html">Ver apartamentos em Aichi <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="refinanciamento.html">Refinanciar meu financiamento <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="omatome.html">Organizar minhas dívidas <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="sobre.html">Sobre a Easy House <span class="arrow" aria-hidden="true">→</span></a>
+  <a class="drawer-cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <p class="drawer-note">Atendimento em português · 080-2886-7708</p>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<header class="hero hero--compact">
   <div class="hero__bg">
-    <img src="images/equipe-contrato.jpg" alt="Equipe Easy House" class="hero__img"/>
+    <picture>
+      <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w, images/opt/equipe-contrato-1920.webp 1920w" sizes="100vw"/>
+      <img src="images/opt/equipe-contrato-1024.jpg" alt="Atendimento da Easy House" class="hero__img" width="1024" height="834" fetchpriority="high"/>
+    </picture>
   </div>
   <div class="hero__overlay"></div>
-  <div class="hero__kanji">縁</div>
+
   <div class="hero__inner">
-    <div class="hero__line">
-      <div class="hero__line-bar"></div>
-      <span class="hero__line-text">Sobre · 私たちについて</span>
+    <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span>Sobre nós</p>
+    <h1 class="hero__title">Uma imobiliária que <em>fala a sua língua</em></h1>
+    <p class="hero__sub">Somos uma empresa registrada no Japão que atende estrangeiros em português — na compra, no aluguel e no planejamento financeiro que vem antes de financiar um imóvel.</p>
+    <div class="btn-row">
+      <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Falar com a Easy House
+      </a>
     </div>
-    <h1 class="hero__title">
-      <span class="hero__title-line"><span>Especialistas em</span></span>
-      <span class="hero__title-line"><span><em>realizar sonhos</em></span></span>
-      <span class="hero__title-line"><span>no Japão.</span></span>
-    </h1>
-    <p class="hero__sub">A imobiliária que fala a sua língua, entende a sua história e te acompanha em cada passo até a chave na mão.</p>
+  </div>
+</header>
+
+<!-- O QUE FAZEMOS -->
+<section class="section" aria-labelledby="fazemos-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">O que fazemos</p>
+    <h2 class="h-section" id="fazemos-t">Onde a gente <em>entra no seu processo</em></h2>
+    <p class="lead">Nosso trabalho é remover as barreiras que costumam travar estrangeiros no mercado imobiliário japonês.</p>
+  </div>
+
+  <div class="grid grid--3 reveal-group">
+    <div class="card">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      <h3>Atendimento em português</h3>
+      <p>Você conversa no seu idioma e pergunta quantas vezes precisar, sem depender de tradutor automático.</p>
+    </div>
+    <div class="card">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </span>
+      <h3>Documentos e contratos</h3>
+      <p>Explicamos cada documento exigido e traduzimos o contrato antes da assinatura.</p>
+    </div>
+    <div class="card">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+      </span>
+      <h3>Intermediação</h3>
+      <p>Falamos em japonês com imobiliárias, proprietários, vendedores e instituições financeiras.</p>
+    </div>
+    <div class="card">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </span>
+      <h3>Compra e aluguel</h3>
+      <p>Busca de imóvel, visita acompanhada e apoio até a entrega das chaves.</p>
+    </div>
+    <div class="card">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </span>
+      <h3>Consultoria em financiamento</h3>
+      <p>Orientação sobre 住宅ローン, refinanciamento e organização de parcelas antes de aplicar no banco.</p>
+    </div>
+    <div class="card">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </span>
+      <h3>Acompanhamento</h3>
+      <p>Continuamos disponíveis depois do contrato, para dúvidas que aparecem no caminho.</p>
+    </div>
   </div>
 </section>
 
-<!-- MISSÃO -->
-<section class="section">
-  <div class="missao">
-    <div class="missao__visual reveal">
-      <img src="images/familia-chave.jpg" alt="Família brasileira recebendo chaves"/>
+<!-- CERTIFICAÇÃO -->
+<section class="section" aria-labelledby="cert-t">
+  <div class="trust-block reveal">
+    <div class="trust-block__media">
+      <picture>
+        <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w" sizes="(max-width: 880px) 100vw, 420px"/>
+        <img src="images/opt/equipe-contrato-1024.jpg" alt="Consultor certificado da Easy House em atendimento" loading="lazy" width="1024" height="834"/>
+      </picture>
     </div>
-    <div class="missao__text reveal">
-      <span class="eyebrow">Nossa Missão</span>
-      <h2 class="h-section">Tornar o mercado japonês <em>acessível</em> para todos.</h2>
-      <p>A EASY HOUSE nasceu de uma realidade que muitos estrangeiros no Japão conhecem bem: as barreiras do idioma, da burocracia e da falta de informação tornam o sonho da casa própria — ou mesmo do aluguel — algo distante e intimidante.</p>
-      <p>Criamos a Easy House para mudar isso. Com <strong>atendimento 100% em português</strong>, equipe licenciada e distribuída por todo o Japão, oferecemos o suporte humano que faz toda a diferença.</p>
-      <p>Nosso compromisso é simples: te acompanhar em cada etapa com clareza, honestidade e cuidado genuíno.</p>
+    <div>
+      <p class="eyebrow">Certificação</p>
+      <h2 id="cert-t">Consultor de financiamento <em>certificado no Japão</em></h2>
+      <p>A Easy House conta com profissional registrado como <strong>住宅ローンアドバイザー</strong> (consultor de financiamento imobiliário) pela <strong>一般財団法人住宅金融普及協会</strong>, entidade ligada ao financiamento habitacional japonês.</p>
+      <p>É uma qualificação que a maior parte dos corretores no Japão não possui. Na prática, isso permite analisar o seu caso do ponto de vista do financiamento — e não apenas mostrar imóveis disponíveis.</p>
+      <div class="trust-facts">
+        <span>住宅ローンアドバイザー</span>
+        <span>一般財団法人住宅金融普及協会</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- DADOS DA EMPRESA -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">会社情報 · Empresa</span>
-    <h2 class="h-section">Dados <em>oficiais.</em></h2>
-    <p class="lead">Transparência e seriedade em cada detalhe.</p>
+<section class="section" aria-labelledby="dados-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">会社情報</p>
+    <h2 class="h-section" id="dados-t">Dados da <em>empresa</em></h2>
+    <p class="lead">Informações oficiais de registro e contato.</p>
   </div>
-  <div class="dados-grid reveal-stagger">
-    <div class="dado-row">
-      <div class="dado-label">会社名<small>Empresa</small></div>
-      <div class="dado-value">株式会社EASY HOUSE</div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">商号<small>Nome Comercial</small></div>
-      <div class="dado-value">EASY HOUSE</div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">所在地<small>Endereço</small></div>
-      <div class="dado-value">愛知県碧南市入船町４丁目３７−２</div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">電話番号<small>Telefone</small></div>
-      <div class="dado-value"><a href="tel:08028867708">080-2886-7708</a></div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">メール<small>E-mail</small></div>
-      <div class="dado-value"><a href="mailto:info@easyhouse.homes">info@easyhouse.homes</a></div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">事業内容<small>Serviços</small></div>
-      <div class="dado-value">住宅ローンアドバイザリー · Marketing · Suporte Imobiliário</div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">対応エリア<small>Atuação</small></div>
-      <div class="dado-value">全国対応 — Todo o Japão</div>
-    </div>
-    <div class="dado-row">
-      <div class="dado-label">免許番号<small>Licença</small></div>
-      <div class="dado-value">沖縄県知事(1)第5984号</div>
-    </div>
-  </div>
-</section>
 
-<!-- CERTIFICADO -->
-<section class="section">
-  <div class="cert reveal">
-    <div class="cert__img">
-      <img src="images/flat35.jpg" alt="Certificação Housing Loan Advisor"/>
+  <div class="grid grid--2 reveal-group">
+    <div class="card">
+      <h3>会社名 <span class="muted">Razão social</span></h3>
+      <p>株式会社EASY HOUSE</p>
     </div>
-    <div>
-      <span class="eyebrow">Credenciais</span>
-      <h2 class="h-section">Assessoria <em>certificada</em> em financiamento.</h2>
-      <p class="lead" style="margin-bottom:14px;">Nossa equipe conta com assessores registrados como <strong style="color:var(--gold-bright)">住宅ローンアドバイザー</strong> (Housing Loan Advisor) pela 一般財団法人住宅金融普及協会 — principal entidade de financiamento habitacional do Japão.</p>
-      <p class="lead">Orientação técnica precisa e confiável sobre o processo de financiamento — não apenas informações genéricas.</p>
-      <div class="cert__badges">
-        <span class="cert__badge">住宅ローンアドバイザー登録</span>
-        <span class="cert__badge">Flat 35 Especializado</span>
-        <span class="cert__badge">Licença Nacional</span>
-      </div>
+    <div class="card">
+      <h3>免許番号 <span class="muted">Licença imobiliária</span></h3>
+      <p>沖縄県知事(1)第5984号</p>
     </div>
-  </div>
-</section>
-
-<!-- VALORES -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Nossa Essência</span>
-    <h2 class="h-section">O que nos <em>guia.</em></h2>
-  </div>
-  <div class="valores-grid reveal-stagger">
-    <div class="valor">
-      <div class="valor__kanji">心</div>
-      <h3 class="valor__title"><em>Humanização</em></h3>
-      <p class="valor__text">Cada cliente tem uma história. Atendemos pessoas, não processos — com paciência, empatia e atenção genuína.</p>
+    <div class="card">
+      <h3>所在地 <span class="muted">Endereço</span></h3>
+      <p>愛知県碧南市入船町４丁目３７−２<br/>
+        <a href="https://www.google.com/maps/search/%E6%84%9B%E7%9F%A5%E7%9C%8C%E7%A2%A7%E5%8D%97%E5%B8%82%E5%85%A5%E8%88%B9%E7%94%BA4-37-2" target="_blank" rel="noopener" style="color:var(--teal)">Ver no Google Maps</a>
+      </p>
     </div>
-    <div class="valor">
-      <div class="valor__kanji">明</div>
-      <h3 class="valor__title"><em>Transparência</em></h3>
-      <p class="valor__text">Explicamos cada etapa, cada custo e cada documento. Sem letras pequenas, sem surpresas.</p>
+    <div class="card">
+      <h3>連絡先 <span class="muted">Contato</span></h3>
+      <p>
+        <a href="tel:+818028867708" style="color:var(--teal)">080-2886-7708</a><br/>
+        <a href="mailto:info@easyhouse.homes" style="color:var(--teal)">info@easyhouse.homes</a>
+      </p>
     </div>
-    <div class="valor">
-      <div class="valor__kanji">優</div>
-      <h3 class="valor__title"><em>Excelência</em></h3>
-      <p class="valor__text">Buscamos a melhor solução para cada cliente — mesmo que isso exija mais tempo e dedicação da nossa parte.</p>
+    <div class="card">
+      <h3>事業内容 <span class="muted">Serviços</span></h3>
+      <p>住宅ローンアドバイザリー · Marketing · Suporte em processos imobiliários</p>
     </div>
-  </div>
-</section>
-
-<!-- GALERIA -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Resultados reais</span>
-    <h2 class="h-section">Momentos que celebramos <em>juntos.</em></h2>
-    <p class="lead">Cada chave entregue representa uma família que realizou seu sonho.</p>
-  </div>
-  <div class="fotos-grid reveal-stagger">
-    <div class="foto">
-      <img src="images/equipe-contrato.jpg" alt="Assinatura de contrato"/>
-      <div class="foto__shade"></div>
-      <div class="foto__cap">
-        <span class="foto__cap-tag">Contrato</span>
-        <div class="foto__cap-text">Mais uma família realizando o sonho da casa própria.</div>
-      </div>
-    </div>
-    <div class="foto">
-      <img src="images/familia-chave.jpg" alt="Entrega de chaves"/>
-      <div class="foto__shade"></div>
-      <div class="foto__cap">
-        <span class="foto__cap-tag">Chaves</span>
-        <div class="foto__cap-text">O momento mais especial de todo o processo.</div>
-      </div>
-    </div>
-    <div class="foto">
-      <img src="images/chave-porta.jpg" alt="Nova casa"/>
-      <div class="foto__shade"></div>
-      <div class="foto__cap">
-        <span class="foto__cap-tag">Novo lar</span>
-        <div class="foto__cap-text">A primeira vez abrindo a porta do próprio lar.</div>
-      </div>
+    <div class="card">
+      <h3>対応エリア <span class="muted">Área de atendimento</span></h3>
+      <p>全国対応 — Todo o Japão. A lista de apartamentos publicada no site é focada na província de Aichi.</p>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="section">
-  <div style="position:relative;padding:80px 48px;border-radius:32px;overflow:hidden;text-align:center;background:linear-gradient(135deg,rgba(74,46,140,0.45),rgba(31,111,139,0.35),rgba(181,104,62,0.3));border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);">
-    <h2 class="h-section" style="max-width:680px;margin-left:auto;margin-right:auto;">Vamos começar a <em>sua jornada?</em></h2>
-    <p class="lead" style="margin:0 auto 36px;max-width:520px;">Resposta em português pelo WhatsApp em menos de 1 hora útil.</p>
-    <div style="display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;">
-      <a href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es" class="btn-mag btn-mag--primary">Falar pelo WhatsApp</a>
-      <a href="landingvendas.html" class="btn-mag btn-mag--ghost">Comprar casa</a>
-      <a href="landingaluguel.html" class="btn-mag btn-mag--ghost">Alugar imóvel</a>
+<section class="section section--tight">
+  <div class="cta-final reveal">
+    <span class="cta-final__kanji" aria-hidden="true">縁</span>
+    <h2>Qualquer dúvida, <em>é só chamar</em></h2>
+    <p>Atendimento em português por WhatsApp ou telefone. A primeira conversa é gratuita e sem compromisso.</p>
+    <div class="btn-row">
+      <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a class="btn btn--ghost" href="tel:+818028867708">Ligar: 080-2886-7708</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer class="foot">
   <div class="foot__grid">
     <div>
-      <div class="foot__brand"><img src="images/logo.png" alt="EASY HOUSE"/><span class="foot__brand-text">EASY<em>HOUSE</em></span></div>
-      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros.</p>
-      <div class="foot__license">沖縄県知事(1)第5984号</div>
+      <div class="foot__brand">
+        <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto" loading="lazy"/>
+        <span class="foot__brand-text">EASY<em>HOUSE</em></span>
+      </div>
+      <p class="foot__desc">Imobiliária no Japão com atendimento em português para quem quer comprar, alugar ou organizar a vida financeira antes de financiar.</p>
+      <p class="foot__meta">
+        株式会社EASY HOUSE<br/>
+        愛知県碧南市入船町４丁目３７−２<br/>
+        <a href="tel:+818028867708">080-2886-7708</a> · <a href="mailto:info@easyhouse.homes">info@easyhouse.homes</a><br/>
+        沖縄県知事(1)第5984号
+      </p>
     </div>
     <div>
-      <div class="foot__col-title">Site</div>
-      <div class="foot__col-links">
-        <a href="landingvendas.html">Comprar</a>
-        <a href="landingaluguel.html">Alugar</a>
-        <a href="imoveis.html">Apartamentos</a>
-        <a href="sobre.html">Sobre nós</a>
+      <p class="foot__col-title">Serviços</p>
+      <div class="foot__links">
+        <a href="landingvendas.html">Comprar uma casa</a>
+        <a href="landingaluguel.html">Alugar um imóvel</a>
+        <a href="imoveis.html">Apartamentos em Aichi</a>
+        <a href="refinanciamento.html">Refinanciamento</a>
+        <a href="omatome.html">Organizar dívidas</a>
       </div>
     </div>
     <div>
-      <div class="foot__col-title">Contato</div>
-      <div class="foot__col-links">
+      <p class="foot__col-title">Contato</p>
+      <div class="foot__links">
         <a href="https://wa.me/818028867708">WhatsApp</a>
         <a href="tel:+818028867708">080-2886-7708</a>
-        <a href="https://www.instagram.com/easyhousejp/">Instagram</a>
+        <a href="https://www.instagram.com/easyhousejp/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61553143095845" rel="noopener">Facebook</a>
       </div>
     </div>
     <div>
-      <div class="foot__col-title">Legal</div>
-      <div class="foot__col-links">
+      <p class="foot__col-title">Institucional</p>
+      <div class="foot__links">
+        <a href="sobre.html">Sobre a Easy House</a>
         <a href="terms.html">Termos de uso</a>
         <a href="privacy.html">Privacidade</a>
       </div>
     </div>
   </div>
+
   <div class="foot__bottom">
-    <span>© EASY HOUSE · Sua casa no Japão, em português.</span>
-    <span>家・夢・縁</span>
+    <span>© EASY HOUSE · Atendimento em português no Japão</span>
+    <span>全国対応</span>
   </div>
 </footer>
 
-<a href="https://wa.me/818028867708" class="wa-fab">
-  <span class="wa-fab__pulse"></span>
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.5.1-.3-.1-1.2-.5-2.3-1.4-.8-.7-1.4-1.7-1.6-1.9-.2-.3 0-.4.1-.5.1-.1.3-.3.4-.5.1-.2.1-.3.2-.4 0-.2 0-.3-.1-.5-.1-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.6.3-.2.2-.8.8-.8 2 0 1.2.9 2.4 1 2.5.1.2 1.7 2.7 4.2 3.7 1.5.6 2.1.7 2.9.6.4 0 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-  <span class="txt">Conversar</span>
-</a>
+<div class="sticky-cta">
+  <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+</div>
 
-<script src="theme-v2.js"></script>
+<script src="theme-v2.js?v=3" defer></script>
 </body>
 </html>

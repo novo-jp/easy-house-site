@@ -1,326 +1,361 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Alugue imóvel no Japão com a EASY HOUSE. Suporte em português, sem barreiras, sem burocracia."/>
-  <title>Aluguel de Imóveis no Japão | EASY HOUSE</title>
-  <link rel="stylesheet" href="theme-v2.css"/>
-  <style>
-  .diffs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 1000px) { .diffs-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px) { .diffs-grid { grid-template-columns: 1fr; } }
-
-  .steps-linear { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
-  .step-row { display: flex; gap: 24px; position: relative; }
-  .step-row:not(:last-child)::after { content: ''; position: absolute; left: 27px; top: 60px; width: 2px; height: calc(100% - 20px); background: linear-gradient(180deg, var(--teal), rgba(79,209,197,0.1)); opacity: 0.5; }
-  .step-circle { width: 56px; height: 56px; background: linear-gradient(135deg, var(--teal), #3AB5AA); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--ink); flex-shrink: 0; z-index: 1; box-shadow: 0 0 0 5px var(--ink), 0 0 0 6px rgba(79,209,197,0.4); transition: transform 0.4s; }
-  .step-row:hover .step-circle { transform: scale(1.06); }
-  .step-row--final .step-circle { background: linear-gradient(135deg, var(--gold), var(--gold-bright)); box-shadow: 0 0 0 5px var(--ink), 0 0 0 6px rgba(212,165,116,0.4); }
-  .step-body { padding: 14px 0 40px; }
-  .step-body h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--pearl); margin-bottom: 8px; }
-  .step-body h3 em { font-style: italic; color: var(--gold-bright); }
-  .step-body p { font-size: 0.95rem; color: var(--pearl-dim); line-height: 1.7; }
-
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
-  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
-  .split__img { border-radius: 28px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid rgba(255,255,255,0.08); position: relative; }
-  .split__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-  .split__img:hover img { transform: scale(1.05); }
-  .split__img::after { content: '住'; position: absolute; right: -2vw; bottom: -3vw; font-family: var(--font-jp); font-size: 18rem; font-weight: 900; color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none; }
-
-  .perfis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-  @media (max-width: 1000px) { .perfis-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .perfis-grid { grid-template-columns: 1fr; } }
-  .perfil { padding: 32px 26px; border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); transition: all 0.4s; position: relative; overflow: hidden; }
-  .perfil:hover { transform: translateY(-5px); border-color: rgba(79,209,197,0.3); }
-  .perfil__kanji { position: absolute; top: 18px; right: 24px; font-family: var(--font-jp); font-size: 4.5rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
-  .perfil__photo { width: 56px; height: 56px; border-radius: 16px; overflow: hidden; margin-bottom: 22px; border: 1px solid rgba(255,255,255,0.1); position: relative; }
-  .perfil__photo img { width: 100%; height: 100%; object-fit: cover; }
-  .perfil__photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(79,209,197,0.35), rgba(244,182,194,0.25)); mix-blend-mode: multiply; }
-  .perfil h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--pearl); margin-bottom: 8px; position: relative; }
-  .perfil p { font-size: 0.88rem; color: var(--pearl-dim); line-height: 1.6; position: relative; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Alugar imóvel no Japão sendo estrangeiro | EASY HOUSE</title>
+<meta name="description" content="Procuramos imóvel para alugar no Japão e cuidamos da conversa em japonês, do fiador e do contrato. Atendimento em português. Diga o que procura pelo WhatsApp."/>
+<link rel="canonical" href="https://easyhouse.homes/landingaluguel.html"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easyhouse.homes/landingaluguel.html"/>
+<meta property="og:title" content="Alugar imóvel no Japão sendo estrangeiro | EASY HOUSE"/>
+<meta property="og:description" content="Buscamos o imóvel, falamos japonês por você e explicamos o contrato em português."/>
+<meta property="og:image" content="https://easyhouse.homes/images/opt/familia-chave-900.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preload" as="image" href="images/opt/familia-chave-900.webp" fetchpriority="high"/>
+<link rel="stylesheet" href="theme-v2.css?v=3"/>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="loader" id="loader"><div class="loader__kanji">鍵</div></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
 
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="images/logo.png" alt="EASY HOUSE"/>
+<nav class="nav" id="nav" aria-label="Menu principal">
+  <a href="index.html" class="nav__brand" aria-label="EASY HOUSE — página inicial">
+    <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto"/>
     <span class="nav__brand-text">EASY<em>HOUSE</em></span>
   </a>
   <div class="nav__links">
     <a href="landingvendas.html">Comprar</a>
-    <a href="landingaluguel.html" class="active">Alugar</a>
+    <a href="landingaluguel.html" class="active" aria-current="page">Alugar</a>
     <a href="imoveis.html">Apartamentos</a>
+    <a href="refinanciamento.html">Refinanciar</a>
+    <a href="omatome.html">Dívidas</a>
     <a href="sobre.html">Sobre</a>
   </div>
-  <a href="https://wa.me/818028867708" class="nav__cta">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-    Quero alugar
+  <a class="nav__cta" href="#falar">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
   </a>
+  <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navDrawer" aria-label="Abrir menu">
+    <span></span>
+  </button>
 </nav>
 
+<div class="nav__drawer" id="navDrawer">
+  <a href="landingvendas.html">Comprar uma casa <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="landingaluguel.html">Alugar um imóvel <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="imoveis.html">Ver apartamentos em Aichi <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="refinanciamento.html">Refinanciar meu financiamento <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="omatome.html">Organizar minhas dívidas <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="sobre.html">Sobre a Easy House <span class="arrow" aria-hidden="true">→</span></a>
+  <a class="drawer-cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20procurar%20um%20im%C3%B3vel%20para%20alugar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <p class="drawer-note">Atendimento em português · 080-2886-7708</p>
+</div>
+
+<main id="main">
+
 <!-- HERO -->
-<section class="hero">
+<header class="hero">
   <div class="hero__bg">
-    <img src="images/familia-chave.jpg" alt="Família recebendo as chaves" class="hero__img"/>
+    <picture>
+      <source type="image/webp" srcset="images/opt/familia-chave-640.webp 640w, images/opt/familia-chave-900.webp 900w" sizes="100vw"/>
+      <img src="images/opt/familia-chave-900.jpg" alt="Família recebendo a chave de um imóvel alugado" class="hero__img" width="900" height="1600" fetchpriority="high"/>
+    </picture>
   </div>
   <div class="hero__overlay"></div>
-  <div class="hero__overlay-side"></div>
-  <div class="hero__kanji">鍵</div>
 
   <div class="hero__inner">
-    <div class="hero__line">
-      <div class="hero__line-bar"></div>
-      <span class="hero__line-text">Aluguel · 賃貸 · Sem barreiras</span>
+    <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span>Aluguel · 賃貸</p>
+    <h1 class="hero__title">Encontramos seu imóvel e <em>falamos japonês por você</em></h1>
+    <p class="hero__sub">Você diz a cidade, o valor que cabe no orçamento e quantos quartos precisa. A gente procura, agenda a visita e explica o contrato em português.</p>
+
+    <ul class="hero__points">
+      <li>Conversamos com imobiliárias e proprietários em japonês</li>
+      <li>Ajudamos com fiador (保証会社) e documentação</li>
+      <li>Explicamos cada custo antes de você assumir qualquer compromisso</li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn btn--gold" href="#falar">Quero procurar um imóvel para alugar</a>
+      <a class="btn btn--ghost" href="imoveis.html">Ver apartamentos disponíveis</a>
     </div>
-    <h1 class="hero__title">
-      <span class="hero__title-line"><span>Encontre seu lar</span></span>
-      <span class="hero__title-line"><span>no Japão, <em>sem</em></span></span>
-      <span class="hero__title-line"><span><em>complicação.</em></span></span>
-    </h1>
-    <p class="hero__sub">Alugar no Japão sendo estrangeiro tem seus desafios — idioma, garantidor, burocracia. A Easy House resolve tudo isso por você, em português.</p>
-    <div class="hero__ctas">
-      <a href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20alugar%20um%20im%C3%B3vel" class="btn-mag btn-mag--primary">
-        Quero alugar
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="#como-funciona" class="btn-mag btn-mag--ghost">Como funciona</a>
+    <p class="cta-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Você manda o que procura e a gente volta com opções que fazem sentido.
+    </p>
+
+    <p class="hero__trust">
+      <strong>株式会社EASY HOUSE</strong><span class="sep">·</span>
+      Licença 沖縄県知事(1)第5984号<span class="sep">·</span>
+      Atendimento em português
+    </p>
+  </div>
+</header>
+
+<!-- PROBLEMA -->
+<section class="section" aria-labelledby="dores-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Você se reconhece aqui?</p>
+    <h2 class="h-section" id="dores-t">O que costuma <em>complicar</em> na hora de alugar</h2>
+  </div>
+
+  <div class="grid grid--3 reveal-group">
+    <div class="card">
+      <h3>Ligar e não conseguir se explicar</h3>
+      <p>A imobiliária atende em japonês e a conversa trava logo no começo.</p>
     </div>
-    <div class="hero__chips">
-      <span class="hero__chip">Sem precisar falar <strong>japonês</strong></span>
-      <span class="hero__chip"><strong>Pet-friendly</strong> opções</span>
-      <span class="hero__chip"><strong>Apartamentos</strong> e casas</span>
-      <span class="hero__chip">Todo o <strong>Japão</strong></span>
+    <div class="card">
+      <h3>Não ter quem seja fiador</h3>
+      <p>Sem alguém para garantir o contrato, muita gente desiste antes de tentar.</p>
+    </div>
+    <div class="card">
+      <h3>Não entender o contrato</h3>
+      <p>São várias páginas em japonês com regras, multas e prazos difíceis de ler.</p>
+    </div>
+    <div class="card">
+      <h3>Ser recusado por ser estrangeiro</h3>
+      <p>Alguns proprietários recusam sem explicar. Vale procurar quem aceita.</p>
+    </div>
+    <div class="card">
+      <h3>Ter pet e não achar imóvel</h3>
+      <p>Imóvel que aceita animal (ペット可) é mais raro e exige busca específica.</p>
+    </div>
+    <div class="card">
+      <h3>Não saber o custo total da entrada</h3>
+      <p>Além do aluguel, existem valores iniciais que surpreendem quem não foi avisado.</p>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee__track">
-    <span class="marquee__item">Português <span class="marquee__item-jp">通訳付き</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Hoshō-gaisha <span class="marquee__item-jp">保証会社</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Sem fiador <span class="marquee__item-jp">保証人不要</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Pet-friendly <span class="marquee__item-jp">ペット可</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Resposta rápida <span class="marquee__item-jp">即対応</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Português <span class="marquee__item-jp">通訳付き</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Hoshō-gaisha <span class="marquee__item-jp">保証会社</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Sem fiador <span class="marquee__item-jp">保証人不要</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Pet-friendly <span class="marquee__item-jp">ペット可</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Resposta rápida <span class="marquee__item-jp">即対応</span></span><span class="marquee__dot"></span>
+<!-- O QUE ENVIAR -->
+<section class="section" aria-labelledby="enviar-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Para começar a busca</p>
+    <h2 class="h-section" id="enviar-t">O que você precisa <em>nos contar</em></h2>
+    <p class="lead">Com estas informações já conseguimos procurar. Não precisa de documento nenhum agora.</p>
   </div>
-</div>
 
-<!-- DIFERENCIAIS -->
-<section class="section">
-  <div class="section-head">
-    <span class="eyebrow">Por que Easy House</span>
-    <h2 class="h-section">Alugar sendo estrangeiro<br/>não precisa ser <em>difícil.</em></h2>
-    <p class="lead">Resolvemos as principais barreiras que estrangeiros enfrentam no mercado de aluguel japonês.</p>
-  </div>
-  <div class="diffs-grid reveal-stagger">
-    <div class="reason">
-      <div class="reason__kanji">語</div>
-      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/equipe-contrato.jpg" alt=""/><div class="reason__icon-shade"></div></div>
-      <h3 class="reason__title">Barreira do idioma <em>resolvida</em></h3>
-      <p class="reason__text">Toda comunicação com imobiliárias e proprietários japoneses é feita por nós. Você só nos diz o que quer.</p>
+  <div class="grid grid--4 reveal-group">
+    <div class="card">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <h3>Cidade ou região</h3>
+      <p>Onde você trabalha ou onde as crianças estudam já ajuda a definir a área.</p>
     </div>
-    <div class="reason">
-      <div class="reason__kanji">書</div>
-      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/chave-porta.jpg" alt=""/><div class="reason__icon-shade"></div></div>
-      <h3 class="reason__title">Burocracia <em>cuidada</em></h3>
-      <p class="reason__text">Contratos, garantias, Hoshō-gaisha — explicamos tudo em português e acompanhamos cada etapa.</p>
+    <div class="card">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </span>
+      <h3>Valor de aluguel</h3>
+      <p>Quanto cabe no orçamento por mês, contando taxas do condomínio.</p>
     </div>
-    <div class="reason">
-      <div class="reason__kanji">犬</div>
-      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/familia-chave.jpg" alt=""/><div class="reason__icon-shade"></div></div>
-      <h3 class="reason__title">Opções <em>pet-friendly</em></h3>
-      <p class="reason__text">Buscamos imóveis que aceitam animais — uma das maiores dificuldades para quem tem pet no Japão.</p>
+    <div class="card">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </span>
+      <h3>Tamanho e quartos</h3>
+      <p>Quantas pessoas vão morar e quantos quartos você precisa.</p>
     </div>
-    <div class="reason">
-      <div class="reason__kanji">探</div>
-      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/flat35.jpg" alt=""/><div class="reason__icon-shade"></div></div>
-      <h3 class="reason__title">Busca <em>personalizada</em></h3>
-      <p class="reason__text">Filtramos pelo orçamento, região, necessidades e estilo de vida. Não mandamos listas genéricas.</p>
-    </div>
-    <div class="reason">
-      <div class="reason__kanji">明</div>
-      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/equipe-contrato.jpg" alt=""/><div class="reason__icon-shade"></div></div>
-      <h3 class="reason__title">Transparência <em>total</em></h3>
-      <p class="reason__text">Explicamos todos os custos: depósito (敷金), key money (礼金), taxa de agência e despesas mensais.</p>
-    </div>
-    <div class="reason">
-      <div class="reason__kanji">後</div>
-      <div class="reason__icon-frame"><img class="reason__icon-img" src="images/chave-porta.jpg" alt=""/><div class="reason__icon-shade"></div></div>
-      <h3 class="reason__title">Suporte <em>pós-mudança</em></h3>
-      <p class="reason__text">Continuamos disponíveis após a mudança para dúvidas sobre o imóvel e relacionamento com o proprietário.</p>
+    <div class="card">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </span>
+      <h3>Quando quer mudar</h3>
+      <p>Se é urgente ou se dá para esperar, muda bastante a estratégia da busca.</p>
     </div>
   </div>
+</section>
+
+<!-- CUSTOS -->
+<section class="section" aria-labelledby="custos-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Transparência</p>
+    <h2 class="h-section" id="custos-t">Custos que <em>costumam existir</em> no aluguel japonês</h2>
+    <p class="lead">Nem todo imóvel cobra tudo isso. Antes de qualquer decisão, mostramos os valores reais daquele contrato.</p>
+  </div>
+
+  <div class="grid grid--3 reveal-group">
+    <div class="card">
+      <h3>敷金 <span class="muted">(shikikin)</span></h3>
+      <p>Depósito de garantia. Costuma ser devolvido no fim do contrato, descontando reparos.</p>
+    </div>
+    <div class="card">
+      <h3>礼金 <span class="muted">(reikin)</span></h3>
+      <p>Valor pago ao proprietário, sem devolução. Hoje há imóveis que não cobram.</p>
+    </div>
+    <div class="card">
+      <h3>仲介手数料</h3>
+      <p>Taxa de intermediação da imobiliária.</p>
+    </div>
+    <div class="card">
+      <h3>保証会社</h3>
+      <p>Empresa que faz o papel de fiador quando você não tem um garantidor.</p>
+    </div>
+    <div class="card">
+      <h3>共益費 / 管理費</h3>
+      <p>Taxa mensal de manutenção da área comum, somada ao aluguel.</p>
+    </div>
+    <div class="card">
+      <h3>火災保険</h3>
+      <p>Seguro contra incêndio, normalmente obrigatório no contrato.</p>
+    </div>
+  </div>
+
+  <p class="note mt-m">
+    <strong>Sem surpresa:</strong> os valores mudam conforme o imóvel e a região. Antes de você assumir qualquer compromisso, apresentamos a soma total da entrada e do custo mensal daquele contrato específico.
+  </p>
 </section>
 
 <!-- COMO FUNCIONA -->
-<section class="section" id="como-funciona">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Passo a passo</span>
-    <h2 class="h-section">Como funciona o <em>processo.</em></h2>
-    <p class="lead">Simples, transparente e em português.</p>
+<section class="section" aria-labelledby="passos-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Passo a passo</p>
+    <h2 class="h-section" id="passos-t">Como a busca <em>acontece</em></h2>
   </div>
-  <div class="steps-linear reveal-stagger">
-    <div class="step-row">
-      <div class="step-circle">1</div>
-      <div class="step-body">
-        <h3>Conversa pelo <em>WhatsApp</em></h3>
-        <p>Nos diga sua região, orçamento, número de quartos e necessidades especiais (pet, família grande, etc.).</p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="step-circle">2</div>
-      <div class="step-body">
-        <h3>Apresentamos as <em>opções</em></h3>
-        <p>Buscamos imóveis adequados ao seu perfil e enviamos com fotos, valores e condições — em português.</p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="step-circle">3</div>
-      <div class="step-body">
-        <h3>Visita ao <em>imóvel</em></h3>
-        <p>Agendamos e acompanhamos a visita. Traduzimos tudo o que precisar no local.</p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="step-circle">4</div>
-      <div class="step-body">
-        <h3>Documentação e <em>aprovação</em></h3>
-        <p>Orientamos sobre cada documento e acompanhamos a análise junto à imobiliária japonesa.</p>
-      </div>
-    </div>
-    <div class="step-row step-row--final">
-      <div class="step-circle">鍵</div>
-      <div class="step-body">
-        <h3>Chaves <em>na mão</em></h3>
-        <p>Assinatura do contrato, vistoria do imóvel e entrega das chaves. Você está em casa.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SPLIT -->
-<section class="section">
-  <div class="split reveal">
-    <div class="split__img">
-      <img src="images/chave-porta.jpg" alt="Chave do novo lar"/>
+  <div class="steps reveal-group">
+    <div class="step">
+      <div class="step__n">1</div>
+      <h3>Você diz o que procura</h3>
+      <p>Cidade, valor, quartos e necessidades especiais, como pet ou térreo.</p>
     </div>
-    <div>
-      <span class="eyebrow">O que cuidamos por você</span>
-      <h2 class="h-section">Do zero ao contrato,<br/>em <em>português.</em></h2>
-      <p class="lead" style="margin-bottom:8px;">Alugar no Japão sendo estrangeiro envolve várias etapas que costumam ser barreiras — idioma, garantias, documentação. Nós eliminamos cada uma delas.</p>
-      <ul class="checklist">
-        <li>Comunicação com a imobiliária japonesa</li>
-        <li>Explicação do contrato linha por linha</li>
-        <li>Suporte com Hoshō-gaisha (garantidor)</li>
-        <li>Orientação sobre 敷金・礼金・管理費</li>
-        <li>Apoio na vistoria do imóvel</li>
-        <li>Disponível pelo WhatsApp durante todo o processo</li>
-      </ul>
-      <a href="https://wa.me/818028867708?text=Quero%20alugar%20um%20im%C3%B3vel" class="btn-mag btn-mag--gold" style="margin-top:14px;">
-        Começar agora
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+    <div class="step">
+      <div class="step__n">2</div>
+      <h3>Procuramos as opções</h3>
+      <p>Buscamos imóveis compatíveis e verificamos quais aceitam o seu perfil.</p>
     </div>
-  </div>
-</section>
-
-<!-- PARA QUEM É -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Para quem é</span>
-    <h2 class="h-section">Quem <em>atendemos.</em></h2>
-    <p class="lead">Nosso serviço foi desenhado para qualquer estrangeiro que precise de apoio no processo de aluguel.</p>
-  </div>
-  <div class="perfis-grid reveal-stagger">
-    <div class="perfil">
-      <div class="perfil__kanji">新</div>
-      <div class="perfil__photo"><img src="images/familia-chave.jpg" alt=""/></div>
-      <h3>Recém-chegados ao Japão</h3>
-      <p>Acabou de chegar e precisa de um lugar para morar? Resolvemos rápido.</p>
+    <div class="step">
+      <div class="step__n">3</div>
+      <h3>Visita acompanhada</h3>
+      <p>Agendamos e vamos junto, traduzindo o que for preciso no local.</p>
     </div>
-    <div class="perfil">
-      <div class="perfil__kanji">家</div>
-      <div class="perfil__photo"><img src="images/equipe-contrato.jpg" alt=""/></div>
-      <h3>Famílias brasileiras</h3>
-      <p>Casa espaçosa, boa localização, escola por perto — entendemos suas prioridades.</p>
-    </div>
-    <div class="perfil">
-      <div class="perfil__kanji">犬</div>
-      <div class="perfil__photo"><img src="images/chave-porta.jpg" alt=""/></div>
-      <h3>Donos de pets</h3>
-      <p>Encontramos imóveis pet-friendly — uma das buscas mais difíceis no mercado japonês.</p>
-    </div>
-    <div class="perfil">
-      <div class="perfil__kanji">移</div>
-      <div class="perfil__photo"><img src="images/flat35.jpg" alt=""/></div>
-      <h3>Quem vai mudar de cidade</h3>
-      <p>Transferência de trabalho ou mudança de região? Organizamos tudo à distância.</p>
+    <div class="step">
+      <div class="step__n">4</div>
+      <h3>Contrato explicado</h3>
+      <p>Explicamos o contrato em português antes da assinatura e acompanhamos a entrega das chaves.</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">FAQ</span>
-    <h2 class="h-section">Dúvidas <em>frequentes.</em></h2>
+<section class="section" aria-labelledby="faq-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Dúvidas frequentes</p>
+    <h2 class="h-section" id="faq-t">Perguntas <em>mais comuns</em></h2>
   </div>
-  <div class="faq-list">
-    <div class="faq-item"><button class="faq-q">Preciso de garantidor japonês para alugar?</button><div class="faq-a"><p>Nem sempre. Existem opções com Hoshō-gaisha (empresa de garantia) que substituem o garantidor pessoal. Orientamos sobre as melhores opções para o seu caso.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Quanto custa para alugar um imóvel no Japão?</button><div class="faq-a"><p>Além do aluguel mensal, geralmente há: depósito (敷金, 1~2 meses), key money (礼金, 0~2 meses) e taxa de agência (1 mês). Explicamos todos os custos em detalhe antes de qualquer decisão.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Posso alugar sem falar japonês?</button><div class="faq-a"><p>Sim. A Easy House faz toda a comunicação em japonês por você. Você só precisa se comunicar conosco em português.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Vocês atendem minha região?</button><div class="faq-a"><p>Atendemos em todo o Japão. Temos rede de parceiros em todas as regiões do país.</p></div></div>
-    <div class="faq-item"><button class="faq-q">O serviço da Easy House tem custo?</button><div class="faq-a"><p>Entre em contato pelo WhatsApp para entender como funciona nossa estrutura de serviço para o seu caso específico.</p></div></div>
+
+  <div class="faq reveal">
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Preciso de fiador japonês?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Na maioria dos casos hoje se usa uma 保証会社 (empresa de garantia) no lugar do fiador pessoal. Ela passa por uma análise própria. Explicamos como funciona e ajudamos no processo.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Posso alugar sem falar japonês?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Sim. Você fala com a gente em português e nós tratamos a parte em japonês com a imobiliária e o proprietário.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Encontram imóvel que aceita pet?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Procuramos imóveis ペット可. A oferta é mais limitada e costuma ter condições próprias, como depósito maior — avisamos antes de você visitar.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Quanto tempo leva para achar um imóvel?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Depende da região, do valor e da época do ano. Depois que você envia o que procura, retornamos com as primeiras opções e explicamos o que é realista para o seu perfil.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Vocês atendem fora de Aichi?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>A empresa atende em todo o Japão (全国対応). A lista de apartamentos publicada no site é focada em Aichi, mas para outras regiões basta nos contar o que procura.</p></div></div>
+    </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section">
-  <div style="position:relative;padding:80px 48px;border-radius:32px;overflow:hidden;text-align:center;background:linear-gradient(135deg,rgba(31,111,139,0.45),rgba(79,209,197,0.2),rgba(244,182,194,0.3));border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);">
-    <div style="position:absolute;right:-8vw;bottom:-10vw;font-family:var(--font-jp);font-size:35rem;font-weight:900;color:rgba(255,255,255,0.04);line-height:0.85;pointer-events:none;">鍵</div>
-    <h2 class="h-section" style="position:relative;max-width:680px;margin:0 auto 18px;">Encontre seu novo lar <em>hoje.</em></h2>
-    <p class="lead" style="position:relative;margin:0 auto 36px;max-width:520px;">Mande uma mensagem agora e em minutos já conversamos sobre opções de imóveis na sua região.</p>
-    <a href="https://wa.me/818028867708?text=Quero%20alugar" class="btn-mag btn-mag--primary">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-      Falar pelo WhatsApp
-    </a>
+<!-- CTA FINAL -->
+<section class="section section--tight" id="falar">
+  <div class="cta-final reveal">
+    <span class="cta-final__kanji" aria-hidden="true">鍵</span>
+    <h2>Diga o que procura e a gente <em>começa a busca</em></h2>
+    <p>Mande cidade, valor e quantos quartos. Respondemos em português com as opções que encaixam no seu perfil.</p>
+    <div class="btn-row">
+      <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20procurar%20um%20im%C3%B3vel%20para%20alugar.%20Cidade%3A%20%7C%20Aluguel%20at%C3%A9%3A%20%7C%20Quartos%3A%20">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Quero procurar um imóvel
+      </a>
+      <a class="btn btn--ghost" href="imoveis.html">Ver apartamentos em Aichi</a>
+    </div>
+    <p class="cta-note" style="justify-content:center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Sem taxa para começar a conversa e sem compromisso.
+    </p>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer class="foot">
   <div class="foot__grid">
     <div>
-      <div class="foot__brand"><img src="images/logo.png" alt="EASY HOUSE"/><span class="foot__brand-text">EASY<em>HOUSE</em></span></div>
-      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros.</p>
-      <div class="foot__license">沖縄県知事(1)第5984号</div>
+      <div class="foot__brand">
+        <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto" loading="lazy"/>
+        <span class="foot__brand-text">EASY<em>HOUSE</em></span>
+      </div>
+      <p class="foot__desc">Imobiliária no Japão com atendimento em português para quem quer comprar, alugar ou organizar a vida financeira antes de financiar.</p>
+      <p class="foot__meta">
+        株式会社EASY HOUSE<br/>
+        愛知県碧南市入船町４丁目３７−２<br/>
+        <a href="tel:+818028867708">080-2886-7708</a> · <a href="mailto:info@easyhouse.homes">info@easyhouse.homes</a><br/>
+        沖縄県知事(1)第5984号
+      </p>
     </div>
-    <div><div class="foot__col-title">Site</div><div class="foot__col-links"><a href="landingvendas.html">Comprar</a><a href="landingaluguel.html">Alugar</a><a href="imoveis.html">Apartamentos</a><a href="sobre.html">Sobre nós</a></div></div>
-    <div><div class="foot__col-title">Contato</div><div class="foot__col-links"><a href="https://wa.me/818028867708">WhatsApp</a><a href="tel:+818028867708">080-2886-7708</a><a href="https://www.instagram.com/easyhousejp/">Instagram</a></div></div>
-    <div><div class="foot__col-title">Legal</div><div class="foot__col-links"><a href="terms.html">Termos de uso</a><a href="privacy.html">Privacidade</a></div></div>
+    <div>
+      <p class="foot__col-title">Serviços</p>
+      <div class="foot__links">
+        <a href="landingvendas.html">Comprar uma casa</a>
+        <a href="landingaluguel.html">Alugar um imóvel</a>
+        <a href="imoveis.html">Apartamentos em Aichi</a>
+        <a href="refinanciamento.html">Refinanciamento</a>
+        <a href="omatome.html">Organizar dívidas</a>
+      </div>
+    </div>
+    <div>
+      <p class="foot__col-title">Contato</p>
+      <div class="foot__links">
+        <a href="https://wa.me/818028867708">WhatsApp</a>
+        <a href="tel:+818028867708">080-2886-7708</a>
+        <a href="https://www.instagram.com/easyhousejp/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61553143095845" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <p class="foot__col-title">Institucional</p>
+      <div class="foot__links">
+        <a href="sobre.html">Sobre a Easy House</a>
+        <a href="terms.html">Termos de uso</a>
+        <a href="privacy.html">Privacidade</a>
+      </div>
+    </div>
   </div>
-  <div class="foot__bottom"><span>© EASY HOUSE · Sua casa no Japão, em português.</span><span>家・夢・縁</span></div>
+
+  <p class="foot__legal">
+    Os custos citados nesta página são exemplos comuns do mercado japonês de aluguel e variam conforme o imóvel, a região e o proprietário. Os valores exatos são informados antes de qualquer compromisso. A aprovação do contrato depende da imobiliária, do proprietário e da empresa de garantia.
+  </p>
+
+  <div class="foot__bottom">
+    <span>© EASY HOUSE · Atendimento em português no Japão</span>
+    <span>全国対応</span>
+  </div>
 </footer>
 
-<a href="https://wa.me/818028867708" class="wa-fab">
-  <span class="wa-fab__pulse"></span>
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-  <span class="txt">Conversar</span>
-</a>
+<div class="sticky-cta">
+  <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20procurar%20um%20im%C3%B3vel%20para%20alugar">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Quero procurar um imóvel
+  </a>
+</div>
 
-<script src="theme-v2.js"></script>
+<script src="theme-v2.js?v=3" defer></script>
 </body>
 </html>

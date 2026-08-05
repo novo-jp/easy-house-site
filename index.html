@@ -1,714 +1,352 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="EASY HOUSE — Sua casa no Japão, em português. Imobiliária licenciada para brasileiros."/>
-  <title>EASY HOUSE | Sua Casa no Japão</title>
-  <link rel="stylesheet" href="shared.css"/>
-  <style>
-  :root {
-    --ink: #08070F;
-    --indigo: #15123C;
-    --plum: #2B1B4E;
-    --gold: #D4A574;
-    --gold-bright: #F0CFA0;
-    --sakura: #F4B6C2;
-    --teal: #4FD1C5;
-    --pearl: #FAF8F2;
-    --pearl-dim: rgba(250, 248, 242, 0.7);
-    --pearl-muted: rgba(250, 248, 242, 0.5);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--ink); color: var(--pearl); overflow-x: hidden; font-family: var(--font-body); cursor: none; }
-  img { max-width: 100%; display: block; }
-  a { text-decoration: none; color: inherit; }
-
-  /* ── CUSTOM CURSOR ── */
-  .cursor-dot { position: fixed; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-bright); pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: difference; }
-  .cursor-ring { position: fixed; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(244,182,194,0.6); pointer-events: none; z-index: 9998; transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s, height 0.25s, opacity 0.25s; }
-  .cursor-ring.active { width: 60px; height: 60px; background: rgba(244,182,194,0.08); border-color: rgba(244,182,194,0.9); }
-  @media (hover: none) { .cursor-dot, .cursor-ring { display: none; } body { cursor: auto; } a, button { cursor: pointer; } }
-
-  /* ── LOADER ── */
-  .loader { position: fixed; inset: 0; background: var(--ink); z-index: 10000; display: flex; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s; }
-  .loader.hide { opacity: 0; visibility: hidden; }
-  .loader__kanji { font-family: 'Noto Sans JP', serif; font-size: 8rem; font-weight: 900; color: var(--gold); animation: pulseBig 1.2s ease-in-out infinite; }
-  @keyframes pulseBig { 0%, 100% { opacity: 0.3; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
-
-  /* ── SCROLL PROGRESS ── */
-  .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--sakura), var(--teal)); z-index: 200; width: 0%; transition: width 0.1s linear; }
-
-  /* ── NAV ── */
-  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 22px 40px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-  .nav.scrolled { padding: 14px 40px; background: rgba(8,7,15,0.7); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .nav__brand { display: flex; align-items: center; gap: 12px; }
-  .nav__brand img { height: 38px; filter: brightness(1.1); }
-  .nav__brand-text { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; }
-  .nav__brand-text em { color: var(--gold); font-style: normal; }
-  .nav__links { display: flex; gap: 30px; align-items: center; }
-  .nav__links a { font-size: 0.85rem; color: var(--pearl-dim); transition: color 0.3s; }
-  .nav__links a:hover { color: var(--gold-bright); }
-  .nav__cta { padding: 11px 22px; border-radius: 100px; background: var(--pearl); color: var(--ink); font-size: 0.84rem; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-  .nav__cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
-  @media (max-width: 800px) { .nav { padding: 16px 20px; } .nav.scrolled { padding: 12px 20px; } .nav__links { display: none; } }
-
-  /* ── HERO CINEMATIC ── */
-  .hero { position: relative; min-height: 100vh; overflow: hidden; display: flex; align-items: center; }
-  .hero__bg { position: absolute; inset: 0; z-index: 0; }
-  .hero__img { width: 100%; height: 100%; object-fit: cover; animation: kenburns 24s ease-in-out infinite alternate; }
-  @keyframes kenburns { 0% { transform: scale(1.06) translate(0, 0); } 100% { transform: scale(1.18) translate(-1.5%, -1%); } }
-  .hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,7,15,0.55) 0%, rgba(8,7,15,0.35) 35%, rgba(8,7,15,0.75) 75%, var(--ink) 100%); }
-  .hero__overlay-side { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,7,15,0.6) 0%, rgba(8,7,15,0.2) 50%, rgba(8,7,15,0.6) 100%); }
-
-  .hero__kanji { position: absolute; right: -6vw; top: 10%; font-family: 'Noto Sans JP', serif; font-size: 50vw; font-weight: 900; color: rgba(244,182,194,0.05); line-height: 0.85; pointer-events: none; user-select: none; z-index: 1; }
-
-  .hero__inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 0 40px; width: 100%; }
-  .hero__line { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; opacity: 0; animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
-  .hero__line-bar { width: 60px; height: 1px; background: var(--gold); }
-  .hero__line-text { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-bright); }
-
-  .hero__title { font-family: var(--font-display); font-size: clamp(3rem, 9vw, 8rem); font-weight: 700; line-height: 0.95; letter-spacing: -0.025em; max-width: 1000px; margin-bottom: 36px; }
-  .hero__title-line { display: block; overflow: hidden; }
-  .hero__title-line span { display: inline-block; opacity: 0; transform: translateY(110%); animation: revealLine 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  .hero__title-line:nth-child(1) span { animation-delay: 0.45s; }
-  .hero__title-line:nth-child(2) span { animation-delay: 0.6s; }
-  .hero__title-line:nth-child(3) span { animation-delay: 0.75s; }
-  .hero__title em { font-style: italic; background: linear-gradient(135deg, var(--gold-bright) 0%, var(--sakura) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  @keyframes revealLine { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-  @keyframes revealUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-
-  .hero__sub { font-size: clamp(1rem, 1.4vw, 1.2rem); color: var(--pearl-dim); max-width: 520px; line-height: 1.7; margin-bottom: 50px; opacity: 0; animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards; }
-
-  .hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards; }
-  .btn-mag { display: inline-flex; align-items: center; gap: 12px; padding: 18px 38px; border-radius: 100px; font-size: 0.96rem; font-weight: 600; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
-  .btn-mag--primary { background: var(--pearl); color: var(--ink); }
-  .btn-mag--primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 20px 50px rgba(240,207,160,0.25); }
-  .btn-mag--ghost { background: transparent; color: var(--pearl); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(8px); }
-  .btn-mag--ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
-  .btn-mag svg { width: 18px; height: 18px; transition: transform 0.3s; }
-  .btn-mag:hover svg { transform: translateX(4px); }
-
-  .hero__scroll-ind { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.7; animation: scrollFloat 2.2s ease-in-out infinite; }
-  @keyframes scrollFloat { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; } 50% { transform: translateX(-50%) translateY(8px); opacity: 1; } }
-  .hero__scroll-ind-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--pearl)); }
-  .hero__scroll-ind-text { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--pearl-muted); }
-
-  /* ── MARQUEE ── */
-  .marquee { padding: 36px 0; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); overflow: hidden; position: relative; }
-  .marquee__track { display: flex; gap: 64px; animation: marqueeMove 40s linear infinite; width: max-content; }
-  @keyframes marqueeMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .marquee__item { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--pearl-dim); white-space: nowrap; }
-  .marquee__item-jp { font-family: 'Noto Sans JP', serif; font-size: 1.5rem; color: var(--gold); opacity: 0.6; }
-  .marquee__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sakura); }
-
-  /* ── BENTO ── */
-  .bento-section { padding: 140px 40px 100px; max-width: 1400px; margin: 0 auto; }
-  .bento-head { margin-bottom: 60px; max-width: 720px; }
-  .bento-head__eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
-  .bento-head__title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 18px; }
-  .bento-head__title em { font-style: italic; color: var(--sakura); }
-  .bento-head__sub { font-size: 1.05rem; color: var(--pearl-dim); line-height: 1.75; }
-
-  .bento { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 320px 320px; gap: 20px; }
-  @media (max-width: 1000px) { .bento { grid-template-columns: 1fr; grid-template-rows: auto; } }
-  .bento-card { position: relative; border-radius: 28px; overflow: hidden; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255,255,255,0.06); }
-  .bento-card:hover { transform: scale(1.01); }
-  .bento-card--feature { grid-row: span 2; }
-  @media (max-width: 1000px) { .bento-card--feature { grid-row: auto; min-height: 420px; } .bento-card { min-height: 280px; } }
-  .bento-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
-  .bento-card:hover .bento-card__img { transform: scale(1.08); }
-  .bento-card__shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(8,7,15,0.45) 60%, rgba(8,7,15,0.95) 100%); }
-  .bento-card__content { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 32px; }
-  .bento-card__tag { display: inline-block; padding: 5px 12px; border-radius: 100px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; color: var(--gold-bright); border: 1px solid rgba(212,165,116,0.3); }
-  .bento-card--rent .bento-card__tag { color: var(--teal); border-color: rgba(79,209,197,0.3); }
-  .bento-card--apt .bento-card__tag { color: var(--sakura); border-color: rgba(244,182,194,0.3); }
-  .bento-card__title { font-family: var(--font-display); font-size: clamp(1.6rem, 2.6vw, 2.4rem); font-weight: 700; line-height: 1.1; margin-bottom: 10px; color: var(--pearl); }
-  .bento-card__desc { font-size: 0.94rem; color: var(--pearl-dim); line-height: 1.6; margin-bottom: 18px; max-width: 380px; }
-  .bento-card__arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--pearl); transition: gap 0.3s; }
-  .bento-card:hover .bento-card__arrow { gap: 14px; }
-
-  /* ── STORY (sticky scroll) ── */
-  .story { position: relative; padding: 120px 0; background: linear-gradient(180deg, var(--ink), var(--indigo), var(--ink)); }
-  .story-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-  @media (max-width: 1000px) { .story-inner { grid-template-columns: 1fr; } }
-  .story-text { display: flex; flex-direction: column; gap: 80px; }
-  .story-chapter { padding: 30px 0; }
-  .story-chapter__num { display: inline-block; font-family: var(--font-display); font-size: 0.85rem; color: var(--gold); margin-bottom: 16px; letter-spacing: 0.2em; font-weight: 600; }
-  .story-chapter__title { font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.015em; }
-  .story-chapter__title em { font-style: italic; color: var(--sakura); }
-  .story-chapter__text { font-size: 1.02rem; line-height: 1.75; color: var(--pearl-dim); max-width: 480px; }
-
-  .story-visual { position: sticky; top: 100px; height: 80vh; max-height: 720px; }
-  .story-visual__frame { position: relative; width: 100%; height: 100%; border-radius: 32px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-  .story-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1.04); }
-  .story-img.active { opacity: 1; transform: scale(1); }
-  .story-visual__cap { position: absolute; bottom: 24px; left: 24px; right: 24px; padding: 16px 20px; background: rgba(8,7,15,0.7); backdrop-filter: blur(16px); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); }
-  .story-visual__cap-title { font-size: 0.95rem; font-weight: 600; color: var(--pearl); margin-bottom: 4px; }
-  .story-visual__cap-sub { font-size: 0.78rem; color: var(--pearl-muted); }
-  @media (max-width: 1000px) { .story-visual { position: relative; top: auto; height: 50vh; min-height: 360px; } }
-
-  /* ── STATS PARALLAX ── */
-  .stats-px { position: relative; padding: 140px 40px; overflow: hidden; }
-  .stats-px__bg { position: absolute; inset: 0; background-image: url('images/flat35.jpg'); background-size: cover; background-position: center; background-attachment: fixed; filter: brightness(0.35) saturate(1.1); z-index: 0; }
-  .stats-px__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,7,15,0.8), rgba(21,18,60,0.7), rgba(8,7,15,0.85)); z-index: 1; }
-  .stats-px__inner { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; text-align: center; }
-  .stats-px__title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 700; line-height: 1.1; margin-bottom: 64px; max-width: 720px; margin-left: auto; margin-right: auto; }
-  .stats-px__title em { font-style: italic; color: var(--gold-bright); }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-  @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-  .stat-px { padding: 36px 24px; background: rgba(255,255,255,0.04); backdrop-filter: blur(24px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
-  .stat-px__num { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; line-height: 1; color: var(--gold-bright); margin-bottom: 10px; letter-spacing: -0.02em; }
-  .stat-px__label { font-size: 0.85rem; color: var(--pearl-dim); line-height: 1.5; }
-
-  /* ── REASONS (Por que Easy House) ── */
-  .reasons { padding: 140px 40px; max-width: 1400px; margin: 0 auto; }
-  .reasons__head { margin-bottom: 70px; }
-  .reasons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  @media (max-width: 900px) { .reasons-grid { grid-template-columns: 1fr; } }
-  .reason { position: relative; overflow: hidden; border-radius: 28px; padding: 44px 38px; min-height: 280px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; justify-content: flex-end; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-  .reason::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(212,165,116,0.08), transparent 60%); opacity: 0; transition: opacity 0.4s; }
-  .reason:hover { transform: translateY(-6px); border-color: rgba(212,165,116,0.25); }
-  .reason:hover::before { opacity: 1; }
-  .reason__icon-frame { position: absolute; top: 38px; right: 38px; width: 100px; height: 100px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-  .reason__icon-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
-  .reason:hover .reason__icon-img { transform: scale(1.1); }
-  .reason__icon-shade { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(212,165,116,0.4), rgba(244,182,194,0.3)); mix-blend-mode: multiply; }
-  .reason__kanji { position: absolute; top: 28px; left: 36px; font-family: 'Noto Sans JP', serif; font-size: 5rem; font-weight: 900; color: rgba(255,255,255,0.04); line-height: 1; }
-  .reason__title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; line-height: 1.15; margin-bottom: 12px; max-width: 320px; position: relative; }
-  .reason__title em { font-style: italic; color: var(--gold-bright); }
-  .reason__text { font-size: 0.96rem; line-height: 1.7; color: var(--pearl-dim); max-width: 400px; position: relative; }
-
-  /* ── TESTIMONIALS ── */
-  .voices { padding: 120px 40px 140px; max-width: 1280px; margin: 0 auto; }
-  .voices__head { margin-bottom: 60px; text-align: center; }
-  .voices__head .bento-head__eyebrow, .voices__head .bento-head__title, .voices__head .bento-head__sub { max-width: 720px; margin-left: auto; margin-right: auto; }
-  .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .voices-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; } }
-  .voice { position: relative; padding: 38px 30px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; transition: all 0.4s; }
-  .voice:hover { transform: translateY(-4px); border-color: rgba(244,182,194,0.25); }
-  .voice__rating { display: flex; gap: 3px; margin-bottom: 18px; }
-  .voice__star { color: var(--gold-bright); font-size: 0.9rem; }
-  .voice__quote { font-size: 1rem; line-height: 1.75; color: var(--pearl); margin-bottom: 26px; }
-  .voice__person { display: flex; align-items: center; gap: 14px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .voice__avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--sakura)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; color: var(--ink); font-size: 1rem; flex-shrink: 0; }
-  .voice__name { font-size: 0.92rem; font-weight: 600; color: var(--pearl); }
-  .voice__where { font-size: 0.78rem; color: var(--pearl-muted); margin-top: 2px; }
-
-  /* ── FINAL CTA ── */
-  .final-cta { position: relative; padding: 140px 40px; overflow: hidden; }
-  .final-cta__bg { position: absolute; inset: 0; background-image: url('images/chave-porta.jpg'); background-size: cover; background-position: center; filter: brightness(0.4) saturate(1.2) blur(2px); transform: scale(1.05); }
-  .final-cta__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21,18,60,0.85) 0%, rgba(8,7,15,0.75) 50%, rgba(43,27,78,0.85) 100%); }
-  .final-cta__kanji { position: absolute; right: -5vw; bottom: -10vw; font-family: 'Noto Sans JP', serif; font-size: 60vw; font-weight: 900; color: rgba(244,182,194,0.04); line-height: 0.85; pointer-events: none; user-select: none; }
-  .final-cta__inner { position: relative; max-width: 880px; margin: 0 auto; text-align: center; }
-  .final-cta__eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 28px; }
-  .final-cta__title { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 700; line-height: 1; letter-spacing: -0.025em; margin-bottom: 30px; }
-  .final-cta__title em { font-style: italic; background: linear-gradient(135deg, var(--gold-bright), var(--sakura)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .final-cta__sub { font-size: 1.15rem; color: var(--pearl-dim); line-height: 1.7; margin-bottom: 48px; max-width: 540px; margin-left: auto; margin-right: auto; }
-  .final-cta__buttons { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-
-  /* ── FOOTER ── */
-  .foot { padding: 80px 40px 40px; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); }
-  .foot__grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  @media (max-width: 800px) { .foot__grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
-  @media (max-width: 480px) { .foot__grid { grid-template-columns: 1fr; } }
-  .foot__brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-  .foot__brand img { height: 40px; }
-  .foot__brand-text { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; }
-  .foot__brand-text em { color: var(--gold); font-style: normal; }
-  .foot__desc { font-size: 0.9rem; line-height: 1.7; color: var(--pearl-dim); margin-bottom: 20px; max-width: 320px; }
-  .foot__license { font-size: 0.78rem; color: var(--pearl-muted); font-family: 'Noto Sans JP', monospace; }
-  .foot__col-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-  .foot__col-links { display: flex; flex-direction: column; gap: 10px; }
-  .foot__col-links a { font-size: 0.92rem; color: var(--pearl-dim); transition: color 0.3s; }
-  .foot__col-links a:hover { color: var(--gold-bright); }
-  .foot__bottom { max-width: 1280px; margin: 30px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.78rem; color: var(--pearl-muted); }
-
-  /* ── WHATSAPP FAB ── */
-  .wa-fab { position: fixed; bottom: 28px; right: 28px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; background: #25D366; color: white; border-radius: 100px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 12px 32px rgba(37,211,102,0.4); transition: all 0.3s; }
-  .wa-fab:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(37,211,102,0.55); }
-  .wa-fab__pulse { width: 8px; height: 8px; border-radius: 50%; background: white; animation: pulseSm 1.6s ease-in-out infinite; }
-  @keyframes pulseSm { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-  @media (max-width: 480px) { .wa-fab .txt { display: none; } .wa-fab { padding: 14px; } }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EASY HOUSE | Comprar ou alugar imóvel no Japão, em português</title>
+<meta name="description" content="Imobiliária no Japão que atende em português. Ajudamos você a comprar casa, alugar imóvel, refinanciar ou organizar dívidas — explicando cada etapa. Fale conosco pelo WhatsApp."/>
+<link rel="canonical" href="https://easyhouse.homes/"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easyhouse.homes/"/>
+<meta property="og:title" content="EASY HOUSE | Comprar ou alugar imóvel no Japão, em português"/>
+<meta property="og:description" content="Atendimento em português para quem quer comprar, alugar ou organizar a situação financeira antes de financiar um imóvel no Japão."/>
+<meta property="og:image" content="https://easyhouse.homes/images/opt/familia-chave-900.jpg"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preload" as="image" href="images/opt/familia-chave-900.webp" fetchpriority="high"/>
+<link rel="stylesheet" href="theme-v2.css?v=3"/>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
 
-<div class="loader" id="loader">
-  <div class="loader__kanji">家</div>
-</div>
-
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<nav class="nav" id="nav">
-  <a href="#" class="nav__brand">
-    <img src="images/logo.png" alt="EASY HOUSE"/>
+<!-- NAVEGAÇÃO -->
+<nav class="nav" id="nav" aria-label="Menu principal">
+  <a href="index.html" class="nav__brand" aria-label="EASY HOUSE — página inicial">
+    <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto"/>
     <span class="nav__brand-text">EASY<em>HOUSE</em></span>
   </a>
   <div class="nav__links">
     <a href="landingvendas.html">Comprar</a>
     <a href="landingaluguel.html">Alugar</a>
     <a href="imoveis.html">Apartamentos</a>
+    <a href="refinanciamento.html">Refinanciar</a>
+    <a href="omatome.html">Dívidas</a>
     <a href="sobre.html">Sobre</a>
   </div>
-  <a href="https://wa.me/818028867708" class="nav__cta">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-    Conversar agora
+  <a class="nav__cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
   </a>
+  <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navDrawer" aria-label="Abrir menu">
+    <span></span>
+  </button>
 </nav>
 
-<!-- HERO CINEMATIC -->
-<section class="hero">
+<div class="nav__drawer" id="navDrawer">
+  <a href="landingvendas.html">Comprar uma casa <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="landingaluguel.html">Alugar um imóvel <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="imoveis.html">Ver apartamentos em Aichi <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="refinanciamento.html">Refinanciar meu financiamento <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="omatome.html">Organizar minhas dívidas <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="sobre.html">Sobre a Easy House <span class="arrow" aria-hidden="true">→</span></a>
+  <a class="drawer-cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <p class="drawer-note">Atendimento em português · 080-2886-7708</p>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<header class="hero">
   <div class="hero__bg">
-    <img src="images/familia-chave.jpg" alt="Família brasileira recebendo chaves de casa no Japão" class="hero__img"/>
+    <picture>
+      <source type="image/webp" srcset="images/opt/familia-chave-640.webp 640w, images/opt/familia-chave-900.webp 900w" sizes="100vw"/>
+      <img src="images/opt/familia-chave-900.jpg" alt="Família recebendo as chaves de um imóvel no Japão" class="hero__img" width="900" height="1600" fetchpriority="high"/>
+    </picture>
   </div>
   <div class="hero__overlay"></div>
-  <div class="hero__overlay-side"></div>
-  <div class="hero__kanji">家</div>
 
   <div class="hero__inner">
-    <div class="hero__line">
-      <div class="hero__line-bar"></div>
-      <span class="hero__line-text">Imobiliária licenciada · 沖縄県知事(1)第5984号</span>
+    <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span>Imobiliária licenciada no Japão</p>
+    <h1 class="hero__title">Comprar ou alugar imóvel no Japão, com quem <em>explica tudo em português</em></h1>
+    <p class="hero__sub">Você não precisa entender japonês técnico, contrato bancário nem burocracia sozinho. A gente traduz, organiza e acompanha cada etapa.</p>
+
+    <ul class="hero__points">
+      <li>Atendimento em português, do primeiro contato até a chave na mão</li>
+      <li>Ajuda com documentos, contrato e conversa com bancos e imobiliárias</li>
+      <li>Primeira conversa gratuita e sem compromisso</li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Falar com a Easy House
+      </a>
+      <a class="btn btn--ghost" href="#servicos">Ver o que precisamos</a>
     </div>
-
-    <h1 class="hero__title">
-      <span class="hero__title-line"><span>A sua chave para</span></span>
-      <span class="hero__title-line"><span>uma <em>nova vida</em></span></span>
-      <span class="hero__title-line"><span>no Japão.</span></span>
-    </h1>
-
-    <p class="hero__sub">
-      Comprar ou alugar imóvel no Japão sendo brasileiro — sem barreira de idioma, sem fiador travando, sem documentação confusa.
+    <p class="cta-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Você conta sua situação, a gente responde em português explicando o próximo passo.
     </p>
 
-    <div class="hero__ctas">
-      <a href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es" class="btn-mag btn-mag--primary">
-        Falar com a Easy House
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="imoveis.html" class="btn-mag btn-mag--ghost">
-        Ver apartamentos disponíveis
-      </a>
-    </div>
+    <p class="hero__trust">
+      <strong>株式会社EASY HOUSE</strong><span class="sep">·</span>
+      Licença 沖縄県知事(1)第5984号<span class="sep">·</span>
+      Atendimento em todo o Japão
+    </p>
+  </div>
+</header>
+
+<!-- HUB DE SERVIÇOS -->
+<section class="section" id="servicos" aria-labelledby="servicos-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Escolha por onde começar</p>
+    <h2 class="h-section" id="servicos-t">Com o que você precisa de <em>ajuda hoje?</em></h2>
+    <p class="lead">Cada caminho leva a uma página com explicação simples e um jeito direto de falar com a gente.</p>
   </div>
 
-  <div class="hero__scroll-ind">
-    <span class="hero__scroll-ind-text">Scroll</span>
-    <div class="hero__scroll-ind-line"></div>
+  <div class="grid grid--3 reveal-group">
+    <a class="card card-link" href="landingvendas.html">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </span>
+      <h3>Comprar uma casa</h3>
+      <p>Quero saber se posso financiar um imóvel no Japão e o que preciso preparar.</p>
+      <span class="card-link__go">Ver como funciona <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a class="card card-link" href="landingaluguel.html">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.6 7.6a5 5 0 1 1-7.1 7.1 5 5 0 0 1 7.1-7.1zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"/></svg>
+      </span>
+      <h3>Alugar um imóvel</h3>
+      <p>Quero encontrar um imóvel para alugar sem travar no idioma ou no fiador.</p>
+      <span class="card-link__go">Ver como funciona <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a class="card card-link" href="imoveis.html">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18"/><rect x="14" y="3" width="7" height="10"/><line x1="14" y1="21" x2="21" y2="21"/></svg>
+      </span>
+      <h3>Ver apartamentos</h3>
+      <p>Lista de apartamentos disponíveis em Aichi, com filtro por cidade e valor.</p>
+      <span class="card-link__go">Ver a lista <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a class="card card-link" href="refinanciamento.html">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>
+      </span>
+      <h3>Refinanciar</h3>
+      <p>Já tenho financiamento e quero saber se vale a pena rever as condições.</p>
+      <span class="card-link__go">Entender o refinanciamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a class="card card-link" href="omatome.html">
+      <span class="card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      </span>
+      <h3>Organizar dívidas</h3>
+      <p>Tenho cartão, cashing ou financiamento de carro e quero entender minha situação.</p>
+      <span class="card-link__go">Ver como analisamos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+
+    <a class="card card-link" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20im%C3%B3veis%20no%20Jap%C3%A3o">
+      <span class="card__icon card__icon--teal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      <h3>Só tirar uma dúvida</h3>
+      <p>Não sei em qual caso me encaixo. Quero conversar antes de decidir qualquer coisa.</p>
+      <span class="card-link__go">Falar no WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee">
+<!-- FAIXA JP -->
+<div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    <span class="marquee__item">Nagoya <span class="marquee__item-jp">名古屋</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Toyota <span class="marquee__item-jp">豊田</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Okazaki <span class="marquee__item-jp">岡崎</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Kariya <span class="marquee__item-jp">刈谷</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Anjo <span class="marquee__item-jp">安城</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Toyohashi <span class="marquee__item-jp">豊橋</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Hamamatsu <span class="marquee__item-jp">浜松</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Shizuoka <span class="marquee__item-jp">静岡</span></span>
-    <span class="marquee__dot"></span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee__item">Nagoya <span class="marquee__item-jp">名古屋</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Toyota <span class="marquee__item-jp">豊田</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Okazaki <span class="marquee__item-jp">岡崎</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Kariya <span class="marquee__item-jp">刈谷</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Anjo <span class="marquee__item-jp">安城</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Toyohashi <span class="marquee__item-jp">豊橋</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Hamamatsu <span class="marquee__item-jp">浜松</span></span>
-    <span class="marquee__dot"></span>
-    <span class="marquee__item">Shizuoka <span class="marquee__item-jp">静岡</span></span>
-    <span class="marquee__dot"></span>
+    <span class="marquee__item"><b>Nagoya</b><span>名古屋</span></span>
+    <span class="marquee__item"><b>Toyota</b><span>豊田</span></span>
+    <span class="marquee__item"><b>Okazaki</b><span>岡崎</span></span>
+    <span class="marquee__item"><b>Kariya</b><span>刈谷</span></span>
+    <span class="marquee__item"><b>Anjo</b><span>安城</span></span>
+    <span class="marquee__item"><b>Toyohashi</b><span>豊橋</span></span>
+    <span class="marquee__item"><b>Hekinan</b><span>碧南</span></span>
+    <span class="marquee__item"><b>Handa</b><span>半田</span></span>
+    <span class="marquee__item"><b>Nagoya</b><span>名古屋</span></span>
+    <span class="marquee__item"><b>Toyota</b><span>豊田</span></span>
+    <span class="marquee__item"><b>Okazaki</b><span>岡崎</span></span>
+    <span class="marquee__item"><b>Kariya</b><span>刈谷</span></span>
+    <span class="marquee__item"><b>Anjo</b><span>安城</span></span>
+    <span class="marquee__item"><b>Toyohashi</b><span>豊橋</span></span>
+    <span class="marquee__item"><b>Hekinan</b><span>碧南</span></span>
+    <span class="marquee__item"><b>Handa</b><span>半田</span></span>
   </div>
 </div>
 
-<!-- BENTO -->
-<section class="bento-section">
-  <div class="bento-head">
-    <span class="bento-head__eyebrow">O que você procura</span>
-    <h2 class="bento-head__title">Três caminhos. <em>Uma chave.</em></h2>
-    <p class="bento-head__sub">Escolha por onde quer começar. A gente conduz o resto.</p>
+<!-- COMO FUNCIONA -->
+<section class="section" aria-labelledby="como-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Como funciona</p>
+    <h2 class="h-section" id="como-t">Três passos, <em>sem pressão</em></h2>
+    <p class="lead">Você decide o ritmo. Se não for a hora certa, a gente também fala isso.</p>
   </div>
 
-  <div class="bento">
-    <a href="landingvendas.html" class="bento-card bento-card--feature bento-card--sell">
-      <img class="bento-card__img" src="images/equipe-contrato.jpg" alt="Família assinando contrato de compra de casa"/>
-      <div class="bento-card__shade"></div>
-      <div class="bento-card__content">
-        <span class="bento-card__tag">Financiamento Flat 35</span>
-        <h3 class="bento-card__title">Comprar a sua<br/>casa própria.</h3>
-        <p class="bento-card__desc">Financiamento de até 35 anos para estrangeiros. Documentação explicada, pré-aprovação e atendimento até a entrega da chave.</p>
-        <span class="bento-card__arrow">
-          Quero comprar
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-      </div>
-    </a>
-
-    <a href="landingaluguel.html" class="bento-card bento-card--rent">
-      <img class="bento-card__img" src="images/chave-porta.jpg" alt="Chave na porta de um apartamento"/>
-      <div class="bento-card__shade"></div>
-      <div class="bento-card__content">
-        <span class="bento-card__tag">Sem fiador travando</span>
-        <h3 class="bento-card__title">Alugar tranquilo.</h3>
-        <p class="bento-card__desc">Resolvemos garantidor, contrato e visita — em português.</p>
-        <span class="bento-card__arrow">
-          Quero alugar
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-      </div>
-    </a>
-
-    <a href="imoveis.html" class="bento-card bento-card--apt">
-      <img class="bento-card__img" src="images/flat35.jpg" alt="Apartamentos disponíveis em Aichi"/>
-      <div class="bento-card__shade"></div>
-      <div class="bento-card__content">
-        <span class="bento-card__tag">Aichi · Lista ao vivo</span>
-        <h3 class="bento-card__title">Apartamentos disponíveis.</h3>
-        <p class="bento-card__desc">Mais de 2.000 imóveis filtráveis por cidade, planta e orçamento.</p>
-        <span class="bento-card__arrow">
-          Ver lista
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-      </div>
-    </a>
+  <div class="steps steps--3 reveal-group">
+    <div class="step">
+      <div class="step__n">1</div>
+      <h3>Você conta sua situação</h3>
+      <p>Uma mensagem no WhatsApp já basta. Diga o que procura e o que te preocupa.</p>
+    </div>
+    <div class="step">
+      <div class="step__n">2</div>
+      <h3>A gente analisa e explica</h3>
+      <p>Olhamos seu caso, tiramos as dúvidas e mostramos quais caminhos existem — em português.</p>
+    </div>
+    <div class="step">
+      <div class="step__n">3</div>
+      <h3>Você escolhe o próximo passo</h3>
+      <p>Se decidir seguir, acompanhamos documentos, visitas e conversas com bancos e imobiliárias.</p>
+    </div>
   </div>
 </section>
 
-<!-- STORY (sticky scroll) -->
-<section class="story">
-  <div class="story-inner">
-    <div class="story-text">
-      <div class="story-chapter" data-chapter="1">
-        <span class="story-chapter__num">01 — Conversa</span>
-        <h2 class="story-chapter__title">Tudo começa<br/>com uma <em>conversa.</em></h2>
-        <p class="story-chapter__text">Mande pelo WhatsApp o que você procura: cidade, planta, orçamento. A gente responde em português, sem termos técnicos. Sem formulário longo.</p>
-      </div>
-      <div class="story-chapter" data-chapter="2">
-        <span class="story-chapter__num">02 — Curadoria</span>
-        <h2 class="story-chapter__title">A gente filtra<br/>os <em>imóveis certos.</em></h2>
-        <p class="story-chapter__text">Filtramos imóveis que aceitam estrangeiros, com fiador resolvido e dentro do seu perfil. Você só vê opções que fazem sentido.</p>
-      </div>
-      <div class="story-chapter" data-chapter="3">
-        <span class="story-chapter__num">03 — Contrato</span>
-        <h2 class="story-chapter__title">Acompanhamos você<br/>até a <em>entrega da chave.</em></h2>
-        <p class="story-chapter__text">Visitamos o imóvel com você, traduzimos o contrato linha por linha e ficamos juntos no dia da assinatura. Depois? Continuamos disponíveis.</p>
-      </div>
+<!-- CONFIANÇA -->
+<section class="section" aria-labelledby="conf-t">
+  <div class="trust-block reveal">
+    <div class="trust-block__media">
+      <picture>
+        <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w" sizes="(max-width: 880px) 100vw, 420px"/>
+        <img src="images/opt/equipe-contrato-1024.jpg" alt="Atendimento da Easy House durante a assinatura de um contrato" loading="lazy" width="1024" height="834"/>
+      </picture>
     </div>
-
-    <div class="story-visual">
-      <div class="story-visual__frame">
-        <img class="story-img active" data-img="1" src="images/familia-chave.jpg" alt="Família recebendo chave"/>
-        <img class="story-img" data-img="2" src="images/equipe-contrato.jpg" alt="Equipe analisando contrato"/>
-        <img class="story-img" data-img="3" src="images/chave-porta.jpg" alt="Chave na porta da nova casa"/>
-        <div class="story-visual__cap">
-          <div class="story-visual__cap-title" id="capTitle">A sua família, em primeiro lugar.</div>
-          <div class="story-visual__cap-sub" id="capSub">Famílias atendidas em Aichi, Shizuoka e todo o Japão</div>
-        </div>
+    <div>
+      <p class="eyebrow">Quem vai te atender</p>
+      <h2 id="conf-t">Consultor com <em>certificação japonesa</em> em financiamento imobiliário</h2>
+      <p>A Easy House conta com atendimento de profissional registrado como <strong>住宅ローンアドバイザー</strong> (consultor de financiamento imobiliário) pela 一般財団法人住宅金融普及協会.</p>
+      <p>Na prática: sua situação é analisada por alguém com formação técnica em financiamento, e não apenas por quem mostra imóveis. A maior parte dos corretores no Japão não tem essa certificação.</p>
+      <div class="trust-facts">
+        <span>株式会社EASY HOUSE</span>
+        <span>沖縄県知事(1)第5984号</span>
+        <span>愛知県碧南市</span>
+        <span>Atendimento em português</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS PARALLAX -->
-<section class="stats-px">
-  <div class="stats-px__bg"></div>
-  <div class="stats-px__overlay"></div>
-  <div class="stats-px__inner">
-    <h2 class="stats-px__title">Números que dizem <em>quem somos.</em></h2>
-    <div class="stats-grid">
-      <div class="stat-px">
-        <div class="stat-px__num" data-target="2000" data-suffix="+">0</div>
-        <div class="stat-px__label">Imóveis ativos<br/>em Aichi</div>
-      </div>
-      <div class="stat-px">
-        <div class="stat-px__num" data-target="22">0</div>
-        <div class="stat-px__label">Cidades atendidas<br/>no Japão</div>
-      </div>
-      <div class="stat-px">
-        <div class="stat-px__num" data-target="10" data-suffix=" anos">0</div>
-        <div class="stat-px__label">No mercado<br/>imobiliário japonês</div>
-      </div>
-      <div class="stat-px">
-        <div class="stat-px__num">100<span style="font-size:0.55em">%</span></div>
-        <div class="stat-px__label">Atendimento em<br/>português nativo</div>
-      </div>
+<!-- FAQ -->
+<section class="section" aria-labelledby="faq-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Dúvidas frequentes</p>
+    <h2 class="h-section" id="faq-t">O que <em>mais perguntam</em></h2>
+  </div>
+
+  <div class="faq reveal">
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Preciso falar japonês para ser atendido?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Não. O atendimento é feito em português. A comunicação em japonês com imobiliárias, proprietários e bancos fica com a nossa equipe.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Estrangeiro pode comprar imóvel no Japão?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Sim, não existe impedimento legal para estrangeiros comprarem imóveis no Japão. O financiamento é analisado caso a caso por cada banco, considerando visto, renda, tempo de trabalho e histórico.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">A primeira conversa tem custo?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Não. A conversa inicial e a orientação sobre o seu caso são gratuitas e sem compromisso.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Vocês atendem em qual região?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>A empresa fica em Hekinan, Aichi, e atende em todo o Japão (全国対応). A lista de apartamentos do site é focada na província de Aichi.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- REASONS -->
-<section class="reasons">
-  <div class="reasons__head bento-head">
-    <span class="bento-head__eyebrow">Por que Easy House</span>
-    <h2 class="bento-head__title">Não é só imobiliária.<br/><em>É uma ponte cultural.</em></h2>
-  </div>
-
-  <div class="reasons-grid">
-    <div class="reason">
-      <div class="reason__kanji">許</div>
-      <div class="reason__icon-frame">
-        <img class="reason__icon-img" src="images/flat35.jpg" alt=""/>
-        <div class="reason__icon-shade"></div>
-      </div>
-      <h3 class="reason__title">Licença oficial <em>japonesa</em></h3>
-      <p class="reason__text">Registro 沖縄県知事(1)第5984号. Operação totalmente regularizada e fiscalizada pelo governo japonês.</p>
-    </div>
-    <div class="reason">
-      <div class="reason__kanji">語</div>
-      <div class="reason__icon-frame">
-        <img class="reason__icon-img" src="images/equipe-contrato.jpg" alt=""/>
-        <div class="reason__icon-shade"></div>
-      </div>
-      <h3 class="reason__title">Atendimento <em>100% em português</em></h3>
-      <p class="reason__text">Equipe brasileira nativa. Você nunca trava por causa de tradução de contrato ou termos técnicos.</p>
-    </div>
-    <div class="reason">
-      <div class="reason__kanji">金</div>
-      <div class="reason__icon-frame">
-        <img class="reason__icon-img" src="images/chave-porta.jpg" alt=""/>
-        <div class="reason__icon-shade"></div>
-      </div>
-      <h3 class="reason__title">Financiamento <em>Flat 35</em></h3>
-      <p class="reason__text">Atendemos brasileiros com financiamento de até 35 anos para compra do primeiro imóvel.</p>
-    </div>
-    <div class="reason">
-      <div class="reason__kanji">縁</div>
-      <div class="reason__icon-frame">
-        <img class="reason__icon-img" src="images/familia-chave.jpg" alt=""/>
-        <div class="reason__icon-shade"></div>
-      </div>
-      <h3 class="reason__title">Fiador <em>resolvido</em></h3>
-      <p class="reason__text">A questão do garantidor — barreira histórica para estrangeiros — a gente resolve para você.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="voices">
-  <div class="voices__head">
-    <span class="bento-head__eyebrow">Famílias atendidas</span>
-    <h2 class="bento-head__title">Brasileiros que viraram <em>moradores.</em></h2>
-  </div>
-
-  <div class="voices-grid">
-    <div class="voice">
-      <div class="voice__rating"><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span></div>
-      <p class="voice__quote">"Tava há 3 anos tentando comprar casa sozinha. Em 2 meses com a Easy House saí com a chave na mão. Tudo explicado em português."</p>
-      <div class="voice__person">
-        <div class="voice__avatar">MS</div>
-        <div>
-          <div class="voice__name">Maria Silva</div>
-          <div class="voice__where">Toyota · Aichi</div>
-        </div>
-      </div>
-    </div>
-    <div class="voice">
-      <div class="voice__rating"><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span></div>
-      <p class="voice__quote">"Sou solteiro, brasileiro, e fui recusado em 5 imobiliárias. Aqui me trataram como cliente, não como problema. Aluguel fechado em uma semana."</p>
-      <div class="voice__person">
-        <div class="voice__avatar">RF</div>
-        <div>
-          <div class="voice__name">Ricardo Furukawa</div>
-          <div class="voice__where">Okazaki · Aichi</div>
-        </div>
-      </div>
-    </div>
-    <div class="voice">
-      <div class="voice__rating"><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span><span class="voice__star">★</span></div>
-      <p class="voice__quote">"Queríamos casa com quintal e perto da escola das crianças. Eles entenderam e mostraram só o que servia. Negócio fechado em 6 semanas."</p>
-      <div class="voice__person">
-        <div class="voice__avatar">JC</div>
-        <div>
-          <div class="voice__name">Júlio & Camila</div>
-          <div class="voice__where">Kariya · Aichi</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="final-cta__bg"></div>
-  <div class="final-cta__overlay"></div>
-  <div class="final-cta__kanji">縁</div>
-  <div class="final-cta__inner">
-    <span class="final-cta__eyebrow">縁 · A próxima conexão</span>
-    <h2 class="final-cta__title">Sua casa no Japão<br/>começa <em>aqui.</em></h2>
-    <p class="final-cta__sub">Resposta em português pelo WhatsApp em menos de 1 hora útil. Sem custo, sem compromisso, sem pressão.</p>
-    <div class="final-cta__buttons">
-      <a href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es%20sobre%20im%C3%B3veis" class="btn-mag btn-mag--primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.5.1-.3-.1-1.2-.5-2.3-1.4-.8-.7-1.4-1.7-1.6-1.9-.2-.3 0-.4.1-.5.1-.1.3-.3.4-.5.1-.2.1-.3.2-.4 0-.2 0-.3-.1-.5-.1-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.6.3-.2.2-.8.8-.8 2 0 1.2.9 2.4 1 2.5.1.2 1.7 2.7 4.2 3.7 1.5.6 2.1.7 2.9.6.4 0 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.2-2.7-1.2-4.2 0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
-        Falar agora no WhatsApp
+<!-- CTA FINAL -->
+<section class="section section--tight">
+  <div class="cta-final reveal">
+    <span class="cta-final__kanji" aria-hidden="true">家</span>
+    <h2>Conta pra gente o que você <em>precisa resolver</em></h2>
+    <p>Você escreve sua situação, a gente responde em português explicando as opções e o que fazer em seguida. Sem compromisso.</p>
+    <div class="btn-row">
+      <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Falar no WhatsApp
       </a>
-      <a href="imoveis.html" class="btn-mag btn-mag--ghost">Ver apartamentos</a>
+      <a class="btn btn--ghost" href="tel:+818028867708">Ligar: 080-2886-7708</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
+<!-- RODAPÉ -->
 <footer class="foot">
   <div class="foot__grid">
     <div>
       <div class="foot__brand">
-        <img src="images/logo.png" alt="EASY HOUSE"/>
+        <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto" loading="lazy"/>
         <span class="foot__brand-text">EASY<em>HOUSE</em></span>
       </div>
-      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros que querem comprar ou alugar imóvel.</p>
-      <div class="foot__license">沖縄県知事(1)第5984号</div>
+      <p class="foot__desc">Imobiliária no Japão com atendimento em português para quem quer comprar, alugar ou organizar a vida financeira antes de financiar.</p>
+      <p class="foot__meta">
+        株式会社EASY HOUSE<br/>
+        愛知県碧南市入船町４丁目３７−２<br/>
+        <a href="tel:+818028867708">080-2886-7708</a> · <a href="mailto:info@easyhouse.homes">info@easyhouse.homes</a><br/>
+        沖縄県知事(1)第5984号
+      </p>
     </div>
     <div>
-      <div class="foot__col-title">Site</div>
-      <div class="foot__col-links">
-        <a href="landingvendas.html">Comprar</a>
-        <a href="landingaluguel.html">Alugar</a>
-        <a href="imoveis.html">Apartamentos</a>
-        <a href="sobre.html">Sobre nós</a>
+      <p class="foot__col-title">Serviços</p>
+      <div class="foot__links">
+        <a href="landingvendas.html">Comprar uma casa</a>
+        <a href="landingaluguel.html">Alugar um imóvel</a>
+        <a href="imoveis.html">Apartamentos em Aichi</a>
+        <a href="refinanciamento.html">Refinanciamento</a>
+        <a href="omatome.html">Organizar dívidas</a>
       </div>
     </div>
     <div>
-      <div class="foot__col-title">Contato</div>
-      <div class="foot__col-links">
+      <p class="foot__col-title">Contato</p>
+      <div class="foot__links">
         <a href="https://wa.me/818028867708">WhatsApp</a>
         <a href="tel:+818028867708">080-2886-7708</a>
-        <a href="https://www.instagram.com/easyhousejp/">Instagram</a>
+        <a href="https://www.instagram.com/easyhousejp/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61553143095845" rel="noopener">Facebook</a>
       </div>
     </div>
     <div>
-      <div class="foot__col-title">Legal</div>
-      <div class="foot__col-links">
+      <p class="foot__col-title">Institucional</p>
+      <div class="foot__links">
+        <a href="sobre.html">Sobre a Easy House</a>
         <a href="terms.html">Termos de uso</a>
         <a href="privacy.html">Privacidade</a>
       </div>
     </div>
   </div>
+
+  <p class="foot__legal">
+    A Easy House não é instituição financeira e não garante aprovação de crédito. As informações deste site são educativas e de orientação inicial. Taxa, prazo, limite, elegibilidade e aprovação dependem da análise de cada instituição financeira.
+  </p>
+
   <div class="foot__bottom">
-    <span>© EASY HOUSE · Sua casa no Japão, em português.</span>
-    <span>Especialista em realizar sonhos · 家・夢・縁</span>
+    <span>© EASY HOUSE · Atendimento em português no Japão</span>
+    <span>全国対応</span>
   </div>
 </footer>
 
-<a href="https://wa.me/818028867708" class="wa-fab">
-  <span class="wa-fab__pulse"></span>
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.5.1-.3-.1-1.2-.5-2.3-1.4-.8-.7-1.4-1.7-1.6-1.9-.2-.3 0-.4.1-.5.1-.1.3-.3.4-.5.1-.2.1-.3.2-.4 0-.2 0-.3-.1-.5-.1-.2-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.6.3-.2.2-.8.8-.8 2 0 1.2.9 2.4 1 2.5.1.2 1.7 2.7 4.2 3.7 1.5.6 2.1.7 2.9.6.4 0 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.2-2.7-1.2-4.2 0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
-  <span class="txt">Conversar</span>
-</a>
+<!-- CTA FIXO MOBILE -->
+<div class="sticky-cta">
+  <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Easy%20House">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+</div>
 
-<script>
-  // ── LOADER ──
-  window.addEventListener('load', () => {
-    setTimeout(() => document.getElementById('loader').classList.add('hide'), 600);
-  });
-
-  // ── CUSTOM CURSOR ──
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mx = -50, my = -50, rx = -50, ry = -50;
-  document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`; });
-  function tick() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-    requestAnimationFrame(tick);
-  }
-  tick();
-  document.querySelectorAll('a, button, .bento-card').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('active'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('active'));
-  });
-
-  // ── SCROLL PROGRESS + NAV ──
-  const progressBar = document.getElementById('scrollProgress');
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    const h = document.body.scrollHeight - window.innerHeight;
-    progressBar.style.width = Math.min((y / h) * 100, 100) + '%';
-    if (y > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
-  }, { passive: true });
-
-  // ── STAT COUNTER ──
-  const animateCount = (el) => {
-    const target = parseInt(el.dataset.target, 10);
-    const suffix = el.dataset.suffix || '';
-    const start = performance.now();
-    const dur = 1800;
-    function step(now) {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased).toLocaleString('pt-BR') + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  };
-  const counterIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('[data-target]').forEach(animateCount);
-        counterIO.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.stats-grid').forEach(el => counterIO.observe(el));
-
-  // ── STORY STICKY: image swap based on chapter visible ──
-  const chapters = document.querySelectorAll('.story-chapter');
-  const storyImgs = document.querySelectorAll('.story-img');
-  const caps = [
-    { t: 'Uma mensagem. Todo o resto começa por aí.', s: 'Atendimento por WhatsApp em português' },
-    { t: 'Curadoria humana, não algoritmo.', s: 'Imóveis pré-aprovados para estrangeiros' },
-    { t: 'Da assinatura à chave nas suas mãos.', s: 'Tradução jurídica e acompanhamento presencial' },
-  ];
-  const capTitle = document.getElementById('capTitle');
-  const capSub = document.getElementById('capSub');
-  const chapIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const idx = parseInt(e.target.dataset.chapter, 10);
-        storyImgs.forEach(img => {
-          img.classList.toggle('active', parseInt(img.dataset.img, 10) === idx);
-        });
-        if (caps[idx - 1]) {
-          capTitle.textContent = caps[idx - 1].t;
-          capSub.textContent = caps[idx - 1].s;
-        }
-      }
-    });
-  }, { threshold: 0.55 });
-  chapters.forEach(c => chapIO.observe(c));
-
-  // ── MAGNETIC BUTTONS ──
-  document.querySelectorAll('.btn-mag').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const r = btn.getBoundingClientRect();
-      const dx = (e.clientX - r.left - r.width / 2) * 0.18;
-      const dy = (e.clientY - r.top - r.height / 2) * 0.18;
-      btn.style.transform = `translate(${dx}px, ${dy}px)`;
-    });
-    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-  });
-</script>
+<script src="theme-v2.js?v=3" defer></script>
 </body>
 </html>

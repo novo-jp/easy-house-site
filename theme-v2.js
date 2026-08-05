@@ -1,97 +1,176 @@
-// EASY HOUSE — Theme v2 shared interactions
+/* EASY HOUSE — interações compartilhadas (v3)
+   Leve, sem dependências. Tudo degrada bem se o JS falhar. */
+(function () {
+  'use strict';
 
-// Loader
-window.addEventListener('load', () => {
-  const l = document.getElementById('loader');
-  if (l) setTimeout(() => l.classList.add('hide'), 500);
-});
+  document.documentElement.classList.remove('no-js');
 
-// Custom cursor
-(() => {
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  if (!dot || !ring) return;
-  let mx = -50, my = -50, rx = -50, ry = -50;
-  document.addEventListener('mousemove', (e) => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
-  });
-  (function tick() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-    requestAnimationFrame(tick);
-  })();
-  const refresh = () => {
-    document.querySelectorAll('a, button, .bento-card, .glass-card, .hoverable').forEach(el => {
-      if (el.__cursorBound) return;
-      el.__cursorBound = true;
-      el.addEventListener('mouseenter', () => ring.classList.add('active'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('active'));
-    });
-  };
-  refresh();
-  window.__cursorRefresh = refresh;
-})();
+  /* ---------- Menu mobile ---------- */
+  var burger = document.getElementById('navBurger');
+  var drawer = document.getElementById('navDrawer');
 
-// Scroll progress + nav
-(() => {
-  const bar = document.getElementById('scrollProgress');
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    const h = document.body.scrollHeight - window.innerHeight;
-    if (bar) bar.style.width = Math.min((y / h) * 100, 100) + '%';
-    if (nav) nav.classList.toggle('scrolled', y > 60);
-  }, { passive: true });
-})();
-
-// Stat counter
-const animateCount = (el) => {
-  const target = parseInt(el.dataset.target, 10);
-  const suffix = el.dataset.suffix || '';
-  const start = performance.now();
-  const dur = 1800;
-  function step(now) {
-    const p = Math.min((now - start) / dur, 1);
-    const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(target * eased).toLocaleString('pt-BR') + suffix;
-    if (p < 1) requestAnimationFrame(step);
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
-  requestAnimationFrame(step);
-};
 
-// Reveal on scroll + counter trigger
-(() => {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        e.target.querySelectorAll('[data-target]').forEach(animateCount);
-        io.unobserve(e.target);
+  if (burger && drawer) {
+    burger.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        var first = drawer.querySelector('a');
+        if (first) first.focus({ preventScroll: true });
       }
     });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+    drawer.addEventListener('click', function (e) {
+      if (e.target.closest('a')) closeDrawer();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        closeDrawer();
+        burger.focus();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 900) closeDrawer();
+    });
+  }
+
+  /* ---------- Barra de navegação ao rolar ---------- */
+  var nav = document.getElementById('nav');
+  if (nav) {
+    var onScroll = function () {
+      nav.classList.toggle('scrolled', window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ---------- Revelação ao rolar ---------- */
+  var targets = document.querySelectorAll('.reveal, .reveal-group');
+  if (targets.length) {
+    if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      targets.forEach(function (el) { el.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+      targets.forEach(function (el) { io.observe(el); });
+    }
+  }
+
+  /* ---------- FAQ acessível ---------- */
+  document.querySelectorAll('.faq__q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq__item');
+      var isOpen = item.classList.contains('open');
+      var list = btn.closest('.faq');
+      if (list) {
+        list.querySelectorAll('.faq__item.open').forEach(function (other) {
+          if (other !== item) {
+            other.classList.remove('open');
+            other.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  /* ---------- Formulário: validação, estado e envio ---------- */
+  window.EH = window.EH || {};
+
+  window.EH.handleForm = function (form, buildMessage) {
+    var status = form.querySelector('.form-status');
+    var submit = form.querySelector('[type="submit"]');
+    var sending = false;
+
+    function setStatus(kind, html) {
+      if (!status) return;
+      status.className = 'form-status show form-status--' + kind;
+      status.innerHTML = html;
+      status.setAttribute('role', kind === 'err' ? 'alert' : 'status');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (sending) return;
+
+      // Validação campo a campo, com mensagem legível
+      var invalid = null;
+      form.querySelectorAll('[required]').forEach(function (el) {
+        var field = el.closest('.field') || el.closest('.form-privacy');
+        var ok = el.type === 'checkbox' ? el.checked : String(el.value).trim() !== '';
+        if (field) field.classList.toggle('invalid', !ok);
+        if (!ok && !invalid) invalid = el;
+      });
+
+      if (invalid) {
+        setStatus('err', 'Faltou preencher um campo obrigatório. Confira os campos destacados.');
+        invalid.focus({ preventScroll: false });
+        invalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      sending = true;
+      if (submit) {
+        submit.setAttribute('aria-busy', 'true');
+        submit.dataset.label = submit.textContent;
+        submit.textContent = 'Abrindo o WhatsApp...';
+      }
+
+      var text = buildMessage(form);
+      var url = 'https://wa.me/818028867708?text=' + encodeURIComponent(text);
+
+      setTimeout(function () {
+        window.open(url, '_blank', 'noopener');
+        setStatus('ok',
+          '<strong>Pronto.</strong> Abrimos o WhatsApp com suas informações já escritas. ' +
+          'É só tocar em enviar. Respondemos em português no horário comercial.<br>' +
+          '<span class="muted">Se o WhatsApp não abriu, ' +
+          '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--teal)">toque aqui</a>.</span>');
+        if (submit) {
+          submit.removeAttribute('aria-busy');
+          submit.textContent = submit.dataset.label || 'Enviar';
+        }
+        sending = false;
+        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    });
+
+    // Limpa o erro assim que o visitante corrige
+    form.querySelectorAll('input, select, textarea').forEach(function (el) {
+      el.addEventListener('input', function () {
+        var field = el.closest('.field') || el.closest('.form-privacy');
+        if (field) field.classList.remove('invalid');
+      });
+      el.addEventListener('change', function () {
+        var field = el.closest('.field') || el.closest('.form-privacy');
+        if (field) field.classList.remove('invalid');
+      });
+    });
+  };
+
+  /* ---------- Formatação de valores em ienes ---------- */
+  window.EH.moneyInput = function (el) {
+    if (!el) return;
+    el.addEventListener('input', function () {
+      var raw = el.value.replace(/[^\d]/g, '');
+      el.value = raw ? Number(raw).toLocaleString('pt-BR') : '';
+    });
+  };
 })();
-
-// Magnetic buttons
-document.querySelectorAll('.btn-mag').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const r = btn.getBoundingClientRect();
-    const dx = (e.clientX - r.left - r.width / 2) * 0.18;
-    const dy = (e.clientY - r.top - r.height / 2) * 0.18;
-    btn.style.transform = `translate(${dx}px, ${dy}px)`;
-  });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-});
-
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.closest('.faq-item');
-    const open = item.classList.contains('active');
-    item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-    if (!open) item.classList.add('active');
-  });
-});

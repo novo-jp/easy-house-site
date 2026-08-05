@@ -1,522 +1,399 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Refinancie seu financiamento imobiliário e dívidas no Japão com a EASY HOUSE. Reduza parcelas, consolide dívidas e pague menos juros — em português."/>
-  <title>Refinanciamento de Dívidas no Japão | EASY HOUSE</title>
-  <link rel="stylesheet" href="theme-v2.css"/>
-  <style>
-  /* ── COMPARISON (antes/depois) ── */
-  .compare-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: stretch; max-width: 1100px; margin: 0 auto; }
-  @media (max-width: 800px) { .compare-wrap { grid-template-columns: 1fr; } .compare-arrow { transform: rotate(90deg); } }
-  .compare-card { padding: 32px 28px; border-radius: 24px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; }
-  .compare-card--before { background: linear-gradient(180deg, rgba(231,76,60,0.06), rgba(255,255,255,0.02)); border-color: rgba(231,76,60,0.15); }
-  .compare-card--after { background: linear-gradient(180deg, rgba(79,209,197,0.1), rgba(255,255,255,0.02)); border-color: rgba(79,209,197,0.3); }
-  .compare-card__label { display: inline-block; padding: 5px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 22px; }
-  .compare-card--before .compare-card__label { background: rgba(231,76,60,0.15); color: #FF8B7E; border: 1px solid rgba(231,76,60,0.3); }
-  .compare-card--after .compare-card__label { background: rgba(79,209,197,0.18); color: var(--teal); border: 1px solid rgba(79,209,197,0.4); }
-  .compare-card__value { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
-  .compare-card--before .compare-card__value { color: rgba(255,139,126,0.85); text-decoration: line-through; text-decoration-thickness: 2px; }
-  .compare-card--after .compare-card__value { background: linear-gradient(135deg, var(--teal), var(--gold-bright)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .compare-card__unit { font-size: 0.9rem; color: var(--pearl-muted); margin-bottom: 22px; display: block; }
-  .compare-card__items { display: flex; flex-direction: column; gap: 8px; }
-  .compare-card__items li { display: flex; justify-content: space-between; font-size: 0.88rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--pearl-dim); }
-  .compare-arrow { display: flex; align-items: center; justify-content: center; padding: 0 8px; }
-  .compare-arrow svg { width: 48px; height: 48px; color: var(--gold-bright); animation: arrowPulse 2s ease-in-out infinite; }
-  @keyframes arrowPulse { 0%, 100% { transform: translateX(0); opacity: 0.7; } 50% { transform: translateX(8px); opacity: 1; } }
-
-  .saving-banner { margin-top: 36px; padding: 28px 32px; border-radius: 100px; background: linear-gradient(135deg, rgba(212,165,116,0.2), rgba(79,209,197,0.2)); border: 1px solid rgba(212,165,116,0.4); text-align: center; max-width: 720px; margin-left: auto; margin-right: auto; }
-  .saving-banner strong { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold-bright); display: inline-block; margin: 0 6px; }
-  .saving-banner span { font-size: 1rem; color: var(--pearl); }
-  @media (max-width: 640px) { .saving-banner { padding: 20px 24px; border-radius: 24px; } }
-
-  /* ── PAIN POINTS ── */
-  .pains-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  @media (max-width: 900px) { .pains-grid { grid-template-columns: 1fr; } }
-  .pain { padding: 28px 26px; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); transition: all 0.4s; position: relative; overflow: hidden; }
-  .pain:hover { transform: translateY(-4px); border-color: rgba(231,76,60,0.25); }
-  .pain__icon-wrap { width: 48px; height: 48px; border-radius: 14px; background: rgba(231,76,60,0.12); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; border: 1px solid rgba(231,76,60,0.25); }
-  .pain__icon-wrap svg { width: 22px; height: 22px; color: #FF8B7E; }
-  .pain__title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--pearl); margin-bottom: 8px; line-height: 1.3; }
-  .pain__text { font-size: 0.9rem; color: var(--pearl-dim); line-height: 1.65; }
-
-  /* ── BENEFITS (3 razões) ── */
-  .benefits-stack { display: flex; flex-direction: column; gap: 28px; }
-  .benefit { display: grid; grid-template-columns: 1fr 1.4fr; gap: 50px; align-items: center; padding: 48px 44px; border-radius: 28px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; }
-  .benefit:nth-child(even) { grid-template-columns: 1.4fr 1fr; }
-  .benefit:nth-child(even) .benefit__visual { order: 2; }
-  @media (max-width: 900px) { .benefit, .benefit:nth-child(even) { grid-template-columns: 1fr; padding: 32px 28px; } .benefit:nth-child(even) .benefit__visual { order: 0; } }
-  .benefit__visual { position: relative; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-  .benefit__visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-  .benefit:hover .benefit__visual img { transform: scale(1.05); }
-  .benefit__visual::after { content: attr(data-kanji); position: absolute; right: -2vw; bottom: -3vw; font-family: var(--font-jp); font-size: 18rem; font-weight: 900; color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none; }
-  .benefit__num { font-family: var(--font-display); font-size: 0.85rem; color: var(--gold); letter-spacing: 0.2em; font-weight: 600; margin-bottom: 14px; }
-  .benefit__title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 18px; }
-  .benefit__title em { font-style: italic; color: var(--teal); }
-  .benefit__text { font-size: 1rem; color: var(--pearl-dim); line-height: 1.75; margin-bottom: 18px; }
-  .benefit__tag { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 100px; background: rgba(79,209,197,0.12); color: var(--teal); border: 1px solid rgba(79,209,197,0.3); font-size: 0.84rem; font-weight: 600; }
-
-  /* ── STATS ── */
-  .stats-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
-  @media (max-width: 700px) { .stats-mini { grid-template-columns: 1fr; } }
-  .stat-mini { text-align: center; padding: 30px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; backdrop-filter: blur(12px); }
-  .stat-mini__num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, var(--gold-bright), var(--sakura)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; letter-spacing: -0.02em; }
-  .stat-mini__label { font-size: 0.86rem; color: var(--pearl-dim); }
-
-  /* ── CASES (perfis atendidos) ── */
-  .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; } }
-  .case { padding: 34px 30px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; transition: all 0.4s; }
-  .case:hover { transform: translateY(-5px); border-color: rgba(212,165,116,0.3); }
-  .case__avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--sakura)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; color: var(--ink); font-size: 1.1rem; margin-bottom: 18px; }
-  .case__profile { font-size: 0.82rem; color: var(--pearl-muted); margin-bottom: 6px; }
-  .case__title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--pearl); margin-bottom: 16px; }
-  .case__title em { font-style: italic; color: var(--gold-bright); }
-  .case__compare { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: rgba(0,0,0,0.25); border-radius: 12px; margin-bottom: 14px; }
-  .case__compare-before { flex: 1; }
-  .case__compare-before .lbl { font-size: 0.66rem; color: var(--pearl-muted); display: block; margin-bottom: 4px; letter-spacing: 0.1em; text-transform: uppercase; }
-  .case__compare-before .val { font-size: 0.95rem; color: rgba(255,139,126,0.85); text-decoration: line-through; }
-  .case__compare-arrow { color: var(--gold-bright); font-size: 1.3rem; flex-shrink: 0; }
-  .case__compare-after { flex: 1; text-align: right; }
-  .case__compare-after .lbl { font-size: 0.66rem; color: var(--teal); display: block; margin-bottom: 4px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
-  .case__compare-after .val { font-size: 1rem; color: var(--teal); font-weight: 700; font-family: var(--font-display); }
-  .case__saving { padding: 10px 14px; background: linear-gradient(135deg, rgba(212,165,116,0.18), rgba(79,209,197,0.12)); border: 1px solid rgba(212,165,116,0.3); border-radius: 10px; text-align: center; font-size: 0.86rem; color: var(--pearl); }
-  .case__saving strong { color: var(--gold-bright); font-family: var(--font-display); font-size: 1.05rem; }
-
-  /* ── PROMISES ── */
-  .promises-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px) { .promises-grid { grid-template-columns: 1fr; } }
-  .promise { padding: 36px 30px; border-radius: 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; transition: all 0.4s; }
-  .promise:hover { border-color: rgba(79,209,197,0.3); transform: translateY(-4px); }
-  .promise__check { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), #3AB5AA); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 0 4px rgba(79,209,197,0.15); }
-  .promise__check svg { width: 24px; height: 24px; color: var(--ink); stroke-width: 3; }
-  .promise__title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--pearl); margin-bottom: 12px; }
-  .promise__title em { font-style: italic; color: var(--teal); }
-  .promise__text { font-size: 0.95rem; color: var(--pearl-dim); line-height: 1.7; }
-
-  /* ── STEPS ── */
-  .steps-r { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; }
-  @media (max-width: 900px) { .steps-r { grid-template-columns: 1fr; } }
-  .steps-r::before { content: ''; position: absolute; top: 36px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), var(--teal), transparent); opacity: 0.5; z-index: 0; }
-  @media (max-width: 900px) { .steps-r::before { display: none; } }
-  .step-r { text-align: center; padding: 20px 18px; position: relative; z-index: 1; }
-  .step-r__num { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 22px; box-shadow: 0 0 0 6px var(--ink), 0 0 0 7px rgba(212,165,116,0.4); transition: transform 0.4s; }
-  .step-r:hover .step-r__num { transform: scale(1.08); }
-  .step-r__title { font-family: var(--font-display); font-size: 1.1rem; color: var(--pearl); margin-bottom: 8px; }
-  .step-r__text { font-size: 0.9rem; color: var(--pearl-dim); line-height: 1.6; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Refinanciamento de financiamento imobiliário no Japão | EASY HOUSE</title>
+<meta name="description" content="Já tem 住宅ローン e quer saber se vale rever as condições? Explicamos o que é refinanciamento (借り換え), quando costuma fazer sentido e analisamos seu caso em português."/>
+<link rel="canonical" href="https://easyhouse.homes/refinanciamento.html"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easyhouse.homes/refinanciamento.html"/>
+<meta property="og:title" content="Refinanciamento de financiamento imobiliário no Japão | EASY HOUSE"/>
+<meta property="og:description" content="Entenda o que é 借り換え e descubra se faz sentido analisar o seu financiamento atual."/>
+<meta property="og:image" content="https://easyhouse.homes/images/opt/equipe-contrato-1024.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preload" as="image" href="images/opt/equipe-contrato-1024.webp" fetchpriority="high"/>
+<link rel="stylesheet" href="theme-v2.css?v=3"/>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="loader" id="loader"><div class="loader__kanji">替</div></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip-link" href="#main">Ir para o conteúdo</a>
 
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__brand">
-    <img src="images/logo.png" alt="EASY HOUSE"/>
+<nav class="nav" id="nav" aria-label="Menu principal">
+  <a href="index.html" class="nav__brand" aria-label="EASY HOUSE — página inicial">
+    <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto"/>
     <span class="nav__brand-text">EASY<em>HOUSE</em></span>
   </a>
   <div class="nav__links">
     <a href="landingvendas.html">Comprar</a>
     <a href="landingaluguel.html">Alugar</a>
     <a href="imoveis.html">Apartamentos</a>
+    <a href="refinanciamento.html" class="active" aria-current="page">Refinanciar</a>
+    <a href="omatome.html">Dívidas</a>
     <a href="sobre.html">Sobre</a>
   </div>
-  <a href="https://wa.me/818028867708?text=Quero%20refinanciar%20minha%20d%C3%ADvida" class="nav__cta">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-    Refinanciar agora
+  <a class="nav__cta" href="#falar">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
   </a>
+  <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navDrawer" aria-label="Abrir menu">
+    <span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero__bg">
-    <img src="images/equipe-contrato.jpg" alt="Consultoria de refinanciamento" class="hero__img"/>
-  </div>
-  <div class="hero__overlay"></div>
-  <div class="hero__overlay-side"></div>
-  <div class="hero__kanji">替</div>
-
-  <div class="hero__inner">
-    <div class="hero__line">
-      <div class="hero__line-bar"></div>
-      <span class="hero__line-text">Refinanciamento · 借り換え · 100% em português</span>
-    </div>
-    <h1 class="hero__title">
-      <span class="hero__title-line"><span>Pague <em>menos</em></span></span>
-      <span class="hero__title-line"><span>no seu financiamento.</span></span>
-      <span class="hero__title-line"><span>Refinancie agora.</span></span>
-    </h1>
-    <p class="hero__sub">Reduza a parcela mensal, baixe a taxa de juros e consolide dívidas em um só pagamento. Para brasileiros com financiamento ativo no Japão — explicado em português, sem custo na consulta.</p>
-    <div class="hero__ctas">
-      <a href="https://wa.me/818028867708?text=Quero%20refinanciar%20minha%20d%C3%ADvida" class="btn-mag btn-mag--primary">
-        Simulação grátis pelo WhatsApp
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="#como-funciona" class="btn-mag btn-mag--ghost">Como funciona</a>
-    </div>
-    <div class="hero__chips">
-      <span class="hero__chip">Consulta <strong>grátis</strong></span>
-      <span class="hero__chip">Atendimento <strong>em português</strong></span>
-      <span class="hero__chip">Sem <strong>venda agressiva</strong></span>
-      <span class="hero__chip">Sigilo <strong>total</strong></span>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee__track">
-    <span class="marquee__item">Refinanciar <span class="marquee__item-jp">借り換え</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Consolidar dívidas <span class="marquee__item-jp">おまとめ</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Reduzir parcela <span class="marquee__item-jp">月額軽減</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Flat 35 <span class="marquee__item-jp">フラット35</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Múltiplos bancos <span class="marquee__item-jp">複数銀行対応</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Refinanciar <span class="marquee__item-jp">借り換え</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Consolidar dívidas <span class="marquee__item-jp">おまとめ</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Reduzir parcela <span class="marquee__item-jp">月額軽減</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Flat 35 <span class="marquee__item-jp">フラット35</span></span><span class="marquee__dot"></span>
-    <span class="marquee__item">Múltiplos bancos <span class="marquee__item-jp">複数銀行対応</span></span><span class="marquee__dot"></span>
-  </div>
+<div class="nav__drawer" id="navDrawer">
+  <a href="landingvendas.html">Comprar uma casa <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="landingaluguel.html">Alugar um imóvel <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="imoveis.html">Ver apartamentos em Aichi <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="refinanciamento.html">Refinanciar meu financiamento <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="omatome.html">Organizar minhas dívidas <span class="arrow" aria-hidden="true">→</span></a>
+  <a href="sobre.html">Sobre a Easy House <span class="arrow" aria-hidden="true">→</span></a>
+  <a class="drawer-cta" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20analisar%20meu%20financiamento">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Falar no WhatsApp
+  </a>
+  <p class="drawer-note">Atendimento em português · 080-2886-7708</p>
 </div>
 
-<!-- COMPARAÇÃO ANTES vs DEPOIS -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Simulação real</span>
-    <h2 class="h-section">A diferença que <em>1% de juros</em> faz<br/>no seu bolso.</h2>
-    <p class="lead">Exemplo de refinanciamento de um imóvel de ¥30 milhões financiado em 30 anos.</p>
+<main id="main">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__bg">
+    <picture>
+      <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w, images/opt/equipe-contrato-1920.webp 1920w" sizes="100vw"/>
+      <img src="images/opt/equipe-contrato-1024.jpg" alt="Consultor da Easy House analisando documentos de financiamento" class="hero__img" width="1024" height="834" fetchpriority="high"/>
+    </picture>
+  </div>
+  <div class="hero__overlay"></div>
+
+  <div class="hero__inner">
+    <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span>Refinanciamento · 借り換え</p>
+    <h1 class="hero__title">Vale a pena rever o seu <em>financiamento atual?</em></h1>
+    <p class="hero__sub">Se você já tem 住宅ローン, dá para verificar se as condições de hoje são melhores que as do seu contrato. Nem sempre compensa — e a gente também diz quando não compensa.</p>
+
+    <ul class="hero__points">
+      <li>Explicamos em português o que está no seu contrato atual</li>
+      <li>Mostramos os fatores que definem se vale analisar</li>
+      <li>Você entende os custos envolvidos antes de decidir</li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn btn--gold" href="#falar">Quero analisar meu financiamento</a>
+      <a class="btn btn--ghost" href="#o-que-e">Entender o refinanciamento</a>
+    </div>
+    <p class="cta-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Primeira análise gratuita. Sem compromisso de trocar de banco.
+    </p>
+
+    <p class="hero__trust">
+      <strong>Consultor certificado 住宅ローンアドバイザー</strong><span class="sep">·</span>
+      Licença 沖縄県知事(1)第5984号
+    </p>
+  </div>
+</header>
+
+<!-- O QUE É -->
+<section class="section" id="o-que-e" aria-labelledby="oque-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Explicando simples</p>
+    <h2 class="h-section" id="oque-t">O que é <em>refinanciamento</em> (借り換え)</h2>
   </div>
 
-  <div class="compare-wrap reveal-stagger">
-    <div class="compare-card compare-card--before">
-      <span class="compare-card__label">Antes</span>
-      <div class="compare-card__value">¥118.500</div>
-      <span class="compare-card__unit">por mês · taxa 2.4%</span>
-      <ul class="compare-card__items">
-        <li><span>Parcela mensal</span><span>¥118.500</span></li>
-        <li><span>Juros totais (30 anos)</span><span>¥12.660.000</span></li>
-        <li><span>Total pago</span><span>¥42.660.000</span></li>
-      </ul>
+  <div class="section--narrow" style="margin-inline:auto;padding:0">
+    <p class="lead">Refinanciar é <strong>trocar o financiamento que você tem hoje por um novo</strong>, em outro banco ou em outras condições. O novo financiamento quita o antigo, e você passa a pagar sob as regras do novo contrato.</p>
+
+    <div class="grid grid--2 mt-m reveal-group">
+      <div class="card">
+        <span class="card__icon card__icon--teal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <h3>O que pode mudar</h3>
+        <p>A taxa de juros, o prazo restante e o valor da parcela mensal. Em alguns casos também muda o tipo de taxa (fixa ou variável) e o seguro incluído.</p>
+      </div>
+      <div class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </span>
+        <h3>O que nem sempre melhora</h3>
+        <p>Refinanciar tem custos próprios (avaliação, registro, garantia). Se o ganho for pequeno, esses custos podem anular a vantagem. Por isso a conta precisa ser feita antes.</p>
+      </div>
     </div>
 
-    <div class="compare-arrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </div>
-
-    <div class="compare-card compare-card--after">
-      <span class="compare-card__label">Depois</span>
-      <div class="compare-card__value">¥101.600</div>
-      <span class="compare-card__unit">por mês · taxa 1.4%</span>
-      <ul class="compare-card__items">
-        <li><span>Parcela mensal</span><span>¥101.600</span></li>
-        <li><span>Juros totais (30 anos)</span><span>¥6.576.000</span></li>
-        <li><span>Total pago</span><span>¥36.576.000</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="saving-banner reveal">
-    <span>Economia total de</span><strong>¥6.084.000</strong><span>· ou ¥16.900 a menos por mês</span>
-  </div>
-</section>
-
-<!-- PAIN POINTS -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Você se identifica?</span>
-    <h2 class="h-section">Se está nesta situação,<br/>o <em>refinanciamento</em> é pra você.</h2>
-  </div>
-
-  <div class="pains-grid reveal-stagger">
-    <div class="pain">
-      <div class="pain__icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </div>
-      <h3 class="pain__title">Parcela alta demais</h3>
-      <p class="pain__text">A mensalidade do seu financiamento aperta o orçamento. Sobra pouco no fim do mês.</p>
-    </div>
-    <div class="pain">
-      <div class="pain__icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-      </div>
-      <h3 class="pain__title">Taxa antiga (acima de 1,5%)</h3>
-      <p class="pain__text">Fechou contrato há 5+ anos? As taxas atuais estão bem mais baixas — você pode estar pagando demais.</p>
-    </div>
-    <div class="pain">
-      <div class="pain__icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-      </div>
-      <h3 class="pain__title">Várias dívidas espalhadas</h3>
-      <p class="pain__text">Financiamento + cartão + empréstimo pessoal? Consolidar em uma só parcela reduz o stress e o custo.</p>
-    </div>
-    <div class="pain">
-      <div class="pain__icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <h3 class="pain__title">Banco japonês não atende em português</h3>
-      <p class="pain__text">Quer renegociar mas trava no idioma e nos termos técnicos. A gente faz isso por você.</p>
-    </div>
-    <div class="pain">
-      <div class="pain__icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <h3 class="pain__title">Prazo longo restante</h3>
-      <p class="pain__text">Faltam mais de 10 anos pra terminar? Quanto maior o prazo restante, maior a economia do refinanciamento.</p>
-    </div>
-    <div class="pain">
-      <div class="pain__icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4"/><path d="M9 11V7a3 3 0 1 1 6 0v4"/></svg>
-      </div>
-      <h3 class="pain__title">Foi recusado em outro banco</h3>
-      <p class="pain__text">Tentou renegociar e te disseram não? Trabalhamos com múltiplos bancos — sempre tem uma porta a mais.</p>
-    </div>
+    <p class="note mt-m">
+      <strong>Sem promessa:</strong> não existe redução garantida. Se, na sua situação, refinanciar não compensar, nós vamos dizer isso com clareza.
+    </p>
   </div>
 </section>
 
-<!-- 3 BENEFÍCIOS -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Por que refinanciar com a Easy House</span>
-    <h2 class="h-section">3 motivos pra <em>fazer já.</em></h2>
+<!-- QUANDO FAZ SENTIDO -->
+<section class="section" aria-labelledby="quando-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Para quem costuma fazer sentido</p>
+    <h2 class="h-section" id="quando-t">Três fatores que <em>pesam na conta</em></h2>
+    <p class="lead">Estes são os pontos que mais influenciam o resultado. Quanto mais deles se aplicam a você, mais vale analisar.</p>
   </div>
 
-  <div class="benefits-stack reveal-stagger">
-    <div class="benefit">
-      <div class="benefit__visual" data-kanji="軽">
-        <img src="images/flat35.jpg" alt="Reduza parcela mensal"/>
-      </div>
-      <div>
-        <div class="benefit__num">01 — 月額軽減</div>
-        <h3 class="benefit__title">Reduza a <em>parcela mensal</em> em até ¥30.000.</h3>
-        <p class="benefit__text">Trocar uma taxa antiga de 2,4% por uma atual de 0,8~1,4% pode aliviar a parcela em dezenas de milhares de yen por mês. Em 10 anos, isso é um carro novo no seu bolso.</p>
-        <span class="benefit__tag">Economia média de 8~15%</span>
-      </div>
+  <div class="steps steps--3 reveal-group">
+    <div class="step">
+      <div class="step__n">1</div>
+      <h3>Diferença de taxa</h3>
+      <p>Quanto maior a diferença entre a taxa do seu contrato e a que você conseguiria hoje, maior o efeito da troca.</p>
     </div>
-
-    <div class="benefit">
-      <div class="benefit__visual" data-kanji="統">
-        <img src="images/chave-porta.jpg" alt="Consolide dívidas"/>
-      </div>
-      <div>
-        <div class="benefit__num">02 — おまとめ</div>
-        <h3 class="benefit__title">Consolide dívidas em <em>uma parcela só.</em></h3>
-        <p class="benefit__text">Financiamento + cartão de crédito + empréstimo pessoal viram um único pagamento mensal — com juros bem menores. Menos stress, menos planilha, mais sobra no fim do mês.</p>
-        <span class="benefit__tag">Cartão · Empréstimo · Auto loan</span>
-      </div>
+    <div class="step">
+      <div class="step__n">2</div>
+      <h3>Saldo que falta pagar</h3>
+      <p>Quanto maior o valor ainda em aberto, mais peso tem qualquer mudança de taxa.</p>
     </div>
-
-    <div class="benefit">
-      <div class="benefit__visual" data-kanji="銀">
-        <img src="images/equipe-contrato.jpg" alt="Múltiplos bancos"/>
-      </div>
-      <div>
-        <div class="benefit__num">03 — 複数銀行</div>
-        <h3 class="benefit__title">Múltiplos bancos. <em>Sempre tem uma porta.</em></h3>
-        <p class="benefit__text">Trabalhamos com dezenas de instituições japonesas (megabank, regional bank, shinkin, Flat 35). Foi recusado em uma? Vamos para a próxima. Nossa taxa de aprovação supera 90%.</p>
-        <span class="benefit__tag">90%+ de aprovação</span>
-      </div>
+    <div class="step">
+      <div class="step__n">3</div>
+      <h3>Prazo restante</h3>
+      <p>Quanto mais anos faltam, mais tempo existe para que a diferença se acumule a seu favor.</p>
     </div>
   </div>
 
-  <div class="stats-mini reveal-stagger">
-    <div class="stat-mini">
-      <div class="stat-mini__num" data-target="90" data-suffix="%+">0</div>
-      <div class="stat-mini__label">Taxa de aprovação<br/>do refinanciamento</div>
+  <p class="muted center mt-m">Orientação geral do mercado japonês. O resultado no seu caso depende do contrato atual, do banco e da análise de crédito.</p>
+</section>
+
+<!-- SITUAÇÕES -->
+<section class="section" aria-labelledby="sit-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Situações que analisamos</p>
+    <h2 class="h-section" id="sit-t">Quando as pessoas <em>nos procuram</em></h2>
+  </div>
+
+  <div class="grid grid--3 reveal-group">
+    <div class="card">
+      <h3>Contrato antigo</h3>
+      <p>"Assinei há alguns anos e nunca mais olhei a taxa." Vale conferir o que mudou desde então.</p>
     </div>
-    <div class="stat-mini">
-      <div class="stat-mini__num">¥6M+</div>
-      <div class="stat-mini__label">Economia média<br/>em 30 anos</div>
+    <div class="card">
+      <h3>Parcela apertada</h3>
+      <p>"A parcela pesa todo mês." Existem caminhos que podem aliviar, mas cada um tem contrapartida.</p>
     </div>
-    <div class="stat-mini">
-      <div class="stat-mini__num">0¥</div>
-      <div class="stat-mini__label">Consulta inicial<br/>e simulação</div>
+    <div class="card">
+      <h3>Dúvida entre fixa e variável</h3>
+      <p>"Não sei se minha taxa é fixa ou variável." Lemos seu contrato e explicamos em português.</p>
+    </div>
+    <div class="card">
+      <h3>Mudança na renda ou na família</h3>
+      <p>"Minha situação mudou desde a assinatura." Isso pode alterar as opções disponíveis.</p>
+    </div>
+    <div class="card">
+      <h3>Outras dívidas junto</h3>
+      <p>"Tenho cartão e carro além da casa." Nesse caso, veja também <a href="omatome.html" style="color:var(--teal)">organizar dívidas</a>.</p>
+    </div>
+    <div class="card">
+      <h3>Só quer entender</h3>
+      <p>"Quero saber se estou pagando algo fora do normal." Analisar não obriga a mudar nada.</p>
     </div>
   </div>
 </section>
 
-<!-- CASOS REAIS -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Casos reais</span>
-    <h2 class="h-section">Brasileiros que <em>economizaram milhões.</em></h2>
-    <p class="lead">Valores reais de famílias atendidas pela Easy House.</p>
+<!-- DOCUMENTOS -->
+<section class="section" aria-labelledby="docs-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Para começar a análise</p>
+    <h2 class="h-section" id="docs-t">O que costumamos <em>pedir no início</em></h2>
+    <p class="lead">Para a primeira conversa, informações aproximadas já bastam. Documentos completos só entram se você decidir seguir.</p>
   </div>
 
-  <div class="cases-grid reveal-stagger">
-    <div class="case">
-      <div class="case__avatar">MS</div>
-      <div class="case__profile">Maria, 38 anos · Toyota</div>
-      <div class="case__title">Renegociou taxa <em>após 7 anos</em></div>
-      <div class="case__compare">
-        <div class="case__compare-before">
-          <span class="lbl">Parcela antes</span>
-          <span class="val">¥124.000</span>
-        </div>
-        <span class="case__compare-arrow">→</span>
-        <div class="case__compare-after">
-          <span class="lbl">Depois</span>
-          <span class="val">¥98.500</span>
-        </div>
-      </div>
-      <div class="case__saving">Economia mensal: <strong>¥25.500</strong></div>
+  <div class="grid grid--4 reveal-group">
+    <div class="card">
+      <h3>Contrato atual</h3>
+      <p>Ou o extrato do financiamento (返済予定表), que mostra taxa, prazo e saldo.</p>
     </div>
-
-    <div class="case">
-      <div class="case__avatar">RF</div>
-      <div class="case__profile">Ricardo, 45 anos · Okazaki</div>
-      <div class="case__title">Consolidou <em>4 dívidas</em> em uma</div>
-      <div class="case__compare">
-        <div class="case__compare-before">
-          <span class="lbl">Total antes</span>
-          <span class="val">¥168.000</span>
-        </div>
-        <span class="case__compare-arrow">→</span>
-        <div class="case__compare-after">
-          <span class="lbl">Depois</span>
-          <span class="val">¥122.000</span>
-        </div>
-      </div>
-      <div class="case__saving">Economia mensal: <strong>¥46.000</strong></div>
+    <div class="card">
+      <h3>Saldo devedor</h3>
+      <p>Quanto ainda falta pagar, mesmo que seja um valor aproximado.</p>
     </div>
-
-    <div class="case">
-      <div class="case__avatar">JC</div>
-      <div class="case__profile">Júlio & Camila · Kariya</div>
-      <div class="case__title">Trocou para <em>Flat 35</em></div>
-      <div class="case__compare">
-        <div class="case__compare-before">
-          <span class="lbl">Taxa antes</span>
-          <span class="val">2,7%</span>
-        </div>
-        <span class="case__compare-arrow">→</span>
-        <div class="case__compare-after">
-          <span class="lbl">Depois</span>
-          <span class="val">1,3%</span>
-        </div>
-      </div>
-      <div class="case__saving">Economia total: <strong>¥7,2M em 25 anos</strong></div>
+    <div class="card">
+      <h3>Renda e trabalho</h3>
+      <p>Tipo de contrato e renda aproximada, porque o novo banco vai analisar de novo.</p>
+    </div>
+    <div class="card">
+      <h3>Visto e residência</h3>
+      <p>Tipo de visto e cidade onde mora, que influenciam quais bancos podem atender.</p>
     </div>
   </div>
-</section>
 
-<!-- PROMESSAS -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">Nosso compromisso</span>
-    <h2 class="h-section">3 promessas <em>antes de começar.</em></h2>
-  </div>
-
-  <div class="promises-grid reveal-stagger">
-    <div class="promise">
-      <div class="promise__check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <h3 class="promise__title">Sem <em>venda agressiva</em></h3>
-      <p class="promise__text">Você decide o ritmo. Não te pressionamos a fechar nada. Se o refinanciamento não vale a pena no seu caso, a gente te diz isso na cara.</p>
-    </div>
-    <div class="promise">
-      <div class="promise__check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <h3 class="promise__title">Sigilo <em>total</em></h3>
-      <p class="promise__text">Suas informações financeiras são confidenciais. Não compartilhamos com terceiros. O que você diz fica entre você e nosso assessor.</p>
-    </div>
-    <div class="promise">
-      <div class="promise__check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <h3 class="promise__title">Consulta <em>100% grátis</em></h3>
-      <p class="promise__text">A simulação, a análise do seu caso e a apresentação das opções não custam nada. Você só paga se o refinanciamento for fechado — e geralmente o banco cobre os custos.</p>
-    </div>
+  <div class="form-privacy mt-m" style="max-width:720px;margin-inline:auto">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Pedimos esses dados apenas para entender seu caso e verificar quais caminhos existem. Suas informações não são usadas para outra finalidade.</span>
   </div>
 </section>
 
 <!-- COMO FUNCIONA -->
-<section class="section" id="como-funciona">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">3 passos</span>
-    <h2 class="h-section">Como <em>funciona.</em></h2>
-    <p class="lead">Do WhatsApp à nova parcela em até 6 semanas.</p>
+<section class="section" aria-labelledby="passos-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Passo a passo</p>
+    <h2 class="h-section" id="passos-t">Como a análise <em>acontece</em></h2>
   </div>
 
-  <div class="steps-r reveal-stagger">
-    <div class="step-r">
-      <div class="step-r__num">1</div>
-      <h3 class="step-r__title">Conversa pelo WhatsApp</h3>
-      <p class="step-r__text">Mande sua situação atual: valor do financiamento, taxa, banco, prazo restante. Sem formulário longo.</p>
+  <div class="steps reveal-group">
+    <div class="step">
+      <div class="step__n">1</div>
+      <h3>Você envia sua situação</h3>
+      <p>Banco atual, taxa, saldo aproximado e há quanto tempo tem o contrato.</p>
     </div>
-    <div class="step-r">
-      <div class="step-r__num">2</div>
-      <h3 class="step-r__title">Simulação personalizada</h3>
-      <p class="step-r__text">Em 48h te mostramos qual banco aprova você e quanto vai economizar — com números reais.</p>
+    <div class="step">
+      <div class="step__n">2</div>
+      <h3>Analisamos os números</h3>
+      <p>Comparamos seu contrato com as condições disponíveis e calculamos os custos da troca.</p>
     </div>
-    <div class="step-r">
-      <div class="step-r__num">替</div>
-      <h3 class="step-r__title">Refinanciamento fechado</h3>
-      <p class="step-r__text">A gente cuida dos documentos, traduz tudo e acompanha a aprovação. Você só assina.</p>
+    <div class="step">
+      <div class="step__n">3</div>
+      <h3>Explicamos o resultado</h3>
+      <p>Mostramos se compensa, quanto tempo levaria para valer a pena e quais são os riscos.</p>
+    </div>
+    <div class="step">
+      <div class="step__n">4</div>
+      <h3>Você decide</h3>
+      <p>Se decidir seguir, acompanhamos a documentação e a análise no novo banco.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIANÇA -->
+<section class="section" aria-labelledby="conf-t">
+  <div class="trust-block reveal">
+    <div class="trust-block__media">
+      <picture>
+        <source type="image/webp" srcset="images/opt/equipe-contrato-640.webp 640w, images/opt/equipe-contrato-1024.webp 1024w" sizes="(max-width: 880px) 100vw, 420px"/>
+        <img src="images/opt/equipe-contrato-1024.jpg" alt="Análise de contrato de financiamento na Easy House" loading="lazy" width="1024" height="834"/>
+      </picture>
+    </div>
+    <div>
+      <p class="eyebrow">Quem faz a análise</p>
+      <h2 id="conf-t">Consultor com <em>certificação japonesa</em> em financiamento</h2>
+      <p>A análise é feita por profissional registrado como <strong>住宅ローンアドバイザー</strong> pela 一般財団法人住宅金融普及協会, entidade ligada ao financiamento habitacional no Japão.</p>
+      <p>Isso significa leitura técnica do seu contrato — taxa, prazo, tipo de juros, seguro e custos de troca — e não apenas uma opinião genérica.</p>
+      <div class="trust-facts">
+        <span>株式会社EASY HOUSE</span>
+        <span>沖縄県知事(1)第5984号</span>
+        <span>愛知県碧南市</span>
+        <span>Atendimento em português</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="section">
-  <div class="section-head section-head--center" style="margin-left:auto;margin-right:auto;">
-    <span class="eyebrow">FAQ</span>
-    <h2 class="h-section">Dúvidas <em>frequentes.</em></h2>
+<section class="section" aria-labelledby="faq-t">
+  <div class="section-head section-head--center">
+    <p class="eyebrow">Dúvidas frequentes</p>
+    <h2 class="h-section" id="faq-t">Perguntas <em>mais comuns</em></h2>
   </div>
-  <div class="faq-list">
-    <div class="faq-item"><button class="faq-q">Quando vale a pena refinanciar?</button><div class="faq-a"><p>Como regra geral: se a diferença de taxa entre seu financiamento atual e o novo for de pelo menos <strong style="color:var(--gold-bright)">1%</strong>, o saldo devedor for de pelo menos <strong style="color:var(--gold-bright)">¥10 milhões</strong> e faltarem pelo menos <strong style="color:var(--gold-bright)">10 anos</strong> pra quitar, o refinanciamento costuma compensar muito. Fazemos a simulação grátis pra ter certeza.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Quais bancos vocês trabalham?</button><div class="faq-a"><p>Megabanks (MUFG, SMBC, Mizuho), regionais (Aichi Bank, Juroku Bank, Mie Bank), shinkin locais e o programa Flat 35 do JHF (住宅金融支援機構). A escolha depende do seu perfil de renda, visto e saldo devedor.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Posso consolidar cartão e empréstimo pessoal junto?</button><div class="faq-a"><p>Sim. Alguns bancos aceitam incluir dívidas de cartão, empréstimo pessoal e auto loan no mesmo refinanciamento imobiliário (おまとめローン). Isso reduz drasticamente o juros total já que a taxa imobiliária é muito menor que a do cartão.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Quanto custa o refinanciamento?</button><div class="faq-a"><p>Tem custos do banco novo (taxa de avaliação, registro, garantidor) e da quitação do banco antigo. Em geral somam <strong style="color:var(--gold-bright)">¥300.000 ~ ¥800.000</strong>. A maioria pode ser embutida no novo financiamento — você não precisa desembolsar do bolso. Calculamos isso no orçamento.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Quanto tempo leva o processo?</button><div class="faq-a"><p>Do primeiro WhatsApp à aprovação final: <strong style="color:var(--gold-bright)">4 a 6 semanas</strong>. Análise inicial: 48h. Documentação: 1~2 semanas. Análise do banco: 2~3 semanas. Assinatura e quitação: 1 semana.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Estrangeiro com visto temporário consegue?</button><div class="faq-a"><p>Vistos permanentes e cônjuge de japonês têm aprovação mais fácil. Vistos de engenheiro (技術), techintern (技能), ou prazos longos também têm opções. Avaliamos seu caso específico gratuitamente.</p></div></div>
-    <div class="faq-item"><button class="faq-q">E se eu fui recusado em outro banco?</button><div class="faq-a"><p>Recusa em um banco não significa recusa em todos. Cada instituição tem critérios diferentes — alguns valorizam tempo de Japão, outros estabilidade no emprego, outros patrimônio. Vamos para a próxima.</p></div></div>
+
+  <div class="faq reveal">
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Refinanciar sempre reduz a parcela?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Não. Depende da diferença de taxa, do saldo, do prazo e dos custos da troca. Em alguns casos a parcela cai; em outros, o custo total aumenta se o prazo for esticado. Por isso fazemos a conta antes.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Refinanciar tem custo?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Sim. Existem custos no banco novo (avaliação, registro, garantia) e na quitação do banco antigo. Os valores variam conforme a instituição e o valor financiado. Levantamos esses custos na análise.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Estrangeiro pode refinanciar?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Depende do banco, do visto, da renda, do tempo de trabalho e do histórico. O novo banco refaz a análise de crédito, como se fosse um financiamento novo. Avaliamos seu caso antes de qualquer aplicação.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">Quanto tempo leva?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>A análise inicial é rápida. O processo completo, quando o cliente decide seguir, envolve documentação e análise do banco, e o prazo varia conforme a instituição.</p></div></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" aria-expanded="false">A Easy House garante aprovação ou economia?<span class="ico" aria-hidden="true"></span></button>
+      <div class="faq__a"><div><p>Não. Nenhuma empresa séria garante isso. A decisão é do banco e o resultado depende do seu contrato. Nosso trabalho é analisar, explicar em português e orientar o caminho mais adequado.</p></div></div>
+    </div>
   </div>
 </section>
 
 <!-- CTA FINAL -->
-<section class="section">
-  <div style="position:relative;padding:90px 48px;border-radius:32px;overflow:hidden;text-align:center;background:linear-gradient(135deg,rgba(31,111,139,0.5),rgba(79,209,197,0.25),rgba(212,165,116,0.3));border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);">
-    <div style="position:absolute;right:-8vw;bottom:-10vw;font-family:var(--font-jp);font-size:35rem;font-weight:900;color:rgba(255,255,255,0.04);line-height:0.85;pointer-events:none;">替</div>
-    <span class="eyebrow" style="position:relative;">第一歩 · O primeiro passo</span>
-    <h2 class="h-section" style="position:relative;max-width:760px;margin:0 auto 18px;">Quanto você <em>economizaria</em><br/>se refinanciasse hoje?</h2>
-    <p class="lead" style="position:relative;margin:0 auto 36px;max-width:540px;">Simulação grátis pelo WhatsApp em até 48h. Sem formulário longo, sem cadastro, sem compromisso.</p>
-    <div style="position:relative;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;">
-      <a href="https://wa.me/818028867708?text=Quero%20simula%C3%A7%C3%A3o%20gr%C3%A1tis%20de%20refinanciamento" class="btn-mag btn-mag--primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-        Quero minha simulação grátis
+<section class="section section--tight" id="falar">
+  <div class="cta-final reveal">
+    <span class="cta-final__kanji" aria-hidden="true">替</span>
+    <h2>Descubra se vale a pena <em>no seu caso</em></h2>
+    <p>Mande banco, taxa e saldo aproximado. Retornamos em português dizendo se compensa analisar a fundo — inclusive se a resposta for "ainda não".</p>
+    <div class="btn-row">
+      <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20analisar%20meu%20financiamento.%20Banco%3A%20%7C%20Taxa%3A%20%7C%20Saldo%20aproximado%3A%20">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Quero analisar meu financiamento
       </a>
-      <a href="tel:+818028867708" class="btn-mag btn-mag--ghost">080-2886-7708</a>
+      <a class="btn btn--ghost" href="tel:+818028867708">Ligar: 080-2886-7708</a>
     </div>
+    <p class="cta-note" style="justify-content:center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Análise confidencial e sem compromisso.
+    </p>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer class="foot">
   <div class="foot__grid">
     <div>
-      <div class="foot__brand"><img src="images/logo.png" alt="EASY HOUSE"/><span class="foot__brand-text">EASY<em>HOUSE</em></span></div>
-      <p class="foot__desc">Imobiliária licenciada no Japão, com atendimento 100% em português para brasileiros.</p>
-      <div class="foot__license">沖縄県知事(1)第5984号</div>
+      <div class="foot__brand">
+        <img src="images/logo.png" alt="" width="895" height="335" style="height:34px;width:auto" loading="lazy"/>
+        <span class="foot__brand-text">EASY<em>HOUSE</em></span>
+      </div>
+      <p class="foot__desc">Imobiliária no Japão com atendimento em português para quem quer comprar, alugar ou organizar a vida financeira antes de financiar.</p>
+      <p class="foot__meta">
+        株式会社EASY HOUSE<br/>
+        愛知県碧南市入船町４丁目３７−２<br/>
+        <a href="tel:+818028867708">080-2886-7708</a> · <a href="mailto:info@easyhouse.homes">info@easyhouse.homes</a><br/>
+        沖縄県知事(1)第5984号
+      </p>
     </div>
-    <div><div class="foot__col-title">Site</div><div class="foot__col-links"><a href="landingvendas.html">Comprar</a><a href="landingaluguel.html">Alugar</a><a href="refinanciamento.html">Refinanciar</a><a href="imoveis.html">Apartamentos</a><a href="sobre.html">Sobre nós</a></div></div>
-    <div><div class="foot__col-title">Contato</div><div class="foot__col-links"><a href="https://wa.me/818028867708">WhatsApp</a><a href="tel:+818028867708">080-2886-7708</a><a href="https://www.instagram.com/easyhousejp/">Instagram</a></div></div>
-    <div><div class="foot__col-title">Legal</div><div class="foot__col-links"><a href="terms.html">Termos de uso</a><a href="privacy.html">Privacidade</a></div></div>
+    <div>
+      <p class="foot__col-title">Serviços</p>
+      <div class="foot__links">
+        <a href="landingvendas.html">Comprar uma casa</a>
+        <a href="landingaluguel.html">Alugar um imóvel</a>
+        <a href="imoveis.html">Apartamentos em Aichi</a>
+        <a href="refinanciamento.html">Refinanciamento</a>
+        <a href="omatome.html">Organizar dívidas</a>
+      </div>
+    </div>
+    <div>
+      <p class="foot__col-title">Contato</p>
+      <div class="foot__links">
+        <a href="https://wa.me/818028867708">WhatsApp</a>
+        <a href="tel:+818028867708">080-2886-7708</a>
+        <a href="https://www.instagram.com/easyhousejp/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61553143095845" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <p class="foot__col-title">Institucional</p>
+      <div class="foot__links">
+        <a href="sobre.html">Sobre a Easy House</a>
+        <a href="terms.html">Termos de uso</a>
+        <a href="privacy.html">Privacidade</a>
+      </div>
+    </div>
   </div>
-  <div class="foot__bottom"><span>© EASY HOUSE · Sua casa no Japão, em português.</span><span>家・夢・縁・替</span></div>
+
+  <p class="foot__legal">
+    A Easy House não é instituição financeira e não garante aprovação de crédito nem redução de juros. As informações desta página são educativas e de orientação inicial. Taxa, prazo, limite, elegibilidade, custos e aprovação dependem da análise de cada instituição financeira, considerando renda, histórico de crédito, garantia, visto e critérios internos. O refinanciamento pode reduzir a parcela mensal em alguns casos, mas também pode aumentar o custo total dependendo do prazo e da taxa aplicada.
+  </p>
+
+  <div class="foot__bottom">
+    <span>© EASY HOUSE · Atendimento em português no Japão</span>
+    <span>全国対応</span>
+  </div>
 </footer>
 
-<a href="https://wa.me/818028867708?text=Quero%20simula%C3%A7%C3%A3o%20de%20refinanciamento" class="wa-fab">
-  <span class="wa-fab__pulse"></span>
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-  <span class="txt">Simulação grátis</span>
-</a>
+<div class="sticky-cta">
+  <a class="btn btn--wa" href="https://wa.me/818028867708?text=Ol%C3%A1%2C%20quero%20analisar%20meu%20financiamento">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    Quero analisar meu financiamento
+  </a>
+</div>
 
-<script src="theme-v2.js"></script>
+<script src="theme-v2.js?v=3" defer></script>
 </body>
 </html>
