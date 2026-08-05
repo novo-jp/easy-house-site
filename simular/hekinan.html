@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Casa própria em Hekinan: simule sua faixa de compra | EASY HOUSE</title>
+<meta name="description" content="Ferramenta gratuita em português para quem quer comprar imóvel em Hekinan (碧南市). Escolha a parcela e veja a faixa de imóvel compatível com o seu perfil."/>
+<link rel="canonical" href="https://easyhouse.homes/simular/hekinan"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easyhouse.homes/simular/hekinan"/>
+<meta property="og:title" content="Quanto pode custar sua casa no Japão? Simule em 60 segundos"/>
+<meta property="og:description" content="Ferramenta gratuita em português da Easy House. Simulação inicial, não representa aprovação de financiamento."/>
+<meta property="og:image" content="https://easyhouse.homes/images/opt/equipe-imovel-900.jpg"/>
+<meta name="robots" content="index,follow"/>
+<link rel="stylesheet" href="/funnel.css?v=1"/>
+</head>
+<body data-city="Hekinan">
+
+<header class="fx-top">
+  <div class="fx-top__in">
+    <a href="/" class="fx-top__brand" aria-label="EASY HOUSE — página inicial">
+      <img src="/images/opt/logo-240.png" alt="EASY HOUSE" width="240" height="90"/>
+    </a>
+    <span class="fx-secure">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Gratuito e sem compromisso
+    </span>
+  </div>
+  <div class="fx-progress"><div class="fx-progress__bar" id="fxProgress"></div></div>
+</header>
+
+<main class="fx-main" id="fxMain">
+
+<!-- ══════════ ENTRADA ══════════ -->
+<section class="fx-step active" data-step="intro">
+  <div class="fx-hero">
+    <span class="fx-hero__eyebrow">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+      Ferramenta gratuita da Easy House
+    </span>
+    <h1 class="fx-hero__title" id="fxHeadline">Quanto pode custar sua casa em Hekinan?</h1>
+    <p class="fx-hero__sub" id="fxSubline">Escolha a parcela que cabe no seu mês e veja a faixa de imóvel mais próxima do seu perfil em Hekinan e região.</p>
+  </div>
+
+  <div class="fx-hero__img">
+    <picture>
+      <source type="image/webp" srcset="images/opt/equipe-imovel-640.webp 640w, images/opt/equipe-imovel-900.webp 900w" sizes="(max-width: 600px) 100vw, 560px"/>
+      <img src="/images/opt/equipe-imovel-900.jpg" alt="Equipe da Easy House em frente a um imóvel no Japão" width="900" height="562" fetchpriority="high"/>
+    </picture>
+  </div>
+
+  <div class="fx-signals">
+    <div class="fx-signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gratuito</div>
+    <div class="fx-signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Em português</div>
+    <div class="fx-signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sem documentos</div>
+    <div class="fx-signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</div>
+  </div>
+
+  <p class="fx-disclaimer">Esta é uma simulação inicial e não representa aprovação de financiamento.</p>
+</section>
+
+<!-- ══════════ ETAPA 1 ══════════ -->
+
+<!-- P1 parcela -->
+<section class="fx-step" data-step="q_payment">
+  <p class="fx-count" data-n="1" data-of="6">Pergunta 1 de 6</p>
+  <h2 class="fx-q">Quanto você gostaria de pagar por mês pela sua casa?</h2>
+  <p class="fx-help">Pense no valor que caberia com tranquilidade no seu mês.</p>
+  <div class="fx-options" id="optPayment" role="group" aria-label="Parcela mensal desejada">
+    <button type="button" class="fx-opt" data-value="70000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Até ¥70.000</span></button>
+    <button type="button" class="fx-opt" data-value="90000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Aproximadamente ¥90.000</span></button>
+    <button type="button" class="fx-opt" data-value="110000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Aproximadamente ¥110.000</span></button>
+    <button type="button" class="fx-opt" data-value="130000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Aproximadamente ¥130.000</span></button>
+    <button type="button" class="fx-opt" data-value="150000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Aproximadamente ¥150.000</span></button>
+    <button type="button" class="fx-opt" data-value="other"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outro valor</span></button>
+  </div>
+  <div class="fx-field" id="fieldPaymentOther" hidden>
+    <label for="inPayment">Valor da parcela desejada</label>
+    <div class="fx-input-yen"><input class="fx-input" id="inPayment" inputmode="numeric" autocomplete="off" placeholder="85.000"/></div>
+    <p class="fx-error" id="errPayment">Informe um valor entre ¥20.000 e ¥500.000.</p>
+  </div>
+</section>
+
+<!-- P2 cidades -->
+<section class="fx-step" data-step="q_cities">
+  <p class="fx-count" data-n="2" data-of="6">Pergunta 2 de 6</p>
+  <h2 class="fx-q">Onde você gostaria de morar?</h2>
+  <p class="fx-help">Pode escolher mais de uma cidade.</p>
+  <div class="fx-options" id="optCities" role="group" aria-label="Cidades desejadas">
+    <button type="button" class="fx-opt fx-opt--check" data-value="Hekinan"><span class="fx-opt__mark"></span><span class="fx-opt__text">Hekinan <small>碧南市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="Takahama"><span class="fx-opt__mark"></span><span class="fx-opt__text">Takahama <small>高浜市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="Nishio"><span class="fx-opt__mark"></span><span class="fx-opt__text">Nishio <small>西尾市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="Anjo"><span class="fx-opt__mark"></span><span class="fx-opt__text">Anjo <small>安城市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="Kariya"><span class="fx-opt__mark"></span><span class="fx-opt__text">Kariya <small>刈谷市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="Okazaki"><span class="fx-opt__mark"></span><span class="fx-opt__text">Okazaki <small>岡崎市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="Toyota"><span class="fx-opt__mark"></span><span class="fx-opt__text">Toyota <small>豊田市</small></span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="outra"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outra cidade</span></button>
+  </div>
+</section>
+
+<!-- P3 idade -->
+<section class="fx-step" data-step="q_age">
+  <p class="fx-count" data-n="3" data-of="6">Pergunta 3 de 6</p>
+  <h2 class="fx-q">Qual é a sua idade?</h2>
+  <p class="fx-help">A idade ajuda a estimar o prazo máximo do financiamento.</p>
+  <div class="fx-field">
+    <label for="inAge">Idade</label>
+    <input class="fx-input" id="inAge" type="number" inputmode="numeric" min="18" max="79" placeholder="35" autocomplete="off"/>
+    <p class="fx-error" id="errAge">Informe uma idade entre 18 e 79 anos.</p>
+  </div>
+</section>
+
+<!-- P4 trabalho -->
+<section class="fx-step" data-step="q_work">
+  <p class="fx-count" data-n="4" data-of="6">Pergunta 4 de 6</p>
+  <h2 class="fx-q">Atualmente, como você trabalha?</h2>
+  <div class="fx-options" id="optWork" role="group" aria-label="Forma de trabalho">
+    <button type="button" class="fx-opt" data-value="seishain"><span class="fx-opt__mark"></span><span class="fx-opt__text">Funcionário efetivo <small>正社員</small></span></button>
+    <button type="button" class="fx-opt" data-value="empreiteira"><span class="fx-opt__mark"></span><span class="fx-opt__text">Funcionário por empreiteira <small>派遣・請負</small></span></button>
+    <button type="button" class="fx-opt" data-value="autonomo"><span class="fx-opt__mark"></span><span class="fx-opt__text">Autônomo <small>個人事業主</small></span></button>
+    <button type="button" class="fx-opt" data-value="empresario"><span class="fx-opt__mark"></span><span class="fx-opt__text">Dono de empresa <small>法人代表</small></span></button>
+    <button type="button" class="fx-opt" data-value="temporario"><span class="fx-opt__mark"></span><span class="fx-opt__text">Contrato temporário <small>契約社員・アルバイト</small></span></button>
+    <button type="button" class="fx-opt" data-value="outro"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outro</span></button>
+  </div>
+</section>
+
+<!-- P4b tempo -->
+<section class="fx-step" data-step="q_work_years">
+  <p class="fx-count">Pergunta 4 de 6</p>
+  <h2 class="fx-q" id="qWorkYears">Há quanto tempo você trabalha assim?</h2>
+  <p class="fx-help">O tempo de trabalho costuma pesar bastante na análise dos bancos.</p>
+  <div class="fx-options" id="optWorkYears" role="group" aria-label="Tempo de trabalho">
+    <button type="button" class="fx-opt" data-value="lt1"><span class="fx-opt__mark"></span><span class="fx-opt__text">Menos de 1 ano</span></button>
+    <button type="button" class="fx-opt" data-value="1to3"><span class="fx-opt__mark"></span><span class="fx-opt__text">De 1 a menos de 3 anos</span></button>
+    <button type="button" class="fx-opt" data-value="gte3"><span class="fx-opt__mark"></span><span class="fx-opt__text">3 anos ou mais</span></button>
+  </div>
+</section>
+
+<!-- P5 nacionalidade -->
+<section class="fx-step" data-step="q_residency">
+  <p class="fx-count" data-n="5" data-of="6">Pergunta 5 de 6</p>
+  <h2 class="fx-q">Você possui nacionalidade japonesa?</h2>
+  <div class="fx-options" id="optNationality" role="group" aria-label="Nacionalidade">
+    <button type="button" class="fx-opt" data-value="japanese"><span class="fx-opt__mark"></span><span class="fx-opt__text">Sim</span></button>
+    <button type="button" class="fx-opt" data-value="foreign"><span class="fx-opt__mark"></span><span class="fx-opt__text">Não</span></button>
+  </div>
+</section>
+
+<!-- P5b visto -->
+<section class="fx-step" data-step="q_visa">
+  <p class="fx-count">Pergunta 5 de 6</p>
+  <h2 class="fx-q">Qual é a sua condição de residência atual?</h2>
+  <p class="fx-help">Algumas modalidades têm regras próprias sobre o visto.</p>
+  <div class="fx-options" id="optVisa" role="group" aria-label="Condição de residência">
+    <button type="button" class="fx-opt" data-value="permanent_resident"><span class="fx-opt__mark"></span><span class="fx-opt__text">Residente permanente <small>永住者</small></span></button>
+    <button type="button" class="fx-opt" data-value="special_permanent_resident"><span class="fx-opt__mark"></span><span class="fx-opt__text">Residente permanente especial <small>特別永住者</small></span></button>
+    <button type="button" class="fx-opt" data-value="spouse_of_japanese"><span class="fx-opt__mark"></span><span class="fx-opt__text">Cônjuge de japonês <small>日本人の配偶者等</small></span></button>
+    <button type="button" class="fx-opt" data-value="long_term_resident"><span class="fx-opt__mark"></span><span class="fx-opt__text">Longa permanência <small>定住者</small></span></button>
+    <button type="button" class="fx-opt" data-value="work_visa"><span class="fx-opt__mark"></span><span class="fx-opt__text">Visto de trabalho</span></button>
+    <button type="button" class="fx-opt" data-value="other"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outro</span></button>
+    <button type="button" class="fx-opt" data-value="unknown"><span class="fx-opt__mark"></span><span class="fx-opt__text">Não sei informar</span></button>
+  </div>
+</section>
+
+<!-- P6 composição -->
+<section class="fx-step" data-step="q_composition">
+  <p class="fx-count" data-n="6" data-of="6">Pergunta 6 de 6</p>
+  <h2 class="fx-q">Você pretende comprar sozinho ou somar renda com outra pessoa?</h2>
+  <div class="fx-options" id="optComposition" role="group" aria-label="Composição da compra">
+    <button type="button" class="fx-opt" data-value="alone"><span class="fx-opt__mark"></span><span class="fx-opt__text">Somente eu</span></button>
+    <button type="button" class="fx-opt" data-value="couple"><span class="fx-opt__mark"></span><span class="fx-opt__text">Eu e meu cônjuge ou parceiro</span></button>
+    <button type="button" class="fx-opt" data-value="other"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outra composição</span></button>
+  </div>
+</section>
+
+<!-- ══════════ RESULTADO PRELIMINAR ══════════ -->
+<section class="fx-step" data-step="preliminary">
+  <div id="prelimLoading" class="fx-loading">
+    <div class="fx-spin" role="status" aria-label="Calculando"></div>
+    <p>Calculando seu primeiro cenário…</p>
+  </div>
+
+  <div id="prelimContent" hidden>
+    <span class="fx-badge fx-badge--ok" id="prelimBadge">Simulação calculada</span>
+    <h2 class="fx-q" style="margin-top:12px">Seu primeiro cenário está pronto</h2>
+    <p class="fx-help" id="prelimIntro"></p>
+
+    <div class="fx-card">
+      <p class="fx-card__label">Faixa preliminar de imóvel</p>
+      <div class="fx-range">
+        <div class="fx-range__value" id="prelimCenter">—</div>
+        <div class="fx-range__bar"></div>
+        <div class="fx-range__bounds"><span id="prelimMin">—</span><span>até</span><span id="prelimMax">—</span></div>
+      </div>
+    </div>
+
+    <div class="fx-card">
+      <p class="fx-card__label">Como chegamos nesse número</p>
+      <dl class="fx-rows" id="prelimRows"></dl>
+    </div>
+
+    <div class="fx-note" id="prelimProps"></div>
+    <div id="prelimNotes"></div>
+
+    <p class="fx-legal">
+      Simulação inicial de referência, calculada com a parcela informada e o prazo estimado para a sua idade.
+      Não representa aprovação de financiamento nem análise de capacidade de crédito.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ ETAPA 2 ══════════ -->
+
+<section class="fx-step" data-step="f_income">
+  <p class="fx-count">Simulação financeira · 1 de 5</p>
+  <h2 class="fx-q">Qual foi aproximadamente sua renda bruta no último ano?</h2>
+  <p class="fx-help" id="incomeHelp">Um valor aproximado já ajuda bastante.</p>
+  <div class="fx-field">
+    <label for="inIncome">Renda anual aproximada</label>
+    <div class="fx-input-yen"><input class="fx-input" id="inIncome" inputmode="numeric" autocomplete="off" placeholder="3.600.000"/></div>
+    <p class="fx-error" id="errIncome">Informe um valor entre ¥500.000 e ¥50.000.000.</p>
+  </div>
+  <div class="fx-note" style="margin-top:16px" id="incomeTip"></div>
+</section>
+
+<section class="fx-step" data-step="f_second">
+  <p class="fx-count">Simulação financeira · 2 de 5</p>
+  <h2 class="fx-q">Sobre a segunda pessoa</h2>
+  <p class="fx-help">A aceitação e o percentual da renda somada dependem da instituição financeira.</p>
+  <div class="fx-field">
+    <label for="inSecondAge">Idade</label>
+    <input class="fx-input" id="inSecondAge" type="number" inputmode="numeric" min="18" max="79" placeholder="33"/>
+  </div>
+  <div class="fx-field">
+    <label for="inSecondIncome">Renda anual aproximada</label>
+    <div class="fx-input-yen"><input class="fx-input" id="inSecondIncome" inputmode="numeric" placeholder="2.000.000"/></div>
+  </div>
+  <div class="fx-field">
+    <label for="inSecondWork">Forma de trabalho</label>
+    <select class="fx-select" id="inSecondWork">
+      <option value="">Selecione</option>
+      <option value="seishain">Funcionário efetivo (正社員)</option>
+      <option value="empreiteira">Funcionário por empreiteira</option>
+      <option value="autonomo">Autônomo (個人事業主)</option>
+      <option value="temporario">Contrato temporário</option>
+      <option value="outro">Outro</option>
+    </select>
+  </div>
+</section>
+
+<section class="fx-step" data-step="f_debts">
+  <p class="fx-count">Simulação financeira · 3 de 5</p>
+  <h2 class="fx-q">Você possui parcelas de empréstimos ou financiamentos atualmente?</h2>
+  <p class="fx-help">Parcelas atuais entram na conta que o banco faz. Pode marcar mais de uma.</p>
+  <div class="fx-options" id="optDebts" role="group" aria-label="Dívidas atuais">
+    <button type="button" class="fx-opt" data-value="none"><span class="fx-opt__mark"></span><span class="fx-opt__text">Não tenho parcelas</span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="car"><span class="fx-opt__mark"></span><span class="fx-opt__text">Financiamento de carro</span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="card"><span class="fx-opt__mark"></span><span class="fx-opt__text">Cartão ou crédito parcelado</span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="personal"><span class="fx-opt__mark"></span><span class="fx-opt__text">Empréstimo pessoal</span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="education"><span class="fx-opt__mark"></span><span class="fx-opt__text">Empréstimo educacional</span></button>
+    <button type="button" class="fx-opt fx-opt--check" data-value="other"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outro</span></button>
+  </div>
+  <div class="fx-field" id="fieldDebtAmount" hidden>
+    <label for="inDebt">Somando tudo, quanto você paga por mês?</label>
+    <div class="fx-input-yen"><input class="fx-input" id="inDebt" inputmode="numeric" placeholder="30.000"/></div>
+    <p class="fx-help" style="margin:8px 0 0">Se não souber o valor exato, uma estimativa já serve.</p>
+  </div>
+</section>
+
+<section class="fx-step" data-step="f_down">
+  <p class="fx-count">Simulação financeira · 4 de 5</p>
+  <h2 class="fx-q">Você possui algum valor para usar como entrada?</h2>
+  <div class="fx-options" id="optDown" role="group" aria-label="Entrada disponível">
+    <button type="button" class="fx-opt" data-value="0"><span class="fx-opt__mark"></span><span class="fx-opt__text">Não pretendo usar entrada</span></button>
+    <button type="button" class="fx-opt" data-value="500000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Até ¥500.000</span></button>
+    <button type="button" class="fx-opt" data-value="1000000"><span class="fx-opt__mark"></span><span class="fx-opt__text">De ¥500.000 a ¥1.000.000</span></button>
+    <button type="button" class="fx-opt" data-value="2000000"><span class="fx-opt__mark"></span><span class="fx-opt__text">De ¥1.000.000 a ¥2.000.000</span></button>
+    <button type="button" class="fx-opt" data-value="3000000"><span class="fx-opt__mark"></span><span class="fx-opt__text">Mais de ¥2.000.000</span></button>
+    <button type="button" class="fx-opt" data-value="other"><span class="fx-opt__mark"></span><span class="fx-opt__text">Outro valor</span></button>
+  </div>
+  <div class="fx-field" id="fieldDownOther" hidden>
+    <label for="inDown">Valor da entrada</label>
+    <div class="fx-input-yen"><input class="fx-input" id="inDown" inputmode="numeric" placeholder="1.500.000"/></div>
+  </div>
+</section>
+
+<section class="fx-step" data-step="f_timing">
+  <p class="fx-count">Simulação financeira · 5 de 5</p>
+  <h2 class="fx-q">Quando você pretende comprar?</h2>
+  <div class="fx-options" id="optTiming" role="group" aria-label="Momento da compra">
+    <button type="button" class="fx-opt" data-value="asap"><span class="fx-opt__mark"></span><span class="fx-opt__text">Assim que encontrar uma boa oportunidade</span></button>
+    <button type="button" class="fx-opt" data-value="3m"><span class="fx-opt__mark"></span><span class="fx-opt__text">Nos próximos 3 meses</span></button>
+    <button type="button" class="fx-opt" data-value="6m"><span class="fx-opt__mark"></span><span class="fx-opt__text">De 3 a 6 meses</span></button>
+    <button type="button" class="fx-opt" data-value="12m"><span class="fx-opt__mark"></span><span class="fx-opt__text">De 6 a 12 meses</span></button>
+    <button type="button" class="fx-opt" data-value="research"><span class="fx-opt__mark"></span><span class="fx-opt__text">Apenas estou pesquisando</span></button>
+  </div>
+</section>
+
+<!-- ══════════ CONTATO ══════════ -->
+<section class="fx-step" data-step="lead">
+  <h2 class="fx-q">Onde podemos enviar sua simulação completa?</h2>
+  <p class="fx-help">Você verá o resultado aqui mesmo, na tela. O contato serve para a Easy House retomar de onde você parou.</p>
+
+  <form id="leadForm" novalidate>
+    <div class="fx-field">
+      <label for="inName">Primeiro nome <span aria-hidden="true">*</span></label>
+      <input class="fx-input" id="inName" autocomplete="given-name" placeholder="Como podemos te chamar"/>
+      <p class="fx-error" id="errName">Informe seu nome.</p>
+    </div>
+
+    <div class="fx-field">
+      <label for="inPhone">WhatsApp <span aria-hidden="true">*</span></label>
+      <input class="fx-input" id="inPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="080-1234-5678"/>
+      <p class="fx-error" id="errPhone">Informe um número de telefone válido.</p>
+    </div>
+
+    <div class="fx-field">
+      <label for="inEmail">E-mail <span class="opt">(opcional)</span></label>
+      <input class="fx-input" id="inEmail" type="email" autocomplete="email" placeholder="seu@email.com"/>
+    </div>
+
+    <div class="fx-field">
+      <label for="inLang">Idioma de atendimento</label>
+      <select class="fx-select" id="inLang">
+        <option value="pt-BR">Português</option>
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
+
+    <div class="fx-field">
+      <label for="inWhen">Melhor período para contato</label>
+      <select class="fx-select" id="inWhen">
+        <option value="">Tanto faz</option>
+        <option value="manha">Manhã</option>
+        <option value="tarde">Tarde</option>
+        <option value="noite">Noite</option>
+        <option value="fds">Fim de semana</option>
+      </select>
+    </div>
+
+    <label class="fx-consent">
+      <input type="checkbox" id="inConsent"/>
+      <span id="consentText">Autorizo a Easy House a usar estas informações para analisar minha solicitação e entrar em contato comigo. Li a <a href="/privacy" target="_blank" rel="noopener">política de privacidade</a>.</span>
+    </label>
+    <p class="fx-error" id="errConsent">É necessário autorizar para continuar.</p>
+
+    <label class="fx-consent">
+      <input type="checkbox" id="inMarketing"/>
+      <span>Também quero receber novidades e novos imóveis da Easy House. <em>(opcional)</em></span>
+    </label>
+
+    <div class="fx-note" style="margin-top:14px">
+      Seus dados financeiros não são enviados a nenhum banco sem a sua autorização e não são compartilhados com terceiros.
+    </div>
+
+    <p class="fx-error" id="errSubmit" style="margin-top:12px"></p>
+  </form>
+</section>
+
+<!-- ══════════ RESULTADO COMPLETO ══════════ -->
+<section class="fx-step" data-step="result">
+  <span class="fx-badge fx-badge--ok" id="resultBadge">Simulação concluída</span>
+  <h2 class="fx-q" style="margin-top:12px">Sua simulação está pronta<span id="resultName"></span></h2>
+  <p class="fx-help">Este é um cenário inicial baseado nas informações que você forneceu. A Easy House poderá verificar os documentos e procurar as opções mais adequadas.</p>
+
+  <div class="fx-card">
+    <p class="fx-card__label">Faixa estimada do imóvel</p>
+    <div class="fx-range">
+      <div class="fx-range__value" id="resCenter">—</div>
+      <div class="fx-range__bar"></div>
+      <div class="fx-range__bounds"><span id="resMin">—</span><span>até</span><span id="resMax">—</span></div>
+    </div>
+  </div>
+
+  <div class="fx-card">
+    <p class="fx-card__label">Parcela e prazo</p>
+    <dl class="fx-rows" id="resPayment"></dl>
+  </div>
+
+  <div class="fx-card">
+    <p class="fx-card__label">Composição do custo estimado</p>
+    <dl class="fx-rows" id="resCost"></dl>
+  </div>
+
+  <div class="fx-card">
+    <p class="fx-card__label">Cenário considerado</p>
+    <div id="resScenario"></div>
+  </div>
+
+  <div id="resExplain"></div>
+  <div id="resMatome"></div>
+
+  <div class="fx-card" id="resRentCard">
+    <p class="fx-card__label">Comparar com seu aluguel atual <span style="font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></p>
+    <div class="fx-field" style="margin-top:0">
+      <label for="inRent">Quanto você paga hoje de aluguel?</label>
+      <div class="fx-input-yen"><input class="fx-input" id="inRent" inputmode="numeric" placeholder="85.000"/></div>
+    </div>
+    <dl class="fx-rows" id="resRent" style="margin-top:12px"></dl>
+  </div>
+
+  <div id="resProps"></div>
+
+  <div class="fx-actions" style="position:static;background:none;border:none;padding:20px 0 0;backdrop-filter:none">
+    <div class="fx-actions__in" style="flex-direction:column;gap:10px">
+      <a class="fx-btn fx-btn--wa fx-btn--block" id="btnWhatsApp" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Conversar no WhatsApp
+      </a>
+      <a class="fx-btn fx-btn--ghost fx-btn--block" href="/imoveis">Ver imóveis disponíveis</a>
+    </div>
+  </div>
+
+  <p class="fx-legal" id="resLegal"></p>
+</section>
+
+</main>
+
+<!-- Ações fixas -->
+<div class="fx-actions" id="fxActions">
+  <div class="fx-actions__in">
+    <button type="button" class="fx-btn fx-btn--back" id="fxBack" aria-label="Voltar para a pergunta anterior" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <button type="button" class="fx-btn fx-btn--primary" id="fxNext">Calcular minha faixa de compra</button>
+  </div>
+</div>
+
+<footer class="fx-foot">
+  <p>
+    <strong>株式会社EASY HOUSE</strong> · 沖縄県知事(1)第5984号<br/>
+    愛知県碧南市入船町４丁目３７−２ · <a href="tel:+818028867708">080-2886-7708</a>
+  </p>
+  <p style="margin-top:10px">
+    A Easy House não é instituição financeira e não garante aprovação de crédito.
+    Taxas, prazos e enquadramento dependem da análise de cada instituição.
+    <a href="/privacy">Privacidade</a> · <a href="/terms">Termos</a> · <a href="/">Site</a>
+  </p>
+</footer>
+
+<script>
+  window.EH_SUPABASE_URL = "https://igtqdhesorahhdyvsjrl.supabase.co";
+  window.EH_SUPABASE_KEY = "sb_publishable_jYJGgS4CfLkRbUFkSWI5PQ_qEYgFmLZ";
+</script>
+<script type="module" src="/simular.js?v=1"></script>
+</body>
+</html>

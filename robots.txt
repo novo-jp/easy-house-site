@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
 
 Sitemap: https://easyhouse.homes/sitemap.xml

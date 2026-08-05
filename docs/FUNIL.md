@@ -1,0 +1,213 @@
+# Funil de simulação — EASY HOUSE
+
+Documentação de instalação, operação e manutenção.
+
+---
+
+## 1. O que foi construído
+
+Uma ferramenta gratuita de pré-simulação de compra de imóvel no Japão, em português,
+que entrega valor antes de pedir contato e encaminha a conversa para o WhatsApp com
+contexto suficiente para o corretor não recomeçar do zero.
+
+**Decisão de arquitetura:** o site já existia como estático (HTML/CSS/JS no Netlify, com
+Supabase). Em vez de migrar para Next.js — o que significaria reescrever 11 páginas já
+otimizadas —, o funil foi construído sobre a mesma base, com Netlify Functions para o que
+precisa de servidor. O resultado atende aos requisitos de cálculo isolado, dados sensíveis
+fora do browser, configuração versionada e testes, sem descartar o que já funciona.
+
+---
+
+## 2. Arquivos
+
+```
+lib/
+  financing.js               motor financeiro (determinístico, sem I/O, sem IA)
+  financing-config.json      configuração versionada (reserva local)
+tests/
+  financing.test.mjs         43 testes — node --test
+netlify/functions/
+  simulate.js                POST /api/simulate  — calcula no servidor
+  lead.js                    POST /api/lead      — grava lead, consentimento, simulação
+  event.js                   POST /api/event     — eventos do funil, sem dados sensíveis
+sql/
+  schema.sql                 tabelas, RLS e retenção
+simular.html                 funil (modo geral)
+simular/{cidade}.html        funil por cidade — gerado por build-pages.mjs
+funnel.css / funnel.js       tema claro e controlador do funil
+simular.js                   fluxo, validações e telas de resultado
+admin-taxas.html             painel de configuração de taxas
+build-pages.mjs              gera as páginas por cidade
+```
+
+---
+
+## 3. Instalação
+
+### 3.1 Banco
+
+No SQL Editor do Supabase, executar `sql/schema.sql`.
+
+Depois, publicar a primeira configuração:
+
+```sql
+insert into financing_configuration (version, config, valid_from, is_active, note, updated_by)
+values (1, '<conteúdo de lib/financing-config.json>'::jsonb, current_date, true, 'Configuração inicial', 'implantacao');
+```
+
+### 3.2 Variáveis de ambiente (Netlify → Site configuration → Environment variables)
+
+| Variável | Para quê | Onde obter |
+|---|---|---|
+| `SUPABASE_URL` | Endereço do projeto | Supabase → Project Settings → API |
+| `SUPABASE_SERVICE_KEY` | Gravar leads e simulações | Supabase → API → `service_role` |
+
+> A `service_role` ignora o RLS. Ela só pode existir nas variáveis do Netlify —
+> nunca no HTML, no JS do browser ou no repositório.
+
+Sem essas variáveis o funil continua funcionando: calcula, mostra o resultado e leva ao
+WhatsApp, apenas não grava o lead.
+
+### 3.3 Publicação
+
+`git push` — o Netlify publica automaticamente. As functions em `netlify/functions/`
+viram `/api/simulate`, `/api/lead` e `/api/event`.
+
+---
+
+## 4. Como rodar os testes
+
+```bash
+node --test tests/financing.test.mjs
+```
+
+43 testes cobrindo: fórmula da parcela, cálculo inverso, prazo por idade, capacidade pela
+renda, custo de aquisição, seleção de cenário, simulação completa, comparação com aluguel,
+taxa zero, idade inválida, dívida acima do limite, mudança de configuração e ausência de
+linguagem de aprovação no resultado.
+
+---
+
+## 5. Motor financeiro
+
+Todas as fórmulas ficam em `lib/financing.js`, sem dependência de interface.
+
+| Função | O que faz |
+|---|---|
+| `calculateMonthlyPayment` | Parcela pelo sistema de amortização constante |
+| `calculatePrincipalFromPayment` | Principal a partir da parcela |
+| `calculateTerm` | Prazo limitado pelo produto e pela idade de quitação |
+| `calculateMaximumHousingPayment` | Capacidade mensal após descontar dívidas |
+| `calculateAcquisitionCost` | Imóvel + despesas − entrada |
+| `calculateMaximumPropertyPrice` | Preço máximo compatível com o valor financiável |
+| `selectFinancingScenario` | Escolhe o cenário de simulação |
+| `runSimulation` | Orquestra tudo e devolve o resultado com faixa |
+| `compareWithRent` | Comparação honesta com o aluguel atual |
+
+### Regras aplicadas
+
+- **Flat 35** — autônomo, ou empreiteira com menos de 3 anos. Taxa 2,5%, prazo máximo 35 anos,
+  quitação até 80 anos, comprometimento de 30% abaixo de ¥4.000.000 e 35% a partir daí.
+- **Cenário bancário** — funcionário efetivo, ou empreiteira com 3 anos ou mais. Taxa 1,4%,
+  prazo máximo 50 anos, quitação até 80 anos. **A regra de comprometimento ainda não está
+  validada**: enquanto isso, o simulador calcula apenas pela parcela desejada e avisa o cliente.
+- **Análise manual** — dono de empresa, contrato temporário, outro, ou residência fora da lista
+  aceita. Ainda simula pela parcela desejada, deixando claro que não é análise de capacidade.
+- **Faixa** — o resultado é sempre um intervalo (margem de 7%, configurável), nunca um valor exato.
+
+---
+
+## 6. Privacidade
+
+| Dado | Onde vive |
+|---|---|
+| Renda, dívidas, entrada, visto | Memória do navegador durante a simulação; enviados ao servidor só após o aceite |
+| Etapa, cidade, variante do teste | `localStorage` (dados não sensíveis) |
+| Identificador de sessão | `sessionStorage` |
+| Eventos de analytics | Apenas nome do evento, etapa, variante e origem |
+
+`netlify/functions/event.js` mantém uma lista de bloqueio: renda, dívidas, idade, visto,
+nacionalidade, telefone, e-mail e nome são descartados antes de gravar, mesmo se enviados
+por engano.
+
+A mensagem do WhatsApp leva apenas o código do lead (`EH-XXXXXX`) e as cidades escolhidas —
+nunca valores financeiros. O corretor consulta o restante no CRM pelo código.
+
+Consentimentos ficam em `consent`, com versão da política, texto aceito e data. Nenhuma caixa
+vem marcada.
+
+---
+
+## 7. Eventos do funil
+
+`landing_view` · `simulation_started` · `quick_question_completed` · `quick_simulation_completed`
+· `preliminary_result_viewed` · `full_simulation_started` · `lead_form_viewed` · `lead_submitted`
+· `simulation_result_viewed` · `property_match_viewed` · `property_opened` · `whatsapp_clicked`
+· `visit_requested`
+
+Vão para `window.dataLayer` (GTM/GA4) e para a tabela `funnel_event`.
+
+**Ainda não instalado:** GTM, GA4, Google Ads, Meta Pixel e Conversions API. A camada de dados
+está pronta; falta decidir a gestão de consentimento antes de carregar tags de publicidade.
+
+---
+
+## 8. Testes A/B
+
+Variante sorteada no primeiro acesso e guardada em `localStorage`. Forçar pela URL: `?v=A` ou `?v=B`.
+
+| Teste | Variante A | Variante B | Métrica |
+|---|---|---|---|
+| 1 (ativo) | "Veja em 60 segundos quanto pode custar sua casa no Japão" | "Veja quais casas podem caber na parcela que você deseja pagar" | `quick_simulation_completed` |
+| 2 (a fazer) | Contato após o resultado preliminar | Contato após a simulação completa | Leads qualificados e agendamentos |
+| 3 (a fazer) | "Calcular minha faixa de compra" | "Fazer minha simulação gratuita" | `simulation_started` |
+
+Definir o volume mínimo antes de declarar vencedor. Um teste por vez.
+
+---
+
+## 9. Rotas
+
+| Rota | Uso |
+|---|---|
+| `/simular` | Campanha geral |
+| `/simular/hekinan`, `/takahama`, `/nishio`, `/anjo`, `/kariya` | Campanha por cidade |
+| `/admin-taxas` | Configuração das taxas (uso interno) |
+
+Para um imóvel específico, adicionar no `<body>`: `data-property-id` e `data-property-price`.
+A página passa a mostrar a parcela estimada daquele imóvel.
+
+Depois de mudar `simular.html`, rodar `node build-pages.mjs` para regerar as páginas de cidade.
+
+---
+
+## 10. Pontos que ainda precisam de validação humana
+
+1. **Regra de comprometimento de renda do cenário bancário.** Não foi configurada por não ter
+   sido validada. Enquanto isso, o simulador não estima capacidade nesse cenário.
+2. **Base de imóveis à venda.** A tabela `imoveis_aichi` existente é de aluguel. A tabela
+   `property` foi criada e está vazia — sem ela, o funil não recomenda imóveis (e diz isso
+   honestamente ao cliente, em vez de inventar quantidade).
+3. **Percentual da segunda renda.** Configurado em 50% como ponto de partida. Confirmar com
+   as instituições.
+4. **Produto de análise conjunta de dívidas.** Limite de ¥5.000.000 e prazo de 50 anos são
+   indicativos. Exige análise manual e não gera segundo cenário automático.
+5. **Taxas de referência.** 2,5% e 1,4% precisam de revisão periódica no painel.
+6. **Idade mínima e máxima.** Hoje o formulário aceita de 18 a 79 anos.
+7. **Distribuição de leads entre corretores.** O campo `owner` existe; a regra de rodízio
+   ainda não foi definida.
+
+---
+
+## 11. Checklist de publicação
+
+- [ ] `sql/schema.sql` executado no Supabase
+- [ ] Configuração versão 1 publicada e ativa
+- [ ] `SUPABASE_URL` e `SUPABASE_SERVICE_KEY` no Netlify
+- [ ] `node --test tests/financing.test.mjs` sem falhas
+- [ ] Fluxo completo testado no celular
+- [ ] Envio de lead gravando em `lead`, `consent` e `simulation`
+- [ ] Mensagem do WhatsApp chegando com o código
+- [ ] Página `/admin-taxas` acessível apenas por quem deve
+- [ ] Política de privacidade revisada para citar a simulação
+- [ ] Definir quem recebe os leads e em quanto tempo responde

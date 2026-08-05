@@ -1,0 +1,60 @@
+{
+  "id": "easyhouse-default",
+  "version": 1,
+  "validFrom": "2026-06-28",
+  "updatedAt": "2026-06-28",
+  "updatedBy": "implantacao-inicial",
+  "note": "Valores iniciais informados pela Easy House. Precisam de revisão periódica. Toda alteração deve gerar nova versão.",
+  "acquisitionFeeRate": 0.1,
+  "propertyRangeMargin": 0.07,
+  "flat35": {
+    "enabled": true,
+    "label": "Flat 35",
+    "referenceAnnualRate": 0.025,
+    "rateDisplayLabel": "2,5% ao ano (taxa fixa de referência)",
+    "maximumTermYears": 35,
+    "minimumTermYears": 15,
+    "minimumTermForApplicantsOver60": 10,
+    "payoffAgeLimit": 80,
+    "incomeThreshold": 4000000,
+    "lowerIncomeRepaymentRatio": 0.3,
+    "higherIncomeRepaymentRatio": 0.35,
+    "residencyStatusesAccepted": [
+      "japanese",
+      "permanent_resident",
+      "special_permanent_resident"
+    ],
+    "residencyStatusesManualReview": [
+      "spouse_of_japanese",
+      "long_term_resident",
+      "work_visa",
+      "other",
+      "unknown"
+    ]
+  },
+  "bank": {
+    "enabled": true,
+    "label": "Cenário bancário",
+    "referenceAnnualRate": 0.014,
+    "rateDisplayLabel": "1,4% ao ano (taxa de referência)",
+    "maximumTermYears": 50,
+    "minimumTermYears": 10,
+    "payoffAgeLimit": 80,
+    "repaymentRatioRulesConfigured": false,
+    "lowerIncomeRepaymentRatio": null,
+    "higherIncomeRepaymentRatio": null,
+    "incomeThreshold": 4000000
+  },
+  "matomeToku": {
+    "enabled": true,
+    "label": "Análise conjunta de dívidas",
+    "maximumRefinanceAmount": 5000000,
+    "maximumTermYears": 50,
+    "manualReviewRequired": true,
+    "excludesBusinessDebt": true
+  },
+  "incomeCombination": {
+    "secondApplicantIncomeRate": 0.5,
+    "requiresInstitutionValidation": true
+  }
+}

@@ -48,3 +48,22 @@
   for = "/favicon.svg"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# Funil: as functions viram /api/*
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"
+
+# Painel interno não deve ser indexado
+[[headers]]
+  for = "/admin-taxas"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+# O simulador não pode ser cacheado como página estática comum
+[[headers]]
+  for = "/simular"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -27,3 +27,7 @@ debug_*.png
 # Sensitive
 *.env
 .env.local
+
+# Funil
+.env
+.netlify/

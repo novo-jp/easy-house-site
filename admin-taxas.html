@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Configuração de taxas — EASY HOUSE</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="funnel.css?v=1"/>
+<style>
+  :root { --wrap: 760px; }
+  .adm { max-width: var(--wrap); margin-inline: auto; padding: 26px 20px 80px; }
+  .adm h1 { font-size: 1.6rem; color: var(--navy); margin-bottom: 6px; }
+  .adm__sub { color: var(--ink-soft); margin-bottom: 22px; font-size: .96rem; }
+  .grp { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 14px; }
+  .grp h2 { font-size: 1.05rem; color: var(--navy); margin-bottom: 4px; }
+  .grp p.hint { font-size: .87rem; color: var(--ink-mute); margin-bottom: 14px; }
+  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .f label { display: block; font-size: .84rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 5px; }
+  .f input, .f select { width: 100%; padding: 11px 13px; min-height: 46px; border: 2px solid var(--line); border-radius: 10px; font-size: .98rem; }
+  .f input:focus { outline: none; border-color: var(--navy); }
+  .f small { display: block; font-size: .78rem; color: var(--ink-mute); margin-top: 4px; }
+  .out { background: #0F172A; color: #E2E8F0; border-radius: var(--radius); padding: 16px; font-family: ui-monospace, Menlo, monospace; font-size: .78rem; line-height: 1.55; overflow-x: auto; white-space: pre; margin-top: 10px; }
+  .warn { background: #FFFAEB; border-left: 4px solid #DC6803; padding: 14px 16px; border-radius: var(--radius); font-size: .9rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 18px; }
+  .row2 { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<header class="fx-top">
+  <div class="fx-top__in">
+    <a href="/" class="fx-top__brand"><img src="images/opt/logo-240.png" alt="EASY HOUSE" width="240" height="90"/></a>
+    <span class="fx-secure">Uso interno</span>
+  </div>
+</header>
+
+<main class="adm">
+  <h1>Configuração de taxas do simulador</h1>
+  <p class="adm__sub">Altere os valores abaixo e gere o comando para publicar uma nova versão. Simulações antigas continuam ligadas à versão usada na época.</p>
+
+  <div class="warn">
+    <strong>Como funciona a publicação.</strong> Esta página não grava nada sozinha — ela gera o comando SQL.
+    Você aplica no <strong>SQL Editor do Supabase</strong>, que já exige login. Assim nenhuma credencial de escrita
+    fica exposta no navegador. Toda alteração cria uma versão nova, com data e responsável.
+  </div>
+
+  <div class="grp">
+    <h2>Versão</h2>
+    <p class="hint">A versão é registrada em cada simulação feita a partir da publicação.</p>
+    <div class="fields">
+      <div class="f"><label for="version">Número da versão</label><input id="version" type="number" min="1" step="1"/></div>
+      <div class="f"><label for="validFrom">Vigente a partir de</label><input id="validFrom" type="date"/></div>
+      <div class="f"><label for="updatedBy">Responsável pela alteração</label><input id="updatedBy" placeholder="nome de quem alterou"/></div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Geral</h2>
+    <div class="fields">
+      <div class="f">
+        <label for="acquisitionFeeRate">Despesas de aquisição (%)</label>
+        <input id="acquisitionFeeRate" type="number" step="0.5" min="0" max="30"/>
+        <small>Percentual sobre o valor do imóvel. Hoje: 10%.</small>
+      </div>
+      <div class="f">
+        <label for="propertyRangeMargin">Margem da faixa (%)</label>
+        <input id="propertyRangeMargin" type="number" step="1" min="0" max="20"/>
+        <small>Largura da faixa mostrada ao cliente. Sugerido entre 5 e 10.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Flat 35</h2>
+    <p class="hint">Usado para autônomo e para empreiteira com menos de 3 anos.</p>
+    <div class="fields">
+      <div class="f"><label for="f35rate">Taxa anual (%)</label><input id="f35rate" type="number" step="0.01"/></div>
+      <div class="f"><label for="f35term">Prazo máximo (anos)</label><input id="f35term" type="number" step="1"/></div>
+      <div class="f"><label for="f35age">Idade limite ao quitar</label><input id="f35age" type="number" step="1"/></div>
+      <div class="f"><label for="f35min">Prazo mínimo (anos)</label><input id="f35min" type="number" step="1"/></div>
+      <div class="f"><label for="f35threshold">Faixa de renda (¥)</label><input id="f35threshold" type="number" step="100000"/><small>Acima deste valor usa o percentual maior.</small></div>
+      <div class="f"><label for="f35low">Comprometimento abaixo (%)</label><input id="f35low" type="number" step="1"/></div>
+      <div class="f"><label for="f35high">Comprometimento acima (%)</label><input id="f35high" type="number" step="1"/></div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Cenário bancário</h2>
+    <p class="hint">Usado para funcionário efetivo e empreiteira com 3 anos ou mais.</p>
+    <div class="fields">
+      <div class="f"><label for="bkrate">Taxa anual (%)</label><input id="bkrate" type="number" step="0.01"/></div>
+      <div class="f"><label for="bkterm">Prazo máximo (anos)</label><input id="bkterm" type="number" step="1"/></div>
+      <div class="f"><label for="bkage">Idade limite ao quitar</label><input id="bkage" type="number" step="1"/></div>
+      <div class="f">
+        <label for="bkconfigured">Regra de comprometimento</label>
+        <select id="bkconfigured">
+          <option value="false">Ainda não validada</option>
+          <option value="true">Validada pela Easy House</option>
+        </select>
+        <small>Enquanto não for validada, o simulador calcula apenas pela parcela desejada e avisa o cliente.</small>
+      </div>
+      <div class="f"><label for="bklow">Comprometimento abaixo (%)</label><input id="bklow" type="number" step="1" placeholder="deixe vazio se não validado"/></div>
+      <div class="f"><label for="bkhigh">Comprometimento acima (%)</label><input id="bkhigh" type="number" step="1" placeholder="deixe vazio se não validado"/></div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Análise conjunta de dívidas</h2>
+    <div class="fields">
+      <div class="f"><label for="mtmax">Limite indicativo (¥)</label><input id="mtmax" type="number" step="100000"/></div>
+      <div class="f"><label for="mtterm">Prazo máximo (anos)</label><input id="mtterm" type="number" step="1"/></div>
+      <div class="f">
+        <label for="mtreview">Exige análise manual</label>
+        <select id="mtreview"><option value="true">Sim</option><option value="false">Não</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="grp">
+    <h2>Composição de renda</h2>
+    <div class="fields">
+      <div class="f">
+        <label for="secondRate">Percentual da segunda renda (%)</label>
+        <input id="secondRate" type="number" step="5" min="0" max="100"/>
+        <small>Aparece no resultado do cliente como percentual considerado nesta simulação.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <button class="fx-btn fx-btn--primary" id="btnGen" style="flex:1">Gerar comando de publicação</button>
+    <button class="fx-btn fx-btn--ghost" id="btnReset">Recarregar valores atuais</button>
+  </div>
+
+  <div id="outWrap" hidden>
+    <h2 style="font-size:1rem;color:var(--navy);margin:22px 0 8px">1. Cole no SQL Editor do Supabase</h2>
+    <div class="out" id="outSql"></div>
+    <button class="fx-btn fx-btn--ghost" id="btnCopySql" style="margin-top:10px">Copiar SQL</button>
+
+    <h2 style="font-size:1rem;color:var(--navy);margin:22px 0 8px">2. Substitua o arquivo lib/financing-config.json</h2>
+    <p class="hint" style="font-size:.87rem;color:var(--ink-mute);margin-bottom:8px">Serve de reserva caso o banco fique indisponível.</p>
+    <div class="out" id="outJson"></div>
+    <button class="fx-btn fx-btn--ghost" id="btnCopyJson" style="margin-top:10px">Copiar JSON</button>
+  </div>
+
+  <p class="fx-legal" style="margin-top:26px">
+    Nenhuma alteração aqui afeta simulações já registradas. Cada simulação guarda a versão da configuração usada,
+    permitindo auditar depois qual regra produziu cada resultado.
+  </p>
+</main>
+
+<script type="module">
+import cfg from './lib/financing-config.json' with { type: 'json' };
+
+const $ = s => document.querySelector(s);
+let current = structuredClone(cfg);
+
+/** Tenta carregar a versão ativa do banco (leitura pública permitida). */
+async function loadActive() {
+  try {
+    const url = "https://igtqdhesorahhdyvsjrl.supabase.co";
+    const key = "sb_publishable_jYJGgS4CfLkRbUFkSWI5PQ_qEYgFmLZ";
+    const r = await fetch(`${url}/rest/v1/financing_configuration?select=config&is_active=eq.true&limit=1`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` }
+    });
+    if (r.ok) {
+      const rows = await r.json();
+      if (rows[0]?.config) current = rows[0].config;
+    }
+  } catch { /* usa o arquivo local */ }
+  fill();
+}
+
+function fill() {
+  const c = current;
+  $('#version').value = (c.version || 1) + 1;
+  $('#validFrom').value = new Date().toISOString().slice(0, 10);
+  $('#updatedBy').value = '';
+  $('#acquisitionFeeRate').value = (c.acquisitionFeeRate * 100).toFixed(1);
+  $('#propertyRangeMargin').value = (c.propertyRangeMargin * 100).toFixed(0);
+
+  $('#f35rate').value = (c.flat35.referenceAnnualRate * 100).toFixed(2);
+  $('#f35term').value = c.flat35.maximumTermYears;
+  $('#f35age').value = c.flat35.payoffAgeLimit;
+  $('#f35min').value = c.flat35.minimumTermYears;
+  $('#f35threshold').value = c.flat35.incomeThreshold;
+  $('#f35low').value = (c.flat35.lowerIncomeRepaymentRatio * 100).toFixed(0);
+  $('#f35high').value = (c.flat35.higherIncomeRepaymentRatio * 100).toFixed(0);
+
+  $('#bkrate').value = (c.bank.referenceAnnualRate * 100).toFixed(2);
+  $('#bkterm').value = c.bank.maximumTermYears;
+  $('#bkage').value = c.bank.payoffAgeLimit;
+  $('#bkconfigured').value = String(!!c.bank.repaymentRatioRulesConfigured);
+  $('#bklow').value = c.bank.lowerIncomeRepaymentRatio != null ? (c.bank.lowerIncomeRepaymentRatio * 100).toFixed(0) : '';
+  $('#bkhigh').value = c.bank.higherIncomeRepaymentRatio != null ? (c.bank.higherIncomeRepaymentRatio * 100).toFixed(0) : '';
+
+  $('#mtmax').value = c.matomeToku.maximumRefinanceAmount;
+  $('#mtterm').value = c.matomeToku.maximumTermYears;
+  $('#mtreview').value = String(!!c.matomeToku.manualReviewRequired);
+  $('#secondRate').value = (c.incomeCombination.secondApplicantIncomeRate * 100).toFixed(0);
+}
+
+function build() {
+  const num = id => Number($(id).value);
+  const pct = id => Number($(id).value) / 100;
+  const c = structuredClone(current);
+
+  c.version = num('#version');
+  c.validFrom = $('#validFrom').value;
+  c.updatedAt = new Date().toISOString().slice(0, 10);
+  c.updatedBy = $('#updatedBy').value.trim() || 'nao-informado';
+  c.acquisitionFeeRate = pct('#acquisitionFeeRate');
+  c.propertyRangeMargin = pct('#propertyRangeMargin');
+
+  c.flat35.referenceAnnualRate = pct('#f35rate');
+  c.flat35.rateDisplayLabel = `${$('#f35rate').value.replace('.', ',')}% ao ano (taxa fixa de referência)`;
+  c.flat35.maximumTermYears = num('#f35term');
+  c.flat35.payoffAgeLimit = num('#f35age');
+  c.flat35.minimumTermYears = num('#f35min');
+  c.flat35.incomeThreshold = num('#f35threshold');
+  c.flat35.lowerIncomeRepaymentRatio = pct('#f35low');
+  c.flat35.higherIncomeRepaymentRatio = pct('#f35high');
+
+  c.bank.referenceAnnualRate = pct('#bkrate');
+  c.bank.rateDisplayLabel = `${$('#bkrate').value.replace('.', ',')}% ao ano (taxa de referência)`;
+  c.bank.maximumTermYears = num('#bkterm');
+  c.bank.payoffAgeLimit = num('#bkage');
+  c.bank.repaymentRatioRulesConfigured = $('#bkconfigured').value === 'true';
+  c.bank.lowerIncomeRepaymentRatio = $('#bklow').value === '' ? null : pct('#bklow');
+  c.bank.higherIncomeRepaymentRatio = $('#bkhigh').value === '' ? null : pct('#bkhigh');
+
+  c.matomeToku.maximumRefinanceAmount = num('#mtmax');
+  c.matomeToku.maximumTermYears = num('#mtterm');
+  c.matomeToku.manualReviewRequired = $('#mtreview').value === 'true';
+  c.incomeCombination.secondApplicantIncomeRate = pct('#secondRate');
+  return c;
+}
+
+$('#btnGen').addEventListener('click', () => {
+  const c = build();
+
+  if (c.bank.repaymentRatioRulesConfigured && (c.bank.lowerIncomeRepaymentRatio == null || c.bank.higherIncomeRepaymentRatio == null)) {
+    alert('Para marcar a regra bancária como validada, preencha os dois percentuais de comprometimento.');
+    return;
+  }
+  if (c.flat35.maximumTermYears > 35) {
+    if (!confirm('O prazo máximo do Flat 35 está acima de 35 anos. Confirma?')) return;
+  }
+
+  const json = JSON.stringify(c, null, 2);
+  $('#outJson').textContent = json;
+  $('#outSql').textContent =
+`-- Publica a versão ${c.version} da configuração do simulador
+-- Responsável: ${c.updatedBy} · Vigente a partir de ${c.validFrom}
+
+update financing_configuration set is_active = false where is_active;
+
+insert into financing_configuration (version, config, valid_from, is_active, note, updated_by)
+values (
+  ${c.version},
+  '${json.replace(/'/g, "''")}'::jsonb,
+  '${c.validFrom}',
+  true,
+  'Publicado pelo painel de taxas',
+  '${c.updatedBy.replace(/'/g, "''")}'
+);`;
+  $('#outWrap').hidden = false;
+  $('#outWrap').scrollIntoView({ behavior: 'smooth' });
+});
+
+$('#btnReset').addEventListener('click', loadActive);
+$('#btnCopySql').addEventListener('click', e => {
+  navigator.clipboard.writeText($('#outSql').textContent);
+  e.target.textContent = 'SQL copiado';
+  setTimeout(() => (e.target.textContent = 'Copiar SQL'), 1800);
+});
+$('#btnCopyJson').addEventListener('click', e => {
+  navigator.clipboard.writeText($('#outJson').textContent);
+  e.target.textContent = 'JSON copiado';
+  setTimeout(() => (e.target.textContent = 'Copiar JSON'), 1800);
+});
+
+loadActive();
+</script>
+</body>
+</html>
