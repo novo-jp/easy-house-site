@@ -260,34 +260,18 @@ export function whatsappLink() {
 }
 
 /* ============================================================
-   Imóveis compatíveis
+   Imóveis
    ============================================================ */
-export async function findProperties(range, cities) {
-  try {
-    const params = new URLSearchParams({
-      select: 'slug,title,city,neighborhood,price,monthly_extra_costs,photos,bedrooms,built_area',
-      status: 'eq.available',
-      price: `lte.${Math.round(range.max * 1.10)}`,
-      order: 'price.asc',
-      limit: '6'
-    });
-    const resp = await fetch(`${window.EH_SUPABASE_URL}/rest/v1/property?${params}`, {
-      headers: { apikey: window.EH_SUPABASE_KEY, Authorization: `Bearer ${window.EH_SUPABASE_KEY}` }
-    });
-    if (!resp.ok) return [];
-    let rows = await resp.json();
-    if (Array.isArray(cities) && cities.length && !cities.includes('outra')) {
-      const filtered = rows.filter(r => cities.some(c => (r.city || '').toLowerCase().includes(c.toLowerCase())));
-      if (filtered.length) rows = filtered;
-    }
-    return rows.map(r => ({
-      ...r,
-      fit: r.price <= range.max ? 'within_range' : 'slightly_above'
-    }));
-  } catch {
-    return [];
-  }
-}
+
+/**
+ * Mensagem única sobre imóveis.
+ *
+ * Não existe base de imóveis à venda publicada: em vez de contar ou listar
+ * algo que não podemos confirmar, dizemos o que é verdade — a Easy House tem
+ * imóveis na região e o corretor apresenta os que se enquadram.
+ */
+export const PROPERTY_MESSAGE =
+  'Temos imóveis disponíveis na região, o corretor irá lhe apresentar as opções que se enquadram.';
 
 /* ============================================================
    Utilidades de formatação

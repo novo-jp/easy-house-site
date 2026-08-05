@@ -5,7 +5,7 @@
 
 import {
   initFunnel, goTo, goBack, setAnswer, getAnswers, getState,
-  simulate, submitLead, whatsappLink, findProperties,
+  simulate, submitLead, whatsappLink, PROPERTY_MESSAGE,
   track, yen, parseYen, bindYenInput
 } from './funnel.js';
 
@@ -258,13 +258,9 @@ async function renderPreliminary() {
     $('#prelimBadge').className = 'fx-badge fx-badge--ok';
   }
 
-  // imóveis compatíveis — só números reais
-  const props = await findProperties(r.propertyRange, a.cities);
-  $('#prelimProps').innerHTML = props.length
-    ? `Encontramos <strong>${props.length}</strong> ${props.length === 1 ? 'imóvel próximo' : 'imóveis próximos'} desta faixa nas cidades escolhidas. ` +
-      `Para verificar se a faixa também combina com sua renda e com seus financiamentos atuais, complete a próxima etapa.`
-    : `Para verificar se esta faixa também combina com sua renda e com seus financiamentos atuais, complete a próxima etapa. ` +
-      `Nossa equipe também procura imóveis que ainda não estão publicados no site.`;
+  $('#prelimProps').innerHTML =
+    `${PROPERTY_MESSAGE} ` +
+    `Para verificar se esta faixa também combina com sua renda e com seus financiamentos atuais, complete a próxima etapa.`;
 
   const notes = [...(r.notes || []), ...(r.warnings || [])];
   $('#prelimNotes').innerHTML = notes.map(n => `<div class="fx-note fx-note--warn">${n}</div>`).join('');
@@ -339,41 +335,19 @@ async function renderResult() {
   $('#btnWhatsApp').href = whatsappLink();
   $('#btnWhatsApp').addEventListener('click', () => track('whatsapp_clicked', { from: 'result' }), { once: true });
 
-  // imóveis
-  if (r.propertyRange) {
-    const props = await findProperties(r.propertyRange, a.cities);
-    $('#resProps').innerHTML = props.length
-      ? `<div class="fx-card">
-           <p class="fx-card__label">Imóveis próximos da sua faixa</p>
-           <div class="fx-props">${props.map(p => propCard(p, r)).join('')}</div>
-         </div>`
-      : `<div class="fx-card">
-           <p class="fx-card__label">Imóveis</p>
-           <p style="font-size:.95rem;color:var(--ink-soft)">
-             No momento não temos imóveis publicados nesta faixa para as cidades escolhidas.
-             A Easy House trabalha também com imóveis que ainda não estão no site — mande uma mensagem que buscamos para o seu perfil.
-           </p>
-         </div>`;
-    if (props.length) track('property_match_viewed', { count: props.length });
-  }
+  // Imóveis: mensagem única, sem listar ou contar o que não podemos confirmar
+  const cidades = (a.cities || []).filter(c => c !== 'outra');
+  $('#resProps').innerHTML =
+    `<div class="fx-card">
+       <p class="fx-card__label">Imóveis</p>
+       <p style="font-size:.98rem;color:var(--ink);line-height:1.6">${PROPERTY_MESSAGE}</p>
+       ${cidades.length ? `<p class="fx-help" style="margin-top:10px">Cidades que você escolheu: ${cidades.join(', ')}.</p>` : ''}
+       <p class="fx-help" style="margin-top:10px">
+         Leve o seu código no WhatsApp: o corretor já vê a faixa estimada desta simulação e traz opções compatíveis.
+       </p>
+     </div>`;
 
   track('simulation_result_viewed', { status: r.status, scenario: r.scenario });
-}
-
-function propCard(p, r) {
-  const photo = Array.isArray(p.photos) && p.photos[0] ? p.photos[0] : '';
-  const tag = p.fit === 'within_range'
-    ? '<span class="fx-prop__tag fx-prop__tag--in">Dentro da sua faixa</span>'
-    : '<span class="fx-prop__tag fx-prop__tag--near">Um pouco acima — precisa de análise</span>';
-  return `<a class="fx-prop" href="/imovel/${p.slug}">
-    ${photo ? `<img src="${photo}" alt="" loading="lazy"/>` : '<div style="width:96px;height:96px;border-radius:10px;background:var(--bg)"></div>'}
-    <div class="fx-prop__body">
-      <p class="fx-prop__city">${p.city}${p.neighborhood ? ' · ' + p.neighborhood : ''}</p>
-      <p class="fx-prop__title">${p.title}</p>
-      <p class="fx-prop__price">${yen(p.price)}</p>
-      ${tag}
-    </div>
-  </a>`;
 }
 
 /** Explicação em linguagem simples, usando apenas números já calculados. */

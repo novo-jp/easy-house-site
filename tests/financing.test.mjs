@@ -9,6 +9,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import {
+  FLAT35_ABSOLUTE_MAX_TERM_YEARS,
   calculateMonthlyPayment,
   calculatePrincipalFromPayment,
   calculateTerm,
@@ -31,6 +32,22 @@ function approx(actual, expected, tolerance = 5) {
     `esperado ~${expected}, recebido ${actual} (diferença ${Math.abs(actual - expected).toFixed(2)})`
   );
 }
+
+describe('Configuração vigente', () => {
+  test('Flat 35 usa 2,9% ao ano', () => {
+    assert.equal(config.flat35.referenceAnnualRate, 0.029);
+    assert.ok(config.flat35.rateDisplayLabel.includes('2,9%'));
+  });
+
+  test('Flat 35 está configurado com 35 anos', () => {
+    assert.equal(config.flat35.maximumTermYears, 35);
+  });
+
+  test('o rótulo do Flat 35 nunca menciona 50 anos', () => {
+    const texto = JSON.stringify(config.flat35);
+    assert.ok(!texto.includes('50'), 'nada em flat35 pode citar 50');
+  });
+});
 
 describe('Parcela mensal', () => {
   test('Teste 1 — ¥27.500.000 a 2,5% em 35 anos ≈ ¥98.311', () => {
@@ -86,6 +103,18 @@ describe('Prazo pela idade', () => {
   test('Flat 35 não recebe prazo de 50 anos', () => {
     const t = calculateTerm({ age: 25, maximumTermYears: config.flat35.maximumTermYears, payoffAgeLimit: 80 });
     assert.equal(t.years, 35);
+  });
+
+  test('Flat 35 continua limitado a 35 anos mesmo se a configuração for editada errado', () => {
+    const errada = structuredClone(config);
+    errada.flat35.maximumTermYears = 50;             // edição indevida
+    const r = runSimulation(
+      { age: 25, employmentType: 'autonomo', employmentYears: 'gte3', residency: 'permanent_resident', desiredMonthlyPayment: 90_000 },
+      errada
+    );
+    assert.equal(r.scenario, 'flat35');
+    assert.equal(r.term.years, FLAT35_ABSOLUTE_MAX_TERM_YEARS, 'o teto de 35 anos precisa valer no motor, não só na configuração');
+    assert.ok(r.term.years < 50);
   });
 
   test('prazo abaixo do mínimo é sinalizado', () => {
