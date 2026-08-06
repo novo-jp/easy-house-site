@@ -28,7 +28,7 @@ const FLOW = {
   q_residency:  { next: nextAfterNationality, label: 'Continuar', validate: vNationality },
   q_visa:       { next: () => 'q_composition', label: 'Continuar', validate: vVisa },
   q_composition:{ next: () => 'preliminary', label: 'Ver meu primeiro cenário', validate: vComposition },
-  preliminary:  { next: () => 'f_income',   label: 'Refinar minha simulação' },
+  preliminary:  { next: () => 'f_income',   label: 'Completar dados da minha simulação' },
   f_income:     { next: nextAfterIncome,    label: 'Continuar', validate: vIncome },
   f_second:     { next: () => 'f_debts',    label: 'Continuar' },
   f_debts:      { next: () => 'f_down',     label: 'Continuar', validate: vDebts },
@@ -239,15 +239,15 @@ async function renderPreliminary() {
   $('#prelimMax').textContent = yen(r.propertyRange.max);
 
   $('#prelimIntro').textContent =
-    `Com uma parcela de aproximadamente ${yen(r.payment.used)} e o prazo estimado para o seu perfil, ` +
-    `a primeira simulação indica uma faixa de imóvel entre ${yen(r.propertyRange.min)} e ${yen(r.propertyRange.max)}.`;
+    `Com uma parcela de aproximadamente ${yen(r.payment.used)}, ` +
+    `você pode comprar um imóvel entre ${yen(r.propertyRange.min)} e ${yen(r.propertyRange.max)}.`;
 
   $('#prelimRows').innerHTML = [
-    row('Parcela desejada', yen(r.payment.desired || r.payment.used)),
-    row('Prazo estimado', `${r.term.years} anos (${r.term.months} parcelas)`),
-    row('Taxa de referência', r.rate.display),
-    row('Modalidade inicialmente considerada', r.scenarioLabel),
-    row('Cidades escolhidas', (a.cities || []).join(', ') || '—')
+    row('Valor da parcela por mês', yen(r.payment.desired || r.payment.used)),
+    row('Tempo para pagar', `${r.term.years} anos (${r.term.months} parcelas)`),
+    row('Juros', r.rate.display),
+    row('Tipo de financiamento', r.scenarioLabel),
+    row('Cidade escolhida', (a.cities || []).join(', ') || '—')
   ].join('');
 
   if (r.manualReview) {
@@ -260,7 +260,7 @@ async function renderPreliminary() {
 
   $('#prelimProps').innerHTML =
     `${PROPERTY_MESSAGE} ` +
-    `Para verificar se esta faixa também combina com sua renda e com seus financiamentos atuais, complete a próxima etapa.`;
+    `Para ver se esse valor também combina com sua renda e com suas dívidas atuais, complete a próxima etapa.`;
 
   const notes = [...(r.notes || []), ...(r.warnings || [])];
   $('#prelimNotes').innerHTML = notes.map(n => `<div class="fx-note fx-note--warn">${n}</div>`).join('');
@@ -290,9 +290,9 @@ async function renderResult() {
 
   $('#resPayment').innerHTML = [
     row('Parcela estimada', yen(r.payment.used), 'fx-row--total'),
-    row('Prazo', `${r.term.years} anos`),
+    row('Tempo para pagar', `${r.term.years} anos`),
     row('Total de parcelas', r.term.months),
-    row('Taxa de referência', r.rate.display),
+    row('Juros', r.rate.display),
     r.payment.desired ? row('Parcela que você deseja', yen(r.payment.desired), 'fx-row--sub') : '',
     r.payment.incomeCapacity != null
       ? row('Estimativa pela renda', yen(r.payment.incomeCapacity), 'fx-row--sub')
@@ -545,6 +545,7 @@ $('#inSecondWork')?.addEventListener('change', () => setAnswer('secondWork', $('
 
 // Navegação
 nextBtn.addEventListener('click', onNext);
+$('#prelimCta')?.addEventListener('click', onNext);
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && getState().step !== 'lead' && getState().step !== 'result') {
     if (e.target.tagName === 'TEXTAREA') return;

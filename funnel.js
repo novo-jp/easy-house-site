@@ -153,6 +153,11 @@ function updateProgress() {
 function updateActions() {
   const back = document.getElementById('fxBack');
   if (back) back.style.display = state.history.length && state.step !== 'result' ? '' : 'none';
+
+  // No resultado preliminar o botão de avançar já aparece logo após o valor;
+  // a barra fixa mantém só o "voltar" para não duplicar o mesmo botão.
+  const next = document.getElementById('fxNext');
+  if (next) next.style.display = state.step === 'preliminary' ? 'none' : '';
 }
 
 function saveNav() {
