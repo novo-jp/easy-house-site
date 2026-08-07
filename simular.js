@@ -435,7 +435,7 @@ async function onNext() {
       const data = await submitLead(contact, consent);
       // O servidor recalcula com todos os dados; se não vier, calcula aqui.
       getState().full = data.result || (await simulate());
-      track('lead_submitted', { persisted: !!data.persisted });
+      track('lead_submitted', { persisted: !!data.persisted, eventId: getState().leadEventId });
     } catch (err) {
       // A gravação pode falhar, mas o cálculo não pode ficar desatualizado:
       // recalcula com as respostas da etapa financeira antes de exibir.

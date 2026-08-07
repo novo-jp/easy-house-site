@@ -10,6 +10,7 @@
  */
 
 import { runSimulation } from '../lib/financing.js';
+import { sendLeadEvent } from '../lib/meta-capi.js';
 import { readFileSync } from 'node:fs';
 
 const defaultConfig = JSON.parse(readFileSync(new URL('../lib/financing-config.json', import.meta.url), 'utf8'));
@@ -102,7 +103,7 @@ export default async function handler(req, res) {
   const body = typeof req.body === 'string' ? safeParse(req.body) : (req.body || {});
   if (!body) return res.status(400).json({ error: 'Corpo inválido' });
 
-  const { contact = {}, answers = {}, consent = {}, source = {}, sessionId } = body;
+  const { contact = {}, answers = {}, consent = {}, source = {}, sessionId, eventId, ads } = body;
 
   // Validação
   const errors = {};
@@ -236,6 +237,17 @@ export default async function handler(req, res) {
         sensitivity: SENSITIVE[question] || 'normal'
       }));
     if (rows.length) await sb('lead_answer', { method: 'POST', body: JSON.stringify(rows) });
+
+    // Conversão para o Meta pelo servidor. Nunca pode derrubar o lead:
+    // se falhar, o cliente já foi gravado e segue para o WhatsApp do mesmo jeito.
+    try {
+      await sendLeadEvent({
+        eventId,
+        ads,
+        ip,
+        userAgent: String(req.headers['user-agent'] || '')
+      });
+    } catch { /* medição não bloqueia o atendimento */ }
 
     return res.status(200).json({ ok: true, persisted: true, code: lead.code, leadId: lead.id, result });
   } catch (err) {

@@ -245,14 +245,43 @@
   </section>
 
   <section id="cookies">
-    <h2>7. Cookies e Rastreamento</h2>
-    <p>Nosso site pode utilizar cookies e tecnologias similares para:</p>
+    <h2>7. Cookies e Medição</h2>
+
+    <p>Usamos medição para entender quais anúncios trazem pessoas até o nosso site.
+    Para isso utilizamos o <strong>Meta Pixel</strong> (Facebook e Instagram).</p>
+
+    <p><strong>Nada disso é carregado antes do seu aceite.</strong> Na primeira visita
+    aparece um aviso com as opções <em>Aceitar</em> e <em>Recusar</em>. Se você recusar,
+    nenhuma tag de publicidade é carregada — nem pelo navegador, nem pelo nosso servidor.</p>
+
+    <h3>O que é enviado</h3>
     <ul>
-      <li>Melhorar sua experiência de navegação</li>
-      <li>Analisar o tráfego (ex: Google Analytics)</li>
-      <li>Veicular conteúdo relevante em redes sociais</li>
+      <li>O nome da etapa em que você está no simulador (por exemplo, “resultado preliminar”)</li>
+      <li>A variante do teste de página que você recebeu (A ou B)</li>
+      <li>Os cookies de atribuição do próprio Meta (<code>_fbp</code> e <code>_fbc</code>), seu endereço IP e seu navegador</li>
     </ul>
-    <p>Você pode desativar os cookies nas configurações do seu navegador, embora isso possa afetar a funcionalidade do site.</p>
+
+    <h3>O que nunca é enviado</h3>
+    <ul>
+      <li>Sua renda, suas dívidas, sua entrada ou qualquer valor da simulação</li>
+      <li>Sua idade, nacionalidade ou situação de residência</li>
+      <li>Seu nome, telefone ou e-mail — nem em forma codificada</li>
+    </ul>
+
+    <p>Os dados que você preenche na simulação ficam apenas no seu navegador até o
+    momento em que você aceita enviá-los para nós. Eles são usados para o seu
+    atendimento e não são repassados a plataformas de publicidade.</p>
+
+    <h3>Mudar de ideia</h3>
+    <p>Você pode rever sua escolha a qualquer momento:</p>
+    <p>
+      <button type="button" onclick="window.ehConsent &amp;&amp; window.ehConsent.revogar()"
+              style="cursor:pointer;border-radius:999px;padding:11px 22px;border:2px solid currentColor;background:none;color:inherit;font:600 15px/1 inherit">
+        Rever minha escolha sobre medição
+      </button>
+    </p>
+    <p>Também é possível desativar os cookies nas configurações do seu navegador,
+    embora isso possa afetar a funcionalidade do site.</p>
   </section>
 
   <section id="tiktok">
@@ -294,5 +323,6 @@
   <p>&copy; 2025 EASY HOUSE / 株式会社movO. Todos os direitos reservados. &nbsp;|&nbsp; <a href="https://easyhouse.homes/terms">Termos de Serviço</a></p>
 </footer>
 
+<script src="analytics.js?v=1" defer></script>
 </body>
 </html>

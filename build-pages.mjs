@@ -24,7 +24,7 @@ for (const city of CITIES) {
 
   // caminhos relativos passam a absolutos (a página fica em /simular/)
   html = html
-    .replace(/(src|href)="(images|funnel|simular|lib|favicon)/g, '$1="/$2')
+    .replace(/(src|href)="(images|funnel|simular|lib|favicon|analytics)/g, '$1="/$2')
     .replace(/href="\/funnel\.css/g, 'href="/funnel.css')
     .replace(/src="\/simular\.js/g, 'src="/simular.js');
 

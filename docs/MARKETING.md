@@ -414,7 +414,7 @@ até ter volume; um teste por vez, sem declarar vencedor cedo.
 
 | # | O quê | Bloqueia o quê |
 |---|---|---|
-| 1 | Instalar Pixel + Conversions API + consentimento | **tudo** |
+| 1 | ~~Instalar Pixel + Conversions API + consentimento~~ — **feito em 08/08/2026**. Falta só colar o ID do pixel em `analytics.js` e criar o token da CAPI. | **tudo** |
 | 2 | Regerar token do Facebook e religar os bots | orgânico e retargeting |
 | 3 | Revisar bot de imóveis quanto a おとり広告 | risco legal |
 | 4 | Produzir V1, V2, V3 (dá para filmar tudo em uma tarde com celular) | campanha |

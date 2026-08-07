@@ -225,12 +225,24 @@ export async function simulate() {
    Envio do lead
    ============================================================ */
 export async function submitLead(contact, consent) {
+  // Identificador único deste envio. O navegador e o servidor mandam o mesmo
+  // valor para o Meta, que assim conta uma conversão só em vez de duas.
+  state.leadEventId = 'L' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+
+  // Só acompanha a atribuição de anúncio quem aceitou a medição.
+  // Sem aceite isto vem null, e o servidor não mede nada.
+  const ads = (window.ehConsent && window.ehConsent.atribuicao)
+    ? window.ehConsent.atribuicao()
+    : null;
+
   const body = {
     contact,
     consent,
     answers: state.answers,
     source: { ...state.source, variant: state.variant },
-    sessionId: state.sessionId
+    sessionId: state.sessionId,
+    eventId: state.leadEventId,
+    ads
   };
 
   const resp = await fetch('/api/lead', {

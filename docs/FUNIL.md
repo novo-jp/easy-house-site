@@ -162,8 +162,22 @@ vem marcada.
 
 Vão para `window.dataLayer` (GTM/GA4) e para a tabela `funnel_event`.
 
-**Ainda não instalado:** GTM, GA4, Google Ads, Meta Pixel e Conversions API. A camada de dados
-está pronta; falta decidir a gestão de consentimento antes de carregar tags de publicidade.
+**Meta Pixel — instalado.** `analytics.js` está em todas as páginas públicas e traduz os
+eventos acima para o Meta. Falta apenas colar o ID do pixel na constante `PIXEL_ID`
+(primeiras linhas do arquivo); enquanto ela estiver vazia, nada é carregado.
+
+- Só carrega após aceite explícito (aviso com *Aceitar* / *Recusar*, nada pré-marcado).
+- Ao Meta vão apenas `step` e `variant` — a lista `PARAMS_PERMITIDOS` descarta o resto.
+- `lib/meta-capi.js` envia a conversão `Lead` também pelo servidor, com o mesmo
+  `eventId` para o Meta não contar duas vezes. Precisa de `META_PIXEL_ID` e
+  `META_CAPI_TOKEN` nas variáveis do Vercel; sem elas fica inerte.
+- A Conversions API respeita a mesma escolha do visitante: sem aceite, `atribuicao()`
+  devolve `null` e o servidor não envia nada.
+- **Não enviamos telefone nem e-mail ao Meta**, nem com hash — o aceite do formulário
+  é para o atendimento, não para repasse a terceiro. Ver o cabeçalho de `lib/meta-capi.js`.
+
+**Ainda não instalado:** GTM, GA4, Google Ads e Meta Conversions API para eventos
+que não sejam `Lead`.
 
 ---
 
