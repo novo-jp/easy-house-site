@@ -30,6 +30,6 @@ debug_*.png
 
 # Funil
 .env
-.netlify/
+.vercel/
 .vercel
 .env*

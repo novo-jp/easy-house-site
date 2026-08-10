@@ -3,7 +3,7 @@
 -- Executar no SQL Editor do Supabase.
 --
 -- Princípio: dados sensíveis (renda, dívidas, visto) só entram pelo
--- servidor (Netlify Function com service key). O browser nunca escreve
+-- servidor (Serverless Function com service key). O browser nunca escreve
 -- diretamente nestas tabelas.
 -- ============================================================
 

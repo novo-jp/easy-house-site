@@ -9,7 +9,7 @@ Site institucional da EASY HOUSE — imobiliária licenciada no Japão com atend
 - HTML/CSS/JS estático (sem build step)
 - Tema compartilhado: `theme-v2.css` + `theme-v2.js`
 - Listagem de apartamentos: Supabase REST API (tabela `imoveis_aichi`)
-- Hospedagem: Netlify (auto-deploy via push em `main`)
+- Hospedagem: Vercel — projeto `easy-house-site` (auto-deploy via push em `main`)
 
 ## Estrutura
 
@@ -25,14 +25,16 @@ Site institucional da EASY HOUSE — imobiliária licenciada no Japão com atend
 ├── theme-v2.js             # JS compartilhado (interações)
 ├── shared.css              # CSS antigo (usado por terms/privacy)
 ├── images/                 # fotos reais (família, equipe, chave, etc)
-└── netlify.toml            # config de cache + security headers
+├── api/                    # Serverless Functions (simulate, lead, event)
+├── lib/                    # motor financeiro + Meta CAPI
+└── vercel.json             # config de cache + security headers
 ```
 
 ## Como atualizar o conteúdo
 
 1. Editar HTML diretamente. Pré-visualizar abrindo o arquivo no navegador.
 2. `git add . && git commit -m "..." && git push`
-3. Netlify deploya automaticamente em ~30s.
+3. O Vercel publica automaticamente em ~30s.
 
 ## Listagem de imóveis
 

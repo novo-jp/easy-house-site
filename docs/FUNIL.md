@@ -10,11 +10,14 @@ Uma ferramenta gratuita de pré-simulação de compra de imóvel no Japão, em p
 que entrega valor antes de pedir contato e encaminha a conversa para o WhatsApp com
 contexto suficiente para o corretor não recomeçar do zero.
 
-**Decisão de arquitetura:** o site já existia como estático (HTML/CSS/JS no Netlify, com
+**Decisão de arquitetura:** o site já existia como estático (HTML/CSS/JS, com
 Supabase). Em vez de migrar para Next.js — o que significaria reescrever 11 páginas já
-otimizadas —, o funil foi construído sobre a mesma base, com Netlify Functions para o que
-precisa de servidor. O resultado atende aos requisitos de cálculo isolado, dados sensíveis
-fora do browser, configuração versionada e testes, sem descartar o que já funciona.
+otimizadas —, o funil foi construído sobre a mesma base, com Serverless Functions para o
+que precisa de servidor. O resultado atende aos requisitos de cálculo isolado, dados
+sensíveis fora do browser, configuração versionada e testes, sem descartar o que já funciona.
+
+**Hospedagem:** Vercel (projeto `easy-house-site`). O site nasceu no Netlify e foi migrado
+em 05/08/2026; qualquer referência a Netlify em documentos antigos está obsoleta.
 
 ---
 
@@ -26,10 +29,10 @@ lib/
   financing-config.json      configuração versionada (reserva local)
 tests/
   financing.test.mjs         43 testes — node --test
-netlify/functions/
-  simulate.js                POST /api/simulate  — calcula no servidor
-  lead.js                    POST /api/lead      — grava lead, consentimento, simulação
-  event.js                   POST /api/event     — eventos do funil, sem dados sensíveis
+api/
+  simulate.mjs               POST /api/simulate  — calcula no servidor
+  lead.mjs                   POST /api/lead      — grava lead, consentimento, simulação
+  event.mjs                  POST /api/event     — eventos do funil, sem dados sensíveis
 sql/
   schema.sql                 tabelas, RLS e retenção
 simular.html                 funil (modo geral)
@@ -57,7 +60,7 @@ Para conferir se ficou tudo certo:
 bash verificar-funil.sh
 ```
 
-### 3.2 Variáveis de ambiente (Netlify → Site configuration → Environment variables)
+### 3.2 Variáveis de ambiente (Vercel → Project Settings → Environment Variables)
 
 | Variável | Para quê | Onde obter |
 |---|---|---|
@@ -72,7 +75,7 @@ vercel env add SUPABASE_SERVICE_KEY preview
 vercel --prod          # nova publicação para as variáveis valerem
 ```
 
-> A `service_role` ignora o RLS. Ela só pode existir nas variáveis do Netlify —
+> A `service_role` ignora o RLS. Ela só pode existir nas variáveis do Vercel —
 > nunca no HTML, no JS do browser ou no repositório.
 
 Sem essas variáveis o funil continua funcionando: calcula, mostra o resultado e leva ao
@@ -80,8 +83,9 @@ WhatsApp, apenas não grava o lead.
 
 ### 3.3 Publicação
 
-`git push` — o Netlify publica automaticamente. As functions em `netlify/functions/`
-viram `/api/simulate`, `/api/lead` e `/api/event`.
+`git push` — o Vercel publica automaticamente. As functions em `api/` viram
+`/api/simulate`, `/api/lead` e `/api/event`. Os cabeçalhos e o cache ficam em
+`vercel.json` (`cleanUrls` está ligado, por isso as rotas não levam `.html`).
 
 ---
 
@@ -141,7 +145,7 @@ Todas as fórmulas ficam em `lib/financing.js`, sem dependência de interface.
 | Identificador de sessão | `sessionStorage` |
 | Eventos de analytics | Apenas nome do evento, etapa, variante e origem |
 
-`netlify/functions/event.js` mantém uma lista de bloqueio: renda, dívidas, idade, visto,
+`api/event.mjs` mantém uma lista de bloqueio: renda, dívidas, idade, visto,
 nacionalidade, telefone, e-mail e nome são descartados antes de gravar, mesmo se enviados
 por engano.
 
@@ -232,7 +236,7 @@ Depois de mudar `simular.html`, rodar `node build-pages.mjs` para regerar as pá
 
 - [ ] `sql/schema.sql` executado no Supabase
 - [ ] Configuração versão 1 publicada e ativa
-- [ ] `SUPABASE_URL` e `SUPABASE_SERVICE_KEY` no Netlify
+- [ ] `SUPABASE_URL` e `SUPABASE_SERVICE_KEY` no Vercel
 - [ ] `node --test tests/financing.test.mjs` sem falhas
 - [ ] Fluxo completo testado no celular
 - [ ] Envio de lead gravando em `lead`, `consent` e `simulation`
