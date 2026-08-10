@@ -28,7 +28,7 @@
    * Enquanto estiver vazio, nada é carregado e nenhum aviso aparece para o
    * visitante — o site continua funcionando normalmente.
    */
-  var PIXEL_ID = '';
+  var PIXEL_ID = '137135779491997';   // conjunto de dados "EASY HOUSE"
 
   var CONSENT_KEY = 'eh_consent_ads';
   var CONSENT_VERSION = '1';           // trocar obriga a perguntar de novo
