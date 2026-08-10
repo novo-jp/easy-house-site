@@ -179,6 +179,14 @@ eventos acima para o Meta. Falta apenas colar o ID do pixel na constante `PIXEL_
   devolve `null` e o servidor não envia nada.
 - **Não enviamos telefone nem e-mail ao Meta**, nem com hash — o aceite do formulário
   é para o atendimento, não para repasse a terceiro. Ver o cabeçalho de `lib/meta-capi.js`.
+- `autoConfig` fica **desligado**. Ligado, o Meta dispara `SubscribedButtonClick` a cada
+  clique e lê campos de formulário por conta própria — o que mandaria nome, telefone e
+  e-mail. Não religar.
+
+> ⚠️ **Ao alterar `analytics.js`, subir o `?v=` nas páginas** (`analytics.js?v=2` → `v=3`)
+> e rodar `node build-pages.mjs`. O `vercel.json` guarda `.js` por 24 h: sem subir a versão,
+> quem já visitou continua rodando o arquivo antigo. Isso já aconteceu uma vez — a correção
+> estava no servidor e o navegador seguia com a versão em cache.
 
 **Ainda não instalado:** GTM, GA4, Google Ads e Meta Conversions API para eventos
 que não sejam `Lead`.
