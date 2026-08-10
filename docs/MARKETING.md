@@ -24,19 +24,39 @@ estado é jogar dinheiro fora de forma mensurável.
 
 **Isto é o passo zero. Nada mais na estratégia funciona sem isso.**
 
-### 1.2 Os bots do Facebook estão fora do ar
+### 1.2 Os bots do Facebook estão publicando (4 de 6)
 
-Os 6 tokens em `~/EasyHouseBot/*/fb_token_venda.txt` retornam o mesmo erro:
+> **Correção de 10/08/2026.** Uma versão anterior deste documento afirmava que os
+> 6 tokens estavam mortos e que os bots tinham parado. Estava errado. Verificação
+> feita direto na Graph API:
 
+| Pasta | Token | Situação |
+|---|---|---|
+| `VENDA_REPRICE_EASYHOUSE` | renovado 06/08 | ✅ válido |
+| `VENDA_SUUMO_EASYHOUSE` | renovado 06/08 | ✅ válido |
+| `VENDA_DKPORTAL_EASYHOUSE` | renovado 06/08 | ✅ válido |
+| `VIDEOS_FACEBOOK` | renovado 06/08 | ✅ válido |
+| `SHARE_GRUPOS` | de 14/04 | ❌ code 190/460 |
+| `VENDA_SUMAIIDA_MANUAL_EASYHOUSE` | de 12/05 | ❌ code 190/460 |
+
+Os quatro válidos carregam **o mesmo token**, apontando para a página
+`157736404094099` (*Easy House Casas no Japão*). A página está ativa: várias
+publicações por dia, a última em 10/08 às 04:00.
+
+Os dois arquivos com token velho ficaram para trás na renovação de 06/08. Ambos
+pertencem a bots aparentemente dormentes (scripts sem alteração desde março/abril).
+Corrigir é copiar o token que já funciona:
+
+```bash
+T=$(tr -d ' \n\r' < ~/EasyHouseBot/VENDA_REPRICE_EASYHOUSE/fb_token_venda.txt)
+printf '%s' "$T" > ~/EasyHouseBot/SHARE_GRUPOS/fb_token_venda.txt
+printf '%s' "$T" > ~/EasyHouseBot/VENDA_SUMAIIDA_MANUAL_EASYHOUSE/fb_token_venda.txt
 ```
-Error validating access token: The session has been invalidated
-because the user changed their password (code 190, subcode 460)
-```
 
-Alguém trocou a senha do Facebook e invalidou todos. Isso significa que as
-postagens automáticas de imóveis e os vídeos diários pararam. O canal orgânico
-que alimentaria a campanha paga está desligado. Precisa regerar o token
-(o passo a passo está no `CLAUDE.md` do EasyHouseBot).
+**Consequência para a estratégia:** o canal orgânico não precisa ser reconstruído —
+já está rodando e já alimenta um público de retargeting. O que continua valendo é a
+revisão do risco de おとり広告 (seção 4.1), que é mais urgente justamente porque os
+bots *estão* publicando.
 
 ---
 
@@ -370,10 +390,12 @@ Baixo custo, alta clareza, e o asterisco mantém a honestidade.
 
 Mídia paga em público pequeno satura. O orgânico é o que segura o custo.
 
-1. **Religar os bots** (token morto — seção 1.2). As postagens diárias de imóveis
-   e os vídeos alimentam a página e criam público de retargeting de graça.
-2. **Revisar o bot de imóveis** quanto ao risco de おとり広告 (seção 4.1) antes
-   de religar.
+1. **Revisar o bot de imóveis** quanto ao risco de おとり広告 (seção 4.1). Ele já
+   está publicando várias vezes por dia — é a pendência mais urgente da lista,
+   não uma tarefa futura.
+2. **Acertar os 2 tokens atrasados** (`SHARE_GRUPOS` e `VENDA_SUMAIIDA_MANUAL`,
+   seção 1.2), se esses bots ainda tiverem uso. As postagens diárias de imóveis
+   e os vídeos já alimentam a página e criam público de retargeting de graça.
 3. **Grupos de brasileiros no Japão no Facebook** são onde essa comunidade
    realmente conversa. Participar com conteúdo útil (não spam de link) constrói
    autoridade — a pasta `SHARE_GRUPOS` no EasyHouseBot indica que isso já foi
@@ -414,9 +436,9 @@ até ter volume; um teste por vez, sem declarar vencedor cedo.
 
 | # | O quê | Bloqueia o quê |
 |---|---|---|
-| 1 | ~~Instalar Pixel + Conversions API + consentimento~~ — **feito em 08/08/2026**. Falta só colar o ID do pixel em `analytics.js` e criar o token da CAPI. | **tudo** |
-| 2 | Regerar token do Facebook e religar os bots | orgânico e retargeting |
-| 3 | Revisar bot de imóveis quanto a おとり広告 | risco legal |
+| 1 | ~~Instalar Pixel + Conversions API + consentimento~~ — **concluído em 10/08/2026**. Pixel `137135779491997` no ar, CAPI ativa, testado em produção. | **tudo** |
+| 2 | **Revisar bot de imóveis quanto a おとり広告** — ele está publicando agora | risco legal |
+| 3 | Acertar os 2 tokens atrasados, se esses bots ainda tiverem uso | nada crítico |
 | 4 | Produzir V1, V2, V3 (dá para filmar tudo em uma tarde com celular) | campanha |
 | 5 | Subir Campanha 1 otimizando `quick_simulation_completed`, ¥2.000/dia | — |
 | 6 | Esperar 3 semanas sem mexer | — |
