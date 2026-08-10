@@ -164,6 +164,15 @@
   function iniciarPixel() {
     if (pixelPronto || !PIXEL_ID) return;
     carregarPixel();
+
+    // Desliga a coleta automática do Meta. Precisa vir ANTES do init.
+    //
+    // Ligada, ela faz duas coisas que contradizem o que /privacy promete:
+    // dispara SubscribedButtonClick a cada clique (levando junto o texto do
+    // botão) e, pelo Automatic Advanced Matching, lê campos de formulário —
+    // o que na etapa de contato significaria mandar nome, telefone e e-mail
+    // ao Meta. Aqui só sai o que está no MAPA, e nada além disso.
+    window.fbq('set', 'autoConfig', false, PIXEL_ID);
     window.fbq('init', PIXEL_ID);
     window.fbq('track', 'PageView');
     pixelPronto = true;
