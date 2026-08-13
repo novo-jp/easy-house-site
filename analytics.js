@@ -138,6 +138,25 @@
     caixa.querySelector('.eh-cc__nao').addEventListener('click', function () { responder('denied'); });
 
     document.body.appendChild(caixa);
+    afastarDaBarraFixa(caixa);
+  }
+
+  /**
+   * O aviso não pode cobrir uma barra de ação fixa.
+   *
+   * No simulador o botão principal fica numa barra fixa no rodapé. Como o aviso
+   * também é fixo no rodapé, ele ficava exatamente por cima: no celular o
+   * visitante não conseguia apertar "Calcular" e ia embora. Aqui o aviso é
+   * empurrado para cima da barra sempre que ela existir e estiver fixa.
+   */
+  function afastarDaBarraFixa(caixa) {
+    try {
+      var barra = document.getElementById('fxActions');
+      if (!barra) return;
+      if (window.getComputedStyle(barra).position !== 'fixed') return;   // no desktop ela é estática
+      var altura = barra.getBoundingClientRect().height;
+      if (altura > 0) caixa.style.bottom = Math.round(altura + 12) + 'px';
+    } catch (e) { /* na dúvida, deixa no rodapé */ }
   }
 
   /* ============================================================
