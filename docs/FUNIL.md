@@ -149,8 +149,22 @@ Todas as fórmulas ficam em `lib/financing.js`, sem dependência de interface.
 nacionalidade, telefone, e-mail e nome são descartados antes de gravar, mesmo se enviados
 por engano.
 
-A mensagem do WhatsApp leva apenas o código do lead (`EH-XXXXXX`) e as cidades escolhidas —
-nunca valores financeiros. O corretor consulta o restante no CRM pelo código.
+A mensagem do WhatsApp leva apenas o código do lead (`EH-XXXXXX`, quando já existe) e as
+cidades escolhidas — **nunca valores financeiros**, nem a faixa estimada. A mensagem viaja
+como texto dentro de uma URL, e URL não é lugar para dado financeiro. O corretor consulta o
+restante no CRM pelo código, ou pergunta.
+
+Existem três pontos de saída para o WhatsApp, cada um com uma frase final diferente para o
+corretor saber onde a pessoa estava (`whatsappLink(origem)`):
+
+| Origem | Tela | Tem código? |
+|---|---|---|
+| `preliminary` | logo abaixo do poder de compra | não |
+| `lead` | abaixo do formulário de contato | não |
+| `result` | resultado completo | sim |
+
+Nas duas primeiras a pessoa ainda não deixou contato, então o corretor recebe só a cidade.
+É a troca aceita: menos contexto, mais conversas.
 
 Consentimentos ficam em `consent`, com versão da política, texto aceito e data. Nenhuma caixa
 vem marcada.

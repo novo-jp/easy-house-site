@@ -332,7 +332,7 @@ async function renderResult() {
     '% do valor do imóvel. A composição e a possibilidade de financiar essas despesas dependem do imóvel e da instituição financeira.' +
     ` Configuração de taxas versão ${r.configVersion}, vigente desde ${r.configValidFrom}.`;
 
-  $('#btnWhatsApp').href = whatsappLink();
+  $('#btnWhatsApp').href = whatsappLink('result');
   $('#btnWhatsApp').addEventListener('click', () => track('whatsapp_clicked', { from: 'result' }), { once: true });
 
   // Imóveis: mensagem única, sem listar ou contar o que não podemos confirmar
@@ -546,6 +546,22 @@ $('#inSecondWork')?.addEventListener('change', () => setAnswer('secondWork', $('
 // Navegação
 nextBtn.addEventListener('click', onNext);
 $('#prelimCta')?.addEventListener('click', onNext);
+
+/* ============================================================
+   Atalhos para o WhatsApp
+   ------------------------------------------------------------
+   O link é montado no momento do clique, e não no carregamento,
+   porque as cidades (e o código, quando existe) só são conhecidos
+   depois que a pessoa avança.
+   ============================================================ */
+[['#prelimWhats', 'preliminary'], ['#leadWhats', 'lead']].forEach(([sel, origem]) => {
+  const el = $(sel);
+  if (!el) return;
+  el.addEventListener('click', () => {
+    el.href = whatsappLink(origem);
+    track('whatsapp_clicked', { from: origem });
+  });
+});
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && getState().step !== 'lead' && getState().step !== 'result') {
     if (e.target.tagName === 'TEXTAREA') return;

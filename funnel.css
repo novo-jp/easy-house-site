@@ -170,6 +170,7 @@ a { color: var(--navy); }
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   padding: 16px 26px; min-height: 56px;
   border-radius: var(--pill); font-size: 1.02rem; font-weight: 700;
+  text-decoration: none;          /* vale também quando o botão é um <a> */
   transition: background .18s, transform .12s, box-shadow .18s;
 }
 .fx-btn:active { transform: scale(.985); }
@@ -188,6 +189,18 @@ a { color: var(--navy); }
 }
 .fx-btn--block { width: 100%; }
 .fx-btn svg { width: 18px; height: 18px; }
+.fx-btn--wa { box-shadow: 0 4px 14px rgba(37,211,102,.28); }
+.fx-btn--wa svg { width: 21px; height: 21px; }
+
+/* Separador "ou" entre dois caminhos de ação */
+.fx-or {
+  display: flex; align-items: center; gap: 14px;
+  margin: 18px 0;
+  color: var(--ink-soft); font-size: .9rem;
+}
+.fx-or::before, .fx-or::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+}
 
 /* ---------------- Cartões de resultado ---------------- */
 .fx-card {

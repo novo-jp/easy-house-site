@@ -264,15 +264,32 @@ export async function submitLead(contact, consent) {
 /* ============================================================
    WhatsApp — sem dados financeiros na mensagem
    ============================================================ */
-export function whatsappLink() {
+/**
+ * Link do WhatsApp.
+ *
+ * `origem` muda apenas a última frase, para o corretor saber em que ponto a
+ * pessoa estava. Continua valendo a regra: **nenhum valor financeiro na
+ * mensagem** — nem parcela, nem renda, nem a faixa estimada. Isso viaja como
+ * texto dentro de uma URL, e URL não é lugar para dado financeiro. O corretor
+ * consulta o resto pelo código, ou pergunta.
+ */
+export function whatsappLink(origem) {
   const code = state.lead?.code || '';
-  const cities = (state.answers.cities || []).join(', ');
+  const cities = (state.answers.cities || []).filter(c => c !== 'outra').join(', ');
+
+  const fecho = {
+    preliminary: 'Já vi meu poder de compra aproximado e gostaria de conversar sobre as opções.',
+    lead:        'Prefiro continuar por aqui, se possível.',
+    result:      'Gostaria de confirmar minha pré-análise.'
+  }[origem] || 'Gostaria de falar com um corretor.';
+
   const parts = [
-    'Olá! Fiz uma simulação no site da Easy House.',
+    'Olá! Fiz a simulação no site da Easy House.',
     code ? `Meu código é ${code}.` : '',
     cities ? `Tenho interesse em imóveis em ${cities}.` : '',
-    'Gostaria de confirmar minha pré-análise.'
+    fecho
   ].filter(Boolean);
+
   return 'https://wa.me/818028867708?text=' + encodeURIComponent(parts.join(' '));
 }
 
