@@ -492,6 +492,23 @@ function applyVariant() {
    Início
    ============================================================ */
 await initFunnel(config);
+
+/* ============================================================
+   Entrada sem tela de abertura (tráfego de anúncio)
+   ------------------------------------------------------------
+   Quando o funil já começa na pergunta 1, o rótulo do botão
+   precisa acompanhar, e "começou a simulação" passa a ser a
+   primeira resposta — antes era o clique na tela de abertura.
+   Sem isso os dois caminhos não seriam comparáveis.
+   ============================================================ */
+const passoInicial = getState().step;
+nextBtn.textContent = FLOW[passoInicial]?.label || 'Continuar';
+
+if (passoInicial !== 'intro') {
+  document.getElementById('optPayment')?.addEventListener('click', () => {
+    track('simulation_started', { variant: getState().variant, entrada: 'direto_na_pergunta' });
+  }, { once: true });
+}
 applyVariant();
 
 // Opções

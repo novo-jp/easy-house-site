@@ -328,6 +328,25 @@ export function bindYenInput(el) {
 /* ============================================================
    Início
    ============================================================ */
+/**
+ * Quem chega por anúncio já disse "sim" uma vez: assistiu ao vídeo e clicou.
+ * A tela de abertura repete a promessa e cobra um segundo "sim" — e era ali
+ * que 92% das pessoas saíam (411 chegaram, 26 apertaram o botão).
+ *
+ * Para tráfego de anúncio começamos direto na pergunta 1, que é fácil e já
+ * mostra movimento. Quem chega pelo site continua vendo a introdução, o que
+ * mantém uma base de comparação.
+ *
+ * `?intro=1` força a introdução e `?intro=0` força o pulo — para testar.
+ */
+export function veioDeAnuncio() {
+  const forcado = new URLSearchParams(location.search).get('intro');
+  if (forcado === '1') return false;
+  if (forcado === '0') return true;
+  const s = state.source || {};
+  return !!(s.utm_source || s.utm_medium || s.utm_campaign || s.fbclid || s.gclid);
+}
+
 export async function initFunnel(config) {
   state.config = config;
   state.sessionId = sessionId();
@@ -343,7 +362,17 @@ export async function initFunnel(config) {
 
   document.getElementById('fxBack')?.addEventListener('click', goBack);
 
-  track('landing_view', { landing: location.pathname, city: cityFromRoute || null });
+  const semIntroducao = veioDeAnuncio();
+  state.entrada = semIntroducao ? 'direto_na_pergunta' : 'com_introducao';
+
+  track('landing_view', {
+    landing: location.pathname,
+    city: cityFromRoute || null,
+    entrada: state.entrada
+  });
+
+  if (semIntroducao) goTo('q_payment', { push: false });
+
   updateProgress();
   updateActions();
 }
