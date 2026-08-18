@@ -33,3 +33,7 @@ debug_*.png
 .vercel/
 .vercel
 .env*
+
+# Backups de imóveis removidos pela limpeza do scraper
+Imoveis/removidos_*.json
+*.py.bak
