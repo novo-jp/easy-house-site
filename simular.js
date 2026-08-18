@@ -7,10 +7,10 @@ import {
   initFunnel, goTo, goBack, setAnswer, getAnswers, getState,
   simulate, submitLead, whatsappLink, PROPERTY_MESSAGE,
   track, yen, parseYen, bindYenInput
-} from './funnel.js';
+} from './funnel.js?v=5';
 
-import config from './lib/financing-config.json' with { type: 'json' };
-import { compareWithRent } from './lib/financing.js';
+import config from './lib/financing-config.json?v=5' with { type: 'json' };
+import { compareWithRent } from './lib/financing.js?v=5';
 
 const $ = s => document.querySelector(s);
 const nextBtn = $('#fxNext');
