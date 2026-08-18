@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="preconnect" href="https://igtqdhesorahhdyvsjrl.supabase.co"/>
 <link rel="preconnect" href="https://image.eheya.net"/>
-<link rel="stylesheet" href="theme-v2.css?v=4"/>
+<link rel="stylesheet" href="theme-v2.css?v=5"/>
 <style>
 /* Página de listagem */
 .list-hero { padding: calc(var(--nav-h) + 40px) var(--pad-x) 28px; max-width: var(--wrap); margin-inline: auto; }
@@ -181,8 +181,8 @@
 
 <header class="list-hero">
   <h1>Apartamentos para alugar em <em>Aichi</em></h1>
-  <p>Escolha a cidade para ver o que está disponível. Os valores mostrados já incluem a estimativa do custo mensal total. Gostou de algum? É só chamar no WhatsApp que a gente cuida do resto em japonês.</p>
-  <p class="list-count" id="heroCount"><span class="dot" aria-hidden="true"></span>Carregando imóveis…</p>
+  <p>Escolha a cidade para ver os apartamentos. Os valores já incluem a estimativa do custo mensal total. Gostou de algum? Chame no WhatsApp que a gente confirma a disponibilidade e cuida do resto em japonês.</p>
+  <p class="list-count" id="heroCount"><span class="dot" aria-hidden="true"></span>Carregando a lista…</p>
 </header>
 
 <div class="filters">
@@ -302,7 +302,7 @@
   </div>
 
   <p class="foot__legal">
-    Os imóveis exibidos são atualizados periodicamente e podem já estar alugados no momento da consulta. Valores e condições são informativos e devem ser confirmados antes de qualquer decisão. O custo mensal estimado inclui aluguel, taxa de condomínio informada, taxa de garantia estimada em 2,5% e taxa de serviço de ¥1.980.
+    A lista é atualizada diariamente a partir do portal do nosso parceiro e mostra apenas imóveis confirmados nos últimos dias. Ainda assim, um imóvel pode ser alugado a qualquer momento — por isso confirmamos a disponibilidade antes de qualquer visita. Valores e condições são informativos e devem ser confirmados antes de qualquer decisão. O custo mensal estimado inclui aluguel, taxa de condomínio informada, taxa de garantia estimada em 2,5% e taxa de serviço de ¥1.980.
   </p>
 
   <div class="foot__bottom">
@@ -318,7 +318,7 @@
   </a>
 </div>
 
-<script src="theme-v2.js?v=4" defer></script>
+<script src="theme-v2.js?v=5" defer></script>
 <script>
 /* ---------- Supabase ---------- */
 var SUPABASE_URL = "https://igtqdhesorahhdyvsjrl.supabase.co";
@@ -348,8 +348,75 @@ function skeletons(n) {
   return html;
 }
 
+/* Só mostramos imóveis que o portal confirmou nos últimos dias.
+   Sem isso, apareceriam anúncios já alugados há meses. */
+var DIAS_VALIDADE = 7;
+
+function dataCorte(dias) {
+  var d = new Date(Date.now() - dias * 86400000);
+  return d.toISOString().slice(0, 10);
+}
+
+async function buscarPagina(offset, limit, corte) {
+  var url = SUPABASE_URL + '/rest/v1/' + TABLE +
+            '?select=*&order=aluguel.asc&limit=' + limit + '&offset=' + offset +
+            (corte ? '&updated_at=gte.' + corte : '');
+  var resp = await fetch(url, {
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Range-Unit': 'items',
+      Range: offset + '-' + (offset + limit - 1)
+    }
+  });
+  if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  return await resp.json();
+}
+
+async function carregarTudo(corte) {
+  var todos = [], offset = 0, limit = 1000;
+  while (true) {
+    var chunk = await buscarPagina(offset, limit, corte);
+    if (!Array.isArray(chunk) || chunk.length === 0) break;
+    todos = todos.concat(chunk);
+    if (chunk.length < limit) break;
+    offset += limit;
+    if (offset > 10000) break;
+  }
+  return todos;
+}
+
 async function loadImoveis() {
   grid.innerHTML = skeletons(6);
+  try {
+    allImoveis = await carregarTudo(dataCorte(DIAS_VALIDADE));
+
+    // Se o scraper ficar dias sem rodar, não deixamos a página vazia:
+    // ampliamos a janela em vez de mostrar nada.
+    if (allImoveis.length < 100) {
+      var maisAmplo = await carregarTudo(dataCorte(30));
+      if (maisAmplo.length > allImoveis.length) allImoveis = maisAmplo;
+    }
+    if (allImoveis.length === 0) throw new Error('Sem dados');
+
+    var atualizado = allImoveis.reduce(function (m, i) {
+      return (i.updated_at || '') > m ? i.updated_at : m;
+    }, '');
+    var quando = atualizado ? new Date(atualizado).toLocaleDateString('pt-BR') : '';
+
+    document.getElementById('heroCount').innerHTML =
+      '<span class="dot" aria-hidden="true"></span>' +
+      allImoveis.length.toLocaleString('pt-BR') + ' apartamentos' +
+      (quando ? ' · lista atualizada em ' + quando : '');
+
+    askCity();
+    return;
+  } catch (e) {
+    console.warn('Supabase:', e.message);
+  }
+
+  // Caminho antigo mantido como reserva
   try {
     allImoveis = [];
     var offset = 0, limit = 1000;
