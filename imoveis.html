@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="preconnect" href="https://igtqdhesorahhdyvsjrl.supabase.co"/>
 <link rel="preconnect" href="https://image.eheya.net"/>
-<link rel="stylesheet" href="theme-v2.css?v=5"/>
+<link rel="stylesheet" href="theme-v2.css?v=6"/>
 <style>
 /* Página de listagem */
 .list-hero { padding: calc(var(--nav-h) + 40px) var(--pad-x) 28px; max-width: var(--wrap); margin-inline: auto; }
@@ -108,6 +108,39 @@
 .prop__actions { margin-top: auto; display: flex; gap: 8px; }
 .prop__actions .btn { flex: 1; min-height: 46px; padding: 12px 14px; font-size: 0.88rem; }
 .prop__actions .btn--ghost { flex: 0 0 auto; }
+
+
+/* Preço e custos */
+.prop__costs { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px; }
+.prop__cost { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 0.84rem; color: var(--pearl-dim); }
+.prop__cost b { color: var(--teal); font-weight: 700; font-size: 0.94rem; }
+.prop__cost.entrada b { color: var(--gold-bright); }
+.prop__detalhes { align-self: flex-start; margin-top: 2px; padding: 6px 0; font-size: 0.82rem; color: var(--teal); text-decoration: underline; text-underline-offset: 3px; min-height: 32px; }
+.prop__detalhes:hover { color: var(--gold-bright); }
+
+/* Modal de custos */
+.modal { position: fixed; inset: 0; z-index: 1200; display: none; align-items: center; justify-content: center; padding: 16px; }
+.modal.open { display: flex; }
+.modal__fundo { position: absolute; inset: 0; background: rgba(4,4,10,0.78); backdrop-filter: blur(4px); }
+.modal__caixa { position: relative; width: min(560px, 100%); max-height: 88vh; overflow-y: auto; background: var(--ink-soft); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 32px); }
+.modal__topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 6px; }
+.modal__topo h2 { font-size: 1.25rem; }
+.modal__fechar { width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--line); color: var(--pearl-dim); font-size: 1.3rem; line-height: 1; }
+.modal__fechar:hover { background: var(--surface-2); color: var(--pearl); }
+.modal__sub { font-size: 0.88rem; color: var(--pearl-muted); margin-bottom: 20px; }
+.custos { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+.custos caption { text-align: left; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding: 16px 0 8px; }
+.custos td { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; vertical-align: top; }
+.custos td:last-child { text-align: right; white-space: nowrap; font-weight: 600; color: var(--pearl); }
+.custos .jp { display: block; font-family: var(--font-jp); font-size: 0.76rem; color: var(--pearl-muted); }
+.custos .det { color: var(--pearl-muted); font-size: 0.78rem; }
+.custos tr.total td { border-bottom: none; border-top: 1.5px solid var(--line-strong); padding-top: 13px; font-size: 1rem; font-weight: 700; }
+.custos tr.total td:last-child { color: var(--gold-bright); font-size: 1.2rem; font-family: var(--font-display); }
+.cartao-box { margin-top: 14px; padding: 15px 17px; border-radius: 12px; background: rgba(91,216,204,0.09); border: 1px solid rgba(91,216,204,0.3); }
+.cartao-box strong { color: var(--teal); }
+.cartao-box p { font-size: 0.87rem; color: var(--pearl-dim); line-height: 1.6; }
+.cartao-box .linha { display: flex; justify-content: space-between; gap: 10px; margin-top: 8px; font-size: 0.92rem; color: var(--pearl); }
+.cartao-box .linha b { color: var(--teal); }
 
 /* Skeleton */
 .sk { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
@@ -257,6 +290,20 @@
 
 </main>
 
+
+<!-- Detalhamento de custos -->
+<div class="modal" id="modalCustos" role="dialog" aria-modal="true" aria-labelledby="modalTitulo" hidden>
+  <div class="modal__fundo" data-fechar></div>
+  <div class="modal__caixa">
+    <div class="modal__topo">
+      <h2 id="modalTitulo">Quanto custa para entrar</h2>
+      <button class="modal__fechar" data-fechar aria-label="Fechar">✕</button>
+    </div>
+    <p class="modal__sub" id="modalSub"></p>
+    <div id="modalCorpo"></div>
+  </div>
+</div>
+
 <footer class="foot">
   <div class="foot__grid">
     <div>
@@ -318,7 +365,8 @@
   </a>
 </div>
 
-<script src="theme-v2.js?v=5" defer></script>
+<script src="custos.js?v=1"></script>
+<script src="theme-v2.js?v=6" defer></script>
 <script>
 /* ---------- Supabase ---------- */
 var SUPABASE_URL = "https://igtqdhesorahhdyvsjrl.supabase.co";
@@ -528,15 +576,15 @@ function render() {
     return;
   }
 
+  window.__paginaAtual = {};
   grid.innerHTML = pageItems.map(function (im, idx) {
+    window.__paginaAtual[start + idx] = im;
     var hasPlanta = im.foto_planta && im.foto_planta.indexOf('http') === 0;
     var hasFoto = im.foto_url && im.foto_url.indexOf('http') === 0;
     var two = hasFoto && hasPlanta;
     var id = start + idx;
 
-    var base = (im.aluguel || 0) + (im.condominio || 0) + (im.jichikai || 0);
-    var garantia = Math.ceil(base * 0.025);
-    var totalMes = base + garantia + 1980;
+    var c = EHCustos.calcular(im);
 
     return '' +
     '<article class="prop">' +
@@ -560,14 +608,17 @@ function render() {
 
         '<div class="prop__price">' +
           '<div class="prop__rent"><b>' + yen(im.aluguel) + '</b><small>aluguel /mês</small></div>' +
-          '<div class="prop__extra"><span>Custo mensal estimado</span><b>' + yen(totalMes) + '</b></div>' +
+          '<div class="prop__costs">' +
+            '<span class="prop__cost"><span>Custo mensal</span><b>' + yen(c.mensal) + '</b></span>' +
+            '<span class="prop__cost entrada"><span>Entrada estimada</span><b>' + yen(c.entrada) + '</b></span>' +
+            '<button class="prop__detalhes" onclick="abrirCustos(' + id + ')">Ver o que está incluso</button>' +
+          '</div>' +
         '</div>' +
 
         '<div class="prop__specs">' +
           (im.planta ? '<span class="plan">' + im.planta + '</span>' : '') +
           (im.area ? '<span>' + im.area + ' m²</span>' : '') +
           (im.andar ? '<span>' + im.andar + '</span>' : '') +
-          (im.estacionamento ? '<span>Vaga: ' + im.estacionamento + '</span>' : '') +
           (im.disponivel_de ? '<span>Disponível: ' + im.disponivel_de + '</span>' : '') +
         '</div>' +
 
@@ -636,6 +687,76 @@ function bindSwipe(start) {
     }, { passive: true });
   });
 }
+
+
+/* ---------- Detalhamento de custos ---------- */
+var modal = document.getElementById('modalCustos');
+var ultimoFoco = null;
+
+function linhaCusto(item) {
+  return '<tr><td>' + item.pt +
+         (item.jp ? '<span class="jp">' + item.jp + '</span>' : '') +
+         (item.detalhe ? '<span class="det">' + item.detalhe + '</span>' : '') +
+         '</td><td>' + EHCustos.iene(item.valor) + '</td></tr>';
+}
+
+function abrirCustos(idx) {
+  var im = window.__paginaAtual && window.__paginaAtual[idx];
+  if (!im) return;
+  var c = EHCustos.calcular(im);
+
+  document.getElementById('modalSub').textContent =
+    im.titulo + ' · ' + (im.cidade_pt || im.cidade || 'Aichi');
+
+  var html =
+    '<table class="custos"><caption>Todo mês</caption><tbody>' +
+      '<tr><td>Aluguel<span class="jp">家賃</span></td><td>' + EHCustos.iene(c.aluguel) + '</td></tr>' +
+      (c.condominio ? '<tr><td>Taxa de condomínio<span class="jp">共益費</span></td><td>' + EHCustos.iene(c.condominio) + '</td></tr>' : '') +
+      '<tr><td>Empresa garantidora<span class="jp">保証委託料</span><span class="det">2,2% do total</span></td><td>' + EHCustos.iene(c.garantiaMensal) + '</td></tr>' +
+      '<tr><td>Suporte 24h<span class="jp">ruumサポート</span></td><td>' + EHCustos.iene(c.suporte) + '</td></tr>' +
+      '<tr class="total"><td>Total por mês</td><td>' + EHCustos.iene(c.mensal) + '</td></tr>' +
+    '</tbody></table>' +
+
+    '<table class="custos"><caption>Para entrar (pagamento único)</caption><tbody>' +
+      c.itens.map(linhaCusto).join('') +
+      '<tr class="total"><td>Total da entrada</td><td>' + EHCustos.iene(c.entrada) + '</td></tr>' +
+    '</tbody></table>' +
+
+    '<div class="cartao-box">' +
+      '<p><strong>Dá para pagar no cartão de crédito.</strong> Há um acréscimo de 3,6% sobre o valor, e o parcelamento é combinado no atendimento.</p>' +
+      '<div class="linha"><span>Entrada no cartão</span><b>' + EHCustos.iene(c.entradaCartao) + '</b></div>' +
+      '<div class="linha"><span>Acréscimo</span><span>' + EHCustos.iene(c.acrescimoCartao) + '</span></div>' +
+    '</div>' +
+
+    '<p class="muted" style="margin-top:16px">Estimativa com ' + c.dias + ' dias de diária no primeiro mês. ' +
+    'O valor final muda conforme a data de entrada, a vaga de estacionamento e as condições do proprietário. ' +
+    'Confirmamos tudo por escrito antes de qualquer pagamento.</p>' +
+
+    '<div class="btn-row" style="margin-top:20px">' +
+      '<a class="btn btn--wa" href="https://wa.me/818028867708?text=' + waMsg(im) + '" target="_blank" rel="noopener">Pedir orçamento exato</a>' +
+    '</div>';
+
+  document.getElementById('modalCorpo').innerHTML = html;
+  ultimoFoco = document.activeElement;
+  modal.hidden = false;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('.modal__fechar').focus();
+}
+
+function fecharCustos() {
+  modal.classList.remove('open');
+  modal.hidden = true;
+  document.body.style.overflow = '';
+  if (ultimoFoco) ultimoFoco.focus();
+}
+
+modal.addEventListener('click', function (e) {
+  if (e.target.hasAttribute('data-fechar')) fecharCustos();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && modal.classList.contains('open')) fecharCustos();
+});
 
 /* Filtros */
 document.querySelectorAll('.chip[data-filter]').forEach(function (btn) {
