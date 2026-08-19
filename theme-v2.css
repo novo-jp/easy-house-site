@@ -126,9 +126,6 @@ input, select, textarea { font: inherit; }
 .nav__brand-eh { height: 32px; width: auto; flex-shrink: 0; }
 .nav__brand-sep { width: 1px; height: 24px; background: var(--line-strong); flex-shrink: 0; }
 .nav__brand-movo { height: 34px; width: auto; flex-shrink: 0; }
-/* usado apenas no rodapé */
-.nav__brand-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; }
-.nav__brand-text em { color: var(--gold); font-style: normal; }
 
 .nav__links { display: flex; align-items: center; gap: 4px; }
 .nav__links a {
@@ -557,10 +554,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height
 }
 @media (max-width: 860px) { .foot__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .foot__grid { grid-template-columns: 1fr; gap: 28px; } }
-.foot__brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.foot__brand img { height: 34px; }
-.foot__brand-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; }
-.foot__brand-text em { color: var(--gold); font-style: normal; }
+/* Mesma composição do cabeçalho: Easy House e movO lado a lado */
+.foot__brand { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; flex-wrap: wrap; }
+.foot__brand-eh { height: 32px; width: auto; }
+.foot__brand-sep { width: 1px; height: 24px; background: var(--line-strong); flex-shrink: 0; }
+.foot__brand-movo { height: 34px; width: auto; }
 .foot__desc { font-size: 0.9rem; color: var(--pearl-dim); line-height: 1.7; margin-bottom: 14px; max-width: 34ch; }
 .foot__meta { font-size: 0.84rem; color: var(--pearl-muted); line-height: 1.8; }
 .foot__meta a { color: var(--pearl-dim); }

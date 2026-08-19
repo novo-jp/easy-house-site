@@ -13,7 +13,7 @@
 <meta property="og:description" content="Quem somos, onde ficamos, quais serviços prestamos e como falar conosco."/>
 <meta property="og:image" content="https://easyhouse.homes/images/opt/certificado-1024.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="stylesheet" href="theme-v2.css?v=7"/>
+<link rel="stylesheet" href="theme-v2.css?v=8"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -252,8 +252,12 @@
   <div class="foot__grid">
     <div>
       <div class="foot__brand">
-        <img src="images/opt/logo-240.png" alt="" width="240" height="90" style="height:34px;width:auto" loading="lazy"/>
-        <span class="foot__brand-text">EASY<em>HOUSE</em></span>
+        <img class="foot__brand-eh" src="images/opt/logo-240.png" alt="" width="240" height="90" loading="lazy"/>
+        <span class="foot__brand-sep" aria-hidden="true"></span>
+        <picture>
+          <source type="image/webp" srcset="images/opt/logo-movo-120.webp 120w, images/opt/logo-movo-180.webp 180w, images/opt/logo-movo-268.webp 268w" sizes="96px"/>
+          <img class="foot__brand-movo" src="images/opt/logo-movo-268.png" alt="株式会社movO" width="268" height="108" loading="lazy"/>
+        </picture>
       </div>
       <p class="foot__desc">Imobiliária no Japão para quem quer comprar, alugar ou organizar a vida financeira antes de financiar. Atendimento em português, espanhol, inglês e japonês.</p>
       <p class="foot__meta">
@@ -305,7 +309,7 @@
   </a>
 </div>
 
-<script src="theme-v2.js?v=7" defer></script>
+<script src="theme-v2.js?v=8" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>
