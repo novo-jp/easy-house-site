@@ -8,7 +8,7 @@
     garantiaInicial:   22000,   // 保証委託料 — na assinatura
     garantiaMensalPct: 0.022,   // 保証委託料 — 2,2% do total mensal
     limpeza:           70000,   // クリーニング費 — cobrada na entrada
-    administrativa:    22000,   // 更新事務手数料
+    administrativa:    22000,   // 更新事務手数料 — cobrada já na assinatura
     chaves:            3300,    // 鍵セット費
     suporteMensal:     1980,    // ruumサポート
     diasPadrao:        15,      // diárias do primeiro mês, por padrão
@@ -45,8 +45,8 @@
         detalhe: 'na assinatura', valor: TAXAS.garantiaInicial },
       { chave: 'limpeza', jp: 'クリーニング費', pt: 'Limpeza na saída',
         detalhe: 'paga na entrada', valor: TAXAS.limpeza },
-      { chave: 'administrativa', jp: '更新事務手数料', pt: 'Taxa administrativa',
-        detalhe: 'contrato', valor: TAXAS.administrativa },
+      { chave: 'administrativa', jp: '更新事務手数料', pt: 'Taxa administrativa de contrato',
+        detalhe: 'cobrada na assinatura', valor: TAXAS.administrativa },
       { chave: 'chaves', jp: '鍵セット費',     pt: 'Jogo de chaves',
         detalhe: '', valor: TAXAS.chaves }
     ];
