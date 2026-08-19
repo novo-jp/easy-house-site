@@ -99,6 +99,7 @@
 
 .prop__specs { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
 .prop__specs span { padding: 5px 11px; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--line); font-size: 0.78rem; color: var(--pearl-dim); }
+.prop__specs .vaga { background: rgba(91,216,204,0.13); border-color: rgba(91,216,204,0.3); color: var(--teal); }
 .prop__specs .plan { background: rgba(244,182,194,0.14); border-color: rgba(244,182,194,0.3); color: var(--sakura); font-weight: 700; }
 
 .prop__addr { font-size: 0.8rem; margin-bottom: 14px; }
@@ -136,6 +137,11 @@
 .custos .det { color: var(--pearl-muted); font-size: 0.78rem; }
 .custos tr.total td { border-bottom: none; border-top: 1.5px solid var(--line-strong); padding-top: 13px; font-size: 1rem; font-weight: 700; }
 .custos tr.total td:last-child { color: var(--gold-bright); font-size: 1.2rem; font-family: var(--font-display); }
+.opcao-vaga { display: flex; align-items: flex-start; gap: 11px; padding: 13px 15px; margin: 14px 0 4px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); cursor: pointer; }
+.opcao-vaga:hover { border-color: var(--line-strong); }
+.opcao-vaga input { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; width: 18px; height: 18px; }
+.opcao-vaga span { font-size: 0.88rem; color: var(--pearl-dim); line-height: 1.5; }
+.opcao-vaga b { color: var(--pearl); }
 .cartao-box { margin-top: 14px; padding: 15px 17px; border-radius: 12px; background: rgba(91,216,204,0.09); border: 1px solid rgba(91,216,204,0.3); }
 .cartao-box strong { color: var(--teal); }
 .cartao-box p { font-size: 0.87rem; color: var(--pearl-dim); line-height: 1.6; }
@@ -620,6 +626,7 @@ function render() {
           (im.area ? '<span>' + im.area + ' m²</span>' : '') +
           (im.andar ? '<span>' + im.andar + '</span>' : '') +
           (im.disponivel_de ? '<span>Disponível: ' + im.disponivel_de + '</span>' : '') +
+          (im.estacionamento ? '<span class="vaga">Vaga ' + yen(im.estacionamento) + '/mês</span>' : '') +
         '</div>' +
 
         (im.endereco ?
@@ -700,10 +707,13 @@ function linhaCusto(item) {
          '</td><td>' + EHCustos.iene(item.valor) + '</td></tr>';
 }
 
-function abrirCustos(idx) {
+function abrirCustos(idx, incluirVaga) {
   var im = window.__paginaAtual && window.__paginaAtual[idx];
   if (!im) return;
-  var c = EHCustos.calcular(im);
+  window.__imovelAberto = idx;
+  var temVaga = !!Number(im.estacionamento || 0);
+  if (incluirVaga === undefined) incluirVaga = temVaga;
+  var c = EHCustos.calcular(im, { estacionamento: incluirVaga ? im.estacionamento : 0 });
 
   document.getElementById('modalSub').textContent =
     im.titulo + ' · ' + (im.cidade_pt || im.cidade || 'Aichi');
@@ -712,6 +722,7 @@ function abrirCustos(idx) {
     '<table class="custos"><caption>Todo mês</caption><tbody>' +
       '<tr><td>Aluguel<span class="jp">家賃</span></td><td>' + EHCustos.iene(c.aluguel) + '</td></tr>' +
       (c.condominio ? '<tr><td>Taxa de condomínio<span class="jp">共益費</span></td><td>' + EHCustos.iene(c.condominio) + '</td></tr>' : '') +
+      (c.estacionamento ? '<tr><td>Vaga de estacionamento<span class="jp">駐車場</span></td><td>' + EHCustos.iene(c.estacionamento) + '</td></tr>' : '') +
       '<tr><td>Empresa garantidora<span class="jp">保証委託料</span><span class="det">2,2% do total</span></td><td>' + EHCustos.iene(c.garantiaMensal) + '</td></tr>' +
       '<tr><td>Suporte 24h<span class="jp">ruumサポート</span></td><td>' + EHCustos.iene(c.suporte) + '</td></tr>' +
       '<tr class="total"><td>Total por mês</td><td>' + EHCustos.iene(c.mensal) + '</td></tr>' +
@@ -721,6 +732,15 @@ function abrirCustos(idx) {
       c.itens.map(linhaCusto).join('') +
       '<tr class="total"><td>Total da entrada</td><td>' + EHCustos.iene(c.entrada) + '</td></tr>' +
     '</tbody></table>' +
+
+    (temVaga
+      ? '<label class="opcao-vaga">' +
+          '<input type="checkbox"' + (incluirVaga ? ' checked' : '') +
+          ' onchange="abrirCustos(' + idx + ', this.checked)">' +
+          '<span>Incluir <b>vaga de estacionamento</b> (' + EHCustos.iene(im.estacionamento) + '/mês). ' +
+          'A vaga entra no aluguel mensal e também na taxa de intermediação.</span>' +
+        '</label>'
+      : '<p class="muted" style="margin:14px 0 4px">Este imóvel não tem vaga de estacionamento informada pelo portal.</p>') +
 
     '<div class="cartao-box">' +
       '<p><strong>Dá para pagar no cartão de crédito.</strong> Há um acréscimo de 3,6% sobre o valor, e o parcelamento é combinado no atendimento.</p>' +

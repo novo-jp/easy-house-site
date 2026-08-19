@@ -19,7 +19,13 @@
   function calcular(imovel, opcoes) {
     opcoes = opcoes || {};
     var dias = opcoes.dias == null ? TAXAS.diasPadrao : opcoes.dias;
-    var estacionamento = opcoes.estacionamento || 0;
+
+    // A vaga vem do portal. É opcional: quem não quiser alugar vaga
+    // pode tirar da conta na tela de detalhes.
+    var vagaDisponivel = Number(imovel.estacionamento || 0);
+    var estacionamento = opcoes.estacionamento != null
+      ? Number(opcoes.estacionamento) || 0
+      : vagaDisponivel;
 
     var aluguel = imovel.aluguel || 0;
     var condominio = imovel.condominio || 0;
@@ -51,6 +57,8 @@
       aluguel: aluguel,
       condominio: condominio,
       estacionamento: estacionamento,
+      vagaDisponivel: vagaDisponivel,
+      temVaga: !!(imovel.tem_estacionamento || vagaDisponivel),
       garantiaMensal: garantiaMensal,
       suporte: TAXAS.suporteMensal,
       mensal: mensal,
