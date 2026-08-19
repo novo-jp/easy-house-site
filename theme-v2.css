@@ -122,8 +122,11 @@ input, select, textarea { font: inherit; }
 }
 .nav.scrolled { background: rgba(11,10,20,0.94); border-bottom-color: var(--line); }
 
-.nav__brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.nav__brand img { height: 34px; width: auto; }
+.nav__brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; min-width: 0; }
+.nav__brand-eh { height: 32px; width: auto; flex-shrink: 0; }
+.nav__brand-sep { width: 1px; height: 24px; background: var(--line-strong); flex-shrink: 0; }
+.nav__brand-movo { height: 34px; width: auto; flex-shrink: 0; }
+/* usado apenas no rodapé */
 .nav__brand-text { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; }
 .nav__brand-text em { color: var(--gold); font-style: normal; }
 
@@ -207,10 +210,15 @@ input, select, textarea { font: inherit; }
   .nav__burger { display: flex; }
   .nav__cta { display: none; }
 }
-/* O logo já traz o nome escrito — evita repetição em telas estreitas */
-@media (max-width: 520px) {
-  .nav__brand-text { display: none; }
-  .nav__brand img { height: 38px; }
+@media (max-width: 560px) {
+  .nav__brand { gap: 8px; }
+  .nav__brand-eh { height: 27px; }
+  .nav__brand-movo { height: 29px; }
+  .nav__brand-sep { height: 20px; }
+}
+@media (max-width: 360px) {
+  .nav__brand-eh { height: 24px; }
+  .nav__brand-movo { height: 26px; }
 }
 
 /* ============================================================

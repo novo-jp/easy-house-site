@@ -39,3 +39,4 @@ Imoveis/removidos_*.json
 *.py.bak
 Imoveis/debug_*.json
 Imoveis/debug_*.png
+images/originais/
