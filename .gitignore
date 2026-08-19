@@ -37,3 +37,5 @@ debug_*.png
 # Backups de imóveis removidos pela limpeza do scraper
 Imoveis/removidos_*.json
 *.py.bak
+Imoveis/debug_*.json
+Imoveis/debug_*.png
