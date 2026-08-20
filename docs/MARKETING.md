@@ -432,6 +432,53 @@ até ter volume; um teste por vez, sem declarar vencedor cedo.
 
 ---
 
+## 9.1 Campanhas no ar
+
+### Omatome — Organizar dívidas (Ago 2026)
+
+| | |
+|---|---|
+| Conta | EASY HOUSE (`act=2121804234826585`) |
+| Objetivo | Tráfego → maximizar visualizações da página de destino |
+| Categorias especiais | Produtos e serviços financeiros + Moradia |
+| Verba | ¥10.000 no total, 30 dias a partir de 20/08/2026 |
+| Público | Hekinan + 17 km · 18–65+ · todos os gêneros · Português |
+| Alcance estimado | 26.100–30.700 |
+| Destino | `https://easyhouse.homes/omatome` |
+| Rastreamento | `utm_source=facebook`, `utm_medium=paid`, `utm_campaign=video-omatome-ago2026`, `utm_content={{placement}}` |
+| Eventos do site | dataset EASY HOUSE, pixel `137135779491997` |
+| Criativo | vídeo vertical de 32s (576×1024) |
+
+As categorias especiais travam idade, gênero e segmentação detalhada, e
+forçam raio mínimo de 15 milhas — por isso 18–65+ e 17 km, e não a faixa
+de 20 a 55 que seria preferível. A seleção acontece pelo idioma e pelo
+próprio criativo.
+
+**Complemento de navegador (WhatsApp): ligado.** Ele não desvia o clique
+— a pessoa abre o site normalmente e ganha um botão de WhatsApp por cima.
+É uma porta a mais, não uma concorrente. Saudação e mensagem pronta foram
+escritas para o tema de dívidas.
+
+#### Correção na LP antes de publicar
+
+A `/omatome` tinha só dois links de WhatsApp: um dentro do menu lateral e
+outro no rodapé. Todo o resto levava a um formulário de cinco campos —
+inclusive a barra fixa e o botão do menu, ambos verdes, com o ícone do
+WhatsApp e o texto "Falar no WhatsApp".
+
+É o mesmo desenho que produziu 336 visitas e zero contatos na campanha do
+simulador. Para tráfego frio de vídeo, o formulário é atrito antes da
+conversa, não qualificação.
+
+Passou a ter seis links `wa.me`: menu, herói, acima do formulário, barra
+fixa, gaveta e rodapé. O formulário continua como alternativa para quem
+prefere deixar os dados.
+
+`landingvendas`, `landingaluguel` e `refinanciamento` têm o mesmo botão
+verde enganoso e seguem pendentes.
+
+---
+
 ## 10. Ordem de execução
 
 | # | O quê | Bloqueia o quê |
