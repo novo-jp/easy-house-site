@@ -60,7 +60,23 @@ Para conferir se ficou tudo certo:
 bash verificar-funil.sh
 ```
 
-### 3.2 Variáveis de ambiente (Vercel → Project Settings → Environment Variables)
+### 3.2 Aviso de lead novo
+
+Quando um lead entra, `lib/notificar.js` manda um e-mail para a equipe com o que
+é preciso para agir: código, nome, telefone (com link que já abre a conversa no
+WhatsApp), cidades, prazo de compra e origem da campanha.
+
+**Não vai renda, dívidas nem faixa de imóvel** — o e-mail passa por um serviço de
+terceiro, e a política promete que dado financeiro não é compartilhado. O corretor
+consulta esses valores no banco pelo código.
+
+Sem `RESEND_API_KEY` e `LEAD_NOTIFY_TO` o aviso não é enviado e nada quebra.
+
+> Isto foi construído em 20/08/2026 depois que um lead de prioridade 90
+> (`EH-RGG4TM`) ficou 4 dias sem resposta: o funil capturou tudo certo, mas
+> ninguém era avisado.
+
+### 3.3 Variáveis de ambiente (Vercel → Project Settings → Environment Variables)
 
 | Variável | Para quê | Onde obter |
 |---|---|---|

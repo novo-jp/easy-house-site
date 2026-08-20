@@ -11,6 +11,7 @@
 
 import { runSimulation } from '../lib/financing.js';
 import { sendLeadEvent } from '../lib/meta-capi.js';
+import { avisarLeadNovo } from '../lib/notificar.js';
 import { readFileSync } from 'node:fs';
 
 const defaultConfig = JSON.parse(readFileSync(new URL('../lib/financing-config.json', import.meta.url), 'utf8'));
@@ -248,6 +249,12 @@ export default async function handler(req, res) {
         userAgent: String(req.headers['user-agent'] || '')
       });
     } catch { /* medição não bloqueia o atendimento */ }
+
+    // Avisa a equipe. Mesma regra: falhar aqui não pode afetar o cliente,
+    // que já está gravado e já vai receber o código na tela.
+    try {
+      await avisarLeadNovo({ lead, answers, source });
+    } catch { /* aviso não bloqueia o atendimento */ }
 
     return res.status(200).json({ ok: true, persisted: true, code: lead.code, leadId: lead.id, result });
   } catch (err) {
