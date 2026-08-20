@@ -72,6 +72,19 @@ consulta esses valores no banco pelo código.
 
 Sem `RESEND_API_KEY` e `LEAD_NOTIFY_TO` o aviso não é enviado e nada quebra.
 
+**No ar desde 20/08/2026.** Verificado de ponta a ponta: lead de teste pelo
+endpoint de produção → e-mail entregue (`Delivered` no painel do Resend).
+
+Duas armadilhas do remetente padrão `onboarding@resend.dev`:
+
+1. O Resend só entrega para o **e-mail dono da conta** enquanto não houver
+   domínio verificado. Hoje é `kousuke.yamanaka@gmail.com`. Adicionar outro
+   destinatário em `LEAD_NOTIFY_TO` não funciona antes de verificar o domínio.
+2. Remetente genérico tem mais chance de cair em spam.
+
+Verificando `easyhouse.homes` no Resend (Domains → DNS), define-se
+`LEAD_NOTIFY_FROM='Easy House <info@easyhouse.homes>'` e os dois problemas somem.
+
 > Isto foi construído em 20/08/2026 depois que um lead de prioridade 90
 > (`EH-RGG4TM`) ficou 4 dias sem resposta: o funil capturou tudo certo, mas
 > ninguém era avisado.
@@ -82,6 +95,11 @@ Sem `RESEND_API_KEY` e `LEAD_NOTIFY_TO` o aviso não é enviado e nada quebra.
 |---|---|---|
 | `SUPABASE_URL` | Endereço do projeto | Supabase → Project Settings → API |
 | `SUPABASE_SERVICE_KEY` | Gravar leads e simulações | Supabase → API → `service_role` |
+| `META_PIXEL_ID` | Pixel do site | Gerenciador de Eventos |
+| `META_CAPI_TOKEN` | Conversões pelo servidor | Gerenciador de Eventos → dataset |
+| `RESEND_API_KEY` | Enviar o aviso de lead novo | resend.com → API Keys (sending access) |
+| `LEAD_NOTIFY_TO` | Quem recebe o aviso | e-mail; vários separados por vírgula |
+| `LEAD_NOTIFY_FROM` | Opcional; exige domínio verificado | resend.com → Domains |
 
 Pela CLI (a chave é pedida na hora, sem ficar em arquivo nem no histórico):
 
