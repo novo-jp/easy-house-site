@@ -72,3 +72,28 @@ where created_at >= now() - interval '30 days'
   and event = 'quick_question_completed'
 group by 1
 order by chegaram_ate_aqui desc;
+
+
+-- ============================================================
+-- Qualidade do clique por posicionamento
+--
+-- Requer utm_content={{placement}} nos Parametros de URL do anuncio
+-- (adicionado em 19/08/2026). So vale para cliques a partir dai.
+--
+-- A pergunta que isto responde: Reels traz gente que age, ou gente
+-- que escorregou o dedo? Se a taxa de inicio do Reels for muito
+-- menor que a do Feed, o caminho e desligar Reels.
+-- ============================================================
+select
+  coalesce(source->>'utm_content', '(sem posicionamento)')                        as posicionamento,
+  count(distinct session_id) filter (where event = 'landing_view')                as chegaram,
+  count(distinct session_id) filter (where event = 'simulation_started')          as comecaram,
+  round(100.0 * count(distinct session_id) filter (where event = 'simulation_started')
+      / nullif(count(distinct session_id) filter (where event = 'landing_view'), 0), 1) as pct_inicio,
+  count(distinct session_id) filter (where event = 'quick_simulation_completed')  as simularam,
+  count(distinct session_id) filter (where event = 'lead_submitted')              as leads,
+  count(distinct session_id) filter (where event = 'whatsapp_clicked')            as whatsapp
+from funnel_event
+where created_at >= '2026-08-19'
+group by 1
+order by chegaram desc;
