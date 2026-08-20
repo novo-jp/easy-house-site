@@ -244,16 +244,62 @@
     };
   }
 
-  /**
-   * Cliques em WhatsApp valem em qualquer página do site, não só no funil.
-   * No funil o próprio `whatsapp_clicked` já cobre; aqui evitamos contar duas vezes.
-   */
+  /* ============================================================
+     Medição interna das landing pages
+     ------------------------------------------------------------
+     O simulador já registra tudo pelo funnel.js. As outras páginas
+     (omatome, refinanciamento) não registravam nada: o clique no
+     WhatsApp ia só para o Meta.
+
+     Isso é cegueira, porque o Meta subconta — perde quem usa
+     bloqueador e quem recusa a medição. Aqui mandamos o mesmo clique
+     para o nosso `/api/event`, que é medição de primeira parte e não
+     depende de aceite de publicidade.
+
+     Os eventos usam nomes próprios (`lp_view`, `lp_whatsapp_clicked`)
+     para não se misturarem com os do funil nas consultas existentes.
+     ============================================================ */
+  function idDeSessao() {
+    var id = sessionStorage.getItem('eh_session');
+    if (!id) {
+      id = 'S' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      sessionStorage.setItem('eh_session', id);
+    }
+    return id;
+  }
+
+  function origemDaUrl() {
+    var p = new URLSearchParams(location.search);
+    var f = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid']
+      .forEach(function (k) { var v = p.get(k); if (v) f[k] = v; });
+    f.landing = location.pathname;
+    return f;
+  }
+
+  function registrarInterno(evento) {
+    try {
+      navigator.sendBeacon('/api/event', new Blob([JSON.stringify({
+        event: evento,
+        sessionId: idDeSessao(),
+        step: location.pathname,
+        source: origemDaUrl(),
+        payload: {}
+      })], { type: 'application/json' }));
+    } catch (e) { /* medição nunca quebra a página */ }
+  }
+
+  /** Só nas páginas que não são o funil — lá o funnel.js já cuida. */
+  function ehLandingPage() {
+    return !document.getElementById('fxMain');
+  }
+
   function escutarWhatsApp() {
     document.addEventListener('click', function (ev) {
       var link = ev.target && ev.target.closest && ev.target.closest('a[href*="wa.me"]');
-      if (!link || !pixelPronto) return;
-      if (document.getElementById('fxMain')) return;   // funil: já é medido pelo funil
-      window.fbq('track', 'Contact');
+      if (!link || !ehLandingPage()) return;
+      registrarInterno('lp_whatsapp_clicked');          // sempre
+      if (pixelPronto) window.fbq('track', 'Contact');  // só com aceite
     }, true);
   }
 
@@ -262,9 +308,12 @@
      ============================================================ */
 
   function iniciar() {
-    if (!PIXEL_ID) return;             // sem ID configurado, o site segue limpo
+    // A medição interna independe do pixel e do aceite: é primeira parte.
+    if (ehLandingPage()) registrarInterno('lp_view');
 
     escutarWhatsApp();
+
+    if (!PIXEL_ID) return;             // sem ID configurado, nenhuma tag de anúncio
 
     var resposta = lerConsentimento();
     if (resposta === 'granted') iniciarPixel();
