@@ -183,6 +183,14 @@ Todas as fórmulas ficam em `lib/financing.js`, sem dependência de interface.
 nacionalidade, telefone, e-mail e nome são descartados antes de gravar, mesmo se enviados
 por engano.
 
+> **Armadilha — `ALLOWED_EVENTS`.** O mesmo arquivo tem uma lista fechada de
+> nomes de evento aceitos. Um nome fora dela recebe HTTP 400 e o evento é
+> descartado **em silêncio** — o `sendBeacon` do navegador não avisa ninguém.
+> Ao criar um evento novo em `analytics.js`, adicione o nome nessa lista no
+> mesmo commit. Foi exatamente o que faltou em `lp_view` e
+> `lp_whatsapp_clicked`: ficaram sendo rejeitados desde a criação até
+> 22/08/2026, e não existe dado de landing page antes dessa data.
+
 A mensagem do WhatsApp leva apenas o código do lead (`EH-XXXXXX`, quando já existe) e as
 cidades escolhidas — **nunca valores financeiros**, nem a faixa estimada. A mensagem viaja
 como texto dentro de uma URL, e URL não é lugar para dado financeiro. O corretor consulta o
