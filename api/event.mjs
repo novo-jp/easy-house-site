@@ -9,7 +9,10 @@ const ALLOWED_EVENTS = new Set([
   'landing_view', 'simulation_started', 'quick_question_completed',
   'quick_simulation_completed', 'preliminary_result_viewed', 'full_simulation_started',
   'lead_form_viewed', 'lead_submitted', 'simulation_result_viewed',
-  'property_match_viewed', 'property_opened', 'whatsapp_clicked', 'visit_requested'
+  'property_match_viewed', 'property_opened', 'whatsapp_clicked', 'visit_requested',
+  // Medição primeira-parte das landing pages (analytics.js). Independe do pixel
+  // e do aceite de cookies: é a única forma de saber se o tráfego pago clica.
+  'lp_view', 'lp_whatsapp_clicked'
 ]);
 
 const BLOCKED_KEYS = new Set([
