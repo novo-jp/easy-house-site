@@ -479,6 +479,55 @@ verde enganoso e seguem pendentes.
 
 ---
 
+## 9.2 Leitura de 26/08/2026 — o anúncio não é o gargalo
+
+Números acumulados das duas campanhas (últimos 30 dias):
+
+| | Simulador | Omatome |
+|---|---|---|
+| Gasto | ¥10.424 de ¥20.000 | ¥1.781 de ¥10.000 |
+| Impressões | 24.411 | 4.083 |
+| Alcance / frequência | 9.635 / 2,53 | 2.469 / 1,65 |
+| Cliques no link | 612 · CTR 2,51% · CPC ¥17 | 65 · CTR 1,59% · CPC ¥27 |
+| Visualizações da página | 547 · ¥19 cada | 60 · ¥30 cada |
+| Leads | 1 | 0 |
+
+**607 visitas pagas produziram 1 lead.** Custo real por lead: ¥12.205.
+
+O diagnóstico é claro e vale contra a intuição inicial: o criativo e a
+segmentação funcionam. CTR de 2,51% é saudável, e **89–92% de quem clica
+realmente carrega a página** — não há perda técnica nem clique acidental em
+massa, que era a hipótese sobre os Reels. O funil quebra depois que a
+página abre.
+
+### Posicionamento da omatome
+
+| Posicionamento | Visitas | Custo cada |
+|---|---|---|
+| Facebook Reels | 34 | ¥23 |
+| Feed do Facebook | 14 | ¥46 |
+| Instagram Reels | 8 | ¥24 |
+| Perfis do Facebook | 4 | ¥21 |
+
+O Feed custa o dobro dos Reels, mas 60 visitas é ruído. Não excluir
+posicionamento com amostra desse tamanho.
+
+### Decisões tomadas
+
+- **Simulador: pausado.** ¥10.424 e 547 visitas é amostra suficiente para
+  concluir que o funil não converte tráfego pago. Preserva ~¥9.576.
+- **Omatome: mantida.** É o teste limpo — a LP foi corrigida com seis portas
+  de WhatsApp e a medição passou a funcionar em 22/08.
+
+### O que impede uma conclusão melhor
+
+`lp_whatsapp_clicked` era rejeitado pelo endpoint até 22/08 (ver a armadilha
+da allowlist em `docs/FUNIL.md`). Não se sabe se as pessoas clicam no botão
+de WhatsApp e desistem, ou se nem clicam. Só os dados de 22/08 em diante
+respondem isso.
+
+---
+
 ## 10. Ordem de execução
 
 | # | O quê | Bloqueia o quê |
