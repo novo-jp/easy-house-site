@@ -281,11 +281,17 @@ export function whatsappLink(origem) {
     preliminary: 'Já vi meu poder de compra aproximado e gostaria de conversar sobre as opções.',
     lead:        'Prefiro continuar por aqui, se possível.',
     result:      'Gostaria de confirmar minha pré-análise.',
-    topo:        'Prefiro falar direto, sem preencher a simulação.'
+    topo:        'Prefiro falar com uma pessoa em vez de responder o simulador.'
   }[origem] || 'Gostaria de falar com um corretor.';
 
+  // Quem sai pelo topo não simulou nada: dizer que simulou confunde os dois
+  // lados da conversa. A abertura muda, o resto do formato continua igual.
+  const abertura = origem === 'topo'
+    ? 'Olá! Estou no simulador da Easy House.'
+    : 'Olá! Fiz a simulação no site da Easy House.';
+
   const parts = [
-    'Olá! Fiz a simulação no site da Easy House.',
+    abertura,
     code ? `Meu código é ${code}.` : '',
     cities ? `Tenho interesse em imóveis em ${cities}.` : '',
     fecho

@@ -7,7 +7,7 @@ import {
   initFunnel, goTo, goBack, setAnswer, getAnswers, getState,
   simulate, submitLead, whatsappLink, PROPERTY_MESSAGE,
   track, yen, parseYen, bindYenInput
-} from './funnel.js?v=7';
+} from './funnel.js?v=8';
 
 import config from './lib/financing-config.json?v=7' with { type: 'json' };
 import { compareWithRent } from './lib/financing.js?v=7';
