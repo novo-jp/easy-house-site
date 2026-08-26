@@ -131,6 +131,7 @@
     function responder(status) {
       gravarConsentimento(status);
       caixa.remove();
+      liberarEspaco();
       if (status === 'granted') iniciarPixel();
     }
 
@@ -139,6 +140,7 @@
 
     document.body.appendChild(caixa);
     afastarDaBarraFixa(caixa);
+    reservarEspaco(caixa);
   }
 
   /**
@@ -157,6 +159,39 @@
       var altura = barra.getBoundingClientRect().height;
       if (altura > 0) caixa.style.bottom = Math.round(altura + 12) + 'px';
     } catch (e) { /* na dúvida, deixa no rodapé */ }
+  }
+
+  /**
+   * O aviso é fixo no rodapé, então cobre o que estiver embaixo dele.
+   *
+   * No simulador chegava a esconder duas das seis opções da primeira pergunta:
+   * quem vinha de um anúncio abria a página e via uma pergunta pela metade
+   * junto de uma caixa de cookies. Aqui o corpo ganha uma folga do tamanho do
+   * aviso, devolvida assim que a pessoa responde.
+   */
+  var folgaAnterior = null;
+  var recalcular = null;
+
+  function reservarEspaco(caixa) {
+    try {
+      folgaAnterior = document.body.style.paddingBottom;
+      recalcular = function () {
+        var r = caixa.getBoundingClientRect();
+        if (r.height <= 0) return;
+        var doFundo = Math.max(0, window.innerHeight - r.bottom);
+        document.body.style.paddingBottom = Math.round(r.height + doFundo + 16) + 'px';
+      };
+      recalcular();
+      window.addEventListener('resize', recalcular);
+    } catch (e) { /* sem folga é melhor do que sem aviso */ }
+  }
+
+  function liberarEspaco() {
+    try {
+      if (recalcular) window.removeEventListener('resize', recalcular);
+      document.body.style.paddingBottom = folgaAnterior || '';
+      recalcular = null;
+    } catch (e) {}
   }
 
   /* ============================================================

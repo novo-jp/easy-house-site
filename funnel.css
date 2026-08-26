@@ -83,6 +83,26 @@ a { color: var(--navy); }
 }
 .fx-secure svg { width: 14px; height: 14px; color: var(--green); }
 
+/* Saída para o WhatsApp, presente em todos os passos.
+   Antes só existia depois das seis perguntas: quem não queria responder
+   o formulário não tinha para onde ir, e ia embora. */
+.fx-wa-top {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 15px; border-radius: 999px;
+  background: var(--wa); color: #fff;
+  font-size: 0.8rem; font-weight: 700; text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px rgba(37,211,102,.3);
+  transition: background .2s;
+}
+.fx-wa-top:hover { background: #1FBF5B; }
+.fx-wa-top svg { width: 16px; height: 16px; }
+
+/* Em telas estreitas o selo de confiança cede o lugar: o botão vale mais. */
+@media (max-width: 520px) {
+  .fx-secure { display: none; }
+}
+
 /* barra de progresso */
 .fx-progress { height: 3px; background: var(--line); overflow: hidden; }
 .fx-progress__bar {

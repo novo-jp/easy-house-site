@@ -7,10 +7,10 @@ import {
   initFunnel, goTo, goBack, setAnswer, getAnswers, getState,
   simulate, submitLead, whatsappLink, PROPERTY_MESSAGE,
   track, yen, parseYen, bindYenInput
-} from './funnel.js?v=6';
+} from './funnel.js?v=7';
 
-import config from './lib/financing-config.json?v=6' with { type: 'json' };
-import { compareWithRent } from './lib/financing.js?v=6';
+import config from './lib/financing-config.json?v=7' with { type: 'json' };
+import { compareWithRent } from './lib/financing.js?v=7';
 
 const $ = s => document.querySelector(s);
 const nextBtn = $('#fxNext');
@@ -571,7 +571,7 @@ $('#prelimCta')?.addEventListener('click', onNext);
    porque as cidades (e o código, quando existe) só são conhecidos
    depois que a pessoa avança.
    ============================================================ */
-[['#prelimWhats', 'preliminary'], ['#leadWhats', 'lead']].forEach(([sel, origem]) => {
+[['#prelimWhats', 'preliminary'], ['#leadWhats', 'lead'], ['#fxTopWhats', 'topo']].forEach(([sel, origem]) => {
   const el = $(sel);
   if (!el) return;
   el.addEventListener('click', () => {

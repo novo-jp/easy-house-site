@@ -7,7 +7,7 @@
  * - Nenhum dado financeiro vai para eventos de analytics.
  */
 
-import { runSimulation, formatYen } from './lib/financing.js?v=6';
+import { runSimulation, formatYen } from './lib/financing.js?v=7';
 
 /* ============================================================
    Estado
@@ -280,7 +280,8 @@ export function whatsappLink(origem) {
   const fecho = {
     preliminary: 'Já vi meu poder de compra aproximado e gostaria de conversar sobre as opções.',
     lead:        'Prefiro continuar por aqui, se possível.',
-    result:      'Gostaria de confirmar minha pré-análise.'
+    result:      'Gostaria de confirmar minha pré-análise.',
+    topo:        'Prefiro falar direto, sem preencher a simulação.'
   }[origem] || 'Gostaria de falar com um corretor.';
 
   const parts = [
