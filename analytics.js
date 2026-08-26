@@ -104,6 +104,13 @@
     '.eh-cc__sim{background:#12224A;color:#fff}',
     '.eh-cc__nao{background:#fff;color:#12224A}',
     '.eh-cc button:focus-visible{outline:3px solid #16A34A;outline-offset:2px}',
+    /* Em telas estreitas o aviso e fixo e cobre o conteudo que estiver atras.
+       No simulador escondia duas das seis opcoes da primeira pergunta, entao
+       aqui ele encolhe ao minimo necessario. */
+    '@media(max-width:560px){',
+    '.eh-cc{padding:11px 13px;gap:9px;font-size:12.5px;line-height:1.45;border-radius:12px}',
+    '.eh-cc button{min-width:0;padding:9px 14px;font-size:12.5px}',
+    '.eh-cc__acoes{gap:8px}}',
     '@media (prefers-reduced-motion:no-preference){',
     '.eh-cc{animation:eh-cc-in .25s ease-out}',
     '@keyframes eh-cc-in{from{transform:translateY(14px);opacity:0}}}'
@@ -120,9 +127,8 @@
     caixa.setAttribute('aria-live', 'polite');
     caixa.setAttribute('aria-label', 'Aviso sobre medição');
     caixa.innerHTML =
-      '<p>Usamos medição para entender quais anúncios trazem pessoas até aqui. ' +
-      'Não enviamos sua renda, suas dívidas nem seus dados de contato. ' +
-      '<a href="' + POLICY_URL + '">Como funciona</a>.</p>' +
+      '<p>Medimos quais anúncios trazem visitantes. Sua renda, dívidas e ' +
+      'contato não são enviados. <a href="' + POLICY_URL + '">Como funciona</a>.</p>' +
       '<div class="eh-cc__acoes">' +
       '<button type="button" class="eh-cc__sim">Aceitar</button>' +
       '<button type="button" class="eh-cc__nao">Recusar</button>' +
