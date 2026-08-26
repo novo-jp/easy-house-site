@@ -196,17 +196,28 @@ cidades escolhidas — **nunca valores financeiros**, nem a faixa estimada. A me
 como texto dentro de uma URL, e URL não é lugar para dado financeiro. O corretor consulta o
 restante no CRM pelo código, ou pergunta.
 
-Existem três pontos de saída para o WhatsApp, cada um com uma frase final diferente para o
+Existem quatro pontos de saída para o WhatsApp, cada um com uma frase final diferente para o
 corretor saber onde a pessoa estava (`whatsappLink(origem)`):
 
 | Origem | Tela | Tem código? |
 |---|---|---|
+| `topo` | cabeçalho, presente em todos os passos | não |
 | `preliminary` | logo abaixo do poder de compra | não |
 | `lead` | abaixo do formulário de contato | não |
 | `result` | resultado completo | sim |
 
-Nas duas primeiras a pessoa ainda não deixou contato, então o corretor recebe só a cidade.
+Nas três primeiras a pessoa ainda não deixou contato, então o corretor recebe só a cidade.
 É a troca aceita: menos contexto, mais conversas.
+
+`topo` foi acrescentado em 26/08/2026, depois que o funil mostrou **725 visitas e 54 inícios
+de simulação (7,4%)**. Os outros 93% não tinham nada para clicar: os botões existiam no DOM,
+mas só ficavam visíveis depois das seis perguntas. Ele usa uma abertura própria — quem sai
+por ali não simulou nada, e dizer que simulou confunde os dois lados da conversa.
+
+O aviso de consentimento é `position:fixed` no rodapé. A folga que o corpo recebe resolve o
+conteúdo preso no fim do documento, **não** a sobreposição: em telas estreitas ele encolhe
+(texto curto, padding e botões menores) porque chegava a cobrir duas das seis opções da
+primeira pergunta.
 
 Consentimentos ficam em `consent`, com versão da política, texto aceito e data. Nenhuma caixa
 vem marcada.
