@@ -29,6 +29,9 @@
 
     var aluguel = imovel.aluguel || 0;
     var condominio = imovel.condominio || 0;
+    // 敷金/礼金 já chegam em ienes do banco; nem todo imóvel cobra
+    var deposito = Number(imovel.deposito || 0);
+    var luva = Number(imovel.luva || 0);
 
     var base = aluguel + condominio + estacionamento;
     var garantiaMensal = Math.ceil(base * TAXAS.garantiaMensalPct);
@@ -41,6 +44,10 @@
         detalhe: '1 mês completo', valor: mensal },
       { chave: 'corretagem', jp: '仲介手数料', pt: 'Taxa de intermediação',
         detalhe: 'aluguel × 1,1', valor: Math.round((aluguel + estacionamento) * TAXAS.corretagemMult) },
+      { chave: 'deposito', jp: '敷金', pt: 'Depósito de garantia',
+        detalhe: 'devolvido no fim, menos reparos', valor: deposito },
+      { chave: 'luva', jp: '礼金', pt: 'Luva ao proprietário',
+        detalhe: 'não é devolvida', valor: luva },
       { chave: 'garantia', jp: '保証委託料',   pt: 'Empresa garantidora',
         detalhe: 'na assinatura', valor: TAXAS.garantiaInicial },
       { chave: 'limpeza', jp: 'クリーニング費', pt: 'Limpeza na saída',
@@ -51,6 +58,7 @@
         detalhe: '', valor: TAXAS.chaves }
     ];
 
+    itens = itens.filter(function (i) { return i.valor > 0; });
     var total = itens.reduce(function (s, i) { return s + i.valor; }, 0);
 
     return {
@@ -60,6 +68,8 @@
       vagaDisponivel: vagaDisponivel,
       temVaga: !!(imovel.tem_estacionamento || vagaDisponivel),
       garantiaMensal: garantiaMensal,
+      deposito: deposito,
+      luva: luva,
       suporte: TAXAS.suporteMensal,
       mensal: mensal,
       dias: dias,
