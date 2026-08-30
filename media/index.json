@@ -1,0 +1,158 @@
+[
+  {
+    "id": "hero-casa",
+    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
+    "tratamento": "recorte 4000x1500 a partir de 4000x3000; rostos excluidos; EXIF removido",
+    "arquivos": [
+      "hero-casa-400.webp",
+      "hero-casa-800.webp",
+      "hero-casa-1200.webp",
+      "hero-casa-1600.webp",
+      "hero-casa-tex.webp"
+    ],
+    "status": "revisar"
+  },
+  {
+    "id": "vida-bairro",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "vida-bairro-400.webp",
+      "vida-bairro-800.webp",
+      "vida-bairro-1200.webp",
+      "vida-bairro-1600.webp",
+      "vida-bairro-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "regiao-aichi",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "regiao-aichi-400.webp",
+      "regiao-aichi-800.webp",
+      "regiao-aichi-1200.webp",
+      "regiao-aichi-1600.webp",
+      "regiao-aichi-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "planta-decisao",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "planta-decisao-400.webp",
+      "planta-decisao-800.webp",
+      "planta-decisao-1200.webp",
+      "planta-decisao-1600.webp",
+      "planta-decisao-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "documentos",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "documentos-400.webp",
+      "documentos-800.webp",
+      "documentos-1200.webp",
+      "documentos-1600.webp",
+      "documentos-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "entrada-custos",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "entrada-custos-400.webp",
+      "entrada-custos-800.webp",
+      "entrada-custos-1200.webp",
+      "entrada-custos-1600.webp",
+      "entrada-custos-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "casa-nova",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "casa-nova-400.webp",
+      "casa-nova-800.webp",
+      "casa-nova-1200.webp",
+      "casa-nova-1600.webp",
+      "casa-nova-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "casa-usada",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "casa-usada-400.webp",
+      "casa-usada-800.webp",
+      "casa-usada-1200.webp",
+      "casa-usada-1600.webp",
+      "casa-usada-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "atendimento",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "atendimento-400.webp",
+      "atendimento-800.webp",
+      "atendimento-1200.webp",
+      "atendimento-1600.webp",
+      "atendimento-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "escritorio",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "escritorio-400.webp",
+      "escritorio-800.webp",
+      "escritorio-1200.webp",
+      "escritorio-1600.webp",
+      "escritorio-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "plano-3090",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "plano-3090-400.webp",
+      "plano-3090-800.webp",
+      "plano-3090-1200.webp",
+      "plano-3090-1600.webp",
+      "plano-3090-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "chave-final",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "chave-final-400.webp",
+      "chave-final-800.webp",
+      "chave-final-1200.webp",
+      "chave-final-1600.webp",
+      "chave-final-tex.webp"
+    ],
+    "status": "placeholder"
+  }
+]
