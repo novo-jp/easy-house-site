@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EASY HOUSE — Plataformas e Acessos</title>
+<style>
+  :root { --linha:#d8d8d8; --tinta:#111; --fraco:#666; }
+  * { box-sizing:border-box; }
+  body { font:12px/1.45 -apple-system,"Helvetica Neue",Arial,sans-serif; color:var(--tinta); margin:0; padding:22px 26px; }
+  h1 { font-size:19px; margin:0 0 2px; letter-spacing:-.2px; }
+  .sub { color:var(--fraco); font-size:11px; margin:0 0 16px; }
+  h2 { font-size:13px; margin:20px 0 6px; padding-bottom:3px; border-bottom:1.5px solid var(--tinta); text-transform:uppercase; letter-spacing:.6px; }
+  table { width:100%; border-collapse:collapse; margin-bottom:4px; }
+  th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.4px; color:var(--fraco); border-bottom:1px solid var(--linha); padding:4px 6px 3px; font-weight:600; }
+  td { padding:5px 6px; border-bottom:1px solid var(--linha); vertical-align:top; }
+  td:first-child { font-weight:600; white-space:nowrap; }
+  code, .id { font:11px/1.3 "SF Mono",Menlo,Consolas,monospace; }
+  .nota { font-size:11px; color:var(--fraco); margin:4px 0 0; }
+  .alerta { border:1.5px solid var(--tinta); padding:8px 10px; margin:10px 0 4px; font-size:11.5px; }
+  .alerta strong { display:block; margin-bottom:2px; }
+  .senha { color:var(--fraco); font-style:italic; }
+  .rodape { margin-top:22px; padding-top:8px; border-top:1px solid var(--linha); font-size:10px; color:var(--fraco); }
+  .col2 { width:34%; }
+  @media print {
+    body { padding:12mm 10mm; font-size:10.5px; }
+    h2 { page-break-after:avoid; }
+    table { page-break-inside:auto; }
+    tr { page-break-inside:avoid; }
+    .alerta { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>EASY HOUSE — Plataformas e Acessos</h1>
+<p class="sub">Referência para consulta rápida · Gerado em 29/08/2026 · <strong>Não contém senhas</strong> — elas ficam no gerenciador de senhas e no arquivo <code>Imoveis/.env</code></p>
+
+<div class="alerta">
+  <strong>Tokens do Facebook — renovados em 29/08/2026</strong>
+  Os anteriores foram invalidados por troca de senha (erro 190/460). Foram regerados e propagados para
+  <strong>todas as 18 pastas de bot</strong> e para o Instagram @ekojinjp. São tokens de página, sem expiração,
+  testados um a um. <strong>Falta apenas o chatbot do Messenger</strong>, que lê de
+  <code>/opt/easyhouse/.secrets.env</code> no servidor. O acesso a dados do app vence em <strong>27/11/2026</strong>.
+</div>
+
+<h2>Empresa — dados oficiais</h2>
+<table>
+  <tr><td class="col2">Razão social</td><td>株式会社EASY HOUSE</td></tr>
+  <tr><td>Licença imobiliária</td><td>沖縄県知事(1)第5984号</td></tr>
+  <tr><td>Certificado 住宅ローンアドバイザー</td><td>(1)第2455204号 — <strong>válido até 31/10/2026</strong></td></tr>
+  <tr><td>Sede</td><td>Hekinan, Aichi</td></tr>
+  <tr><td>Telefone / WhatsApp</td><td>080-2886-7708 · <span class="id">wa.me/818028867708</span></td></tr>
+  <tr><td>E-mail</td><td>info@easyhouse.homes</td></tr>
+</table>
+
+<h2>Site e infraestrutura</h2>
+<table>
+  <tr><th class="col2">Plataforma</th><th>Conta / identificador</th><th>Para que serve</th></tr>
+  <tr><td>Domínio</td><td>easyhouse.homes</td><td>Site institucional. Conferir o registrador e a data de renovação.</td></tr>
+  <tr><td>Vercel</td><td>projeto <span class="id">easy-house-site</span></td><td>Hospedagem. Publica sozinho a cada push na branch <code>main</code>.</td></tr>
+  <tr><td>GitHub</td><td>repositório <span class="id">novo-jp/easy-house-site</span><br>contas: <strong>EasyhouseJP</strong> (admin) · KokoroCompass (só leitura)</td><td>Código do site. Só a EasyhouseJP consegue enviar alterações.</td></tr>
+  <tr><td>Supabase</td><td>projeto <strong>Automação Aluguel</strong><br><span class="id">igtqdhesorahhdyvsjrl</span> · plano Free</td><td>Banco dos imóveis (<code>imoveis_aichi</code>) e dos leads do funil.</td></tr>
+  <tr><td>Resend</td><td>chave <span class="id">RESEND_API_KEY</span> (Vercel)</td><td>Envia o aviso por e-mail quando chega um lead.</td></tr>
+  <tr><td>Google Cloud</td><td>projeto <span class="id">magnetic-hawk-492900-u4</span></td><td>OAuth do Google Drive usado pelo bot de vídeos.</td></tr>
+  <tr><td>Servidor do chatbot</td><td><span class="id">/opt/easyhouse/.secrets.env</span></td><td>Chatbot do Messenger, Evolution API (WhatsApp) e o cron que mantém o Supabase acordado.</td></tr>
+</table>
+<p class="nota">Variáveis configuradas na Vercel: <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>META_PIXEL_ID</code>, <code>META_CAPI_TOKEN</code>, <code>RESEND_API_KEY</code>, <code>LEAD_NOTIFY_FROM</code>, <code>LEAD_NOTIFY_TO</code>.</p>
+
+<h2>Meta — Facebook e Instagram</h2>
+<table>
+  <tr><th class="col2">Item</th><th>Identificador</th><th>Observação</th></tr>
+  <tr><td>Conta de anúncios</td><td><span class="id">act=2121804234826585</span></td><td>Nome: EASY HOUSE.</td></tr>
+  <tr><td>Pixel do site</td><td><span class="id">137135779491997</span></td><td>No ar desde 10/08/2026, com Conversions API.</td></tr>
+  <tr><td>App “Auto_Aluguel”</td><td><span class="id">1620186045670198</span></td><td>Usado pelos bots de postagem.</td></tr>
+  <tr><td>App “Auto Post eKOJIN”</td><td><span class="id">1669143954177693</span></td><td>Usado pelo chatbot do Messenger.</td></tr>
+  <tr><td>Página principal</td><td><span class="id">157736404094099</span></td><td>Easy House Casas no Japão — compra.</td></tr>
+  <tr><td>Página de aluguel</td><td><span class="id">114660611239817</span></td><td>Segunda página do chatbot.</td></tr>
+  <tr><td>Outras páginas</td><td class="id">1033690106500395 · 1089211507607980<br>1106143902572265 · 1264464883408601<br>1289735157556116</td><td>Apartment Rental Japan (filipinos) · Apartment in Aichi · movo Vietnam · Easy Kojin (imposto) · 心コンパス.</td></tr>
+  <tr><td>Perfil Facebook</td><td>facebook.com/profile.php?id=<span class="id">61553143095845</span></td><td>Perfil ligado à marca.</td></tr>
+  <tr><td>Instagram</td><td>@easyhousejp</td><td>instagram.com/easyhousejp</td></tr>
+  <tr><td>Instagram (eKOJIN)</td><td>@ekojinjp · <span class="id">17841411470970712</span></td><td>Ligado à página Easy Kojin. Já pode publicar pela API.</td></tr>
+</table>
+
+<h2>DK Portal — origem dos imóveis</h2>
+<table>
+  <tr><td class="col2">Login</td><td>dk-portal.jp/daitokima/auth/login</td></tr>
+  <tr><td>Credenciais</td><td>会員ID / ユーザーID / パスワード — <span class="senha">guardadas em <code>Imoveis/.env</code> e no gerenciador de senhas</span></td></tr>
+  <tr><td>Busca salva</td><td>お気に入り条件 “Aichi Principais Cidades” — define quais imóveis entram no site. Teto de aluguel perto de ¥85.000.</td></tr>
+</table>
+<p class="nota">Se a busca for renomeada dentro do portal, é preciso mudar <code>DK_FAVORITE_CONDITION</code> no <code>.env</code>, senão o scraper para.</p>
+
+<h2>Outras contas</h2>
+<table>
+  <tr><th class="col2">Plataforma</th><th>Conta</th><th>Situação</th></tr>
+  <tr><td>TikTok</td><td>app com <span class="id">client_key</span> própria</td><td>Token com validade curta — renova sozinho enquanto o refresh token durar.</td></tr>
+  <tr><td>Google Drive</td><td>yamanaka@easyhouse.homes</td><td>Pasta ALUGUEL — orçamentos e vídeos dos bots.</td></tr>
+  <tr><td>Gmail</td><td>kousuke.yamanaka@gmail.com</td><td>Conta de rascunhos automáticos.</td></tr>
+  <tr><td>Trello</td><td>quadro do CRM</td><td>Recebe as conversas do chatbot quando o bot não resolve.</td></tr>
+</table>
+
+<h2>Rotinas automáticas</h2>
+<table>
+  <tr><th class="col2">Rotina</th><th>Quando</th><th>O que faz</th></tr>
+  <tr><td>Scraper DK Portal</td><td>07:00 (JST), diário</td><td>Atualiza os imóveis, remove os que saíram do portal e confere 120 imóveis quanto a pet.</td></tr>
+  <tr><td>Postagem de imóveis</td><td>08:10, diário</td><td>Legenda + rascunho no Gmail.</td></tr>
+  <tr><td>Bot de vídeos</td><td>09:00, diário</td><td>Publica vídeo do Drive no Facebook.</td></tr>
+  <tr><td>Keep-alive Supabase</td><td>cron no servidor</td><td>Impede a pausa automática do plano Free (7 dias sem uso derruba tudo).</td></tr>
+</table>
+
+<h2>Datas para vigiar</h2>
+<table>
+  <tr><td class="col2">31/10/2026</td><td>Vence o certificado 住宅ローンアドバイザー publicado no site.</td></tr>
+  <tr><td>27/11/2026</td><td>Expira o acesso a dados do app do Facebook — regerar os tokens antes disso.</td></tr>
+  <tr><td>Renovação anual</td><td>Domínio easyhouse.homes — confirmar a data com o registrador.</td></tr>
+</table>
+
+<p class="rodape">
+  Nenhuma senha, chave ou token foi copiado para este documento — apenas nomes de conta e identificadores públicos.
+  As credenciais ficam em <code>~/Site Easy House/Imoveis/.env</code>, em <code>/opt/easyhouse/.secrets.env</code> no servidor
+  e no seu gerenciador de senhas. Ao imprimir, guarde em local reservado: os identificadores acima facilitam
+  ataques de engenharia social. · EASY HOUSE
+</p>
+
+</body>
+</html>
