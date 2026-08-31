@@ -116,6 +116,32 @@
     '@keyframes eh-cc-in{from{transform:translateY(14px);opacity:0}}}'
   ].join('');
 
+  /**
+   * Textos do aviso de medição.
+   *
+   * Este arquivo é script clássico e roda em todas as páginas do site; o
+   * `i18n.js` do simulador é módulo ES e só existe lá. Para quatro frases, uma
+   * tabela local custa menos que acoplar os dois. O idioma vem do documento:
+   * `/simular-es` declara `lang="es"`, as demais páginas seguem em português.
+   */
+  var TEXTOS = {
+    'pt-BR': {
+      rotulo: 'Aviso sobre medição',
+      aviso: 'Medimos quais anúncios trazem visitantes. Sua renda, dívidas e contato não são enviados.',
+      link: 'Como funciona',
+      aceitar: 'Aceitar',
+      recusar: 'Recusar'
+    },
+    es: {
+      rotulo: 'Aviso sobre medición',
+      aviso: 'Medimos qué anuncios traen visitantes. Tus ingresos, deudas y datos de contacto no se envían.',
+      link: 'Cómo funciona',
+      aceitar: 'Aceptar',
+      recusar: 'Rechazar'
+    }
+  };
+  var TXT = /^es/i.test(document.documentElement.lang || '') ? TEXTOS.es : TEXTOS['pt-BR'];
+
   function mostrarAviso() {
     var estilo = document.createElement('style');
     estilo.textContent = CSS;
@@ -125,13 +151,12 @@
     caixa.className = 'eh-cc';
     caixa.setAttribute('role', 'dialog');
     caixa.setAttribute('aria-live', 'polite');
-    caixa.setAttribute('aria-label', 'Aviso sobre medição');
+    caixa.setAttribute('aria-label', TXT.rotulo);
     caixa.innerHTML =
-      '<p>Medimos quais anúncios trazem visitantes. Sua renda, dívidas e ' +
-      'contato não são enviados. <a href="' + POLICY_URL + '">Como funciona</a>.</p>' +
+      '<p>' + TXT.aviso + ' <a href="' + POLICY_URL + '">' + TXT.link + '</a>.</p>' +
       '<div class="eh-cc__acoes">' +
-      '<button type="button" class="eh-cc__sim">Aceitar</button>' +
-      '<button type="button" class="eh-cc__nao">Recusar</button>' +
+      '<button type="button" class="eh-cc__sim">' + TXT.aceitar + '</button>' +
+      '<button type="button" class="eh-cc__nao">' + TXT.recusar + '</button>' +
       '</div>';
 
     function responder(status) {

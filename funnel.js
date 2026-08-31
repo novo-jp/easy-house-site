@@ -8,6 +8,7 @@
  */
 
 import { runSimulation, formatYen } from './lib/financing.js?v=7';
+import { t, tm } from './i18n.js?v=1';
 
 /* ============================================================
    Estado
@@ -253,7 +254,7 @@ export async function submitLead(contact, consent) {
 
   const data = await resp.json().catch(() => ({}));
   if (!resp.ok) {
-    const err = new Error(data.error || 'Falha no envio');
+    const err = new Error(tm(data.error || 'Falha no envio'));
     err.fields = data.fields;
     throw err;
   }
@@ -278,22 +279,20 @@ export function whatsappLink(origem) {
   const cities = (state.answers.cities || []).filter(c => c !== 'outra').join(', ');
 
   const fecho = {
-    preliminary: 'Já vi meu poder de compra aproximado e gostaria de conversar sobre as opções.',
-    lead:        'Prefiro continuar por aqui, se possível.',
-    result:      'Gostaria de confirmar minha pré-análise.',
-    topo:        'Prefiro falar com uma pessoa em vez de responder o simulador.'
-  }[origem] || 'Gostaria de falar com um corretor.';
+    preliminary: t('wa.fechoPreliminary'),
+    lead:        t('wa.fechoLead'),
+    result:      t('wa.fechoResult'),
+    topo:        t('wa.fechoTopo')
+  }[origem] || t('wa.fechoPadrao');
 
   // Quem sai pelo topo não simulou nada: dizer que simulou confunde os dois
   // lados da conversa. A abertura muda, o resto do formato continua igual.
-  const abertura = origem === 'topo'
-    ? 'Olá! Estou no simulador da Easy House.'
-    : 'Olá! Fiz a simulação no site da Easy House.';
+  const abertura = origem === 'topo' ? t('wa.aberturaTopo') : t('wa.abertura');
 
   const parts = [
     abertura,
-    code ? `Meu código é ${code}.` : '',
-    cities ? `Tenho interesse em imóveis em ${cities}.` : '',
+    code ? t('wa.codigo', { codigo: code }) : '',
+    cities ? t('wa.cidades', { cidades: cities }) : '',
     fecho
   ].filter(Boolean);
 
@@ -311,8 +310,7 @@ export function whatsappLink(origem) {
  * algo que não podemos confirmar, dizemos o que é verdade — a Easy House tem
  * imóveis na região e o corretor apresenta os que se enquadram.
  */
-export const PROPERTY_MESSAGE =
-  'Temos imóveis disponíveis na região, o corretor irá lhe apresentar as opções que se enquadram.';
+export const PROPERTY_MESSAGE = t('imoveis.mensagem');
 
 /* ============================================================
    Utilidades de formatação
