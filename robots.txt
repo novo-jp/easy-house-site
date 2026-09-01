@@ -4,3 +4,4 @@ Disallow: /admin-taxas
 Disallow: /api/
 
 Sitemap: https://easyhouse.homes/sitemap.xml
+Sitemap: https://easyhouse.homes/sitemap-casas.xml

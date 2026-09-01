@@ -42,6 +42,8 @@ const DICT = {
     'prelim.semRange': 'Seu caso tem características que precisam ser analisadas individualmente.',
     'prelim.intro': 'Com uma parcela de aproximadamente {parcela}, você pode comprar um imóvel entre {min} e {max}.',
     'prelim.proximaEtapa': 'Para ver se esse valor também combina com sua renda e com suas dívidas atuais, complete a próxima etapa.',
+    'prelim.verCasas': 'Ver casas até {max}',
+    'prelim.verCasasAjuda': 'Veja quais casas à venda cabem nessa faixa.',
 
     'row.parcelaMes': 'Valor da parcela por mês',
     'row.tempoPagar': 'Tempo para pagar',
@@ -131,6 +133,8 @@ const DICT = {
     'prelim.semRange': 'Tu caso tiene características que necesitan analizarse de forma individual.',
     'prelim.intro': 'Con una cuota de aproximadamente {parcela}, puedes comprar una vivienda entre {min} y {max}.',
     'prelim.proximaEtapa': 'Para ver si ese valor también encaja con tus ingresos y con tus deudas actuales, completa la siguiente etapa.',
+    'prelim.verCasas': 'Ver casas hasta {max}',
+    'prelim.verCasasAjuda': 'Mira qué casas en venta caben en ese rango.',
 
     'row.parcelaMes': 'Cuota mensual',
     'row.tempoPagar': 'Plazo de pago',

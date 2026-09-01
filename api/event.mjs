@@ -12,7 +12,15 @@ const ALLOWED_EVENTS = new Set([
   'property_match_viewed', 'property_opened', 'whatsapp_clicked', 'visit_requested',
   // Medição primeira-parte das landing pages (analytics.js). Independe do pixel
   // e do aceite de cookies: é a única forma de saber se o tráfego pago clica.
-  'lp_view', 'lp_whatsapp_clicked'
+  'lp_view', 'lp_whatsapp_clicked',
+  // Portal de casas à venda. O funil que interessa aqui é
+  // busca → imóvel → interesse → WhatsApp, e `cta_position` diz qual
+  // botão da página trouxe o lead.
+  'property_list_view', 'property_view', 'search_performed', 'search_no_results',
+  'filter_used', 'property_favorite', 'favorites_view', 'property_share',
+  'gallery_open', 'related_property_click', 'simulacao_ver_casas',
+  'whatsapp_click', 'whatsapp_property_click',
+  'whatsapp_simulation_click', 'whatsapp_visit_click'
 ]);
 
 const BLOCKED_KEYS = new Set([

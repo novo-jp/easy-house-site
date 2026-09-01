@@ -1,0 +1,424 @@
+/* ═══════════════════════════════════════════════════════════════
+   casas.css — portal de casas à venda
+
+   Complementa theme-v2.css: herda tokens, tipografia, .btn, .nav e
+   .foot. Aqui só entram os componentes que não existiam antes.
+   Escrito mobile-first — a maior parte do tráfego vem de Instagram,
+   Facebook e WhatsApp, no celular.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --casa-radius: 18px;
+  --sticky-h: 68px;                       /* altura da barra fixa do celular */
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Hero da busca ─────────────────────────────────────────── */
+.busca-hero {
+  padding: calc(var(--nav-h) + 34px) var(--pad-x) 22px;
+  max-width: var(--wrap); margin-inline: auto;
+}
+.busca-hero h1 { font-size: clamp(1.85rem, 5vw, 3rem); line-height: 1.12; margin-bottom: 10px; }
+.busca-hero h1 em { font-style: italic; color: var(--gold-bright); }
+.busca-hero p { color: var(--pearl-dim); max-width: 58ch; font-size: var(--step-body); }
+
+.busca-campo { display: flex; gap: 8px; margin-top: 20px; max-width: 620px; }
+.busca-campo input {
+  flex: 1; min-width: 0; min-height: 52px; padding: 14px 18px;
+  border-radius: var(--radius-pill); border: 1px solid var(--line-strong);
+  background: var(--surface-2); color: var(--pearl); font-size: 1rem;
+  font-family: var(--font-body);
+}
+.busca-campo input::placeholder { color: var(--pearl-muted); }
+.busca-campo input:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.busca-campo button { min-height: 52px; flex-shrink: 0; }
+
+.busca-ajuda { margin-top: 14px; font-size: 0.9rem; color: var(--pearl-muted); }
+.busca-ajuda a { color: var(--teal); text-decoration: underline; }
+
+/* ── Barra de filtros ──────────────────────────────────────── */
+.barra {
+  position: sticky; top: var(--nav-h); z-index: 70;
+  background: rgba(11,10,20,0.96); backdrop-filter: blur(18px);
+  border-block: 1px solid var(--line);
+}
+.barra__inner {
+  max-width: var(--wrap); margin-inline: auto; padding: 12px var(--pad-x);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.barra__contagem { font-size: 0.95rem; color: var(--pearl-dim); margin-right: auto; }
+.barra__contagem strong { color: var(--pearl); font-weight: 700; font-size: 1.05rem; }
+
+.chip-f {
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 44px; padding: 10px 16px; border-radius: var(--radius-pill);
+  border: 1px solid var(--line); background: var(--surface);
+  color: var(--pearl-dim); font-size: 0.88rem; font-weight: 600;
+  font-family: var(--font-body); white-space: nowrap;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.chip-f:hover { border-color: var(--line-strong); color: var(--pearl); }
+.chip-f[aria-pressed="true"], .chip-f.ativo {
+  background: var(--pearl); border-color: var(--pearl); color: var(--ink);
+}
+.chip-f .conta { opacity: .6; font-weight: 500; }
+
+.ordenar {
+  min-height: 44px; padding: 10px 14px; border-radius: var(--radius-pill);
+  border: 1px solid var(--line); background: var(--surface);
+  color: var(--pearl); font-size: 0.88rem; font-family: var(--font-body);
+}
+.ordenar option { background: var(--ink-soft); color: var(--pearl); }
+
+.filtros-ativos { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 var(--pad-x) 12px; max-width: var(--wrap); margin-inline: auto; }
+.tag-ativa {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px;
+  padding: 7px 12px; border-radius: var(--radius-pill);
+  background: rgba(91,216,204,.13); border: 1px solid rgba(91,216,204,.3);
+  color: var(--teal); font-size: .84rem; font-weight: 600;
+}
+.tag-ativa button { color: inherit; font-size: 1.1rem; line-height: 1; padding: 0 2px; }
+
+/* ── Painel de filtros (bottom sheet no celular) ───────────── */
+/* Acima da barra de navegação (z-index 1000 no theme-v2): estas camadas
+   cobrem a tela inteira, e com a nav por cima o botão de fechar ficava
+   inalcançável no celular. */
+.painel { position: fixed; inset: 0; z-index: 1100; display: none; }
+.painel[open] { display: block; }
+.painel__fundo { position: absolute; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(3px); }
+.painel__corpo {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  max-height: 88vh; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--ink-soft); border-radius: 22px 22px 0 0;
+  border-top: 1px solid var(--line-strong);
+  padding: 8px var(--pad-x) calc(20px + var(--safe-b));
+  animation: sobe .28s var(--ease);
+}
+@keyframes sobe { from { transform: translateY(100%); } }
+@media (prefers-reduced-motion: reduce) { .painel__corpo { animation: none; } }
+
+.painel__pega { width: 42px; height: 4px; border-radius: 4px; background: var(--line-strong); margin: 10px auto 18px; }
+.painel__topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.painel__topo h2 { font-size: 1.2rem; }
+.painel__fechar { min-width: 44px; min-height: 44px; font-size: 1.5rem; color: var(--pearl-muted); }
+.painel__grupo { padding: 18px 0; border-top: 1px solid var(--line); }
+.painel__grupo:first-of-type { border-top: 0; }
+.painel__grupo h3 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pearl-muted); margin-bottom: 12px; font-family: var(--font-body); font-weight: 700; }
+.painel__opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.painel__rodape {
+  position: sticky; bottom: 0; display: flex; gap: 10px;
+  padding: 14px 0 4px; background: linear-gradient(to top, var(--ink-soft) 72%, transparent);
+}
+.painel__rodape .btn { flex: 1; }
+.faixa { display: flex; align-items: center; gap: 10px; }
+.faixa input {
+  flex: 1; min-width: 0; min-height: 48px; padding: 12px 14px;
+  border-radius: 12px; border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--pearl);
+  font-size: 1rem; font-family: var(--font-body);
+}
+.faixa span { color: var(--pearl-muted); font-size: .9rem; }
+
+@media (min-width: 900px) {
+  .painel__corpo {
+    top: 50%; left: 50%; right: auto; bottom: auto;
+    transform: translate(-50%, -50%);
+    width: min(680px, 92vw); border-radius: var(--radius-lg);
+    border: 1px solid var(--line-strong); animation: none;
+  }
+  .painel__pega { display: none; }
+}
+
+/* ── Grade e cards ─────────────────────────────────────────── */
+.casa-grid {
+  max-width: var(--wrap); margin-inline: auto;
+  padding: 22px var(--pad-x) 60px;
+  display: grid; gap: var(--gap);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+}
+@media (max-width: 420px) { .casa-grid { grid-template-columns: 1fr; } }
+
+.casa {
+  position: relative; display: flex; flex-direction: column;
+  border-radius: var(--casa-radius); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line);
+  transition: border-color .25s, transform .25s var(--ease);
+}
+.casa:hover { border-color: var(--line-strong); transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .casa:hover { transform: none; } }
+
+.casa__foto { position: relative; aspect-ratio: 4/3; background: rgba(0,0,0,.35); overflow: hidden; }
+.casa__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.casa__foto .vazio {
+  width: 100%; height: 100%; display: grid; place-items: center;
+  color: rgba(255,255,255,.16); font-family: var(--font-jp); font-size: 2.4rem;
+}
+.casa__selos { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap; max-width: calc(100% - 64px); }
+.selo {
+  padding: 5px 10px; border-radius: var(--radius-pill); font-size: .72rem; font-weight: 700;
+  background: rgba(11,10,20,.82); backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong); color: var(--pearl);
+}
+.selo--novo { background: rgba(91,216,204,.92); color: #06322E; border-color: transparent; }
+.selo--fotos { background: rgba(11,10,20,.75); }
+
+.coracao {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border-radius: 50%; background: rgba(11,10,20,.66); backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong); color: var(--pearl);
+  transition: transform .18s var(--ease), color .18s;
+}
+.coracao:hover { transform: scale(1.08); }
+.coracao[aria-pressed="true"] { color: var(--sakura); }
+.coracao[aria-pressed="true"] svg { fill: currentColor; }
+.coracao svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+.casa__corpo { padding: 16px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+.casa__onde { font-size: .84rem; color: var(--pearl-muted); }
+.casa__nome { font-family: var(--font-display); font-size: 1.08rem; line-height: 1.28; }
+.casa__nome a { color: inherit; }
+.casa__nome a::after { content: ''; position: absolute; inset: 0; }  /* card todo clicável */
+
+.casa__preco { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.casa__preco b { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold-bright); letter-spacing: -.01em; }
+.casa__preco small { font-size: .8rem; color: var(--pearl-muted); }
+
+.casa__mensal {
+  display: flex; align-items: center; gap: 7px;
+  padding: 9px 12px; border-radius: 12px;
+  background: rgba(91,216,204,.1); border: 1px solid rgba(91,216,204,.26);
+  font-size: .86rem; color: var(--teal);
+}
+.casa__mensal b { font-weight: 700; }
+.casa__mensal .est { color: var(--pearl-muted); font-size: .78rem; }
+
+.casa__specs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.casa__specs span {
+  padding: 5px 10px; border-radius: 9px; font-size: .78rem;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--pearl-dim);
+}
+.casa__specs .destaque { background: rgba(244,182,194,.13); border-color: rgba(244,182,194,.3); color: var(--sakura); font-weight: 700; }
+
+/* ── Esqueleto de carregamento ─────────────────────────────── */
+.esq { border-radius: var(--casa-radius); overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+.esq__foto { aspect-ratio: 4/3; }
+.esq__linha { height: 12px; border-radius: 6px; margin: 12px 16px; }
+.esq__linha--curta { width: 45%; }
+.esq__foto, .esq__linha {
+  background: linear-gradient(100deg, var(--surface) 30%, var(--surface-2) 50%, var(--surface) 70%);
+  background-size: 220% 100%; animation: brilho 1.4s ease-in-out infinite;
+}
+@keyframes brilho { to { background-position: -220% 0; } }
+@media (prefers-reduced-motion: reduce) { .esq__foto, .esq__linha { animation: none; } }
+
+/* ── Vazio e erro ──────────────────────────────────────────── */
+.aviso-vazio {
+  max-width: 560px; margin: 40px auto 70px; padding: 34px var(--pad-x); text-align: center;
+}
+.aviso-vazio h2 { font-size: 1.45rem; margin-bottom: 10px; }
+.aviso-vazio p { color: var(--pearl-dim); margin-bottom: 22px; }
+
+/* ── Paginação ─────────────────────────────────────────────── */
+.paginacao { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; padding: 0 var(--pad-x) 70px; }
+.paginacao a, .paginacao span {
+  min-width: 44px; min-height: 44px; display: grid; place-items: center; padding: 0 12px;
+  border-radius: 12px; border: 1px solid var(--line); background: var(--surface);
+  color: var(--pearl-dim); font-size: .9rem; font-weight: 600;
+}
+.paginacao a:hover { border-color: var(--line-strong); color: var(--pearl); }
+.paginacao [aria-current="page"] { background: var(--pearl); border-color: var(--pearl); color: var(--ink); }
+.paginacao .reticencias { border: 0; background: none; min-width: 24px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PÁGINA DO IMÓVEL
+   ═══════════════════════════════════════════════════════════════ */
+
+.migalhas { max-width: var(--wrap); margin-inline: auto; padding: calc(var(--nav-h) + 18px) var(--pad-x) 12px; font-size: .82rem; color: var(--pearl-muted); }
+.migalhas ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+.migalhas li::after { content: '›'; margin-left: 6px; opacity: .5; }
+.migalhas li:last-child::after { content: ''; }
+.migalhas a { color: var(--pearl-muted); }
+.migalhas a:hover { color: var(--teal); }
+
+.imovel { max-width: var(--wrap); margin-inline: auto; padding: 0 var(--pad-x); }
+.imovel__topo { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.imovel__titulo { font-size: clamp(1.5rem, 4vw, 2.3rem); line-height: 1.16; }
+.imovel__local { color: var(--pearl-dim); font-size: .95rem; margin-top: 6px; }
+.imovel__codigo { font-size: .78rem; color: var(--pearl-muted); letter-spacing: .06em; margin-top: 4px; }
+.imovel__acoes { display: flex; gap: 8px; flex-shrink: 0; }
+.acao-redonda {
+  width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--pearl-dim);
+  transition: color .2s, border-color .2s;
+}
+.acao-redonda:hover { color: var(--pearl); border-color: var(--pearl); }
+.acao-redonda[aria-pressed="true"] { color: var(--sakura); border-color: var(--sakura); }
+.acao-redonda[aria-pressed="true"] svg { fill: currentColor; }
+.acao-redonda svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* ── Galeria ───────────────────────────────────────────────── */
+.galeria { position: relative; margin-bottom: 26px; }
+
+/* Celular: carrossel com scroll-snap — sem JS de arrasto, o nativo é melhor */
+.galeria__trilho {
+  display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch; border-radius: var(--casa-radius);
+}
+.galeria__trilho::-webkit-scrollbar { display: none; }
+.galeria__slide { flex: 0 0 100%; scroll-snap-align: center; aspect-ratio: 4/3; background: rgba(0,0,0,.35); }
+.galeria__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.galeria__contador {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  padding: 6px 12px; border-radius: var(--radius-pill);
+  background: rgba(11,10,20,.8); backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong); font-size: .8rem; font-weight: 600; color: var(--pearl);
+}
+.galeria__ver {
+  position: absolute; right: 12px; bottom: 12px; z-index: 2;
+  padding: 10px 16px; min-height: 44px; border-radius: var(--radius-pill);
+  background: rgba(11,10,20,.86); backdrop-filter: blur(10px);
+  border: 1px solid var(--line-strong); color: var(--pearl);
+  font-size: .86rem; font-weight: 600; display: inline-flex; align-items: center; gap: 7px;
+}
+.galeria__ver:hover { background: var(--pearl); color: var(--ink); }
+
+/* Desktop: mosaico — foto grande + quatro menores */
+@media (min-width: 900px) {
+  .galeria__trilho {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 8px; overflow: visible; aspect-ratio: 16/8.5;
+  }
+  .galeria__slide { aspect-ratio: auto; border-radius: 10px; overflow: hidden; }
+  .galeria__slide:first-child { grid-row: span 2; border-radius: var(--casa-radius) 0 0 var(--casa-radius); }
+  .galeria__slide:nth-child(3) { border-radius: 0 var(--casa-radius) 0 0; }
+  .galeria__slide:nth-child(5) { border-radius: 0 0 var(--casa-radius) 0; }
+  .galeria__slide:nth-child(n+6) { display: none; }
+  .galeria__contador { display: none; }        /* no mosaico não há "foto atual" */
+}
+
+/* Tela cheia */
+.lightbox { position: fixed; inset: 0; z-index: 1200; background: #06050C; display: none; }
+.lightbox[open] { display: flex; flex-direction: column; }
+.lightbox__topo {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) var(--pad-x) 10px;
+  color: var(--pearl); font-size: .9rem; font-weight: 600;
+}
+.lightbox__fechar { min-width: 48px; min-height: 48px; font-size: 1.7rem; color: var(--pearl); }
+.lightbox__palco {
+  flex: 1; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+/* Sem scroll-behavior: smooth aqui de propósito. Ele só afeta o scroll feito
+   por código (as setas) — o swipe continua nativo e suave — e em vários
+   contextos a animação não completa, deixando as setas sem efeito. */
+.lightbox__palco::-webkit-scrollbar { display: none; }
+.lightbox__item { flex: 0 0 100%; scroll-snap-align: center; display: grid; place-items: center; padding: 0 8px; }
+.lightbox__item img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox__setas { display: flex; justify-content: center; gap: 12px; padding: 12px 0 calc(14px + var(--safe-b)); }
+.lightbox__setas button {
+  min-width: 52px; min-height: 48px; border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--pearl); font-size: 1.1rem;
+}
+.lightbox__setas button:disabled { opacity: .35; }
+
+/* ── Preço e estimativa ────────────────────────────────────── */
+.preco-bloco {
+  padding: 20px; border-radius: var(--casa-radius);
+  background: rgba(0,0,0,.3); border: 1px solid var(--line); margin-bottom: 18px;
+}
+.preco-bloco__valor { font-family: var(--font-display); font-size: clamp(1.9rem, 5.5vw, 2.7rem); color: var(--gold-bright); line-height: 1; }
+.preco-bloco__man { font-size: .9rem; color: var(--pearl-muted); margin-top: 6px; }
+.preco-bloco__extra { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .86rem; color: var(--pearl-dim); }
+
+.estimativa-linha { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.estimativa-linha b { font-family: var(--font-display); font-size: 1.45rem; color: var(--teal); }
+.estimativa-nota { font-size: .8rem; color: var(--pearl-muted); margin-top: 8px; line-height: 1.5; }
+
+/* ── Componente de conversão (repetido na página) ──────────── */
+.simular {
+  padding: 24px; border-radius: var(--casa-radius); margin: 26px 0;
+  background: linear-gradient(145deg, rgba(91,216,204,.11), rgba(212,165,116,.07));
+  border: 1px solid rgba(91,216,204,.28);
+}
+.simular h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.simular p { color: var(--pearl-dim); font-size: .93rem; margin-bottom: 14px; }
+.simular__valor { font-family: var(--font-display); font-size: 1.7rem; color: var(--teal); margin-bottom: 4px; }
+.simular__valor small { font-size: .82rem; color: var(--pearl-muted); font-family: var(--font-body); }
+.simular .btn { width: 100%; }
+.simular__checks { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; font-size: .84rem; color: var(--pearl-dim); }
+.simular__checks li::before { content: '✓'; color: var(--teal); margin-right: 6px; font-weight: 700; }
+
+/* ── Layout com coluna lateral no desktop ──────────────────── */
+.imovel__grade { display: grid; gap: 26px; padding-bottom: 40px; }
+@media (min-width: 1000px) {
+  .imovel__grade { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; gap: 40px; }
+  .imovel__lateral { position: sticky; top: calc(var(--nav-h) + 20px); }
+}
+.wa-card { padding: 22px; border-radius: var(--casa-radius); background: var(--surface-2); border: 1px solid var(--line-strong); }
+.wa-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.wa-card p { font-size: .87rem; color: var(--pearl-muted); margin-bottom: 16px; }
+.wa-card .btn { width: 100%; margin-bottom: 8px; justify-content: flex-start; }
+.wa-card__nota { font-size: .78rem; color: var(--pearl-muted); margin-top: 12px; line-height: 1.5; }
+
+/* ── Tabelas de informação ─────────────────────────────────── */
+.info-bloco { margin: 30px 0; }
+.info-bloco h2 { font-size: 1.3rem; margin-bottom: 14px; }
+.info-tabela { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.info-tabela th, .info-tabela td { text-align: left; padding: 12px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.info-tabela th { color: var(--pearl-muted); font-weight: 600; width: 42%; }
+.info-tabela td { color: var(--pearl); }
+.info-tabela .jp { color: var(--pearl-muted); font-size: .82rem; font-family: var(--font-jp); }
+@media (max-width: 520px) { .info-tabela th { width: 46%; } }
+
+.texto-livre { color: var(--pearl-dim); font-size: .93rem; line-height: 1.75; white-space: pre-line; }
+.etiquetas { display: flex; flex-wrap: wrap; gap: 7px; }
+.etiquetas span { padding: 6px 12px; border-radius: var(--radius-pill); background: var(--surface-2); border: 1px solid var(--line); font-size: .82rem; color: var(--pearl-dim); }
+
+/* ── Barra fixa do celular ─────────────────────────────────── */
+.wa-fixo {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px var(--pad-x) calc(10px + var(--safe-b));
+  background: rgba(11,10,20,.96); backdrop-filter: blur(18px);
+  border-top: 1px solid var(--line-strong);
+}
+.wa-fixo__preco { flex-shrink: 0; line-height: 1.15; }
+.wa-fixo__preco b { display: block; font-family: var(--font-display); font-size: 1.05rem; color: var(--teal); }
+.wa-fixo__preco small { font-size: .7rem; color: var(--pearl-muted); }
+.wa-fixo .btn {
+  flex: 1; min-height: 48px; padding: 12px 10px;
+  font-size: .88rem; white-space: nowrap;      /* não pode quebrar em duas linhas */
+  overflow: hidden; text-overflow: ellipsis;
+}
+/* Em telas bem estreitas o preço some para o botão respirar. */
+@media (max-width: 360px) {
+  .wa-fixo__preco { display: none; }
+}
+@media (min-width: 361px) and (max-width: 400px) {
+  .wa-fixo .btn { font-size: .82rem; }
+  .wa-fixo__preco b { font-size: .95rem; }
+}
+@media (min-width: 1000px) { .wa-fixo { display: none; } }
+/* espaço para a barra não cobrir o fim da página */
+body.tem-barra-fixa { padding-bottom: calc(var(--sticky-h) + var(--safe-b)); }
+@media (min-width: 1000px) { body.tem-barra-fixa { padding-bottom: 0; } }
+
+/* ── Relacionados ──────────────────────────────────────────── */
+.relacionados { max-width: var(--wrap); margin-inline: auto; padding: 10px var(--pad-x) 60px; }
+.relacionados h2 { font-size: 1.4rem; margin-bottom: 6px; }
+.relacionados p { color: var(--pearl-dim); font-size: .92rem; margin-bottom: 20px; }
+.relacionados .casa-grid { padding: 0; }
+
+/* ── Imóvel indisponível ───────────────────────────────────── */
+.indisponivel {
+  max-width: 660px; margin: calc(var(--nav-h) + 50px) auto 30px; padding: 0 var(--pad-x); text-align: center;
+}
+.indisponivel__selo {
+  display: inline-block; padding: 7px 16px; border-radius: var(--radius-pill);
+  background: rgba(244,182,194,.14); border: 1px solid rgba(244,182,194,.3);
+  color: var(--sakura); font-size: .84rem; font-weight: 700; margin-bottom: 18px;
+}
+.indisponivel h1 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin-bottom: 12px; }
+.indisponivel p { color: var(--pearl-dim); margin-bottom: 22px; }

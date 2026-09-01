@@ -90,11 +90,30 @@
           "value": "no-store"
         }
       ]
+    },
+    {
+      "source": "/comprar/imoveis/:slug*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     }
   ],
   "functions": {
     "api/*.mjs": {
       "includeFiles": "lib/**"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/sitemap-casas.xml",
+      "destination": "/api/sitemap-casas"
+    },
+    {
+      "source": "/comprar/imoveis/:slug",
+      "destination": "/api/casa?slug=:slug"
+    }
+  ]
 }

@@ -1,0 +1,26 @@
+{
+  "id": "easyhouse-vitrine-casas",
+  "version": 1,
+  "updatedAt": "2026-09-02",
+  "note": "Parâmetros da ESTIMATIVA exibida no portal de casas à venda. A taxa de juros NÃO fica aqui: ela vem de financing-config.json para que exista uma fonte única. Alterar estes valores muda o número mostrado ao público — toda mudança deve ser combinada com a Easy House.",
+
+  "estimativa": {
+    "produto": "flat35",
+    "prazoAnos": 35,
+    "entradaPercentual": 0,
+    "arredondarPara": 500,
+    "avisoCurto": "Estimativa. O valor real depende do banco, da entrada, do prazo e do seu perfil.",
+    "avisoLongo": "Este valor é apenas indicativo, calculado sobre o preço do imóvel com uma taxa de referência. Ele não é uma oferta de crédito nem garantia de aprovação. A parcela real depende do banco, da entrada, do prazo, dos juros vigentes e da análise do seu perfil."
+  },
+
+  "publicacao": {
+    "statusPublicaveis": ["紹介可能"],
+    "diasParaInativar": 14,
+    "exigirFoto": true,
+    "exigirPreco": true
+  },
+
+  "whatsapp": {
+    "numero": "818028867708"
+  }
+}

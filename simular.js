@@ -239,6 +239,23 @@ async function renderPreliminary() {
   $('#prelimMin').textContent = yen(r.propertyRange.min);
   $('#prelimMax').textContent = yen(r.propertyRange.max);
 
+  // Ponte para o portal de casas: quem acabou de descobrir a faixa quer ver
+  // o que existe dentro dela. Leva o teto da faixa e as cidades escolhidas.
+  const verCasas = $('#prelimVerCasas');
+  if (verCasas && r.propertyRange.max > 0) {
+    const params = new URLSearchParams({ precoMax: String(Math.round(r.propertyRange.max)) });
+    const cidades = (a.cities || []).filter(Boolean);
+    if (cidades.length) params.set('cidade', cidades.join(','));
+    verCasas.href = '/comprar/imoveis?' + params.toString();
+    verCasas.textContent = t('prelim.verCasas', { max: yen(r.propertyRange.max) });
+    verCasas.hidden = false;
+    const ajuda = $('#prelimVerCasasAjuda');
+    if (ajuda) { ajuda.textContent = t('prelim.verCasasAjuda'); ajuda.hidden = false; }
+    verCasas.addEventListener('click', function () {
+      track('simulacao_ver_casas', { precoMax: r.propertyRange.max });
+    }, { once: true });
+  }
+
   $('#prelimIntro').textContent = t('prelim.intro', {
     parcela: yen(r.payment.used),
     min: yen(r.propertyRange.min),
