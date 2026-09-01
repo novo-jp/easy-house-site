@@ -240,12 +240,16 @@ async function renderPreliminary() {
   $('#prelimMax').textContent = yen(r.propertyRange.max);
 
   // Ponte para o portal de casas: quem acabou de descobrir a faixa quer ver
-  // o que existe dentro dela. Leva o teto da faixa e as cidades escolhidas.
+  // o que existe dentro dela.
+  //
+  // Vai só o teto da faixa, de propósito. As cidades perguntadas aqui são a
+  // região de atendimento da Easy House, e o acervo de casas à venda quase
+  // não a cobre — filtrar por elas devolveria "0 imóveis" logo depois de a
+  // pessoa descobrir que pode comprar, que é o pior momento para um vazio.
+  // No portal ela escolhe a cidade vendo quantas casas cada uma tem.
   const verCasas = $('#prelimVerCasas');
   if (verCasas && r.propertyRange.max > 0) {
     const params = new URLSearchParams({ precoMax: String(Math.round(r.propertyRange.max)) });
-    const cidades = (a.cities || []).filter(Boolean);
-    if (cidades.length) params.set('cidade', cidades.join(','));
     verCasas.href = '/comprar/imoveis?' + params.toString();
     verCasas.textContent = t('prelim.verCasas', { max: yen(r.propertyRange.max) });
     verCasas.hidden = false;
