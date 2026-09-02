@@ -88,6 +88,7 @@ ${robots ? `<meta name="robots" content="${e(robots)}"/>` : ''}
 <meta property="og:description" content="${e(descricao)}"/>
 ${imagem ? `<meta property="og:image" content="${e(imagem)}"/>` : ''}
 <meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://img4.athome.jp"/>
 <link rel="preconnect" href="https://img.miraie-net.com"/>
 <link rel="stylesheet" href="/theme-v2.css?v=8"/>
 <link rel="stylesheet" href="/casas.css?v=9"/>
