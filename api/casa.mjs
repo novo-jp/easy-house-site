@@ -91,7 +91,7 @@ ${imagem ? `<meta property="og:image" content="${e(imagem)}"/>` : ''}
 <link rel="preconnect" href="https://img4.athome.jp"/>
 <link rel="preconnect" href="https://img.miraie-net.com"/>
 <link rel="stylesheet" href="/theme-v2.css?v=8"/>
-<link rel="stylesheet" href="/casas.css?v=9"/>
+<link rel="stylesheet" href="/casas.css?v=10"/>
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>` : ''}
 </head>
 <body${barraFixa ? ' class="tem-barra-fixa"' : ''}>
@@ -101,8 +101,8 @@ ${L.drawer}
 ${corpo}
 ${L.foot}
 <script src="/theme-v2.js?v=8" defer></script>
-<script src="/casas-comum.js?v=9" defer></script>
-<script src="/casas-imovel.js?v=9" defer></script>
+<script src="/casas-comum.js?v=10" defer></script>
+<script src="/casas-imovel.js?v=10" defer></script>
 <script src="/analytics.js" defer></script>
 </body>
 </html>`;
@@ -129,7 +129,8 @@ function paginaImovel(casa, parecidas) {
            ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="900" height="675">
     </div>`).join('')}
   </div>
-  ${fotos.length ? `<p class="galeria__contador" id="contadorFotos" aria-live="polite">1 / ${casa.totalFotos}</p>
+  ${casa.imagemEhFicha ? `<p class="galeria__aviso">Este anúncio não libera as fotos para o site. A imagem acima é a ficha do imóvel — as fotos existem e a gente envia pelo WhatsApp.</p>` : ''}
+  ${fotos.length && !casa.imagemEhFicha ? `<p class="galeria__contador" id="contadorFotos" aria-live="polite">1 / ${casa.totalFotos}</p>
   <button class="galeria__ver" type="button" data-abrir-galeria>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
     Ver todas as ${casa.totalFotos} fotos

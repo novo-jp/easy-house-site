@@ -161,6 +161,7 @@
 }
 .selo--novo { background: rgba(91,216,204,.92); color: #06322E; border-color: transparent; }
 .selo--fotos { background: rgba(11,10,20,.75); }
+.selo--ficha { background: rgba(212,165,116,.92); color: #2A1B08; border-color: transparent; }
 
 .coracao {
   position: absolute; top: 8px; right: 8px; z-index: 2;
@@ -295,6 +296,12 @@
   .galeria__slide:nth-child(5) { border-radius: 0 0 var(--casa-radius) 0; }
   .galeria__slide:nth-child(n+6) { display: none; }
   .galeria__contador { display: none; }        /* no mosaico não há "foto atual" */
+}
+
+.galeria__aviso {
+  margin-top: 10px; padding: 11px 14px; border-radius: 12px;
+  background: rgba(212,165,116,.1); border: 1px solid rgba(212,165,116,.3);
+  color: var(--pearl-dim); font-size: .86rem; line-height: 1.5;
 }
 
 /* Tela cheia */

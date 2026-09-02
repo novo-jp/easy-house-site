@@ -82,8 +82,11 @@
 
     var selos = [];
     if (c.novo) selos.push('<span class="selo selo--novo">Recém-adicionado</span>');
+    // A imagem é a ficha, não a fachada: dizer isso evita que a pessoa ache
+    // que o anúncio está quebrado, e explica por que não há carrossel.
+    if (c.imagemEhFicha) selos.push('<span class="selo selo--ficha">Fotos sob consulta</span>');
     if (c.ano && c.ano.ano) selos.push('<span class="selo">' + c.ano.ano + '</span>');
-    if (c.totalFotos > 1) selos.push('<span class="selo selo--fotos">' + c.totalFotos + ' fotos</span>');
+    if (c.totalFotos > 1 && !c.imagemEhFicha) selos.push('<span class="selo selo--fotos">' + c.totalFotos + ' fotos</span>');
 
     var foto = c.fotos && c.fotos[0];
     return '<article class="casa">'
