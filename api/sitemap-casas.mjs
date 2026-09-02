@@ -5,7 +5,7 @@
  * de manhã já pode ser encontrada pelo Google, sem depender de um novo deploy.
  */
 
-import { carregarCasas } from '../lib/casas-fonte.js';
+import { carregarCasas } from '../lib/casas-fonte.mjs';
 
 const SITE = 'https://easyhouse.homes';
 const xml = (s) => String(s).replace(/[&<>"']/g, (c) =>

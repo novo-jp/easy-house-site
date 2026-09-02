@@ -9,7 +9,7 @@
  * nem recebe a chave do banco.
  */
 
-import { carregarCasas } from '../lib/casas-fonte.js';
+import { carregarCasas } from '../lib/casas-fonte.mjs';
 
 const POR_PAGINA_MAX = 48;
 

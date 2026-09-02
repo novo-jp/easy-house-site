@@ -11,8 +11,8 @@
  */
 
 import { readFileSync } from 'node:fs';
-import { buscarPorSlug, carregarCasas, relacionadas, casasConfig } from '../lib/casas-fonte.js';
-import { escaparHtml, formatarYen, formatarArea, linkWhatsApp } from '../lib/casas.js';
+import { buscarPorSlug, carregarCasas, relacionadas, casasConfig } from '../lib/casas-fonte.mjs';
+import { escaparHtml, formatarYen, formatarArea, linkWhatsApp } from '../lib/casas.mjs';
 
 const L = JSON.parse(readFileSync(new URL('../lib/casas-layout.json', import.meta.url), 'utf8'));
 const SITE = 'https://easyhouse.homes';
