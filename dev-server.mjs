@@ -77,6 +77,11 @@ const servidor = createServer(async (req, res) => {
       return h(req, res);
     }
 
+    if (rota === '/llms.txt') {
+      const { default: h } = await import(`./api/llms.mjs?t=${Date.now()}`);
+      return h(req, res);
+    }
+
     if (rota === '/sitemap-casas.xml') {
       const { default: h } = await import(`./api/sitemap-casas.mjs?t=${Date.now()}`);
       return h(req, res);

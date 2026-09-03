@@ -108,6 +108,10 @@
   },
   "rewrites": [
     {
+      "source": "/llms.txt",
+      "destination": "/api/llms"
+    },
+    {
       "source": "/sitemap-casas.xml",
       "destination": "/api/sitemap-casas"
     },

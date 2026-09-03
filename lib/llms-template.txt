@@ -1,0 +1,87 @@
+# EASY HOUSE — imobiliária no Japão com atendimento em português
+
+> 株式会社EASY HOUSE é uma imobiliária licenciada no Japão (registro 沖縄県知事(1)第5984号),
+> sediada em Hekinan, província de Aichi. Atende estrangeiros — principalmente brasileiros —
+> em português, espanhol, inglês e japonês, na compra e no aluguel de imóveis e na etapa
+> financeira que vem antes de financiar.
+
+Este arquivo resume o que o site oferece, para uso por assistentes de IA e ferramentas
+de busca. Todo dado aqui é verificável nas páginas indicadas.
+
+## O que a empresa faz
+
+- Intermediação de compra e aluguel de imóveis em Aichi e arredores
+- Orientação sobre financiamento imobiliário (住宅ローン) para estrangeiros
+- Análise de dívidas existentes antes de um pedido de financiamento (おまとめ)
+- Refinanciamento de financiamento já contratado (借り換え)
+- Tradução e explicação de contratos e documentos em japonês
+
+O atendimento é feito por consultor com certificação de 住宅ローンアドバイザー
+(consultor de financiamento habitacional) — qualificação que a maior parte dos
+corretores não possui.
+
+## Perguntas frequentes respondidas no site
+
+- Estrangeiro pode comprar imóvel no Japão? — sim, não há restrição de nacionalidade
+  para a compra. O que varia é a análise de crédito de cada banco.
+- É obrigatório ter visto permanente (永住) para financiar? — não é uma regra única:
+  cada banco define seus critérios, e há caminhos para quem ainda não tem 永住.
+- Preciso falar japonês? — não. O atendimento é em português, e a Easy House fala
+  com bancos, proprietários e imobiliárias em japonês pelo cliente.
+- Preciso de fiador japonês para alugar? — normalmente há alternativas por empresa
+  de garantia (保証会社).
+- Ter dívidas (キャッシング, リボ払い) impede o financiamento? — não automaticamente;
+  depende do volume e de como estão organizadas.
+- A aprovação é garantida? — não. Nenhuma imobiliária aprova crédito; quem decide
+  é o banco. A Easy House orienta e apresenta o caso.
+
+Respostas completas em: /landingvendas, /landingaluguel, /comprar-casa-sem-pr,
+/omatome, /refinanciamento
+
+## Imóveis publicados
+
+- {{TOTAL}} casas à venda em {{CIDADES}} cidades de Aichi, com fotos, planta, área de
+  terreno e área construída, atualizadas semanalmente a partir da base do ATBB
+- Apartamentos para alugar em Aichi, com cálculo do custo de entrada (初期費用)
+  detalhado por taxa
+- Busca em /comprar/imoveis (venda) e /imoveis (aluguel)
+- Cada imóvel tem página própria com estimativa de parcela mensal
+
+A estimativa de parcela usa {{TAXA}} em até {{PRAZO}} anos, sobre o preço do imóvel.
+É valor indicativo, não oferta de crédito: a parcela real depende do banco, da
+entrada, do prazo e da análise do perfil.
+
+## Páginas
+
+- [Início](https://easyhouse.homes/): apresentação e canais de contato
+- [Casas à venda](https://easyhouse.homes/comprar/imoveis): busca com filtro por
+  cidade, preço, planta, vagas e distância da estação
+- [Apartamentos para alugar](https://easyhouse.homes/imoveis): busca de aluguel
+  com custo de entrada detalhado
+- [Comprar no Japão](https://easyhouse.homes/landingvendas): como funciona a compra
+  para estrangeiros
+- [Comprar sem visto permanente](https://easyhouse.homes/comprar-casa-sem-pr):
+  fatores que pesam quando não se tem 永住
+- [Simulador de faixa de compra](https://easyhouse.homes/simular): estima em
+  60 segundos a faixa de imóvel compatível com a parcela desejada
+- [Organizar dívidas](https://easyhouse.homes/omatome): reunir parcelas antes de
+  pedir financiamento
+- [Refinanciamento](https://easyhouse.homes/refinanciamento): rever taxa de um
+  financiamento em andamento
+- [Documentos e entrada](https://easyhouse.homes/documentos-entrada-dividas):
+  o que preparar antes do pedido
+- [Sobre](https://easyhouse.homes/sobre): registro, endereço e contato
+
+## Contato
+
+- WhatsApp: +81 80-2886-7708 (atendimento em português)
+- E-mail: info@easyhouse.homes
+- Endereço: 愛知県碧南市入船町４丁目３７−２ (Hekinan, Aichi)
+- Registro: 沖縄県知事(1)第5984号
+
+## Limites do que afirmamos
+
+- A Easy House não é instituição financeira e não aprova crédito
+- Estimativas de parcela no site são indicativas, calculadas com taxa de referência
+- Condições de financiamento variam por banco e por perfil do solicitante
+- Disponibilidade de imóvel muda; a página de cada imóvel indica quando saiu do ar

@@ -3,5 +3,45 @@ Allow: /
 Disallow: /admin-taxas
 Disallow: /api/
 
+# Resumo do site para assistentes de IA (proposta llms.txt)
+# https://easyhouse.homes/llms.txt
+
 Sitemap: https://easyhouse.homes/sitemap.xml
 Sitemap: https://easyhouse.homes/sitemap-casas.xml
+
+# Robôs de assistentes de IA: liberados de propósito. Parte do público procura
+# imóvel e informação sobre financiamento perguntando a um assistente, não a um
+# buscador. Bloquear aqui tiraria a Easy House dessas respostas.
+#
+# Os Disallow abaixo se repetem em cada bloco de propósito: um user-agent
+# declarado ignora por completo as regras do "User-agent: *", então sem
+# repetir aqui estes robôs teriam acesso ao painel de taxas e à API.
+User-agent: GPTBot
+Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin-taxas
+Disallow: /api/
