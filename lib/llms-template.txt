@@ -72,6 +72,18 @@ entrada, do prazo e da análise do perfil.
   o que preparar antes do pedido
 - [Sobre](https://easyhouse.homes/sobre): registro, endereço e contato
 
+## Guias com dados verificáveis
+
+Páginas que respondem perguntas comuns usando números do acervo real e das
+tabelas de custo da Easy House, não estimativas genéricas de mercado:
+
+- [Quanto custa comprar uma casa no Japão](https://easyhouse.homes/quanto-custa-casa-japao):
+  distribuição de preços do acervo atual, custos de aquisição e parcela estimada
+- [Quanto custa entrar num apartamento alugado](https://easyhouse.homes/custo-inicial-aluguel-japao):
+  todas as taxas da entrada (仲介手数料, 保証委託料, クリーニング費, 鍵セット費) com valores e conta fechada
+- [Financiamento imobiliário para estrangeiros](https://easyhouse.homes/financiamento-imovel-japao):
+  Flat 35 e cenário bancário comparados, índice de comprometimento da renda e o peso do visto
+
 ## Contato
 
 - WhatsApp: +81 80-2886-7708 (atendimento em português)
