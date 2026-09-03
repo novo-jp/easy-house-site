@@ -51,7 +51,20 @@
     lead_form_viewed:           { tipo: 'std',    nome: 'InitiateCheckout' },
     lead_submitted:             { tipo: 'std',    nome: 'Lead' },
     simulation_result_viewed:   { tipo: 'custom', nome: 'ResultadoCompleto' },
-    whatsapp_clicked:           { tipo: 'std',    nome: 'Contact' }
+    whatsapp_clicked:           { tipo: 'std',    nome: 'Contact' },
+
+    /* Portal de casas à venda (/comprar/imoveis e a página de cada imóvel).
+       Sem estes, o Meta só enxerga PageView: dá para pagar por clique, mas
+       não dá para otimizar por interesse nem montar público de remarketing
+       de quem realmente abriu um imóvel.
+
+       `property_list_view` fica de fora de propósito: dispara a cada página
+       de resultado e a cada filtro, e viraria ruído no pixel. */
+    property_view:              { tipo: 'std',    nome: 'ViewContent' },
+    search_performed:           { tipo: 'std',    nome: 'Search' },
+    property_favorite:          { tipo: 'std',    nome: 'AddToWishlist',
+                                  quando: function (i) { return i.acao === 'salvou'; } },
+    whatsapp_click:             { tipo: 'std',    nome: 'Contact' }
   };
 
   /**
@@ -282,6 +295,7 @@
     if (!pixelPronto || !item || !item.event) return;
     var destino = MAPA[item.event];
     if (!destino) return;
+    if (destino.quando && !destino.quando(item)) return;
 
     var params = limparParametros(item);
     var metodo = destino.tipo === 'std' ? 'track' : 'trackCustom';
@@ -296,11 +310,26 @@
   }
 
   /**
-   * Passa a escutar tudo que for empurrado para o dataLayer daqui em diante.
-   * O que aconteceu antes do consentimento não é reenviado — de propósito.
+   * Passa a escutar o dataLayer e processa o que já estava nele.
+   *
+   * O `defer` faz os scripts rodarem em ordem de documento, e este é o
+   * último. No portal de casas, `casas-imovel.js` já disparou
+   * `property_view` quando chegamos aqui — ou seja, justamente o evento
+   * mais importante da página estaria sempre fora do pixel. Por isso a
+   * fila existente é reprocessada.
+   *
+   * Isso vale só para o que aconteceu nesta mesma carga de página, e só
+   * depois do aceite: nenhuma tag é carregada antes dele, que é o que
+   * /privacy promete. Continua valendo que uma sessão anterior, ou uma
+   * navegação anterior, não é reenviada.
    */
   function escutarDataLayer() {
     window.dataLayer = window.dataLayer || [];
+
+    for (var j = 0; j < window.dataLayer.length; j++) {
+      try { enviar(window.dataLayer[j]); } catch (e) { /* medição nunca quebra a página */ }
+    }
+
     var pushOriginal = window.dataLayer.push.bind(window.dataLayer);
     window.dataLayer.push = function () {
       for (var i = 0; i < arguments.length; i++) {
@@ -360,10 +389,22 @@
     return !document.getElementById('fxMain');
   }
 
+  /**
+   * O portal de casas tem medição própria em casas-comum.js.
+   *
+   * Sem esta checagem, um clique no WhatsApp de /comprar/imoveis gravava
+   * duas linhas em funnel_event — `whatsapp_click` lá e `lp_whatsapp_clicked`
+   * aqui — e quem contasse cliques via o dobro do que aconteceu. Agora o
+   * portal manda `whatsapp_click`, que o MAPA traduz em `Contact`.
+   */
+  function temMedicaoPropria() {
+    return !!window.EHCasas;
+  }
+
   function escutarWhatsApp() {
     document.addEventListener('click', function (ev) {
       var link = ev.target && ev.target.closest && ev.target.closest('a[href*="wa.me"]');
-      if (!link || !ehLandingPage()) return;
+      if (!link || !ehLandingPage() || temMedicaoPropria()) return;
       registrarInterno('lp_whatsapp_clicked');          // sempre
       if (pixelPronto) window.fbq('track', 'Contact');  // só com aceite
     }, true);
