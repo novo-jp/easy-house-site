@@ -2,7 +2,7 @@
 
 Data: 10/09/2026. Ambiente: dev-server local (`node dev-server.mjs`, porta 3400) contra o Supabase real
 (somente leitura de imóveis; a telemetria de teste gravou linhas em `funnel_event`, ver ANALYTICS_MAP).
-**Nada foi publicado, nem merge, nem push, nem alteração de produção.**
+**Publicado em 10/09/2026 às 20:37 (push em `main`, commit `7f7be45`), a pedido explícito. Ver a seção "Pós-deploy" no fim.**
 
 ## Comandos
 
