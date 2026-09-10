@@ -170,7 +170,7 @@ test('lp_view sai com a origem da campanha', () => {
 test('todo evento do portal está mapeado ou excluído de propósito', () => {
   // Trava contra deriva: quem criar um evento novo em casas-*.js decide,
   // aqui, se ele vai ou não para o pixel.
-  const fontes = ['casas-comum.js', 'casas-busca.js', 'casas-imovel.js', 'casas-favoritos.js']
+  const fontes = ['casas-comum.js', 'casas-busca.js', 'casas-imovel.js', 'casas-favoritos.js', 'casas-comparar.js']
     .map((f) => readFileSync(join(RAIZ, f), 'utf8')).join('\n');
   const emitidos = new Set([...fontes.matchAll(/\bmedir\('([a-z_]+)'/g)].map((m) => m[1]));
 
@@ -183,6 +183,9 @@ test('todo evento do portal está mapeado ou excluído de propósito', () => {
     'property_share',            // volume baixo demais para otimizar
     'favorites_view',            // já coberto por AddToWishlist
     'related_property_click',    // navegação interna
+    'property_compare_started',  // comparação: organização, não interesse de compra
+    'property_compare_removed',
+    'property_compare_view',
     'whatsapp_property_click',   // duplicaria o Contact de whatsapp_click
     'whatsapp_simulation_click',
     'whatsapp_visit_click'
@@ -198,7 +201,8 @@ test('todo link de WhatsApp do portal diz de onde saiu', () => {
   // `cta_position` é o que responde "qual botão da página trouxe o lead".
   // Sem data-cta o clique entra como "desconhecido" e a resposta se perde —
   // era o caso do CTA fixo do topo, do menu e do rodapé.
-  const arquivos = ['comprar/imoveis.html', 'favoritos.html', 'lib/casas-layout.json'];
+  // /comprar/imoveis é renderizada no servidor: o HTML nasce em api/casas-lista.mjs
+  const arquivos = ['api/casas-lista.mjs', 'favoritos.html', 'comparar.html', 'lib/casas-layout.json'];
   for (const arquivo of arquivos) {
     const html = readFileSync(join(RAIZ, arquivo), 'utf8');
     // cada <a ...> que aponte para wa.me

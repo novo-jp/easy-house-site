@@ -13,6 +13,7 @@
     if (!drawer) return;
     drawer.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Abrir menu');
     document.body.style.overflow = '';
   }
 
@@ -20,6 +21,7 @@
     burger.addEventListener('click', function () {
       var open = drawer.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');   // leitor de tela ouve o estado real
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) {
         var first = drawer.querySelector('a');

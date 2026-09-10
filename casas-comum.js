@@ -103,8 +103,11 @@
     function sincronizar(botao) {
       var codigo = botao.getAttribute('data-favoritar');
       var ativo = ehFavorito(codigo);
+      var nome = botao.getAttribute('data-nome') || nomeDoCard(botao) || codigo;
       botao.setAttribute('aria-pressed', ativo ? 'true' : 'false');
-      botao.setAttribute('aria-label', (ativo ? 'Remover ' : 'Salvar ') + codigo + (ativo ? ' dos favoritos' : ' nos favoritos'));
+      botao.setAttribute('aria-label', (ativo ? 'Remover ' : 'Salvar ') + nome + (ativo ? ' dos favoritos' : ' nos favoritos'));
+      var txt = botao.querySelector('.acao__txt');
+      if (txt) txt.textContent = ativo ? 'Salvo' : 'Salvar';
     }
 
     Array.prototype.forEach.call(raiz.querySelectorAll('[data-favoritar]'), sincronizar);
@@ -130,6 +133,95 @@
     atualizarContador();
   }
 
+  /** Título do card ao qual o botão pertence (para o nome acessível). */
+  function nomeDoCard(botao) {
+    var card = botao.closest && botao.closest('.casa, .imovel');
+    var h = card && card.querySelector('.casa__nome, .imovel__titulo');
+    return h ? h.textContent.trim() : null;
+  }
+
+  /* ── Comparação ─────────────────────────────────────────────
+     Até três códigos no localStorage, como os favoritos. A bandeja
+     aparece quando há dois — antes disso não há o que comparar. */
+
+  var CHAVE_COMP = 'eh_casas_comparar';
+  var MAX_COMP = 3;
+
+  function lerComparacao() {
+    try {
+      var lista = JSON.parse(window.localStorage.getItem(CHAVE_COMP) || '[]');
+      return Array.isArray(lista) ? lista.filter(function (c) { return typeof c === 'string'; }).slice(0, MAX_COMP) : [];
+    } catch (e) { return []; }
+  }
+  function gravarComparacao(lista) {
+    try { window.localStorage.setItem(CHAVE_COMP, JSON.stringify(lista.slice(0, MAX_COMP))); } catch (e) {}
+    window.dispatchEvent(new CustomEvent('comparacao:mudou', { detail: { total: lista.length } }));
+  }
+  /** Devolve { ativo, cheio }: cheio = tentou o 4º. */
+  function alternarComparacao(codigo) {
+    var lista = lerComparacao();
+    var i = lista.indexOf(codigo);
+    if (i !== -1) { lista.splice(i, 1); gravarComparacao(lista); return { ativo: false, cheio: false }; }
+    if (lista.length >= MAX_COMP) return { ativo: false, cheio: true };
+    lista.push(codigo); gravarComparacao(lista);
+    return { ativo: true, cheio: false };
+  }
+
+  function ligarComparacao(escopo) {
+    var raiz = escopo || document;
+    function sincronizar(botao) {
+      var codigo = botao.getAttribute('data-comparar');
+      var ativo = lerComparacao().indexOf(codigo) !== -1;
+      var nome = nomeDoCard(botao) || codigo;
+      botao.setAttribute('aria-pressed', ativo ? 'true' : 'false');
+      botao.setAttribute('aria-label', (ativo ? 'Tirar ' : 'Adicionar ') + nome + (ativo ? ' da comparação' : ' à comparação'));
+      var txt = botao.querySelector('.acao__txt');
+      if (txt) txt.textContent = ativo ? 'Comparando' : 'Comparar';
+    }
+    Array.prototype.forEach.call(raiz.querySelectorAll('[data-comparar]'), sincronizar);
+    if (raiz.__comparacaoLigada) return;
+    raiz.__comparacaoLigada = true;
+
+    raiz.addEventListener('click', function (ev) {
+      var botao = ev.target.closest && ev.target.closest('[data-comparar]');
+      if (!botao) return;
+      ev.preventDefault();
+      var codigo = botao.getAttribute('data-comparar');
+      var r = alternarComparacao(codigo);
+      if (r.cheio) { avisarBandeja('Você já tem 3 imóveis na comparação. Tire um para incluir outro.'); return; }
+      sincronizar(botao);
+      medir(r.ativo ? 'property_compare_started' : 'property_compare_removed', { property_id: codigo, total: lerComparacao().length });
+    });
+    window.addEventListener('comparacao:mudou', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-comparar]'), sincronizar);
+      atualizarBandeja();
+    });
+    atualizarBandeja();
+  }
+
+  function atualizarBandeja() {
+    var bandeja = document.getElementById('bandejaComparar');
+    if (!bandeja) return;
+    var lista = lerComparacao();
+    var mostrar = lista.length >= 2;
+    bandeja.hidden = !mostrar;
+    document.body.classList.toggle('tem-bandeja', mostrar);
+    var n = document.getElementById('bandejaN'); if (n) n.textContent = String(lista.length);
+    var ir = document.getElementById('bandejaIr'); if (ir) ir.href = '/comparar?ids=' + encodeURIComponent(lista.join(','));
+    var limpar = document.getElementById('bandejaLimpar');
+    if (limpar && !limpar.__ligado) { limpar.__ligado = true; limpar.addEventListener('click', function () { gravarComparacao([]); }); }
+  }
+  function avisarBandeja(texto) {
+    var el = document.getElementById('avisoComparar');
+    if (!el) {
+      el = document.createElement('p');
+      el.id = 'avisoComparar'; el.className = 'aviso-flutuante'; el.setAttribute('role', 'status');
+      document.body.appendChild(el);
+    }
+    el.textContent = texto;
+    clearTimeout(el.__t); el.__t = setTimeout(function () { el.textContent = ''; }, 4000);
+  }
+
   function atualizarContador() {
     var total = lerFavoritos().length;
     Array.prototype.forEach.call(document.querySelectorAll('[data-contador-favoritos]'), function (el) {
@@ -140,7 +232,7 @@
 
   function formatarYen(v) {
     if (typeof v !== 'number' || !isFinite(v)) return '';
-    return '¥' + Math.round(v).toLocaleString('ja-JP');
+    return '¥' + Math.round(v).toLocaleString('pt-BR');
   }
 
   window.EHCasas = {
@@ -148,6 +240,9 @@
     ehFavorito: ehFavorito,
     alternarFavorito: alternarFavorito,
     ligarFavoritos: ligarFavoritos,
+    lerComparacao: lerComparacao,
+    alternarComparacao: alternarComparacao,
+    ligarComparacao: ligarComparacao,
     ligarMedicaoWhatsApp: ligarMedicaoWhatsApp,
     medir: medir,
     formatarYen: formatarYen,
@@ -156,6 +251,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     ligarFavoritos(document);
+    ligarComparacao(document);
     ligarMedicaoWhatsApp(document);
   });
 })();

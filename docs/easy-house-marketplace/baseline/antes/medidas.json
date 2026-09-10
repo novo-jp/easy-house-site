@@ -1,0 +1,194 @@
+{
+  "base": "http://localhost:3400",
+  "viewports": {
+    "320x568": {
+      "alturaPagina": 15099,
+      "cards": 24,
+      "alturaMediaCard": 501,
+      "alvoLinkTituloPx": 21,
+      "cardsComFotoClicavel": 0,
+      "placeholder": {
+        "textoPx": 273,
+        "disponivelPx": 124,
+        "cortado": true
+      },
+      "ariaCurrentNav": [
+        "Casas à venda",
+        "Sobre",
+        "1"
+      ],
+      "botaoVerImoveis": "Ver imóveis",
+      "chipsCidade": 44,
+      "waLinks": 5,
+      "h1": 1,
+      "burgerLabel": "Abrir menu",
+      "langJa": 0,
+      "title": "Casas à venda no Japão | Aichi, Gifu e Mie | EASY HOUSE",
+      "requestsApiNoLoad": 1,
+      "chipsCidadeNoPainel": 44
+    },
+    "390x844": {
+      "alturaPagina": 15651,
+      "cards": 24,
+      "alturaMediaCard": 533,
+      "alvoLinkTituloPx": 21,
+      "cardsComFotoClicavel": 0,
+      "placeholder": {
+        "textoPx": 273,
+        "disponivelPx": 194,
+        "cortado": true
+      },
+      "ariaCurrentNav": [
+        "Casas à venda",
+        "Sobre",
+        "1"
+      ],
+      "botaoVerImoveis": "Ver imóveis",
+      "chipsCidade": 44,
+      "waLinks": 5,
+      "h1": 1,
+      "burgerLabel": "Abrir menu",
+      "langJa": 0,
+      "title": "Casas à venda no Japão | Aichi, Gifu e Mie | EASY HOUSE",
+      "requestsApiNoLoad": 1,
+      "chipsCidadeNoPainel": 44,
+      "historicoApos3Cliques": 3,
+      "requestsApiApos3Cliques": 4,
+      "mieToyotaTotal": "0 imóveis"
+    },
+    "412x915": {
+      "alturaPagina": 15987,
+      "cards": 24,
+      "alturaMediaCard": 547,
+      "alvoLinkTituloPx": 21,
+      "cardsComFotoClicavel": 0,
+      "placeholder": {
+        "textoPx": 273,
+        "disponivelPx": 215,
+        "cortado": true
+      },
+      "ariaCurrentNav": [
+        "Casas à venda",
+        "Sobre",
+        "1"
+      ],
+      "botaoVerImoveis": "Ver imóveis",
+      "chipsCidade": 44,
+      "waLinks": 5,
+      "h1": 1,
+      "burgerLabel": "Abrir menu",
+      "langJa": 0,
+      "title": "Casas à venda no Japão | Aichi, Gifu e Mie | EASY HOUSE",
+      "requestsApiNoLoad": 1,
+      "chipsCidadeNoPainel": 44
+    },
+    "768x1024": {
+      "alturaPagina": 8327,
+      "cards": 24,
+      "alturaMediaCard": 523,
+      "alvoLinkTituloPx": 21,
+      "cardsComFotoClicavel": 0,
+      "placeholder": {
+        "textoPx": 273,
+        "disponivelPx": 464,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda",
+        "Sobre",
+        "1"
+      ],
+      "botaoVerImoveis": "Ver imóveis",
+      "chipsCidade": 44,
+      "waLinks": 5,
+      "h1": 1,
+      "burgerLabel": "Abrir menu",
+      "langJa": 0,
+      "title": "Casas à venda no Japão | Aichi, Gifu e Mie | EASY HOUSE",
+      "requestsApiNoLoad": 1,
+      "chipsCidadeNoPainel": 44
+    },
+    "1440x900": {
+      "alturaPagina": 6347,
+      "cards": 24,
+      "alturaMediaCard": 539,
+      "alvoLinkTituloPx": 21,
+      "cardsComFotoClicavel": 0,
+      "placeholder": {
+        "textoPx": 273,
+        "disponivelPx": 464,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda",
+        "Sobre",
+        "1"
+      ],
+      "botaoVerImoveis": "Ver imóveis",
+      "chipsCidade": 44,
+      "waLinks": 5,
+      "h1": 1,
+      "burgerLabel": "Abrir menu",
+      "langJa": 0,
+      "title": "Casas à venda no Japão | Aichi, Gifu e Mie | EASY HOUSE",
+      "requestsApiNoLoad": 1,
+      "chipsCidadeNoPainel": 44
+    }
+  },
+  "ficha": {
+    "390x844": {
+      "alturaPagina": 8903,
+      "waLinks": 13,
+      "ariaCurrentNav": [
+        "Sobre"
+      ],
+      "ariaCurrentTotal": 2,
+      "langJa": 0,
+      "temMapa": false,
+      "temVoltarBusca": true,
+      "temDataChecagem": false,
+      "textoJaponesSemLang": 17,
+      "h1": 1,
+      "title": "Casa 3LDK à venda em Tsu por ¥12,800,000 | Easy House",
+      "slug": "casa-3ldk-tsu-eh1829057"
+    },
+    "1440x900": {
+      "alturaPagina": 5046,
+      "waLinks": 13,
+      "ariaCurrentNav": [
+        "Sobre"
+      ],
+      "ariaCurrentTotal": 2,
+      "langJa": 0,
+      "temMapa": false,
+      "temVoltarBusca": true,
+      "temDataChecagem": false,
+      "textoJaponesSemLang": 17,
+      "h1": 1,
+      "title": "Casa 3LDK à venda em Tsu por ¥12,800,000 | Easy House",
+      "slug": "casa-3ldk-tsu-eh1829057"
+    }
+  },
+  "semJs": {
+    "cardsNoHtml": 0,
+    "gradeAriaBusy": true,
+    "contagemNoHtml": "<strong>—</strong> imóveis"
+  },
+  "api": {
+    "total": 769,
+    "totalAcervo": 769,
+    "porPagina": 1,
+    "prefeituras": [
+      "Aichi",
+      "Mie"
+    ],
+    "cidadesNaFaceta": 44
+  },
+  "favoritos": {
+    "requestsApi": 17,
+    "exemplo": [
+      "http://localhost:3400/api/casas?porPagina=48&pagina=1",
+      "http://localhost:3400/api/casas?porPagina=48&pagina=2"
+    ]
+  }
+}

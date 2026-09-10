@@ -23,9 +23,23 @@
     city: principal.getAttribute('data-cidade') || null,
     prefecture: principal.getAttribute('data-prefeitura') || null,
     price: Number(principal.getAttribute('data-preco')) || null,
-    source: 'reprice'
+    source: principal.getAttribute('data-fonte') || null
   };
   medir('property_view', contexto);
+
+  /* ── Voltar para a busca de onde a pessoa veio ───────────── */
+  // A lista guarda a URL da última busca em sessionStorage; o link "Casas à
+  // venda" das migalhas passa a apontar para ela — com filtros, ordem, página
+  // e posição de rolagem, que a lista restaura ao carregar.
+  try {
+    var ultima = window.sessionStorage.getItem('eh_ultima_busca');
+    if (ultima && /^\/comprar\/imoveis(\?|$)/.test(ultima)) {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-voltar-busca]'), function (a) {
+        a.href = ultima;
+        if (a.id === 'voltarBusca') a.textContent = 'Voltar para a busca';
+      });
+    }
+  } catch (e) {}
 
   /* ── Contador do carrossel (celular) ─────────────────────── */
   var trilho = document.getElementById('galeria');
@@ -83,6 +97,7 @@
     focoAnterior = document.activeElement;
     caixa.setAttribute('open', '');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('dialogo-aberto');
     // O palco só ganha largura depois que o navegador refaz o layout;
     // medir antes disso dava clientWidth 0 e a galeria abria sempre na foto 1.
     requestAnimationFrame(function () {
@@ -98,6 +113,7 @@
     if (!caixa) return;
     caixa.removeAttribute('open');
     document.body.style.overflow = '';
+    document.body.classList.remove('dialogo-aberto');
     if (focoAnterior && focoAnterior.focus) focoAnterior.focus();
   }
 
@@ -123,6 +139,14 @@
     if (ev.key === 'Escape') fechar();
     else if (ev.key === 'ArrowRight') irPara(indiceAtual() + 1);
     else if (ev.key === 'ArrowLeft') irPara(indiceAtual() - 1);
+    else if (ev.key === 'Tab') {
+      // diálogo modal: o foco circula entre fechar, anterior e próxima
+      var botoes = Array.prototype.slice.call(caixa.querySelectorAll('button:not([disabled])'));
+      if (!botoes.length) return;
+      var i = botoes.indexOf(document.activeElement);
+      if (ev.shiftKey && (i <= 0)) { ev.preventDefault(); botoes[botoes.length - 1].focus(); }
+      else if (!ev.shiftKey && (i === -1 || i === botoes.length - 1)) { ev.preventDefault(); botoes[0].focus(); }
+    }
   });
 
   /* ── Compartilhar ────────────────────────────────────────── */
@@ -161,7 +185,7 @@
   var rel = document.querySelector('.relacionados');
   if (rel) {
     rel.addEventListener('click', function (ev) {
-      var link = ev.target.closest && ev.target.closest('.casa__nome a');
+      var link = ev.target.closest && ev.target.closest('a[href^="/comprar/imoveis/"]');
       if (link) medir('related_property_click', { de: contexto.property_id, para: link.getAttribute('href') });
     });
   }

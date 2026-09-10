@@ -20,7 +20,9 @@ const ALLOWED_EVENTS = new Set([
   'filter_used', 'property_favorite', 'favorites_view', 'property_share',
   'gallery_open', 'related_property_click', 'simulacao_ver_casas',
   'whatsapp_click', 'whatsapp_property_click',
-  'whatsapp_simulation_click', 'whatsapp_visit_click'
+  'whatsapp_simulation_click', 'whatsapp_visit_click',
+  // Comparação (10/09/2026). Só o código público do imóvel e a quantidade.
+  'property_compare_started', 'property_compare_removed', 'property_compare_view'
 ]);
 
 const BLOCKED_KEYS = new Set([
