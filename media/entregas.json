@@ -1,0 +1,106 @@
+[
+  {
+    "id": "entrega-01",
+    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
+    "tratamento": "4000x3000, enquadramento completo (imagem autorizada), EXIF removido",
+    "arquivos": [
+      "entrega-01-400.webp",
+      "entrega-01-800.webp",
+      "entrega-01-1200.webp",
+      "entrega-01-1600.webp",
+      "entrega-01-tex.webp"
+    ],
+    "status": "liberado"
+  },
+  {
+    "id": "entrega-02",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "entrega-02-400.webp",
+      "entrega-02-800.webp",
+      "entrega-02-1200.webp",
+      "entrega-02-1600.webp",
+      "entrega-02-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "entrega-03",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "entrega-03-400.webp",
+      "entrega-03-800.webp",
+      "entrega-03-1200.webp",
+      "entrega-03-1600.webp",
+      "entrega-03-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "entrega-04",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "entrega-04-400.webp",
+      "entrega-04-800.webp",
+      "entrega-04-1200.webp",
+      "entrega-04-1600.webp",
+      "entrega-04-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "entrega-05",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "entrega-05-400.webp",
+      "entrega-05-800.webp",
+      "entrega-05-1200.webp",
+      "entrega-05-1600.webp",
+      "entrega-05-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "entrega-06",
+    "origem": "gerado",
+    "tratamento": "placeholder procedural",
+    "arquivos": [
+      "entrega-06-400.webp",
+      "entrega-06-800.webp",
+      "entrega-06-1200.webp",
+      "entrega-06-1600.webp",
+      "entrega-06-tex.webp"
+    ],
+    "status": "placeholder"
+  },
+  {
+    "id": "hero-entregas",
+    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
+    "tratamento": "recorte 16:9 por atenção; EXIF removido",
+    "arquivos": [
+      "hero-entregas-400.webp",
+      "hero-entregas-800.webp",
+      "hero-entregas-1200.webp",
+      "hero-entregas-1600.webp",
+      "hero-entregas-tex.webp"
+    ],
+    "status": "liberado"
+  },
+  {
+    "id": "certificado",
+    "origem": "gerado",
+    "tratamento": "placeholder",
+    "arquivos": [
+      "certificado-400.webp",
+      "certificado-800.webp",
+      "certificado-1200.webp",
+      "certificado-1600.webp",
+      "certificado-tex.webp"
+    ],
+    "status": "placeholder"
+  }
+]

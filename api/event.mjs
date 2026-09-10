@@ -22,7 +22,12 @@ const ALLOWED_EVENTS = new Set([
   'whatsapp_click', 'whatsapp_property_click',
   'whatsapp_simulation_click', 'whatsapp_visit_click',
   // Comparação (10/09/2026). Só o código público do imóvel e a quantidade.
-  'property_compare_started', 'property_compare_removed', 'property_compare_view'
+  'property_compare_started', 'property_compare_removed', 'property_compare_view',
+  // Landings do Raio-X e /entregas (lib/analytics/schema.ts do app). O app
+  // valida por allowlist própria antes de enviar; a lista aqui precisa
+  // acompanhar a de lá, senão o evento morre com 400 e ninguém vê.
+  'primary_cta_click', 'tool_start', 'tool_step_complete', 'tool_complete',
+  'result_view', 'contact_view', 'lead_submit'
 ]);
 
 const BLOCKED_KEYS = new Set([
