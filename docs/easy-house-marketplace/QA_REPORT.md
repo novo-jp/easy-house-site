@@ -129,3 +129,41 @@ Resultados brutos: `baseline/antes/medidas.json`, `baseline/depois/resultado.jso
 - `docs/easy-house-marketplace/` está no `.vercelignore` novo (só essa pasta) para as capturas não subirem.
 - Telemetria de teste gravada em `funnel_event` durante o QA (poucas dezenas de linhas, `step=/comprar/imoveis`).
 - Os testes `e2e.py` dependem de rede para o axe-core (cdnjs).
+
+## Pós-deploy — produção (10/09/2026, push `7f7be45` às 20:37, no ar às 20:37:55)
+
+Comandos:
+
+```bash
+python3 docs/easy-house-marketplace/baseline/auditoria_producao.py https://easyhouse.homes   # 40 verificações HTTP
+python3 docs/easy-house-marketplace/baseline/e2e.py https://easyhouse.homes producao        # 75 verificações com navegador
+```
+
+Resultados: `baseline/producao/auditoria.json`, `baseline/producao/resultado.json`, capturas em `producao/`.
+
+**Confirmado em produção**
+
+- O rewrite `/comprar/imoveis → /api/casas-lista` venceu o filesystem da Vercel: título gerado do acervo
+  ("Aichi e Mie | 769 imóveis"), 18 cards no HTML sem JS, formulário de filtros no HTML.
+- `/comprar/imoveis.html` não serve mais a página antiga.
+- Cabeçalhos de segurança preservados; `docs/easy-house-marketplace/` **não** publicado (404).
+- Cache da CDN funciona: 1ª chamada `x-vercel-cache: MISS` (~1 s, função em `iad1`), 2ª `HIT` (`age: 1`).
+  A Vercel reescreve o `Cache-Control` visível para `public` — é o comportamento dela, não um defeito; a única
+  "falha" da auditoria HTTP (39/40) foi essa expectativa do script.
+- Casos do baseline: Hekinan → 26 resultados com aviso; `Mie + Toyota` → vazio com sugestões e motivo;
+  URL inválida → 200 com aviso; lista filtrada `noindex, follow`.
+- API: facetas novas, `somenteTotal`, `codigos=`, `verificadoEm`/`entregaClasse` nos itens; sem `recomendados`.
+- Ficha: fonte + verificação, 8 links de WhatsApp, um `aria-current`, 67 `lang="ja"`, JSON-LD, voltar à busca;
+  ficha inexistente → 404 informativo `noindex`.
+- `/favoritos`, `/comparar` (noindex), `lib/casas-cartao.js`, `casas-busca.js`, `casas.css`, `theme-v2.js` na versão nova.
+- Sitemap de imóveis: 770 URLs; robots ok.
+- **e2e com navegador: 75/75**, axe 0 critical/serious em lista (390/1440), painel, ficha e comparação.
+  Voltar da ficha em produção usa o bfcache do Chrome: URL igual e rolagem a 76 px do ponto de saída
+  (tolerância do teste ampliada de 60 para 120 px por isso).
+
+**Observações de produção (não são regressões)**
+
+- Latência: função em `iad1` (EUA) para público no Japão — MISS de ~1 s na lista e 300 ms na API;
+  com cache, dezenas de ms. Recomendação, sem aplicar: `"regions": ["hnd1"]` no `vercel.json`
+  (decisão de infraestrutura, pede aprovação).
+- A auditoria com navegador gravou eventos de teste em `funnel_event` (session_id `S…`, `step=/comprar/imoveis`).

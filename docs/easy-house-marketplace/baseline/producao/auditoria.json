@@ -1,0 +1,206 @@
+{
+  "base": "https://easyhouse.homes",
+  "quando": "2026-09-10 20:39:12",
+  "checks": [
+    {
+      "nome": "lista responde 200",
+      "ok": true,
+      "medida": "200 em 1005 ms"
+    },
+    {
+      "nome": "lista vem da função (título gerado do acervo, sem 'Gifu')",
+      "ok": true,
+      "medida": "Casas à venda em Aichi e Mie | 769 imóveis em português | EASY HOUSE"
+    },
+    {
+      "nome": "lista traz cards no HTML (sem JS)",
+      "ok": true,
+      "medida": 18
+    },
+    {
+      "nome": "lista: formulário de filtros no HTML",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "lista: um aria-current na nav",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "lista: sem 'Recomendados'",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "lista: robots ausente na base (indexável)",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "lista: cache CDN da função",
+      "ok": false,
+      "medida": "public"
+    },
+    {
+      "nome": "lista: content-type html utf-8",
+      "ok": true,
+      "medida": "text/html; charset=utf-8"
+    },
+    {
+      "nome": "cabeçalho de segurança preservado: X-Frame-Options",
+      "ok": true,
+      "medida": "SAMEORIGIN"
+    },
+    {
+      "nome": "cabeçalho de segurança preservado: X-Content-Type-Options",
+      "ok": true,
+      "medida": "nosniff"
+    },
+    {
+      "nome": "cabeçalho de segurança preservado: Referrer-Policy",
+      "ok": true,
+      "medida": "strict-origin-when-cross-origin"
+    },
+    {
+      "nome": "Hekinan digitado com outras cidades marcadas → resultados de Hekinan",
+      "ok": true,
+      "medida": 26
+    },
+    {
+      "nome": "lista filtrada é noindex, follow",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "Mie + Toyota → vazio com sugestões e motivo na opção",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "URL inválida → 200 com aviso discreto",
+      "ok": true,
+      "medida": 200
+    },
+    {
+      "nome": "/comprar/imoveis.html não é servido como página antiga",
+      "ok": true,
+      "medida": 200
+    },
+    {
+      "nome": "API responde com facetas novas e sem 'recomendados'",
+      "ok": true,
+      "medida": "200 em 2747 ms, total=20"
+    },
+    {
+      "nome": "API: itens trazem verificadoEm e entregaClasse",
+      "ok": true,
+      "medida": "2026-09-10"
+    },
+    {
+      "nome": "API: somenteTotal devolve total sem itens",
+      "ok": true,
+      "medida": 120
+    },
+    {
+      "nome": "API: codigos= devolve só o pedido",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "API: no-store da Vercel não sobrescreve? (cabeçalho efetivo)",
+      "ok": true,
+      "medida": "public"
+    },
+    {
+      "nome": "ficha 200",
+      "ok": true,
+      "medida": "200 em 396 ms"
+    },
+    {
+      "nome": "ficha: fonte, verificação e 'Não informado'",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "ficha: WhatsApp ≤ 8 links",
+      "ok": true,
+      "medida": 8
+    },
+    {
+      "nome": "ficha: um aria-current na nav (Casas à venda)",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "ficha: lang=ja presente",
+      "ok": true,
+      "medida": 67
+    },
+    {
+      "nome": "ficha: JSON-LD Product + BreadcrumbList",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "ficha: data-voltar-busca",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "ficha inexistente → página informativa noindex (não erro cru)",
+      "ok": true,
+      "medida": 404
+    },
+    {
+      "nome": "/favoritos publicado com a versão nova",
+      "ok": true,
+      "medida": "200 em 248 ms"
+    },
+    {
+      "nome": "/comparar publicado com a versão nova",
+      "ok": true,
+      "medida": "200 em 246 ms"
+    },
+    {
+      "nome": "/lib/casas-cartao.js publicado com a versão nova",
+      "ok": true,
+      "medida": "200 em 249 ms"
+    },
+    {
+      "nome": "/casas-busca.js publicado com a versão nova",
+      "ok": true,
+      "medida": "200 em 378 ms"
+    },
+    {
+      "nome": "/casas.css publicado com a versão nova",
+      "ok": true,
+      "medida": "200 em 306 ms"
+    },
+    {
+      "nome": "/theme-v2.js publicado com a versão nova",
+      "ok": true,
+      "medida": "200 em 248 ms"
+    },
+    {
+      "nome": "/comparar é noindex",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "docs/easy-house-marketplace NÃO foi publicado (.vercelignore)",
+      "ok": true,
+      "medida": 404
+    },
+    {
+      "nome": "sitemap de imóveis responde",
+      "ok": true,
+      "medida": "200, 770 urls"
+    },
+    {
+      "nome": "robots.txt responde",
+      "ok": true,
+      "medida": 200
+    }
+  ]
+}

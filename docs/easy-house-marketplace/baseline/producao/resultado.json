@@ -1,0 +1,623 @@
+{
+  "base": "https://easyhouse.homes",
+  "checks": [
+    {
+      "nome": "sem JS: HTML inicial traz resultados",
+      "ok": true,
+      "medida": 18
+    },
+    {
+      "nome": "sem JS: painel de filtros é um <form> visível",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "sem JS: chip remove por link real",
+      "ok": true,
+      "medida": "/comprar/imoveis?cidade=okazaki"
+    },
+    {
+      "nome": "sem JS: vazio com sugestões como links",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "320: placeholder cabe",
+      "ok": true,
+      "medida": {
+        "textoPx": 192,
+        "disponivelPx": 250,
+        "cortado": false
+      }
+    },
+    {
+      "nome": "320: sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "320: exatamente um aria-current na nav",
+      "ok": true,
+      "medida": [
+        "Casas à venda"
+      ]
+    },
+    {
+      "nome": "320: alvo 'Ver detalhes' ≥ 44px",
+      "ok": true,
+      "medida": 44
+    },
+    {
+      "nome": "320: foto do card leva à ficha",
+      "ok": true,
+      "medida": "18/18"
+    },
+    {
+      "nome": "320: primeira dobra tem os 3 campos + Buscar",
+      "ok": true,
+      "medida": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      }
+    },
+    {
+      "nome": "390: placeholder cabe",
+      "ok": true,
+      "medida": {
+        "textoPx": 192,
+        "disponivelPx": 320,
+        "cortado": false
+      }
+    },
+    {
+      "nome": "390: sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "390: exatamente um aria-current na nav",
+      "ok": true,
+      "medida": [
+        "Casas à venda"
+      ]
+    },
+    {
+      "nome": "390: alvo 'Ver detalhes' ≥ 44px",
+      "ok": true,
+      "medida": 44
+    },
+    {
+      "nome": "390: foto do card leva à ficha",
+      "ok": true,
+      "medida": "18/18"
+    },
+    {
+      "nome": "390: primeira dobra tem os 3 campos + Buscar",
+      "ok": true,
+      "medida": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      }
+    },
+    {
+      "nome": "axe lista+painel-390: sem violações critical/serious",
+      "ok": true,
+      "medida": []
+    },
+    {
+      "nome": "412: placeholder cabe",
+      "ok": true,
+      "medida": {
+        "textoPx": 192,
+        "disponivelPx": 341,
+        "cortado": false
+      }
+    },
+    {
+      "nome": "412: sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "412: exatamente um aria-current na nav",
+      "ok": true,
+      "medida": [
+        "Casas à venda"
+      ]
+    },
+    {
+      "nome": "412: alvo 'Ver detalhes' ≥ 44px",
+      "ok": true,
+      "medida": 44
+    },
+    {
+      "nome": "412: foto do card leva à ficha",
+      "ok": true,
+      "medida": "18/18"
+    },
+    {
+      "nome": "412: primeira dobra tem os 3 campos + Buscar",
+      "ok": true,
+      "medida": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      }
+    },
+    {
+      "nome": "768: placeholder cabe",
+      "ok": true,
+      "medida": {
+        "textoPx": 192,
+        "disponivelPx": 661,
+        "cortado": false
+      }
+    },
+    {
+      "nome": "768: sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "768: exatamente um aria-current na nav",
+      "ok": true,
+      "medida": [
+        "Casas à venda"
+      ]
+    },
+    {
+      "nome": "768: alvo 'Ver detalhes' ≥ 44px",
+      "ok": true,
+      "medida": 58
+    },
+    {
+      "nome": "768: foto do card leva à ficha",
+      "ok": true,
+      "medida": "18/18"
+    },
+    {
+      "nome": "1440: placeholder cabe",
+      "ok": true,
+      "medida": {
+        "textoPx": 192,
+        "disponivelPx": 230,
+        "cortado": false
+      }
+    },
+    {
+      "nome": "1440: sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "1440: exatamente um aria-current na nav",
+      "ok": true,
+      "medida": [
+        "Casas à venda"
+      ]
+    },
+    {
+      "nome": "1440: alvo 'Ver detalhes' ≥ 44px",
+      "ok": true,
+      "medida": 44
+    },
+    {
+      "nome": "1440: foto do card leva à ficha",
+      "ok": true,
+      "medida": "18/18"
+    },
+    {
+      "nome": "axe lista-390: sem violações critical/serious",
+      "ok": true,
+      "medida": []
+    },
+    {
+      "nome": "carga inicial não chama /api/casas (HTML já veio pronto)",
+      "ok": true,
+      "medida": 0
+    },
+    {
+      "nome": "busca rápida: 'Toyota' vira filtro de cidade e 1 entrada no histórico",
+      "ok": true,
+      "medida": {
+        "url": "https://easyhouse.homes/comprar/imoveis?cidade=toyota&precoMax=25000000",
+        "total": 5,
+        "hist": 1
+      }
+    },
+    {
+      "nome": "busca rápida: chip 'Cidade: Toyota' aparece",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "painel: foco vai para o título ao abrir",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "painel: 3 toques = 0 entradas no histórico",
+      "ok": true,
+      "medida": 0
+    },
+    {
+      "nome": "painel: botão diz 'Mostrar N imóveis' com N atualizado",
+      "ok": true,
+      "medida": "Mostrar 16 imóveis (antes 38)"
+    },
+    {
+      "nome": "painel: consultas leves canceláveis (somenteTotal)",
+      "ok": true,
+      "medida": 3
+    },
+    {
+      "nome": "painel: opção incompatível desabilitada com motivo (Tsu com Aichi)",
+      "ok": true,
+      "medida": "Tsu fica em Mie, fora da província escolhida"
+    },
+    {
+      "nome": "painel: Tab não escapa do diálogo",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "painel: ESC fecha, descarta rascunho e devolve foco ao botão",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "painel: aplicar = 1 pushState e URL com o filtro",
+      "ok": true,
+      "medida": "https://easyhouse.homes/comprar/imoveis?cidade=toyota&planta=4ldk"
+    },
+    {
+      "nome": "chips: rótulo completo",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "chips: remover tira o filtro da URL",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "ficha abre pela lista",
+      "ok": true,
+      "medida": "https://easyhouse.homes/comprar/imoveis/casa-4ldk-toyota-eh3599031"
+    },
+    {
+      "nome": "ficha: 'Voltar para a busca' aponta para a MESMA busca",
+      "ok": true,
+      "medida": "/comprar/imoveis?cidade=toyota"
+    },
+    {
+      "nome": "ficha: WhatsApp reduzido a hierarquia (≤ 8 links na página inteira, 13 antes)",
+      "ok": true,
+      "medida": 8
+    },
+    {
+      "nome": "ficha: mostra verificação e fonte",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "ficha: 'Não informado pela fonte' quando falta dado relevante",
+      "ok": true,
+      "medida": 3
+    },
+    {
+      "nome": "ficha: CTA principal leva o código público e nada sensível",
+      "ok": true,
+      "medida": "EH-3599031"
+    },
+    {
+      "nome": "axe ficha-390: sem violações critical/serious",
+      "ok": true,
+      "medida": []
+    },
+    {
+      "nome": "lightbox: foco no fechar ao abrir",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "lightbox: ESC fecha e devolve o foco",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "voltar da ficha: mesma URL e rolagem restaurada",
+      "ok": true,
+      "medida": {
+        "url_ok": true,
+        "antes": 823,
+        "depois": 864
+      }
+    },
+    {
+      "nome": "favoritar: aria-pressed e texto mudam",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "comparar: bandeja só aparece no 2º",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "comparar: bandeja visível com 3",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "comparar: 4º é recusado com aviso",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "comparação: 3 colunas, URL compartilhável só com códigos",
+      "ok": true,
+      "medida": {
+        "cols": 3,
+        "url": "https://easyhouse.homes/comparar?ids=EH-3540028%2CEH-3599031%2CEH-0175099",
+        "reqs": 1
+      }
+    },
+    {
+      "nome": "comparação: diferenças marcadas com ◆ (não só cor) e 'não informado' quando falta",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "axe comparar-390: sem violações critical/serious",
+      "ok": true,
+      "medida": []
+    },
+    {
+      "nome": "favoritos: UMA consulta com codigos= (17 antes)",
+      "ok": true,
+      "medida": [
+        "https://easyhouse.homes/api/casas?codigos=EH-3540028%2CEH-3599031%2CEH-0175099&porPagina=48"
+      ]
+    },
+    {
+      "nome": "favoritos: 3 cards",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "consentimento pendente não cobre 'Mostrar X imóveis'",
+      "ok": true,
+      "medida": {
+        "aviso": true,
+        "cobre": false
+      }
+    },
+    {
+      "nome": "menu: rótulo vira 'Fechar menu' quando aberto",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "vazio: diz qual filtro pesa e oferece remover (sem mudar sozinho)",
+      "ok": true,
+      "medida": [
+        "Remover as cidades +79",
+        "Remover a província +38"
+      ]
+    },
+    {
+      "nome": "URL abusiva: 200 e aviso discreto, não erro",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "axe lista-1440: sem violações critical/serious",
+      "ok": true,
+      "medida": []
+    },
+    {
+      "nome": "ordenar por menor preço ordena de fato e explica o critério",
+      "ok": true,
+      "medida": [
+        16500000,
+        24990000,
+        25000000,
+        27990000
+      ]
+    },
+    {
+      "nome": "320px: sem rolagem horizontal (reflow)",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "320px: painel sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    },
+    {
+      "nome": "texto 200%: sem rolagem horizontal",
+      "ok": true,
+      "medida": null
+    }
+  ],
+  "viewports": {
+    "320x568": {
+      "alturaPagina": 11410,
+      "cards": 18,
+      "alturaMediaCard": 468,
+      "alvoVerDetalhesPx": 44,
+      "alvoFavoritoPx": 44,
+      "fotoClicavel": 18,
+      "placeholder": {
+        "textoPx": 192,
+        "disponivelPx": 250,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda"
+      ],
+      "botaoVer": "Mostrar 769 imóveis",
+      "primeiraDobra": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      },
+      "h1": 1,
+      "burger": "Abrir menu",
+      "langJa": 85,
+      "overflowX": false,
+      "title": "Casas à venda em Aichi e Mie | 769 imóveis em português | EASY HOUSE"
+    },
+    "390x844": {
+      "alturaPagina": 11310,
+      "cards": 18,
+      "alturaMediaCard": 474,
+      "alvoVerDetalhesPx": 44,
+      "alvoFavoritoPx": 44,
+      "fotoClicavel": 18,
+      "placeholder": {
+        "textoPx": 192,
+        "disponivelPx": 320,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda"
+      ],
+      "botaoVer": "Mostrar 769 imóveis",
+      "primeiraDobra": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      },
+      "h1": 1,
+      "burger": "Abrir menu",
+      "langJa": 85,
+      "overflowX": false,
+      "title": "Casas à venda em Aichi e Mie | 769 imóveis em português | EASY HOUSE"
+    },
+    "412x915": {
+      "alturaPagina": 11455,
+      "cards": 18,
+      "alturaMediaCard": 482,
+      "alvoVerDetalhesPx": 44,
+      "alvoFavoritoPx": 44,
+      "fotoClicavel": 18,
+      "placeholder": {
+        "textoPx": 192,
+        "disponivelPx": 341,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda"
+      ],
+      "botaoVer": "Mostrar 769 imóveis",
+      "primeiraDobra": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      },
+      "h1": 1,
+      "burger": "Abrir menu",
+      "langJa": 85,
+      "overflowX": false,
+      "title": "Casas à venda em Aichi e Mie | 769 imóveis em português | EASY HOUSE"
+    },
+    "768x1024": {
+      "alturaPagina": 6344,
+      "cards": 18,
+      "alturaMediaCard": 490,
+      "alvoVerDetalhesPx": 58,
+      "alvoFavoritoPx": 44,
+      "fotoClicavel": 18,
+      "placeholder": {
+        "textoPx": 192,
+        "disponivelPx": 661,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda"
+      ],
+      "botaoVer": "Mostrar 769 imóveis",
+      "primeiraDobra": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      },
+      "h1": 1,
+      "burger": "Abrir menu",
+      "langJa": 85,
+      "overflowX": false,
+      "title": "Casas à venda em Aichi e Mie | 769 imóveis em português | EASY HOUSE"
+    },
+    "1440x900": {
+      "alturaPagina": 4439,
+      "cards": 18,
+      "alturaMediaCard": 488,
+      "alvoVerDetalhesPx": 44,
+      "alvoFavoritoPx": 44,
+      "fotoClicavel": 18,
+      "placeholder": {
+        "textoPx": 192,
+        "disponivelPx": 230,
+        "cortado": false
+      },
+      "ariaCurrentNav": [
+        "Casas à venda"
+      ],
+      "botaoVer": "Mostrar 769 imóveis",
+      "primeiraDobra": {
+        "buscar": true,
+        "planta": true,
+        "contagem": true
+      },
+      "h1": 1,
+      "burger": "Abrir menu",
+      "langJa": 85,
+      "overflowX": false,
+      "title": "Casas à venda em Aichi e Mie | 769 imóveis em português | EASY HOUSE"
+    }
+  },
+  "axe": {
+    "lista+painel-390": {
+      "violacoes": [],
+      "critical_serious": 0
+    },
+    "lista-390": {
+      "violacoes": [],
+      "critical_serious": 0
+    },
+    "ficha-390": {
+      "violacoes": [],
+      "critical_serious": 0
+    },
+    "comparar-390": {
+      "violacoes": [],
+      "critical_serious": 0
+    },
+    "lista-1440": {
+      "violacoes": [],
+      "critical_serious": 0
+    }
+  },
+  "ficha": {
+    "waLinks": 8,
+    "ausentes": 3,
+    "verificado": 1
+  },
+  "semJs": {
+    "cards": 18,
+    "formFiltros": true,
+    "painelVisivel": true
+  },
+  "api_ms": 306,
+  "lista_ms": 76,
+  "lista_bytes": 82349,
+  "resumo": {
+    "passaram": 75,
+    "falharam": 0
+  }
+}

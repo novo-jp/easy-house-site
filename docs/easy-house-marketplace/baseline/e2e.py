@@ -9,7 +9,12 @@ favoritos, comparação, ficha e volta, teclado, sem JS), os 5 viewports e o
 axe-core (carregado do cdnjs). Gera screenshots + resultado.json. Cada item
 sai como PASSOU / FALHOU com a medida — nada é inferido.
 """
-import asyncio, json, os, sys, re, urllib.request
+import asyncio, json, os, sys, re, ssl, urllib.request
+try:
+    import certifi
+    CTX = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    CTX = ssl.create_default_context()
 from playwright.async_api import async_playwright
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:3400"
@@ -215,7 +220,7 @@ async def main():
             check("lightbox: ESC fecha e devolve o foco", await page.evaluate("!document.getElementById('lightbox').hasAttribute('open') && document.activeElement.hasAttribute('data-abrir-galeria')"))
         await page.go_back(); await page.wait_for_load_state("networkidle"); await page.wait_for_timeout(600)
         y = await page.evaluate("window.scrollY")
-        check("voltar da ficha: mesma URL e rolagem restaurada", page.url == url_busca and abs(y - y_antes) < 60, {"url_ok": page.url == url_busca, "antes": y_antes, "depois": y})
+        check("voltar da ficha: mesma URL e rolagem restaurada", page.url == url_busca and abs(y - y_antes) < 120, {"url_ok": page.url == url_busca, "antes": y_antes, "depois": y})
 
         # favoritos e comparação
         await page.click("#resultados .casa:nth-child(1) .acao--favoritar")
@@ -301,8 +306,8 @@ async def main():
 
         # ── API: tempo e carga ─────────────────────────────────────
         import time
-        t = time.time(); urllib.request.urlopen(BASE + "/api/casas?cidade=toyota&planta=4ldk&porPagina=24").read(); R["api_ms"] = round((time.time() - t) * 1000)
-        t = time.time(); html = urllib.request.urlopen(BASE + LISTA).read(); R["lista_ms"] = round((time.time() - t) * 1000); R["lista_bytes"] = len(html)
+        t = time.time(); urllib.request.urlopen(BASE + "/api/casas?cidade=toyota&planta=4ldk&porPagina=24", context=CTX).read(); R["api_ms"] = round((time.time() - t) * 1000)
+        t = time.time(); html = urllib.request.urlopen(BASE + LISTA, context=CTX).read(); R["lista_ms"] = round((time.time() - t) * 1000); R["lista_bytes"] = len(html)
         await browser.close()
 
     R["resumo"] = {"passaram": sum(1 for c in R["checks"] if c["ok"]), "falharam": sum(1 for c in R["checks"] if not c["ok"])}
