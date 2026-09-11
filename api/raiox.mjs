@@ -27,6 +27,7 @@
  */
 
 import { avisarRaioXNovo } from '../lib/notificar.js';
+import { sendMetaEvent } from '../lib/meta-capi.js';
 
 const FORMATO_CODIGO = /^EH-[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
 
@@ -144,6 +145,15 @@ export default async function handler(req, res) {
   const respostas = limparRespostas(body.respostas);
   const plano = body.plano && typeof body.plano === 'object' ? body.plano : {};
   const origem = body.origem && typeof body.origem === 'object' ? body.origem : {};
+  // Atribuição do Meta: só chega se a pessoa aceitou a medição no navegador
+  // (window.ehConsent.atribuicao devolve null sem aceite). Sem ela, o CAPI
+  // não é chamado — recusar no navegador precisa valer no servidor também.
+  const ads = body.ads && typeof body.ads === 'object'
+    ? { fbp: String(body.ads.fbp || '').slice(0, 120) || undefined,
+        fbc: String(body.ads.fbc || '').slice(0, 200) || undefined,
+        url: String(body.ads.url || '').slice(0, 300) || undefined }
+    : null;
+  const eventId = /^[A-Za-z0-9._-]{8,64}$/.test(String(body.eventId || '')) ? String(body.eventId) : null;
 
   // A resposta sai antes do trabalho pesado. Quem enviou já está indo para o
   // WhatsApp e não espera nada daqui.
@@ -184,6 +194,17 @@ export default async function handler(req, res) {
     }
   } catch {
     console.error('raiox: erro ao gravar');
+  }
+
+  // Conversão pelo servidor: o mesmo `Contact` que o navegador dispara com o
+  // mesmo eventId, para o Meta contar uma vez só. Nunca derruba o resto.
+  if (ads && eventId) {
+    try {
+      await sendMetaEvent({
+        eventName: 'Contact', eventId, ads, ip,
+        userAgent: String(req.headers['user-agent'] || ''),
+      });
+    } catch { /* medição não bloqueia o atendimento */ }
   }
 
   // O aviso é o que faz alguém agir. Sem ele o Raio-X fica esperando que

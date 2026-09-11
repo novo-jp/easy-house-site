@@ -64,7 +64,17 @@
     search_performed:           { tipo: 'std',    nome: 'Search' },
     property_favorite:          { tipo: 'std',    nome: 'AddToWishlist',
                                   quando: function (i) { return i.acao === 'salvou'; } },
-    whatsapp_click:             { tipo: 'std',    nome: 'Contact' }
+    whatsapp_click:             { tipo: 'std',    nome: 'Contact' },
+
+    /* Landings do Raio-X e /entregas (app em novo-jp/easyhouse-raiox).
+       O app publica no dataLayer os mesmos eventos que grava em funnel_event;
+       `lp_view` fica de fora porque o PageView já cobre, e
+       `tool_step_complete` porque dispara a cada pergunta. */
+    primary_cta_click:          { tipo: 'custom', nome: 'CtaPrincipal' },
+    tool_start:                 { tipo: 'std',    nome: 'ViewContent' },
+    tool_complete:              { tipo: 'std',    nome: 'CompleteRegistration' },
+    result_view:                { tipo: 'custom', nome: 'ResultadoRaioX' },
+    contact_view:               { tipo: 'std',    nome: 'InitiateCheckout' }
   };
 
   /**
@@ -111,7 +121,7 @@
     '.eh-cc p{margin:0}',
     '.eh-cc a{color:#12224A;text-decoration:underline}',
     '.eh-cc__acoes{display:flex;gap:10px;flex-wrap:wrap}',
-    '.eh-cc button{flex:1;min-width:120px;cursor:pointer;border-radius:999px;',
+    '.eh-cc button{flex:1;min-width:120px;min-height:44px;cursor:pointer;border-radius:999px;',
     'padding:11px 18px;font:600 14px/1 inherit;border:2px solid #12224A;',
     'font-family:inherit}',
     '.eh-cc__sim{background:#12224A;color:#fff}',
@@ -197,9 +207,12 @@
    */
   function afastarDaBarraFixa(caixa) {
     try {
-      var barra = document.getElementById('fxActions');
+      // No simulador é a barra de ação; nas landings do Raio-X, a barra de
+      // contato — que some sobre seções com botão próprio (data-oculta).
+      var barra = document.getElementById('fxActions') || document.getElementById('eh-barra-contato');
       if (!barra) return;
       if (window.getComputedStyle(barra).position !== 'fixed') return;   // no desktop ela é estática
+      if (barra.dataset && barra.dataset.oculta === 'sim') return;
       var altura = barra.getBoundingClientRect().height;
       if (altura > 0) caixa.style.bottom = Math.round(altura + 12) + 'px';
     } catch (e) { /* na dúvida, deixa no rodapé */ }
@@ -301,8 +314,9 @@
     var metodo = destino.tipo === 'std' ? 'track' : 'trackCustom';
 
     // O eventID permite ao Meta juntar este disparo com o do servidor
-    // (Conversions API) e não contar a mesma conversão duas vezes.
-    if (item.event === 'lead_submitted' && item.eventId) {
+    // (Conversions API) e não contar a mesma conversão duas vezes. Vale para
+    // qualquer evento que traga um: Lead no simulador, Contact nas landings.
+    if (item.eventId) {
       window.fbq(metodo, destino.nome, params, { eventID: item.eventId });
     } else {
       window.fbq(metodo, destino.nome, params);
@@ -398,7 +412,9 @@
    * portal manda `whatsapp_click`, que o MAPA traduz em `Contact`.
    */
   function temMedicaoPropria() {
-    return !!window.EHCasas;
+    // O app das landings marca o <body>: ele mesmo grava lp_view e
+    // whatsapp_click em funnel_event, e os publica no dataLayer para o pixel.
+    return !!window.EHCasas || (document.body && document.body.dataset.medicao === 'propria');
   }
 
   function escutarWhatsApp() {
@@ -416,7 +432,11 @@
 
   function iniciar() {
     // A medição interna independe do pixel e do aceite: é primeira parte.
-    if (ehLandingPage()) registrarInterno('lp_view');
+    // O app das landings (body[data-medicao="propria"]) já grava o próprio
+    // lp_view; registrar aqui também contava cada visita duas vezes. O portal
+    // (EHCasas) não grava lp_view e continua coberto.
+    var appProprio = document.body && document.body.dataset.medicao === 'propria';
+    if (ehLandingPage() && !appProprio) registrarInterno('lp_view');
 
     escutarWhatsApp();
 
