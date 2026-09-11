@@ -1,8 +1,10 @@
 [
   {
     "id": "entrega-01",
-    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
-    "tratamento": "4000x3000, enquadramento completo (imagem autorizada), EXIF removido",
+    "origem": "entrega-01.png",
+    "largura": 3200,
+    "altura": 1800,
+    "tratamento": "3200x1800, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-01-400.webp",
       "entrega-01-800.webp",
@@ -14,8 +16,10 @@
   },
   {
     "id": "entrega-02",
-    "origem": "gerado",
-    "tratamento": "placeholder procedural",
+    "origem": "entrega-02.png",
+    "largura": 1080,
+    "altura": 1350,
+    "tratamento": "1080x1350, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-02-400.webp",
       "entrega-02-800.webp",
@@ -23,12 +27,14 @@
       "entrega-02-1600.webp",
       "entrega-02-tex.webp"
     ],
-    "status": "placeholder"
+    "status": "liberado"
   },
   {
     "id": "entrega-03",
-    "origem": "gerado",
-    "tratamento": "placeholder procedural",
+    "origem": "entrega-03.png",
+    "largura": 3200,
+    "altura": 1800,
+    "tratamento": "3200x1800, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-03-400.webp",
       "entrega-03-800.webp",
@@ -36,12 +42,14 @@
       "entrega-03-1600.webp",
       "entrega-03-tex.webp"
     ],
-    "status": "placeholder"
+    "status": "liberado"
   },
   {
     "id": "entrega-04",
-    "origem": "gerado",
-    "tratamento": "placeholder procedural",
+    "origem": "entrega-04.png",
+    "largura": 3200,
+    "altura": 1800,
+    "tratamento": "3200x1800, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-04-400.webp",
       "entrega-04-800.webp",
@@ -49,12 +57,14 @@
       "entrega-04-1600.webp",
       "entrega-04-tex.webp"
     ],
-    "status": "placeholder"
+    "status": "liberado"
   },
   {
     "id": "entrega-05",
-    "origem": "gerado",
-    "tratamento": "placeholder procedural",
+    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
+    "largura": 4000,
+    "altura": 3000,
+    "tratamento": "4000x3000, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-05-400.webp",
       "entrega-05-800.webp",
@@ -62,12 +72,14 @@
       "entrega-05-1600.webp",
       "entrega-05-tex.webp"
     ],
-    "status": "placeholder"
+    "status": "liberado"
   },
   {
     "id": "entrega-06",
-    "origem": "gerado",
-    "tratamento": "placeholder procedural",
+    "origem": "entrega-06.png",
+    "largura": 1080,
+    "altura": 1350,
+    "tratamento": "1080x1350, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-06-400.webp",
       "entrega-06-800.webp",
@@ -75,7 +87,7 @@
       "entrega-06-1600.webp",
       "entrega-06-tex.webp"
     ],
-    "status": "placeholder"
+    "status": "liberado"
   },
   {
     "id": "hero-entregas",
@@ -92,8 +104,10 @@
   },
   {
     "id": "certificado",
-    "origem": "gerado",
-    "tratamento": "placeholder",
+    "origem": "certificado.jpg",
+    "largura": 1024,
+    "altura": 659,
+    "tratamento": "recorte 1024x659 de 1024x834 (crachá excluído); EXIF removido",
     "arquivos": [
       "certificado-400.webp",
       "certificado-800.webp",
@@ -101,6 +115,17 @@
       "certificado-1600.webp",
       "certificado-tex.webp"
     ],
-    "status": "placeholder"
+    "status": "liberado"
+  },
+  {
+    "id": "casa-final",
+    "origem": "casa-final.png",
+    "largura": 1287,
+    "altura": 1024,
+    "tratamento": "transparência preservada; bordas vazias aparadas; EXIF removido",
+    "arquivos": [
+      "casa-final-tex.webp"
+    ],
+    "status": "liberado"
   }
 ]
