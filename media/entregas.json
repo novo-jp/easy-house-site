@@ -91,7 +91,8 @@
   },
   {
     "id": "hero-entregas",
-    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
+    "origem": "hero.png",
+    "alt": "Família de costas entrando na casa nova ao entardecer, com a chave na mão",
     "tratamento": "recorte 16:9 por atenção; EXIF removido",
     "arquivos": [
       "hero-entregas-400.webp",
@@ -120,7 +121,7 @@
   {
     "id": "casa-final",
     "origem": "casa-final.png",
-    "largura": 1287,
+    "largura": 1237,
     "altura": 1024,
     "tratamento": "transparência preservada; bordas vazias aparadas; EXIF removido",
     "arquivos": [
