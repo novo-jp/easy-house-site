@@ -51,7 +51,7 @@ function rodar({ filaInicial = [], portal = true, simulador = false } = {}) {
       cookie: '',
       documentElement: { lang: 'pt-BR' },
       head: { appendChild() {} },
-      body: { style: {} },
+      body: { style: {}, dataset: {} },   // sem data-medicao="propria": é o portal, não o app do Raio-X
       getElementById: (id) => (id === 'fxMain' && simulador ? {} : null),
       querySelectorAll: () => [],
       createElement: () => ({ setAttribute() {} }),

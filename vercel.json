@@ -106,6 +106,13 @@
       "includeFiles": "lib/**"
     }
   },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/entregas",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/comprar/imoveis",
