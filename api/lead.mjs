@@ -253,7 +253,7 @@ export default async function handler(req, res) {
     // Avisa a equipe. Mesma regra: falhar aqui não pode afetar o cliente,
     // que já está gravado e já vai receber o código na tela.
     try {
-      await avisarLeadNovo({ lead, answers, source });
+      await avisarLeadNovo({ lead, answers, source, result });
     } catch { /* aviso não bloqueia o atendimento */ }
 
     return res.status(200).json({ ok: true, persisted: true, code: lead.code, leadId: lead.id, result });

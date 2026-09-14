@@ -49,8 +49,13 @@ const SENSIBILIDADE = {
   idioma: 'normal'
 };
 
-/** O que pode aparecer no e-mail. O resto o consultor abre no painel. */
-const PODE_NO_EMAIL = ['momento', 'prazo', 'regiao', 'tipo_imovel', 'documentos', 'idioma'];
+/**
+ * O que vai no e-mail: tudo que o cliente respondeu. Até 14/09/2026 os
+ * campos financeiros e de residência ficavam de fora e o consultor abria o
+ * painel pelo código; a Easy House decidiu incluir, e /privacy foi atualizada
+ * no mesmo commit. O e-mail vai só para a equipe (LEAD_NOTIFY_TO).
+ */
+const PODE_NO_EMAIL = Object.keys(SENSIBILIDADE);
 
 const hits = new Map();
 function rateLimited(ip, max = 10, windowMs = 60_000) {
