@@ -147,7 +147,7 @@
       case 'estacaoMax': return 'Estação: até ' + v + ' min a pé';
       case 'pet': return 'Aceita pet';
       case 'internet': return 'Internet inclusa';
-      case 'luva': return 'Sem luva (礼金)';
+      case 'luva': return 'Sem taxa ao proprietário (礼金)';
       case 'deposito': return 'Sem depósito (敷金)';
       case 'disponivel': return { imediata: 'Entrada imediata', prevista: 'Entrada com data prevista' }[v] || v;
     }
@@ -213,7 +213,7 @@
   var NOMES = { q: 'a busca por texto', cidades: 'as cidades', quartos: 'os quartos', plantas: 'a planta',
     aluguelMin: 'o aluguel mínimo', aluguelMax: 'o aluguel máximo', mensalMax: 'o custo mensal máximo',
     entradaMax: 'a entrada máxima', areaMin: 'a área mínima', estacaoMax: 'a distância da estação',
-    pet: 'aceita pet', internet: 'internet inclusa', luva: 'sem luva', deposito: 'sem depósito', disponivel: 'a disponibilidade' };
+    pet: 'aceita pet', internet: 'internet inclusa', luva: 'sem taxa ao proprietário', deposito: 'sem depósito', disponivel: 'a disponibilidade' };
 
   function pintarVazio(d, estado) {
     var antigo = document.getElementById('avisoVazio');
@@ -377,7 +377,7 @@
       onde: f.cidades.map(function (v) { return (ROTULOS.cidade || {})[v] || v; }),
       preco: [].concat(f.aluguelMin !== null ? ['de ' + yen(f.aluguelMin)] : [], f.aluguelMax !== null ? ['até ' + yen(f.aluguelMax)] : [],
         f.mensalMax !== null ? ['mensal até ' + yen(f.mensalMax)] : [], f.entradaMax !== null ? ['entrada até ' + yen(f.entradaMax)] : [],
-        f.luva ? ['sem luva'] : [], f.deposito ? ['sem depósito'] : []),
+        f.luva ? ['sem taxa ao proprietário'] : [], f.deposito ? ['sem depósito'] : []),
       tamanho: [].concat(f.quartos.map(function (v) { return v === '3' ? '3+ quartos' : v + ' q.'; }), f.plantas.map(function (v) { return v.toUpperCase(); }), f.areaMin !== null ? [f.areaMin + ' m²+'] : []),
       quando: f.disponivel.map(function (v) { return v === 'imediata' ? 'imediata' : 'com data'; }),
       rotina: f.estacaoMax !== null ? ['≤ ' + f.estacaoMax + ' min'] : [],

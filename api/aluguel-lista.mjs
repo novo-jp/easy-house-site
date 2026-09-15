@@ -27,7 +27,7 @@ const Cartao = require('../lib/aluguel-cartao.js');
 const CAMINHO = '/imoveis';
 export const POR_PAGINA_LISTA = 18;
 const WHATSAPP = Cartao.WHATSAPP;
-const VERSAO = 1;   // ?v= dos arquivos desta página (aluguel.css, aluguel-busca.js, custos.js)
+const VERSAO = 2;   // ?v= dos arquivos desta página (aluguel.css, aluguel-busca.js, custos.js)
 
 const yenPt = (v) => '¥' + Number(v).toLocaleString('pt-BR');
 const diaMes = (iso) => (iso && /^\d{4}-\d{2}-\d{2}/.test(iso) ? iso.slice(8, 10) + '/' + iso.slice(5, 7) : null);
@@ -47,7 +47,7 @@ export const ROTULOS = {
   estacaoMax: (v) => `Estação: até ${v} min a pé`,
   pet: () => 'Aceita pet',
   internet: () => 'Internet inclusa',
-  luva: () => 'Sem luva (礼金)',
+  luva: () => 'Sem taxa ao proprietário (礼金)',
   deposito: () => 'Sem depósito (敷金)',
   disponivel: (v) => ({ imediata: 'Entrada imediata', prevista: 'Entrada com data prevista' }[v] || v),
   codigos: (v) => `Código ${v}`
@@ -57,7 +57,7 @@ const NOMES = {
   q: 'a busca por texto', cidades: 'as cidades', quartos: 'os quartos', plantas: 'a planta',
   aluguelMin: 'o aluguel mínimo', aluguelMax: 'o aluguel máximo', mensalMax: 'o custo mensal máximo',
   entradaMax: 'a entrada máxima', areaMin: 'a área mínima', estacaoMax: 'a distância da estação',
-  pet: 'aceita pet', internet: 'internet inclusa', luva: 'sem luva', deposito: 'sem depósito',
+  pet: 'aceita pet', internet: 'internet inclusa', luva: 'sem taxa ao proprietário', deposito: 'sem depósito',
   disponivel: 'a disponibilidade'
 };
 
@@ -144,7 +144,7 @@ export function paginaLista({ acervo, pedido, r, fac, rot, aluguelOpcoes }) {
   const nCidades = fac.cidades.length;
 
   const titulo = `Apartamentos para alugar em Aichi | ${r.totalAcervo} imóveis com custos em português | EASY HOUSE`;
-  const descricao = `Busque entre ${r.totalAcervo} apartamentos para alugar em ${nCidades} cidades de Aichi por aluguel, custo mensal total, entrada, quartos e estação. Sem luva, aceita pet, entrada imediata. A Easy House explica cada custo em português.`;
+  const descricao = `Busque entre ${r.totalAcervo} apartamentos para alugar em ${nCidades} cidades de Aichi por aluguel, custo mensal total, entrada, quartos e estação. Sem taxa ao proprietário, aceita pet, entrada imediata. A Easy House explica cada custo em português.`;
 
   const cards = r.itens.map((a, i) => Cartao.cartao(a, { prioridade: i === 0 })).join('');
 
@@ -156,7 +156,7 @@ export function paginaLista({ acervo, pedido, r, fac, rot, aluguelOpcoes }) {
 <main id="main" class="busca busca--aluguel">
   <header class="busca-topo">
     <h1>Encontre seu apartamento em Aichi, <em>com os custos explicados</em></h1>
-    <p class="busca-topo__sub">Aluguel, condomínio, vaga, luva, depósito: o total por mês e o total para entrar, em português. Gostou de algum? Chame no WhatsApp que a gente confirma a disponibilidade e cuida do resto em japonês.</p>
+    <p class="busca-topo__sub">Aluguel, condomínio, vaga, taxa ao proprietário, depósito: o total por mês e o total para entrar, em português. Gostou de algum? Chame no WhatsApp que a gente confirma a disponibilidade e cuida do resto em japonês.</p>
 
     <form class="busca-rapida" method="get" action="${CAMINHO}" id="formBusca" role="search" aria-label="Busca rápida de apartamentos">
       <div class="campo campo--local">
@@ -260,15 +260,15 @@ export function paginaLista({ acervo, pedido, r, fac, rot, aluguelOpcoes }) {
         <fieldset class="painel__sub">
           <legend>Entrada estimada</legend>
           <div class="painel__opcoes">${opcaoCheck({ nome: 'entradaMax', valor: '', rotulo: 'Qualquer', marcado: !f.entradaMax, tipo: 'radio' })}${[250000, 300000, 400000, 500000].map((v) => opcaoCheck({ nome: 'entradaMax', valor: v, rotulo: `até ${yenPt(v)}`, marcado: f.entradaMax === v, tipo: 'radio' })).join('')}</div>
-          <p class="painel__nota">Estimativa com 15 diárias, um mês adiantado, intermediação, garantidora, limpeza, taxa de contrato, chaves, luva e depósito quando o anúncio cobra. <a href="/custo-inicial-aluguel-japao">Como a entrada é calculada</a>.</p>
+          <p class="painel__nota">Estimativa com 15 diárias, um mês adiantado, intermediação, garantidora, limpeza, taxa de contrato, chaves, taxa ao proprietário e depósito quando o anúncio cobra. <a href="/custo-inicial-aluguel-japao">Como a entrada é calculada</a>.</p>
         </fieldset>
         <fieldset class="painel__sub">
           <legend>Custos de entrada</legend>
           <div class="painel__opcoes">
-            ${opcaoCheck({ nome: 'luva', valor: 'sem', rotulo: 'Sem luva', rotuloJp: '礼金なし', total: fac.luva.sem, marcado: f.luva === 'sem', desabilitado: !fac.luva.sem })}
+            ${opcaoCheck({ nome: 'luva', valor: 'sem', rotulo: 'Sem taxa ao proprietário', rotuloJp: '礼金なし', total: fac.luva.sem, marcado: f.luva === 'sem', desabilitado: !fac.luva.sem })}
             ${opcaoCheck({ nome: 'deposito', valor: 'sem', rotulo: 'Sem depósito', rotuloJp: '敷金なし', total: fac.deposito.sem, marcado: f.deposito === 'sem', desabilitado: !fac.deposito.sem })}
           </div>
-          <p class="painel__nota">Luva (礼金) é um pagamento ao proprietário que não volta. Depósito (敷金) volta no fim, menos reparos.</p>
+          <p class="painel__nota">A taxa ao proprietário (礼金) é um pagamento que não volta. Depósito (敷金) volta no fim, menos reparos.</p>
         </fieldset>
       </details>
 
@@ -340,7 +340,7 @@ export function paginaLista({ acervo, pedido, r, fac, rot, aluguelOpcoes }) {
 
   <section class="section section--narrow busca-editorial" aria-labelledby="ajuda-t">
     <h2 class="h-section" id="ajuda-t">Como usar esta busca</h2>
-    <p class="lead">Os anúncios vêm do portal que as imobiliárias japonesas usam entre si e são verificados todo dia. O valor de “custo mensal” e “entrada estimada” de cada card já soma as taxas que costumam pegar o brasileiro de surpresa — garantidora, limpeza, luva, depósito. Quando você achar um apartamento, mande pelo WhatsApp: a gente confirma a disponibilidade, fecha o orçamento exato e cuida da papelada em japonês.</p>
+    <p class="lead">Os anúncios vêm do portal que as imobiliárias japonesas usam entre si e são verificados todo dia. O valor de “custo mensal” e “entrada estimada” de cada card já soma as taxas que costumam pegar o brasileiro de surpresa — garantidora, limpeza, taxa ao proprietário, depósito. Quando você achar um apartamento, mande pelo WhatsApp: a gente confirma a disponibilidade, fecha o orçamento exato e cuida da papelada em japonês.</p>
     <p class="btn-row">
       <a class="btn btn--wa" rel="nofollow" data-cta="rodape_busca_aluguel" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Quero ajuda para encontrar um apartamento para alugar em Aichi.')}">${ICONE_WA} Falar com a Easy House</a>
       <a class="btn btn--ghost" href="/custo-inicial-aluguel-japao">Quanto custa para entrar num aluguel</a>

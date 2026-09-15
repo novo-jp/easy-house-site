@@ -27,6 +27,9 @@
 
 /* ── Foto ⇄ planta ─────────────────────────────────────────── */
 .alu__midia { cursor: default; }
+/* casas.css dá display:block a toda img do card, o que vencia o [hidden]
+   do navegador: as duas imagens apareciam e o botão 間取り "não fazia nada". */
+.alu__img[hidden] { display: none !important; }
 .alu__img--planta { background: #fff; object-fit: contain !important; }
 .alu__troca {
   position: absolute; right: 10px; bottom: 10px; display: flex; gap: 4px; padding: 3px;
@@ -41,13 +44,14 @@
 .alu__dot:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
 .no-js .alu__troca { display: none; }
 
-/* ── Selos próprios ────────────────────────────────────────── */
+/* ── Selo próprio ──────────────────────────────────────────── */
 .selo--pet { background: rgba(244,182,194,.92); color: #3A0E16; border-color: transparent; }
-.selo--zero { background: rgba(91,216,204,.92); color: #06322E; border-color: transparent; }
 
-/* ── Ações: WhatsApp primeiro, mapa e portal discretos ─────── */
+/* ── Ações: WhatsApp primeiro; ficha e mapa numa linha abaixo ── */
 .alu__acoes { gap: 6px; flex-wrap: wrap; }
-.alu__wa { min-height: 44px; flex: 1 1 auto; justify-content: center; }
+.alu__wa { min-height: 44px; flex: 1 1 100%; justify-content: center; }
+.alu__sec-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; flex-wrap: wrap; }
+.alu__sec--ficha { color: var(--gold-bright); }
 .alu__wa svg { flex-shrink: 0; }
 .alu__sec {
   display: inline-flex; align-items: center; min-height: 44px; padding: 6px 10px; border-radius: 10px;

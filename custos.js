@@ -55,7 +55,7 @@
         detalhe: 'aluguel × 1,1', valor: Math.round((aluguel + estacionamento) * TAXAS.corretagemMult) },
       { chave: 'deposito', jp: '敷金', pt: 'Depósito de garantia',
         detalhe: 'devolvido no fim, menos reparos', valor: deposito },
-      { chave: 'luva', jp: '礼金', pt: 'Luva ao proprietário',
+      { chave: 'luva', jp: '礼金', pt: 'Taxa ao proprietário',
         detalhe: 'não é devolvida', valor: luva },
       { chave: 'garantia', jp: '保証委託料',   pt: 'Empresa garantidora',
         detalhe: 'na assinatura', valor: TAXAS.garantiaInicial },
