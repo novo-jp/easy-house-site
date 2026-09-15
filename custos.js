@@ -1,6 +1,15 @@
 /* EASY HOUSE — estimativa de custos de aluguel
-   Valores padrão dos contratos que intermediamos. Ajuste em um lugar só. */
-(function (global) {
+   Valores padrão dos contratos que intermediamos. Ajuste em um lugar só.
+
+   Arquivo universal: roda no navegador (modal "o que está incluso") e no
+   Node (lib/aluguel.mjs calcula a entrada de cada card no servidor).
+   O mesmo código nos dois lados — o número do card e o do modal nunca
+   divergem. */
+(function (raiz, fabrica) {
+  var api = fabrica();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  raiz.EHCustos = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
   var TAXAS = {
@@ -82,5 +91,5 @@
 
   function iene(v) { return '¥' + Number(v || 0).toLocaleString('ja-JP'); }
 
-  global.EHCustos = { TAXAS: TAXAS, calcular: calcular, iene: iene };
-})(window);
+  return { TAXAS: TAXAS, calcular: calcular, iene: iene };
+});
