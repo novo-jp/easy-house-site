@@ -89,7 +89,7 @@
     };
   }
 
-  function iene(v) { return '¥' + Number(v || 0).toLocaleString('ja-JP'); }
+  function iene(v) { return '¥' + Math.round(Number(v || 0)).toLocaleString('pt-BR'); }   // mesmo formato do card
 
   return { TAXAS: TAXAS, calcular: calcular, iene: iene };
 });

@@ -1,0 +1,97 @@
+/* ═══════════════════════════════════════════════════════════════
+   aluguel.css — o que a busca de apartamentos tem a mais que a de casas.
+   A base (topo, barra, painel de filtros, grade, card, paginação) vem de
+   casas.css; aqui entram só as peças próprias do aluguel: condomínio ao
+   lado do preço, custo mensal + entrada, troca foto ⇄ planta, os selos
+   de pet e de "sem luva", e o modal "o que está incluso".
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Preço: aluguel grande, condomínio ao lado ─────────────── */
+.alu .casa__preco small { font-family: var(--font-body); font-size: .85rem; color: var(--pearl-muted); }
+.alu__cond { font-size: .8rem; color: var(--pearl-dim); margin-left: 2px; }
+.alu .casa__nome [lang="ja"] { font-family: var(--font-jp); }
+
+/* ── Custo mensal e entrada: os dois números que decidem ──── */
+.alu__custos {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 4px 0 2px;
+}
+.alu__custos > div { padding: 8px 10px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); }
+.alu__custos dt { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--pearl-muted); }
+.alu__custos dd { margin: 2px 0 0; font-family: var(--font-display); font-size: 1.05rem; color: var(--pearl); }
+.alu__custos > div:last-child dd { color: var(--gold-bright); }
+.alu__incluso {
+  display: inline-flex; align-items: center; min-height: 36px; font-size: .8rem; font-weight: 600;
+  color: var(--teal); text-decoration: underline; text-underline-offset: 3px;
+}
+.alu__incluso:hover, .alu__incluso:focus-visible { color: var(--gold-bright); }
+
+/* ── Foto ⇄ planta ─────────────────────────────────────────── */
+.alu__midia { cursor: default; }
+.alu__img--planta { background: #fff; object-fit: contain !important; }
+.alu__troca {
+  position: absolute; right: 10px; bottom: 10px; display: flex; gap: 4px; padding: 3px;
+  border-radius: var(--radius-pill); background: rgba(11,10,20,.82); backdrop-filter: blur(8px); border: 1px solid var(--line-strong);
+}
+.alu__dot {
+  min-height: 32px; padding: 4px 11px; border-radius: var(--radius-pill); font-size: .74rem; font-weight: 700;
+  color: var(--pearl-dim); background: transparent; border: 0;
+}
+.alu__dot[lang="ja"] { font-family: var(--font-jp); }
+.alu__dot[aria-pressed="true"] { background: var(--pearl); color: var(--ink); }
+.alu__dot:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
+.no-js .alu__troca { display: none; }
+
+/* ── Selos próprios ────────────────────────────────────────── */
+.selo--pet { background: rgba(244,182,194,.92); color: #3A0E16; border-color: transparent; }
+.selo--zero { background: rgba(91,216,204,.92); color: #06322E; border-color: transparent; }
+
+/* ── Ações: WhatsApp primeiro, mapa e portal discretos ─────── */
+.alu__acoes { gap: 6px; flex-wrap: wrap; }
+.alu__wa { min-height: 44px; flex: 1 1 auto; justify-content: center; }
+.alu__wa svg { flex-shrink: 0; }
+.alu__sec {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 6px 10px; border-radius: 10px;
+  color: var(--pearl-dim); font-size: .82rem; font-weight: 600; text-decoration: none;
+}
+.alu__sec:hover, .alu__sec:focus-visible { background: var(--surface-2); color: var(--pearl); text-decoration: underline; }
+
+/* ── Opções do painel com nome em japonês ───────────────────── */
+.opcao__txt .jp { font-family: var(--font-jp); font-size: .78em; color: var(--pearl-muted); margin-left: 4px; }
+
+/* ── Modal "o que está incluso" ─────────────────────────────── */
+.modal { position: fixed; inset: 0; z-index: 1200; display: none; align-items: center; justify-content: center; padding: 16px; }
+.modal.open { display: flex; }
+.modal__fundo { position: absolute; inset: 0; background: rgba(4,4,10,.78); backdrop-filter: blur(4px); }
+.modal__caixa {
+  position: relative; width: min(560px, 100%); max-height: 88vh; overflow-y: auto;
+  background: var(--ink-soft); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 32px);
+}
+.modal__topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 6px; }
+.modal__topo h2 { font-size: 1.25rem; }
+.modal__fechar { width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--line); color: var(--pearl-dim); font-size: 1.3rem; line-height: 1; background: transparent; }
+.modal__fechar:hover, .modal__fechar:focus-visible { background: var(--surface-2); color: var(--pearl); }
+.modal__sub { font-size: .88rem; color: var(--pearl-muted); margin-bottom: 20px; }
+
+.custos { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+.custos caption { text-align: left; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); padding: 16px 0 8px; }
+.custos td { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: .9rem; vertical-align: top; }
+.custos td:last-child { text-align: right; white-space: nowrap; font-weight: 600; color: var(--pearl); }
+.custos .jp { display: block; font-family: var(--font-jp); font-size: .76rem; color: var(--pearl-muted); }
+.custos .det { display: block; color: var(--pearl-muted); font-size: .78rem; }
+.custos tr.total td { border-bottom: none; border-top: 1.5px solid var(--line-strong); padding-top: 13px; font-size: 1rem; font-weight: 700; }
+.custos tr.total td:last-child { color: var(--gold-bright); font-size: 1.2rem; font-family: var(--font-display); }
+
+.opcao-vaga { display: flex; align-items: flex-start; gap: 11px; padding: 13px 15px; margin: 14px 0 4px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); cursor: pointer; }
+.opcao-vaga:hover { border-color: var(--line-strong); }
+.opcao-vaga input { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; width: 18px; height: 18px; }
+.opcao-vaga span { font-size: .88rem; color: var(--pearl-dim); line-height: 1.5; }
+.opcao-vaga b { color: var(--pearl); }
+
+.cartao-box { margin-top: 14px; padding: 15px 17px; border-radius: 12px; background: rgba(91,216,204,.09); border: 1px solid rgba(91,216,204,.3); }
+.cartao-box strong { color: var(--teal); }
+.cartao-box p { font-size: .87rem; color: var(--pearl-dim); line-height: 1.6; }
+.cartao-box .linha { display: flex; justify-content: space-between; gap: 10px; margin-top: 8px; font-size: .92rem; color: var(--pearl); }
+.cartao-box .linha b { color: var(--teal); }
+.modal .muted { color: var(--pearl-muted); font-size: .84rem; line-height: 1.55; }
+
+@media (prefers-reduced-motion: reduce) { .modal__fundo { backdrop-filter: none; } }

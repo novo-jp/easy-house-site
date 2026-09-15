@@ -9,7 +9,27 @@ valores são calculados e o que fazer quando algo parece errado.
 
 ```
 DK Portal  →  scraper_dk_v4.py  →  Supabase (imoveis_aichi)  →  /imoveis
+                                          (chave de serviço, no servidor)
 ```
+
+A página `/imoveis` é renderizada no servidor (`api/aluguel-lista.mjs`),
+no mesmo desenho da busca de casas: `lib/aluguel-fonte.mjs` lê a tabela
+com a chave de serviço (janela de 7 dias, ampliada para 30 se sobrar menos
+de 100 imóveis; cache de 10 min), `lib/aluguel.mjs` normaliza cada linha,
+`lib/aluguel-busca.mjs` filtra/ordena/conta facetas, e `lib/aluguel-cartao.js`
+monta o card — o mesmo arquivo roda no servidor e no navegador. O
+`aluguel-busca.js` entra por cima para não recarregar a página e para abrir
+o modal "o que está incluso". Tudo funciona sem JavaScript (formulário GET).
+
+Filtros na URL: `q`, `cidade`, `quartos` (1/2/3), `planta`, `aluguelMin`,
+`aluguelMax`, `mensalMax` (custo total), `entradaMax`, `areaMin`,
+`estacaoMax`, `pet=sim`, `internet=sim`, `luva=sem`, `deposito=sem`,
+`disponivel` (imediata/prevista), `ordem`, `pagina`. Ex.:
+`/imoveis?cidade=toyohashi&quartos=2&luva=sem`.
+
+**Armadilha do campo `andar`:** o portal manda a metragem ("44.75㎡") em
+`floor` e deixa `exclusiveArea` vazio. O scraper passou a gravar isso em
+`area`; `lib/aluguel.mjs` também lê de `andar` para linhas antigas.
 
 O scraper **não decide o que buscar**. Ele abre uma condição de busca
 salva dentro do portal, chamada **"Aichi Principais Cidades"**, e traz o
@@ -93,17 +113,31 @@ camada: se a limpeza falhar, o visitante continua não vendo anúncio velho.
 
 ---
 
-## 4. Aceita pet
+## 4. Aceita pet e internet grátis
 
 A informação **não existe na lista** do portal — só na página de detalhe
-de cada imóvel, junto dos equipamentos (`ペット可`). Abrir todas as
-páginas por dia levaria de 2 a 3 horas.
+de cada imóvel, numa fileira de ícones de equipamentos.
 
-Solução: cada execução confere um lote de **120 imóveis**, priorizando
-quem nunca foi verificado, e revalida depois de 60 dias. O banco se
-preenche ao longo de algumas semanas.
+**O texto "ペット可" está sempre lá, mesmo quando não aceita.** O que muda
+é a classe do ícone: `facility-icon__pets_allowed` aceita,
+`facility-icon__pets_allowed_off` não. A primeira versão da verificação
+lia o texto e marcava todos como "aceita" — corrigida em 15/09/2026 para
+ler a classe. O mesmo ícone diz se a internet é grátis (`net_free`).
 
-Enquanto a cobertura for baixa, o filtro "Aceita pet" mostra pouca coisa.
+Cada execução confere um lote de **300 imóveis** (≈1 s por página),
+priorizando quem nunca foi verificado, e revalida depois de 60 dias. Só
+entram na fila imóveis com URL de cliente; os sem URL não podem ser
+conferidos e, se entrassem, travavam a fila (foi o que aconteceu: 4 por
+dia em vez de 120).
+
+Duas regras que protegem o dado:
+- `pet` e `internet` **não entram no upsert diário** — mandá-los apagava
+  o que já tinha sido verificado;
+- no site, `pet` só vale depois de `pet_verificado_em`; antes disso é
+  "não conferido" e o imóvel **não** aparece no filtro "Aceita pet". A
+  interface diz quantos já foram conferidos.
+
+Amostra de 40 páginas em 15/09/2026: 36% aceitam pet, 95% têm internet.
 
 ---
 
@@ -121,7 +155,7 @@ python3 scraper_dk_v4.py --limpar --simular
 # Limpeza ignorando as travas (usar com cuidado)
 python3 scraper_dk_v4.py --limpar --forcar
 
-# Verificar pet em N imóveis, sem varrer a lista
+# Verificar pet/internet em N imóveis, sem varrer a lista
 python3 scraper_dk_v4.py --pet 50
 
 # Ver quais campos o portal expõe hoje
@@ -130,13 +164,14 @@ python3 inspecionar_portal.py
 
 ---
 
-## 6. Migrações pendentes
+## 6. Migrações
 
 `sql/imoveis_custos_entrada.sql` — cria `deposito`, `luva` e
-`pet_verificado_em`. Executar no SQL Editor do Supabase.
+`pet_verificado_em`. **Aplicada em 29/08/2026.** Se um dia a tabela for
+recriada, o scraper detecta as colunas ausentes, avisa no log e continua
+rodando sem gravar esses campos.
 
-Enquanto não for aplicada, o scraper detecta as colunas ausentes, avisa
-no log e continua rodando sem gravar esses campos.
+Testes da busca: `node --test tests/*.test.mjs` (`tests/aluguel-busca.test.mjs`).
 
 ---
 
@@ -147,7 +182,13 @@ no log e continua rodando sem gravar esses campos.
 | Taxas e percentuais | `custos.js` |
 | Quais imóveis entram | condição "Aichi Principais Cidades", **no portal** |
 | Captura e limpeza | `Imoveis/scraper_dk_v4.py` |
-| Página da lista | `imoveis.html` |
+| Página da lista (HTML do servidor, filtros, textos) | `api/aluguel-lista.mjs` |
+| Regras de filtro, ordenação e facetas | `lib/aluguel-busca.mjs` |
+| Leitura de uma linha do banco (área, estação, disponibilidade, pet) | `lib/aluguel.mjs` |
+| Card e mensagem do WhatsApp | `lib/aluguel-cartao.js` |
+| Comportamento no navegador e modal de custos | `aluguel-busca.js` |
+| Estilo próprio do aluguel | `aluguel.css` (a base é `casas.css`) |
+| Nomes das cidades em português | `CITY_PT` em `Imoveis/scraper_dk_v4.py` |
 | Página que explica o aluguel | `landingaluguel.html` |
 
 O scraper fica fora do Git (a pasta `Imoveis/` não vai para o deploy).

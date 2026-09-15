@@ -119,6 +119,10 @@
       "destination": "/api/casas-lista"
     },
     {
+      "source": "/imoveis",
+      "destination": "/api/aluguel-lista"
+    },
+    {
       "source": "/llms.txt",
       "destination": "/api/llms"
     },

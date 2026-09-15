@@ -84,6 +84,13 @@ const servidor = createServer(async (req, res) => {
       return h(req, res);
     }
 
+    // /imoveis → apartamentos para alugar, renderizados no servidor (mesmo rewrite do vercel.json)
+    if (rota === '/imoveis' || rota === '/imoveis/') {
+      const { default: h } = await import(`./api/aluguel-lista.mjs?t=${Date.now()}`);
+      req.url = '/api/aluguel-lista' + (url.search || '');
+      return h(req, res);
+    }
+
     if (rota === '/llms.txt') {
       const { default: h } = await import(`./api/llms.mjs?t=${Date.now()}`);
       return h(req, res);

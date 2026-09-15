@@ -19,7 +19,7 @@ Site institucional da EASY HOUSE — imobiliária licenciada no Japão com atend
 ├── sobre.html              # Sobre + dados oficiais JP + galeria
 ├── landingvendas.html      # Landing de compra (Flat 35)
 ├── landingaluguel.html     # Landing de aluguel
-├── imoveis.html            # Listagem ao vivo Supabase com filtros
+├── api/aluguel-lista.mjs   # /imoveis — busca de aluguel renderizada no servidor
 ├── terms.html / privacy.html
 ├── theme-v2.css            # CSS compartilhado (nav, footer, cursor, etc)
 ├── theme-v2.js             # JS compartilhado (interações)
@@ -38,4 +38,20 @@ Site institucional da EASY HOUSE — imobiliária licenciada no Japão com atend
 
 ## Listagem de imóveis
 
-A página `imoveis.html` busca dados do Supabase tabela `imoveis_aichi` (alimentada pelo scraper DK Portal, que roda automaticamente toda segunda-feira).
+### Apartamentos para alugar — `/imoveis`
+
+Renderizada no servidor por `api/aluguel-lista.mjs`, com o mesmo desenho da
+busca de casas: filtros como `<form method="get">`, chips e paginação como
+links, e `aluguel-busca.js` por cima para não recarregar a página. A lógica
+de filtros/facetas/ordenação fica em `lib/aluguel-busca.mjs`, compartilhada
+com `/api/aluguel` (JSON). Os dados vêm de `imoveis_aichi` via
+`lib/aluguel-fonte.mjs` (chave de serviço, janela de 7 dias, cache de 10 min).
+O card (`lib/aluguel-cartao.js`) e o modal "o que está incluso" calculam
+custo mensal e entrada com o mesmo `custos.js`.
+
+Testes: `node --test tests/*.test.mjs` (`tests/aluguel-busca.test.mjs`).
+Documentação do setor: `docs/ALUGUEL.md`.
+
+### Casas à venda — `/comprar/imoveis`
+
+`api/casas-lista.mjs` + `lib/casas-busca.mjs`; ver comentários nos arquivos.
