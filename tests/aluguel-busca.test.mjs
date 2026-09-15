@@ -82,6 +82,12 @@ describe('normalização (lib/aluguel.mjs)', () => {
     assert.equal(apto({ dk_url: 'https://front.dk-portal.jp/property/detail/housing/broker/1' }).dkUrl, null);
     assert.equal(apto({ dk_url: '' }).dkUrl, null);
   });
+  test('礼金 aparece como "Taxa ao proprietário" no detalhamento', () => {
+    const c = Custos.calcular({ aluguel: 56000, condominio: 3500, luva: 56000 });
+    const item = c.itens.find((i) => i.chave === 'luva');
+    assert.equal(item.pt, 'Taxa ao proprietário');
+    assert.equal(item.jp, '礼金');
+  });
   test('custos batem com custos.js', () => {
     const a = apto({});
     const c = Custos.calcular({ aluguel: 56000, condominio: 3500, estacionamento: 4400, tem_estacionamento: true, deposito: 0, luva: 56000 });
@@ -272,17 +278,18 @@ describe('card', () => {
     assert.doesNotMatch(html, /NaN|undefined|null/);
     assert.doesNotMatch(html, /Aceita pet/, 'pet não conferido não ganha selo');
   });
-  test('selos: pet conferido e sem luva/depósito', () => {
+  test('selo só de pet conferido; nada de "sem luva" na foto', () => {
     const html = Cartao.cartao(ACERVO[1]);
     assert.match(html, /selo--pet/);
-    assert.match(html, /Sem luva e sem depósito/);
+    assert.doesNotMatch(html, /Sem luva|sem depósito/i);
+    assert.match(html, /Mais detalhes do apartamento/);
     assert.match(html, /Ônibus 13 min até <span lang="ja">二川駅/);
     assert.match(html, /Internet inclusa/);
     assert.match(html, /início de outubro\/2026/);
   });
   test('sem URL de cliente não há link para o portal; sem planta não há troca', () => {
     const html = Cartao.cartao(ACERVO[3]);
-    assert.doesNotMatch(html, /Portal/);
+    assert.doesNotMatch(html, /Mais detalhes do apartamento/);
     assert.doesNotMatch(html, /data-slide-ir/);
     assert.doesNotMatch(html, /m²/);
   });

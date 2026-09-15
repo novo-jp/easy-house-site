@@ -2,8 +2,8 @@
    aluguel.css — o que a busca de apartamentos tem a mais que a de casas.
    A base (topo, barra, painel de filtros, grade, card, paginação) vem de
    casas.css; aqui entram só as peças próprias do aluguel: condomínio ao
-   lado do preço, custo mensal + entrada, troca foto ⇄ planta, os selos
-   de pet e de "sem luva", e o modal "o que está incluso".
+   lado do preço, custo mensal + entrada, troca foto ⇄ planta, o selo de
+   pet e o modal "o que está incluso".
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── Preço: aluguel grande, condomínio ao lado ─────────────── */
@@ -50,12 +50,12 @@
 /* ── Ações: WhatsApp primeiro; ficha e mapa numa linha abaixo ── */
 .alu__acoes { gap: 6px; flex-wrap: wrap; }
 .alu__wa { min-height: 44px; flex: 1 1 100%; justify-content: center; }
-.alu__sec-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; flex-wrap: wrap; }
-.alu__sec--ficha { color: var(--gold-bright); }
+.alu__sec-row { display: flex; align-items: center; justify-content: space-between; gap: 4px; width: 100%; flex-wrap: wrap; }
+.alu__sec--ficha { color: var(--gold-bright); padding-left: 0; }
 .alu__wa svg { flex-shrink: 0; }
 .alu__sec {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 6px 10px; border-radius: 10px;
-  color: var(--pearl-dim); font-size: .82rem; font-weight: 600; text-decoration: none;
+  display: inline-flex; align-items: center; min-height: 40px; padding: 4px 8px; border-radius: 10px;
+  color: var(--pearl-dim); font-size: .8rem; font-weight: 600; text-decoration: none;
 }
 .alu__sec:hover, .alu__sec:focus-visible { background: var(--surface-2); color: var(--pearl); text-decoration: underline; }
 
