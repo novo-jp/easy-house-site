@@ -362,7 +362,11 @@ export function paginaLista({ todas, pedido, r, fac, rot, precoOpcoes, agora }) 
   return documento({
     titulo, descricao,
     canonical: `${SITE}${CAMINHO}`,
-    imagem: `${SITE}/images/opt/consultoria-1024.jpg`,
+    // Mesma foto da hero de /entregas, em JPEG: o WhatsApp não garante WebP
+    // no preview e corta imagens acima de ~300 KB.
+    imagem: `${SITE}/media/hero-entregas-og.jpg`,
+    imagemLargura: 1200, imagemAltura: 675,
+    imagemAlt: 'Família de costas entrando na casa nova ao entardecer, com a chave na mão',
     // Combinações de filtro não entram no índice; a página base, sim.
     robots: temFiltro ? 'noindex, follow' : null,
     jsonLd, corpo,
