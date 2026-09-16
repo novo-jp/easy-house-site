@@ -2,9 +2,9 @@
   {
     "id": "entrega-01",
     "origem": "entrega-01.png",
-    "largura": 3200,
-    "altura": 1800,
-    "tratamento": "3200x1800, enquadramento completo (imagem autorizada), EXIF removido",
+    "largura": 1440,
+    "altura": 1802,
+    "tratamento": "1440x1802, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-01-400.webp",
       "entrega-01-800.webp",
@@ -47,9 +47,9 @@
   {
     "id": "entrega-04",
     "origem": "entrega-04.png",
-    "largura": 3200,
+    "largura": 1444,
     "altura": 1800,
-    "tratamento": "3200x1800, enquadramento completo (imagem autorizada), EXIF removido",
+    "tratamento": "1444x1800, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-04-400.webp",
       "entrega-04-800.webp",
@@ -61,10 +61,10 @@
   },
   {
     "id": "entrega-05",
-    "origem": "dji_fly_20241011_130752_693_1728638803403_photo_optimized.jpg",
-    "largura": 4000,
-    "altura": 3000,
-    "tratamento": "4000x3000, enquadramento completo (imagem autorizada), EXIF removido",
+    "origem": "entrega-05.png",
+    "largura": 1080,
+    "altura": 1350,
+    "tratamento": "1080x1350, enquadramento completo (imagem autorizada), EXIF removido",
     "arquivos": [
       "entrega-05-400.webp",
       "entrega-05-800.webp",
