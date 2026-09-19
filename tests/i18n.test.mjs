@@ -60,6 +60,36 @@ describe('dicionário', () => {
     // Em Node não há `document`: LANG é pt-BR, e o texto tem de sair mesmo assim.
     assert.equal(t('btn.continuar'), 'Continuar');
   });
+
+  test('o contador de perguntas passa pelo dicionário', () => {
+    // Estava gravado em português no funnel.js e sobrescrevia o "Pregunta 1 de 6"
+    // da página em espanhol a cada passo — sem erro nenhum (19/09/2026).
+    const funnel = readFileSync(new URL('../funnel.js', import.meta.url), 'utf8');
+    assert.doesNotMatch(funnel, /`Pergunta \$\{/);
+    assert.match(DICT.es['passo.pergunta'], /^Pregunta \{n\} de \{de\}$/);
+  });
+});
+
+describe('páginas do simulador', () => {
+  const pt = readFileSync(new URL('../simular.html', import.meta.url), 'utf8');
+  const es = readFileSync(new URL('../simular-es.html', import.meta.url), 'utf8');
+
+  test('o resultado preliminar tem os dois botões para a etapa financeira, nas duas línguas', () => {
+    for (const [nome, html, frases] of [
+      ['pt', pt, ['Saber quanto posso financiar', 'Calcular meu crédito']],
+      ['es', es, ['Saber cuánto puedo financiar', 'Calcular mi crédito']],
+    ]) {
+      const botoes = [...html.matchAll(/class="[^"]*js-prelimCta[^"]*"[^>]*data-cta="(\w+)"[^>]*>([^<]+)</g)];
+      assert.deepEqual(botoes.map(m => m[1]), ['financiar', 'credito'], `${nome}: data-cta`);
+      assert.deepEqual(botoes.map(m => m[2].trim()), frases, `${nome}: frases`);
+    }
+  });
+
+  test('as duas páginas carregam a mesma versão dos scripts', () => {
+    const v = html => html.match(/simular\.js\?v=(\d+)/)?.[1];
+    assert.ok(v(pt), 'versão do simular.js em pt');
+    assert.equal(v(es), v(pt));
+  });
 });
 
 describe('frases do motor', () => {

@@ -7,14 +7,16 @@ import {
   initFunnel, goTo, goBack, setAnswer, getAnswers, getState,
   simulate, submitLead, whatsappLink, PROPERTY_MESSAGE,
   track, yen, parseYen, bindYenInput
-} from './funnel.js?v=9';
+} from './funnel.js?v=10';
 
 import config from './lib/financing-config.json?v=7' with { type: 'json' };
-import { t, tm } from './i18n.js?v=1';
+import { t, tm } from './i18n.js?v=2';
 import { compareWithRent } from './lib/financing.js?v=7';
 
 const $ = s => document.querySelector(s);
 const nextBtn = $('#fxNext');
+/** Qual botão do resultado preliminar levou à etapa financeira (ver o fim do arquivo). */
+let prelimCta = null;
 
 /* ============================================================
    Roteiro de etapas
@@ -425,7 +427,7 @@ async function onNext() {
   if (node.validate && !node.validate()) return;
 
   if (step === 'intro') track('simulation_started', { variant: getState().variant });
-  if (step === 'preliminary') track('full_simulation_started');
+  if (step === 'preliminary') track('full_simulation_started', { cta: prelimCta || 'teclado' });
   if (step.startsWith('q_')) track('quick_question_completed', { question: step });
 
   // envio do lead
@@ -571,7 +573,13 @@ $('#inSecondWork')?.addEventListener('change', () => setAnswer('secondWork', $('
 
 // Navegação
 nextBtn.addEventListener('click', onNext);
-$('#prelimCta')?.addEventListener('click', onNext);
+// Dois botões levam à etapa financeira, com frases diferentes ("saber quanto
+// posso financiar" / "calcular meu crédito"). Qual deles foi clicado vai no
+// evento, para a Easy House ver qual pergunta a pessoa se faz. Quem avança
+// pelo Enter fica sem cta.
+document.querySelectorAll('.js-prelimCta').forEach(b => {
+  b.addEventListener('click', () => { prelimCta = b.dataset.cta || null; onNext(); });
+});
 
 /* ============================================================
    Atalhos para o WhatsApp

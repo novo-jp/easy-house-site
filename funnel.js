@@ -8,7 +8,7 @@
  */
 
 import { runSimulation, formatYen } from './lib/financing.js?v=7';
-import { t, tm } from './i18n.js?v=1';
+import { t, tm } from './i18n.js?v=2';
 
 /* ============================================================
    Estado
@@ -147,7 +147,9 @@ function updateProgress() {
 
   const counter = document.querySelector(`.fx-step[data-step="${state.step}"] .fx-count`);
   if (counter && counter.dataset.of) {
-    counter.textContent = `Pergunta ${counter.dataset.n} de ${counter.dataset.of}`;
+    // Pelo dicionário: gravado em português, sobrescrevia o "Pregunta 1 de 6"
+    // da página em espanhol a cada passo (visto em 19/09/2026).
+    counter.textContent = t('passo.pergunta', { n: counter.dataset.n, de: counter.dataset.of });
   }
 }
 

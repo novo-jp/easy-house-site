@@ -209,10 +209,14 @@
 
       <div class="fx-or"><span>o</span></div>
 
-      <button type="button" class="fx-btn fx-btn--ghost fx-btn--block" id="prelimCta">Completar los datos de mi simulación</button>
-      <a class="fx-btn fx-btn--ghost fx-btn--block" id="prelimVerCasas" href="/comprar/imoveis" hidden style="margin-top:10px">Ver casas nessa faixa</a>
+      <!-- Dos botones para la misma etapa, con frases distintas: Easy House
+           quiere saber qué pregunta se hace la persona. Cuál fue pulsado
+           va en el evento full_simulation_started (payload.cta). -->
+      <button type="button" class="fx-btn fx-btn--ghost fx-btn--block js-prelimCta" id="prelimCta" data-cta="financiar">Saber cuánto puedo financiar</button>
+      <button type="button" class="fx-btn fx-btn--ghost fx-btn--block js-prelimCta" data-cta="credito" style="margin-top:10px">Calcular mi crédito</button>
+      <p class="fx-help" style="margin-top:10px;text-align:center">Con tus ingresos y tus deudas, calculamos cuánto puedes financiar. 5 preguntas más, sin documentos.</p>
+      <a class="fx-btn fx-btn--ghost fx-btn--block" id="prelimVerCasas" href="/comprar/imoveis" hidden style="margin-top:10px">Ver casas en ese rango</a>
       <p class="fx-help" id="prelimVerCasasAjuda" hidden style="margin-top:6px;text-align:center"></p>
-      <p class="fx-help" style="margin-top:10px;text-align:center">Necesitamos algunos datos más para dejar esta simulación más precisa.</p>
     </div>
 
     <div class="fx-card">
@@ -468,7 +472,7 @@
   </p>
 </footer>
 
-<script type="module" src="simular.js?v=9"></script>
+<script type="module" src="simular.js?v=10"></script>
 <script src="analytics.js?v=9" defer></script>
 </body>
 </html>

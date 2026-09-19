@@ -224,6 +224,17 @@ vem marcada.
 
 ---
 
+### Dois botões para a etapa financeira (19/09/2026)
+
+No resultado preliminar, o botão "Completar dados da minha simulação" virou dois, iguais
+no desenho e diferentes na frase: **"Saber quanto posso financiar"** e **"Calcular meu
+crédito"**. Pedido da Easy House: linguagem simples, direta. Os dois levam à mesma etapa
+(`f_income`); qual deles foi clicado vai em `full_simulation_started` como `payload.cta`
+(`financiar` / `credito`, ou `teclado` para quem avançou pelo Enter). Depois de algumas
+semanas, a proporção diz qual pergunta a pessoa se faz — e a frase perdedora pode sair.
+A página em espanhol tem os mesmos dois botões ("Saber cuánto puedo financiar" / "Calcular
+mi crédito").
+
 ## 7. Eventos do funil
 
 `landing_view` · `simulation_started` · `quick_question_completed` · `quick_simulation_completed`

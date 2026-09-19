@@ -26,8 +26,9 @@ const DICT = {
   'pt-BR': {
     'btn.calcular': 'Calcular minha faixa de compra',
     'btn.continuar': 'Continuar',
+    'passo.pergunta': 'Pergunta {n} de {de}',
     'btn.primeiroCenario': 'Ver meu primeiro cenário',
-    'btn.completar': 'Completar dados da minha simulação',
+    'btn.completar': 'Saber quanto posso financiar',
     'btn.simulacaoCompleta': 'Ver minha simulação completa',
     'btn.verSimulacao': 'Ver minha simulação',
     'btn.enviando': 'Enviando…',
@@ -117,8 +118,9 @@ const DICT = {
   es: {
     'btn.calcular': 'Calcular mi rango de compra',
     'btn.continuar': 'Continuar',
+    'passo.pergunta': 'Pregunta {n} de {de}',
     'btn.primeiroCenario': 'Ver mi primer escenario',
-    'btn.completar': 'Completar los datos de mi simulación',
+    'btn.completar': 'Saber cuánto puedo financiar',
     'btn.simulacaoCompleta': 'Ver mi simulación completa',
     'btn.verSimulacao': 'Ver mi simulación',
     'btn.enviando': 'Enviando…',
