@@ -3,7 +3,6 @@
   "version": 1,
   "updatedAt": "2026-09-02",
   "note": "Parâmetros da ESTIMATIVA exibida no portal de casas à venda. A taxa de juros NÃO fica aqui: ela vem de financing-config.json para que exista uma fonte única. Alterar estes valores muda o número mostrado ao público — toda mudança deve ser combinada com a Easy House.",
-  "noteInativar": "diasParaInativar subiu de 14 para 30 em 01/10/2026: o scraper do ATBB parou em 10/09 (reCAPTCHA na busca) e o prazo de 14 dias apagou o acervo inteiro do site. Voltar para 14 assim que uma rodada boa gravar last_seen_at novo.",
 
   "estimativa": {
     "produto": "flat35",
@@ -16,7 +15,7 @@
 
   "publicacao": {
     "statusPublicaveis": ["紹介可能"],
-    "diasParaInativar": 30,
+    "diasParaInativar": 14,
     "exigirFoto": true,
     "exigirPreco": true
   },
