@@ -1,0 +1,134 @@
+{
+  "versao": 1,
+  "atualizado": "2026-10-09",
+  "nota": "Modelos que viram as etapas e a lista de documentos de cada processo NOVO. Mudar aqui não altera processos já criados — esses o corretor edita no painel. Fontes: 'Seu caminho até as chaves' versão 2 (bancos privados e FLAT35) e 'Pedido Oficial de Financiamento | Tokai Rokin'. A lista de documentos do FLAT35 não está no material da Easy House: foi montada com os mesmos documentos do comprador da versão dos bancos privados, presos à mesma etapa — confirmar com a equipe.",
+
+  "bancos": {
+    "flat35": { "nome": "FLAT35",      "caminho": "flat35" },
+    "rokin":  { "nome": "Tokai Rokin", "caminho": "privado", "guia": "rokin" },
+    "docomo": { "nome": "DOCOMO",      "caminho": "privado" },
+    "aeon":   { "nome": "AEON",        "caminho": "privado" }
+  },
+
+  "etapas": {
+    "escolher_casa": {
+      "titulo": "Escolher sua casa",
+      "descricao": "Visite os imóveis e confira bairro, acesso e riscos naturais."
+    },
+    "proposta": {
+      "titulo": "Fazer a proposta",
+      "descricao": "Enviamos o preço e as condições ao vendedor. Ainda não é o contrato definitivo."
+    },
+    "compra_venda": {
+      "titulo": "Assinar a compra e venda",
+      "descricao": "Você recebe a explicação do imóvel antes de assinar. Sinal / Tetsukekin: valor combinado para o seu contrato."
+    },
+    "analise_banco": {
+      "titulo": "Análise final do banco",
+      "descricao": "O banco avalia o seu perfil e o imóvel escolhido. Documentos: seu consultor envia a lista exata."
+    },
+    "vistoria": {
+      "titulo": "Fazer a vistoria",
+      "descricao": "Conferimos a casa e registramos as correções necessárias."
+    },
+    "contrato_banco": {
+      "titulo": "Assinar com o banco",
+      "descricao": "Após a aprovação final: valor, prazo, juros e seguro."
+    },
+    "chaves": {
+      "titulo": "Receber as chaves",
+      "descricao": "Liberação do crédito, pagamento ao vendedor e registro. Chegou o dia da sua casa!"
+    }
+  },
+
+  "caminhos": {
+    "privado": ["escolher_casa", "proposta", "compra_venda", "analise_banco", "vistoria", "contrato_banco", "chaves"],
+    "flat35":  ["escolher_casa", "proposta", "analise_banco", "compra_venda", "contrato_banco", "vistoria", "chaves"]
+  },
+
+  "documentos": {
+    "ter_em_maos": [
+      { "nome": "Zairyu Card", "detalhe": "Cartão de residência" },
+      { "nome": "Habilitação", "detalhe": "Se tiver" },
+      { "nome": "Comprovante de qualificação do seguro de saúde", "detalhe": "Quando solicitado" },
+      { "nome": "Último Gensen Choshuhyo", "detalhe": "Comprovante anual de renda" },
+      { "nome": "Último contrato de trabalho assinado" },
+      { "nome": "Hagaki ou contrato de financiamentos atuais", "detalhe": "Se houver" }
+    ],
+    "compra_venda": [
+      { "nome": "Documentos pessoais + carimbo" },
+      { "nome": "Juminhyo familiar completo", "detalhe": "Sem MyNumber" },
+      { "nome": "Inkan Shomeisho", "detalhe": "Certidão do carimbo" },
+      { "nome": "Sinal / Tetsukekin", "detalhe": "Valor combinado" },
+      { "nome": "Selo fiscal", "detalhe": "Se aplicável — valor a confirmar" }
+    ],
+    "analise_banco": [
+      { "nome": "Juminhyo familiar completo", "detalhe": "Sem MyNumber" },
+      { "nome": "Shotoku / Kazei Shomeisho", "detalhe": "Último ano — comprovante de renda e tributação" },
+      { "nome": "3 últimos holerites" }
+    ],
+    "contrato_banco": [
+      { "nome": "Documentos pessoais" },
+      { "nome": "Juminhyo familiar completo", "detalhe": "Sem MyNumber" },
+      { "nome": "Inkan Shomeisho + carimbo solicitado" }
+    ],
+    "chaves": [
+      { "nome": "Documentos pessoais" },
+      { "nome": "Caderneta / conta para receber o crédito" },
+      { "nome": "Carimbo solicitado" }
+    ]
+  },
+
+  "avisos": [
+    { "titulo": "Documentos", "texto": "Espere a nossa lista antes de tirar certidões na prefeitura." },
+    { "titulo": "Finanças",   "texto": "Consulte-nos antes de mudar de emprego ou assumir dívidas. Evite atrasos." },
+    { "titulo": "Endereço",   "texto": "Mude só no momento legalmente correto, conforme a orientação da equipe." }
+  ],
+
+  "lembretes": [
+    "Certidão do carimbo: confirme o nome registrado exigido (katakana hyoki ou tsushomei).",
+    "Endereço: não altere antecipadamente. Siga o momento legalmente correto e a orientação do banco, do shiho-shoshi e da prefeitura.",
+    "Quantidade, validade e exigências dos documentos variam conforme o banco. Confirme originais, cópias e itens adicionais com o seu consultor."
+  ],
+
+  "aviso_legal": "A pré-avaliação não garante aprovação final: depende do banco, do imóvel e das suas condições financeiras. Fluxo ilustrativo; ordem das etapas, documentos e prazos podem variar.",
+
+  "guias": {
+    "rokin": {
+      "titulo": "Pedido oficial no Tokai Rokin",
+      "etapa": "analise_banco",
+      "itens": [
+        {
+          "titulo": "MyPage",
+          "texto": "O usuário é enviado por e-mail pelo banco. No primeiro login, crie a sua própria senha.",
+          "campo": "rokin_mypage_usuario",
+          "rotulo_campo": "Seu usuário do MyPage"
+        },
+        {
+          "titulo": "Juros variáveis",
+          "texto": "Modalidade conforme a simulação apresentada. A taxa final e a aprovação estão sujeitas à decisão do banco."
+        },
+        {
+          "titulo": "Condições para desconto de juros",
+          "lista": [
+            "Salário: receber o salário em conta Tokai Rokin.",
+            "Poupança ACE: transferência mensal de ¥10.000 para a sua poupança. O dinheiro continua sendo seu; não é taxa.",
+            "Card Loan: será solicitado com limite de referência de ¥500.000 para obter a taxa conforme a simulação. Se não quiser usar o crédito, não use o limite — há cobrança de juros se utilizado.",
+            "Serviços digitais: cadastrar o aplicativo Rokin e o Rokin Direct.",
+            "Cooperativa: confirmar a associação conforme orientado pelo corretor."
+          ]
+        },
+        {
+          "titulo": "Seguro de três doenças (SANDAISHIPPEI)",
+          "texto": "Opcional. Se contratado, acrescenta 0,30 ponto percentual ao ano à taxa de juros, conforme as regras do banco."
+        },
+        {
+          "titulo": "Seguro-incêndio",
+          "texto": "A seguradora entra em contato após a aprovação do financiamento."
+        }
+      ],
+      "importante": "Os requisitos de relacionamento acima são condições para desconto de juros, não obrigações absolutas para aprovar o financiamento. A associação à cooperativa define o enquadramento do cliente. O banco confirma as condições aplicáveis e decide sobre a aprovação.",
+      "fonte": "Manual Tokai Rokin de 01/12/2025 e orientações de atendimento da Easy House."
+    }
+  }
+}

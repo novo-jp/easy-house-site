@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/
 
 # Resumo do site para assistentes de IA (proposta llms.txt)
@@ -19,29 +20,35 @@ Sitemap: https://easyhouse.homes/sitemap-casas.xml
 User-agent: GPTBot
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /admin-taxas
+Disallow: /acompanhamento
 Disallow: /api/

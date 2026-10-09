@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="referrer" content="same-origin"/>
+<title>Acompanhamento — EASY HOUSE</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/acompanhamento.css?v=4"/>
+</head>
+<body>
+<header class="topo">
+  <a class="marca" href="/acompanhamento">EASY <b>HOUSE</b><span>Acompanhamento</span></a>
+  <nav class="topo__acoes" id="topoAcoes" hidden>
+    <span class="topo__quem" id="topoQuem"></span>
+    <button type="button" class="link" data-acao="trocar-senha">Trocar senha</button>
+    <button type="button" class="link" data-acao="sair">Sair</button>
+  </nav>
+</header>
+
+<main id="app" class="app" aria-live="polite">
+  <p class="carregando">Carregando…</p>
+</main>
+
+<dialog id="dlg" class="dlg"></dialog>
+
+<noscript><p class="aviso-js">Esta página precisa de JavaScript ligado.</p></noscript>
+<script src="/acompanhamento.js?v=1" defer></script>
+</body>
+</html>
