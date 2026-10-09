@@ -89,9 +89,13 @@ function etapasDoBanco(banco) {
   }));
 }
 
-function documentosIniciais() {
+/** Documentos do modelo. A lista depende do caminho: o FLAT35 pede coisas que
+ *  os bancos privados não pedem (Nozei Shomeisho, Shotoku de 2 anos, 3 vias
+ *  para o contrato com o banco). */
+function documentosIniciais(banco) {
+  const caminho = MODELOS.bancos[banco].caminho;
   const lista = [];
-  for (const [grupo, docs] of Object.entries(MODELOS.documentos)) {
+  for (const [grupo, docs] of Object.entries(MODELOS.documentos[caminho] || {})) {
     docs.forEach((d, i) => lista.push({ grupo, ordem: i, nome: d.nome, detalhe: d.detalhe || null }));
   }
   return lista;
@@ -158,6 +162,7 @@ async function carregarProcesso(perfil, id) {
     documentos,
     notas,
     guia,
+    orientacoes: MODELOS.orientacoes?.[banco?.caminho] || {},
     avisos: MODELOS.avisos,
     lembretes: MODELOS.lembretes,
     aviso_legal: MODELOS.aviso_legal,
@@ -205,7 +210,7 @@ async function criarProcesso(perfil, b) {
   });
   try {
     await sb('acomp_etapa', { method: 'POST', body: etapasDoBanco(b.banco).map((e) => ({ ...e, processo_id: p.id })) });
-    await sb('acomp_documento', { method: 'POST', body: documentosIniciais().map((d) => ({ ...d, processo_id: p.id })) });
+    await sb('acomp_documento', { method: 'POST', body: documentosIniciais(b.banco).map((d) => ({ ...d, processo_id: p.id })) });
   } catch (e) {
     // sem etapas o processo fica inútil e confuso na lista — desfaz
     await sb(`acomp_processo?id=eq.${p.id}`, { method: 'DELETE' });
@@ -278,7 +283,10 @@ async function editarProcesso(perfil, b) {
  */
 async function trocarBanco(processoId, banco) {
   if (!MODELOS.bancos[banco]) throw new Recusa(422, 'banco inválido');
-  const nova = MODELOS.caminhos[MODELOS.bancos[banco].caminho];
+  const [atual] = await sb(`acomp_processo?select=banco&id=eq.${processoId}`);
+  const caminhoAntes = MODELOS.bancos[atual?.banco]?.caminho;
+  const caminhoNovo = MODELOS.bancos[banco].caminho;
+  const nova = MODELOS.caminhos[caminhoNovo];
   const etapas = await sb(`acomp_etapa?select=id,chave,ordem&processo_id=eq.${processoId}`);
   if (etapas.some((e) => !nova.includes(e.chave))) {
     throw new Recusa(409, 'as etapas deste processo não batem com o caminho do banco novo');
@@ -289,6 +297,26 @@ async function trocarBanco(processoId, banco) {
   }
   for (const e of etapas) {
     await sb(`acomp_etapa?id=eq.${e.id}`, { method: 'PATCH', body: { ordem: nova.indexOf(e.chave) + 1 } });
+  }
+  if (caminhoAntes !== caminhoNovo) await trocarDocumentos(processoId, banco);
+}
+
+/**
+ * Mudou de caminho (privado ↔ FLAT35): a lista de documentos é outra.
+ * Sai só o que veio do modelo antigo e ninguém tocou ainda (pendente). Fica o
+ * que já foi marcado ("já tenho"/"entregue") e o que o corretor adicionou à
+ * mão — esses têm ordem 999. Do modelo novo, entra o que ainda não existe.
+ */
+async function trocarDocumentos(processoId, banco) {
+  const docs = await sb(`acomp_documento?select=id,grupo,nome,status,ordem&processo_id=eq.${processoId}`);
+  const intocados = docs.filter((d) => d.status === 'pendente' && d.ordem < 999 && d.grupo !== 'outros');
+  if (intocados.length) {
+    await sb(`acomp_documento?id=in.(${intocados.map((d) => d.id).join(',')})`, { method: 'DELETE' });
+  }
+  const ficam = new Set(docs.filter((d) => !intocados.includes(d)).map((d) => `${d.grupo}|${d.nome}`));
+  const novos = documentosIniciais(banco).filter((d) => !ficam.has(`${d.grupo}|${d.nome}`));
+  if (novos.length) {
+    await sb('acomp_documento', { method: 'POST', body: novos.map((d) => ({ ...d, processo_id: processoId })) });
   }
 }
 

@@ -329,3 +329,11 @@ h3 { font-size: 1.12rem; }
 .pilha > *, .capa > *, .etapa__corpo > *, .grade2 > *, .campo { min-width: 0; }
 input, select, textarea { max-width: 100%; }
 .app { overflow-wrap: anywhere; }
+
+/* Orientação da etapa que não é documento ("mude o endereço antes"). */
+.orientacao {
+  margin: 0; padding: 12px 14px 12px 32px; display: grid; gap: 6px;
+  border-radius: 12px; background: rgba(91,216,204,.07); border: 1px solid rgba(91,216,204,.3);
+  color: var(--pearl); font-size: .95rem;
+}
+.orientacao li::marker { color: var(--teal); }

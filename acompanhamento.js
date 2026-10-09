@@ -398,6 +398,8 @@
         h('span', { class: 'etapa__seta', 'aria-hidden': 'true' }, '▾')),
       h('div', { class: 'etapa__corpo' },
         e.descricao ? h('p', { class: 'etapa__desc' }, e.descricao) : null,
+        (d.orientacoes?.[e.chave] || []).length
+          ? h('ul', { class: 'orientacao' }, d.orientacoes[e.chave].map((o) => h('li', {}, o))) : null,
         e.data_prevista ? h('p', { class: 'etapa__quando' }, h('span', { 'aria-hidden': 'true' }, '📅'), `Agendado: ${fmtDataHora(e.data_prevista)}`) : null,
         situacao === 'proxima' && docs.some((x) => x.status === 'pendente')
           ? h('p', { class: 'antecipe' }, 'Se quiser se adiantar, já pode ir preparando estes documentos.') : null,

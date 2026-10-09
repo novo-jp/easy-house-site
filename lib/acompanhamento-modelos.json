@@ -1,15 +1,26 @@
 {
-  "versao": 1,
+  "versao": 2,
   "atualizado": "2026-10-09",
-  "nota": "Modelos que viram as etapas e a lista de documentos de cada processo NOVO. Mudar aqui não altera processos já criados — esses o corretor edita no painel. Fontes: 'Seu caminho até as chaves' versão 2 (bancos privados e FLAT35) e 'Pedido Oficial de Financiamento | Tokai Rokin'. A lista de documentos do FLAT35 não está no material da Easy House: foi montada com os mesmos documentos do comprador da versão dos bancos privados, presos à mesma etapa — confirmar com a equipe.",
-
+  "nota": "Modelos que viram as etapas e a lista de documentos de cada processo NOVO. Mudar aqui não altera processos já criados — esses o corretor edita no painel. Fontes: 'Seu caminho até as chaves' versão 2 (bancos privados e FLAT35), 'Lista de documentos — bancos privados', 'Documentos Necessários' do FLAT35 e 'Pedido Oficial de Financiamento | Tokai Rokin'.",
   "bancos": {
-    "flat35": { "nome": "FLAT35",      "caminho": "flat35" },
-    "rokin":  { "nome": "Tokai Rokin", "caminho": "privado", "guia": "rokin" },
-    "docomo": { "nome": "DOCOMO",      "caminho": "privado" },
-    "aeon":   { "nome": "AEON",        "caminho": "privado" }
+    "flat35": {
+      "nome": "FLAT35",
+      "caminho": "flat35"
+    },
+    "rokin": {
+      "nome": "Tokai Rokin",
+      "caminho": "privado",
+      "guia": "rokin"
+    },
+    "docomo": {
+      "nome": "DOCOMO",
+      "caminho": "privado"
+    },
+    "aeon": {
+      "nome": "AEON",
+      "caminho": "privado"
+    }
   },
-
   "etapas": {
     "escolher_casa": {
       "titulo": "Escolher sua casa",
@@ -40,59 +51,261 @@
       "descricao": "Liberação do crédito, pagamento ao vendedor e registro. Chegou o dia da sua casa!"
     }
   },
-
   "caminhos": {
-    "privado": ["escolher_casa", "proposta", "compra_venda", "analise_banco", "vistoria", "contrato_banco", "chaves"],
-    "flat35":  ["escolher_casa", "proposta", "analise_banco", "compra_venda", "contrato_banco", "vistoria", "chaves"]
-  },
-
-  "documentos": {
-    "ter_em_maos": [
-      { "nome": "Zairyu Card", "detalhe": "Cartão de residência" },
-      { "nome": "Habilitação", "detalhe": "Se tiver" },
-      { "nome": "Comprovante de qualificação do seguro de saúde", "detalhe": "Quando solicitado" },
-      { "nome": "Último Gensen Choshuhyo", "detalhe": "Comprovante anual de renda" },
-      { "nome": "Último contrato de trabalho assinado" },
-      { "nome": "Hagaki ou contrato de financiamentos atuais", "detalhe": "Se houver" }
+    "privado": [
+      "escolher_casa",
+      "proposta",
+      "compra_venda",
+      "analise_banco",
+      "vistoria",
+      "contrato_banco",
+      "chaves"
     ],
-    "compra_venda": [
-      { "nome": "Documentos pessoais + carimbo" },
-      { "nome": "Juminhyo familiar completo", "detalhe": "Sem MyNumber" },
-      { "nome": "Inkan Shomeisho", "detalhe": "Certidão do carimbo" },
-      { "nome": "Sinal / Tetsukekin", "detalhe": "Valor combinado" },
-      { "nome": "Selo fiscal", "detalhe": "Se aplicável — valor a confirmar" }
-    ],
-    "analise_banco": [
-      { "nome": "Juminhyo familiar completo", "detalhe": "Sem MyNumber" },
-      { "nome": "Shotoku / Kazei Shomeisho", "detalhe": "Último ano — comprovante de renda e tributação" },
-      { "nome": "3 últimos holerites" }
-    ],
-    "contrato_banco": [
-      { "nome": "Documentos pessoais" },
-      { "nome": "Juminhyo familiar completo", "detalhe": "Sem MyNumber" },
-      { "nome": "Inkan Shomeisho + carimbo solicitado" }
-    ],
-    "chaves": [
-      { "nome": "Documentos pessoais" },
-      { "nome": "Caderneta / conta para receber o crédito" },
-      { "nome": "Carimbo solicitado" }
+    "flat35": [
+      "escolher_casa",
+      "proposta",
+      "analise_banco",
+      "compra_venda",
+      "contrato_banco",
+      "vistoria",
+      "chaves"
     ]
   },
-
+  "documentos": {
+    "privado": {
+      "ter_em_maos": [
+        {
+          "nome": "Zairyu Card",
+          "detalhe": "Cartão de residência"
+        },
+        {
+          "nome": "Habilitação",
+          "detalhe": "Se tiver"
+        },
+        {
+          "nome": "Comprovante de qualificação do seguro de saúde",
+          "detalhe": "Quando solicitado"
+        },
+        {
+          "nome": "Último Gensen Choshuhyo",
+          "detalhe": "Comprovante anual de renda"
+        },
+        {
+          "nome": "Último contrato de trabalho assinado"
+        },
+        {
+          "nome": "Hagaki ou contrato de financiamentos atuais",
+          "detalhe": "Se houver"
+        }
+      ],
+      "compra_venda": [
+        {
+          "nome": "Documentos pessoais + carimbo"
+        },
+        {
+          "nome": "Juminhyo familiar completo",
+          "detalhe": "Sem MyNumber"
+        },
+        {
+          "nome": "Inkan Shomeisho",
+          "detalhe": "Certidão do carimbo"
+        },
+        {
+          "nome": "Sinal / Tetsukekin",
+          "detalhe": "Valor combinado"
+        },
+        {
+          "nome": "Selo fiscal",
+          "detalhe": "Se aplicável — valor a confirmar"
+        }
+      ],
+      "analise_banco": [
+        {
+          "nome": "Juminhyo familiar completo",
+          "detalhe": "Sem MyNumber"
+        },
+        {
+          "nome": "Shotoku / Kazei Shomeisho",
+          "detalhe": "Último ano — comprovante de renda e tributação"
+        },
+        {
+          "nome": "3 últimos holerites"
+        }
+      ],
+      "contrato_banco": [
+        {
+          "nome": "Documentos pessoais"
+        },
+        {
+          "nome": "Juminhyo familiar completo",
+          "detalhe": "Sem MyNumber"
+        },
+        {
+          "nome": "Inkan Shomeisho + carimbo solicitado"
+        }
+      ],
+      "chaves": [
+        {
+          "nome": "Documentos pessoais"
+        },
+        {
+          "nome": "Caderneta / conta para receber o crédito"
+        },
+        {
+          "nome": "Carimbo solicitado"
+        }
+      ]
+    },
+    "flat35": {
+      "ter_em_maos": [
+        {
+          "nome": "Zairyu Card",
+          "detalhe": "Cartão de residência"
+        },
+        {
+          "nome": "Carteira de motorista",
+          "detalhe": "Se tiver"
+        },
+        {
+          "nome": "Seguro de saúde",
+          "detalhe": "Shakai Hoken ou Kokumin"
+        },
+        {
+          "nome": "Último Gensen Choshuhyo",
+          "detalhe": "Ou todos os holerites, se tiver menos de 1 ano no emprego"
+        },
+        {
+          "nome": "Último contrato de trabalho assinado",
+          "detalhe": "Não é obrigatório, mas se tiver, melhor"
+        },
+        {
+          "nome": "Hagaki ou contrato de financiamentos atuais",
+          "detalhe": "Se tiver financiamento. Não é obrigatório, mas se tiver, melhor"
+        }
+      ],
+      "analise_banco": [
+        {
+          "nome": "Kyuyo Shomeisho",
+          "detalhe": "Atestado de salário, emitido pela empresa no modelo do banco"
+        },
+        {
+          "nome": "Juminhyo familiar completo",
+          "detalhe": "1 via, sem MyNumber — prefeitura"
+        },
+        {
+          "nome": "Shotoku / Kazei Shomeisho",
+          "detalhe": "Dos 2 últimos anos — prefeitura"
+        },
+        {
+          "nome": "Nozei Shomeisho",
+          "detalhe": "Dos 2 últimos anos — prefeitura (exigência do FLAT35)"
+        },
+        {
+          "nome": "3 últimos holerites"
+        },
+        {
+          "nome": "Foto do Cash Card da conta"
+        },
+        {
+          "nome": "Caderneta bancária atualizada",
+          "detalhe": "Com os registros de salário"
+        }
+      ],
+      "compra_venda": [
+        {
+          "nome": "Sinal / Tetsukekin",
+          "detalhe": "Depósito de garantia para o vendedor"
+        },
+        {
+          "nome": "Documentos pessoais",
+          "detalhe": "Zairyu Card, habilitação, seguro de saúde"
+        },
+        {
+          "nome": "Carimbo"
+        },
+        {
+          "nome": "Juminhyo familiar completo",
+          "detalhe": "1 via, sem MyNumber"
+        },
+        {
+          "nome": "Inkan Shomeisho",
+          "detalhe": "1 via — precisa ter o katakana hyoki ou tsushomei"
+        },
+        {
+          "nome": "Selo para o contrato",
+          "detalhe": "¥10.000"
+        }
+      ],
+      "contrato_banco": [
+        {
+          "nome": "Juminhyo familiar",
+          "detalhe": "3 vias, sem MyNumber"
+        },
+        {
+          "nome": "Inkan Shomeisho",
+          "detalhe": "3 vias — precisa ter o katakana hyoki ou tsushomei"
+        },
+        {
+          "nome": "Documentos pessoais",
+          "detalhe": "Zairyu Card, habilitação, seguro de saúde"
+        },
+        {
+          "nome": "Carimbo"
+        },
+        {
+          "nome": "Selo para o contrato",
+          "detalhe": "¥22.000 (¥20.000 + ¥2.000)"
+        }
+      ],
+      "chaves": [
+        {
+          "nome": "Documentos pessoais",
+          "detalhe": "Zairyu Card, habilitação, seguro de saúde"
+        },
+        {
+          "nome": "Caderneta bancária",
+          "detalhe": "Para a entrada do empréstimo"
+        },
+        {
+          "nome": "Carimbo"
+        }
+      ]
+    }
+  },
+  "orientacoes": {
+    "flat35": {
+      "vistoria": [
+        "Tatiai: verificação do estado da casa."
+      ],
+      "contrato_banco": [
+        "Primeiro, mude o endereço para a casa nova. Os documentos desta etapa são tirados depois disso.",
+        "Depois de pegar o Juminhyo e o Inkan Shomeisho, envie uma foto deles ao seu corretor."
+      ],
+      "chaves": [
+        "Dia da entrega da casa e do pagamento."
+      ]
+    }
+  },
   "avisos": [
-    { "titulo": "Documentos", "texto": "Espere a nossa lista antes de tirar certidões na prefeitura." },
-    { "titulo": "Finanças",   "texto": "Consulte-nos antes de mudar de emprego ou assumir dívidas. Evite atrasos." },
-    { "titulo": "Endereço",   "texto": "Mude só no momento legalmente correto, conforme a orientação da equipe." }
+    {
+      "titulo": "Documentos",
+      "texto": "Espere a nossa lista antes de tirar certidões na prefeitura."
+    },
+    {
+      "titulo": "Finanças",
+      "texto": "Consulte-nos antes de mudar de emprego ou assumir dívidas. Evite atrasos."
+    },
+    {
+      "titulo": "Endereço",
+      "texto": "Mude só no momento legalmente correto, conforme a orientação da equipe."
+    }
   ],
-
   "lembretes": [
     "Certidão do carimbo: confirme o nome registrado exigido (katakana hyoki ou tsushomei).",
     "Endereço: não altere antecipadamente. Siga o momento legalmente correto e a orientação do banco, do shiho-shoshi e da prefeitura.",
     "Quantidade, validade e exigências dos documentos variam conforme o banco. Confirme originais, cópias e itens adicionais com o seu consultor."
   ],
-
   "aviso_legal": "A pré-avaliação não garante aprovação final: depende do banco, do imóvel e das suas condições financeiras. Fluxo ilustrativo; ordem das etapas, documentos e prazos podem variar.",
-
   "guias": {
     "rokin": {
       "titulo": "Pedido oficial no Tokai Rokin",
