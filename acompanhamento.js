@@ -338,6 +338,7 @@
         'Pedidos a mais do banco ou do vendedor aparecem aqui.', true),
       atualizacoes(ctx),
       rodape(ctx),
+      estado.eu.papel === 'admin' ? zonaApagar(ctx) : null,
     ));
     if (manterRolagem) window.scrollTo(0, y);
   }
@@ -686,6 +687,57 @@
     } finally {
       URL.revokeObjectURL(url);
     }
+  }
+
+  // ── apagar processo (só administrador) ─────────────────────────────────────
+
+  function zonaApagar(ctx) {
+    return h('section', { class: 'cartao zona-perigo', 'aria-labelledby': 'tit-apagar' },
+      h('div', {},
+        h('h2', { id: 'tit-apagar' }, 'Deletar processo'),
+        h('p', { class: 'mudo pequeno', style: 'margin:6px 0 0' },
+          'Apaga este processo de vez. Só administradores veem este botão.')),
+      h('button', { class: 'btn btn--perigo', type: 'button', onclick: () => dialogoApagar(ctx) }, 'Deletar'));
+  }
+
+  function dialogoApagar(ctx) {
+    const p = ctx.d.processo;
+    const acessos = ctx.d.acessos || [];
+    const campo = h('input', { autocomplete: 'off', autocapitalize: 'characters', spellcheck: 'false', 'aria-describedby': 'apagar-dica' });
+    const btn = h('button', { class: 'btn btn--perigo-cheio', type: 'submit', disabled: true }, 'Deletar para sempre');
+    const erro = h('p', { class: 'erro', role: 'alert' });
+    campo.oninput = () => { btn.disabled = campo.value.trim().toLowerCase() !== 'apagar'; };
+
+    abrirDialogo(h('form', {
+      onsubmit: async (ev) => {
+        ev.preventDefault();
+        if (btn.disabled) return;
+        btn.disabled = true;
+        erro.textContent = '';
+        try {
+          const r = await post('apagar_processo', { processo_id: ctx.id, confirmacao: campo.value });
+          dlg.close();
+          avisar(`Processo de ${r.cliente} apagado${r.acessos_apagados ? ` (e ${r.acessos_apagados} acesso${r.acessos_apagados > 1 ? 's' : ''} de cliente)` : ''}.`, 'ok');
+          location.hash = '#/';
+        } catch (e) {
+          erro.textContent = e.message;
+          btn.disabled = false;
+        }
+      },
+    },
+      h('h2', {}, 'Deletar este processo?'),
+      h('p', {}, h('strong', {}, p.cliente_nome)),
+      h('ul', { class: 'lembretes', style: 'margin:8px 0 14px' },
+        h('li', {}, 'Etapas, documentos, atualizações, simulação e foto da casa são apagados.'),
+        h('li', {}, acessos.length
+          ? `Os acessos de cliente ligados a ele (${acessos.map((a) => a.usuario).join(', ')}) também são apagados — a não ser que a pessoa tenha outro processo.`
+          : 'Nenhum acesso de cliente está ligado a este processo.'),
+        h('li', {}, 'Não dá para desfazer. Se for só para tirar da lista, use "Arquivar" em Dados e casa escolhida.')),
+      h('label', { class: 'campo' }, h('span', { id: 'apagar-dica' }, 'Para confirmar, digite APAGAR'), campo),
+      erro,
+      h('div', { class: 'dlg__btns' },
+        h('button', { class: 'btn', type: 'button', onclick: () => dlg.close() }, 'Cancelar'), btn)));
+    campo.focus();
   }
 
   // ── simulação de parcelas ────────────────────────────────────────────────

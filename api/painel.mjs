@@ -466,6 +466,65 @@ async function subirFoto(perfil, b) {
   return { ok: true, url: await urlFoto(caminho) };
 }
 
+// ── apagar processo (só administrador) ──────────────────────────────────────
+
+/** Arquivos do processo no bucket privado (foto da casa e versões antigas). */
+async function apagarArquivosDoProcesso(id) {
+  const base = `${process.env.SUPABASE_URL}/storage/v1/object`;
+  const cab = {
+    apikey: process.env.SUPABASE_SERVICE_KEY,
+    Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`,
+    'Content-Type': 'application/json',
+  };
+  const r = await fetch(`${base}/list/${BUCKET}`, { method: 'POST', headers: cab, body: JSON.stringify({ prefix: `processos/${id}`, limit: 1000 }) });
+  const lista = r.ok ? await r.json() : [];
+  const caminhos = (lista || []).filter((o) => o.name).map((o) => `processos/${id}/${o.name}`);
+  if (caminhos.length) {
+    await fetch(`${base}/${BUCKET}`, { method: 'DELETE', headers: cab, body: JSON.stringify({ prefixes: caminhos }) });
+  }
+  return caminhos.length;
+}
+
+/**
+ * Apaga o processo e tudo que pendura nele (etapas, documentos, notas e
+ * vínculos saem em cascata no banco; a foto sai do bucket aqui).
+ *
+ * Login de cliente que só servia para este processo também é apagado: sem
+ * isso sobraria um usuário com senha válida que entra e não vê nada. Quem
+ * também está em outro processo (um casal com duas compras, por exemplo)
+ * continua com acesso.
+ *
+ * Exige confirmacao = "apagar" no corpo: a página só manda depois que a
+ * pessoa digita a palavra, e uma chamada solta não apaga nada.
+ */
+async function apagarProcesso(perfil, b) {
+  const id = exigirUuid(b.processo_id, 'processo');
+  if (String(b.confirmacao || '').trim().toLowerCase() !== 'apagar') {
+    throw new Recusa(422, 'para apagar, digite APAGAR');
+  }
+  const [p] = await sb(`acomp_processo?select=id,cliente_nome&id=eq.${id}`);
+  if (!p) throw new Recusa(404, 'processo não encontrado');
+
+  const vinc = await sb(`acomp_processo_cliente?select=user_id&processo_id=eq.${id}`);
+  const soDeste = [];
+  for (const { user_id } of vinc) {
+    const [outros, [u]] = await Promise.all([
+      sb(`acomp_processo_cliente?select=processo_id&user_id=eq.${user_id}&processo_id=neq.${id}`),
+      sb(`acomp_usuario?select=papel&user_id=eq.${user_id}`),
+    ]);
+    if (!outros.length && u?.papel === 'cliente') soDeste.push(user_id);
+  }
+
+  const arquivos = await apagarArquivosDoProcesso(id);
+  await sb(`acomp_processo?id=eq.${id}`, { method: 'DELETE' });
+  for (const uid of soDeste) {
+    await sb(`acomp_usuario?user_id=eq.${uid}`, { method: 'DELETE' });
+    await apagarContaAuth(uid);
+  }
+  console.log('[painel] processo apagado', { id, cliente: p.cliente_nome, por: perfil.usuario, acessos: soDeste.length, arquivos });
+  return { ok: true, cliente: p.cliente_nome, acessos_apagados: soDeste.length };
+}
+
 // ── simulação de parcelas ───────────────────────────────────────────────────
 
 /** Guarda o que o corretor digitou. O resultado é recalculado a cada leitura. */
@@ -601,6 +660,7 @@ const ACOES = {
   nota:             ['POST', 'equipe', mexerNota],
   foto:             ['POST', 'equipe', subirFoto],
   simulacao:        ['POST', 'equipe', salvarSimulacao],
+  apagar_processo:  ['POST', 'admin',  apagarProcesso],
   criar_acesso:     ['POST', 'equipe', criarAcessoCliente],
   criar_membro:     ['POST', 'admin',  criarMembroEquipe],
   redefinir_senha:  ['POST', 'equipe', redefinirSenha],

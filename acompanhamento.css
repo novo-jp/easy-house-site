@@ -550,3 +550,13 @@ body.modo-cliente .app {
   .campo input, .campo select, .campo textarea { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .esq { animation: none; } }
+
+/* Deletar processo: fica no fim da página, separado do resto, só para admin */
+.zona-perigo {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  border-color: #b3261e40; margin-top: 12px;
+}
+.zona-perigo h2 { font-size: 1.2rem; color: var(--erro); }
+.btn--perigo-cheio { background: var(--erro); border-color: var(--erro); color: #fff; }
+.btn--perigo-cheio:hover:not(:disabled) { background: #8f1d17; border-color: #8f1d17; }
+.btn--perigo-cheio:disabled { opacity: .4; cursor: not-allowed; }
