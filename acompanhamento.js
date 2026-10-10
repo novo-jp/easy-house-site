@@ -112,6 +112,14 @@
   function atualizarTopo() {
     const nav = document.getElementById('topoAcoes');
     nav.hidden = !estado.eu;
+    const cliente = estado.eu?.papel === 'cliente';
+    // No celular do cliente o topo leva só o que ele usa: falar com o
+    // consultor e a conta. Trocar senha e sair ficam dentro de "Conta".
+    document.getElementById('topoConta').hidden = !cliente;
+    document.getElementById('topoSenha').hidden = cliente;
+    document.getElementById('topoSair').hidden = cliente;
+    document.getElementById('topoQuem').hidden = cliente;
+    if (!cliente) document.getElementById('topoWa').hidden = true;
     if (estado.eu) {
       document.getElementById('topoQuem').textContent =
         `${estado.eu.nome}${estado.eu.papel !== 'cliente' ? ` · ${ROTULO_PAPEL[estado.eu.papel]}` : ''}`;
@@ -129,6 +137,7 @@
       telaLogin();
     }
     if (alvo.dataset.acao === 'trocar-senha') dialogoTrocarSenha();
+    if (alvo.dataset.acao === 'conta') dialogoConta();
   });
 
   // ── login ──────────────────────────────────────────────────────────────────
@@ -179,10 +188,14 @@
   async function rota() {
     if (!estado.eu) return telaLogin();
     const hash = location.hash;
-    const m = hash.match(/^#\/p\/([0-9a-f-]{36})$/i);
+    const m = hash.match(/^#\/p\/([0-9a-f-]{36})(?:\/([a-z]+))?$/i);
     const equipe = estado.eu.papel !== 'cliente';
+    document.body.classList.remove('modo-cliente');
+    estado.cli = null;
 
     try {
+      if (m && !equipe) return await telaCliente(m[1], { aba: m[2] });
+      if (m && m[2] === 'cliente') return await telaCliente(m[1], { previa: true });
       if (m) return await telaProcesso(m[1]);
       if (equipe && hash === '#/equipe') return await telaEquipe();
       if (equipe) return await telaLista();
@@ -190,7 +203,7 @@
       const meus = await get('meus_processos');
       if (meus.length === 1) {
         history.replaceState(null, '', `#/p/${meus[0].id}`);
-        return await telaProcesso(meus[0].id);
+        return await telaCliente(meus[0].id);
       }
       if (!meus.length) {
         return app.replaceChildren(h('div', { class: 'cartao' },
@@ -309,7 +322,9 @@
     const docsDe = (grupo) => d.documentos.filter((x) => x.grupo === grupo);
 
     app.replaceChildren(h('div', { class: 'pilha' },
-      equipe ? h('a', { class: 'link voltar', href: '#/' }, '← Todos os processos') : null,
+      equipe ? h('div', { class: 'barra' },
+        h('a', { class: 'link voltar', href: '#/' }, '← Todos os processos'),
+        h('a', { class: 'btn btn--mini', href: `#/p/${id}/cliente` }, 'Ver como o cliente vê')) : null,
       capa(ctx, etapasOrd),
       equipe ? gestao(ctx, etapasOrd) : consultor(ctx),
       blocoSimulacao(ctx),
@@ -596,6 +611,15 @@
       casa_url: h('input', { value: p.casa_url || '', type: 'url', placeholder: 'https://easyhouse.homes/comprar/imoveis/…' }),
     };
     const arquivado = h('input', { type: 'checkbox', checked: !!p.arquivado });
+    // Mostra como o número vai aparecer: "26990" vira "¥26,990 — faltam zeros?"
+    const precoLido = h('small', { class: 'mudo pequeno' });
+    const lerPreco = () => {
+      const n = Number(String(c.casa_preco_yen.value).replace(/[^\d]/g, ''));
+      precoLido.textContent = !n ? '' : n < 1_000_000 ? `= ${fmtYen(n)} — faltam os zeros? Digite o valor inteiro.` : `= ${fmtYen(n)}`;
+      precoLido.style.color = n && n < 1_000_000 ? 'var(--erro)' : '';
+    };
+    c.casa_preco_yen.addEventListener('input', lerPreco);
+    lerPreco();
     const btn = h('button', { class: 'btn btn--ouro', type: 'submit' }, 'Salvar');
 
     return h('form', {
@@ -619,7 +643,7 @@
         h('label', { class: 'campo' }, h('span', {}, 'Código do lead'), c.lead_code),
         h('label', { class: 'campo' }, h('span', {}, 'Corretor'), c.corretor_id),
         h('label', { class: 'campo' }, h('span', {}, 'Casa (título)'), c.casa_titulo),
-        h('label', { class: 'campo' }, h('span', {}, 'Preço (¥)'), c.casa_preco_yen)),
+        h('label', { class: 'campo' }, h('span', {}, 'Preço (¥)'), c.casa_preco_yen, precoLido)),
       h('label', { class: 'campo' }, h('span', {}, 'Endereço'), c.casa_endereco),
       h('label', { class: 'campo' }, h('span', {}, 'Link do anúncio (opcional)'), c.casa_url),
       h('label', { class: 'marcar' }, arquivado, 'Arquivar (some da lista principal; o cliente continua com acesso se o login estiver ativo)'),
@@ -1028,6 +1052,361 @@
       h('div', { class: 'dlg__btns' },
         h('button', { class: 'btn', type: 'button', onclick: () => dlg.close() }, 'Cancelar'), btn)));
     atual.focus();
+  }
+
+  // ── tela do cliente (celular) ──────────────────────────────────────────────
+  //
+  // O cliente abre isto no celular, quase sempre para responder a duas
+  // perguntas: "em que pé está?" e "o que eu preciso fazer?". A tela antiga
+  // era uma página só, de 7,5 telas de altura, com a etapa atual depois de
+  // quase 4 telas de rolagem. Aqui são quatro abas fixas embaixo, ao alcance
+  // do polegar, e a primeira responde as duas perguntas sem rolar.
+  //
+  // Os dados vêm uma vez; trocar de aba e marcar documento não espera o
+  // servidor (a marcação é otimista e desfaz sozinha se falhar).
+
+  const SVG = 'http://www.w3.org/2000/svg';
+  const ICONES = {
+    inicio: 'M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
+    etapas: 'M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01',
+    documentos: 'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6',
+    parcela: 'M6 3h12v18H6zM9 7h6M9 11h.01M12 11h.01M15 11h.01M9 14.5h.01M12 14.5h.01M15 14.5h.01M9 18h.01M12 18h.01M15 18h.01',
+    check: 'M5 12.5 10 17 19 7',
+    whatsapp: 'M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.3a8.5 8.5 0 1 1 15.5-4.6z',
+    seta: 'M9 6l6 6-6 6',
+  };
+  function icone(nome, tam = 22) {
+    const s = document.createElementNS(SVG, 'svg');
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('width', tam); s.setAttribute('height', tam);
+    s.setAttribute('aria-hidden', 'true'); s.setAttribute('focusable', 'false');
+    const p = document.createElementNS(SVG, 'path');
+    p.setAttribute('d', ICONES[nome]);
+    p.setAttribute('fill', 'none'); p.setAttribute('stroke', 'currentColor');
+    p.setAttribute('stroke-width', '1.8'); p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
+    s.append(p);
+    return s;
+  }
+
+  const ABAS = [
+    { chave: 'inicio', rotulo: 'Início' },
+    { chave: 'etapas', rotulo: 'Etapas' },
+    { chave: 'documentos', rotulo: 'Documentos' },
+    { chave: 'parcela', rotulo: 'Parcela' },
+  ];
+
+  /** "CASTELO NOVO REGINALDO" → "Castelo Novo Reginaldo" — nome em caixa alta grita no celular. */
+  const nomeBonito = (n) => String(n || '').toLowerCase()
+    .replace(/(^|\s|-)(\p{L})/gu, (m, a, b) => a + b.toUpperCase())
+    // "Maria da Silva", não "Maria Da Silva"
+    .replace(/(?<=\s)(Da|De|Do|Das|Dos|E)(?=\s)/g, (p) => p.toLowerCase());
+  /** Preço abaixo de ¥1 milhão é digitação errada (faltaram zeros), não preço de casa. */
+  const precoValido = (n) => Number(n) >= 1_000_000;
+
+  function esqueleto() {
+    return h('div', { class: 'cli', 'aria-busy': 'true' },
+      h('div', { class: 'esq esq--titulo' }), h('div', { class: 'esq esq--cartao' }),
+      h('div', { class: 'esq esq--cartao esq--alto' }), h('div', { class: 'esq esq--cartao' }));
+  }
+
+  async function telaCliente(id, { aba, previa = false } = {}) {
+    app.replaceChildren(esqueleto());
+    const d = await get('processo', { id });
+    // A equipe recebe as notas internas; na prévia elas não aparecem.
+    if (previa) d.notas = d.notas.filter((n) => !n.interna);
+    estado.cli = {
+      id, d, previa, carregadoEm: Date.now(), abrirEtapa: null,
+      aba: ABAS.some((a) => a.chave === aba) ? aba : 'inicio',
+    };
+    document.body.classList.add('modo-cliente');
+    if (!previa) {
+      const wa = document.getElementById('topoWa');
+      const msg = `Olá, ${d.consultor.nome}! Sou ${nomeBonito(d.processo.cliente_nome)} e tenho uma dúvida sobre o meu processo.`;
+      wa.href = `https://wa.me/${d.consultor.whatsapp}?text=${encodeURIComponent(msg)}`;
+      wa.replaceChildren(icone('whatsapp', 18), h('span', {}, 'WhatsApp'));
+      wa.hidden = false;
+    }
+    desenharCliente();
+  }
+
+  function irPara(aba, extra = {}) {
+    const c = estado.cli;
+    Object.assign(c, { aba }, extra);
+    // replaceState: trocar de aba não empilha histórico nem dispara hashchange
+    // (que buscaria tudo de novo no servidor).
+    if (!c.previa) history.replaceState(null, '', `#/p/${c.id}${aba === 'inicio' ? '' : `/${aba}`}`);
+    desenharCliente();
+    window.scrollTo(0, 0);
+    if (extra.abrirEtapa) {
+      requestAnimationFrame(() => document.getElementById(`etp-${extra.abrirEtapa}`)?.scrollIntoView({ block: 'start' }));
+    }
+  }
+
+  function desenharCliente(manterRolagem = false) {
+    const y = window.scrollY;
+    const c = estado.cli;
+    const telas = { inicio: abaInicio, etapas: abaEtapas, documentos: abaDocumentos, parcela: abaParcela };
+    app.replaceChildren(h('div', { class: 'cli' },
+      c.previa ? h('div', { class: 'cli-previa' },
+        h('span', {}, 'Prévia: é assim que o cliente vê.'),
+        h('a', { href: `#/p/${c.id}` }, 'Voltar à gestão')) : null,
+      telas[c.aba](c.d),
+      barraAbas(c.d)));
+    if (manterRolagem) window.scrollTo(0, y);
+  }
+
+  function resumoCliente(d) {
+    const etapas = [...d.etapas].sort((a, b) => a.ordem - b.ordem);
+    const atual = etapas.find((e) => e.chave === d.etapa_atual) || null;
+    const proxima = atual ? etapas.slice(etapas.indexOf(atual) + 1).find((e) => !e.concluida_em) || null : null;
+    const docsDe = (g) => d.documentos.filter((x) => x.grupo === g);
+    const pendentes = (g) => docsDe(g).filter((x) => x.status === 'pendente');
+    return { etapas, atual, proxima, docsDe, pendentes, feitas: etapas.filter((e) => e.concluida_em).length };
+  }
+
+  function barraAbas(d) {
+    const r = resumoCliente(d);
+    const faltam = r.atual ? r.pendentes(r.atual.chave).length : 0;
+    return h('nav', { class: 'abas-cli', 'aria-label': 'Seções' }, ABAS.map((a) => {
+      const atual = estado.cli.aba === a.chave;
+      return h('button', {
+        type: 'button', class: 'abas-cli__item', 'aria-current': atual ? 'page' : false,
+        onclick: () => { if (!atual) irPara(a.chave); },
+      },
+        h('span', { class: 'abas-cli__icone' }, icone(a.chave),
+          a.chave === 'documentos' && faltam ? h('span', { class: 'abas-cli__selo', 'aria-label': `${faltam} pendentes` }, String(faltam)) : null),
+        h('span', {}, a.rotulo));
+    }));
+  }
+
+  // ── Início: em que pé está e o que fazer agora ─────────────────────────────
+
+  function abaInicio(d) {
+    const r = resumoCliente(d);
+    const p = d.processo;
+    const quem = estado.cli.previa ? p.cliente_nome : (estado.eu.nome || p.cliente_nome);
+
+    const casa = (p.casa_foto_url || p.casa_titulo) ? h('div', { class: 'cli-casa' },
+      p.casa_foto_url ? h('img', { src: p.casa_foto_url, alt: '', class: 'cli-casa__foto' }) : h('div', { class: 'cli-casa__foto cli-casa__foto--vazia' }, icone('inicio', 28)),
+      h('div', { class: 'cli-casa__info' },
+        h('strong', {}, p.casa_titulo || 'Sua casa'),
+        precoValido(p.casa_preco_yen) ? h('span', { class: 'cli-casa__preco' }, fmtYen(p.casa_preco_yen)) : null,
+        h('span', { class: 'chip chip--ouro' }, p.banco_nome))) : null;
+
+    const progresso = h('div', { class: 'cli-progresso' },
+      h('div', { class: 'cli-progresso__topo' },
+        h('strong', {}, r.atual ? `Etapa ${r.atual.ordem} de ${r.etapas.length}` : 'Tudo concluído'),
+        h('span', { class: 'mudo pequeno' }, `${r.feitas} de ${r.etapas.length} concluídas`)),
+      h('div', { class: 'progresso__linha', role: 'img', 'aria-label': `${r.feitas} de ${r.etapas.length} etapas concluídas` },
+        r.etapas.map((e) => h('span', { class: `progresso__seg${e.concluida_em ? ' feito' : (e === r.atual ? ' agora' : '')}` }))));
+
+    let agora;
+    if (r.atual) {
+      const docs = r.docsDe(r.atual.chave);
+      const falta = docs.filter((x) => x.status === 'pendente');
+      const orient = d.orientacoes?.[r.atual.chave] || [];
+      agora = h('section', { class: 'cli-card cli-card--agora', 'aria-labelledby': 'cli-agora' },
+        h('p', { class: 'sobre' }, 'Agora'),
+        h('h2', { id: 'cli-agora' }, r.atual.titulo),
+        r.atual.descricao ? h('p', { class: 'mudo' }, r.atual.descricao) : null,
+        r.atual.data_prevista ? h('p', { class: 'etapa__quando' }, `📅 ${fmtDataHora(r.atual.data_prevista)}`) : null,
+        orient.length ? h('ul', { class: 'orientacao' }, orient.map((o) => h('li', {}, o))) : null,
+        falta.length ? h('div', { class: 'cli-falta' },
+          h('p', {}, h('strong', {}, falta.length === 1 ? 'Falta 1 documento' : `Faltam ${falta.length} documentos`), ' para esta etapa:'),
+          h('ul', {}, falta.slice(0, 4).map((x) => h('li', {}, x.nome))),
+          falta.length > 4 ? h('p', { class: 'mudo pequeno' }, `e mais ${falta.length - 4}`) : null)
+          : (docs.length ? h('p', { class: 'cli-ok' }, icone('check', 18), 'Seus documentos desta etapa estão prontos.') : null),
+        docs.length ? h('button', { type: 'button', class: 'btn btn--ouro btn--bloco', onclick: () => irPara('documentos') },
+          falta.length ? 'Marcar meus documentos' : 'Ver documentos') : null,
+        d.guia && d.guia.etapa === r.atual.chave
+          ? h('button', { type: 'button', class: 'btn btn--bloco', onclick: () => irPara('etapas', { abrirEtapa: r.atual.chave }) }, `Ver o guia do ${p.banco_nome}`)
+          : null);
+    } else {
+      agora = h('section', { class: 'cli-card cli-card--agora' },
+        h('p', { class: 'sobre' }, 'Concluído'),
+        h('h2', {}, 'Chegou o dia da sua casa!'),
+        h('p', { class: 'mudo' }, 'Depois das chaves: orientação para mudança, água, luz, gás e os próximos passos.'));
+    }
+
+    const depois = r.proxima ? (() => {
+      const prep = r.pendentes(r.proxima.chave).length;
+      return h('button', { type: 'button', class: 'cli-card cli-linha', onclick: () => irPara('etapas', { abrirEtapa: r.proxima.chave }) },
+        h('span', {},
+          h('span', { class: 'sobre' }, 'Depois'),
+          h('strong', { class: 'cli-linha__titulo' }, r.proxima.titulo),
+          prep ? h('span', { class: 'mudo pequeno' }, `Se quiser se adiantar, já dá para preparar ${prep === 1 ? '1 documento' : `${prep} documentos`}.`) : null),
+        icone('seta', 20));
+    })() : null;
+
+    const notas = d.notas.slice(0, 2);
+    const novidades = notas.length ? h('section', { class: 'cli-card' },
+      h('p', { class: 'sobre' }, 'Recado do consultor'),
+      h('ul', { class: 'notas' }, notas.map((n) => h('li', { class: 'nota' },
+        h('p', {}, n.texto),
+        h('small', {}, [fmtData(n.criado_em), n.autor].filter(Boolean).join(' · ')))))) : null;
+
+    const s = d.simulacao;
+    const parcela = s ? h('button', { type: 'button', class: 'cli-card cli-linha cli-linha--escura', onclick: () => irPara('parcela') },
+      h('span', {},
+        h('span', { class: 'cli-linha__rotulo' }, 'Parcela mensal estimada'),
+        h('strong', { class: 'cli-linha__valor' }, fmtYen(s.resultado.parcela)),
+        h('span', { class: 'cli-linha__aviso' }, 'Os juros podem mudar até a aprovação final.')),
+      icone('seta', 20)) : null;
+
+    const consultorCard = estado.cli.previa ? null : h('section', { class: 'cli-card cli-consultor' },
+      h('span', {}, h('span', { class: 'sobre' }, 'Seu consultor'), h('strong', {}, d.consultor.nome)),
+      h('a', {
+        class: 'btn btn--wa', target: '_blank', rel: 'noopener',
+        href: `https://wa.me/${d.consultor.whatsapp}?text=${encodeURIComponent(`Olá, ${d.consultor.nome}! Sou ${nomeBonito(p.cliente_nome)} e tenho uma dúvida sobre o meu processo.`)}`,
+      }, icone('whatsapp', 18), 'Conversar'));
+
+    return h('div', { class: 'cli-pilha' },
+      h('header', { class: 'cli-ola' }, h('p', { class: 'sobre' }, 'Pré-avaliação aprovada'), h('h1', {}, `Olá, ${nomeBonito(quem)}`)),
+      casa, progresso, agora, depois, parcela, novidades, consultorCard);
+  }
+
+  // ── Etapas: a linha do tempo inteira, com a atual aberta ───────────────────
+
+  function abaEtapas(d) {
+    const r = resumoCliente(d);
+    const abrir = estado.cli.abrirEtapa;
+    return h('div', { class: 'cli-pilha' },
+      h('header', { class: 'cli-ola' }, h('p', { class: 'sobre' }, 'Seu caminho até as chaves'), h('h1', {}, 'Etapas')),
+      h('p', { class: 'mudo', style: 'margin:0' }, 'Você não precisa decorar. Nós avisamos o próximo passo — e você pode abrir qualquer etapa para ver o que vem.'),
+      h('ol', { class: 'etapas' }, r.etapas.map((e) => {
+        const sit = e.concluida_em ? 'feita' : (e === r.atual ? 'agora' : 'proxima');
+        const docs = r.docsDe(e.chave);
+        const prontos = docs.filter((x) => x.status !== 'pendente').length;
+        const notas = d.notas.filter((n) => n.etapa_chave === e.chave);
+        const orient = d.orientacoes?.[e.chave] || [];
+        const aberta = abrir ? abrir === e.chave : sit === 'agora';
+        return h('li', { id: `etp-${e.chave}` }, h('details', { class: `etapa ${sit}`, open: aberta },
+          h('summary', {},
+            h('span', { class: 'etapa__num', 'aria-hidden': 'true' }, e.concluida_em ? '✓' : String(e.ordem)),
+            h('span', { class: 'etapa__titulo' }, h('h3', {}, e.titulo),
+              h('span', { class: 'etapa__estado' }, { feita: `Concluída em ${fmtData(e.concluida_em)}`, agora: 'Agora', proxima: 'Próxima' }[sit])),
+            h('span', { class: 'etapa__seta', 'aria-hidden': 'true' }, '▾')),
+          h('div', { class: 'etapa__corpo' },
+            e.descricao ? h('p', { class: 'etapa__desc' }, e.descricao) : null,
+            orient.length ? h('ul', { class: 'orientacao' }, orient.map((o) => h('li', {}, o))) : null,
+            e.data_prevista ? h('p', { class: 'etapa__quando' }, `📅 ${fmtDataHora(e.data_prevista)}`) : null,
+            docs.length ? h('button', { type: 'button', class: 'cli-linha cli-linha--mini', onclick: () => irPara('documentos') },
+              h('span', {}, h('strong', {}, 'Documentos desta etapa'), h('span', { class: 'mudo pequeno' }, `${prontos} de ${docs.length} prontos`)),
+              icone('seta', 18)) : null,
+            d.guia && d.guia.etapa === e.chave ? blocoGuia({ d }) : null,
+            notas.length ? h('ul', { class: 'notas' }, notas.map((n) => h('li', { class: 'nota' },
+              h('p', {}, n.texto), h('small', {}, [fmtData(n.criado_em), n.autor].filter(Boolean).join(' · '))))) : null,
+            e.chave === 'chaves' ? h('p', { class: 'mudo pequeno', style: 'margin:0' }, 'Depois das chaves: orientação para mudança, água, luz, gás e próximos passos.') : null)));
+      })));
+  }
+
+  // ── Documentos: tudo num lugar, marcar com um toque ────────────────────────
+
+  async function alternarDoc(doc) {
+    if (estado.cli.previa || doc.status === 'entregue') return;
+    const antes = doc.status;
+    doc.status = antes === 'pendente' ? 'pronto' : 'pendente';
+    desenharCliente(true);                       // muda na hora, sem esperar a rede
+    try {
+      await post('documento', { operacao: 'status', documento_id: doc.id, status: doc.status });
+    } catch (e) {
+      doc.status = antes;                        // não gravou: volta como estava
+      desenharCliente(true);
+      avisar(e.message || 'Não consegui salvar. Tente de novo.');
+    }
+  }
+
+  function linhaDoc(doc) {
+    const travado = doc.status === 'entregue' || estado.cli.previa;
+    return h('li', {}, h('button', {
+      type: 'button', class: `cli-doc ${doc.status}`, disabled: travado,
+      'aria-pressed': doc.status !== 'pendente' ? 'true' : 'false',
+      onclick: () => alternarDoc(doc),
+    },
+      h('span', { class: 'cli-doc__marca', 'aria-hidden': 'true' }, doc.status !== 'pendente' ? icone('check', 16) : null),
+      h('span', { class: 'cli-doc__nome' }, h('strong', {}, doc.nome), doc.detalhe ? h('small', {}, doc.detalhe) : null),
+      h('span', { class: 'doc__selo' }, ROTULO_STATUS[doc.status])));
+  }
+
+  function abaDocumentos(d) {
+    const r = resumoCliente(d);
+    const todos = d.documentos;
+    const n = (st) => todos.filter((x) => x.status === st).length;
+
+    const grupo = (titulo, docs, { destaque = false, sempre = false, vazio = null } = {}) => (docs.length || sempre)
+      ? h('section', { class: `cli-grupo${destaque ? ' cli-grupo--agora' : ''}` },
+        h('h2', { class: 'cli-grupo__titulo' }, titulo),
+        docs.length ? h('ul', { class: 'cli-docs' }, docs.map(linhaDoc)) : h('p', { class: 'docs__vazio' }, vazio))
+      : null;
+
+    const futuras = r.etapas.filter((e) => !e.concluida_em && e !== r.atual);
+    const feitas = r.etapas.filter((e) => e.concluida_em);
+    const docsFeitas = feitas.flatMap((e) => r.docsDe(e.chave));
+
+    return h('div', { class: 'cli-pilha' },
+      h('header', { class: 'cli-ola' }, h('p', { class: 'sobre' }, 'Toque para marcar o que você já tem'), h('h1', {}, 'Documentos')),
+      h('div', { class: 'cli-contagem' },
+        h('span', {}, h('b', {}, String(n('pendente'))), 'a preparar'),
+        h('span', { class: 'pronto' }, h('b', {}, String(n('pronto'))), 'já tenho'),
+        h('span', { class: 'entregue' }, h('b', {}, String(n('entregue'))), 'entregues')),
+      h('p', { class: 'mudo pequeno', style: 'margin:0' }, 'Quem confirma a entrega ao banco ou ao vendedor é o seu consultor. Espere a lista dele antes de tirar certidões na prefeitura.'),
+      r.atual ? grupo(`Agora · ${r.atual.titulo}`, r.docsDe(r.atual.chave), { destaque: true }) : null,
+      futuras.map((e) => grupo(`${e.ordem}. ${e.titulo}`, r.docsDe(e.chave))),
+      grupo('Outros documentos', r.docsDe('outros'), { sempre: true, vazio: 'Se o banco ou o vendedor pedir algo a mais, aparece aqui.' }),
+      grupo('Pré-avaliação — tenha à mão', r.docsDe('ter_em_maos')),
+      docsFeitas.length ? h('details', { class: 'cli-grupo cli-grupo--feitas' },
+        h('summary', {}, `Etapas concluídas (${docsFeitas.length} documentos)`),
+        feitas.map((e) => grupo(e.titulo, r.docsDe(e.chave)))) : null,
+      h('ul', { class: 'lembretes' }, d.lembretes.map((l) => h('li', {}, l))));
+  }
+
+  // ── Parcela ────────────────────────────────────────────────────────────────
+
+  function abaParcela(d) {
+    const s = d.simulacao;
+    return h('div', { class: 'cli-pilha' },
+      h('header', { class: 'cli-ola' }, h('p', { class: 'sobre' }, 'Simulação de financiamento'), h('h1', {}, 'Sua parcela')),
+      s ? vistaSimulacao(s.resultado) : h('section', { class: 'cli-card' },
+        h('h2', {}, 'Ainda não há simulação'),
+        h('p', { class: 'mudo' }, 'Quando o seu consultor publicar a simulação das parcelas, ela aparece aqui.')),
+      s ? h('p', { class: 'simul__rodape' },
+        `Atualizada em ${fmtData(s.atualizado_em)}${s.atualizado_por ? ` por ${s.atualizado_por}` : ''}. Valores podem sofrer alterações.`) : null,
+      h('div', { class: 'avisos' }, d.avisos.map((a) => h('div', { class: 'aviso' }, h('strong', {}, a.titulo), h('p', {}, a.texto)))),
+      h('p', { class: 'legal' }, d.aviso_legal));
+  }
+
+  // Voltou para o app depois de um tempo: busca de novo, em silêncio, para
+  // mostrar o que o consultor atualizou enquanto o celular estava no bolso.
+  document.addEventListener('visibilitychange', async () => {
+    const c = estado.cli;
+    if (document.visibilityState !== 'visible' || !c || c.previa) return;
+    if (Date.now() - c.carregadoEm < 60_000) return;
+    try {
+      const d = await get('processo', { id: c.id });
+      if (estado.cli !== c) return;
+      c.d = d; c.carregadoEm = Date.now();
+      desenharCliente(true);
+    } catch { /* sem rede: fica com o que tem */ }
+  });
+
+  function dialogoConta() {
+    const sair = h('button', { class: 'btn btn--perigo btn--bloco', type: 'button' }, 'Sair');
+    sair.onclick = async () => {
+      await post('logout').catch(() => {});
+      dlg.close();
+      estado.eu = null; estado.cli = null;
+      document.body.classList.remove('modo-cliente');
+      document.getElementById('topoWa').hidden = true;
+      atualizarTopo();
+      history.replaceState(null, '', location.pathname);
+      telaLogin();
+    };
+    abrirDialogo(h('div', { class: 'pilha' },
+      h('div', {}, h('p', { class: 'sobre' }, 'Sua conta'), h('h2', { style: 'margin-top:6px' }, nomeBonito(estado.eu.nome)),
+        h('p', { class: 'mudo pequeno', style: 'margin:4px 0 0' }, `Usuário: ${estado.eu.usuario}`)),
+      h('button', { class: 'btn btn--bloco', type: 'button', onclick: () => dialogoTrocarSenha() }, 'Trocar senha'),
+      sair,
+      h('button', { class: 'link', type: 'button', onclick: () => dlg.close() }, 'Fechar')));
   }
 
   // ── início ─────────────────────────────────────────────────────────────────

@@ -256,6 +256,9 @@ const CAMPOS_PROCESSO = {
     if (v === null || v === '' || v === undefined) return null;
     const n = Math.round(Number(String(v).replace(/[^\d.]/g, '')));
     if (!Number.isFinite(n) || n < 0 || n > 10_000_000_000) throw new Recusa(422, 'preço inválido');
+    // ¥26.990 chegou a ser gravado no lugar de ¥26.990.000 — faltaram os
+    // zeros, e o cliente viu a casa "custando" 27 mil ienes.
+    if (n > 0 && n < 1_000_000) throw new Recusa(422, `preço da casa: ${n.toLocaleString('ja-JP')} ienes parece sem os zeros — digite o valor inteiro (ex.: 26990000)`);
     return n;
   },
   arquivado: (v) => !!v,
