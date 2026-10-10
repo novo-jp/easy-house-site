@@ -235,6 +235,36 @@ semanas, a proporção diz qual pergunta a pessoa se faz — e a frase perdedora
 A página em espanhol tem os mesmos dois botões ("Saber cuánto puedo financiar" / "Calcular
 mi crédito").
 
+### Sete landings fora do ar (10/10/2026)
+
+A Easy House decidiu concentrar o tráfego pago em **/simular**, **/simular-es** e
+**/entregas**. Saíram do ar, com 404 (a opção de redirecionar foi considerada e recusada
+por ela): `/raio-x`, `/comprar-casa-sem-pr`, `/documentos-entrada-dividas`, `/omatome`,
+`/landingvendas`, `/landingaluguel` e `/refinanciamento`.
+
+O que mudou junto, porque link morto é pior que página removida:
+
+- **Menu, gaveta e rodapé** de todo o site passam a ser: casas à venda, apartamentos,
+  simular, entregas, sobre. Ficam em `lib/casas-layout.json` (portal e páginas geradas) e
+  repetidos nas sete páginas estáticas que sobraram.
+- **`llms.txt`** não anuncia mais as páginas removidas: era ele que mandava assistentes de
+  IA citarem URLs que agora dão 404.
+- **`/api/raiox` foi removida.** Era o destino do questionário do Raio-X e não tinha mais
+  quem chamasse. O site estava com 12 funções no Vercel — o limite do plano, que já tinha
+  obrigado o painel de acompanhamento a caber numa função só. Agora são 11.
+- **O card de parcelas atuais do simulador** levava à `/omatome`. Passa a abrir o WhatsApp
+  com um fecho próprio (`wa.fechoDividas`), medido como `whatsapp_clicked` com
+  `from: 'dividas'`.
+- **As três páginas de conteúdo** (`/quanto-custa-casa-japao`, `/custo-inicial-aluguel-japao`,
+  `/financiamento-imovel-japao`) citavam as removidas no corpo do texto. Os trechos foram
+  reescritos no gerador `build-conteudo.mjs` e as páginas regeradas — editar só o HTML
+  traria os links de volta na próxima geração.
+- `tests/lps-removidas.test.mjs` falha se um link para qualquer uma delas reaparecer.
+
+O app `easyhouse-raiox` continua existindo e agora constrói uma página só, a `/entregas`.
+O código do Raio-X (`components/tool/`, `lib/motor/`) ficou no repositório, dormente e com
+os testes de unidade rodando; voltar ao ar é recriar a rota e a função `/api/raiox`.
+
 ## 7. Eventos do funil
 
 `landing_view` · `simulation_started` · `quick_question_completed` · `quick_simulation_completed`

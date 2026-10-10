@@ -244,7 +244,7 @@ function paginaQuantoCusta(casas) {
     relacionadas: [
       ['/comprar/imoveis', `Ver as ${casas.length} casas à venda disponíveis hoje`],
       ['/financiamento-imovel-japao', 'Como funciona o financiamento imobiliário no Japão'],
-      ['/comprar-casa-sem-pr', 'Comprar sem visto permanente: o que pesa na análise'],
+      ['/entregas', 'Entregas reais: famílias que já compraram no Japão'],
       ['/simular', 'Simular qual faixa de imóvel cabe no seu orçamento']
     ]
   });
@@ -324,7 +324,6 @@ function paginaCustoAluguel() {
     ],
     relacionadas: [
       ['/imoveis', 'Ver apartamentos para alugar com custo de entrada calculado'],
-      ['/landingaluguel', 'Como a Easy House ajuda a alugar sem falar japonês'],
       ['/quanto-custa-casa-japao', 'Quanto custa comprar em vez de alugar'],
       ['/sobre', 'Sobre a Easy House']
     ]
@@ -375,7 +374,7 @@ function paginaFinanciamento(casas) {
   <li>Renda anual até ${yen(rendaCorte)}: até <strong>${Math.round(f.lowerIncomeRepaymentRatio * 100)}%</strong> da renda</li>
   <li>Renda anual acima de ${yen(rendaCorte)}: até <strong>${Math.round(f.higherIncomeRepaymentRatio * 100)}%</strong></li>
 </ul>
-<p>Atenção: esse limite conta <strong>todas</strong> as parcelas, não só a da casa. Financiamento de carro, cartão parcelado, キャッシング e リボ払い entram na conta e reduzem o quanto sobra para o imóvel. É por isso que organizar dívidas antes de pedir muda o resultado — veja <a href="/omatome" style="color:var(--teal)">como reunir parcelas antes de financiar</a>.</p>
+<p>Atenção: esse limite conta <strong>todas</strong> as parcelas, não só a da casa. Financiamento de carro, cartão parcelado, キャッシング e リボ払い entram na conta e reduzem o quanto sobra para o imóvel. É por isso que organizar dívidas antes de pedir muda o resultado — o <a href="/simular" style="color:var(--teal)">simulador</a> pergunta pelas parcelas atuais justamente por isso.</p>
 
 <h2>O peso do visto</h2>
 <p>O tipo de visto é o fator que mais varia entre instituições:</p>
@@ -383,7 +382,7 @@ function paginaFinanciamento(casas) {
   <li><strong>Visto permanente (永住) ou permanente especial</strong>: aceito pela maior parte das instituições, com as mesmas condições de um cidadão japonês</li>
   <li><strong>Cônjuge de japonês (日本人の配偶者)</strong>, <strong>residente de longa permanência (定住者)</strong> e <strong>vistos de trabalho</strong>: dependem de análise individual. Algumas instituições atendem, outras não</li>
 </ul>
-<p>Não ter 永住 não encerra o assunto — muda quais portas fazem sentido bater. A página <a href="/comprar-casa-sem-pr" style="color:var(--teal)">comprar sem visto permanente</a> detalha os fatores que pesam nesse caso.</p>
+<p>Não ter 永住 não encerra o assunto — muda quais portas fazem sentido bater. O <a href="/simular" style="color:var(--teal)">simulador</a> pergunta pelo tipo de visto e já considera isso no cenário que devolve.</p>
 
 <h2>Exemplo: uma casa de ${yen(exemplo)}</h2>
 <table class="tabela-dados">
@@ -417,8 +416,7 @@ function paginaFinanciamento(casas) {
     ],
     relacionadas: [
       ['/simular', 'Simular qual faixa de imóvel cabe no seu orçamento'],
-      ['/comprar-casa-sem-pr', 'Comprar sem visto permanente: o que pesa na análise'],
-      ['/omatome', 'Organizar dívidas antes de pedir financiamento'],
+      ['/entregas', 'Entregas reais: famílias que já compraram no Japão'],
       ['/quanto-custa-casa-japao', 'Quanto custa comprar uma casa no Japão'],
       ['/comprar/imoveis', `Ver as ${casas.length} casas à venda disponíveis`]
     ]

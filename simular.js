@@ -346,7 +346,7 @@ async function renderResult() {
     ? `<div class="fx-card">
          <p class="fx-card__label">${t('res.parcelasAtuais')}</p>
          <p style="font-size:.95rem;color:var(--ink-soft)">${tm(r.matomeToku.message)}</p>
-         <a class="fx-btn fx-btn--ghost fx-btn--block" style="margin-top:14px" href="/omatome">${t('res.analisarDividas')}</a>
+         <a class="fx-btn fx-btn--wa fx-btn--block" style="margin-top:14px" id="resDividasWhats" href="${whatsappLink('dividas')}" target="_blank" rel="noopener">${t('res.analisarDividas')}</a>
        </div>`
     : '';
 
@@ -356,6 +356,10 @@ async function renderResult() {
 
   $('#btnWhatsApp').href = whatsappLink('result');
   $('#btnWhatsApp').addEventListener('click', () => track('whatsapp_clicked', { from: 'result' }), { once: true });
+
+  // O card de parcelas atuais só existe em alguns resultados, e o botão dele é
+  // montado junto com o HTML acima: a medição é ligada aqui, depois de existir.
+  $('#resDividasWhats')?.addEventListener('click', () => track('whatsapp_clicked', { from: 'dividas' }), { once: true });
 
   // Imóveis: mensagem única, sem listar ou contar o que não podemos confirmar
   const cidades = (a.cities || []).filter(c => c !== 'outra');

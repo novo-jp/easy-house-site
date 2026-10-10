@@ -344,7 +344,6 @@ export function paginaLista({ acervo, pedido, r, fac, rot, aluguelOpcoes }) {
     <p class="btn-row">
       <a class="btn btn--wa" rel="nofollow" data-cta="rodape_busca_aluguel" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Quero ajuda para encontrar um apartamento para alugar em Aichi.')}">${ICONE_WA} Falar com a Easy House</a>
       <a class="btn btn--ghost" href="/custo-inicial-aluguel-japao">Quanto custa para entrar num aluguel</a>
-      <a class="btn btn--ghost" href="/landingaluguel">Como funciona o aluguel com a Easy House</a>
     </p>
     <p class="busca-editorial__link"><a href="/comprar/imoveis">Prefere comprar? Veja as casas à venda →</a></p>
   </section>

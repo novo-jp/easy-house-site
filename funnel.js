@@ -284,7 +284,10 @@ export function whatsappLink(origem) {
     preliminary: t('wa.fechoPreliminary'),
     lead:        t('wa.fechoLead'),
     result:      t('wa.fechoResult'),
-    topo:        t('wa.fechoTopo')
+    topo:        t('wa.fechoTopo'),
+    // Quem tem parcelas em andamento era mandado para a /omatome, que saiu do
+    // ar em 10/10/2026. O assunto continua existindo: vira conversa.
+    dividas:     t('wa.fechoDividas')
   }[origem] || t('wa.fechoPadrao');
 
   // Quem sai pelo topo não simulou nada: dizer que simulou confunde os dois

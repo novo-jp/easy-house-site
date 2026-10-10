@@ -110,6 +110,7 @@ const DICT = {
     'wa.fechoLead': 'Prefiro continuar por aqui, se possível.',
     'wa.fechoResult': 'Gostaria de confirmar minha pré-análise.',
     'wa.fechoTopo': 'Prefiro falar com uma pessoa em vez de responder o simulador.',
+    'wa.fechoDividas': 'Tenho parcelas em andamento e gostaria de analisar isso junto com a casa.',
     'wa.fechoPadrao': 'Gostaria de falar com um corretor.',
 
     'imoveis.mensagem': 'Temos imóveis disponíveis na região, o corretor irá lhe apresentar as opções que se enquadram.'
@@ -202,6 +203,7 @@ const DICT = {
     'wa.fechoLead': 'Prefiero seguir por aquí, si es posible.',
     'wa.fechoResult': 'Me gustaría confirmar mi preanálisis.',
     'wa.fechoTopo': 'Prefiero hablar con una persona en vez de responder el simulador.',
+    'wa.fechoDividas': 'Tengo cuotas en curso y me gustaría analizarlas junto con la casa.',
     'wa.fechoPadrao': 'Me gustaría hablar con un asesor.',
 
     'imoveis.mensagem': 'Tenemos viviendas disponibles en la región; el asesor te presentará las opciones que se ajusten a tu caso.'

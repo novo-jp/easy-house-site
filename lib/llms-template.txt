@@ -35,8 +35,8 @@ corretores não possui.
 - A aprovação é garantida? — não. Nenhuma imobiliária aprova crédito; quem decide
   é o banco. A Easy House orienta e apresenta o caso.
 
-Respostas completas em: /landingvendas, /landingaluguel, /comprar-casa-sem-pr,
-/omatome, /refinanciamento
+Respostas completas em: /simular (ferramenta), /entregas (casos reais),
+/quanto-custa-casa-japao, /financiamento-imovel-japao, /custo-inicial-aluguel-japao
 
 ## Imóveis publicados
 
@@ -58,18 +58,12 @@ entrada, do prazo e da análise do perfil.
   cidade, preço, planta, vagas e distância da estação
 - [Apartamentos para alugar](https://easyhouse.homes/imoveis): busca de aluguel
   com custo de entrada detalhado
-- [Comprar no Japão](https://easyhouse.homes/landingvendas): como funciona a compra
-  para estrangeiros
-- [Comprar sem visto permanente](https://easyhouse.homes/comprar-casa-sem-pr):
-  fatores que pesam quando não se tem 永住
 - [Simulador de faixa de compra](https://easyhouse.homes/simular): estima em
   60 segundos a faixa de imóvel compatível com a parcela desejada
-- [Organizar dívidas](https://easyhouse.homes/omatome): reunir parcelas antes de
-  pedir financiamento
-- [Refinanciamento](https://easyhouse.homes/refinanciamento): rever taxa de um
-  financiamento em andamento
-- [Documentos e entrada](https://easyhouse.homes/documentos-entrada-dividas):
-  o que preparar antes do pedido
+- [Simulador em espanhol](https://easyhouse.homes/simular-es): a mesma ferramenta
+  para quem fala espanhol
+- [Entregas reais](https://easyhouse.homes/entregas): famílias que compraram a casa
+  delas no Japão com a Easy House, com foto e data
 - [Sobre](https://easyhouse.homes/sobre): registro, endereço e contato
 
 ## Guias com dados verificáveis
