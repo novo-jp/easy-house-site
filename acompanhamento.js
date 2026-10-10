@@ -74,6 +74,8 @@
   const fmtData = (iso) => iso ? new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '';
   const fmtDataHora = (iso) => iso ? new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
   const fmtYen = (n) => (n || n === 0) ? `¥${Number(n).toLocaleString('ja-JP')}` : '';
+  const fmtPct = (n, casas = 2) =>
+    `${Number(n).toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas })}%`;
   const paraInputLocal = (iso) => {
     if (!iso) return '';
     const d = new Date(iso);
@@ -310,6 +312,7 @@
       equipe ? h('a', { class: 'link voltar', href: '#/' }, '← Todos os processos') : null,
       capa(ctx, etapasOrd),
       equipe ? gestao(ctx, etapasOrd) : consultor(ctx),
+      blocoSimulacao(ctx),
       blocoDocs(ctx, 'ter_em_maos', 'Tenha à mão',
         'Documentos já usados na pré-avaliação. Deixe por perto: o banco pode pedir de novo.'),
       h('section', { 'aria-labelledby': 'tit-etapas', class: 'pilha' },
@@ -572,6 +575,7 @@
       secao('Acesso do cliente', acessoCliente(ctx), !ctx.d.acessos.length),
       secao('Dados e casa escolhida', formDados(ctx)),
       secao('Foto da casa', formFoto(ctx)),
+      secao('Simulação de parcelas', formSimulacao(ctx), !ctx.d.simulacao || ctx.d.simulacao.desatualizada),
       ctx.d.guia ? secao(`Dados do ${ctx.d.processo.banco_nome}`, formGuia(ctx)) : null,
       secao('Nova atualização para o cliente', formNota(ctx, etapas), true));
   }
@@ -658,6 +662,151 @@
     } finally {
       URL.revokeObjectURL(url);
     }
+  }
+
+  // ── simulação de parcelas ────────────────────────────────────────────────
+
+  /**
+   * Mostra uma simulação já calculada. É a mesma visualização para o cliente
+   * e para a prévia do corretor: o que ele vê enquanto digita é exatamente o
+   * que o cliente vai ver.
+   */
+  function vistaSimulacao(r, { previa = false } = {}) {
+    const flat = r.emprestimos.length > 1;
+    const um = r.emprestimos[0];
+    const prazo = `${r.prazo_anos} anos (${r.prazo_meses} meses)`;
+    const juros = flat
+      ? `FLAT35 ${fmtPct(r.emprestimos[0].juros_anual)} e financeira ${fmtPct(r.emprestimos[1].juros_anual)} ao ano`
+      : `juros de ${fmtPct(um.juros_anual)} ao ano (${fmtPct(um.juros_mensal, 4)} ao mês)`;
+
+    const linhas = r.linhas.filter((l) => l.valor);
+    return h('div', { class: 'simul' },
+      h('div', { class: 'simul__parcela' },
+        h('span', {}, previa ? 'Parcela mensal — prévia' : 'Parcela mensal estimada'),
+        h('strong', {}, fmtYen(r.parcela)),
+        h('small', {}, `${prazo} · ${juros}`)),
+      h('p', { class: 'simul__aviso' },
+        h('strong', {}, 'Os juros podem mudar até a aprovação final. '),
+        'Esta é uma simulação: a taxa, e com ela o valor da parcela, só fica definida quando o banco aprova o financiamento.'),
+      h('div', { class: 'simul__soma' },
+        h('div', {}, h('span', {}, 'Casa'), h('b', {}, fmtYen(r.preco))),
+        h('div', {}, h('span', {}, 'Taxas'), h('b', {}, fmtYen(r.taxas))),
+        h('div', { class: 'total' }, h('span', {}, 'Total financiado'), h('b', {}, fmtYen(r.total)))),
+      flat ? h('table', { class: 'simul__tabela' },
+        h('thead', {}, h('tr', {}, h('th', {}, 'Empréstimo'), h('th', {}, 'Valor'), h('th', {}, 'Juros a.a.'), h('th', {}, 'Parcela'))),
+        h('tbody', {}, r.emprestimos.map((e) => h('tr', {},
+          h('td', {}, `${e.rotulo} (${Math.round(e.percentual * 100)}%)`),
+          h('td', {}, fmtYen(e.valor)), h('td', {}, fmtPct(e.juros_anual)), h('td', {}, fmtYen(e.parcela))))),
+        h('tfoot', {}, h('tr', {}, h('td', {}, 'Total'), h('td', {}, fmtYen(r.total)), h('td', {}), h('td', {}, fmtYen(r.parcela))))) : null,
+      h('details', { class: 'simul__detalhe', open: previa },
+        h('summary', {}, 'Ver o detalhe das taxas'),
+        h('table', { class: 'simul__tabela', style: 'margin-top:10px' },
+          h('tbody', {}, linhas.map((l) => h('tr', {},
+            h('td', {}, l.rotulo, previa && l.automatica ? h('span', { class: 'auto' }, 'fórmula') : null),
+            h('td', {}, fmtYen(l.valor))))),
+          h('tfoot', {},
+            h('tr', {}, h('td', {}, 'Soma das taxas'), h('td', {}, fmtYen(r.soma_taxas_exata))),
+            h('tr', {}, h('td', {}, 'Taxas no financiamento'), h('td', {}, fmtYen(r.taxas))))),
+        h('p', { class: 'simul__rodape', style: 'margin-top:8px' },
+          'As taxas entram no financiamento arredondadas para cima, de ¥10.000 em ¥10.000.')));
+  }
+
+  function blocoSimulacao(ctx) {
+    const s = ctx.d.simulacao;
+    // Simulação feita para o outro tipo de banco (privado × FLAT35) não vai
+    // para o cliente: a conta é outra. A equipe vê, com o aviso.
+    if (!s || (s.desatualizada && !ctx.equipe)) return null;
+    return h('section', { class: 'cartao pilha', 'aria-labelledby': 'tit-simul' },
+      h('div', { class: 'simul__topo' },
+        h('p', { class: 'sobre' }, 'Simulação de financiamento'),
+        h('h2', { id: 'tit-simul' }, 'Sua parcela')),
+      s.desatualizada ? h('p', { class: 'alerta' },
+        'Esta simulação foi feita para o outro tipo de banco e não aparece para o cliente. Refaça em Gestão do processo → Simulação de parcelas.') : null,
+      vistaSimulacao(s.resultado),
+      h('p', { class: 'simul__rodape' },
+        `Atualizada em ${fmtData(s.atualizado_em)}${s.atualizado_por ? ` por ${s.atualizado_por}` : ''}. Valores podem sofrer alterações.`));
+  }
+
+  let libSimulacao = null;
+  const carregarLibSimulacao = () => (libSimulacao ||= import('/lib/acompanhamento-simulacao.mjs?v=1'));
+
+  function formSimulacao(ctx) {
+    const m = ctx.d.simulacao_modelo;
+    if (!m?.campos) return h('p', { class: 'mudo' }, 'Escolha o banco do processo para simular.');
+    const salva = ctx.d.simulacao && !ctx.d.simulacao.desatualizada ? ctx.d.simulacao.entrada : null;
+    const base = salva || m.padrao;
+
+    const campo = (rotulo, el, dica) => h('label', { class: 'campo' },
+      h('span', {}, rotulo), el, dica ? h('small', { class: 'mudo pequeno' }, dica) : null);
+    const ienes = (v, ph) => h('input', { inputmode: 'numeric', value: v ?? '', placeholder: ph || '0' });
+
+    const preco = ienes(base.preco ?? ctx.d.processo.casa_preco_yen, '24900000');
+    const prazo = h('input', { inputmode: 'decimal', value: base.prazo_anos ?? '' });
+    const juros = m.campos.juros.map((j) => [j.chave, j, h('input', { inputmode: 'decimal', value: base[j.chave] ?? '' })]);
+    const fixas = m.campos.taxas.filter((t) => !t.auto).map((t) => [t.chave, t, ienes(base.taxas?.[t.chave])]);
+    const autos = m.campos.taxas.filter((t) => t.auto).map((t) => [t.chave, t, ienes(base.ajustes?.[t.chave], 'automático')]);
+
+    const coletar = () => ({
+      preco: preco.value,
+      prazo_anos: prazo.value,
+      ...Object.fromEntries(juros.map(([k, , el]) => [k, el.value])),
+      taxas: Object.fromEntries(fixas.map(([k, , el]) => [k, el.value])),
+      ajustes: Object.fromEntries(autos.map(([k, , el]) => [k, el.value])),
+    });
+
+    const previa = h('div', { class: 'simul__previa' }, h('p', { class: 'mudo pequeno', style: 'margin:0' }, 'Preencha o preço da casa para ver a prévia.'));
+    const atualizarPrevia = async () => {
+      try {
+        const lib = await carregarLibSimulacao();
+        const r = lib.calcular(lib.validarEntrada(coletar(), m.caminho));
+        previa.replaceChildren(vistaSimulacao(r, { previa: true }));
+      } catch (e) {
+        previa.replaceChildren(h('p', { class: 'mudo pequeno', style: 'margin:0' }, e.message || 'Confira os números.'));
+      }
+    };
+
+    const salvar = h('button', { class: 'btn btn--ouro', type: 'submit' }, salva ? 'Atualizar simulação' : 'Publicar simulação');
+    let remover = null;
+    if (ctx.d.simulacao) {
+      remover = h('button', { class: 'btn btn--perigo', type: 'button' }, 'Remover');
+      remover.onclick = () => {
+        if (!confirm('Remover a simulação? O cliente deixa de ver a parcela.')) return;
+        acao(remover, async () => {
+          await post('simulacao', { processo_id: ctx.id, operacao: 'remover' });
+          ctx.recarregar();
+        });
+      };
+    }
+
+    const form = h('form', {
+      oninput: atualizarPrevia,
+      onsubmit: (ev) => {
+        ev.preventDefault();
+        acao(salvar, async () => {
+          await post('simulacao', { processo_id: ctx.id, entrada: coletar() });
+          avisar('Simulação publicada para o cliente.', 'ok');
+          ctx.recarregar();
+        });
+      },
+    },
+      h('p', { class: 'mudo pequeno', style: 'margin:0 0 14px' },
+        m.caminho === 'flat35'
+          ? 'Modelo FLAT35: o total é dividido em 90% pelo FLAT35 e 10% por uma financeira, cada um com a sua taxa — como na aba FLAT da planilha.'
+          : 'Modelo banco privado: um empréstimo só, pela casa + taxas — como na aba Privado da planilha.'),
+      h('div', { class: 'grade2' },
+        campo('Preço da casa (¥)', preco),
+        campo('Prazo (anos)', prazo),
+        juros.map(([, j, el]) => campo(`${j.rotulo} — % ao ano`, el, 'Ex.: 1,79'))),
+      h('p', { class: 'sobre', style: 'margin:6px 0 12px' }, 'Taxas'),
+      h('div', { class: 'grade2' },
+        fixas.map(([, t, el]) => campo(`${t.rotulo} (¥)`, el)),
+        autos.map(([, t, el]) => campo(`${t.rotulo} (¥)`, el, 'Vazio = fórmula da planilha'))),
+      h('p', { class: 'sobre', style: 'margin:6px 0 12px' }, 'Como o cliente vai ver'),
+      previa,
+      h('div', { class: 'dlg__btns', style: 'justify-content:flex-start' }, salvar, remover));
+
+    atualizarPrevia();
+    return form;
   }
 
   function formGuia(ctx) {

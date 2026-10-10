@@ -19,6 +19,7 @@ import {
   sb, entrar, quemEsta, ehEquipe, emitirCookie, cookieApagado,
   normalizarUsuario, gerarSenha, criarContaAuth, trocarSenhaAuth, apagarContaAuth,
 } from '../lib/painel-sessao.mjs';
+import { calcular, validarEntrada, entradaPadrao, MODELOS_SIMULACAO } from '../lib/acompanhamento-simulacao.mjs';
 
 const MODELOS = JSON.parse(readFileSync(new URL('../lib/acompanhamento-modelos.json', import.meta.url), 'utf8'));
 const BUCKET = 'acompanhamento';
@@ -136,6 +137,23 @@ async function carregarProcesso(perfil, id) {
 
   const banco = MODELOS.bancos[p.banco];
   const guia = banco?.guia ? MODELOS.guias[banco.guia] : null;
+  const { simulacao: simGuardada, ...extrasVisiveis } = p.extras || {};
+  let simulacao = null;
+  if (simGuardada?.entrada) {
+    try {
+      simulacao = {
+        resultado: calcular(simGuardada.entrada),
+        atualizado_em: simGuardada.atualizado_em,
+        atualizado_por: simGuardada.atualizado_por,
+        // feita para o outro tipo de banco (privado × FLAT35): o corretor refaz
+        desatualizada: simGuardada.entrada.modelo !== banco?.caminho,
+        ...(equipe ? { entrada: simGuardada.entrada } : {}),
+      };
+    } catch { simulacao = null; }
+    // Feita para o outro tipo de banco, a conta é outra: o cliente não recebe
+    // nem os números (não basta a tela esconder).
+    if (simulacao?.desatualizada && !equipe) simulacao = null;
+  }
 
   return {
     processo: {
@@ -149,7 +167,7 @@ async function carregarProcesso(perfil, id) {
       casa_preco_yen: p.casa_preco_yen,
       casa_url: p.casa_url,
       casa_foto_url: await urlFoto(p.casa_foto_path),
-      extras: p.extras || {},
+      extras: extrasVisiveis,
       atualizado_em: p.atualizado_em,
       ...(equipe ? { lead_code: p.lead_code, corretor_id: p.corretor_id, arquivado: p.arquivado, criado_em: p.criado_em } : {}),
     },
@@ -162,6 +180,10 @@ async function carregarProcesso(perfil, id) {
     documentos,
     notas,
     guia,
+    simulacao,
+    ...(equipe ? {
+      simulacao_modelo: { caminho: banco?.caminho, campos: MODELOS_SIMULACAO[banco?.caminho], padrao: entradaPadrao(banco?.caminho) },
+    } : {}),
     orientacoes: MODELOS.orientacoes?.[banco?.caminho] || {},
     avisos: MODELOS.avisos,
     lembretes: MODELOS.lembretes,
@@ -441,6 +463,28 @@ async function subirFoto(perfil, b) {
   return { ok: true, url: await urlFoto(caminho) };
 }
 
+// ── simulação de parcelas ───────────────────────────────────────────────────
+
+/** Guarda o que o corretor digitou. O resultado é recalculado a cada leitura. */
+async function salvarSimulacao(perfil, b) {
+  const id = exigirUuid(b.processo_id, 'processo');
+  const [p] = await sb(`acomp_processo?select=banco,extras&id=eq.${id}`);
+  if (!p) throw new Recusa(404, 'processo não encontrado');
+  const extras = { ...(p.extras || {}) };
+
+  if (b.operacao === 'remover') {
+    delete extras.simulacao;
+  } else {
+    const modelo = MODELOS.bancos[p.banco]?.caminho;
+    let entrada;
+    try { entrada = validarEntrada(b.entrada || {}, modelo); }
+    catch (e) { throw new Recusa(422, e.message); }
+    extras.simulacao = { entrada, atualizado_em: agora(), atualizado_por: perfil.nome };
+  }
+  await sb(`acomp_processo?id=eq.${id}`, { method: 'PATCH', body: { extras, atualizado_em: agora() } });
+  return { ok: true, resultado: extras.simulacao ? calcular(extras.simulacao.entrada) : null };
+}
+
 // ── usuários ────────────────────────────────────────────────────────────────
 
 /**
@@ -553,6 +597,7 @@ const ACOES = {
   documento:        ['POST', 'logado', mexerDocumento],   // cliente só alterna "já tenho"
   nota:             ['POST', 'equipe', mexerNota],
   foto:             ['POST', 'equipe', subirFoto],
+  simulacao:        ['POST', 'equipe', salvarSimulacao],
   criar_acesso:     ['POST', 'equipe', criarAcessoCliente],
   criar_membro:     ['POST', 'admin',  criarMembroEquipe],
   redefinir_senha:  ['POST', 'equipe', redefinirSenha],
