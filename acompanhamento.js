@@ -315,8 +315,19 @@
     if (equipe) tarefas.push(carregarApoio());
     const [d] = await Promise.all(tarefas);
 
-    const recarregar = () => telaProcesso(id, true);
-    const ctx = { d, equipe, recarregar, id };
+    // recarregar = busca tudo de novo no servidor (foto, banco, dados da casa).
+    // redesenhar = só refaz a tela com o que já está na memória — é o que os
+    // cliques do dia a dia usam, para a mudança aparecer na hora.
+    const ctx = { d, equipe, id };
+    ctx.recarregar = () => telaProcesso(id, true);
+    ctx.redesenhar = () => desenharProcesso(ctx, true);
+    desenharProcesso(ctx, manterRolagem, y);
+  }
+
+  function desenharProcesso(ctx, manterRolagem = false, yAntes = window.scrollY) {
+    const { d, equipe, id } = ctx;
+    const y = yAntes;
+    d.etapa_atual = etapaAtualLocal(d.etapas);
 
     const etapasOrd = [...d.etapas].sort((a, b) => a.ordem - b.ordem);
     const docsDe = (grupo) => d.documentos.filter((x) => x.grupo === grupo);
@@ -326,6 +337,7 @@
         h('a', { class: 'link voltar', href: '#/' }, '← Todos os processos'),
         h('a', { class: 'btn btn--mini', href: `#/p/${id}/cliente` }, 'Ver como o cliente vê')) : null,
       capa(ctx, etapasOrd),
+      blocoAgenda(ctx),
       equipe ? gestao(ctx, etapasOrd) : consultor(ctx),
       blocoSimulacao(ctx),
       blocoDocs(ctx, 'ter_em_maos', 'Tenha à mão',
@@ -434,24 +446,49 @@
   function acoesEtapa(ctx, e) {
     const data = h('input', { type: 'datetime-local', value: paraInputLocal(e.data_prevista) });
     const btnData = h('button', { class: 'btn btn--mini', type: 'button' }, 'Salvar data');
-    btnData.onclick = () => acao(btnData, async () => {
-      await post('etapa', { etapa_id: e.id, operacao: 'data', data: data.value ? new Date(data.value).toISOString() : null });
-      avisar('Data salva.', 'ok');
-      ctx.recarregar();
-    });
+    btnData.onclick = () => {
+      const antes = e.data_prevista;
+      const nova = data.value ? new Date(data.value).toISOString() : null;
+      otimista(ctx, () => { e.data_prevista = nova; }, () => { e.data_prevista = antes; },
+        () => post('etapa', { etapa_id: e.id, operacao: 'data', data: nova }));
+    };
 
     const principal = e.concluida_em
       ? h('button', { class: 'btn btn--mini', type: 'button' }, 'Reabrir etapa')
       : h('button', { class: 'btn btn--ouro btn--mini', type: 'button' }, 'Concluir etapa');
-    principal.onclick = () => acao(principal, async () => {
-      await post('etapa', { etapa_id: e.id, operacao: e.concluida_em ? 'reabrir' : 'concluir' });
-      ctx.recarregar();
-    });
+    principal.onclick = () => {
+      const antes = e.concluida_em;
+      const operacao = antes ? 'reabrir' : 'concluir';
+      otimista(ctx, () => { e.concluida_em = antes ? null : new Date().toISOString(); }, () => { e.concluida_em = antes; },
+        () => post('etapa', { etapa_id: e.id, operacao }));
+    };
 
     return h('div', { class: 'etapa__acoes' },
       principal,
       h('label', { class: 'campo' }, h('span', {}, 'Data agendada'), data),
       btnData);
+  }
+
+  /** Primeira etapa, na ordem, ainda não concluída — a mesma regra do servidor. */
+  function etapaAtualLocal(etapas) {
+    return [...etapas].sort((a, b) => a.ordem - b.ordem).find((e) => !e.concluida_em)?.chave || null;
+  }
+
+  /**
+   * Muda a tela na hora e grava por trás. Se a gravação falhar, desfaz e
+   * avisa. Antes, cada clique esperava gravar E buscar o processo inteiro de
+   * novo (~3 s com o servidor nos EUA) para o check aparecer.
+   */
+  async function otimista(ctx, aplicar, desfazer, gravar) {
+    aplicar();
+    ctx.redesenhar();
+    try {
+      await gravar();
+    } catch (e) {
+      desfazer();
+      ctx.redesenhar();
+      avisar(e.message || 'Não consegui salvar. Tente de novo.');
+    }
   }
 
   // ── documentos ─────────────────────────────────────────────────────────────
@@ -476,27 +513,30 @@
         'aria-label': travado ? `${doc.nome}: entregue` : `${doc.nome}: ${marcado ? 'desmarcar' : 'marcar como já tenho'}`,
         disabled: travado,
       }, '✓');
-      btn.onclick = () => acao(btn, async () => {
-        const novo = doc.status === 'pendente' ? 'pronto' : (doc.status === 'pronto' ? 'pendente' : 'pronto');
-        await post('documento', { operacao: 'status', documento_id: doc.id, status: novo });
-        ctx.recarregar();
-      });
+      btn.onclick = () => {
+        const antes = doc.status;
+        const novo = antes === 'pendente' ? 'pronto' : (antes === 'pronto' ? 'pendente' : 'pronto');
+        otimista(ctx, () => { doc.status = novo; }, () => { doc.status = antes; },
+          () => post('documento', { operacao: 'status', documento_id: doc.id, status: novo }));
+      };
 
       let controles = h('span', { class: 'doc__selo' }, ROTULO_STATUS[doc.status]);
       if (equipe) {
         const sel = h('select', { 'aria-label': `Situação de ${doc.nome}` },
           Object.entries(ROTULO_STATUS).map(([k, r]) => h('option', { value: k, selected: k === doc.status }, r)));
-        sel.onchange = () => acao(sel, async () => {
-          await post('documento', { operacao: 'status', documento_id: doc.id, status: sel.value });
-          ctx.recarregar();
-        });
+        sel.onchange = () => {
+          const antes = doc.status;
+          const novo = sel.value;
+          otimista(ctx, () => { doc.status = novo; }, () => { doc.status = antes; },
+            () => post('documento', { operacao: 'status', documento_id: doc.id, status: novo }));
+        };
         const rem = h('button', { class: 'link', type: 'button', 'aria-label': `Remover ${doc.nome}` }, 'remover');
         rem.onclick = () => {
           if (!confirm(`Remover "${doc.nome}" da lista?`)) return;
-          acao(rem, async () => {
-            await post('documento', { operacao: 'remover', documento_id: doc.id });
-            ctx.recarregar();
-          });
+          const lista = ctx.d.documentos;
+          const pos = lista.indexOf(doc);
+          otimista(ctx, () => { lista.splice(pos, 1); }, () => { lista.splice(pos, 0, doc); },
+            () => post('documento', { operacao: 'remover', documento_id: doc.id }));
         };
         controles = h('span', { class: 'doc__equipe' }, sel, rem);
       }
@@ -517,8 +557,9 @@
           ev.preventDefault();
           if (!nome.value.trim()) return;
           acao(btn, async () => {
-            await post('documento', { operacao: 'adicionar', processo_id: ctx.id, grupo, nome: nome.value });
-            ctx.recarregar();
+            const r = await post('documento', { operacao: 'adicionar', processo_id: ctx.id, grupo, nome: nome.value });
+            ctx.d.documentos.push(r.documento);
+            ctx.redesenhar();
           });
         },
       }, nome, btn);
@@ -557,7 +598,10 @@
       remover = h('button', { class: 'link', type: 'button', style: 'margin-left:8px;font-size:.8rem' }, 'apagar');
       remover.onclick = () => {
         if (!confirm('Apagar esta atualização?')) return;
-        acao(remover, async () => { await post('nota', { operacao: 'remover', nota_id: n.id }); ctx.recarregar(); });
+        const lista = ctx.d.notas;
+        const pos = lista.indexOf(n);
+        otimista(ctx, () => { lista.splice(pos, 1); }, () => { lista.splice(pos, 0, n); },
+          () => post('nota', { operacao: 'remover', nota_id: n.id }));
       };
     }
     return h('li', { class: `nota${n.interna ? ' interna' : ''}` },
@@ -687,6 +731,153 @@
     } finally {
       URL.revokeObjectURL(url);
     }
+  }
+
+  // ── calendário do processo ─────────────────────────────────────────────────
+  //
+  // Junta numa lista só, em ordem de data, o que tem dia marcado: as etapas
+  // com data (vistoria, assinatura…) e os compromissos avulsos. Fica no topo
+  // do processo (equipe) e no Início/Etapas do cliente. Cada data pode ir
+  // para o calendário do celular (.ics).
+
+  const inicioDoDia = (v) => { const x = new Date(v); x.setHours(0, 0, 0, 0); return x; };
+  const temHora = (iso) => { const x = new Date(iso); return x.getHours() !== 0 || x.getMinutes() !== 0; };
+
+  function quandoRelativo(iso) {
+    const dias = Math.round((inicioDoDia(iso) - inicioDoDia(Date.now())) / 86_400_000);
+    if (dias === 0) return 'hoje';
+    if (dias === 1) return 'amanhã';
+    if (dias === -1) return 'ontem';
+    return dias > 1 ? `em ${dias} dias` : `há ${-dias} dias`;
+  }
+
+  function itensAgenda(d) {
+    const etapas = d.etapas.filter((e) => e.data_prevista).map((e) => ({
+      tipo: 'etapa', id: e.id, ref: e, titulo: e.titulo, data: e.data_prevista, feito: !!e.concluida_em,
+    }));
+    const avulsos = (d.eventos || []).map((ev) => ({ tipo: 'evento', id: ev.id, ref: ev, titulo: ev.titulo, data: ev.data, feito: false }));
+    const hoje = inicioDoDia(Date.now());
+    return [...etapas, ...avulsos]
+      .map((i) => ({ ...i, passado: i.feito || inicioDoDia(i.data) < hoje }))
+      .sort((a, b) => new Date(a.data) - new Date(b.data));
+  }
+
+  /** Arquivo .ics: no iPhone e no Android abre direto "Adicionar ao calendário". */
+  function baixarIcs(item, cliente) {
+    const ini = new Date(item.data);
+    const utc = (dt) => dt.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    const dia = (dt) => `${dt.getFullYear()}${String(dt.getMonth() + 1).padStart(2, '0')}${String(dt.getDate()).padStart(2, '0')}`;
+    const esc = (t) => String(t).replace(/[\;,]/g, (c) => `\\${c}`).replace(/\n/g, '\\n');
+    const inteiro = !temHora(item.data);
+    const fim = new Date(ini.getTime() + 60 * 60_000);
+    const diaSeguinte = new Date(ini); diaSeguinte.setDate(diaSeguinte.getDate() + 1);
+    const ics = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Easy House//Acompanhamento//PT', 'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:${item.id}@easyhouse.homes`,
+      `DTSTAMP:${utc(new Date())}`,
+      inteiro ? `DTSTART;VALUE=DATE:${dia(ini)}` : `DTSTART:${utc(ini)}`,
+      inteiro ? `DTEND;VALUE=DATE:${dia(diaSeguinte)}` : `DTEND:${utc(fim)}`,
+      `SUMMARY:${esc(`${item.titulo} — Easy House`)}`,
+      `DESCRIPTION:${esc(`Compra da casa${cliente ? ` de ${cliente}` : ''}. Acompanhe em https://easyhouse.homes/acompanhamento`)}`,
+      'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', `DESCRIPTION:${esc(item.titulo)}`, 'END:VALARM',
+      'END:VEVENT', 'END:VCALENDAR',
+    ].join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+    a.download = `easyhouse-${item.titulo.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40)}.ics`;
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }
+
+  function listaAgenda(itens, { ctx = null, cliente = '', limite = 0 } = {}) {
+    const proximo = itens.find((i) => !i.passado);
+    const mostrar = limite ? itens.filter((i) => !i.passado).slice(0, limite) : itens;
+    return h('ul', { class: 'agenda' }, mostrar.map((i) => {
+      const dt = new Date(i.data);
+      const remover = ctx ? h('button', { class: 'link', type: 'button', 'aria-label': `Tirar a data de ${i.titulo}` }, 'remover') : null;
+      if (remover) {
+        remover.onclick = () => {
+          if (i.tipo === 'etapa') {
+            const antes = i.ref.data_prevista;
+            otimista(ctx, () => { i.ref.data_prevista = null; }, () => { i.ref.data_prevista = antes; },
+              () => post('etapa', { etapa_id: i.id, operacao: 'data', data: null }));
+          } else {
+            if (!confirm(`Apagar o compromisso "${i.titulo}"?`)) return;
+            const lista = ctx.d.eventos;
+            const pos = lista.indexOf(i.ref);
+            otimista(ctx, () => { lista.splice(pos, 1); }, () => { lista.splice(pos, 0, i.ref); },
+              () => post('evento', { processo_id: ctx.id, operacao: 'remover', evento_id: i.id }));
+          }
+        };
+      }
+      return h('li', { class: `agenda__item${i.passado ? ' passado' : ''}${i === proximo ? ' proximo' : ''}` },
+        h('span', { class: 'agenda__data', 'aria-hidden': 'true' },
+          h('span', { class: 'agenda__sem' }, dt.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.', '')),
+          h('span', { class: 'agenda__dia' }, String(dt.getDate())),
+          h('span', { class: 'agenda__mes' }, dt.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', ''))),
+        h('span', { class: 'agenda__info' },
+          h('strong', {}, i.titulo),
+          h('span', { class: 'mudo pequeno' },
+            [dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+              temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
+              i.feito ? 'concluída' : quandoRelativo(i.data)].filter(Boolean).join(' · '))),
+        h('span', { class: 'agenda__acoes' },
+          !i.passado ? h('button', { class: 'btn btn--mini', type: 'button', onclick: () => baixarIcs(i, cliente), 'aria-label': `Salvar ${i.titulo} no calendário do celular` }, '+ Calendário') : null,
+          remover));
+    }));
+  }
+
+  /** Topo do processo, na tela da equipe: a lista e o jeito rápido de marcar datas. */
+  function blocoAgenda(ctx) {
+    const d = ctx.d;
+    const itens = itensAgenda(d);
+    const futuros = itens.filter((i) => !i.passado).length;
+
+    let form = null;
+    if (ctx.equipe) {
+      const etapasOrd = [...d.etapas].sort((a, b) => a.ordem - b.ordem);
+      const qual = h('select', { 'aria-label': 'O que é' },
+        etapasOrd.map((e) => h('option', { value: e.id, selected: e.chave === d.etapa_atual }, `${e.ordem}. ${e.titulo}`)),
+        h('option', { value: 'outro' }, 'Outro compromisso…'));
+      const titulo = h('input', { placeholder: 'Ex.: Buscar o Juminhyo na prefeitura', maxlength: 120, hidden: true, 'aria-label': 'Nome do compromisso' });
+      const quando = h('input', { type: 'datetime-local', required: true, 'aria-label': 'Data e hora' });
+      const btn = h('button', { class: 'btn btn--ouro btn--mini', type: 'submit' }, 'Marcar');
+      qual.onchange = () => { titulo.hidden = qual.value !== 'outro'; if (!titulo.hidden) titulo.focus(); };
+      form = h('form', {
+        class: 'agenda__form',
+        onsubmit: (ev) => {
+          ev.preventDefault();
+          if (!quando.value) return;
+          const iso = new Date(quando.value).toISOString();
+          if (qual.value === 'outro') {
+            if (!titulo.value.trim()) { titulo.focus(); return; }
+            acao(btn, async () => {
+              const r = await post('evento', { processo_id: ctx.id, operacao: 'adicionar', titulo: titulo.value, data: iso });
+              d.eventos = r.eventos;
+              ctx.redesenhar();
+            });
+          } else {
+            const e = d.etapas.find((x) => x.id === qual.value);
+            const antes = e.data_prevista;
+            otimista(ctx, () => { e.data_prevista = iso; }, () => { e.data_prevista = antes; },
+              () => post('etapa', { etapa_id: e.id, operacao: 'data', data: iso }));
+          }
+        },
+      }, qual, titulo, quando, btn);
+    }
+
+    return h('section', { class: 'cartao agenda-cartao', 'aria-labelledby': 'tit-agenda' },
+      h('div', { class: 'agenda__topo' },
+        h('h2', { id: 'tit-agenda' }, 'Datas'),
+        h('span', { class: 'mudo pequeno' }, itens.length
+          ? `${futuros ? `${futuros} pela frente` : 'nenhuma pela frente'} · ${itens.length} no total`
+          : 'nenhuma marcada')),
+      itens.length ? listaAgenda(itens, { ctx: ctx.equipe ? ctx : null, cliente: d.processo.cliente_nome })
+        : h('p', { class: 'mudo', style: 'margin:0' }, ctx.equipe ? 'Marque abaixo a data da vistoria, das assinaturas e de outros compromissos. O cliente vê esta lista.' : 'Quando o seu consultor marcar uma data, ela aparece aqui.'),
+      form);
   }
 
   // ── apagar processo (só administrador) ─────────────────────────────────────
@@ -916,9 +1107,10 @@
       onsubmit: (ev) => {
         ev.preventDefault();
         acao(btn, async () => {
-          await post('nota', { processo_id: ctx.id, texto: texto.value, etapa_chave: etapa.value || null, interna: interna.checked });
+          const r = await post('nota', { processo_id: ctx.id, texto: texto.value, etapa_chave: etapa.value || null, interna: interna.checked });
+          ctx.d.notas.unshift(r.nota);
           avisar(interna.checked ? 'Nota interna salva.' : 'Atualização publicada para o cliente.', 'ok');
-          ctx.recarregar();
+          ctx.redesenhar();
         });
       },
     },
@@ -1312,9 +1504,16 @@
         href: `https://wa.me/${d.consultor.whatsapp}?text=${encodeURIComponent(`Olá, ${d.consultor.nome}! Sou ${nomeBonito(p.cliente_nome)} e tenho uma dúvida sobre o meu processo.`)}`,
       }, icone('whatsapp', 18), 'Conversar'));
 
+    const futuras = itensAgenda(d).filter((i) => !i.passado);
+    const datas = futuras.length ? h('section', { class: 'cli-card', 'aria-labelledby': 'cli-datas' },
+      h('div', { class: 'agenda__topo' },
+        h('p', { class: 'sobre', id: 'cli-datas' }, 'Próximas datas'),
+        futuras.length > 2 ? h('button', { type: 'button', class: 'link', onclick: () => irPara('etapas') }, 'ver todas') : null),
+      listaAgenda(futuras, { limite: 2, cliente: nomeBonito(p.cliente_nome) })) : null;
+
     return h('div', { class: 'cli-pilha' },
       h('header', { class: 'cli-ola' }, h('p', { class: 'sobre' }, 'Pré-avaliação aprovada'), h('h1', {}, `Olá, ${nomeBonito(quem)}`)),
-      casa, progresso, agora, depois, parcela, novidades, consultorCard);
+      casa, progresso, datas, agora, depois, parcela, novidades, consultorCard);
   }
 
   // ── Etapas: a linha do tempo inteira, com a atual aberta ───────────────────
@@ -1325,6 +1524,9 @@
     return h('div', { class: 'cli-pilha' },
       h('header', { class: 'cli-ola' }, h('p', { class: 'sobre' }, 'Seu caminho até as chaves'), h('h1', {}, 'Etapas')),
       h('p', { class: 'mudo', style: 'margin:0' }, 'Você não precisa decorar. Nós avisamos o próximo passo — e você pode abrir qualquer etapa para ver o que vem.'),
+      itensAgenda(d).length ? h('section', { class: 'cli-card' },
+        h('p', { class: 'sobre' }, 'Datas'),
+        listaAgenda(itensAgenda(d), { cliente: nomeBonito(d.processo.cliente_nome) })) : null,
       h('ol', { class: 'etapas' }, r.etapas.map((e) => {
         const sit = e.concluida_em ? 'feita' : (e === r.atual ? 'agora' : 'proxima');
         const docs = r.docsDe(e.chave);

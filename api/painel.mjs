@@ -15,6 +15,7 @@
  */
 
 import { readFileSync } from 'node:fs';
+import { randomUUID } from 'node:crypto';
 import {
   sb, entrar, quemEsta, ehEquipe, emitirCookie, cookieApagado,
   normalizarUsuario, gerarSenha, criarContaAuth, trocarSenhaAuth, apagarContaAuth,
@@ -117,9 +118,12 @@ async function carregarProcesso(perfil, id) {
   if (!p) throw new Recusa(404, 'processo não encontrado');
 
   const ids = [...new Set([p.corretor_id, ...notasTodas.map((n) => n.autor_id)].filter(Boolean))];
-  const pessoas = ids.length
-    ? await sb(`acomp_usuario?select=user_id,nome,whatsapp,papel&user_id=in.(${ids.join(',')})`)
-    : [];
+  // Pessoas, acessos e o link da foto não dependem um do outro: em paralelo.
+  const [pessoas, vincAcessos, fotoUrl] = await Promise.all([
+    ids.length ? sb(`acomp_usuario?select=user_id,nome,whatsapp,papel&user_id=in.(${ids.join(',')})`) : [],
+    equipe ? sb(`acomp_processo_cliente?select=user_id&processo_id=eq.${id}`) : [],
+    urlFoto(p.casa_foto_path),
+  ]);
   const nomeDe = (uid) => pessoas.find((x) => x.user_id === uid)?.nome || null;
   const corretor = pessoas.find((x) => x.user_id === p.corretor_id);
 
@@ -127,17 +131,13 @@ async function carregarProcesso(perfil, id) {
   const notas = (equipe ? notasTodas : notasTodas.filter((n) => !n.interna))
     .map((n) => ({ ...n, autor: nomeDe(n.autor_id) }));
 
-  let acessos = [];
-  if (equipe) {
-    const vinc = await sb(`acomp_processo_cliente?select=user_id&processo_id=eq.${id}`);
-    if (vinc.length) {
-      acessos = await sb(`acomp_usuario?select=user_id,usuario,nome,ativo,ultimo_acesso&user_id=in.(${vinc.map((v) => v.user_id).join(',')})`);
-    }
-  }
+  const acessos = vincAcessos.length
+    ? await sb(`acomp_usuario?select=user_id,usuario,nome,ativo,ultimo_acesso&user_id=in.(${vincAcessos.map((v) => v.user_id).join(',')})`)
+    : [];
 
   const banco = MODELOS.bancos[p.banco];
   const guia = banco?.guia ? MODELOS.guias[banco.guia] : null;
-  const { simulacao: simGuardada, ...extrasVisiveis } = p.extras || {};
+  const { simulacao: simGuardada, eventos: eventosGuardados, ...extrasVisiveis } = p.extras || {};
   let simulacao = null;
   if (simGuardada?.entrada) {
     try {
@@ -166,7 +166,7 @@ async function carregarProcesso(perfil, id) {
       casa_endereco: p.casa_endereco,
       casa_preco_yen: p.casa_preco_yen,
       casa_url: p.casa_url,
-      casa_foto_url: await urlFoto(p.casa_foto_path),
+      casa_foto_url: fotoUrl,
       extras: extrasVisiveis,
       atualizado_em: p.atualizado_em,
       ...(equipe ? { lead_code: p.lead_code, corretor_id: p.corretor_id, arquivado: p.arquivado, criado_em: p.criado_em } : {}),
@@ -181,6 +181,7 @@ async function carregarProcesso(perfil, id) {
     notas,
     guia,
     simulacao,
+    eventos: (eventosGuardados || []).filter((e) => e && e.data),
     ...(equipe ? {
       simulacao_modelo: { caminho: banco?.caminho, campos: MODELOS_SIMULACAO[banco?.caminho], padrao: entradaPadrao(banco?.caminho) },
     } : {}),
@@ -360,8 +361,10 @@ async function mexerEtapa(perfil, b) {
     mudanca.data_prevista = b.data ? new Date(b.data).toISOString() : null;
   } else throw new Recusa(400, 'operação inválida');
 
-  await sb(`acomp_etapa?id=eq.${etapaId}`, { method: 'PATCH', body: mudanca });
-  await tocarProcesso(e.processo_id);
+  await Promise.all([
+    sb(`acomp_etapa?id=eq.${etapaId}`, { method: 'PATCH', body: mudanca }),
+    tocarProcesso(e.processo_id),
+  ]);
   return { ok: true };
 }
 
@@ -375,12 +378,13 @@ async function mexerDocumento(perfil, b) {
     if (!nome) throw new Recusa(422, 'informe o nome do documento');
     const gruposValidos = new Set(['ter_em_maos', 'outros', ...Object.keys(MODELOS.etapas)]);
     const grupo = gruposValidos.has(b.grupo) ? b.grupo : 'outros';
-    await sb('acomp_documento', {
-      method: 'POST',
+    const [documento] = await sb('acomp_documento', {
+      method: 'POST', prefer: 'return=representation',
       body: { processo_id: b.processo_id, grupo, ordem: 999, nome, detalhe: txt(b.detalhe, 240), atualizado_por: perfil.user_id },
     });
     await tocarProcesso(b.processo_id);
-    return { ok: true };
+    // devolve a linha criada: a página põe na lista sem buscar o processo de novo
+    return { ok: true, documento };
   }
 
   const docId = exigirUuid(b.documento_id, 'documento');
@@ -396,16 +400,16 @@ async function mexerDocumento(perfil, b) {
     if (!equipe && (status === 'entregue' || d.status === 'entregue')) {
       throw new Recusa(403, 'quem confirma a entrega é o seu consultor');
     }
-    await sb(`acomp_documento?id=eq.${docId}`, {
-      method: 'PATCH', body: { status, atualizado_em: agora(), atualizado_por: perfil.user_id },
-    });
+    await Promise.all([
+      sb(`acomp_documento?id=eq.${docId}`, { method: 'PATCH', body: { status, atualizado_em: agora(), atualizado_por: perfil.user_id } }),
+      tocarProcesso(d.processo_id),
+    ]);
   } else if (b.operacao === 'remover') {
     if (!equipe) throw new Recusa(403, 'só a equipe remove documentos');
-    await sb(`acomp_documento?id=eq.${docId}`, { method: 'DELETE' });
+    await Promise.all([sb(`acomp_documento?id=eq.${docId}`, { method: 'DELETE' }), tocarProcesso(d.processo_id)]);
   } else {
     throw new Recusa(400, 'operação inválida');
   }
-  await tocarProcesso(d.processo_id);
   return { ok: true };
 }
 
@@ -421,12 +425,12 @@ async function mexerNota(perfil, b) {
   const texto = txt(b.texto, 2000);
   if (!texto) throw new Recusa(422, 'escreva a atualização');
   const etapa_chave = b.etapa_chave && MODELOS.etapas[b.etapa_chave] ? b.etapa_chave : null;
-  await sb('acomp_nota', {
-    method: 'POST',
+  const [nota] = await sb('acomp_nota', {
+    method: 'POST', prefer: 'return=representation',
     body: { processo_id: b.processo_id, autor_id: perfil.user_id, etapa_chave, texto, interna: !!b.interna },
   });
   await tocarProcesso(b.processo_id);
-  return { ok: true };
+  return { ok: true, nota: { ...nota, autor: perfil.nome } };
 }
 
 /**
@@ -464,6 +468,37 @@ async function subirFoto(perfil, b) {
     }).catch(() => {});
   }
   return { ok: true, url: await urlFoto(caminho) };
+}
+
+// ── compromissos do calendário ──────────────────────────────────────────────
+
+/**
+ * Datas que não são de uma etapa ("Ir à prefeitura buscar o Juminhyo",
+ * "Reunião no banco"). Ficam em extras.eventos — sem tabela nova, sem SQL.
+ * As datas das etapas continuam em acomp_etapa.data_prevista; a página junta
+ * as duas numa lista só.
+ */
+async function mexerEvento(perfil, b) {
+  const id = exigirUuid(b.processo_id, 'processo');
+  const [p] = await sb(`acomp_processo?select=extras&id=eq.${id}`);
+  if (!p) throw new Recusa(404, 'processo não encontrado');
+  const extras = { ...(p.extras || {}) };
+  let eventos = Array.isArray(extras.eventos) ? [...extras.eventos] : [];
+
+  if (b.operacao === 'remover') {
+    eventos = eventos.filter((e) => e.id !== b.evento_id);
+  } else if (b.operacao === 'adicionar') {
+    const titulo = txt(b.titulo, 120);
+    if (!titulo) throw new Recusa(422, 'escreva o que é o compromisso');
+    if (!b.data || Number.isNaN(Date.parse(b.data))) throw new Recusa(422, 'informe a data');
+    if (eventos.length >= 60) throw new Recusa(422, 'compromissos demais neste processo');
+    eventos.push({ id: randomUUID(), titulo, data: new Date(b.data).toISOString(), criado_por: perfil.nome, criado_em: agora() });
+  } else {
+    throw new Recusa(400, 'operação inválida');
+  }
+  extras.eventos = eventos;
+  await sb(`acomp_processo?id=eq.${id}`, { method: 'PATCH', body: { extras, atualizado_em: agora() } });
+  return { ok: true, eventos };
 }
 
 // ── apagar processo (só administrador) ──────────────────────────────────────
@@ -661,6 +696,7 @@ const ACOES = {
   foto:             ['POST', 'equipe', subirFoto],
   simulacao:        ['POST', 'equipe', salvarSimulacao],
   apagar_processo:  ['POST', 'admin',  apagarProcesso],
+  evento:           ['POST', 'equipe', mexerEvento],
   criar_acesso:     ['POST', 'equipe', criarAcessoCliente],
   criar_membro:     ['POST', 'admin',  criarMembroEquipe],
   redefinir_senha:  ['POST', 'equipe', redefinirSenha],

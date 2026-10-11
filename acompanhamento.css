@@ -560,3 +560,39 @@ body.modo-cliente .app {
 .btn--perigo-cheio { background: var(--erro); border-color: var(--erro); color: #fff; }
 .btn--perigo-cheio:hover:not(:disabled) { background: #8f1d17; border-color: #8f1d17; }
 .btn--perigo-cheio:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ── calendário do processo ───────────────────────────────────────────── */
+.agenda-cartao { display: grid; gap: 14px; }
+.agenda__topo { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.agenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.agenda__item {
+  display: grid; grid-template-columns: 54px 1fr auto; gap: 12px; align-items: center;
+  padding: 10px 12px; border: 1px solid var(--linha); border-radius: var(--r-m); background: var(--papel-alto);
+}
+.agenda__item.proximo { border-color: var(--latao); box-shadow: 0 0 0 3px var(--latao-claro); }
+.agenda__item.passado { background: var(--papel); opacity: .6; }
+.agenda__data {
+  display: grid; justify-items: center; line-height: 1.05; padding: 6px 0; border-radius: 8px;
+  background: var(--teal-claro); color: var(--teal-escuro);
+}
+.agenda__item.proximo .agenda__data { background: var(--latao); color: #fff; }
+.agenda__item.passado .agenda__data { background: var(--papel-fundo); color: var(--tinta-fraca); }
+.agenda__sem, .agenda__mes { font-size: .66rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+.agenda__dia { font-family: var(--fonte-display); font-size: 1.45rem; }
+.agenda__info { display: grid; gap: 2px; min-width: 0; }
+.agenda__info strong { font-weight: 600; }
+.agenda__acoes { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.agenda__form {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  padding-top: 12px; border-top: 1px dashed var(--linha-forte);
+}
+.agenda__form select, .agenda__form input {
+  background: var(--papel-alto); border: 1px solid var(--linha-forte); border-radius: var(--r-p);
+  padding: 8px 10px; min-height: 40px; flex: 1 1 180px;
+}
+.agenda__form input[hidden] { display: none; }
+@media (max-width: 520px) {
+  .agenda__item { grid-template-columns: 50px 1fr; }
+  .agenda__acoes { grid-column: 2; justify-content: flex-start; }
+  .agenda__form select, .agenda__form input { font-size: 16px; }
+}
