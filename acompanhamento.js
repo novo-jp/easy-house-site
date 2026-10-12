@@ -1037,11 +1037,37 @@
     const processo = () => dono.value.startsWith('p:') ? fonte.processos.find((p) => p.id === dono.value.slice(2)) : null;
     const membro = () => dono.value.startsWith('m:') ? membros.find((m) => m.user_id === dono.value.slice(2)) : null;
 
+    // Choque de horário: o que já está marcado a menos de 1 h do escolhido,
+    // na agenda da mesma pessoa (a própria + a dos clientes dela). Só avisa —
+    // dois compromissos juntos às vezes são de propósito.
+    const alerta = h('div', { class: 'agenda__conflito', role: 'status', hidden: true });
+    const conflitos = () => {
+      if (!quando.value) return [];
+      const t = new Date(quando.value).getTime();
+      const pessoa = membro()?.user_id || processo()?.corretor_id || null;
+      return itensAgendaGeral(fonte).filter((i) => temHora(i.data)
+        && Math.abs(new Date(i.data).getTime() - t) < 60 * 60_000
+        && i.id !== qual.value
+        && (!pessoa || !i.donoId || i.donoId === pessoa));
+    };
+    const mostrarConflitos = () => {
+      const c = conflitos();
+      alerta.hidden = !c.length;
+      alerta.replaceChildren(
+        h('strong', {}, c.length === 1 ? 'Já tem um compromisso perto desse horário:' : `Já tem ${c.length} compromissos perto desse horário:`),
+        h('ul', {}, c.map((i) => h('li', {},
+          `${new Date(i.data).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })} · ${i.titulo} — `
+          + (i.tipo === 'equipe' ? `agenda de ${primeiroNome(i.pessoa)}` : i.cliente)))));
+    };
+    quando.addEventListener('input', mostrarConflitos);
+    quando.addEventListener('change', mostrarConflitos);
+
     const trocarQual = () => {
       campoTitulo.hidden = !(membro() || (processo() && qual.value === 'outro'));
       // Etapa que já tem data: abre com ela, para remarcar.
       const e = processo()?.etapas.find((x) => x.id === qual.value);
       if (e?.data_prevista) quando.value = paraInputLocal(e.data_prevista);
+      mostrarConflitos();
     };
     const trocarDono = () => {
       const p = processo();
@@ -1071,6 +1097,8 @@
         if (!p && !m) { dono.focus(); return; }
         if (!campoTitulo.hidden && !titulo.value.trim()) { titulo.focus(); return; }
         if (!quando.value) { quando.focus(); return; }
+        const choques = conflitos().length;
+        if (choques && !confirm(`Já tem ${choques === 1 ? 'um compromisso' : `${choques} compromissos`} perto desse horário. Marcar mesmo assim?`)) return;
         const iso = new Date(quando.value).toISOString();
         await acao(ok, async () => {
           if (m) {
@@ -1095,6 +1123,7 @@
       campoQual,
       campoTitulo,
       h('label', { class: 'campo' }, h('span', {}, 'Data e hora'), quando),
+      alerta,
       h('div', { class: 'dlg__btns' },
         h('button', { class: 'btn', type: 'button', onclick: () => dlg.close() }, 'Cancelar'), ok),
     ));

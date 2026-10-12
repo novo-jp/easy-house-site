@@ -633,3 +633,10 @@ body.modo-cliente .app {
   .agenda--geral .agenda__acoes { flex-direction: column; gap: 6px; }
   .agenda--geral .agenda__apagar { width: 40px; min-height: 40px; }
 }
+/* Aviso de choque de horário no "+ Evento" */
+.agenda__conflito {
+  margin: -4px 0 6px; padding: 10px 12px; border-radius: var(--r-p);
+  background: var(--latao-claro); border: 1px solid var(--latao); color: var(--latao-texto); font-size: .88rem;
+}
+.agenda__conflito strong { display: block; font-weight: 600; }
+.agenda__conflito ul { margin: 4px 0 0; padding-left: 18px; }
