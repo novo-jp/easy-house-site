@@ -596,3 +596,27 @@ body.modo-cliente .app {
   .agenda__acoes { grid-column: 2; justify-content: flex-start; }
   .agenda__form select, .agenda__form input { font-size: 16px; }
 }
+
+/* ── agenda geral (tela de processos) ─────────────────────────────────── */
+.agenda__topo--botao { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+.agenda__titulo { display: grid; gap: 2px; }
+.agenda__titulo h2 { margin: 0; }
+.agenda__info--link { color: inherit; text-decoration: none; border-radius: 6px; }
+.agenda__info--link:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+.agenda__info--link:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+.agenda__linha2 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; min-width: 0; }
+.agenda__cliente { color: var(--teal-escuro); font-size: .84rem; font-weight: 600; letter-spacing: .02em; overflow-wrap: anywhere; }
+.agenda--geral .agenda__item { padding-block: 8px; }
+.agenda__mais { justify-self: start; }
+.agenda__ics { gap: 6px; }
+.agenda__ics svg { flex: none; }
+/* Celular: na agenda geral o botão vira só o ícone, ao lado — cada data
+   ocupa três linhas de texto, e não quatro com o botão embaixo. */
+@media (max-width: 520px) {
+  .agenda-cartao--geral { padding: 18px 14px; }
+  .agenda--geral .agenda__item { grid-template-columns: 46px 1fr auto; gap: 10px; padding: 8px 8px 8px 10px; }
+  .agenda--geral .agenda__acoes { grid-column: auto; }
+  .agenda--geral .agenda__ics { width: 40px; min-height: 40px; padding: 0; justify-content: center; }
+  .agenda--geral .agenda__ics span { display: none; }
+  .agenda--geral .agenda__cliente { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; max-width: 100%; }
+}

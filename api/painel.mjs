@@ -194,11 +194,13 @@ async function carregarProcesso(perfil, id) {
 }
 
 async function listarProcessos() {
-  const processos = await sb('acomp_processo?select=id,cliente_nome,banco,corretor_id,casa_titulo,arquivado,atualizado_em,lead_code&order=arquivado,atualizado_em.desc');
+  // Só os compromissos de extras (eventos), não a simulação inteira: a lista
+  // geral mostra a agenda de todos os processos sem abrir cada um.
+  const processos = await sb('acomp_processo?select=id,cliente_nome,banco,corretor_id,casa_titulo,arquivado,atualizado_em,lead_code,eventos:extras->eventos&order=arquivado,atualizado_em.desc');
   if (!processos.length) return [];
   const ids = processos.map((p) => p.id).join(',');
   const [etapas, corretores] = await Promise.all([
-    sb(`acomp_etapa?select=processo_id,ordem,titulo,concluida_em&processo_id=in.(${ids})`),
+    sb(`acomp_etapa?select=id,processo_id,ordem,chave,titulo,data_prevista,concluida_em&processo_id=in.(${ids})&order=ordem`),
     sb('acomp_usuario?select=user_id,nome&papel=in.(admin,corretor)'),
   ]);
   return processos.map((p) => {
@@ -206,6 +208,9 @@ async function listarProcessos() {
     const atual = etapaAtual(desta);
     return {
       ...p,
+      eventos: Array.isArray(p.eventos) ? p.eventos : [],
+      etapas: desta.map(({ processo_id, ...e }) => e),
+      etapa_atual: atual?.chave || null,
       banco_nome: nomeBanco(p.banco),
       corretor: corretores.find((c) => c.user_id === p.corretor_id)?.nome || null,
       etapa_ordem: atual ? atual.ordem : desta.length,

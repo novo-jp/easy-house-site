@@ -247,10 +247,19 @@
         h('span', { class: 'item__meta' },
           [p.banco_nome, p.corretor, p.lead_code, `atualizado ${fmtData(p.atualizado_em)}`].filter(Boolean).join(' · '))));
 
+    // Marcar uma data redesenha só a agenda; a lista de processos fica como está.
+    let agenda = ativos.length ? blocoAgendaGeral(ativos, () => redesenharAgenda()) : null;
+    const redesenharAgenda = () => {
+      const nova = blocoAgendaGeral(ativos, redesenharAgenda);
+      agenda.replaceWith(nova);
+      agenda = nova;
+    };
+
     app.replaceChildren(h('div', { class: 'pilha' },
       h('div', { class: 'barra' },
         barraEquipe('processos'),
         h('button', { class: 'btn btn--ouro', type: 'button', onclick: dialogoNovoProcesso }, '+ Novo processo')),
+      agenda,
       ativos.length
         ? h('ul', { class: 'lista' }, ativos.map(item))
         : h('div', { class: 'cartao' }, h('h2', {}, 'Nenhum processo ainda'),
@@ -792,10 +801,16 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   }
 
-  function listaAgenda(itens, { ctx = null, cliente = '', limite = 0 } = {}) {
+  /**
+   * A lista de datas. `geral` é a agenda da tela de processos: cada linha diz
+   * de qual cliente é e abre o processo dele. Em destaque, todas as datas do
+   * dia mais próximo — não só a primeira.
+   */
+  function listaAgenda(itens, { ctx = null, cliente = '', limite = 0, geral = false } = {}) {
     const proximo = itens.find((i) => !i.passado);
+    const diaProximo = proximo ? inicioDoDia(proximo.data).getTime() : null;
     const mostrar = limite ? itens.filter((i) => !i.passado).slice(0, limite) : itens;
-    return h('ul', { class: 'agenda' }, mostrar.map((i) => {
+    return h('ul', { class: geral ? 'agenda agenda--geral' : 'agenda' }, mostrar.map((i) => {
       const dt = new Date(i.data);
       const remover = ctx ? h('button', { class: 'link', type: 'button', 'aria-label': `Tirar a data de ${i.titulo}` }, 'remover') : null;
       if (remover) {
@@ -813,19 +828,34 @@
           }
         };
       }
-      return h('li', { class: `agenda__item${i.passado ? ' passado' : ''}${i === proximo ? ' proximo' : ''}` },
+      const destaque = !i.passado && inicioDoDia(i.data).getTime() === diaProximo;
+      const quandoTxt = [dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+        temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
+        i.feito ? 'concluída' : quandoRelativo(i.data)].filter(Boolean).join(' · ');
+      // Na agenda geral o dia já está no quadrinho: a 2ª linha fica com
+      // cliente, hora e quanto falta — duas linhas por data em vez de três.
+      const info = geral
+        ? h('a', { class: 'agenda__info agenda__info--link', href: `#/p/${i.processoId}` },
+          h('strong', {}, i.titulo),
+          h('span', { class: 'agenda__linha2' },
+            h('span', { class: 'agenda__cliente' }, i.cliente),
+            h('span', { class: 'mudo pequeno' },
+              [temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
+                quandoRelativo(i.data)].filter(Boolean).join(' · '))))
+        : h('span', { class: 'agenda__info' },
+          h('strong', {}, i.titulo),
+          h('span', { class: 'mudo pequeno' }, quandoTxt));
+      return h('li', { class: `agenda__item${i.passado ? ' passado' : ''}${destaque ? ' proximo' : ''}` },
         h('span', { class: 'agenda__data', 'aria-hidden': 'true' },
           h('span', { class: 'agenda__sem' }, dt.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.', '')),
           h('span', { class: 'agenda__dia' }, String(dt.getDate())),
           h('span', { class: 'agenda__mes' }, dt.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', ''))),
-        h('span', { class: 'agenda__info' },
-          h('strong', {}, i.titulo),
-          h('span', { class: 'mudo pequeno' },
-            [dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-              temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
-              i.feito ? 'concluída' : quandoRelativo(i.data)].filter(Boolean).join(' · '))),
+        info,
         h('span', { class: 'agenda__acoes' },
-          !i.passado ? h('button', { class: 'btn btn--mini', type: 'button', onclick: () => baixarIcs(i, cliente), 'aria-label': `Salvar ${i.titulo} no calendário do celular` }, '+ Calendário') : null,
+          !i.passado ? h('button', {
+            class: 'btn btn--mini agenda__ics', type: 'button', onclick: () => baixarIcs(i, cliente || i.cliente),
+            'aria-label': `Salvar ${i.titulo} no calendário do celular`, title: 'Salvar no calendário do celular',
+          }, geral ? [icone('calendario', 18), h('span', {}, 'Calendário')] : '+ Calendário') : null,
           remover));
     }));
   }
@@ -878,6 +908,111 @@
       itens.length ? listaAgenda(itens, { ctx: ctx.equipe ? ctx : null, cliente: d.processo.cliente_nome })
         : h('p', { class: 'mudo', style: 'margin:0' }, ctx.equipe ? 'Marque abaixo a data da vistoria, das assinaturas e de outros compromissos. O cliente vê esta lista.' : 'Quando o seu consultor marcar uma data, ela aparece aqui.'),
       form);
+  }
+
+  // ── agenda geral (tela de processos) ───────────────────────────────────────
+  // As datas de todos os processos ativos numa lista só, a mais próxima no
+  // topo. Vem junto com a lista de processos — não abre processo nenhum.
+
+  // No celular cabem menos: 4 datas e o resto atrás do "Ver mais".
+  const limiteAgendaGeral = () => (matchMedia('(max-width: 520px)').matches ? 4 : 6);
+
+  function blocoAgendaGeral(processos, redesenhar) {
+    const futuros = processos
+      .flatMap((p) => itensAgenda(p).map((i) => ({ ...i, cliente: p.cliente_nome, processoId: p.id })))
+      .filter((i) => !i.passado)
+      .sort((a, b) => new Date(a.data) - new Date(b.data));
+    const hoje = inicioDoDia(Date.now());
+    const semana = futuros.filter((i) => inicioDoDia(i.data) - hoje < 7 * 86_400_000).length;
+    const limite = limiteAgendaGeral();
+    const cabe = futuros.length <= limite;
+    const mostrar = cabe || estado.agendaToda ? futuros : futuros.slice(0, limite);
+
+    return h('section', { class: 'cartao agenda-cartao agenda-cartao--geral', 'aria-labelledby': 'tit-agenda-geral' },
+      h('div', { class: 'agenda__topo agenda__topo--botao' },
+        h('div', { class: 'agenda__titulo' },
+          h('h2', { id: 'tit-agenda-geral' }, 'Agenda'),
+          h('span', { class: 'mudo pequeno' }, futuros.length
+            ? `${semana ? `${semana} nos próximos 7 dias` : 'nada nos próximos 7 dias'} · ${futuros.length} pela frente`
+            : 'nenhuma data pela frente')),
+        h('button', {
+          class: 'btn btn--ouro btn--mini', type: 'button', 'aria-label': 'Marcar uma data ou compromisso',
+          onclick: () => dialogoNovoEvento(processos, redesenhar),
+        }, '+ Evento')),
+      futuros.length
+        ? listaAgenda(mostrar, { geral: true })
+        : h('p', { class: 'mudo', style: 'margin:0' }, 'Use “+ Evento” para marcar vistoria, assinaturas e outros compromissos. Cada cliente vê as datas dele.'),
+      cabe ? null : h('button', {
+        class: 'link agenda__mais', type: 'button',
+        onclick: () => { estado.agendaToda = !estado.agendaToda; redesenhar(); },
+      }, estado.agendaToda ? 'Mostrar só as próximas' : `Ver mais ${futuros.length - mostrar.length} datas`));
+  }
+
+  /** "+ Evento": escolhe o cliente, depois a etapa (ou um compromisso avulso) e a data. */
+  function dialogoNovoEvento(processos, aoSalvar) {
+    const ordenados = [...processos].sort((a, b) => a.cliente_nome.localeCompare(b.cliente_nome, 'pt-BR'));
+    const proc = h('select', { required: true },
+      ordenados.length > 1 ? h('option', { value: '' }, '— escolha o cliente —') : null,
+      ordenados.map((p) => h('option', { value: p.id }, p.cliente_nome)));
+    const qual = h('select', {});
+    const titulo = h('input', { placeholder: 'Ex.: Buscar o Juminhyo na prefeitura', maxlength: 120 });
+    const campoTitulo = h('label', { class: 'campo', hidden: true }, h('span', {}, 'Nome do compromisso'), titulo);
+    const quando = h('input', { type: 'datetime-local', required: true });
+    const ok = h('button', { class: 'btn btn--ouro', type: 'submit' }, 'Marcar');
+    const escolhido = () => processos.find((p) => p.id === proc.value);
+
+    const trocarQual = () => {
+      campoTitulo.hidden = !escolhido() || qual.value !== 'outro';
+      // Etapa que já tem data: abre com ela, para remarcar.
+      const e = escolhido()?.etapas.find((x) => x.id === qual.value);
+      if (e?.data_prevista) quando.value = paraInputLocal(e.data_prevista);
+    };
+    const encherEtapas = () => {
+      const p = escolhido();
+      const etapas = p ? [...p.etapas].sort((a, b) => a.ordem - b.ordem) : [];
+      qual.replaceChildren(
+        ...etapas.map((e) => h('option', { value: e.id, selected: e.chave === p.etapa_atual },
+          `${e.ordem}. ${e.titulo}${e.concluida_em ? ' ✓' : ''}${e.data_prevista ? ` — marcada ${fmtData(e.data_prevista)}` : ''}`)),
+        h('option', { value: 'outro', selected: !p }, 'Outro compromisso…'));
+      qual.disabled = !p;
+      trocarQual();
+    };
+    proc.onchange = encherEtapas;
+    qual.onchange = () => { trocarQual(); if (!campoTitulo.hidden) titulo.focus(); };
+    encherEtapas();
+
+    abrirDialogo(h('form', {
+      onsubmit: async (ev) => {
+        ev.preventDefault();
+        const p = escolhido();
+        if (!p) { proc.focus(); return; }
+        if (!quando.value) { quando.focus(); return; }
+        if (qual.value === 'outro' && !titulo.value.trim()) { titulo.focus(); return; }
+        const iso = new Date(quando.value).toISOString();
+        await acao(ok, async () => {
+          if (qual.value === 'outro') {
+            const r = await post('evento', { processo_id: p.id, operacao: 'adicionar', titulo: titulo.value, data: iso });
+            p.eventos = r.eventos;
+          } else {
+            await post('etapa', { etapa_id: qual.value, operacao: 'data', data: iso });
+            p.etapas.find((x) => x.id === qual.value).data_prevista = iso;
+          }
+          dlg.close();
+          aoSalvar();
+          avisar('Data marcada. O cliente já vê na tela dele.', 'ok');
+        });
+      },
+    },
+      h('h2', {}, 'Marcar data'),
+      h('p', { class: 'mudo pequeno' }, 'Vai para a agenda do processo e para a tela do cliente, com o botão de salvar no calendário do celular.'),
+      h('label', { class: 'campo' }, h('span', {}, 'Cliente'), proc),
+      h('label', { class: 'campo' }, h('span', {}, 'O que é'), qual),
+      campoTitulo,
+      h('label', { class: 'campo' }, h('span', {}, 'Data e hora'), quando),
+      h('div', { class: 'dlg__btns' },
+        h('button', { class: 'btn', type: 'button', onclick: () => dlg.close() }, 'Cancelar'), ok),
+    ));
+    (proc.value ? quando : proc).focus();
   }
 
   // ── apagar processo (só administrador) ─────────────────────────────────────
@@ -1318,6 +1453,7 @@
     check: 'M5 12.5 10 17 19 7',
     whatsapp: 'M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.3a8.5 8.5 0 1 1 15.5-4.6z',
     seta: 'M9 6l6 6-6 6',
+    calendario: 'M4 6h16v15H4zM4 10h16M8 3v4M16 3v4M12 13v5M9.5 15.5h5',
   };
   function icone(nome, tam = 22) {
     const s = document.createElementNS(SVG, 'svg');
