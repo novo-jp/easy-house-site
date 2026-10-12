@@ -506,6 +506,50 @@ async function mexerEvento(perfil, b) {
   return { ok: true, eventos };
 }
 
+// ── agenda própria da equipe ────────────────────────────────────────────────
+
+/**
+ * Compromissos de quem é da equipe (Alan, Luciana…) que não são de nenhum
+ * cliente: ficam em acomp_evento_equipe (sql/acompanhamento-agenda-equipe.sql)
+ * e só ações de nível 'equipe' tocam nessa tabela — cliente nunca vê.
+ *
+ * As pessoas fixas da agenda são os corretores ativos. Antes de o SQL rodar a
+ * tabela não existe: a resposta diz disponivel=false e a página não oferece a
+ * opção, em vez de quebrar a lista de processos.
+ */
+const tabelaAusente = (e) => /PGRST205|42P01/.test(e.message);
+
+async function agendaEquipe() {
+  // Desde anteontem: a página decide o que já passou pelo dia local dela.
+  const desde = new Date(Date.now() - 2 * 86_400_000).toISOString();
+  const [membros, eventos] = await Promise.all([
+    sb('acomp_usuario?select=user_id,nome&papel=eq.corretor&ativo=is.true&order=nome'),
+    sb(`acomp_evento_equipe?select=id,dono_id,titulo,data,criado_por&data=gte.${desde}&order=data&limit=300`)
+      .catch((e) => { if (tabelaAusente(e)) return null; throw e; }),
+  ]);
+  return { disponivel: eventos !== null, membros, eventos: eventos || [] };
+}
+
+async function mexerEventoEquipe(perfil, b) {
+  if (b.operacao === 'remover') {
+    const id = exigirUuid(b.evento_id, 'evento');
+    await sb(`acomp_evento_equipe?id=eq.${id}`, { method: 'DELETE' });
+    return { ok: true };
+  }
+  if (b.operacao !== 'adicionar') throw new Recusa(400, 'operação inválida');
+  const dono = exigirUuid(b.dono_id, 'pessoa');
+  const titulo = txt(b.titulo, 120);
+  if (!titulo) throw new Recusa(422, 'escreva o que é o compromisso');
+  if (!b.data || Number.isNaN(Date.parse(b.data))) throw new Recusa(422, 'informe a data');
+  const [m] = await sb(`acomp_usuario?select=user_id&user_id=eq.${dono}&papel=in.(admin,corretor)`);
+  if (!m) throw new Recusa(404, 'pessoa da equipe não encontrada');
+  const [evento] = await sb('acomp_evento_equipe?select=id,dono_id,titulo,data,criado_por', {
+    method: 'POST', prefer: 'return=representation',
+    body: { dono_id: dono, titulo, data: new Date(b.data).toISOString(), criado_por: perfil.nome },
+  });
+  return { evento };
+}
+
 // ── apagar processo (só administrador) ──────────────────────────────────────
 
 /** Arquivos do processo no bucket privado (foto da casa e versões antigas). */
@@ -692,6 +736,7 @@ const ACOES = {
   processo:         ['GET',  'logado', (p, b) => carregarProcesso(p, b.id)],
   equipe:           ['GET',  'equipe', () => listarEquipe()],
   modelos:          ['GET',  'equipe', () => ({ bancos: MODELOS.bancos, etapas: MODELOS.etapas })],
+  agenda_equipe:    ['GET',  'equipe', () => agendaEquipe()],
 
   criar_processo:   ['POST', 'equipe', criarProcesso],
   editar_processo:  ['POST', 'equipe', editarProcesso],
@@ -702,6 +747,7 @@ const ACOES = {
   simulacao:        ['POST', 'equipe', salvarSimulacao],
   apagar_processo:  ['POST', 'admin',  apagarProcesso],
   evento:           ['POST', 'equipe', mexerEvento],
+  evento_equipe:    ['POST', 'equipe', mexerEventoEquipe],
   criar_acesso:     ['POST', 'equipe', criarAcessoCliente],
   criar_membro:     ['POST', 'admin',  criarMembroEquipe],
   redefinir_senha:  ['POST', 'equipe', redefinirSenha],

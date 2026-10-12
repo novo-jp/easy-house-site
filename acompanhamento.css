@@ -620,3 +620,16 @@ body.modo-cliente .app {
   .agenda--geral .agenda__ics span { display: none; }
   .agenda--geral .agenda__cliente { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; max-width: 100%; }
 }
+
+/* ── agenda própria da equipe ─────────────────────────────────────────── */
+.filtro-agenda { display: flex; gap: 6px; flex-wrap: wrap; margin-top: -4px; }
+.filtro-agenda .aba { background: transparent; cursor: pointer; font: inherit; font-weight: 600; font-size: .88rem; padding: 6px 14px; }
+.filtro-agenda .aba[aria-pressed="true"] { border-color: var(--linha-forte); background: var(--papel-alto); color: var(--tinta); box-shadow: var(--sombra); }
+.agenda__cliente--equipe { color: var(--latao-texto); }
+.agenda__item--equipe:not(.proximo) .agenda__data { background: var(--latao-claro); color: var(--latao-texto); }
+.agenda__apagar { width: 36px; padding: 0; color: var(--tinta-fraca); }
+.agenda__apagar:hover { color: var(--erro); border-color: var(--erro); }
+@media (max-width: 520px) {
+  .agenda--geral .agenda__acoes { flex-direction: column; gap: 6px; }
+  .agenda--geral .agenda__apagar { width: 40px; min-height: 40px; }
+}

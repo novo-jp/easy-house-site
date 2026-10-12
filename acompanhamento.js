@@ -236,9 +236,15 @@
   }
 
   async function telaLista() {
-    const [processos] = await Promise.all([get('processos'), carregarApoio()]);
+    // A agenda da equipe vem em paralelo; se falhar, a lista abre sem ela.
+    const [processos, agEquipe] = await Promise.all([
+      get('processos'),
+      get('agenda_equipe').catch(() => ({ disponivel: false, membros: [], eventos: [] })),
+      carregarApoio(),
+    ]);
     const ativos = processos.filter((p) => !p.arquivado);
     const arquivados = processos.filter((p) => p.arquivado);
+    const fonte = { processos: ativos, equipe: agEquipe };
 
     const item = (p) => h('li', {},
       h('a', { class: `item${p.arquivado ? ' arquivado' : ''}`, href: `#/p/${p.id}` },
@@ -248,9 +254,9 @@
           [p.banco_nome, p.corretor, p.lead_code, `atualizado ${fmtData(p.atualizado_em)}`].filter(Boolean).join(' · '))));
 
     // Marcar uma data redesenha só a agenda; a lista de processos fica como está.
-    let agenda = ativos.length ? blocoAgendaGeral(ativos, () => redesenharAgenda()) : null;
+    let agenda = ativos.length || agEquipe.disponivel ? blocoAgendaGeral(fonte, () => redesenharAgenda()) : null;
     const redesenharAgenda = () => {
-      const nova = blocoAgendaGeral(ativos, redesenharAgenda);
+      const nova = blocoAgendaGeral(fonte, redesenharAgenda);
       agenda.replaceWith(nova);
       agenda = nova;
     };
@@ -788,7 +794,7 @@
       inteiro ? `DTSTART;VALUE=DATE:${dia(ini)}` : `DTSTART:${utc(ini)}`,
       inteiro ? `DTEND;VALUE=DATE:${dia(diaSeguinte)}` : `DTEND:${utc(fim)}`,
       `SUMMARY:${esc(`${item.titulo} — Easy House`)}`,
-      `DESCRIPTION:${esc(`Compra da casa${cliente ? ` de ${cliente}` : ''}. Acompanhe em https://easyhouse.homes/acompanhamento`)}`,
+      `DESCRIPTION:${esc(item.descricao || `Compra da casa${cliente ? ` de ${cliente}` : ''}. Acompanhe em https://easyhouse.homes/acompanhamento`)}`,
       'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', `DESCRIPTION:${esc(item.titulo)}`, 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR',
     ].join('\r\n');
@@ -806,7 +812,7 @@
    * de qual cliente é e abre o processo dele. Em destaque, todas as datas do
    * dia mais próximo — não só a primeira.
    */
-  function listaAgenda(itens, { ctx = null, cliente = '', limite = 0, geral = false } = {}) {
+  function listaAgenda(itens, { ctx = null, cliente = '', limite = 0, geral = false, apagar = null } = {}) {
     const proximo = itens.find((i) => !i.passado);
     const diaProximo = proximo ? inicioDoDia(proximo.data).getTime() : null;
     const mostrar = limite ? itens.filter((i) => !i.passado).slice(0, limite) : itens;
@@ -833,19 +839,25 @@
         temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
         i.feito ? 'concluída' : quandoRelativo(i.data)].filter(Boolean).join(' · ');
       // Na agenda geral o dia já está no quadrinho: a 2ª linha fica com
-      // cliente, hora e quanto falta — duas linhas por data em vez de três.
+      // cliente (ou a pessoa da equipe), hora e quanto falta — duas linhas por
+      // data em vez de três. Data de cliente abre o processo; a da agenda
+      // própria não tem processo para abrir.
+      const equipe = i.tipo === 'equipe';
+      const linha2 = () => h('span', { class: 'agenda__linha2' },
+        equipe
+          ? h('span', { class: 'agenda__cliente agenda__cliente--equipe' }, `${primeiroNome(i.pessoa)} · agenda própria`)
+          : h('span', { class: 'agenda__cliente' }, i.cliente),
+        h('span', { class: 'mudo pequeno' },
+          [temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
+            quandoRelativo(i.data)].filter(Boolean).join(' · ')));
       const info = geral
-        ? h('a', { class: 'agenda__info agenda__info--link', href: `#/p/${i.processoId}` },
-          h('strong', {}, i.titulo),
-          h('span', { class: 'agenda__linha2' },
-            h('span', { class: 'agenda__cliente' }, i.cliente),
-            h('span', { class: 'mudo pequeno' },
-              [temHora(i.data) ? dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : null,
-                quandoRelativo(i.data)].filter(Boolean).join(' · '))))
+        ? (equipe
+          ? h('span', { class: 'agenda__info' }, h('strong', {}, i.titulo), linha2())
+          : h('a', { class: 'agenda__info agenda__info--link', href: `#/p/${i.processoId}` }, h('strong', {}, i.titulo), linha2()))
         : h('span', { class: 'agenda__info' },
           h('strong', {}, i.titulo),
           h('span', { class: 'mudo pequeno' }, quandoTxt));
-      return h('li', { class: `agenda__item${i.passado ? ' passado' : ''}${destaque ? ' proximo' : ''}` },
+      return h('li', { class: `agenda__item${i.passado ? ' passado' : ''}${destaque ? ' proximo' : ''}${equipe ? ' agenda__item--equipe' : ''}` },
         h('span', { class: 'agenda__data', 'aria-hidden': 'true' },
           h('span', { class: 'agenda__sem' }, dt.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.', '')),
           h('span', { class: 'agenda__dia' }, String(dt.getDate())),
@@ -856,6 +868,10 @@
             class: 'btn btn--mini agenda__ics', type: 'button', onclick: () => baixarIcs(i, cliente || i.cliente),
             'aria-label': `Salvar ${i.titulo} no calendário do celular`, title: 'Salvar no calendário do celular',
           }, geral ? [icone('calendario', 18), h('span', {}, 'Calendário')] : '+ Calendário') : null,
+          equipe && apagar ? h('button', {
+            class: 'btn btn--mini agenda__apagar', type: 'button', onclick: () => apagar(i),
+            'aria-label': `Apagar ${i.titulo}`, title: 'Apagar da agenda',
+          }, icone('fechar', 16)) : null,
           remover));
     }));
   }
@@ -912,63 +928,129 @@
 
   // ── agenda geral (tela de processos) ───────────────────────────────────────
   // As datas de todos os processos ativos numa lista só, a mais próxima no
-  // topo. Vem junto com a lista de processos — não abre processo nenhum.
+  // topo, junto com a agenda própria da equipe (compromissos de Alan,
+  // Luciana… que não são de cliente nenhum). Vem com a lista de processos —
+  // não abre processo nenhum.
+  //
+  // `fonte` = { processos, equipe: { disponivel, membros, eventos } }.
 
   // No celular cabem menos: 4 datas e o resto atrás do "Ver mais".
   const limiteAgendaGeral = () => (matchMedia('(max-width: 520px)').matches ? 4 : 6);
+  const primeiroNome = (n) => String(n || '').trim().split(/\s+/)[0];
 
-  function blocoAgendaGeral(processos, redesenhar) {
-    const futuros = processos
-      .flatMap((p) => itensAgenda(p).map((i) => ({ ...i, cliente: p.cliente_nome, processoId: p.id })))
+  // Filtro "de quem" lembrado só neste navegador (conveniência, não dado).
+  const CHAVE_FILTRO = 'eh_agenda_pessoa';
+  const lerFiltro = () => { try { return localStorage.getItem(CHAVE_FILTRO) || 'todos'; } catch { return 'todos'; } };
+  const gravarFiltro = (v) => { try { localStorage.setItem(CHAVE_FILTRO, v); } catch { /* sem storage */ } };
+
+  function itensAgendaGeral(fonte) {
+    const nomeDe = (uid) => fonte.equipe.membros.find((m) => m.user_id === uid)?.nome || 'Equipe';
+    const deProcessos = fonte.processos.flatMap((p) => itensAgenda(p).map((i) => ({
+      ...i, cliente: p.cliente_nome, processoId: p.id, donoId: p.corretor_id,
+    })));
+    const hoje = inicioDoDia(Date.now());
+    const daEquipe = fonte.equipe.eventos.map((ev) => ({
+      tipo: 'equipe', id: ev.id, ref: ev, titulo: ev.titulo, data: ev.data, feito: false,
+      passado: inicioDoDia(ev.data) < hoje, donoId: ev.dono_id, pessoa: nomeDe(ev.dono_id),
+      descricao: `Agenda de ${nomeDe(ev.dono_id)} — Easy House.`,
+    }));
+    return [...deProcessos, ...daEquipe]
       .filter((i) => !i.passado)
       .sort((a, b) => new Date(a.data) - new Date(b.data));
+  }
+
+  function blocoAgendaGeral(fonte, redesenhar) {
+    const membros = fonte.equipe.membros;
+    let filtro = lerFiltro();
+    if (filtro !== 'todos' && !membros.some((m) => m.user_id === filtro)) filtro = 'todos';
+    const todos = itensAgendaGeral(fonte);
+    const futuros = filtro === 'todos' ? todos : todos.filter((i) => i.donoId === filtro);
     const hoje = inicioDoDia(Date.now());
     const semana = futuros.filter((i) => inicioDoDia(i.data) - hoje < 7 * 86_400_000).length;
     const limite = limiteAgendaGeral();
     const cabe = futuros.length <= limite;
     const mostrar = cabe || estado.agendaToda ? futuros : futuros.slice(0, limite);
 
+    // Apagar só existe aqui para a agenda da equipe (o resto se apaga no processo).
+    const apagar = (i) => {
+      if (!confirm(`Apagar "${i.titulo}" da agenda de ${primeiroNome(i.pessoa)}?`)) return;
+      const lista = fonte.equipe.eventos;
+      const pos = lista.indexOf(i.ref);
+      otimista({ redesenhar }, () => { lista.splice(pos, 1); }, () => { lista.splice(pos, 0, i.ref); },
+        () => post('evento_equipe', { operacao: 'remover', evento_id: i.id }));
+    };
+
+    const filtros = membros.length ? h('div', { class: 'filtro-agenda', role: 'group', 'aria-label': 'Agenda de quem' },
+      [{ user_id: 'todos', nome: 'Todos' }, ...membros].map((m) => h('button', {
+        class: 'aba', type: 'button', 'aria-pressed': m.user_id === filtro ? 'true' : 'false',
+        onclick: () => { gravarFiltro(m.user_id); estado.agendaToda = false; redesenhar(); },
+      }, m.user_id === 'todos' ? 'Todos' : primeiroNome(m.nome)))) : null;
+
+    const quem = filtro === 'todos' ? null : primeiroNome(membros.find((m) => m.user_id === filtro)?.nome);
     return h('section', { class: 'cartao agenda-cartao agenda-cartao--geral', 'aria-labelledby': 'tit-agenda-geral' },
       h('div', { class: 'agenda__topo agenda__topo--botao' },
         h('div', { class: 'agenda__titulo' },
-          h('h2', { id: 'tit-agenda-geral' }, 'Agenda'),
+          h('h2', { id: 'tit-agenda-geral' }, quem ? `Agenda · ${quem}` : 'Agenda'),
           h('span', { class: 'mudo pequeno' }, futuros.length
             ? `${semana ? `${semana} nos próximos 7 dias` : 'nada nos próximos 7 dias'} · ${futuros.length} pela frente`
             : 'nenhuma data pela frente')),
         h('button', {
           class: 'btn btn--ouro btn--mini', type: 'button', 'aria-label': 'Marcar uma data ou compromisso',
-          onclick: () => dialogoNovoEvento(processos, redesenhar),
+          onclick: () => dialogoNovoEvento(fonte, redesenhar, filtro),
         }, '+ Evento')),
+      filtros,
       futuros.length
-        ? listaAgenda(mostrar, { geral: true })
-        : h('p', { class: 'mudo', style: 'margin:0' }, 'Use “+ Evento” para marcar vistoria, assinaturas e outros compromissos. Cada cliente vê as datas dele.'),
+        ? listaAgenda(mostrar, { geral: true, apagar })
+        : h('p', { class: 'mudo', style: 'margin:0' }, quem
+          ? `Nada marcado para ${quem}. Aqui aparecem as datas dos clientes de ${quem} e a agenda própria.`
+          : 'Use “+ Evento” para marcar vistoria, assinaturas e outros compromissos. Cada cliente vê as datas dele.'),
       cabe ? null : h('button', {
         class: 'link agenda__mais', type: 'button',
         onclick: () => { estado.agendaToda = !estado.agendaToda; redesenhar(); },
       }, estado.agendaToda ? 'Mostrar só as próximas' : `Ver mais ${futuros.length - mostrar.length} datas`));
   }
 
-  /** "+ Evento": escolhe o cliente, depois a etapa (ou um compromisso avulso) e a data. */
-  function dialogoNovoEvento(processos, aoSalvar) {
-    const ordenados = [...processos].sort((a, b) => a.cliente_nome.localeCompare(b.cliente_nome, 'pt-BR'));
-    const proc = h('select', { required: true },
-      ordenados.length > 1 ? h('option', { value: '' }, '— escolha o cliente —') : null,
-      ordenados.map((p) => h('option', { value: p.id }, p.cliente_nome)));
+  /**
+   * "+ Evento": primeiro de quem é a data — a agenda própria de alguém da
+   * equipe (fixos no topo) ou um cliente. Para cliente, escolhe a etapa ou um
+   * compromisso avulso; para a equipe, é sempre compromisso avulso.
+   */
+  function dialogoNovoEvento(fonte, aoSalvar, filtro = 'todos') {
+    const membros = fonte.equipe.disponivel ? fonte.equipe.membros : [];
+    const clientes = [...fonte.processos].sort((a, b) => a.cliente_nome.localeCompare(b.cliente_nome, 'pt-BR'));
+    // Com o filtro numa pessoa, já abre na agenda dela.
+    const inicial = filtro !== 'todos' && membros.some((m) => m.user_id === filtro) ? `m:${filtro}` : '';
+    const dono = h('select', { required: true },
+      h('option', { value: '' }, '— escolha —'),
+      membros.length ? h('optgroup', { label: 'Agenda da equipe' },
+        membros.map((m) => h('option', { value: `m:${m.user_id}`, selected: `m:${m.user_id}` === inicial }, `${m.nome} (agenda própria)`))) : null,
+      clientes.length ? h('optgroup', { label: 'Clientes' },
+        clientes.map((p) => h('option', { value: `p:${p.id}` }, p.cliente_nome))) : null);
     const qual = h('select', {});
+    const campoQual = h('label', { class: 'campo' }, h('span', {}, 'O que é'), qual);
     const titulo = h('input', { placeholder: 'Ex.: Buscar o Juminhyo na prefeitura', maxlength: 120 });
     const campoTitulo = h('label', { class: 'campo', hidden: true }, h('span', {}, 'Nome do compromisso'), titulo);
     const quando = h('input', { type: 'datetime-local', required: true });
     const ok = h('button', { class: 'btn btn--ouro', type: 'submit' }, 'Marcar');
-    const escolhido = () => processos.find((p) => p.id === proc.value);
+    const explica = h('p', { class: 'mudo pequeno' });
+
+    const processo = () => dono.value.startsWith('p:') ? fonte.processos.find((p) => p.id === dono.value.slice(2)) : null;
+    const membro = () => dono.value.startsWith('m:') ? membros.find((m) => m.user_id === dono.value.slice(2)) : null;
 
     const trocarQual = () => {
-      campoTitulo.hidden = !escolhido() || qual.value !== 'outro';
+      campoTitulo.hidden = !(membro() || (processo() && qual.value === 'outro'));
       // Etapa que já tem data: abre com ela, para remarcar.
-      const e = escolhido()?.etapas.find((x) => x.id === qual.value);
+      const e = processo()?.etapas.find((x) => x.id === qual.value);
       if (e?.data_prevista) quando.value = paraInputLocal(e.data_prevista);
     };
-    const encherEtapas = () => {
-      const p = escolhido();
+    const trocarDono = () => {
+      const p = processo();
+      const m = membro();
+      campoQual.hidden = !!m;
+      titulo.placeholder = m ? 'Ex.: Reunião na imobiliária' : 'Ex.: Buscar o Juminhyo na prefeitura';
+      explica.textContent = m
+        ? `Vai só para a agenda de ${primeiroNome(m.nome)}, aqui no painel. Cliente nenhum vê.`
+        : 'Vai para a agenda do processo e para a tela do cliente, com o botão de salvar no calendário do celular.';
       const etapas = p ? [...p.etapas].sort((a, b) => a.ordem - b.ordem) : [];
       qual.replaceChildren(
         ...etapas.map((e) => h('option', { value: e.id, selected: e.chave === p.etapa_atual },
@@ -977,20 +1059,24 @@
       qual.disabled = !p;
       trocarQual();
     };
-    proc.onchange = encherEtapas;
+    dono.onchange = () => { trocarDono(); if (membro()) titulo.focus(); };
     qual.onchange = () => { trocarQual(); if (!campoTitulo.hidden) titulo.focus(); };
-    encherEtapas();
+    trocarDono();
 
     abrirDialogo(h('form', {
       onsubmit: async (ev) => {
         ev.preventDefault();
-        const p = escolhido();
-        if (!p) { proc.focus(); return; }
+        const p = processo();
+        const m = membro();
+        if (!p && !m) { dono.focus(); return; }
+        if (!campoTitulo.hidden && !titulo.value.trim()) { titulo.focus(); return; }
         if (!quando.value) { quando.focus(); return; }
-        if (qual.value === 'outro' && !titulo.value.trim()) { titulo.focus(); return; }
         const iso = new Date(quando.value).toISOString();
         await acao(ok, async () => {
-          if (qual.value === 'outro') {
+          if (m) {
+            const r = await post('evento_equipe', { operacao: 'adicionar', dono_id: m.user_id, titulo: titulo.value, data: iso });
+            fonte.equipe.eventos.push(r.evento);
+          } else if (qual.value === 'outro') {
             const r = await post('evento', { processo_id: p.id, operacao: 'adicionar', titulo: titulo.value, data: iso });
             p.eventos = r.eventos;
           } else {
@@ -999,20 +1085,20 @@
           }
           dlg.close();
           aoSalvar();
-          avisar('Data marcada. O cliente já vê na tela dele.', 'ok');
+          avisar(m ? `Marcado na agenda de ${primeiroNome(m.nome)}.` : 'Data marcada. O cliente já vê na tela dele.', 'ok');
         });
       },
     },
       h('h2', {}, 'Marcar data'),
-      h('p', { class: 'mudo pequeno' }, 'Vai para a agenda do processo e para a tela do cliente, com o botão de salvar no calendário do celular.'),
-      h('label', { class: 'campo' }, h('span', {}, 'Cliente'), proc),
-      h('label', { class: 'campo' }, h('span', {}, 'O que é'), qual),
+      explica,
+      h('label', { class: 'campo' }, h('span', {}, 'Agenda de'), dono),
+      campoQual,
       campoTitulo,
       h('label', { class: 'campo' }, h('span', {}, 'Data e hora'), quando),
       h('div', { class: 'dlg__btns' },
         h('button', { class: 'btn', type: 'button', onclick: () => dlg.close() }, 'Cancelar'), ok),
     ));
-    (proc.value ? quando : proc).focus();
+    (membro() ? titulo : dono).focus();
   }
 
   // ── apagar processo (só administrador) ─────────────────────────────────────
@@ -1454,6 +1540,7 @@
     whatsapp: 'M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.3a8.5 8.5 0 1 1 15.5-4.6z',
     seta: 'M9 6l6 6-6 6',
     calendario: 'M4 6h16v15H4zM4 10h16M8 3v4M16 3v4M12 13v5M9.5 15.5h5',
+    fechar: 'M6 6l12 12M18 6 6 18',
   };
   function icone(nome, tam = 22) {
     const s = document.createElementNS(SVG, 'svg');
