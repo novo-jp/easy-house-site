@@ -9,6 +9,7 @@ Disallow: /api/
 
 Sitemap: https://easyhouse.homes/sitemap.xml
 Sitemap: https://easyhouse.homes/sitemap-casas.xml
+Sitemap: https://easyhouse.homes/sitemap-aluguel.xml
 
 # Robôs de assistentes de IA: liberados de propósito. Parte do público procura
 # imóvel e informação sobre financiamento perguntando a um assistente, não a um

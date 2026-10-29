@@ -45,7 +45,11 @@ Respostas completas em: /simular (ferramenta), /entregas (casos reais),
 - Apartamentos para alugar em Aichi, com cálculo do custo de entrada (初期費用)
   detalhado por taxa
 - Busca em /comprar/imoveis (venda) e /imoveis (aluguel)
-- Cada imóvel tem página própria com estimativa de parcela mensal
+- Cada imóvel tem página própria:
+  - casa à venda em /comprar/imoveis/<slug>, com estimativa de parcela mensal
+  - apartamento para alugar em /imoveis/<slug>, com custo mensal total e a
+    entrada (初期費用) calculada item a item
+- Sitemaps: /sitemap.xml, /sitemap-casas.xml e /sitemap-aluguel.xml
 
 A estimativa de parcela usa {{TAXA}} em até {{PRAZO}} anos, sobre o preço do imóvel.
 É valor indicativo, não oferta de crédito: a parcela real depende do banco, da

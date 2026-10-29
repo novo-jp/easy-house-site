@@ -157,6 +157,14 @@
     {
       "source": "/comprar/imoveis/:slug",
       "destination": "/api/casa?slug=:slug"
+    },
+    {
+      "source": "/sitemap-aluguel.xml",
+      "destination": "/api/aluguel-lista?sitemap=1"
+    },
+    {
+      "source": "/imoveis/:slug",
+      "destination": "/api/aluguel-lista?slug=:slug"
     }
   ]
 }

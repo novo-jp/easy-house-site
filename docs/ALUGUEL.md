@@ -50,6 +50,37 @@ imóveis quando o portal listava 131; Toyohashi, mais barata, tinha 437.
 
 ---
 
+## Ficha de cada apartamento — /imoveis/<slug> (29/10/2026)
+
+Antes desta data o acervo de aluguel tinha lista e nada mais. Quem clicava em "Mais
+detalhes do apartamento" era mandado para `front.dk-portal.jp` — o portal japonês de
+atacado: o visitante saía do site, em japonês, no momento de maior interesse, e os 2.287
+apartamentos não existiam como página para buscador nenhum (as casas já tinham ficha
+desde setembro).
+
+- **Slug**: `apartamento-<planta>-<cidade>-dk<id>` (`lib/aluguel.mjs`,
+  `slugDeAluguel` / `codigoDoSlugAluguel`). Mesma forma do slug das casas. O prefixo
+  `dk` existe porque o id do DK Portal é só numérico e o slug terminaria num número
+  solto. Slug antigo ou só o código → **301** para o atual: uma URL por apartamento.
+- **Quem serve**: `api/aluguel-lista.mjs`, a mesma função da busca, por três rewrites
+  (`/imoveis`, `/imoveis/:slug`, `/sitemap-aluguel.xml`). Não é economia de arquivo: o
+  plano da Vercel limita o projeto a **12 funções** e ele está em 11, e as três rotas
+  precisam do mesmo acervo, que a função já carrega uma vez e guarda em memória. A ficha
+  sai em ~4 ms porque é uma busca num array que o processo já tem.
+- **O que a ficha publica**: custo mensal total (o portal anuncia só o aluguel) e a
+  entrada **item a item** — diárias, aluguel adiantado, corretagem, garantidora, limpeza,
+  taxa administrativa, chaves. É o conteúdo que ninguém publica em português, e é o que
+  dá a cada página um texto próprio.
+- **Honestidade (景表法)**: anúncio de aluguel sai do ar rápido. A ficha diz a data da
+  última verificação e que a unidade pode ter sido alugada desde então; apartamento fora
+  do acervo responde **404** (não 200 com "não encontrado", que encheria o índice do
+  Google de página morta). Depósito e luva zerados são **omitidos** — `positivo()`
+  devolve `null` tanto para 0 quanto para ausente, e "não cobra" seria afirmar em nome
+  do proprietário. Pet e internet só aparecem quando houve conferência.
+- **Dados estruturados**: `Product` + `Offer` com `UnitPriceSpecification` em `MON`. Sem
+  isso o Google leria ¥43.000 como preço de venda do imóvel.
+- `tests/aluguel-ficha.test.mjs` cobre slug, omissões, 404 e o preço por mês.
+
 ## 2. Valores mostrados ao cliente
 
 Toda a conta fica em **`custos.js`**, em um só lugar. O site nunca

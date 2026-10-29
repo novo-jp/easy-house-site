@@ -1,6 +1,19 @@
 /**
  * GET /imoveis — a busca de apartamentos para alugar, renderizada no servidor.
  *
+ * Esta função serve TRÊS rotas, e não uma (ver os rewrites em vercel.json):
+ *
+ *   /imoveis                 a busca
+ *   /imoveis/<slug>          a ficha de um apartamento   (?slug=)
+ *   /sitemap-aluguel.xml     o sitemap do acervo         (?sitemap=1)
+ *
+ * Juntas por necessidade e por eficiência. O plano da Vercel limita o projeto
+ * a 12 funções e ele está em 11: duas funções novas estourariam. E as três
+ * precisam exatamente do mesmo dado — o acervo inteiro, que esta função já
+ * carrega uma vez e guarda em memória. Separar faria três processos baixarem
+ * as mesmas 2.287 linhas do Supabase.
+ *
+ *
  * O mesmo desenho de /comprar/imoveis (api/casas-lista.mjs): o HTML já chega
  * com a primeira página de resultados, os filtros como um <form method="get">
  * que funciona sozinho, os chips ativos como links e a paginação como links.
@@ -20,6 +33,8 @@ import { carregarAlugueis } from '../lib/aluguel-fonte.mjs';
 import { lerFiltros, resolverLocal, buscar, facetas, diagnosticoVazio, filtrosAtivos,
          filtrosParaParams, ORDENS, ORDEM_PADRAO, chave } from '../lib/aluguel-busca.mjs';
 import { documento, esc, SITE, ICONE_WA } from '../lib/casas-html.mjs';
+import { paginaApartamento, paginaIndisponivel, relacionados } from '../lib/aluguel-ficha.mjs';
+import { codigoDoSlugAluguel } from '../lib/aluguel.mjs';
 
 const require = createRequire(import.meta.url);
 const Cartao = require('../lib/aluguel-cartao.js');
@@ -387,10 +402,64 @@ function opcoesDeAluguel(limites) {
   return out;
 }
 
+/** Sitemap do acervo de aluguel, gerado do mesmo cache da lista. */
+function sitemapXml(acervo) {
+  const x = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]));
+  const urls = acervo.itens.map((a) => `  <url>
+    <loc>${x(`${SITE}${CAMINHO}/${a.slug}`)}</loc>${a.verificadoEm ? `
+    <lastmod>${x(a.verificadoEm)}</lastmod>` : ''}
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>${a.fotoUrl ? `
+    <image:image><image:loc>${x(a.fotoUrl)}</image:loc><image:title>${x(a.titulo)}</image:title></image:image>` : ''}
+  </url>`);
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>${SITE}${CAMINHO}</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+${urls.join('\n')}
+</urlset>`;
+}
+
 export default async function handler(req, res) {
   const url = new URL(req.url, `https://${req.headers.host || 'easyhouse.homes'}`);
   try {
     const acervo = await carregarAlugueis();
+
+    /* ── /sitemap-aluguel.xml ─────────────────────────────────────────── */
+    if (url.searchParams.get('sitemap')) {
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+      return res.status(200).send(sitemapXml(acervo));
+    }
+
+    /* ── /imoveis/<slug> — a ficha ────────────────────────────────────── */
+    const slugPedido = (url.searchParams.get('slug') || '').slice(0, 120);
+    if (slugPedido) {
+      const codigo = codigoDoSlugAluguel(slugPedido);
+      const a = codigo ? acervo.itens.find((x) => x.codigo === codigo) : null;
+
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      if (!a) {
+        // Saiu do acervo (alugado, ou o scraper não vê há semanas): 404 de
+        // verdade, para não encher o índice do Google de página morta.
+        res.setHeader('Cache-Control', 'public, s-maxage=600');
+        return res.status(404).send(paginaIndisponivel(slugPedido, acervo.itens.slice(0, 6)));
+      }
+      // Slug antigo (mudou de planta ou de cidade) → manda para o atual, uma
+      // URL por apartamento, sem conteúdo duplicado no índice.
+      if (slugPedido !== a.slug) {
+        res.setHeader('Location', `${CAMINHO}/${a.slug}`);
+        return res.status(301).end();
+      }
+      res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=86400');
+      return res.status(200).send(paginaApartamento(a, relacionados(a, acervo.itens, 6)));
+    }
+
+    /* ── /imoveis — a busca ───────────────────────────────────────────── */
     const bruto = lerFiltros(url.searchParams);
     if (!url.searchParams.get('porPagina')) bruto.porPagina = POR_PAGINA_LISTA;
     const pedido = resolverLocal(bruto, acervo.itens);

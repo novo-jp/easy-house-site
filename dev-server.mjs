@@ -84,6 +84,21 @@ const servidor = createServer(async (req, res) => {
       return h(req, res);
     }
 
+    // /imoveis/<slug> → ficha do apartamento (a mesma função da lista)
+    const mAlu = rota.match(/^\/imoveis\/([^/]+)\/?$/);
+    if (mAlu) {
+      const { default: h } = await import(`./api/aluguel-lista.mjs?t=${Date.now()}`);
+      req.url = `/api/aluguel-lista?slug=${encodeURIComponent(mAlu[1])}`;
+      return h(req, res);
+    }
+
+    // /sitemap-aluguel.xml → a mesma função, outro ramo
+    if (rota === '/sitemap-aluguel.xml') {
+      const { default: h } = await import(`./api/aluguel-lista.mjs?t=${Date.now()}`);
+      req.url = '/api/aluguel-lista?sitemap=1';
+      return h(req, res);
+    }
+
     // /imoveis → apartamentos para alugar, renderizados no servidor (mesmo rewrite do vercel.json)
     if (rota === '/imoveis' || rota === '/imoveis/') {
       const { default: h } = await import(`./api/aluguel-lista.mjs?t=${Date.now()}`);

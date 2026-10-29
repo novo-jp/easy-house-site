@@ -287,9 +287,16 @@ describe('card', () => {
     assert.match(html, /Internet inclusa/);
     assert.match(html, /início de outubro\/2026/);
   });
-  test('sem URL de cliente não há link para o portal; sem planta não há troca', () => {
+  test('"mais detalhes" leva à ficha no site, nunca ao portal de atacado', () => {
+    // Até 29/10/2026 este link era o `dkUrl` e levava o visitante para
+    // front.dk-portal.jp, em japonês, fora do site. Agora é a ficha própria.
     const html = Cartao.cartao(ACERVO[3]);
-    assert.doesNotMatch(html, /Mais detalhes do apartamento/);
+    assert.match(html, /href="\/imoveis\/apartamento-1k-toyota-dk4"/);
+    assert.doesNotMatch(html, /dk-portal\.jp/);
+  });
+
+  test('sem planta não há troca de imagem, e área ausente não vira "0 m²"', () => {
+    const html = Cartao.cartao(ACERVO[3]);
     assert.doesNotMatch(html, /data-slide-ir/);
     assert.doesNotMatch(html, /m²/);
   });
