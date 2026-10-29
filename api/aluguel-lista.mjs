@@ -34,7 +34,7 @@ import { lerFiltros, resolverLocal, buscar, facetas, diagnosticoVazio, filtrosAt
          filtrosParaParams, ORDENS, ORDEM_PADRAO, chave } from '../lib/aluguel-busca.mjs';
 import { documento, esc, SITE, ICONE_WA } from '../lib/casas-html.mjs';
 import { paginaApartamento, paginaIndisponivel, relacionados } from '../lib/aluguel-ficha.mjs';
-import { codigoDoSlugAluguel } from '../lib/aluguel.mjs';
+import { codigoDoSlugAluguel, resumirParaLista } from '../lib/aluguel.mjs';
 
 const require = createRequire(import.meta.url);
 const Cartao = require('../lib/aluguel-cartao.js');
@@ -388,7 +388,7 @@ export function paginaLista({ acervo, pedido, r, fac, rot, aluguelOpcoes }) {
     head: `<link rel="stylesheet" href="/aluguel.css?v=${VERSAO}"/>
 <script id="dadosBusca" type="application/json">${JSON.stringify({
       total: r.total, totalAcervo: r.totalAcervo, pagina: r.pagina, totalPaginas: r.totalPaginas, ordem,
-      filtros: f, rotulos: rot, aluguelOpcoes, itens: r.itens, verificadoEm: acervo.verificadoEm
+      filtros: f, rotulos: rot, aluguelOpcoes, itens: r.itens.map(resumirParaLista), verificadoEm: acervo.verificadoEm
     }).replace(/</g, '\\u003c')}</script>`
   });
 }

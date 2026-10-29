@@ -19,7 +19,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { normalizarAluguel, slugDeAluguel, codigoDoSlugAluguel } from '../lib/aluguel.mjs';
+import { normalizarAluguel, codigoDoSlugAluguel, resumirParaLista } from '../lib/aluguel.mjs';
 import { paginaApartamento, relacionados } from '../lib/aluguel-ficha.mjs';
 
 /** Uma linha crua do portal, como vem do Supabase. */
@@ -118,5 +118,18 @@ describe('apartamentos relacionados', () => {
     const r = relacionados(base, [base, mesmaCidade, outraCidade], 6);
     assert.ok(!r.some((x) => x.codigo === base.codigo), 'não repete o próprio');
     assert.equal(r[0].codigo, '2', 'mesma cidade primeiro');
+  });
+});
+
+describe('o que vai para o navegador', () => {
+  test('o JSON da lista não leva a URL do portal de atacado', () => {
+    const a = normalizarAluguel(linha());
+    assert.ok(a.dkUrl, 'o campo existe no servidor');
+    const publico = resumirParaLista(a);
+    assert.equal(publico.dkUrl, undefined, 'mas não é publicado');
+    // E o que o card precisa continua lá.
+    for (const campo of ['codigo', 'slug', 'titulo', 'aluguel', 'mensal', 'entrada']) {
+      assert.ok(publico[campo] !== undefined, `${campo} sumiu do resumo`);
+    }
   });
 });
