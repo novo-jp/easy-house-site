@@ -15,7 +15,7 @@
 import { createRequire } from 'node:module';
 import { carregarCasas, casasConfig, financingConfig } from '../lib/casas-fonte.mjs';
 import { lerFiltros, resolverLocal, buscar, facetas, diagnosticoVazio, filtrosAtivos,
-         filtrosParaParams, ORDENS, ORDEM_PADRAO, chave } from '../lib/casas-busca.mjs';
+         filtrosParaParams, idadeDoAcervo, ORDENS, ORDEM_PADRAO, chave } from '../lib/casas-busca.mjs';
 import { documento, esc, SITE, ICONE_WA } from '../lib/casas-html.mjs';
 
 const require = createRequire(import.meta.url);
@@ -63,6 +63,29 @@ function urlCom(f, ordem, mudancas, pagina) {
 }
 
 /* ── Peças da página ─────────────────────────────────────────── */
+
+const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+function dataPorExtenso(iso) {
+  if (!iso) return null;
+  const [a, m, d] = iso.split('-');
+  return `${Number(d)} de ${MESES[Number(m) - 1]}`;
+}
+
+/**
+ * Aviso de idade do acervo. Só aparece quando a última verificação passou de
+ * uma semana — abaixo disso é a operação normal e o ruído não se justifica.
+ * Diz a data, o que isso significa e o que a Easy House faz a respeito.
+ */
+function avisoDeIdade({ verificadoEm, dias }) {
+  if (!verificadoEm || dias === null || dias < 7) return '';
+  const quando = dataPorExtenso(verificadoEm);
+  return `<aside class="aviso-acervo" role="note" aria-label="Idade das informações">
+    <p><strong>Estas informações foram verificadas em ${esc(quando)}</strong>, há ${dias} dias.
+    Algumas casas podem já ter sido vendidas ou mudado de preço desde então.</p>
+    <p class="aviso-acervo__oque">Antes de qualquer visita, a Easy House confirma com o anunciante se o imóvel
+    continua disponível e pelo mesmo valor — é só perguntar sobre o que te interessar.</p>
+  </aside>`;
+}
 
 function opcaoCheck({ nome, valor, rotulo, total, marcado, desabilitado, motivo, lang, tipo = 'checkbox' }) {
   const id = `f-${nome}-${String(valor).replace(/[^a-z0-9]+/gi, '-') || 'qualquer'}`;
@@ -134,6 +157,7 @@ function estadoVazio(f, ordem, diag, rot, total) {
 /* ── Página ──────────────────────────────────────────────────── */
 
 export function paginaLista({ todas, pedido, r, fac, rot, precoOpcoes, agora }) {
+  const idade = idadeDoAcervo(todas, agora);
   const f = pedido.filtros;
   const ordem = pedido.ordem;
   const provincias = fac.prefeituras.filter((p) => p.total || true).map((p) => p.valor);
@@ -222,6 +246,8 @@ export function paginaLista({ todas, pedido, r, fac, rot, precoOpcoes, agora }) 
     ${pedido.ignorados.length ? `<p class="aviso-param" role="status">Parte do endereço não fazia sentido e foi ignorada (${esc(pedido.ignorados.join(', '))}). Mostramos a busca com o que sobrou.</p>` : ''}
     ${pedido.localResolvido ? `<p class="aviso-param" role="status">Entendemos “${esc(pedido.qOriginal || '')}” como um lugar e trocamos o filtro de cidade.</p>` : ''}
   </div>
+
+  ${avisoDeIdade(idade)}
 
   <div class="casa-grid" id="resultados" data-pagina="${r.pagina}" data-total-paginas="${r.totalPaginas}">${cards}</div>
   ${r.total === 0 ? estadoVazio(f, ordem, diagnosticoVazio(todas, f), rot, r.total) : ''}

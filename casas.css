@@ -602,3 +602,19 @@ body.tem-bandeja { padding-bottom: 90px; }
    aberto ele cobria o botão "Mostrar X imóveis" e as setas da galeria. Enquanto
    houver diálogo, o aviso espera; volta assim que o diálogo fecha. */
 body.dialogo-aberto .eh-cc { display: none; }
+
+/* ── Aviso de idade do acervo ──────────────────────────────────
+   A coleta do ATBB depende de uma pessoa resolver o reCAPTCHA, então
+   o acervo envelhece. Dizer a data é mais honesto que esconder tudo
+   (prazo curto esvaziava o site) ou calar (o cliente supõe que é de hoje). */
+.aviso-acervo {
+  max-width: var(--wrap); margin: 16px auto 0; padding: 14px 16px;
+  border-radius: 12px; border: 1px solid rgba(212,165,116,.38);
+  background: rgba(212,165,116,.1);
+  display: grid; gap: 6px;
+}
+.aviso-acervo p { margin: 0; font-size: .92rem; line-height: 1.55; color: var(--pearl-dim); }
+.aviso-acervo strong { color: var(--pearl); }
+.aviso-acervo__oque { font-size: .86rem; color: var(--pearl-muted); }
+@media (min-width: 760px) { .aviso-acervo { margin-inline: var(--pad-x); } }
+@media (min-width: 1240px) { .aviso-acervo { margin-inline: auto; } }

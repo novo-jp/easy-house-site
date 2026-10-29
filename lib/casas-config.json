@@ -15,7 +15,8 @@
 
   "publicacao": {
     "statusPublicaveis": ["紹介可能"],
-    "diasParaInativar": 14,
+    "noteInativar": "30 dias desde 29/10/2026. O scraper do ATBB depende de alguém resolver o reCAPTCHA à mão, então o acervo passa semanas sem reverificação; com 14 dias o site esvaziava de uma vez (aconteceu em 24/10). Enquanto for assim, a lista avisa a data da última verificação em vez de esconder tudo. Voltar para 14 quando a coleta voltar a ser semanal e confiável.",
+    "diasParaInativar": 30,
     "exigirFoto": true,
     "exigirPreco": true
   },

@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
 import { lerFiltros, filtrosParaParams, aplicarFiltros, buscar, facetas, diagnosticoVazio,
-         resolverLocal, ORDENS, ORDEM_PADRAO, chave } from '../lib/casas-busca.mjs';
+         resolverLocal, idadeDoAcervo, ORDENS, ORDEM_PADRAO, chave } from '../lib/casas-busca.mjs';
 import { normalizarCasa, classeEntrega, entregaPrevistaPt, formatarYen, formatarMan } from '../lib/casas.mjs';
 
 const require = createRequire(import.meta.url);
@@ -213,5 +213,29 @@ describe('card', () => {
     const html = Cartao.cartao(casa({ cidade_pt: '<img src=x onerror=alert(1)>' }), {});
     assert.ok(!html.includes('<img src=x'));
     assert.ok(html.includes('&lt;img'));
+  });
+});
+
+describe('idade do acervo', () => {
+  // O site esvaziou em 24/10/2026 porque o prazo de 14 dias escondeu tudo de
+  // uma vez: todos os imóveis tinham a mesma data de verificação. A regra que
+  // substitui isso precisa continuar dizendo a verdade quando o acervo envelhece.
+  const hoje = new Date('2026-10-29T12:00:00Z');
+  test('usa a verificação mais recente do acervo', () => {
+    const r = idadeDoAcervo([
+      { verificadoEm: '2026-10-09' }, { verificadoEm: '2026-09-30' }, { verificadoEm: null }
+    ], hoje);
+    assert.equal(r.verificadoEm, '2026-10-09');
+    assert.equal(r.dias, 20);
+  });
+  test('acervo fresco: zero dias', () => {
+    assert.equal(idadeDoAcervo([{ verificadoEm: '2026-10-29' }], hoje).dias, 0);
+  });
+  test('sem data não inventa idade', () => {
+    assert.deepEqual(idadeDoAcervo([{ verificadoEm: null }], hoje), { verificadoEm: null, dias: null });
+    assert.deepEqual(idadeDoAcervo([], hoje), { verificadoEm: null, dias: null });
+  });
+  test('data no futuro não vira idade negativa', () => {
+    assert.equal(idadeDoAcervo([{ verificadoEm: '2026-11-05' }], hoje).dias, 0);
   });
 });
