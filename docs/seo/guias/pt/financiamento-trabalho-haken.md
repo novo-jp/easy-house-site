@@ -1,5 +1,5 @@
 <!--
-RASCUNHO — NÃO PUBLICAR SEM REVISÃO
+APROVADO PELA EASY HOUSE EM 31/10/2026 — fonte da página publicada
 URL proposta: /financiamento-trabalho-haken   (par em espanhol: /es/hipoteca-trabajo-haken)
 Título (≈60): Trabalho em empreiteira (haken) pode financiar casa no Japão?
 Descrição (≈150): Haken e ukeoi não são recusa automática. Veja o que o banco olha — tempo de vínculo, renda, documentos — e como pedir uma avaliação do seu caso.
@@ -27,10 +27,6 @@ O simulador da Easy House trata assim, como ponto de partida:
 
 Isso é a regra da ferramenta, não de um banco. Cada instituição tem o seu critério.
 
-[CONFIRMAR: A Easy House quer publicar a referência de 3 anos? Ela é a regra do
-simulador. Se os bancos com quem vocês trabalham pedem outro prazo (1 ano? 2 anos?),
-melhor dizer "varia de banco para banco" e tirar o número.]
-
 **Atenção:** sem visto permanente, o Flat 35 não está disponível — a JHF aceita
 estrangeiros só com 永住者 ou 特別永住者. Para o haken sem 永住, o caminho é banco privado.
 
@@ -41,9 +37,6 @@ estrangeiros só com 永住者 ou 特別永住者. Para o haken sem 永住, o ca
   quanto sobra para a casa
 - **Entrada**: quanto maior, menor o valor financiado
 - **Contrato de trabalho** assinado e atualizado
-
-[CONFIRMAR: Mudar de empreiteira recentemente zera o tempo de vínculo para o banco? Se
-a Easy House tem experiência sobre isso, é a dúvida número 1 desse público.]
 
 ## Documentos
 
@@ -57,7 +50,7 @@ juminhyo, shotoku/kazei shomeisho. A lista completa, por etapa, está em
 Fica mais difícil, mas depende do banco e do restante do perfil. Peça uma avaliação.
 
 **A renda do meu cônjuge pode somar?**
-Em muitos casos, sim — cada banco tem regras para compor renda. [CONFIRMAR]
+Em muitos casos, sim — cada banco tem regras para compor renda.
 
 ## Próximo passo
 

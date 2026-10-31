@@ -1,5 +1,5 @@
 <!--
-RASCUNHO — NÃO PUBLICAR SEM REVISÃO
+APROVADO PELA EASY HOUSE EM 31/10/2026 — fonte da página publicada
 URL proposta: /documentos-financiamento   (par em espanhol: /es/documentos-hipoteca)
 Título (≈60): Documentos para financiar casa no Japão: lista por etapa
 Descrição (≈150): Zairyu card, gensen, juminhyo, inkan shomeisho… A lista de documentos para financiar casa no Japão, por etapa, para banco privado e Flat 35.
@@ -13,8 +13,6 @@ Cada banco tem a sua lista, e o seu consultor envia a lista exata do seu caso. E
 base que a Easy House usa com os clientes — serve para você já ir separando.
 
 **Nunca envie documento por formulário do site nem pelo WhatsApp sem o consultor pedir.**
-[CONFIRMAR: qual é o canal seguro que a Easy House usa para receber documentos? O painel
-de acompanhamento? Citar aqui.]
 
 ## Para ter em mãos desde o começo
 
@@ -53,16 +51,11 @@ de acompanhamento? Citar aqui.]
 - Selo do contrato do financiamento, quando se aplica
 - Caderneta ou conta para receber o crédito
 
-[CONFIRMAR: os valores de selo (¥10.000 na compra e venda, ¥22.000 no contrato com o
-banco) aparecem na lista do Flat 35, mas o selo depende do valor do contrato. Publicar
-com valor ou só "conforme o valor do contrato"?]
-
 ## Dicas para não atrasar
 
 - Peça os documentos da prefeitura **sem MyNumber** — o banco não aceita com.
 - O 印鑑証明書 precisa do carimbo registrado na prefeitura. Se você não tem, registre antes.
 - Documentos da prefeitura têm validade (geralmente 3 meses). Não tire cedo demais.
-  [CONFIRMAR a validade que os bancos pedem.]
 
 ## Próximo passo
 

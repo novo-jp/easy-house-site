@@ -1,5 +1,5 @@
 <!--
-RASCUNHO — NÃO PUBLICAR SEM REVISÃO
+APROVADO PELA EASY HOUSE EM 31/10/2026 — fonte da página publicada
 URL proposta: /renda-minima-financiamento   (par em espanhol: /es/ingresos-para-hipoteca)
 Título (≈60): Quanto preciso ganhar para financiar uma casa no Japão?
 Descrição (≈150): Não existe renda mínima única. Veja a regra de comprometimento do Flat 35, como suas dívidas entram na conta e um exemplo com números.
@@ -44,10 +44,6 @@ simulador pergunta pelas parcelas atuais.
 Em muitos casos o banco aceita compor a renda com a do cônjuge — com regras próprias
 sobre quanto da segunda renda conta.
 
-[CONFIRMAR: O simulador considera uma porcentagem da segunda renda (está na
-configuração). A Easy House quer publicar esse percentual ou só dizer "depende do
-banco"?]
-
 ## Perguntas frequentes
 
 **Com ¥3 milhões por ano dá para comprar?**
@@ -55,7 +51,7 @@ Depende das dívidas, do preço da casa e da entrada. Faça a simulação: em 60
 você vê a faixa de imóvel compatível com a parcela que cabe no seu mês.
 
 **O bônus entra na renda?**
-Entra na renda anual do 源泉徴収票. [CONFIRMAR se algum banco desconta bônus.]
+O bônus faz parte da renda anual do 源泉徴収票, que é a base da análise.
 
 ## Próximo passo
 

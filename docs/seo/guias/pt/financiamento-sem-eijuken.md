@@ -1,5 +1,5 @@
 <!--
-RASCUNHO — NÃO PUBLICAR SEM REVISÃO
+APROVADO PELA EASY HOUSE EM 31/10/2026 — fonte da página publicada
 URL proposta: /financiamento-sem-eijuken   (par em espanhol: /es/hipoteca-sin-residencia-permanente)
 Título (≈60): Financiar casa no Japão sem visto permanente (永住) | Easy House
 Descrição (≈150): Sem 永住 dá para financiar? O Flat 35 exige visto permanente; bancos privados têm critérios próprios. Veja o que pesa na análise e como pedir uma avaliação.
@@ -37,11 +37,6 @@ descobrir que o status não era um desses dois, o saldo pode ter de ser quitado 
 Fora do Flat 35, a decisão é de cada banco. Na prática, alguns analisam vistos de cônjuge,
 定住者 e de trabalho caso a caso; outros só trabalham com 永住.
 
-[CONFIRMAR COM A EASY HOUSE: É possível dizer, sem citar nomes, quantos bancos com quem
-a Easy House trabalha analisam pedidos sem 永住? Algum padrão que valha publicar — por
-exemplo, prazo mínimo restante do visto ou tempo mínimo morando no Japão? Só publicar o
-que a Easy House viu acontecer, e nunca como regra garantida.]
-
 ## O que costuma pesar na análise
 
 Sem 永住, o banco olha com mais atenção:
@@ -51,9 +46,6 @@ Sem 永住, o banco olha com mais atenção:
 - **Renda declarada** — a do 源泉徴収票 (gensen) ou do 確定申告
 - **Dívidas atuais**: carro, cartão parcelado, キャッシング, リボ払い — tudo entra na conta
 - **Entrada** e, quando houver, **quem compõe a renda** (cônjuge com 永住 ou japonês)
-
-[CONFIRMAR: A Easy House orienta o cliente sem 永住 a compor renda com o cônjuge que
-tem 永住 ou é japonês? Se sim, vale um parágrafo; se depende do banco, dizer isso.]
 
 ## Perguntas frequentes
 

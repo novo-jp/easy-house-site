@@ -58,6 +58,19 @@ Respostas completas em: /simular (ferramenta), /entregas (casos reais),
   /es/casas-en-venta/<ciudad>, /es/casas-nuevas, /es/casas-usadas e o simulador
   /simular-es
 - Gifu ainda não tem casas no acervo
+
+## Guias de financiamento (revisados pela Easy House)
+
+- /guia-comprar-casa-japao — como comprar sendo estrangeiro, as 7 etapas
+- /financiamento-sem-eijuken — financiar sem visto permanente (o Flat 35 exige 永住者 ou
+  特別永住者; bancos privados têm critérios próprios)
+- /financiamento-trabalho-haken, /financiamento-autonomo — empreiteira e autônomo
+- /renda-minima-financiamento — a regra de comprometimento da renda
+- /documentos-financiamento — documentos por etapa, banco privado e Flat 35
+- Em espanhol: /es/guia-comprar-casa-japon, /es/hipoteca-sin-residencia-permanente,
+  /es/hipoteca-trabajo-haken, /es/hipoteca-trabajador-independiente,
+  /es/ingresos-para-hipoteca, /es/documentos-hipoteca, /es/gastos-comprar-vivienda,
+  /es/financiamiento-hipotecario-tokai
 - Sitemaps: /sitemap.xml, /sitemap-casas.xml e /sitemap-aluguel.xml
 
 A estimativa de parcela usa {{TAXA}} em até {{PRAZO}} anos, sobre o preço do imóvel.

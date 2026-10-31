@@ -4,28 +4,27 @@
   "fonte": "EASY_HOUSE_SEO_TOKAI_CLAUDE_CODE.md (Anexos B e G) + acervo de 31/10/2026",
   "paginas_total": 134,
   "paginas_por_estado": {
-   "publicado": 52,
-   "planejado (backlog)": 42,
+   "publicado": 66,
+   "planejado (backlog)": 34,
    "bloqueado por dados externos": 26,
    "sem necessidade por já existir": 7,
-   "rascunho pendente": 6,
    "alterado/redirect": 1
   },
   "paginas_por_acao": {
-   "nenhuma": 69,
-   "criada": 39,
+   "nenhuma": 61,
+   "criada": 47,
    "atualizada": 26
   },
   "keywords_total": 537,
   "keywords_por_estado": {
-   "publicado": 262,
+   "publicado": 313,
    "bloqueado por dados externos": 129,
-   "planejado (backlog)": 72,
+   "planejado (backlog)": 54,
    "sem necessidade por já existir": 38,
-   "rascunho pendente": 33,
    "alterado/redirect": 3
   },
-  "keywords_com_destino_existente_ou_planejado": 537
+  "keywords_com_destino_existente_ou_planejado": 537,
+  "atualizado_em": "2026-10-31 (tarde)"
  },
  "paginas": [
   {
@@ -46,7 +45,7 @@
    "url_real": "/",
    "estado": "sem necessidade por já existir",
    "acao": "nenhuma",
-   "observacao": "Home existente. PENDÊNCIA: hoje \"/\" redireciona (307) para /entregas — decisão do dono; o hub /casas-a-venda cobre a intenção \"imobiliária para brasileiros em Aichi/Mie\"."
+   "observacao": "Home existente. Decisão do dono (31/10/2026): manter \"/\" redirecionando para /entregas. O hub /casas-a-venda cobre a intenção regional."
   },
   {
    "fase": "P0",
@@ -83,80 +82,80 @@
    "idioma": "es",
    "proposed_path": "/es/documentos-hipoteca/",
    "keyword_central": "documentos para solicitar hipoteca Japón",
-   "url_real": "/es/documentos-hipoteca (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Traduzir depois que o rascunho em português (documentos-financiamento) for revisado — traduzir texto não revisado dobra a revisão."
+   "url_real": "/es/documentos-hipoteca",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/financiamiento-hipotecario-tokai/",
    "keyword_central": "financiamiento de vivienda en Tokai Japon",
-   "url_real": "/es/financiamiento-hipotecario-tokai (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Versão em espanhol de /financiamento-imovel-japao, que é gerada por build-conteudo.mjs: exige um gerador bilíngue. Backlog."
+   "url_real": "/es/financiamiento-hipotecario-tokai",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/gastos-comprar-vivienda/",
    "keyword_central": "gastos de comprar vivienda Japón",
-   "url_real": "/es/gastos-comprar-vivienda (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Versão em espanhol de /quanto-custa-casa-japao, que é gerada por build-conteudo.mjs: exige um gerador bilíngue. Backlog."
+   "url_real": "/es/gastos-comprar-vivienda",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/guia-comprar-casa-japon/",
    "keyword_central": "cómo comprar casa en Japón siendo extranjero",
-   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Traduzir depois que o rascunho em português (guia-comprar-casa-japao) for revisado — traduzir texto não revisado dobra a revisão."
+   "url_real": "/es/guia-comprar-casa-japon",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
    "keyword_central": "hipoteca sin residencia permanente Japón",
-   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Traduzir depois que o rascunho em português (financiamento-sem-eijuken) for revisado — traduzir texto não revisado dobra a revisão."
+   "url_real": "/es/hipoteca-sin-residencia-permanente",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/hipoteca-trabajador-independiente/",
    "keyword_central": "autónomo puede pedir hipoteca Japón",
-   "url_real": "/es/hipoteca-trabajador-independiente (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Traduzir depois que o rascunho em português (financiamento-autonomo) for revisado — traduzir texto não revisado dobra a revisão."
+   "url_real": "/es/hipoteca-trabajador-independiente",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/hipoteca-trabajo-haken/",
    "keyword_central": "trabajador haken puede pedir hipoteca Japón",
-   "url_real": "/es/hipoteca-trabajo-haken (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Traduzir depois que o rascunho em português (financiamento-trabalho-haken) for revisado — traduzir texto não revisado dobra a revisão."
+   "url_real": "/es/hipoteca-trabajo-haken",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
    "idioma": "es",
    "proposed_path": "/es/ingresos-para-hipoteca/",
    "keyword_central": "ingresos mínimos para hipoteca Japón",
-   "url_real": "/es/ingresos-para-hipoteca (não publicada)",
-   "estado": "planejado (backlog)",
-   "acao": "nenhuma",
-   "observacao": "Traduzir depois que o rascunho em português (renda-minima-financiamento) for revisado — traduzir texto não revisado dobra a revisão."
+   "url_real": "/es/ingresos-para-hipoteca",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
   },
   {
    "fase": "P0",
@@ -166,7 +165,7 @@
    "url_real": "/simular-es",
    "estado": "sem necessidade por já existir",
    "acao": "nenhuma",
-   "observacao": "Idem, em espanhol."
+   "observacao": "O funil completo do simulador é a pré-análise. Decisão do dono (31/10/2026): não mexer no funil do tráfego pago — sem seleção de província."
   },
   {
    "fase": "P0",
@@ -223,20 +222,20 @@
    "idioma": "pt-BR",
    "proposed_path": "/pt/documentos-financiamento/",
    "keyword_central": "documentos para financiar casa no Japão",
-   "url_real": "/documentos-financiamento (não publicada)",
-   "estado": "rascunho pendente",
+   "url_real": "/documentos-financiamento",
+   "estado": "publicado",
    "acao": "criada",
-   "observacao": "Rascunho em docs/seo/rascunhos/documentos-financiamento.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
   },
   {
    "fase": "P0",
    "idioma": "pt-BR",
    "proposed_path": "/pt/financiamento-autonomo/",
    "keyword_central": "autônomo financiar casa no Japão",
-   "url_real": "/financiamento-autonomo (não publicada)",
-   "estado": "rascunho pendente",
+   "url_real": "/financiamento-autonomo",
+   "estado": "publicado",
    "acao": "criada",
-   "observacao": "Rascunho em docs/seo/rascunhos/financiamento-autonomo.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
   },
   {
    "fase": "P0",
@@ -253,30 +252,30 @@
    "idioma": "pt-BR",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
    "keyword_central": "financiamento casa Japão sem visto permanente",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente",
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado",
    "acao": "criada",
-   "observacao": "Rascunho em docs/seo/rascunhos/financiamento-sem-eijuken.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
   },
   {
    "fase": "P0",
    "idioma": "pt-BR",
    "proposed_path": "/pt/financiamento-trabalho-haken/",
    "keyword_central": "haken pode financiar casa no Japão",
-   "url_real": "/financiamento-trabalho-haken (não publicada)",
-   "estado": "rascunho pendente",
+   "url_real": "/financiamento-trabalho-haken",
+   "estado": "publicado",
    "acao": "criada",
-   "observacao": "Rascunho em docs/seo/rascunhos/financiamento-trabalho-haken.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
   },
   {
    "fase": "P0",
    "idioma": "pt-BR",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
    "keyword_central": "como comprar casa no Japão sendo estrangeiro",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente",
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado",
    "acao": "criada",
-   "observacao": "Rascunho em docs/seo/rascunhos/guia-comprar-casa-japao.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
   },
   {
    "fase": "P0",
@@ -286,17 +285,17 @@
    "url_real": "/simular",
    "estado": "sem necessidade por já existir",
    "acao": "nenhuma",
-   "observacao": "O funil completo do /simular (renda, dívidas, contato, consentimento) é a pré-análise. PENDÊNCIA: o briefing pede seleção de província (Aichi/Mie/Gifu); hoje o funil pergunta 7 cidades de Mikawa + \"outra\" — mudança no funil pago, decisão do dono."
+   "observacao": "O funil completo do simulador é a pré-análise. Decisão do dono (31/10/2026): não mexer no funil do tráfego pago — sem seleção de província."
   },
   {
    "fase": "P0",
    "idioma": "pt-BR",
    "proposed_path": "/pt/renda-minima-financiamento/",
    "keyword_central": "quanto preciso ganhar para financiar casa no Japão",
-   "url_real": "/renda-minima-financiamento (não publicada)",
-   "estado": "rascunho pendente",
+   "url_real": "/renda-minima-financiamento",
+   "estado": "publicado",
    "acao": "criada",
-   "observacao": "Rascunho em docs/seo/rascunhos/renda-minima-financiamento.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
   },
   {
    "fase": "P0",
@@ -1383,8 +1382,8 @@
    "idioma": "ES",
    "keyword": "autónomo puede pedir hipoteca Japón",
    "proposed_path": "/es/hipoteca-trabajador-independiente/",
-   "url_real": "/es/hipoteca-trabajador-independiente (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-trabajador-independiente",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -1695,32 +1694,32 @@
    "idioma": "ES",
    "keyword": "cuánto cuesta comprar una casa en Japón",
    "proposed_path": "/es/gastos-comprar-vivienda/",
-   "url_real": "/es/gastos-comprar-vivienda (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/gastos-comprar-vivienda",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "cómo comprar casa en Japón siendo extranjero",
    "proposed_path": "/es/guia-comprar-casa-japon/",
-   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/guia-comprar-casa-japon",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "cómo comprar casa en Tokai",
    "proposed_path": "/es/guia-comprar-casa-japon/",
-   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/guia-comprar-casa-japon",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "documentos para solicitar hipoteca Japón",
    "proposed_path": "/es/documentos-hipoteca/",
-   "url_real": "/es/documentos-hipoteca (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/documentos-hipoteca",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -1751,24 +1750,24 @@
    "idioma": "ES",
    "keyword": "extranjero puede comprar casa en Japón",
    "proposed_path": "/es/guia-comprar-casa-japon/",
-   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/guia-comprar-casa-japon",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "financiamiento de vivienda en Tokai Japon",
    "proposed_path": "/es/financiamiento-hipotecario-tokai/",
-   "url_real": "/es/financiamiento-hipotecario-tokai (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/financiamiento-hipotecario-tokai",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "gastos de comprar vivienda Japón",
    "proposed_path": "/es/gastos-comprar-vivienda/",
-   "url_real": "/es/gastos-comprar-vivienda (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/gastos-comprar-vivienda",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -1887,8 +1886,8 @@
    "idioma": "ES",
    "keyword": "hipoteca para extranjeros Japón",
    "proposed_path": "/es/financiamiento-hipotecario-tokai/",
-   "url_real": "/es/financiamiento-hipotecario-tokai (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/financiamiento-hipotecario-tokai",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -1903,48 +1902,48 @@
    "idioma": "ES",
    "keyword": "hipoteca para trabajadores temporales Japón",
    "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-sin-residencia-permanente",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "hipoteca sin residencia permanente en Japón",
    "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-sin-residencia-permanente",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "hipoteca sin residencia permanente Japón",
    "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-sin-residencia-permanente",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "hipoteca sin visa permanente Japón",
    "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-sin-residencia-permanente",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "ingreso mínimo hipoteca en Japón",
    "proposed_path": "/es/ingresos-para-hipoteca/",
-   "url_real": "/es/ingresos-para-hipoteca (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/ingresos-para-hipoteca",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "ingresos mínimos para hipoteca Japón",
    "proposed_path": "/es/ingresos-para-hipoteca/",
-   "url_real": "/es/ingresos-para-hipoteca (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/ingresos-para-hipoteca",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2087,8 +2086,8 @@
    "idioma": "ES",
    "keyword": "préstamo vivienda trabajador temporal Japón",
    "proposed_path": "/es/hipoteca-trabajo-haken/",
-   "url_real": "/es/hipoteca-trabajo-haken (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-trabajo-haken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2111,16 +2110,16 @@
    "idioma": "ES",
    "keyword": "trabajador haken puede pedir hipoteca Japón",
    "proposed_path": "/es/hipoteca-trabajo-haken/",
-   "url_real": "/es/hipoteca-trabajo-haken (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-trabajo-haken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "trabajador independiente hipoteca Japón",
    "proposed_path": "/es/hipoteca-trabajador-independiente/",
-   "url_real": "/es/hipoteca-trabajador-independiente (não publicada)",
-   "estado": "planejado (backlog)"
+   "url_real": "/es/hipoteca-trabajador-independiente",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2183,8 +2182,8 @@
    "idioma": "JP-misto",
    "keyword": "住宅ローン 永住権なし",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2247,16 +2246,16 @@
    "idioma": "JP-misto",
    "keyword": "永住権 住宅ローン 外国人",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "JP-misto",
    "keyword": "派遣社員 住宅ローン 外国人",
    "proposed_path": "/pt/financiamento-trabalho-haken/",
-   "url_real": "/financiamento-trabalho-haken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-trabalho-haken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2279,8 +2278,8 @@
    "idioma": "JP-misto",
    "keyword": "確定申告 住宅ローン 個人事業主",
    "proposed_path": "/pt/financiamento-autonomo/",
-   "url_real": "/financiamento-autonomo (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-autonomo",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2327,32 +2326,32 @@
    "idioma": "PT",
    "keyword": "autônomo financiar casa Japão",
    "proposed_path": "/pt/financiamento-autonomo/",
-   "url_real": "/financiamento-autonomo (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-autonomo",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "autônomo financiar casa no Japão",
    "proposed_path": "/pt/financiamento-autonomo/",
-   "url_real": "/financiamento-autonomo (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-autonomo",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "brasileiro pode comprar casa no Japão",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "brasileiro pode ter casa própria no Japão",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2695,16 +2694,16 @@
    "idioma": "PT",
    "keyword": "como comprar casa no Japão",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "como comprar casa no Japão sendo estrangeiro",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2855,16 +2854,16 @@
    "idioma": "PT",
    "keyword": "comprar casa passo a passo Japão",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "comprar casa sendo estrangeiro no Japão",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2911,24 +2910,24 @@
    "idioma": "PT",
    "keyword": "documentos necessários para comprar casa no Japão",
    "proposed_path": "/pt/documentos-financiamento/",
-   "url_real": "/documentos-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/documentos-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "documentos para contrato compra e venda Japão",
    "proposed_path": "/pt/guia-comprar-casa-japao/",
-   "url_real": "/guia-comprar-casa-japao (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/guia-comprar-casa-japao",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "documentos para financiar casa no Japão",
    "proposed_path": "/pt/documentos-financiamento/",
-   "url_real": "/documentos-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/documentos-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2967,8 +2966,8 @@
    "idioma": "PT",
    "keyword": "eijuken financiamento imobiliário",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -2983,8 +2982,8 @@
    "idioma": "PT",
    "keyword": "financiamento casa Japão sem visto permanente",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3159,8 +3158,8 @@
    "idioma": "PT",
    "keyword": "financiamento para estrangeiro sem eijuken",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3183,16 +3182,16 @@
    "idioma": "PT",
    "keyword": "financiar casa no Japão sem visto permanente",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "funcionário temporário financiar casa Japão",
    "proposed_path": "/pt/financiamento-trabalho-haken/",
-   "url_real": "/financiamento-trabalho-haken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-trabalho-haken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3207,32 +3206,32 @@
    "idioma": "PT",
    "keyword": "gensen choushuuhyou financiamento",
    "proposed_path": "/pt/documentos-financiamento/",
-   "url_real": "/documentos-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/documentos-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "haken financiamento casa",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "haken pode financiar casa Japão",
    "proposed_path": "/pt/financiamento-trabalho-haken/",
-   "url_real": "/financiamento-trabalho-haken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-trabalho-haken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "haken pode financiar casa no Japão",
    "proposed_path": "/pt/financiamento-trabalho-haken/",
-   "url_real": "/financiamento-trabalho-haken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-trabalho-haken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3391,8 +3390,8 @@
    "idioma": "PT",
    "keyword": "juminhyo financiamento casa",
    "proposed_path": "/pt/documentos-financiamento/",
-   "url_real": "/documentos-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/documentos-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3407,24 +3406,24 @@
    "idioma": "PT",
    "keyword": "kazei shoumeisho para financiamento",
    "proposed_path": "/pt/documentos-financiamento/",
-   "url_real": "/documentos-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/documentos-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "kojin financiamento imóvel",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "kojin jigyo financiamento casa",
    "proposed_path": "/pt/financiamento-autonomo/",
-   "url_real": "/financiamento-autonomo (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-autonomo",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3463,8 +3462,8 @@
    "idioma": "PT",
    "keyword": "quanto banco libera para financiar casa",
    "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/financiamento-sem-eijuken",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3479,32 +3478,32 @@
    "idioma": "PT",
    "keyword": "quanto posso financiar com meu salário no Japão",
    "proposed_path": "/pt/renda-minima-financiamento/",
-   "url_real": "/renda-minima-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/renda-minima-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "quanto preciso ganhar para financiar casa no Japão",
    "proposed_path": "/pt/renda-minima-financiamento/",
-   "url_real": "/renda-minima-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/renda-minima-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "renda mínima para financiar casa Japão",
    "proposed_path": "/pt/renda-minima-financiamento/",
-   "url_real": "/renda-minima-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/renda-minima-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "salário para financiar 25 milhões de ienes",
    "proposed_path": "/pt/renda-minima-financiamento/",
-   "url_real": "/renda-minima-financiamento (não publicada)",
-   "estado": "rascunho pendente"
+   "url_real": "/renda-minima-financiamento",
+   "estado": "publicado"
   },
   {
    "prioridade": "P0",

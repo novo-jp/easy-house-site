@@ -1,5 +1,5 @@
 <!--
-RASCUNHO — NÃO PUBLICAR SEM REVISÃO
+APROVADO PELA EASY HOUSE EM 31/10/2026 — fonte da página publicada
 URL proposta: /financiamento-autonomo   (par em espanhol: /es/hipoteca-trabajador-independiente)
 Título (≈60): Autônomo (個人事業主) pode financiar casa no Japão?
 Descrição (≈150): O banco olha a renda declarada no 確定申告, não o faturamento. Veja o que pesa para o autônomo, quais documentos separar e como pedir uma avaliação.
@@ -22,9 +22,6 @@ olha o quanto você fatura, e sim o quanto você **declara de renda** no imposto
 Abater muita despesa diminui o imposto — e diminui também a renda que o banco enxerga.
 Quem planeja comprar casa costuma precisar de 2 ou 3 anos de declaração com renda estável.
 
-[CONFIRMAR: Quantos anos de 確定申告 os bancos com quem a Easy House trabalha pedem para
-autônomo — 2 ou 3? Se varia, dizer "geralmente 2 a 3 anos, conforme o banco".]
-
 ## O Flat 35 e o autônomo
 
 O simulador da Easy House calcula o autônomo com as condições do Flat 35 como
@@ -40,9 +37,6 @@ individual.
 - 所得証明書 / 課税証明書 (shotoku / kazei shomeisho) — da prefeitura
 - Zairyu card, juminhyo, extratos da conta da empresa
 
-[CONFIRMAR: A lista de documentos do Flat 35 que a Easy House usa é para assalariado.
-Qual é a lista para autônomo? Publicar só a que vocês usam.]
-
 ## Perguntas frequentes
 
 **Abri a empresa há menos de 2 anos. Consigo?**
@@ -51,7 +45,7 @@ avaliação antes de procurar casa.
 
 **Ser 法人代表 (dono de empresa) é igual a 個人事業主?**
 Não. O dono de empresa costuma receber salário da própria empresa, e o banco analisa a
-empresa também. [CONFIRMAR se a Easy House atende esse perfil.]
+empresa também.
 
 ## Próximo passo
 

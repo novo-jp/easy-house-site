@@ -1,5 +1,5 @@
 <!--
-RASCUNHO — NÃO PUBLICAR SEM REVISÃO
+APROVADO PELA EASY HOUSE EM 31/10/2026 — fonte da página publicada
 URL proposta: /guia-comprar-casa-japao   (par em espanhol: /es/guia-comprar-casa-japon)
 Título (≈60): Como comprar casa no Japão sendo estrangeiro: guia passo a passo
 Descrição (≈150): Estrangeiro pode comprar casa no Japão. Veja as 7 etapas, do imóvel às chaves, o que muda no financiamento e os custos além do preço — em português.
@@ -58,9 +58,6 @@ Em Gifu o acervo ainda não tem casas.
 
 Os contratos e documentos são em japonês. A Easy House explica cada etapa em português,
 acompanha as visitas e conversa em japonês com o vendedor e com o banco.
-
-[CONFIRMAR: o 重要事項説明 é feito por 宅地建物取引士 da Easy House com tradução? Se sim,
-vale uma frase — é a dúvida de quem tem medo de assinar sem entender.]
 
 ## Próximo passo
 

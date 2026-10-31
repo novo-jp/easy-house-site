@@ -4,34 +4,30 @@ Implementação do briefing `EASY_HOUSE_SEO_TOKAI_CLAUDE_CODE.md`: venda de casa
 Aichi, Mie e Gifu para o público brasileiro (pt-BR) e latino (es). Auditoria prévia em
 `auditoria_antes.md`; mapeamento completo em `seo_manifest_resolvido.json` / `.csv`.
 
-> ## ⚠️ Antes de tudo: o acervo de casas some em 8/11/2026
->
-> A última verificação do ATBB foi em **9/10/2026** (o scraper para no reCAPTCHA).
-> Casa não verificada há 30 dias sai do site. Se o scraper não rodar até **8/11**, o
-> portal `/comprar/imoveis`, as 84 páginas regionais e as 949 URLs do
-> `sitemap-casas.xml` ficam vazios ou dão 404 — e o Google começa a desindexar.
-> Nada do que foi feito aqui resolve isso: é a coleta que precisa voltar.
+> **Atualização 31/10/2026, tarde.** A coleta do ATBB rodou hoje (750 casas de Aichi e 56
+> de Mie verificadas), então o prazo de 8/11 deixou de valer. Ele volta sempre que a coleta
+> parar: casa não verificada há 30 dias sai do site. Os 6 guias foram aprovados e publicados,
+> com as versões em espanhol, e as decisões abertas foram fechadas (ver "Decisões").
 
 ## Números que o briefing pede
 
 | | Quantidade |
 |---|---|
 | Páginas do briefing (Anexo B) | 134 |
-| — publicadas e verificadas em produção | **52** |
+| — publicadas e verificadas em produção | **66** |
 | — já cobertas por página existente | 7 |
 | — redirecionamento | 1 (`/es` → `/es/casas-en-venta`) |
 | — bloqueadas por dados externos (sem estoque) | 26 |
-| — rascunho pendente de revisão | 6 |
-| — planejadas (backlog) | 42 |
-| Rotas **criadas** (URLs novas indexáveis no ar) | **47** — hub, 2 províncias, novas e usadas em PT; hub, 2 províncias, 37 cidades, novas e usadas em ES |
-| Rotas **atualizadas** | 37 páginas de cidade PT, `/simular`, `/simular-es`, `/financiamento-imovel-japao`, `/quanto-custa-casa-japao`, `/custo-inicial-aluguel-japao`, `/comprar/imoveis`, rodapé compartilhado, sitemap, llms.txt |
+| — planejadas (backlog) | 34 |
+| Rotas **criadas** (URLs novas indexáveis no ar) | **61** — 47 regionais, 6 guias em português, 6 guias e 2 páginas-pilar em espanhol |
+| Rotas **atualizadas** | 37 páginas de cidade PT, `/simular`, `/simular-es`, `/financiamento-imovel-japao`, `/quanto-custa-casa-japao`, `/custo-inicial-aluguel-japao`, `/comprar/imoveis`, rodapé compartilhado, sitemaps, llms.txt |
 | URLs regionais no sitemap | 84 (42 pares pt/es, com hreflang) |
+| Páginas de conteúdo bilíngues | 16 (8 pares pt/es, com hreflang) |
 | Palavras-chave (Anexo G) | 537, **todas com destino** |
-| — destino publicado ou existente | 303 (56%) |
+| — destino publicado ou existente | **354 (65%)** |
 | — destino bloqueado por estoque | 129 |
-| — destino em rascunho | 33 |
-| — destino planejado | 72 |
-| Testes do site | 205, todos passando |
+| — destino planejado | 54 |
+| Testes do site | 223, todos passando |
 
 **Por que 37 cidades e não 21:** o acervo tem mais cidades de Aichi e Mie com 5+ casas do
 que o briefing listou (Seto, Inuyama, Ama…). Estão nas províncias do escopo e passam no
@@ -84,25 +80,46 @@ novas, usadas e Español; a busca de casas leva às províncias e tipos; `/simul
 2. **`/financiamento-imovel-japao`** — a regra do Flat 35 estava omitida (`2a2fd19`).
 3. **`docs/` publicada na web**, inclusive o mapa de plataformas (`79dba83`).
 
-## Pendências — decisões do dono
+## Guias publicados (aprovados em 31/10/2026)
 
-| # | Pendência | Por que é sua |
+| Português | Espanhol |
+|---|---|
+| `/guia-comprar-casa-japao` | `/es/guia-comprar-casa-japon` |
+| `/financiamento-sem-eijuken` | `/es/hipoteca-sin-residencia-permanente` |
+| `/financiamento-trabalho-haken` | `/es/hipoteca-trabajo-haken` |
+| `/financiamento-autonomo` | `/es/hipoteca-trabajador-independiente` |
+| `/renda-minima-financiamento` | `/es/ingresos-para-hipoteca` |
+| `/documentos-financiamento` | `/es/documentos-hipoteca` |
+| `/quanto-custa-casa-japao` (já existia) | `/es/gastos-comprar-vivienda` |
+| `/financiamento-imovel-japao` (já existia) | `/es/financiamiento-hipotecario-tokai` |
+
+Aprovados sem resposta às marcas [CONFIRMAR]: saíram as perguntas; ficou só a versão
+genérica das frases que dependiam delas (ex.: "cada banco tem regras para compor
+renda"), e os valores de selo, não confirmados, saíram. Texto-fonte em
+`docs/seo/guias/{pt,es}/`; para mudar, editar o `.md` e rodar `node build-conteudo.mjs`.
+
+## Decisões (31/10/2026)
+
+| Tema | Decisão |
+|---|---|
+| Home `/` | Continua redirecionando para `/entregas` |
+| Pré-análise com província | Não mexer no funil do tráfego pago — fica sem província |
+| Atendimento em Mie | Confirmado: Suzuka, Yokkaichi e Tsu |
+| Guias | Aprovados e publicados |
+| Certificado 住宅ローンアドバイザー | Renovado — **falta a nova data de validade** (ver abaixo) |
+
+## Pendências
+
+| # | Pendência | Quem |
 |---|---|---|
-| 1 | **Coleta do ATBB** antes de 8/11 | ver o aviso no topo |
-| 2 | **Gifu**: estender o scraper à província | 16 páginas do briefing (12 delas P0/P1: província, Kani, Minokamo, Ogaki…) e 79 palavras-chave dependem disso |
-| 3 | **Home `/`** redireciona para `/entregas` | o briefing quer home de marca; o hub `/casas-a-venda` cobre a intenção enquanto isso |
-| 4 | **Pré-análise com província** (Aichi/Mie/Gifu) | o funil do `/simular` pergunta 7 cidades de Mikawa + "outra"; mexer nele mexe no tráfego pago |
-| 5 | **Faixa de preço para quem não tem 永住** no cenário Flat 35 | hoje aparece rotulada "referência" com aviso; mostrar ou não é decisão de produto |
-| 6 | **Atendimento presencial em Mie** | as páginas de cidade dizem "a gente visita com você"; confirmar que vale para Suzuka, Yokkaichi, Tsu… |
-| 7 | **Revisar os 6 rascunhos** em `docs/seo/rascunhos/` | conteúdo financeiro; o briefing exige revisão humana |
-| 8 | **`PLATAFORMAS.html` no histórico do git** (commit `f71c2b9`) | saiu do site e do índice; tirar do histórico exige reescrever o repositório público |
-| 9 | **Repositório público** | `docs/seo/` (palavras-chave, estratégia) está visível no GitHub, não no site |
+| 1 | **Nova validade do certificado.** A `/entregas` esconde o bloco a partir de 1/11, e a frase da página de financiamento só sai se gerada dentro da validade. Com a foto do certificado novo: atualizar `validoAte` (app, `lib/content/claims.ts`), `CERTIFICADO_VALIDO_ATE` (`build-conteudo.mjs`) e a foto | Easy House envia; equipe aplica |
+| 2 | **Gifu**: estender o scraper do ATBB à província | 16 páginas do briefing e 79 palavras-chave dependem disso |
+| 3 | **Faixa de preço para quem não tem 永住** no cenário Flat 35 — hoje rotulada "referência", com aviso | decisão de produto |
+| 4 | **`PLATAFORMAS.html` no histórico do git** (commit `f71c2b9`) | reescrever o histórico do repositório público é decisão do dono |
+| 5 | **Repositório público**: `docs/seo/` (palavras-chave, estratégia) está visível no GitHub, não no site | dono |
 
 ## Backlog (planejado, não iniciado)
 
-- Espanhol dos 6 guias, depois da revisão do português.
-- Espanhol de `/quanto-custa-casa-japao` e `/financiamento-imovel-japao` (exige gerador
-  bilíngue em `build-conteudo.mjs`).
 - Guias P1: alugar ou comprar, bancos para estrangeiros, nova ou usada, checklist de
   visita, comprar sem entrada, sem falar japonês, 事前審査 × 本審査, seishain, Flat 35,
   glossário, impostos, juros fixos × variáveis, somar renda.
