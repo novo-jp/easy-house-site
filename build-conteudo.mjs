@@ -359,6 +359,7 @@ function paginaFinanciamento(casas) {
   <tbody>
     <tr><td>Taxa de referência</td><td>${f.rateDisplayLabel.replace(' (taxa fixa de referência)', '')}</td><td>${b.rateDisplayLabel.replace(' (taxa de referência)', '')}</td></tr>
     <tr><td>Tipo de taxa</td><td>Fixa por todo o prazo</td><td>Geralmente variável</td></tr>
+    <tr><td>Estrangeiros</td><td>Só com visto permanente (永住者) ou permanente especial (特別永住者)</td><td>Critério de cada banco</td></tr>
     <tr><td>Prazo máximo</td><td>${f.maximumTermYears} anos</td><td>${b.maximumTermYears} anos</td></tr>
     <tr><td>Idade limite na quitação</td><td>${f.payoffAgeLimit} anos</td><td>${b.payoffAgeLimit} anos</td></tr>
   </tbody>
@@ -379,8 +380,8 @@ function paginaFinanciamento(casas) {
 <h2>O peso do visto</h2>
 <p>O tipo de visto é o fator que mais varia entre instituições:</p>
 <ul>
-  <li><strong>Visto permanente (永住) ou permanente especial</strong>: aceito pela maior parte das instituições, com as mesmas condições de um cidadão japonês</li>
-  <li><strong>Cônjuge de japonês (日本人の配偶者)</strong>, <strong>residente de longa permanência (定住者)</strong> e <strong>vistos de trabalho</strong>: dependem de análise individual. Algumas instituições atendem, outras não</li>
+  <li><strong>Visto permanente (永住) ou permanente especial</strong>: aceito pela maior parte das instituições, inclusive no Flat 35, em geral nas mesmas condições de um cidadão japonês</li>
+  <li><strong>Cônjuge de japonês (日本人の配偶者)</strong>, <strong>residente de longa permanência (定住者)</strong> e <strong>vistos de trabalho</strong>: o Flat 35 não aceita — a JHF, que opera o produto, exige 永住者 ou 特別永住者 de quem é estrangeiro. Nos bancos privados, depende de análise individual: algumas instituições atendem, outras não</li>
 </ul>
 <p>Não ter 永住 não encerra o assunto — muda quais portas fazem sentido bater. O <a href="/simular" style="color:var(--teal)">simulador</a> pergunta pelo tipo de visto e já considera isso no cenário que devolve.</p>
 
@@ -404,7 +405,7 @@ function paginaFinanciamento(casas) {
       ['Estrangeiro consegue financiamento imobiliário no Japão?',
        'Sim, é possível. As condições variam bastante conforme o tipo de visto, o tempo no emprego atual, a renda e as dívidas existentes. Quem tem visto permanente (永住) costuma ter acesso às mesmas condições de um cidadão japonês; outros vistos dependem de análise individual em cada instituição.'],
       ['Preciso ter visto permanente (永住) para financiar?',
-       'Não é uma regra única. Parte das instituições exige, outras analisam caso a caso vistos de trabalho, de cônjuge de japonês e de residente de longa permanência. Não ter 永住 muda quais instituições fazem sentido procurar, mas não encerra a possibilidade.'],
+       'No Flat 35, sim: a JHF aceita estrangeiros só com visto permanente (永住者) ou permanente especial (特別永住者). Nos bancos privados não é uma regra única — parte exige, outras analisam caso a caso vistos de trabalho, de cônjuge de japonês e de residente de longa permanência. Não ter 永住 muda quais instituições fazem sentido procurar, mas não encerra a possibilidade.'],
       ['Quanto tempo de trabalho preciso comprovar?',
        'Varia por instituição. Em geral, quanto mais tempo no mesmo empregador e mais estável o vínculo, melhor a análise. Trocar de emprego às vésperas de pedir financiamento costuma atrapalhar.'],
       ['Ter キャッシング ou リボ払い impede o financiamento?',
