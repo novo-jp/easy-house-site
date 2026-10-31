@@ -1,0 +1,5670 @@
+{
+ "resumo": {
+  "gerado_em": "2026-10-31",
+  "fonte": "EASY_HOUSE_SEO_TOKAI_CLAUDE_CODE.md (Anexos B e G) + acervo de 31/10/2026",
+  "paginas_total": 134,
+  "paginas_por_estado": {
+   "publicado": 52,
+   "planejado (backlog)": 42,
+   "bloqueado por dados externos": 26,
+   "sem necessidade por já existir": 7,
+   "rascunho pendente": 6,
+   "alterado/redirect": 1
+  },
+  "paginas_por_acao": {
+   "nenhuma": 69,
+   "criada": 39,
+   "atualizada": 26
+  },
+  "keywords_total": 537,
+  "keywords_por_estado": {
+   "publicado": 262,
+   "bloqueado por dados externos": 129,
+   "planejado (backlog)": 72,
+   "sem necessidade por já existir": 38,
+   "rascunho pendente": 33,
+   "alterado/redirect": 3
+  },
+  "keywords_com_destino_existente_ou_planejado": 537
+ },
+ "paginas": [
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/",
+   "keyword_central": "inmobiliaria para latinos en Aichi Mie Gifu",
+   "url_real": "/es → /es/casas-en-venta",
+   "estado": "alterado/redirect",
+   "acao": "criada",
+   "observacao": "Não havia home em espanhol. /es redireciona (307) para o hub em espanhol, que tem províncias, cidades, etapas e contato."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/",
+   "keyword_central": "imobiliária para brasileiros em Aichi Mie Gifu",
+   "url_real": "/",
+   "estado": "sem necessidade por já existir",
+   "acao": "nenhuma",
+   "observacao": "Home existente. PENDÊNCIA: hoje \"/\" redireciona (307) para /entregas — decisão do dono; o hub /casas-a-venda cobre a intenção \"imobiliária para brasileiros em Aichi/Mie\"."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-nuevas/",
+   "keyword_central": "casas nuevas en venta en Aichi Mie Gifu",
+   "url_real": "/es/casas-nuevas",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Gerada do acervo: lo que el anuncio clasifica como 新築."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-usadas/",
+   "keyword_central": "casas usadas en venta Aichi Mie Gifu",
+   "url_real": "/es/casas-usadas",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Gerada do acervo: o que o anúncio classifica como 中古."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/comprar-casa-tokai/",
+   "keyword_central": "comprar casa en Aichi Mie y Gifu",
+   "url_real": "/es/casas-en-venta",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Mapeada para o hub regional: províncias, cidades, novas/usadas e as 7 etapas reais da compra (painel de acompanhamento)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/documentos-hipoteca/",
+   "keyword_central": "documentos para solicitar hipoteca Japón",
+   "url_real": "/es/documentos-hipoteca (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Traduzir depois que o rascunho em português (documentos-financiamento) for revisado — traduzir texto não revisado dobra a revisão."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/financiamiento-hipotecario-tokai/",
+   "keyword_central": "financiamiento de vivienda en Tokai Japon",
+   "url_real": "/es/financiamiento-hipotecario-tokai (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Versão em espanhol de /financiamento-imovel-japao, que é gerada por build-conteudo.mjs: exige um gerador bilíngue. Backlog."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/gastos-comprar-vivienda/",
+   "keyword_central": "gastos de comprar vivienda Japón",
+   "url_real": "/es/gastos-comprar-vivienda (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Versão em espanhol de /quanto-custa-casa-japao, que é gerada por build-conteudo.mjs: exige um gerador bilíngue. Backlog."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/guia-comprar-casa-japon/",
+   "keyword_central": "cómo comprar casa en Japón siendo extranjero",
+   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Traduzir depois que o rascunho em português (guia-comprar-casa-japao) for revisado — traduzir texto não revisado dobra a revisão."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
+   "keyword_central": "hipoteca sin residencia permanente Japón",
+   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Traduzir depois que o rascunho em português (financiamento-sem-eijuken) for revisado — traduzir texto não revisado dobra a revisão."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/hipoteca-trabajador-independiente/",
+   "keyword_central": "autónomo puede pedir hipoteca Japón",
+   "url_real": "/es/hipoteca-trabajador-independiente (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Traduzir depois que o rascunho em português (financiamento-autonomo) for revisado — traduzir texto não revisado dobra a revisão."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/hipoteca-trabajo-haken/",
+   "keyword_central": "trabajador haken puede pedir hipoteca Japón",
+   "url_real": "/es/hipoteca-trabajo-haken (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Traduzir depois que o rascunho em português (financiamento-trabalho-haken) for revisado — traduzir texto não revisado dobra a revisão."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/ingresos-para-hipoteca/",
+   "keyword_central": "ingresos mínimos para hipoteca Japón",
+   "url_real": "/es/ingresos-para-hipoteca (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Traduzir depois que o rascunho em português (renda-minima-financiamento) for revisado — traduzir texto não revisado dobra a revisão."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/precalificacion-hipotecaria/",
+   "keyword_central": "precalificación hipoteca Japón",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir",
+   "acao": "nenhuma",
+   "observacao": "Idem, em espanhol."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/simulador-hipoteca/",
+   "keyword_central": "simulador de hipoteca Japón",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir",
+   "acao": "atualizada",
+   "observacao": "Simulador em espanhol existente (mesma correção do Flat 35)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-novas/",
+   "keyword_central": "casas novas à venda em Aichi Mie Gifu",
+   "url_real": "/casas-novas",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Gerada do acervo: o que o anúncio classifica como 新築."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-usadas/",
+   "keyword_central": "casas usadas à venda em Aichi Mie Gifu",
+   "url_real": "/casas-usadas",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Gerada do acervo: o que o anúncio classifica como 中古."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "keyword_central": "comprar casa em Aichi Mie e Gifu",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Mapeada para o hub regional: províncias, cidades, novas/usadas e as 7 etapas reais da compra (painel de acompanhamento)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "keyword_central": "custos para comprar casa no Japão",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir",
+   "acao": "atualizada",
+   "observacao": "Página existente gerada do banco (custos de aquisição). Regenerada em 31/10."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/documentos-financiamento/",
+   "keyword_central": "documentos para financiar casa no Japão",
+   "url_real": "/documentos-financiamento (não publicada)",
+   "estado": "rascunho pendente",
+   "acao": "criada",
+   "observacao": "Rascunho em docs/seo/rascunhos/documentos-financiamento.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/financiamento-autonomo/",
+   "keyword_central": "autônomo financiar casa no Japão",
+   "url_real": "/financiamento-autonomo (não publicada)",
+   "estado": "rascunho pendente",
+   "acao": "criada",
+   "observacao": "Rascunho em docs/seo/rascunhos/financiamento-autonomo.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "keyword_central": "financiamento de casa no Japão em Tokai",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir",
+   "acao": "atualizada",
+   "observacao": "Página existente. Atualizada em 31/10: regra do Flat 35 para estrangeiros explícita (JHF FAQ 308)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "keyword_central": "financiamento casa Japão sem visto permanente",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente",
+   "acao": "criada",
+   "observacao": "Rascunho em docs/seo/rascunhos/financiamento-sem-eijuken.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/financiamento-trabalho-haken/",
+   "keyword_central": "haken pode financiar casa no Japão",
+   "url_real": "/financiamento-trabalho-haken (não publicada)",
+   "estado": "rascunho pendente",
+   "acao": "criada",
+   "observacao": "Rascunho em docs/seo/rascunhos/financiamento-trabalho-haken.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "keyword_central": "como comprar casa no Japão sendo estrangeiro",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente",
+   "acao": "criada",
+   "observacao": "Rascunho em docs/seo/rascunhos/guia-comprar-casa-japao.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/pre-analise-financiamento/",
+   "keyword_central": "pré análise financiamento imobiliário Japão",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir",
+   "acao": "nenhuma",
+   "observacao": "O funil completo do /simular (renda, dívidas, contato, consentimento) é a pré-análise. PENDÊNCIA: o briefing pede seleção de província (Aichi/Mie/Gifu); hoje o funil pergunta 7 cidades de Mikawa + \"outra\" — mudança no funil pago, decisão do dono."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/renda-minima-financiamento/",
+   "keyword_central": "quanto preciso ganhar para financiar casa no Japão",
+   "url_real": "/renda-minima-financiamento (não publicada)",
+   "estado": "rascunho pendente",
+   "acao": "criada",
+   "observacao": "Rascunho em docs/seo/rascunhos/renda-minima-financiamento.md. Conteúdo financeiro: precisa de revisão humana antes de ir ao ar (briefing §11)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/simulador-financiamento/",
+   "keyword_central": "simulador financiamento casa Japão",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir",
+   "acao": "atualizada",
+   "observacao": "Simulador existente. Atualizado em 31/10: o cenário Flat 35 não aparece mais como produto para quem não tem 永住."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/",
+   "keyword_central": "casas en venta en Aichi",
+   "url_real": "/es/casas-en-venta/aichi",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Página de província gerada do acervo (775 casas)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/",
+   "keyword_central": "casas en venta en Gifu",
+   "url_real": "/es/casas-en-venta/gifu",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Sem casas no acervo: o scraper do ATBB não varre Gifu. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/",
+   "keyword_central": "casas en venta en Mie",
+   "url_real": "/es/casas-en-venta/mie",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Página de província gerada do acervo (89 casas)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/",
+   "keyword_central": "casas à venda em Aichi",
+   "url_real": "/casas-a-venda/aichi",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Página de província gerada do acervo (775 casas)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/",
+   "keyword_central": "casas à venda em Gifu",
+   "url_real": "/casas-a-venda/gifu",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Sem casas no acervo: o scraper do ATBB não varre Gifu. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/",
+   "keyword_central": "casas à venda em Mie",
+   "url_real": "/casas-a-venda/mie",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "Página de província gerada do acervo (89 casas)."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/anjo/",
+   "keyword_central": "casas en venta Anjo Aichi",
+   "url_real": "/es/casas-en-venta/anjo",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "27 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/chiryu/",
+   "keyword_central": "casas en venta Chiryu Aichi",
+   "url_real": "/es/casas-en-venta/chiryu",
+   "estado": "bloqueado por dados externos",
+   "acao": "criada",
+   "observacao": "Só 3 casas: a página existe com noindex e fora do sitemap até chegar a 5."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/hekinan/",
+   "keyword_central": "casas en venta Hekinan Aichi",
+   "url_real": "/es/casas-en-venta/hekinan",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "28 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/nagoya/",
+   "keyword_central": "casas en venta Nagoya Aichi",
+   "url_real": "/es/casas-en-venta/nagoya",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "18 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/nishio/",
+   "keyword_central": "casas en venta Nishio Aichi",
+   "url_real": "/es/casas-en-venta/nishio",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "56 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/okazaki/",
+   "keyword_central": "casas en venta Okazaki Aichi",
+   "url_real": "/es/casas-en-venta/okazaki",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "34 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/toyohashi/",
+   "keyword_central": "casas en venta Toyohashi Aichi",
+   "url_real": "/es/casas-en-venta/toyohashi",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "40 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/toyota/",
+   "keyword_central": "casas en venta Toyota Aichi",
+   "url_real": "/es/casas-en-venta/toyota",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "43 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/kani/",
+   "keyword_central": "casas en venta Kani Gifu",
+   "url_real": "/es/casas-en-venta/kani",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/minokamo/",
+   "keyword_central": "casas en venta Minokamo Gifu",
+   "url_real": "/es/casas-en-venta/minokamo",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/suzuka/",
+   "keyword_central": "casas en venta Suzuka Mie",
+   "url_real": "/es/casas-en-venta/suzuka",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "25 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/yokkaichi/",
+   "keyword_central": "casas en venta Yokkaichi Mie",
+   "url_real": "/es/casas-en-venta/yokkaichi",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "25 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "keyword_central": "casas à venda em Anjo Aichi",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "27 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "keyword_central": "casas à venda em Chiryu Aichi",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos",
+   "acao": "atualizada",
+   "observacao": "Só 3 casas: a página existe com noindex e fora do sitemap até chegar a 5."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "keyword_central": "casas à venda em Hekinan Aichi",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "28 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "keyword_central": "casas à venda em Nagoya Aichi",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "18 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "keyword_central": "casas à venda em Nishio Aichi",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "56 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "keyword_central": "casas à venda em Okazaki Aichi",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "34 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "keyword_central": "casas à venda em Toyohashi Aichi",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "40 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "keyword_central": "casas à venda em Toyota Aichi",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "43 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "keyword_central": "casas à venda em Kani Gifu",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "keyword_central": "casas à venda em Minokamo Gifu",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "keyword_central": "casas à venda em Suzuka Mie",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "25 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P0",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "keyword_central": "casas à venda em Yokkaichi Mie",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "25 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/alquilar-o-comprar/",
+   "keyword_central": "alquilar o comprar casa en Japón",
+   "url_real": "/es/alquilar-o-comprar (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/bancos-hipotecas-extranjeros/",
+   "keyword_central": "bancos hipotecas extranjeros Japón",
+   "url_real": "/es/bancos-hipotecas-extranjeros (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casa-nueva-o-usada/",
+   "keyword_central": "casa nueva o usada en Japón",
+   "url_real": "/es/casa-nueva-o-usada (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/comprar-casa-sin-entrada/",
+   "keyword_central": "comprar casa sin entrada en Japón",
+   "url_real": "/es/comprar-casa-sin-entrada (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/comprar-casa-sin-hablar-japones/",
+   "keyword_central": "comprar casa Japón sin hablar japonés",
+   "url_real": "/es/comprar-casa-sin-hablar-japones (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/etapas-aprobacion-hipoteca/",
+   "keyword_central": "diferencia jizen shinsa honshinsa",
+   "url_real": "/es/etapas-aprobacion-hipoteca (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/flat35-extranjeros/",
+   "keyword_central": "flat 35 hipoteca extranjeros Japón",
+   "url_real": "/es/flat35-extranjeros (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/glosario-inmobiliario-japones/",
+   "keyword_central": "términos inmobiliarios japoneses en español",
+   "url_real": "/es/glosario-inmobiliario-japones (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/hipoteca-empleado-fijo/",
+   "keyword_central": "hipoteca empleado fijo Japón",
+   "url_real": "/es/hipoteca-empleado-fijo (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/impuestos-comprar-casa/",
+   "keyword_central": "impuestos al comprar casa Japón",
+   "url_real": "/es/impuestos-comprar-casa (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/interes-fijo-variable/",
+   "keyword_central": "interés fijo o variable hipoteca Japón",
+   "url_real": "/es/interes-fijo-variable (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/lista-revision-visita-casa/",
+   "keyword_central": "qué revisar al visitar una casa en Japón",
+   "url_real": "/es/lista-revision-visita-casa (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/sumar-ingresos-hipoteca/",
+   "keyword_central": "sumar ingresos familiares hipoteca Japón",
+   "url_real": "/es/sumar-ingresos-hipoteca (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/alugar-ou-comprar/",
+   "keyword_central": "alugar ou comprar casa no Japão",
+   "url_real": "/alugar-ou-comprar (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/bancos-financiamento-estrangeiro/",
+   "keyword_central": "bancos para financiar casa estrangeiro Japão",
+   "url_real": "/bancos-financiamento-estrangeiro (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casa-nova-ou-usada/",
+   "keyword_central": "casa nova ou usada no Japão",
+   "url_real": "/casa-nova-ou-usada (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/checklist-visita-imovel/",
+   "keyword_central": "o que verificar ao visitar casa no Japão",
+   "url_real": "/checklist-visita-imovel (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/comprar-casa-sem-entrada/",
+   "keyword_central": "comprar casa sem entrada no Japão",
+   "url_real": "/comprar-casa-sem-entrada (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/comprar-casa-sem-falar-japones/",
+   "keyword_central": "comprar casa Japão sem falar japonês",
+   "url_real": "/comprar-casa-sem-falar-japones (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "keyword_central": "jizen shinsa e honshinsa diferença",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/financiamento-seishain/",
+   "keyword_central": "seishain financiar casa no Japão",
+   "url_real": "/financiamento-seishain (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/flat35-estrangeiros/",
+   "keyword_central": "flat 35 financiamento para estrangeiros",
+   "url_real": "/flat35-estrangeiros (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/glossario-imobiliario-japones/",
+   "keyword_central": "termos imobiliários japoneses em português",
+   "url_real": "/glossario-imobiliario-japones (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/impostos-comprar-casa/",
+   "keyword_central": "impostos na compra de casa no Japão",
+   "url_real": "/impostos-comprar-casa (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/juros-fixos-variaveis/",
+   "keyword_central": "juros fixos ou variáveis financiamento Japão",
+   "url_real": "/juros-fixos-variaveis (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/somar-renda-financiamento/",
+   "keyword_central": "somar renda familiar financiamento Japão",
+   "url_real": "/somar-renda-financiamento (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/handa/",
+   "keyword_central": "casas en venta Handa Aichi",
+   "url_real": "/es/casas-en-venta/handa",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "17 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/kariya/",
+   "keyword_central": "casas en venta Kariya Aichi",
+   "url_real": "/es/casas-en-venta/kariya",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "12 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/komaki/",
+   "keyword_central": "casas en venta Komaki Aichi",
+   "url_real": "/es/casas-en-venta/komaki",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "36 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/takahama/",
+   "keyword_central": "casas en venta Takahama Aichi",
+   "url_real": "/es/casas-en-venta/takahama",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "24 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/toyokawa/",
+   "keyword_central": "casas en venta Toyokawa Aichi",
+   "url_real": "/es/casas-en-venta/toyokawa",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "25 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/gifu-shi/",
+   "keyword_central": "casas en venta Gifu Gifu",
+   "url_real": "/es/casas-en-venta/gifu-shi",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/kakamigahara/",
+   "keyword_central": "casas en venta Kakamigahara Gifu",
+   "url_real": "/es/casas-en-venta/kakamigahara",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/ogaki/",
+   "keyword_central": "casas en venta Ogaki Gifu",
+   "url_real": "/es/casas-en-venta/ogaki",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/iga/",
+   "keyword_central": "casas en venta Iga Mie",
+   "url_real": "/es/casas-en-venta/iga",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/kuwana/",
+   "keyword_central": "casas en venta Kuwana Mie",
+   "url_real": "/es/casas-en-venta/kuwana",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "6 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/tsu/",
+   "keyword_central": "casas en venta Tsu Mie",
+   "url_real": "/es/casas-en-venta/tsu",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "21 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "keyword_central": "casas à venda em Handa Aichi",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "17 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "keyword_central": "casas à venda em Kariya Aichi",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "12 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "keyword_central": "casas à venda em Komaki Aichi",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "36 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "keyword_central": "casas à venda em Takahama Aichi",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "24 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "keyword_central": "casas à venda em Toyokawa Aichi",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "25 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "keyword_central": "casas à venda em Gifu Gifu",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "keyword_central": "casas à venda em Kakamigahara Gifu",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "keyword_central": "casas à venda em Ogaki Gifu",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "keyword_central": "casas à venda em Iga Mie",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "keyword_central": "casas à venda em Kuwana Mie",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "6 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P1",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "keyword_central": "casas à venda em Tsu Mie",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "21 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-3ldk-4ldk/",
+   "keyword_central": "casa 3ldk 4ldk Japón",
+   "url_real": "/es/casas-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/costos-mantenimiento-casa/",
+   "keyword_central": "costo de mantenimiento vivienda Japón",
+   "url_real": "/es/costos-mantenimiento-casa (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/cuanto-tarda-hipoteca/",
+   "keyword_central": "cuánto demora hipoteca Japón",
+   "url_real": "/es/cuanto-tarda-hipoteca (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/historial-crediticio-hipoteca/",
+   "keyword_central": "historial crediticio hipoteca Japón",
+   "url_real": "/es/historial-crediticio-hipoteca (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casa-3ldk-4ldk/",
+   "keyword_central": "casa 3ldk 4ldk Japão",
+   "url_real": "/casa-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/custos-manutencao-imovel/",
+   "keyword_central": "custo de manutenção casa Japão",
+   "url_real": "/custos-manutencao-imovel (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/quanto-tempo-financiamento/",
+   "keyword_central": "quanto tempo demora financiamento Japão",
+   "url_real": "/quanto-tempo-financiamento (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/restricao-nome-financiamento/",
+   "keyword_central": "restrição no nome financiamento casa Japão",
+   "url_real": "/restricao-nome-financiamento (não publicada)",
+   "estado": "planejado (backlog)",
+   "acao": "nenhuma",
+   "observacao": "Conteúdo editorial P1/P2: backlog, não iniciado."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/gamagori/",
+   "keyword_central": "casas en venta Gamagori Aichi",
+   "url_real": "/es/casas-en-venta/gamagori",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "17 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/higashiura/",
+   "keyword_central": "casas en venta Higashiura Aichi",
+   "url_real": "/es/casas-en-venta/higashiura",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/ichinomiya/",
+   "keyword_central": "casas en venta Ichinomiya Aichi",
+   "url_real": "/es/casas-en-venta/ichinomiya",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "48 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/kasugai/",
+   "keyword_central": "casas en venta Kasugai Aichi",
+   "url_real": "/es/casas-en-venta/kasugai",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "64 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/kota/",
+   "keyword_central": "casas en venta Kota Aichi",
+   "url_real": "/es/casas-en-venta/kota",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/aichi/obu/",
+   "keyword_central": "casas en venta Obu Aichi",
+   "url_real": "/es/casas-en-venta/obu",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "12 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/sakahogi/",
+   "keyword_central": "casas en venta Sakahogi Gifu",
+   "url_real": "/es/casas-en-venta/sakahogi",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/gifu/seki/",
+   "keyword_central": "casas en venta Seki Gifu",
+   "url_real": "/es/casas-en-venta/seki",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/inabe/",
+   "keyword_central": "casas en venta Inabe Mie",
+   "url_real": "/es/casas-en-venta/inabe",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "es",
+   "proposed_path": "/es/casas-en-venta/mie/kameyama/",
+   "keyword_central": "casas en venta Kameyama Mie",
+   "url_real": "/es/casas-en-venta/kameyama",
+   "estado": "publicado",
+   "acao": "criada",
+   "observacao": "12 casas no acervo. Versão em espanhol criada."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "keyword_central": "casas à venda em Gamagori Aichi",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "17 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "keyword_central": "casas à venda em Higashiura Aichi",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "keyword_central": "casas à venda em Ichinomiya Aichi",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "48 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "keyword_central": "casas à venda em Kasugai Aichi",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "64 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "keyword_central": "casas à venda em Kota Aichi",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "keyword_central": "casas à venda em Obu Aichi",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "12 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "keyword_central": "casas à venda em Sakahogi Gifu",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "keyword_central": "casas à venda em Seki Gifu",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo (o scraper não varre Gifu). A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "keyword_central": "casas à venda em Inabe Mie",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos",
+   "acao": "nenhuma",
+   "observacao": "Nenhuma casa no acervo. A página responde 404 até haver estoque."
+  },
+  {
+   "fase": "P2",
+   "idioma": "pt-BR",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "keyword_central": "casas à venda em Kameyama Mie",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado",
+   "acao": "atualizada",
+   "observacao": "12 casas no acervo. Existia desde 31/10 (manhã); ganhou província no breadcrumb, par em espanhol, perguntas locais e comunidade brasileira com fonte."
+  }
+ ],
+ "keywords": [
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "asesoría hipotecaria en español Japón",
+   "proposed_path": "/es/simulador-hipoteca/",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "autónomo puede pedir hipoteca Japón",
+   "proposed_path": "/es/hipoteca-trabajador-independiente/",
+   "url_real": "/es/hipoteca-trabajador-independiente (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casa nueva o usada en Japón",
+   "proposed_path": "/es/casas-nuevas/",
+   "url_real": "/es/casas-nuevas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/",
+   "url_real": "/es/casas-en-venta/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/",
+   "url_real": "/es/casas-en-venta/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Anjo Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/anjo/",
+   "url_real": "/es/casas-en-venta/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Chiryu Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/chiryu/",
+   "url_real": "/es/casas-en-venta/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/",
+   "url_real": "/es/casas-en-venta/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Hekinan Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/hekinan/",
+   "url_real": "/es/casas-en-venta/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kani Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/kani/",
+   "url_real": "/es/casas-en-venta/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Mie",
+   "proposed_path": "/es/casas-en-venta/mie/",
+   "url_real": "/es/casas-en-venta/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Minokamo Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/minokamo/",
+   "url_real": "/es/casas-en-venta/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Nagoya Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/nagoya/",
+   "url_real": "/es/casas-en-venta/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Nishio Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/nishio/",
+   "url_real": "/es/casas-en-venta/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Okazaki Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/okazaki/",
+   "url_real": "/es/casas-en-venta/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Suzuka Mie",
+   "proposed_path": "/es/casas-en-venta/mie/suzuka/",
+   "url_real": "/es/casas-en-venta/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Toyohashi Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/toyohashi/",
+   "url_real": "/es/casas-en-venta/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Toyota Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/toyota/",
+   "url_real": "/es/casas-en-venta/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta en Yokkaichi Mie",
+   "proposed_path": "/es/casas-en-venta/mie/yokkaichi/",
+   "url_real": "/es/casas-en-venta/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/",
+   "url_real": "/es/casas-en-venta/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas en venta Mie",
+   "proposed_path": "/es/casas-en-venta/mie/",
+   "url_real": "/es/casas-en-venta/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas nuevas en venta en Aichi Mie Gifu",
+   "proposed_path": "/es/casas-nuevas/",
+   "url_real": "/es/casas-nuevas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "casas usadas en venta Aichi Mie Gifu",
+   "proposed_path": "/es/casas-usadas/",
+   "url_real": "/es/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/",
+   "url_real": "/es/casas-en-venta/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Aichi Mie y Gifu",
+   "proposed_path": "/es/comprar-casa-tokai/",
+   "url_real": "/es/casas-en-venta",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Anjo",
+   "proposed_path": "/es/casas-en-venta/aichi/anjo/",
+   "url_real": "/es/casas-en-venta/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Chiryu",
+   "proposed_path": "/es/casas-en-venta/aichi/chiryu/",
+   "url_real": "/es/casas-en-venta/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/",
+   "url_real": "/es/casas-en-venta/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Hekinan",
+   "proposed_path": "/es/casas-en-venta/aichi/hekinan/",
+   "url_real": "/es/casas-en-venta/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kani",
+   "proposed_path": "/es/casas-en-venta/gifu/kani/",
+   "url_real": "/es/casas-en-venta/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Mie",
+   "proposed_path": "/es/casas-en-venta/mie/",
+   "url_real": "/es/casas-en-venta/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Minokamo",
+   "proposed_path": "/es/casas-en-venta/gifu/minokamo/",
+   "url_real": "/es/casas-en-venta/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Nagoya",
+   "proposed_path": "/es/casas-en-venta/aichi/nagoya/",
+   "url_real": "/es/casas-en-venta/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Nishio",
+   "proposed_path": "/es/casas-en-venta/aichi/nishio/",
+   "url_real": "/es/casas-en-venta/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Okazaki",
+   "proposed_path": "/es/casas-en-venta/aichi/okazaki/",
+   "url_real": "/es/casas-en-venta/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Suzuka",
+   "proposed_path": "/es/casas-en-venta/mie/suzuka/",
+   "url_real": "/es/casas-en-venta/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Toyohashi",
+   "proposed_path": "/es/casas-en-venta/aichi/toyohashi/",
+   "url_real": "/es/casas-en-venta/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Toyota",
+   "proposed_path": "/es/casas-en-venta/aichi/toyota/",
+   "url_real": "/es/casas-en-venta/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "comprar casa en Yokkaichi",
+   "proposed_path": "/es/casas-en-venta/mie/yokkaichi/",
+   "url_real": "/es/casas-en-venta/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "consulta hipoteca Aichi español",
+   "proposed_path": "/es/precalificacion-hipotecaria/",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "cuánto cuesta comprar una casa en Japón",
+   "proposed_path": "/es/gastos-comprar-vivienda/",
+   "url_real": "/es/gastos-comprar-vivienda (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "cómo comprar casa en Japón siendo extranjero",
+   "proposed_path": "/es/guia-comprar-casa-japon/",
+   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "cómo comprar casa en Tokai",
+   "proposed_path": "/es/guia-comprar-casa-japon/",
+   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "documentos para solicitar hipoteca Japón",
+   "proposed_path": "/es/documentos-hipoteca/",
+   "url_real": "/es/documentos-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "EASY HOUSE casas Japón",
+   "proposed_path": "/es/",
+   "url_real": "/es → /es/casas-en-venta",
+   "estado": "alterado/redirect"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "EASY HOUSE hipoteca Tokai",
+   "proposed_path": "/es/",
+   "url_real": "/es → /es/casas-en-venta",
+   "estado": "alterado/redirect"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "EASY HOUSE inmobiliaria Aichi",
+   "proposed_path": "/es/",
+   "url_real": "/es → /es/casas-en-venta",
+   "estado": "alterado/redirect"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "extranjero puede comprar casa en Japón",
+   "proposed_path": "/es/guia-comprar-casa-japon/",
+   "url_real": "/es/guia-comprar-casa-japon (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "financiamiento de vivienda en Tokai Japon",
+   "proposed_path": "/es/financiamiento-hipotecario-tokai/",
+   "url_real": "/es/financiamiento-hipotecario-tokai (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "gastos de comprar vivienda Japón",
+   "proposed_path": "/es/gastos-comprar-vivienda/",
+   "url_real": "/es/gastos-comprar-vivienda (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Anjo",
+   "proposed_path": "/es/casas-en-venta/aichi/anjo/",
+   "url_real": "/es/casas-en-venta/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Chiryu",
+   "proposed_path": "/es/casas-en-venta/aichi/chiryu/",
+   "url_real": "/es/casas-en-venta/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Hekinan",
+   "proposed_path": "/es/casas-en-venta/aichi/hekinan/",
+   "url_real": "/es/casas-en-venta/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kani",
+   "proposed_path": "/es/casas-en-venta/gifu/kani/",
+   "url_real": "/es/casas-en-venta/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Minokamo",
+   "proposed_path": "/es/casas-en-venta/gifu/minokamo/",
+   "url_real": "/es/casas-en-venta/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Nagoya",
+   "proposed_path": "/es/casas-en-venta/aichi/nagoya/",
+   "url_real": "/es/casas-en-venta/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Nishio",
+   "proposed_path": "/es/casas-en-venta/aichi/nishio/",
+   "url_real": "/es/casas-en-venta/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Okazaki",
+   "proposed_path": "/es/casas-en-venta/aichi/okazaki/",
+   "url_real": "/es/casas-en-venta/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Suzuka",
+   "proposed_path": "/es/casas-en-venta/mie/suzuka/",
+   "url_real": "/es/casas-en-venta/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Toyohashi",
+   "proposed_path": "/es/casas-en-venta/aichi/toyohashi/",
+   "url_real": "/es/casas-en-venta/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Toyota",
+   "proposed_path": "/es/casas-en-venta/aichi/toyota/",
+   "url_real": "/es/casas-en-venta/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Yokkaichi",
+   "proposed_path": "/es/casas-en-venta/mie/yokkaichi/",
+   "url_real": "/es/casas-en-venta/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para extranjeros Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/",
+   "url_real": "/es/casas-en-venta/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para extranjeros Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/",
+   "url_real": "/es/casas-en-venta/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para extranjeros Japón",
+   "proposed_path": "/es/financiamiento-hipotecario-tokai/",
+   "url_real": "/es/financiamiento-hipotecario-tokai (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para extranjeros Mie",
+   "proposed_path": "/es/casas-en-venta/mie/",
+   "url_real": "/es/casas-en-venta/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca para trabajadores temporales Japón",
+   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
+   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca sin residencia permanente en Japón",
+   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
+   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca sin residencia permanente Japón",
+   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
+   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "hipoteca sin visa permanente Japón",
+   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
+   "url_real": "/es/hipoteca-sin-residencia-permanente (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "ingreso mínimo hipoteca en Japón",
+   "proposed_path": "/es/ingresos-para-hipoteca/",
+   "url_real": "/es/ingresos-para-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "ingresos mínimos para hipoteca Japón",
+   "proposed_path": "/es/ingresos-para-hipoteca/",
+   "url_real": "/es/ingresos-para-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/",
+   "url_real": "/es/casas-en-venta/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Anjo",
+   "proposed_path": "/es/casas-en-venta/aichi/anjo/",
+   "url_real": "/es/casas-en-venta/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Chiryu",
+   "proposed_path": "/es/casas-en-venta/aichi/chiryu/",
+   "url_real": "/es/casas-en-venta/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/",
+   "url_real": "/es/casas-en-venta/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Hekinan",
+   "proposed_path": "/es/casas-en-venta/aichi/hekinan/",
+   "url_real": "/es/casas-en-venta/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kani",
+   "proposed_path": "/es/casas-en-venta/gifu/kani/",
+   "url_real": "/es/casas-en-venta/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Mie",
+   "proposed_path": "/es/casas-en-venta/mie/",
+   "url_real": "/es/casas-en-venta/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Minokamo",
+   "proposed_path": "/es/casas-en-venta/gifu/minokamo/",
+   "url_real": "/es/casas-en-venta/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Nagoya",
+   "proposed_path": "/es/casas-en-venta/aichi/nagoya/",
+   "url_real": "/es/casas-en-venta/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Nishio",
+   "proposed_path": "/es/casas-en-venta/aichi/nishio/",
+   "url_real": "/es/casas-en-venta/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Okazaki",
+   "proposed_path": "/es/casas-en-venta/aichi/okazaki/",
+   "url_real": "/es/casas-en-venta/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Suzuka",
+   "proposed_path": "/es/casas-en-venta/mie/suzuka/",
+   "url_real": "/es/casas-en-venta/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Toyohashi",
+   "proposed_path": "/es/casas-en-venta/aichi/toyohashi/",
+   "url_real": "/es/casas-en-venta/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Toyota",
+   "proposed_path": "/es/casas-en-venta/aichi/toyota/",
+   "url_real": "/es/casas-en-venta/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Yokkaichi",
+   "proposed_path": "/es/casas-en-venta/mie/yokkaichi/",
+   "url_real": "/es/casas-en-venta/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "inmobiliaria para latinos en Tokai",
+   "proposed_path": "/es/comprar-casa-tokai/",
+   "url_real": "/es/casas-en-venta",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "precalificación hipoteca Japón",
+   "proposed_path": "/es/precalificacion-hipotecaria/",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "préstamo vivienda trabajador temporal Japón",
+   "proposed_path": "/es/hipoteca-trabajo-haken/",
+   "url_real": "/es/hipoteca-trabajo-haken (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "simulador de hipoteca en Japón",
+   "proposed_path": "/es/simulador-hipoteca/",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "simulador de hipoteca Japón",
+   "proposed_path": "/es/simulador-hipoteca/",
+   "url_real": "/simular-es",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "trabajador haken puede pedir hipoteca Japón",
+   "proposed_path": "/es/hipoteca-trabajo-haken/",
+   "url_real": "/es/hipoteca-trabajo-haken (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "trabajador independiente hipoteca Japón",
+   "proposed_path": "/es/hipoteca-trabajador-independiente/",
+   "url_real": "/es/hipoteca-trabajador-independiente (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "viviendas usadas en Aichi",
+   "proposed_path": "/es/casas-usadas/",
+   "url_real": "/es/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "viviendas usadas en Gifu",
+   "proposed_path": "/es/casas-usadas/",
+   "url_real": "/es/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "ES",
+   "keyword": "viviendas usadas en Mie",
+   "proposed_path": "/es/casas-usadas/",
+   "url_real": "/es/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "中古一戸建て brasileiro",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "中古一戸建て 愛知 外国人",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "住宅ローン brasileiro Aichi",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "住宅ローン ポルトガル語",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "住宅ローン 永住権なし",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "可児市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "名古屋市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "四日市市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "安城市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "岡崎市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "新築一戸建て brasileiro",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "新築一戸建て 愛知 外国人",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "永住権 住宅ローン 外国人",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "派遣社員 住宅ローン 外国人",
+   "proposed_path": "/pt/financiamento-trabalho-haken/",
+   "url_real": "/financiamento-trabalho-haken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "知立市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "碧南市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "確定申告 住宅ローン 個人事業主",
+   "proposed_path": "/pt/financiamento-autonomo/",
+   "url_real": "/financiamento-autonomo (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "美濃加茂市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "西尾市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "豊橋市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "豊田市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "JP-misto",
+   "keyword": "鈴鹿市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "autônomo financiar casa Japão",
+   "proposed_path": "/pt/financiamento-autonomo/",
+   "url_real": "/financiamento-autonomo (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "autônomo financiar casa no Japão",
+   "proposed_path": "/pt/financiamento-autonomo/",
+   "url_real": "/financiamento-autonomo (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "brasileiro pode comprar casa no Japão",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "brasileiro pode ter casa própria no Japão",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casa nova ou usada no Japão",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casa nova shinchiku ikkodate",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casa usada chuko ikkodate",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casa usada ou nova Japão",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas novas 4ldk Aichi",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas novas em Gifu",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas novas à venda em Aichi Mie Gifu",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas para brasileiros em Aichi",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas baratas Gifu",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Aichi",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Anjo",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Chiryu",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Gifu",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Hekinan",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kani",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Mie",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Minokamo",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Nagoya",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Nishio",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Okazaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Suzuka",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Toyohashi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Toyota",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas em Yokkaichi",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas japonesas em Aichi",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas usadas à venda em Aichi Mie Gifu",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/",
+   "url_real": "/casas-a-venda/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Anjo Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Chiryu Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/",
+   "url_real": "/casas-a-venda/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Hekinan Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kani Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/",
+   "url_real": "/casas-a-venda/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Minokamo Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Nagoya Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Nishio Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Okazaki Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Suzuka Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Toyohashi Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Toyota Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "casas à venda em Yokkaichi Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "chuko ikkodate Mie",
+   "proposed_path": "/pt/casas-usadas/",
+   "url_real": "/casas-usadas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "como comprar casa no Japão",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "como comprar casa no Japão sendo estrangeiro",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/",
+   "url_real": "/casas-a-venda/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Aichi Mie e Gifu",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Anjo",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Chiryu",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/",
+   "url_real": "/casas-a-venda/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Hekinan",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kani",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/",
+   "url_real": "/casas-a-venda/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Minokamo",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Nagoya",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Nishio",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Okazaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Suzuka",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Tokai Japão",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Toyohashi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Toyota",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa em Yokkaichi",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa no Japão em português",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa passo a passo Japão",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "comprar casa sendo estrangeiro no Japão",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "consulta financiamento Aichi",
+   "proposed_path": "/pt/simulador-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "corretor brasileiro em Gifu",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "custo da escritura casa Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "custos além do preço da casa",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "custos para comprar casa no Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "documentos necessários para comprar casa no Japão",
+   "proposed_path": "/pt/documentos-financiamento/",
+   "url_real": "/documentos-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "documentos para contrato compra e venda Japão",
+   "proposed_path": "/pt/guia-comprar-casa-japao/",
+   "url_real": "/guia-comprar-casa-japao (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "documentos para financiar casa no Japão",
+   "proposed_path": "/pt/documentos-financiamento/",
+   "url_real": "/documentos-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "EASY HOUSE Aichi",
+   "proposed_path": "/pt/",
+   "url_real": "/",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "EASY HOUSE financiamento de casa",
+   "proposed_path": "/pt/",
+   "url_real": "/",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "EASY HOUSE imobiliária Japão",
+   "proposed_path": "/pt/",
+   "url_real": "/",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "EASY HOUSE Mie Gifu",
+   "proposed_path": "/pt/",
+   "url_real": "/",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "eijuken financiamento imobiliário",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "entrada casa Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento casa Japão sem visto permanente",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento de casa em Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/",
+   "url_real": "/casas-a-venda/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento de casa em Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/",
+   "url_real": "/casas-a-venda/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento de casa em Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/",
+   "url_real": "/casas-a-venda/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento de casa no Japão em Tokai",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário Aichi",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário brasileiro Gifu",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Anjo",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Chiryu",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Hekinan",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kani",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Minokamo",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Nagoya",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Nishio",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Okazaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Suzuka",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Toyohashi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Toyota",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Yokkaichi",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário Gifu",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário Mie",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento para brasileiro no Japão",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento para estrangeiro sem eijuken",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento para estrangeiros Aichi",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiamento para latinos Mie",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "financiar casa no Japão sem visto permanente",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "funcionário temporário financiar casa Japão",
+   "proposed_path": "/pt/financiamento-trabalho-haken/",
+   "url_real": "/financiamento-trabalho-haken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "gastos de compra casa Japón",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "gensen choushuuhyou financiamento",
+   "proposed_path": "/pt/documentos-financiamento/",
+   "url_real": "/documentos-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "haken financiamento casa",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "haken pode financiar casa Japão",
+   "proposed_path": "/pt/financiamento-trabalho-haken/",
+   "url_real": "/financiamento-trabalho-haken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "haken pode financiar casa no Japão",
+   "proposed_path": "/pt/financiamento-trabalho-haken/",
+   "url_real": "/financiamento-trabalho-haken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imobiliária brasileira em Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/",
+   "url_real": "/casas-a-venda/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imobiliária para brasileiros em Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/",
+   "url_real": "/casas-a-venda/aichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imobiliária para brasileiros em Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/",
+   "url_real": "/casas-a-venda/gifu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imobiliária para brasileiros em Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/",
+   "url_real": "/casas-a-venda/mie",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imobiliária para estrangeiros em Mie",
+   "proposed_path": "/pt/comprar-casa-tokai/",
+   "url_real": "/casas-a-venda",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "impostos registro imóvel Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Anjo",
+   "proposed_path": "/pt/casas-a-venda/aichi/anjo/",
+   "url_real": "/casas-a-venda/anjo",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Chiryu",
+   "proposed_path": "/pt/casas-a-venda/aichi/chiryu/",
+   "url_real": "/casas-a-venda/chiryu",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Hekinan",
+   "proposed_path": "/pt/casas-a-venda/aichi/hekinan/",
+   "url_real": "/casas-a-venda/hekinan",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kani",
+   "proposed_path": "/pt/casas-a-venda/gifu/kani/",
+   "url_real": "/casas-a-venda/kani",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Minokamo",
+   "proposed_path": "/pt/casas-a-venda/gifu/minokamo/",
+   "url_real": "/casas-a-venda/minokamo",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Nagoya",
+   "proposed_path": "/pt/casas-a-venda/aichi/nagoya/",
+   "url_real": "/casas-a-venda/nagoya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Nishio",
+   "proposed_path": "/pt/casas-a-venda/aichi/nishio/",
+   "url_real": "/casas-a-venda/nishio",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Okazaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/okazaki/",
+   "url_real": "/casas-a-venda/okazaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Suzuka",
+   "proposed_path": "/pt/casas-a-venda/mie/suzuka/",
+   "url_real": "/casas-a-venda/suzuka",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Toyohashi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyohashi/",
+   "url_real": "/casas-a-venda/toyohashi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Toyota",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyota/",
+   "url_real": "/casas-a-venda/toyota",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Yokkaichi",
+   "proposed_path": "/pt/casas-a-venda/mie/yokkaichi/",
+   "url_real": "/casas-a-venda/yokkaichi",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "jizen shinsa português",
+   "proposed_path": "/pt/pre-analise-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "juminhyo financiamento casa",
+   "proposed_path": "/pt/documentos-financiamento/",
+   "url_real": "/documentos-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "juutaku loan estrangeiro",
+   "proposed_path": "/pt/financiamento-imobiliario-tokai/",
+   "url_real": "/financiamento-imovel-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "kazei shoumeisho para financiamento",
+   "proposed_path": "/pt/documentos-financiamento/",
+   "url_real": "/documentos-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "kojin financiamento imóvel",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "kojin jigyo financiamento casa",
+   "proposed_path": "/pt/financiamento-autonomo/",
+   "url_real": "/financiamento-autonomo (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "pré análise financiamento imobiliário Japão",
+   "proposed_path": "/pt/pre-analise-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "pré aprovação casa Japão",
+   "proposed_path": "/pt/pre-analise-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "pré aprovação financiamento imobiliário",
+   "proposed_path": "/pt/simulador-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "pré avaliação financiamento Aichi",
+   "proposed_path": "/pt/pre-analise-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "quanto banco libera para financiar casa",
+   "proposed_path": "/pt/financiamento-sem-eijuken/",
+   "url_real": "/financiamento-sem-eijuken (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "quanto custa uma casa no Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "quanto posso financiar com meu salário no Japão",
+   "proposed_path": "/pt/renda-minima-financiamento/",
+   "url_real": "/renda-minima-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "quanto preciso ganhar para financiar casa no Japão",
+   "proposed_path": "/pt/renda-minima-financiamento/",
+   "url_real": "/renda-minima-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "renda mínima para financiar casa Japão",
+   "proposed_path": "/pt/renda-minima-financiamento/",
+   "url_real": "/renda-minima-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "salário para financiar 25 milhões de ienes",
+   "proposed_path": "/pt/renda-minima-financiamento/",
+   "url_real": "/renda-minima-financiamento (não publicada)",
+   "estado": "rascunho pendente"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "shinchiku em Mie",
+   "proposed_path": "/pt/casas-novas/",
+   "url_real": "/casas-novas",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "simulador financiamento casa Japão",
+   "proposed_path": "/pt/simulador-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "simular parcela casa Japão",
+   "proposed_path": "/pt/simulador-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "simulação de financiamento casa Japão",
+   "proposed_path": "/pt/simulador-financiamento/",
+   "url_real": "/simular",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "taxa de corretagem imóvel Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P0",
+   "idioma": "PT",
+   "keyword": "taxas na compra de imóvel Japão",
+   "proposed_path": "/pt/custos-comprar-casa/",
+   "url_real": "/quanto-custa-casa-japao",
+   "estado": "sem necessidade por já existir"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "alquilar o comprar casa en Japón",
+   "proposed_path": "/es/alquilar-o-comprar/",
+   "url_real": "/es/alquilar-o-comprar (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "alquilar o comprar Japón",
+   "proposed_path": "/es/alquilar-o-comprar/",
+   "url_real": "/es/alquilar-o-comprar (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "bancos hipotecas extranjeros Japón",
+   "proposed_path": "/es/bancos-hipotecas-extranjeros/",
+   "url_real": "/es/bancos-hipotecas-extranjeros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Gifu Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/gifu-shi/",
+   "url_real": "/es/casas-en-venta/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Handa Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/handa/",
+   "url_real": "/es/casas-en-venta/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Iga Mie",
+   "proposed_path": "/es/casas-en-venta/mie/iga/",
+   "url_real": "/es/casas-en-venta/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kakamigahara Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/kakamigahara/",
+   "url_real": "/es/casas-en-venta/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kariya Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/kariya/",
+   "url_real": "/es/casas-en-venta/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Komaki Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/komaki/",
+   "url_real": "/es/casas-en-venta/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kuwana Mie",
+   "proposed_path": "/es/casas-en-venta/mie/kuwana/",
+   "url_real": "/es/casas-en-venta/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Ogaki Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/ogaki/",
+   "url_real": "/es/casas-en-venta/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Takahama Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/takahama/",
+   "url_real": "/es/casas-en-venta/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Toyokawa Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/toyokawa/",
+   "url_real": "/es/casas-en-venta/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "casas en venta en Tsu Mie",
+   "proposed_path": "/es/casas-en-venta/mie/tsu/",
+   "url_real": "/es/casas-en-venta/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Gifu-shi",
+   "proposed_path": "/es/casas-en-venta/gifu/gifu-shi/",
+   "url_real": "/es/casas-en-venta/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Handa",
+   "proposed_path": "/es/casas-en-venta/aichi/handa/",
+   "url_real": "/es/casas-en-venta/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Iga",
+   "proposed_path": "/es/casas-en-venta/mie/iga/",
+   "url_real": "/es/casas-en-venta/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kakamigahara",
+   "proposed_path": "/es/casas-en-venta/gifu/kakamigahara/",
+   "url_real": "/es/casas-en-venta/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kariya",
+   "proposed_path": "/es/casas-en-venta/aichi/kariya/",
+   "url_real": "/es/casas-en-venta/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Komaki",
+   "proposed_path": "/es/casas-en-venta/aichi/komaki/",
+   "url_real": "/es/casas-en-venta/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kuwana",
+   "proposed_path": "/es/casas-en-venta/mie/kuwana/",
+   "url_real": "/es/casas-en-venta/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Ogaki",
+   "proposed_path": "/es/casas-en-venta/gifu/ogaki/",
+   "url_real": "/es/casas-en-venta/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Takahama",
+   "proposed_path": "/es/casas-en-venta/aichi/takahama/",
+   "url_real": "/es/casas-en-venta/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Toyokawa",
+   "proposed_path": "/es/casas-en-venta/aichi/toyokawa/",
+   "url_real": "/es/casas-en-venta/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa en Tsu",
+   "proposed_path": "/es/casas-en-venta/mie/tsu/",
+   "url_real": "/es/casas-en-venta/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa Japón sin hablar japonés",
+   "proposed_path": "/es/comprar-casa-sin-hablar-japones/",
+   "url_real": "/es/comprar-casa-sin-hablar-japones (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "comprar casa sin entrada en Japón",
+   "proposed_path": "/es/comprar-casa-sin-entrada/",
+   "url_real": "/es/comprar-casa-sin-entrada (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "diferencia jizen shinsa honshinsa",
+   "proposed_path": "/es/etapas-aprobacion-hipoteca/",
+   "url_real": "/es/etapas-aprobacion-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "documentos para hipoteca en Japón",
+   "proposed_path": "/es/etapas-aprobacion-hipoteca/",
+   "url_real": "/es/etapas-aprobacion-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "flat 35 extranjeros residencia permanente",
+   "proposed_path": "/es/flat35-extranjeros/",
+   "url_real": "/es/flat35-extranjeros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "flat 35 hipoteca extranjeros Japón",
+   "proposed_path": "/es/flat35-extranjeros/",
+   "url_real": "/es/flat35-extranjeros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca empleado fijo Japón",
+   "proposed_path": "/es/hipoteca-empleado-fijo/",
+   "url_real": "/es/hipoteca-empleado-fijo (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/gifu-shi/",
+   "url_real": "/es/casas-en-venta/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Handa",
+   "proposed_path": "/es/casas-en-venta/aichi/handa/",
+   "url_real": "/es/casas-en-venta/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Iga",
+   "proposed_path": "/es/casas-en-venta/mie/iga/",
+   "url_real": "/es/casas-en-venta/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kakamigahara",
+   "proposed_path": "/es/casas-en-venta/gifu/kakamigahara/",
+   "url_real": "/es/casas-en-venta/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kariya",
+   "proposed_path": "/es/casas-en-venta/aichi/kariya/",
+   "url_real": "/es/casas-en-venta/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Komaki",
+   "proposed_path": "/es/casas-en-venta/aichi/komaki/",
+   "url_real": "/es/casas-en-venta/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kuwana",
+   "proposed_path": "/es/casas-en-venta/mie/kuwana/",
+   "url_real": "/es/casas-en-venta/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Ogaki",
+   "proposed_path": "/es/casas-en-venta/gifu/ogaki/",
+   "url_real": "/es/casas-en-venta/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Takahama",
+   "proposed_path": "/es/casas-en-venta/aichi/takahama/",
+   "url_real": "/es/casas-en-venta/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Toyokawa",
+   "proposed_path": "/es/casas-en-venta/aichi/toyokawa/",
+   "url_real": "/es/casas-en-venta/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Tsu",
+   "proposed_path": "/es/casas-en-venta/mie/tsu/",
+   "url_real": "/es/casas-en-venta/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "hipoteca sin entrada Japón",
+   "proposed_path": "/es/comprar-casa-sin-entrada/",
+   "url_real": "/es/comprar-casa-sin-entrada (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "impuestos al comprar casa Japón",
+   "proposed_path": "/es/impuestos-comprar-casa/",
+   "url_real": "/es/impuestos-comprar-casa (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Gifu-shi",
+   "proposed_path": "/es/casas-en-venta/gifu/gifu-shi/",
+   "url_real": "/es/casas-en-venta/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Handa",
+   "proposed_path": "/es/casas-en-venta/aichi/handa/",
+   "url_real": "/es/casas-en-venta/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Iga",
+   "proposed_path": "/es/casas-en-venta/mie/iga/",
+   "url_real": "/es/casas-en-venta/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kakamigahara",
+   "proposed_path": "/es/casas-en-venta/gifu/kakamigahara/",
+   "url_real": "/es/casas-en-venta/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kariya",
+   "proposed_path": "/es/casas-en-venta/aichi/kariya/",
+   "url_real": "/es/casas-en-venta/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Komaki",
+   "proposed_path": "/es/casas-en-venta/aichi/komaki/",
+   "url_real": "/es/casas-en-venta/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kuwana",
+   "proposed_path": "/es/casas-en-venta/mie/kuwana/",
+   "url_real": "/es/casas-en-venta/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Ogaki",
+   "proposed_path": "/es/casas-en-venta/gifu/ogaki/",
+   "url_real": "/es/casas-en-venta/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Takahama",
+   "proposed_path": "/es/casas-en-venta/aichi/takahama/",
+   "url_real": "/es/casas-en-venta/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Toyokawa",
+   "proposed_path": "/es/casas-en-venta/aichi/toyokawa/",
+   "url_real": "/es/casas-en-venta/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Tsu",
+   "proposed_path": "/es/casas-en-venta/mie/tsu/",
+   "url_real": "/es/casas-en-venta/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "interés fijo o variable hipoteca Japón",
+   "proposed_path": "/es/interes-fijo-variable/",
+   "url_real": "/es/interes-fijo-variable (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "qué revisar al visitar una casa en Japón",
+   "proposed_path": "/es/lista-revision-visita-casa/",
+   "url_real": "/es/lista-revision-visita-casa (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "sumar ingresos familiares hipoteca Japón",
+   "proposed_path": "/es/sumar-ingresos-hipoteca/",
+   "url_real": "/es/sumar-ingresos-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "ES",
+   "keyword": "términos inmobiliarios japoneses en español",
+   "proposed_path": "/es/glosario-inmobiliario-japones/",
+   "url_real": "/es/glosario-inmobiliario-japones (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "フラット35 外国籍 永住",
+   "proposed_path": "/pt/flat35-estrangeiros/",
+   "url_real": "/flat35-estrangeiros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "伊賀市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "刈谷市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "半田市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "各務原市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "大垣市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "小牧市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "岐阜市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "桑名市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "津市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "豊川市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "金消 contrato financiamento",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "JP-misto",
+   "keyword": "高浜市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "alugar ou comprar casa no Japão",
+   "proposed_path": "/pt/alugar-ou-comprar/",
+   "url_real": "/alugar-ou-comprar (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "bancos para financiar casa estrangeiro Japão",
+   "proposed_path": "/pt/bancos-financiamento-estrangeiro/",
+   "url_real": "/bancos-financiamento-estrangeiro (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casa com estacionamento Aichi",
+   "proposed_path": "/pt/alugar-ou-comprar/",
+   "url_real": "/alugar-ou-comprar (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Gifu-shi",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Handa",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Iga",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kakamigahara",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kariya",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Komaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kuwana",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Ogaki",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Takahama",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Toyokawa",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas usadas em Tsu",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Gifu Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Handa Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Iga Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kakamigahara Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kariya Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Komaki Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kuwana Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Ogaki Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Takahama Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Toyokawa Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "casas à venda em Tsu Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Gifu-shi",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Handa",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Iga",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kakamigahara",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kariya",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Komaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kuwana",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Ogaki",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Takahama",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Toyokawa",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa em Tsu",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa Japão sem falar japonês",
+   "proposed_path": "/pt/comprar-casa-sem-falar-japones/",
+   "url_real": "/comprar-casa-sem-falar-japones (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa sem dinheiro de entrada Japão",
+   "proposed_path": "/pt/comprar-casa-sem-entrada/",
+   "url_real": "/comprar-casa-sem-entrada (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "comprar casa sem entrada no Japão",
+   "proposed_path": "/pt/comprar-casa-sem-entrada/",
+   "url_real": "/comprar-casa-sem-entrada (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "documentos honshinsa Japão",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento 100 por cento Japão",
+   "proposed_path": "/pt/comprar-casa-sem-entrada/",
+   "url_real": "/comprar-casa-sem-entrada (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Handa",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Iga",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kakamigahara",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kariya",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Komaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kuwana",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Ogaki",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Takahama",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Toyokawa",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Tsu",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "Flat 35 estrangeiro sem eijuken",
+   "proposed_path": "/pt/flat35-estrangeiros/",
+   "url_real": "/flat35-estrangeiros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "flat 35 financiamento para estrangeiros",
+   "proposed_path": "/pt/flat35-estrangeiros/",
+   "url_real": "/flat35-estrangeiros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "Flat 35 quem pode solicitar",
+   "proposed_path": "/pt/flat35-estrangeiros/",
+   "url_real": "/flat35-estrangeiros (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "gensen para financiamento casa",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "impostos na compra de casa no Japão",
+   "proposed_path": "/pt/impostos-comprar-casa/",
+   "url_real": "/impostos-comprar-casa (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/gifu-shi/",
+   "url_real": "/casas-a-venda/gifu-shi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Handa",
+   "proposed_path": "/pt/casas-a-venda/aichi/handa/",
+   "url_real": "/casas-a-venda/handa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Iga",
+   "proposed_path": "/pt/casas-a-venda/mie/iga/",
+   "url_real": "/casas-a-venda/iga",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kakamigahara",
+   "proposed_path": "/pt/casas-a-venda/gifu/kakamigahara/",
+   "url_real": "/casas-a-venda/kakamigahara",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kariya",
+   "proposed_path": "/pt/casas-a-venda/aichi/kariya/",
+   "url_real": "/casas-a-venda/kariya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Komaki",
+   "proposed_path": "/pt/casas-a-venda/aichi/komaki/",
+   "url_real": "/casas-a-venda/komaki",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kuwana",
+   "proposed_path": "/pt/casas-a-venda/mie/kuwana/",
+   "url_real": "/casas-a-venda/kuwana",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Ogaki",
+   "proposed_path": "/pt/casas-a-venda/gifu/ogaki/",
+   "url_real": "/casas-a-venda/ogaki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Takahama",
+   "proposed_path": "/pt/casas-a-venda/aichi/takahama/",
+   "url_real": "/casas-a-venda/takahama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Toyokawa",
+   "proposed_path": "/pt/casas-a-venda/aichi/toyokawa/",
+   "url_real": "/casas-a-venda/toyokawa",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Tsu",
+   "proposed_path": "/pt/casas-a-venda/mie/tsu/",
+   "url_real": "/casas-a-venda/tsu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "jizen shinsa e honshinsa diferença",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "jizen shinsa o que é",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "juros fixos ou variáveis financiamento Japão",
+   "proposed_path": "/pt/juros-fixos-variaveis/",
+   "url_real": "/juros-fixos-variaveis (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "kazei shoumeisho financiamento",
+   "proposed_path": "/pt/etapas-aprovacao-financiamento/",
+   "url_real": "/etapas-aprovacao-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "o que verificar ao visitar casa no Japão",
+   "proposed_path": "/pt/checklist-visita-imovel/",
+   "url_real": "/checklist-visita-imovel (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "precisa de entrada para comprar casa Japão",
+   "proposed_path": "/pt/comprar-casa-sem-entrada/",
+   "url_real": "/comprar-casa-sem-entrada (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "seishain financiar casa no Japão",
+   "proposed_path": "/pt/financiamento-seishain/",
+   "url_real": "/financiamento-seishain (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "somar renda familiar financiamento Japão",
+   "proposed_path": "/pt/somar-renda-financiamento/",
+   "url_real": "/somar-renda-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "termos imobiliários japoneses em português",
+   "proposed_path": "/pt/glossario-imobiliario-japones/",
+   "url_real": "/glossario-imobiliario-japones (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "trocar aluguel por financiamento Japão",
+   "proposed_path": "/pt/alugar-ou-comprar/",
+   "url_real": "/alugar-ou-comprar (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P1",
+   "idioma": "PT",
+   "keyword": "vale a pena comprar casa no Japão",
+   "proposed_path": "/pt/alugar-ou-comprar/",
+   "url_real": "/alugar-ou-comprar (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casa 3ldk 4ldk Japón",
+   "proposed_path": "/es/casas-3ldk-4ldk/",
+   "url_real": "/es/casas-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Gamagori Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/gamagori/",
+   "url_real": "/es/casas-en-venta/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Higashiura Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/higashiura/",
+   "url_real": "/es/casas-en-venta/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Ichinomiya Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/ichinomiya/",
+   "url_real": "/es/casas-en-venta/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Inabe Mie",
+   "proposed_path": "/es/casas-en-venta/mie/inabe/",
+   "url_real": "/es/casas-en-venta/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kameyama Mie",
+   "proposed_path": "/es/casas-en-venta/mie/kameyama/",
+   "url_real": "/es/casas-en-venta/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kasugai Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/kasugai/",
+   "url_real": "/es/casas-en-venta/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Kota Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/kota/",
+   "url_real": "/es/casas-en-venta/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Obu Aichi",
+   "proposed_path": "/es/casas-en-venta/aichi/obu/",
+   "url_real": "/es/casas-en-venta/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Sakahogi Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/sakahogi/",
+   "url_real": "/es/casas-en-venta/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "casas en venta en Seki Gifu",
+   "proposed_path": "/es/casas-en-venta/gifu/seki/",
+   "url_real": "/es/casas-en-venta/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Gamagori",
+   "proposed_path": "/es/casas-en-venta/aichi/gamagori/",
+   "url_real": "/es/casas-en-venta/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Higashiura",
+   "proposed_path": "/es/casas-en-venta/aichi/higashiura/",
+   "url_real": "/es/casas-en-venta/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Ichinomiya",
+   "proposed_path": "/es/casas-en-venta/aichi/ichinomiya/",
+   "url_real": "/es/casas-en-venta/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Inabe",
+   "proposed_path": "/es/casas-en-venta/mie/inabe/",
+   "url_real": "/es/casas-en-venta/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kameyama",
+   "proposed_path": "/es/casas-en-venta/mie/kameyama/",
+   "url_real": "/es/casas-en-venta/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kasugai",
+   "proposed_path": "/es/casas-en-venta/aichi/kasugai/",
+   "url_real": "/es/casas-en-venta/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Kota",
+   "proposed_path": "/es/casas-en-venta/aichi/kota/",
+   "url_real": "/es/casas-en-venta/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Obu",
+   "proposed_path": "/es/casas-en-venta/aichi/obu/",
+   "url_real": "/es/casas-en-venta/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Sakahogi",
+   "proposed_path": "/es/casas-en-venta/gifu/sakahogi/",
+   "url_real": "/es/casas-en-venta/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "comprar casa en Seki",
+   "proposed_path": "/es/casas-en-venta/gifu/seki/",
+   "url_real": "/es/casas-en-venta/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "costo de mantenimiento vivienda Japón",
+   "proposed_path": "/es/costos-mantenimiento-casa/",
+   "url_real": "/es/costos-mantenimiento-casa (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "cuánto demora hipoteca Japón",
+   "proposed_path": "/es/cuanto-tarda-hipoteca/",
+   "url_real": "/es/cuanto-tarda-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Gamagori",
+   "proposed_path": "/es/casas-en-venta/aichi/gamagori/",
+   "url_real": "/es/casas-en-venta/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Higashiura",
+   "proposed_path": "/es/casas-en-venta/aichi/higashiura/",
+   "url_real": "/es/casas-en-venta/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Ichinomiya",
+   "proposed_path": "/es/casas-en-venta/aichi/ichinomiya/",
+   "url_real": "/es/casas-en-venta/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Inabe",
+   "proposed_path": "/es/casas-en-venta/mie/inabe/",
+   "url_real": "/es/casas-en-venta/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kameyama",
+   "proposed_path": "/es/casas-en-venta/mie/kameyama/",
+   "url_real": "/es/casas-en-venta/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kasugai",
+   "proposed_path": "/es/casas-en-venta/aichi/kasugai/",
+   "url_real": "/es/casas-en-venta/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Kota",
+   "proposed_path": "/es/casas-en-venta/aichi/kota/",
+   "url_real": "/es/casas-en-venta/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Obu",
+   "proposed_path": "/es/casas-en-venta/aichi/obu/",
+   "url_real": "/es/casas-en-venta/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Sakahogi",
+   "proposed_path": "/es/casas-en-venta/gifu/sakahogi/",
+   "url_real": "/es/casas-en-venta/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "hipoteca para casa en Seki",
+   "proposed_path": "/es/casas-en-venta/gifu/seki/",
+   "url_real": "/es/casas-en-venta/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "historial crediticio hipoteca Japón",
+   "proposed_path": "/es/historial-crediticio-hipoteca/",
+   "url_real": "/es/historial-crediticio-hipoteca (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Gamagori",
+   "proposed_path": "/es/casas-en-venta/aichi/gamagori/",
+   "url_real": "/es/casas-en-venta/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Higashiura",
+   "proposed_path": "/es/casas-en-venta/aichi/higashiura/",
+   "url_real": "/es/casas-en-venta/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Ichinomiya",
+   "proposed_path": "/es/casas-en-venta/aichi/ichinomiya/",
+   "url_real": "/es/casas-en-venta/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Inabe",
+   "proposed_path": "/es/casas-en-venta/mie/inabe/",
+   "url_real": "/es/casas-en-venta/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kameyama",
+   "proposed_path": "/es/casas-en-venta/mie/kameyama/",
+   "url_real": "/es/casas-en-venta/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kasugai",
+   "proposed_path": "/es/casas-en-venta/aichi/kasugai/",
+   "url_real": "/es/casas-en-venta/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Kota",
+   "proposed_path": "/es/casas-en-venta/aichi/kota/",
+   "url_real": "/es/casas-en-venta/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Obu",
+   "proposed_path": "/es/casas-en-venta/aichi/obu/",
+   "url_real": "/es/casas-en-venta/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Sakahogi",
+   "proposed_path": "/es/casas-en-venta/gifu/sakahogi/",
+   "url_real": "/es/casas-en-venta/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "ES",
+   "keyword": "inmobiliaria en español Seki",
+   "proposed_path": "/es/casas-en-venta/gifu/seki/",
+   "url_real": "/es/casas-en-venta/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "いなべ市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "一宮市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "亀山市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "坂祝町 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "大府市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "幸田町 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "春日井市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "東浦町 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "蒲郡市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "JP-misto",
+   "keyword": "関市 casa brasileiro",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casa 3ldk 4ldk Japão",
+   "proposed_path": "/pt/casa-3ldk-4ldk/",
+   "url_real": "/casa-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casa 3ldk em Aichi",
+   "proposed_path": "/pt/casa-3ldk-4ldk/",
+   "url_real": "/casa-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casa 4ldk em Mie",
+   "proposed_path": "/pt/casa-3ldk-4ldk/",
+   "url_real": "/casa-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas 4LDK en Aichi",
+   "proposed_path": "/pt/casa-3ldk-4ldk/",
+   "url_real": "/casa-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Gamagori",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Higashiura",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Ichinomiya",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Inabe",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kameyama",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kasugai",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Kota",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Obu",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Sakahogi",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas usadas em Seki",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Gamagori Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Higashiura Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Ichinomiya Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Inabe Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kameyama Mie",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kasugai Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Kota Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Obu Aichi",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Sakahogi Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "casas à venda em Seki Gifu",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Gamagori",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Higashiura",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Ichinomiya",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Inabe",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kameyama",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kasugai",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Kota",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Obu",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Sakahogi",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "comprar casa em Seki",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "custo de manutenção casa Japão",
+   "proposed_path": "/pt/custos-manutencao-imovel/",
+   "url_real": "/custos-manutencao-imovel (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Gamagori",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Higashiura",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Ichinomiya",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Inabe",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kameyama",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kasugai",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Kota",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Obu",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Sakahogi",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "financiamento imobiliário em Seki",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis 4 quartos Gifu",
+   "proposed_path": "/pt/casa-3ldk-4ldk/",
+   "url_real": "/casa-3ldk-4ldk (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Gamagori",
+   "proposed_path": "/pt/casas-a-venda/aichi/gamagori/",
+   "url_real": "/casas-a-venda/gamagori",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Higashiura",
+   "proposed_path": "/pt/casas-a-venda/aichi/higashiura/",
+   "url_real": "/casas-a-venda/higashiura",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Ichinomiya",
+   "proposed_path": "/pt/casas-a-venda/aichi/ichinomiya/",
+   "url_real": "/casas-a-venda/ichinomiya",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Inabe",
+   "proposed_path": "/pt/casas-a-venda/mie/inabe/",
+   "url_real": "/casas-a-venda/inabe",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kameyama",
+   "proposed_path": "/pt/casas-a-venda/mie/kameyama/",
+   "url_real": "/casas-a-venda/kameyama",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kasugai",
+   "proposed_path": "/pt/casas-a-venda/aichi/kasugai/",
+   "url_real": "/casas-a-venda/kasugai",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Kota",
+   "proposed_path": "/pt/casas-a-venda/aichi/kota/",
+   "url_real": "/casas-a-venda/kota",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Obu",
+   "proposed_path": "/pt/casas-a-venda/aichi/obu/",
+   "url_real": "/casas-a-venda/obu",
+   "estado": "publicado"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Sakahogi",
+   "proposed_path": "/pt/casas-a-venda/gifu/sakahogi/",
+   "url_real": "/casas-a-venda/sakahogi",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "imóveis à venda em Seki",
+   "proposed_path": "/pt/casas-a-venda/gifu/seki/",
+   "url_real": "/casas-a-venda/seki",
+   "estado": "bloqueado por dados externos"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "quanto tempo demora financiamento Japão",
+   "proposed_path": "/pt/quanto-tempo-financiamento/",
+   "url_real": "/quanto-tempo-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  },
+  {
+   "prioridade": "P2",
+   "idioma": "PT",
+   "keyword": "restrição no nome financiamento casa Japão",
+   "proposed_path": "/pt/restricao-nome-financiamento/",
+   "url_real": "/restricao-nome-financiamento (não publicada)",
+   "estado": "planejado (backlog)"
+  }
+ ]
+}
