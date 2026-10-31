@@ -108,6 +108,7 @@ describe('frases do motor', () => {
     ['renda sem regra configurada', { ...base, annualIncome: 5_000_000 }],
     ['flat 35 com dívida', { ...base, employmentType: 'autonomo', annualIncome: 4_500_000, monthlyDebtPayments: 40_000 }],
     ['parcela acima da capacidade', { ...base, employmentType: 'autonomo', annualIncome: 3_000_000, desiredMonthlyPayment: 200_000 }],
+    ['autônomo sem visto permanente (Flat 35 indisponível)', { ...base, employmentType: 'autonomo', residency: 'work_visa' }],
     ['dívida alta demais', { ...base, employmentType: 'autonomo', annualIncome: 3_000_000, monthlyDebtPayments: 90_000 }],
     ['idade alta', { ...base, age: 70 }],
     ['idade muito alta', { ...base, age: 78 }],

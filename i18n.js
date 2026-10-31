@@ -217,6 +217,12 @@ const DICT = {
  * chave é uma expressão regular e o valor é uma função.
  */
 const MOTOR_EXATO = {
+  'O Flat 35 só aceita estrangeiros com visto permanente (永住者) ou permanente especial (特別永住者) — regra da JHF, a instituição que opera o produto. Sem esse visto, o financiamento depende de bancos privados, e cada um tem critérios próprios. O valor acima usa as condições do Flat 35 apenas como referência; o seu caso vai para análise individual.':
+    'Flat 35 solo acepta extranjeros con residencia permanente (永住者) o residencia permanente especial (特別永住者), según la JHF, la institución que opera el producto. Sin esa visa, el financiamiento depende de bancos privados, y cada uno tiene criterios propios. El valor de arriba usa las condiciones de Flat 35 solo como referencia; tu caso pasa a análisis individual.',
+
+  'Referência Flat 35 (exige visto permanente)':
+    'Referencia Flat 35 (requiere residencia permanente)',
+
   'Não foi possível estimar um prazo para esta idade dentro das regras configuradas.':
     'No fue posible estimar un plazo para esta edad dentro de las reglas configuradas.',
 

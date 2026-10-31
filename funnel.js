@@ -7,8 +7,8 @@
  * - Nenhum dado financeiro vai para eventos de analytics.
  */
 
-import { runSimulation, formatYen } from './lib/financing.js?v=7';
-import { t, tm } from './i18n.js?v=2';
+import { runSimulation, formatYen } from './lib/financing.js?v=8';
+import { t, tm } from './i18n.js?v=3';
 
 /* ============================================================
    Estado

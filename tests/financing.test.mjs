@@ -389,3 +389,26 @@ describe('Comparação com aluguel', () => {
     assert.equal(c.hasCompleteCosts, true);
   });
 });
+
+describe('Flat 35 e visto permanente (JHF, FAQ nº 308)', () => {
+  // A JHF aceita só 永住者 e 特別永住者. Até 31/10/2026 o resultado dizia
+  // "Tipo de financiamento: Flat 35" para um autônomo com visto de trabalho.
+  const perfil = { age: 35, employmentType: 'autonomo', employmentYears: 'gte3', desiredMonthlyPayment: 90000 };
+
+  test('com visto permanente, o cenário é Flat 35 sem ressalva', () => {
+    const r = runSimulation({ ...perfil, residency: 'permanent_resident' }, config);
+    assert.equal(r.scenarioLabel, 'Flat 35');
+    assert.ok(!r.warnings.some((w) => /永住者/.test(w)));
+  });
+
+  for (const residency of ['work_visa', 'long_term_resident', 'spouse_of_japanese', 'other', 'unknown']) {
+    test(`com ${residency}, o resultado não se apresenta como Flat 35 e explica por quê`, () => {
+      const r = runSimulation({ ...perfil, residency }, config);
+      assert.notEqual(r.scenarioLabel, 'Flat 35');
+      assert.match(r.scenarioLabel, /exige visto permanente/);
+      assert.ok(r.warnings.some((w) => /永住者/.test(w) && /特別永住者/.test(w)), 'aviso com os dois status aceitos');
+      assert.equal(r.manualReview, true);
+    });
+  }
+});
+

@@ -7,11 +7,11 @@ import {
   initFunnel, goTo, goBack, setAnswer, getAnswers, getState,
   simulate, submitLead, whatsappLink, PROPERTY_MESSAGE,
   track, yen, parseYen, bindYenInput
-} from './funnel.js?v=10';
+} from './funnel.js?v=11';
 
 import config from './lib/financing-config.json?v=7' with { type: 'json' };
-import { t, tm } from './i18n.js?v=2';
-import { compareWithRent } from './lib/financing.js?v=7';
+import { t, tm } from './i18n.js?v=3';
+import { compareWithRent } from './lib/financing.js?v=8';
 
 const $ = s => document.querySelector(s);
 const nextBtn = $('#fxNext');
@@ -385,7 +385,11 @@ function explain(r, a) {
     outro: t('exp.outro')
   }[a.employmentType] || t('exp.outro');
 
-  let txt = t('exp.produto', { trabalho, produto: tm(r.scenarioLabel).toLowerCase() });
+  // Sem visto permanente o Flat 35 não está disponível: o aviso do motor já
+  // explica que a conta usa as condições dele só como referência, e a frase
+  // "utilizamos o Flat 35" contradiria o aviso logo abaixo.
+  const flat35SoReferencia = r.scenario === 'flat35' && r.scenarioLabel !== 'Flat 35';
+  let txt = flat35SoReferencia ? '' : t('exp.produto', { trabalho, produto: tm(r.scenarioLabel).toLowerCase() });
   txt += t('exp.prazo', { anos: r.term.years });
 
   if (r.payment.basis === 'income') {
