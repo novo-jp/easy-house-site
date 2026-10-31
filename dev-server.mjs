@@ -77,6 +77,14 @@ const servidor = createServer(async (req, res) => {
       return h(req, res);
     }
 
+    // /casas-a-venda/<cidade> → página da cidade (a mesma função da lista)
+    const mCidade = rota.match(/^\/casas-a-venda\/([^/]+)\/?$/);
+    if (mCidade) {
+      const { default: h } = await import(`./api/casas-lista.mjs?t=${Date.now()}`);
+      req.url = `/api/casas-lista?cidadePagina=${encodeURIComponent(mCidade[1])}`;
+      return h(req, res);
+    }
+
     // /comprar/imoveis → lista renderizada no servidor (mesmo rewrite do vercel.json)
     if (rota === '/comprar/imoveis' || rota === '/comprar/imoveis/') {
       const { default: h } = await import(`./api/casas-lista.mjs?t=${Date.now()}`);

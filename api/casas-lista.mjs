@@ -17,6 +17,8 @@ import { carregarCasas, casasConfig, financingConfig } from '../lib/casas-fonte.
 import { lerFiltros, resolverLocal, buscar, facetas, diagnosticoVazio, filtrosAtivos,
          filtrosParaParams, idadeDoAcervo, ORDENS, ORDEM_PADRAO, chave } from '../lib/casas-busca.mjs';
 import { documento, esc, SITE, ICONE_WA } from '../lib/casas-html.mjs';
+import { paginaCidade, acharCidade, cidadesComPagina, CAMINHO_BASE as CIDADE_BASE, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
+import { carregarAlugueis } from '../lib/aluguel-fonte.mjs';
 
 const require = createRequire(import.meta.url);
 const Cartao = require('../lib/casas-cartao.js');
@@ -356,6 +358,19 @@ export function paginaLista({ todas, pedido, r, fac, rot, precoOpcoes, agora }) 
     </form>
   </div>
 
+  <!-- Casas por cidade: links de verdade para /casas-a-venda/<cidade>.
+       O sitemap sozinho não basta — página que ninguém linka é página órfã, e
+       o Google trata como tal. Os filtros acima são noindex de propósito
+       (navegação facetada); estes são páginas com texto próprio. -->
+  <section class="section section--narrow busca-editorial" aria-labelledby="cidades-t">
+    <h2 class="h-section" id="cidades-t">Casas por cidade</h2>
+    <p class="lead">Cada cidade tem uma página com os preços, as plantas e as estações do acervo de hoje.</p>
+    <p class="cidades-links">
+      ${cidadesComPagina(todas, MINIMO_PARA_SITEMAP).map((c) =>
+        `<a href="${CIDADE_BASE}/${esc(c.chave)}">${esc(c.nome)} <span class="cidades-links__n">${c.total}</span></a>`).join('\n      ')}
+    </p>
+  </section>
+
   <section class="section section--narrow busca-editorial" aria-labelledby="ajuda-t">
     <h2 class="h-section" id="ajuda-t">Como usar esta busca</h2>
     <p class="lead">Os anúncios vêm do sistema que as imobiliárias japonesas usam entre si e são verificados toda semana. Quando você achar uma casa, mande pelo WhatsApp: a gente confirma a disponibilidade, explica os custos e o que seria possível no seu caso — em português.</p>
@@ -420,6 +435,35 @@ export default async function handler(req, res) {
   const url = new URL(req.url, `https://${req.headers.host || 'easyhouse.homes'}`);
   try {
     const todas = await carregarCasas();
+
+    /* ── /casas-a-venda/<cidade> ──────────────────────────────────────── */
+    const cidadePagina = (url.searchParams.get('cidadePagina') || '').slice(0, 60);
+    if (cidadePagina) {
+      const cidade = acharCidade(todas, cidadePagina);
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      if (!cidade) {
+        // Cidade sem nenhuma casa hoje: 404, e a busca como saída. Página de
+        // cidade vazia é exatamente a página magra que não deve existir.
+        res.setHeader('Cache-Control', 'public, s-maxage=600');
+        return res.status(404).send(documento({
+          titulo: 'Cidade sem casas à venda no momento | Easy House',
+          descricao: 'Não há casas à venda nesta cidade no acervo de hoje. Veja o acervo completo.',
+          canonical: `${SITE}${CAMINHO}`, robots: 'noindex, follow', caminhoAtual: CAMINHO,
+          corpo: `<main id="main"><div class="indisponivel">
+            <h1>Nenhuma casa nesta cidade no momento</h1>
+            <p>O acervo muda toda semana. Pode ser que apareça — ou que a cidade tenha outro nome por aqui.</p>
+            <p class="btn-row" style="justify-content:center"><a class="btn btn--gold" href="${CAMINHO}">Ver todas as casas à venda</a></p>
+          </div></main>`,
+        }));
+      }
+      // O acervo de aluguel entra para o bloco de comparação. Se falhar, a
+      // página sai sem ele: não é motivo para derrubar a página inteira.
+      let alugueis = [];
+      try { alugueis = (await carregarAlugueis()).itens; } catch { /* sem o bloco de aluguel */ }
+      res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
+      return res.status(200).send(paginaCidade({ cidade, casas: cidade.casas, alugueis }));
+    }
+
     const bruto = lerFiltros(url.searchParams);
     if (!url.searchParams.get('porPagina')) bruto.porPagina = POR_PAGINA_LISTA;   // 18: menos página longa no celular
     const pedido = resolverLocal(bruto, todas);

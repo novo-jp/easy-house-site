@@ -618,3 +618,16 @@ body.dialogo-aberto .eh-cc { display: none; }
 .aviso-acervo__oque { font-size: .86rem; color: var(--pearl-muted); }
 @media (min-width: 760px) { .aviso-acervo { margin-inline: var(--pad-x); } }
 @media (min-width: 1240px) { .aviso-acervo { margin-inline: auto; } }
+
+/* Links das páginas por cidade, no fim da busca (31/10/2026).
+   Lista de links em linha: o alvo de toque precisa de 44 px mesmo quando o
+   nome da cidade é curto ("Ama", "Ikeda"). */
+.cidades-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.cidades-links a {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 44px; padding: 8px 14px;
+  border: 1px solid var(--line); border-radius: 999px;
+  color: var(--pearl); text-decoration: none; font-size: .92rem;
+}
+.cidades-links a:hover, .cidades-links a:focus-visible { border-color: var(--gold); color: var(--gold-bright); }
+.cidades-links__n { color: var(--pearl-muted); font-size: .82rem; font-variant-numeric: tabular-nums; }

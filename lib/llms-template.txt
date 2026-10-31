@@ -49,6 +49,9 @@ Respostas completas em: /simular (ferramenta), /entregas (casos reais),
   - casa à venda em /comprar/imoveis/<slug>, com estimativa de parcela mensal
   - apartamento para alugar em /imoveis/<slug>, com custo mensal total e a
     entrada (初期費用) calculada item a item
+- Uma página por cidade em /casas-a-venda/<cidade> (ex.: /casas-a-venda/nishio),
+  com quantidade de casas, faixa e mediana de preço, plantas, estações e o
+  aluguel da mesma cidade para comparar — números recontados a cada atualização
 - Sitemaps: /sitemap.xml, /sitemap-casas.xml e /sitemap-aluguel.xml
 
 A estimativa de parcela usa {{TAXA}} em até {{PRAZO}} anos, sobre o preço do imóvel.

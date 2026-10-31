@@ -1,0 +1,135 @@
+/**
+ * Páginas por cidade — /casas-a-venda/<cidade>.
+ *
+ * Criadas em 31/10/2026. A lista filtrada (`/comprar/imoveis?cidade=x`) é
+ * `noindex` de propósito, então nenhuma página do site mirava "casa à venda
+ * em Nishio" — que é como a busca é feita em português.
+ *
+ * O que estes testes guardam:
+ *  - os números são os do acervo, não texto fixo (é o que separa esta página
+ *    de uma doorway page: as 5 /simular/<cidade> são 99,8% iguais entre si);
+ *  - 0 significa coisas opostas conforme o campo — em preço e área é dado
+ *    ausente, em idade é "casa nova". A mediana já errou isso uma vez;
+ *  - cidade sem acervo não vira página magra;
+ *  - só cidade com acervo suficiente é anunciada ao Google.
+ *
+ * Rodar: node --test tests/
+ */
+import { test, describe } from 'node:test';
+import assert from 'node:assert/strict';
+
+import { estatisticas, cidadesComPagina, acharCidade, paginaCidade, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
+
+/** Casa normalizada, só com o que a página de cidade lê. */
+function casa(over = {}) {
+  return {
+    codigo: 'EH-1', slug: 'casa-3ldk-nishio-eh1', titulo: 'Casa 3LDK em Nishio',
+    cidade: 'Nishio', cidadeJp: '西尾市', prefeitura: 'Aichi',
+    preco: 30000000, precoFormatado: '¥30.000.000', precoMan: '3.000 万円',
+    planta: '3LDK', areaConstruida: 100, areaTerreno: 150, idade: 0,
+    vaga: { vagas: 1, pt: 'Com vaga' }, acesso: { estacao: '西尾', minutosAPe: 10 },
+    estimativa: { valor: 90000 }, fotos: [], destaquesLista: [], ...over,
+  };
+}
+
+describe('estatísticas da cidade', () => {
+  test('preço: mínimo, máximo e mediana vêm do acervo', () => {
+    const s = estatisticas([casa({ preco: 10e6 }), casa({ preco: 20e6 }), casa({ preco: 60e6 })]);
+    assert.equal(s.total, 3);
+    assert.equal(s.precoMin, 10e6);
+    assert.equal(s.precoMax, 60e6);
+    assert.equal(s.precoMediana, 20e6);
+  });
+
+  test('idade 0 é "casa nova" e entra na mediana; preço 0 é ausente e não entra', () => {
+    // O bug: a mediana descartava todo zero. Com 4 casas novas e 2 usadas, a
+    // mediana de idade saía das usadas — a página dizia "3 anos" onde 54 das
+    // 56 casas eram novas.
+    const casas = [casa({ idade: 0 }), casa({ idade: 0 }), casa({ idade: 0 }), casa({ idade: 0 }),
+                   casa({ idade: 2 }), casa({ idade: 3 })];
+    const s = estatisticas(casas);
+    assert.equal(s.idadeMediana, 0, 'maioria nova → mediana nova');
+    assert.equal(s.novas, 4);
+
+    // Preço ausente vem como 0/null e não pode puxar a mediana para baixo.
+    const comVazio = estatisticas([casa({ preco: 0 }), casa({ preco: 30e6 }), casa({ preco: 40e6 })]);
+    assert.equal(comVazio.precoMin, 30e6);
+    assert.equal(comVazio.precoMediana, 35e6);
+  });
+
+  test('conta plantas e estações, da mais comum para a menos', () => {
+    const s = estatisticas([
+      casa({ planta: '4LDK' }), casa({ planta: '3LDK' }), casa({ planta: '4LDK' }),
+    ]);
+    assert.deepEqual(s.plantas[0], ['4LDK', 2]);
+  });
+});
+
+describe('quais cidades têm página', () => {
+  const acervo = [
+    ...Array.from({ length: 7 }, () => casa()),
+    ...Array.from({ length: 2 }, () => casa({ cidade: 'Anjo', cidadeJp: '安城市' })),
+  ];
+
+  test('só entra no sitemap a cidade com acervo suficiente', () => {
+    const anunciadas = cidadesComPagina(acervo, MINIMO_PARA_SITEMAP).map((c) => c.chave);
+    assert.deepEqual(anunciadas, ['nishio'], 'Anjo tem 2 casas: página magra não se anuncia');
+    // Mas a página existe, para o link da busca não morrer.
+    assert.ok(acharCidade(acervo, 'anjo'));
+  });
+
+  test('a chave da URL não tem acento nem maiúscula', () => {
+    const c = cidadesComPagina([casa({ cidade: 'Anjō' })], 1)[0];
+    assert.equal(c.chave, 'anjo');
+  });
+
+  test('cidade fora do acervo não tem página', () => {
+    assert.equal(acharCidade(acervo, 'kyoto'), null);
+    assert.equal(acharCidade(acervo, ''), null);
+  });
+});
+
+describe('a página', () => {
+  const casas = [casa({ preco: 17.9e6, slug: 'a' }), casa({ preco: 27.9e6, slug: 'b' }), casa({ preco: 37.8e6, slug: 'c' })];
+  const cidade = { chave: 'nishio', nome: 'Nishio', nomeJp: '西尾市', prefeitura: 'Aichi' };
+  const html = paginaCidade({ cidade, casas, alugueis: [] });
+
+  test('título e canonical miram a cidade', () => {
+    assert.match(html, /<title>3 casas à venda em Nishio, Aichi a partir de ¥17\.900\.000/);
+    assert.match(html, /canonical" href="https:\/\/easyhouse\.homes\/casas-a-venda\/nishio"/);
+  });
+
+  test('publica os números daquela cidade', () => {
+    assert.match(html, /¥17\.900\.000 a ¥37\.800\.000/);
+    assert.match(html, /¥27\.900\.000/);          // mediana
+  });
+
+  test('lista as casas da mais barata para a mais cara', () => {
+    const ordem = [...html.matchAll(/\/comprar\/imoveis\/([abc])"/g)].map((m) => m[1]);
+    assert.equal(ordem[0], 'a', 'a mais barata primeiro');
+  });
+
+  test('declara ItemList com as casas, para o buscador', () => {
+    const dados = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
+    const lista = dados['@graph'].find((i) => i['@type'] === 'ItemList');
+    assert.equal(lista.numberOfItems, 3);
+    assert.equal(lista.itemListElement.length, 3);
+  });
+
+  test('nunca promete aprovação de crédito', () => {
+    const texto = html.replace(/<[^>]+>/g, ' ');
+    assert.doesNotMatch(texto, /crédito aprovado|aprovação garantida|financiamento garantido/i);
+    assert.match(texto, /não é instituição financeira|não aprova crédito/i);
+  });
+
+  test('duas cidades diferentes geram páginas diferentes', () => {
+    const outra = paginaCidade({
+      cidade: { chave: 'anjo', nome: 'Anjo', nomeJp: '安城市', prefeitura: 'Aichi' },
+      casas: [casa({ cidade: 'Anjo', preco: 44e6, slug: 'd' })], alugueis: [],
+    });
+    const limpo = (s) => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    assert.notEqual(limpo(html), limpo(outra));
+    assert.match(limpo(outra), /Anjo/);
+    assert.doesNotMatch(limpo(outra), /¥27\.900\.000/);
+  });
+});

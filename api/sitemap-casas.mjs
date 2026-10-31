@@ -6,6 +6,7 @@
  */
 
 import { carregarCasas } from '../lib/casas-fonte.mjs';
+import { cidadesComPagina, CAMINHO_BASE, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
 
 const SITE = 'https://easyhouse.homes';
 const xml = (s) => String(s).replace(/[&<>"']/g, (c) =>
@@ -26,6 +27,15 @@ export default async function handler(req, res) {
   </url>`;
     });
 
+    // Páginas de cidade. Só as que têm acervo suficiente: anunciar uma cidade
+    // com duas casas seria oferecer ao Google a página magra que a regra de
+    // conteúdo em escala existe para punir.
+    const cidades = cidadesComPagina(casas, MINIMO_PARA_SITEMAP).map((c) => `  <url>
+    <loc>${xml(`${SITE}${CAMINHO_BASE}/${c.chave}`)}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`);
+
     const corpo = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -34,6 +44,7 @@ export default async function handler(req, res) {
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+${cidades.join('\n')}
 ${urls.join('\n')}
 </urlset>`;
 
