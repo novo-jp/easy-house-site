@@ -135,6 +135,31 @@
       "source": "/",
       "destination": "/entregas",
       "permanent": false
+    },
+    {
+      "source": "/simular/hekinan",
+      "destination": "/casas-a-venda/hekinan",
+      "permanent": true
+    },
+    {
+      "source": "/simular/takahama",
+      "destination": "/casas-a-venda/takahama",
+      "permanent": true
+    },
+    {
+      "source": "/simular/nishio",
+      "destination": "/casas-a-venda/nishio",
+      "permanent": true
+    },
+    {
+      "source": "/simular/anjo",
+      "destination": "/casas-a-venda/anjo",
+      "permanent": true
+    },
+    {
+      "source": "/simular/kariya",
+      "destination": "/casas-a-venda/kariya",
+      "permanent": true
     }
   ],
   "rewrites": [

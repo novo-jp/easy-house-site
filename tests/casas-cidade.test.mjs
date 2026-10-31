@@ -17,6 +17,7 @@
  */
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import { estatisticas, cidadesComPagina, acharCidade, paginaCidade, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
 
@@ -131,5 +132,27 @@ describe('a página', () => {
     assert.notEqual(limpo(html), limpo(outra));
     assert.match(limpo(outra), /Anjo/);
     assert.doesNotMatch(limpo(outra), /¥27\.900\.000/);
+  });
+});
+
+describe('as /simular/<cidade> antigas', () => {
+  // Eram cópias do simulador com o nome da cidade no título: 99,8% de texto
+  // igual entre si e paradas no HTML de agosto. Em 60 dias somaram 29 de
+  // 12.020 eventos. Viraram 301 para a página da cidade, que responde à
+  // mesma pergunta com os números do acervo.
+  const vercel = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const sitemap = readFileSync(new URL('../sitemap.xml', import.meta.url), 'utf8');
+
+  for (const c of ['hekinan', 'takahama', 'nishio', 'anjo', 'kariya']) {
+    test(`/simular/${c} redireciona de vez para /casas-a-venda/${c}`, () => {
+      const r = vercel.redirects.find((x) => x.source === `/simular/${c}`);
+      assert.ok(r, 'redirecionamento ausente');
+      assert.equal(r.destination, `/casas-a-venda/${c}`);
+      assert.equal(r.permanent, true, '301, para o buscador transferir a página');
+    });
+  }
+
+  test('nenhuma delas é anunciada no sitemap', () => {
+    assert.doesNotMatch(sitemap, /\/simular\/[a-z]/);
   });
 });
