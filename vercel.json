@@ -160,6 +160,11 @@
       "source": "/simular/kariya",
       "destination": "/casas-a-venda/kariya",
       "permanent": true
+    },
+    {
+      "source": "/es",
+      "destination": "/es/casas-en-venta",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -194,6 +199,34 @@
     {
       "source": "/casas-a-venda/:cidade",
       "destination": "/api/casas-lista?cidadePagina=:cidade"
+    },
+    {
+      "source": "/casas-a-venda",
+      "destination": "/api/casas-lista?seo=hub"
+    },
+    {
+      "source": "/casas-novas",
+      "destination": "/api/casas-lista?seo=tipo&tipo=novas"
+    },
+    {
+      "source": "/casas-usadas",
+      "destination": "/api/casas-lista?seo=tipo&tipo=usadas"
+    },
+    {
+      "source": "/es/casas-en-venta",
+      "destination": "/api/casas-lista?seo=hub&lang=es"
+    },
+    {
+      "source": "/es/casas-en-venta/:cidade",
+      "destination": "/api/casas-lista?cidadePagina=:cidade&lang=es"
+    },
+    {
+      "source": "/es/casas-nuevas",
+      "destination": "/api/casas-lista?seo=tipo&tipo=novas&lang=es"
+    },
+    {
+      "source": "/es/casas-usadas",
+      "destination": "/api/casas-lista?seo=tipo&tipo=usadas&lang=es"
     }
   ]
 }

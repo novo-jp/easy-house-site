@@ -6,7 +6,7 @@
  */
 
 import { carregarCasas } from '../lib/casas-fonte.mjs';
-import { cidadesComPagina, CAMINHO_BASE, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
+import { urlsRegionais } from '../lib/casas-cidade.mjs';
 
 const SITE = 'https://easyhouse.homes';
 const xml = (s) => String(s).replace(/[&<>"']/g, (c) =>
@@ -27,17 +27,20 @@ export default async function handler(req, res) {
   </url>`;
     });
 
-    // Páginas de cidade. Só as que têm acervo suficiente: anunciar uma cidade
-    // com duas casas seria oferecer ao Google a página magra que a regra de
-    // conteúdo em escala existe para punir.
-    const cidades = cidadesComPagina(casas, MINIMO_PARA_SITEMAP).map((c) => `  <url>
-    <loc>${xml(`${SITE}${CAMINHO_BASE}/${c.chave}`)}</loc>
+    // Páginas regionais (hub, província, cidade, novas, usadas) em português e
+    // espanhol, cada uma com o par hreflang. Só as que passam no gate de
+    // estoque: anunciar uma cidade com duas casas seria oferecer ao Google a
+    // página magra que a regra de conteúdo em escala existe para punir.
+    const cidades = urlsRegionais(casas).map((u) => `  <url>
+    <loc>${xml(u.loc)}</loc>
+${u.alternates.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${xml(a.href)}"/>`).join('\n')}
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>`);
 
     const corpo = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>${SITE}/comprar/imoveis</loc>

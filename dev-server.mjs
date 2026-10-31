@@ -77,12 +77,26 @@ const servidor = createServer(async (req, res) => {
       return h(req, res);
     }
 
-    // /casas-a-venda/<cidade> → página da cidade (a mesma função da lista)
-    const mCidade = rota.match(/^\/casas-a-venda\/([^/]+)\/?$/);
-    if (mCidade) {
-      const { default: h } = await import(`./api/casas-lista.mjs?t=${Date.now()}`);
-      req.url = `/api/casas-lista?cidadePagina=${encodeURIComponent(mCidade[1])}`;
-      return h(req, res);
+    // Páginas regionais (mesmos rewrites do vercel.json): hub, província,
+    // cidade, novas e usadas, em português e em espanhol (/es/...).
+    if (rota === '/es' || rota === '/es/') { res.writeHead(307, { Location: '/es/casas-en-venta' }); return res.end(); }
+    const regional = [
+      [/^\/casas-a-venda\/?$/, () => 'seo=hub'],
+      [/^\/casas-a-venda\/([^/]+)\/?$/, (m) => `cidadePagina=${encodeURIComponent(m[1])}`],
+      [/^\/casas-novas\/?$/, () => 'seo=tipo&tipo=novas'],
+      [/^\/casas-usadas\/?$/, () => 'seo=tipo&tipo=usadas'],
+      [/^\/es\/casas-en-venta\/?$/, () => 'seo=hub&lang=es'],
+      [/^\/es\/casas-en-venta\/([^/]+)\/?$/, (m) => `cidadePagina=${encodeURIComponent(m[1])}&lang=es`],
+      [/^\/es\/casas-nuevas\/?$/, () => 'seo=tipo&tipo=novas&lang=es'],
+      [/^\/es\/casas-usadas\/?$/, () => 'seo=tipo&tipo=usadas&lang=es'],
+    ];
+    for (const [re, qs] of regional) {
+      const m = rota.match(re);
+      if (m) {
+        const { default: h } = await import(`./api/casas-lista.mjs?t=${Date.now()}`);
+        req.url = `/api/casas-lista?${qs(m)}`;
+        return h(req, res);
+      }
     }
 
     // /comprar/imoveis → lista renderizada no servidor (mesmo rewrite do vercel.json)

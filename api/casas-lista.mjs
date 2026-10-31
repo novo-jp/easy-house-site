@@ -17,7 +17,9 @@ import { carregarCasas, casasConfig, financingConfig } from '../lib/casas-fonte.
 import { lerFiltros, resolverLocal, buscar, facetas, diagnosticoVazio, filtrosAtivos,
          filtrosParaParams, idadeDoAcervo, ORDENS, ORDEM_PADRAO, chave } from '../lib/casas-busca.mjs';
 import { documento, esc, SITE, ICONE_WA } from '../lib/casas-html.mjs';
-import { paginaCidade, acharCidade, cidadesComPagina, CAMINHO_BASE as CIDADE_BASE, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
+import { paginaCidade, paginaProvincia, paginaHub, paginaTipo, acharCidade, acharProvincia,
+         cidadesComPagina, CAMINHOS, CAMINHO_BASE as CIDADE_BASE, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
+import { navEs, drawerEs, footEs } from '../lib/layout-es.mjs';
 import { carregarAlugueis } from '../lib/aluguel-fonte.mjs';
 
 const require = createRequire(import.meta.url);
@@ -365,6 +367,12 @@ export function paginaLista({ todas, pedido, r, fac, rot, precoOpcoes, agora }) 
   <section class="section section--narrow busca-editorial" aria-labelledby="cidades-t">
     <h2 class="h-section" id="cidades-t">Casas por cidade</h2>
     <p class="lead">Cada cidade tem uma página com os preços, as plantas e as estações do acervo de hoje.</p>
+    <p class="btn-row">
+      <a class="btn btn--ghost" href="${CAMINHOS.pt.hub}/aichi">Casas em Aichi</a>
+      <a class="btn btn--ghost" href="${CAMINHOS.pt.hub}/mie">Casas em Mie</a>
+      <a class="btn btn--ghost" href="${CAMINHOS.pt.novas}">Casas novas</a>
+      <a class="btn btn--ghost" href="${CAMINHOS.pt.usadas}">Casas usadas</a>
+    </p>
     <p class="cidades-links">
       ${cidadesComPagina(todas, MINIMO_PARA_SITEMAP).map((c) =>
         `<a href="${CIDADE_BASE}/${esc(c.chave)}">${esc(c.nome)} <span class="cidades-links__n">${c.total}</span></a>`).join('\n      ')}
@@ -436,32 +444,49 @@ export default async function handler(req, res) {
   try {
     const todas = await carregarCasas();
 
-    /* ── /casas-a-venda/<cidade> ──────────────────────────────────────── */
-    const cidadePagina = (url.searchParams.get('cidadePagina') || '').slice(0, 60);
-    if (cidadePagina) {
-      const cidade = acharCidade(todas, cidadePagina);
+    /* ── Páginas regionais (lib/casas-cidade.mjs) ─────────────────────────
+       /casas-a-venda[/<província|cidade>], /casas-novas, /casas-usadas e as
+       mesmas em espanhol sob /es/. Ver os rewrites em vercel.json. */
+    const lang = url.searchParams.get('lang') === 'es' ? 'es' : 'pt';
+    const seo = url.searchParams.get('seo');
+    const lugar = (url.searchParams.get('cidadePagina') || '').slice(0, 60);
+    if (seo || lugar) {
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
-      if (!cidade) {
-        // Cidade sem nenhuma casa hoje: 404, e a busca como saída. Página de
-        // cidade vazia é exatamente a página magra que não deve existir.
-        res.setHeader('Cache-Control', 'public, s-maxage=600');
-        return res.status(404).send(documento({
-          titulo: 'Cidade sem casas à venda no momento | Easy House',
-          descricao: 'Não há casas à venda nesta cidade no acervo de hoje. Veja o acervo completo.',
-          canonical: `${SITE}${CAMINHO}`, robots: 'noindex, follow', caminhoAtual: CAMINHO,
-          corpo: `<main id="main"><div class="indisponivel">
-            <h1>Nenhuma casa nesta cidade no momento</h1>
-            <p>O acervo muda toda semana. Pode ser que apareça — ou que a cidade tenha outro nome por aqui.</p>
-            <p class="btn-row" style="justify-content:center"><a class="btn btn--gold" href="${CAMINHO}">Ver todas as casas à venda</a></p>
-          </div></main>`,
-        }));
+      const enviar = (html) => {
+        res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
+        return res.status(200).send(html);
+      };
+      if (seo === 'hub') return enviar(paginaHub({ todas, lang }));
+      if (seo === 'tipo') {
+        const tipo = url.searchParams.get('tipo') === 'usadas' ? 'usadas' : 'novas';
+        return enviar(paginaTipo({ tipo, todas, lang }));
       }
-      // O acervo de aluguel entra para o bloco de comparação. Se falhar, a
-      // página sai sem ele: não é motivo para derrubar a página inteira.
-      let alugueis = [];
-      try { alugueis = (await carregarAlugueis()).itens; } catch { /* sem o bloco de aluguel */ }
-      res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
-      return res.status(200).send(paginaCidade({ cidade, casas: cidade.casas, alugueis }));
+      const provincia = acharProvincia(todas, lugar);
+      if (provincia) return enviar(paginaProvincia({ provincia, casas: provincia.casas, lang }));
+      const cidade = acharCidade(todas, lugar);
+      if (cidade) {
+        // O acervo de aluguel entra para o bloco de comparação. Se falhar, a
+        // página sai sem ele: não é motivo para derrubar a página inteira.
+        let alugueis = [];
+        try { alugueis = (await carregarAlugueis()).itens; } catch { /* sem o bloco de aluguel */ }
+        return enviar(paginaCidade({ cidade, casas: cidade.casas, alugueis, todas, lang }));
+      }
+      // Lugar sem nenhuma casa hoje (ou fora de Aichi/Mie/Gifu): 404, e a
+      // busca como saída. Página de lugar vazia é exatamente a página magra
+      // que não deve existir.
+      res.setHeader('Cache-Control', 'public, s-maxage=600');
+      const es = lang === 'es';
+      return res.status(404).send(documento({
+        titulo: es ? 'Sin casas en venta en este lugar por ahora | Easy House' : 'Sem casas à venda neste lugar no momento | Easy House',
+        descricao: es ? 'No hay casas en venta en este lugar en el inventario de hoy.' : 'Não há casas à venda neste lugar no acervo de hoje.',
+        canonical: `${SITE}${es ? CAMINHOS.es.hub : CAMINHOS.pt.hub}`, robots: 'noindex, follow', caminhoAtual: CAMINHO,
+        ...(es ? { lang: 'es', navHtml: navEs, drawerHtml: drawerEs, footHtml: footEs, skipText: 'Ir al contenido' } : {}),
+        corpo: `<main id="main"><div class="indisponivel">
+          <h1>${es ? 'Ninguna casa en este lugar por ahora' : 'Nenhuma casa neste lugar no momento'}</h1>
+          <p>${es ? 'El inventario cambia cada semana. Puede aparecer, o la ciudad puede tener otro nombre aquí.' : 'O acervo muda toda semana. Pode ser que apareça — ou que a cidade tenha outro nome por aqui.'}</p>
+          <p class="btn-row" style="justify-content:center"><a class="btn btn--gold" href="${es ? CAMINHOS.es.hub : CAMINHOS.pt.hub}">${es ? 'Ver todas las casas en venta' : 'Ver todas as casas à venda'}</a></p>
+        </div></main>`,
+      }));
     }
 
     const bruto = lerFiltros(url.searchParams);

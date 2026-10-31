@@ -19,7 +19,9 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-import { estatisticas, cidadesComPagina, acharCidade, paginaCidade, MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
+import { estatisticas, cidadesComPagina, acharCidade, acharProvincia, paginaCidade, paginaProvincia,
+         paginaHub, paginaTipo, urlsRegionais, slugCidade, cidadeJpSemBairro, ehNova,
+         MINIMO_PARA_SITEMAP } from '../lib/casas-cidade.mjs';
 
 /** Casa normalizada, só com o que a página de cidade lê. */
 function casa(over = {}) {
@@ -154,5 +156,132 @@ describe('as /simular/<cidade> antigas', () => {
 
   test('nenhuma delas é anunciada no sitemap', () => {
     assert.doesNotMatch(sitemap, /\/simular\/[a-z]/);
+  });
+});
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Briefing SEO Tokai (31/10/2026): províncias, hub, novas/usadas, espanhol
+   ─────────────────────────────────────────────────────────────────────────── */
+
+const acervo = [
+  ...Array.from({ length: 6 }, (_, i) => casa({ slug: `n${i}`, preco: (20 + i) * 1e6 })),
+  ...Array.from({ length: 5 }, (_, i) => casa({ slug: `t${i}`, cidade: 'Toyota', cidadeJp: '豊田市', preco: 30e6, construcaoNova: false, idade: 12 })),
+  ...Array.from({ length: 5 }, (_, i) => casa({ slug: `s${i}`, cidade: 'Suzuka', cidadeJp: '鈴鹿市', prefeitura: 'Mie', preco: 25e6 })),
+  casa({ slug: 'k1', cidade: 'Shizuoka', cidadeJp: '静岡市', prefeitura: 'Shizuoka' }),   // fora do escopo
+];
+
+describe('escopo: só Aichi, Mie e Gifu', () => {
+  test('casa de outra província não gera página', () => {
+    assert.equal(acharCidade(acervo, 'shizuoka'), null);
+    assert.ok(!cidadesComPagina(acervo).some((c) => c.chave === 'shizuoka'));
+  });
+
+  test('província sem estoque não tem página (Gifu hoje)', () => {
+    assert.equal(acharProvincia(acervo, 'gifu'), null);
+    assert.ok(acharProvincia(acervo, 'mie'));
+  });
+
+  test('cidade com o nome da província ganha -shi, e a URL não colide', () => {
+    assert.equal(slugCidade('Gifu'), 'gifu-shi');
+    assert.equal(slugCidade('Nishio'), 'nishio');
+    assert.equal(acharCidade(acervo, 'aichi'), null, 'aichi é província, não cidade');
+  });
+
+  test('bairro (区) não vira nome da cidade', () => {
+    // O acervo grava 名古屋市港区; a página é de 名古屋市.
+    assert.equal(cidadeJpSemBairro('名古屋市港区'), '名古屋市');
+    assert.equal(cidadeJpSemBairro('西尾市'), '西尾市');
+  });
+
+  test('nova é o que o anúncio classifica como 新築, não a idade', () => {
+    assert.equal(ehNova(casa({ construcaoNova: true, idade: 1 })), true);
+    assert.equal(ehNova(casa({ construcaoNova: false, idade: 0 })), false);
+  });
+});
+
+describe('as duas línguas', () => {
+  const cidade = acharCidade(acervo, 'nishio');
+  const pt = paginaCidade({ cidade, casas: cidade.casas, todas: acervo, lang: 'pt' });
+  const es = paginaCidade({ cidade, casas: cidade.casas, todas: acervo, lang: 'es' });
+  const texto = (h) => h.replace(/<script.*?<\/script>/gs, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+
+  test('cada uma declara o próprio idioma e canonical', () => {
+    assert.match(pt, /<html lang="pt-BR"/);
+    assert.match(es, /<html lang="es"/);
+    assert.match(pt, /canonical" href="https:\/\/easyhouse\.homes\/casas-a-venda\/nishio"/);
+    assert.match(es, /canonical" href="https:\/\/easyhouse\.homes\/es\/casas-en-venta\/nishio"/);
+  });
+
+  test('hreflang recíproco: uma aponta para a outra, com x-default em português', () => {
+    for (const h of [pt, es]) {
+      assert.match(h, /hreflang="pt-BR" href="https:\/\/easyhouse\.homes\/casas-a-venda\/nishio"/);
+      assert.match(h, /hreflang="es" href="https:\/\/easyhouse\.homes\/es\/casas-en-venta\/nishio"/);
+      assert.match(h, /hreflang="x-default" href="https:\/\/easyhouse\.homes\/casas-a-venda\/nishio"/);
+    }
+  });
+
+  test('a página em espanhol não tem menu nem texto em português', () => {
+    const t = texto(es.replace(/<[^>]+lang="(pt-BR|ja)"[^>]*>.*?<\/[a-z0-9]+>/gs, ' '));
+    assert.doesNotMatch(t, /\b(você|não|também|à venda|Falar no WhatsApp|Início)\b/);
+    assert.match(t, /Casas en venta en Nishio/);
+    assert.match(t, /Hablar por WhatsApp/);
+  });
+
+  test('em espanhol, o link para a ficha avisa que ela está em português', () => {
+    assert.match(es, /Ver ficha \(en portugués\)/);
+    assert.match(es, /hreflang="pt-BR"/);
+  });
+
+  test('a comunidade brasileira aparece só em português, com fonte e data', () => {
+    assert.match(texto(pt), /Moram em Nishio 4\.107 brasileiros \(dezembro de 2025\)/);
+    assert.match(pt, /e-stat\.go\.jp/);
+    assert.doesNotMatch(texto(es), /4\.107/);
+  });
+
+  test('nenhuma das duas afirma que o Flat 35 aceita quem não tem visto permanente', () => {
+    for (const h of [pt, es]) assert.match(texto(h), /永住者.*特別永住者/);
+  });
+
+  test('a mensagem pré-preenchida do WhatsApp diz só a cidade', () => {
+    const msg = decodeURIComponent(pt.match(/wa\.me\/\d+\?text=([^"]+)"[^>]*data-cta="seo_whatsapp"/)[1]);
+    assert.equal(msg, 'Olá! Quero comprar casa em Nishio. Podemos conversar?');
+  });
+});
+
+describe('província, hub e tipos', () => {
+  test('a província lista as cidades e leva a cada uma', () => {
+    const prov = acharProvincia(acervo, 'aichi');
+    const h = paginaProvincia({ provincia: prov, casas: prov.casas, lang: 'pt' });
+    assert.match(h, /<h1>Casas à venda em Aichi <span lang="ja">\(愛知県\)<\/span>/);
+    assert.match(h, /href="\/casas-a-venda\/nishio"/);
+    assert.match(h, /href="\/casas-a-venda\/toyota"/);
+    assert.doesNotMatch(h, /href="\/casas-a-venda\/suzuka"/, 'Suzuka é de Mie');
+  });
+
+  test('o hub mostra Gifu sem prometer casa que não existe', () => {
+    const h = paginaHub({ todas: acervo, lang: 'pt' });
+    assert.match(h, /Gifu: o acervo ainda não inclui casas desta província/);
+    assert.doesNotMatch(h, /href="\/casas-a-venda\/gifu"/);
+    assert.match(h, /Receber as chaves/, 'as etapas reais do processo');
+  });
+
+  test('novas e usadas separam pelo que o anúncio diz', () => {
+    const novas = paginaTipo({ tipo: 'novas', todas: acervo, lang: 'pt' });
+    const usadas = paginaTipo({ tipo: 'usadas', todas: acervo, lang: 'pt' });
+    assert.match(novas, /11 imóveis/);     // Nishio 6 + Suzuka 5
+    assert.match(usadas, /5 imóveis/);     // Toyota
+  });
+});
+
+describe('sitemap regional', () => {
+  test('só entra o que passa no gate, sempre em par pt/es', () => {
+    const urls = urlsRegionais(acervo).map((u) => u.loc.replace('https://easyhouse.homes', ''));
+    for (const esperado of ['/casas-a-venda', '/es/casas-en-venta', '/casas-a-venda/aichi', '/es/casas-en-venta/aichi',
+      '/casas-a-venda/mie', '/casas-a-venda/nishio', '/es/casas-en-venta/nishio', '/casas-a-venda/toyota',
+      '/casas-novas', '/es/casas-nuevas', '/casas-usadas', '/es/casas-usadas']) {
+      assert.ok(urls.includes(esperado), `faltou ${esperado}`);
+    }
+    assert.ok(!urls.some((u) => /gifu|shizuoka/.test(u)), 'nada de Gifu (sem estoque) nem de fora do escopo');
+    assert.equal(urls.filter((u) => u.startsWith('/es/')).length * 2, urls.length, 'toda URL tem o par');
   });
 });
