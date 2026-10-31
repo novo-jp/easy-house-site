@@ -11,9 +11,10 @@
  * Precisa de SUPABASE_URL e SUPABASE_SERVICE_KEY (ver .env.local).
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { carregarCasas, financingConfig, casasConfig } from './lib/casas-fonte.mjs';
 import { formatarYen } from './lib/casas.mjs';
+import { navEs, drawerEs, footEs } from './lib/layout-es.mjs';
 
 if (existsSync('.env.local')) {
   for (const linha of readFileSync('.env.local', 'utf8').split('\n')) {
@@ -39,10 +40,59 @@ function lerTaxasDeCustos() {
 }
 
 const yen = (v) => '¥' + Math.round(v).toLocaleString('ja-JP');
+
+/**
+ * Registro de 住宅ローンアドバイザー do consultor (一般財団法人住宅金融普及協会,
+ * nº (1)第2455204号). Mesma data do claim `certificado-advisor` no app da
+ * /entregas (easyhouse-raiox, lib/content/claims.ts): lá o bloco some sozinho
+ * no dia seguinte; aqui a página é estática, então a frase só entra se a
+ * geração acontecer dentro da validade. Renovou? Atualizar as duas datas e
+ * rodar este script de novo.
+ */
+const CERTIFICADO_VALIDO_ATE = '2026-10-31';
+const certificadoValido = () => new Date().toISOString().slice(0, 10) <= CERTIFICADO_VALIDO_ATE;
+
+/** Pares português ↔ espanhol (hreflang). Só páginas que existem nas duas línguas. */
+const PARES = {
+  // Ligar quando as páginas em espanhol existirem — hreflang para 404 é pior que nenhum:
+  // 'quanto-custa-casa-japao': 'es/gastos-comprar-vivienda',
+  // 'financiamento-imovel-japao': 'es/financiamiento-hipotecario-tokai',
+};
+const PAR_DE = Object.fromEntries(Object.entries(PARES).flatMap(([pt, es]) => [[pt, { pt, es }], [es, { pt, es }]]));
+
+/** Textos da casca, nas duas línguas. */
+const CASCA = {
+  pt: {
+    lang: 'pt-BR', locale: 'pt_BR', skip: 'Ir para o conteúdo', voceEsta: 'Você está em', inicio: 'Início', inicioHref: '/',
+    atualizado: (d) => `Atualizado em ${d} · 株式会社EASY HOUSE, imobiliária licenciada no Japão`,
+    data: () => new Date().toLocaleDateString('pt-BR'),
+    perguntas: 'Perguntas frequentes', ctaTitulo: 'Quer ver isso aplicado ao seu caso?',
+    ctaTexto: 'Cada situação tem detalhes que uma página não cobre. A gente olha o seu caso e responde em português, sem compromisso.',
+    ctaBotao: 'Falar com a Easy House', ctaChecks: ['Atendimento em português', 'Sem compromisso', 'Imobiliária licenciada'],
+    waMsg: (h1) => `Olá! Li a página sobre ${h1.toLowerCase()} no site da Easy House e queria tirar uma dúvida.`,
+    continue: 'Continue lendo',
+  },
+  es: {
+    lang: 'es', locale: 'es_419', skip: 'Ir al contenido', voceEsta: 'Estás en', inicio: 'Inicio', inicioHref: '/es/casas-en-venta',
+    atualizado: (d) => `Actualizado el ${d} · 株式会社EASY HOUSE, inmobiliaria con licencia en Japón`,
+    data: () => new Date().toLocaleDateString('es-MX', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+    perguntas: 'Preguntas frecuentes', ctaTitulo: '¿Quieres verlo aplicado a tu caso?',
+    ctaTexto: 'Cada situación tiene detalles que una página no cubre. Revisamos tu caso y te respondemos en español, sin compromiso.',
+    ctaBotao: 'Hablar con Easy House', ctaChecks: ['Atención en español', 'Sin compromiso', 'Inmobiliaria con licencia'],
+    waMsg: (h1) => `¡Hola! Leí la página sobre ${h1.toLowerCase()} en el sitio de Easy House y quería hacer una consulta.`,
+    continue: 'Sigue leyendo',
+  },
+};
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionadas }) {
+function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionadas, lang = 'pt' }) {
   const url = `${SITE}/${slug}`;
+  const C = CASCA[lang];
+  const par = PAR_DE[slug];
+  const hreflang = par
+    ? [['pt-BR', par.pt], ['es', par.es], ['x-default', par.pt]]
+        .map(([h, p]) => `<link rel="alternate" hreflang="${h}" href="${SITE}/${p}"/>`).join('\n')
+    : '';
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -57,7 +107,7 @@ function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionada
         '@type': 'Article',
         headline: h1,
         description: descricao,
-        inLanguage: 'pt-BR',
+        inLanguage: C.lang,
         dateModified: new Date().toISOString().slice(0, 10),
         author: { '@type': 'Organization', name: '株式会社EASY HOUSE', url: SITE },
         publisher: { '@type': 'Organization', name: '株式会社EASY HOUSE', url: SITE },
@@ -66,7 +116,7 @@ function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionada
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Início', item: SITE },
+          { '@type': 'ListItem', position: 1, name: C.inicio, item: `${SITE}${C.inicioHref}` },
           { '@type': 'ListItem', position: 2, name: h1, item: url }
         ]
       }
@@ -74,16 +124,18 @@ function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionada
   };
 
   return `<!DOCTYPE html>
-<html lang="pt-BR" class="no-js">
+<html lang="${C.lang}" class="no-js">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descricao)}"/>
 <link rel="canonical" href="${url}"/>
+${hreflang}
 <meta name="robots" content="index, follow"/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <meta property="og:type" content="article"/>
+<meta property="og:locale" content="${C.locale}"/>
 <meta property="og:url" content="${url}"/>
 <meta property="og:title" content="${esc(titulo)}"/>
 <meta property="og:description" content="${esc(descricao)}"/>
@@ -118,45 +170,45 @@ function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionada
 <script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>
 </head>
 <body>
-<a class="skip-link" href="#main">Ir para o conteúdo</a>
-${L.nav}
-${L.drawer}
+<a class="skip-link" href="#main">${C.skip}</a>
+${lang === 'es' ? navEs : L.nav}
+${lang === 'es' ? drawerEs : L.drawer}
 
 <main id="main">
-<nav class="migalhas" aria-label="Você está em">
-  <ol><li><a href="/">Início</a></li><li aria-current="page">${esc(h1)}</li></ol>
+<nav class="migalhas" aria-label="${C.voceEsta}">
+  <ol><li><a href="${C.inicioHref}">${C.inicio}</a></li><li aria-current="page">${esc(h1)}</li></ol>
 </nav>
 
 <div class="conteudo">
   <h1 style="font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.18;margin-bottom:8px">${h1}</h1>
-  <p class="nota-fonte">Atualizado em ${new Date().toLocaleDateString('pt-BR')} · 株式会社EASY HOUSE, imobiliária licenciada no Japão</p>
+  <p class="nota-fonte">${C.atualizado(C.data())}</p>
 
   <div class="resposta">${resposta}</div>
 
   ${corpo}
 
-  <h2>Perguntas frequentes</h2>
+  <h2>${C.perguntas}</h2>
   <div class="faq">
     ${faq.map(([p, r]) => `<div class="faq__item"><p class="faq__q">${esc(p)}</p><div class="faq__a">${r}</div></div>`).join('\n    ')}
   </div>
 
   <section class="simular" style="margin:36px 0">
-    <h3>Quer ver isso aplicado ao seu caso?</h3>
-    <p>Cada situação tem detalhes que uma página não cobre. A gente olha o seu caso e responde em português, sem compromisso.</p>
-    <a class="btn btn--wa" rel="nofollow" data-cta="conteudo_${slug}" href="${WA(`Olá! Li a página sobre ${h1.toLowerCase()} no site da Easy House e queria tirar uma dúvida.`)}">
+    <h3>${C.ctaTitulo}</h3>
+    <p>${C.ctaTexto}</p>
+    <a class="btn btn--wa" rel="nofollow" data-cta="conteudo_${slug}" href="${WA(C.waMsg(h1))}">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-      Falar com a Easy House
+      ${C.ctaBotao}
     </a>
-    <ul class="simular__checks"><li>Atendimento em português</li><li>Sem compromisso</li><li>Imobiliária licenciada</li></ul>
+    <ul class="simular__checks">${C.ctaChecks.map((c) => `<li>${c}</li>`).join('')}</ul>
   </section>
 
-  <h2>Continue lendo</h2>
+  <h2>${C.continue}</h2>
   <ul>${relacionadas.map(([href, txt]) => `<li><a href="${href}" style="color:var(--teal)">${esc(txt)}</a></li>`).join('')}</ul>
   <p style="margin-top:28px"></p>
 </div>
 </main>
 
-${L.foot}
+${lang === 'es' ? footEs : L.foot}
 <script src="/theme-v2.js?v=8" defer></script>
 <script src="/casas-comum.js?v=10" defer></script>
 <script src="/analytics.js" defer></script>
@@ -168,7 +220,37 @@ ${L.foot}
    1. Quanto custa comprar uma casa no Japão
    ═══════════════════════════════════════════════════════════════ */
 
+/** Os números de "quanto custa", calculados uma vez para as duas línguas. */
+function dadosQuantoCusta(casas) {
+  const p = casas.map((c) => c.preco).filter(Boolean).sort((a, b) => a - b);
+  const q = (n) => p[Math.floor(p.length * n)];
+  const areas = casas.map((c) => c.areaConstruida).filter(Boolean).sort((a, b) => a - b);
+  const terrenos = casas.map((c) => c.areaTerreno).filter(Boolean).sort((a, b) => a - b);
+  const med = (a) => Math.round(a[Math.floor(a.length / 2)]);
+  const plantas = Object.entries(casas.reduce((m, c) => { if (c.planta) m[c.planta] = (m[c.planta] || 0) + 1; return m; }, {}))
+    .sort((a, b) => b[1] - a[1]);
+  const provincias = [...new Set(casas.map((c) => c.prefeitura).filter(Boolean))];
+  const flat = financingConfig.flat35;
+  const mediana = q(.5);
+  const i = flat.referenceAnnualRate / 12, n = flat.maximumTermYears * 12;
+  return {
+    p, mediana, min: p[0], max: p[p.length - 1],
+    faixa: (min, max) => p.filter((x) => x >= min && (max ? x < max : true)).length,
+    areaMed: med(areas), terrenoMed: med(terrenos),
+    novas: casas.filter((c) => c.ano?.ano >= new Date().getFullYear() - 1).length,
+    cidades: new Set(casas.map((c) => c.cidade).filter(Boolean)).size,
+    plantas, provincias,
+    taxaAquisicao: financingConfig.acquisitionFeeRate, flat,
+    parcelaMediana: Math.round(mediana * i / (1 - Math.pow(1 + i, -n)) / 500) * 500,
+  };
+}
+
+/** "Aichi e Mie" / "Aichi y Mie" — a lista sai do acervo, não do texto. */
+const juntar = (itens, e) => (itens.length > 1 ? `${itens.slice(0, -1).join(', ')} ${e} ${itens[itens.length - 1]}` : itens[0] || '');
+
 function paginaQuantoCusta(casas) {
+  const D = dadosQuantoCusta(casas);
+  const provs = juntar(D.provincias, 'e');
   const p = casas.map((c) => c.preco).filter(Boolean).sort((a, b) => a - b);
   const q = (n) => p[Math.floor(p.length * n)];
   const faixa = (min, max) => p.filter((x) => x >= min && (max ? x < max : true)).length;
@@ -189,9 +271,9 @@ function paginaQuantoCusta(casas) {
   return pagina({
     slug: 'quanto-custa-casa-japao',
     titulo: 'Quanto custa comprar uma casa no Japão em 2026 | Easy House',
-    descricao: `Preços reais de ${casas.length} casas à venda em Aichi: mediana de ${yen(mediana)}, com custos de aquisição e parcela estimada. Dados de imóveis disponíveis hoje, em português.`,
+    descricao: `Preços reais de ${casas.length} casas à venda em ${provs}: mediana de ${yen(mediana)}, com custos de aquisição e parcela estimada. Dados de imóveis disponíveis hoje, em português.`,
     h1: 'Quanto custa comprar uma casa no Japão',
-    resposta: `<p>Entre as <strong>${casas.length} casas que a Easy House tem disponíveis hoje</strong> em ${cidades} cidades da província de Aichi, o preço mediano é de <strong>${yen(mediana)}</strong>. Metade custa menos que isso.</p>
+    resposta: `<p>Entre as <strong>${casas.length} casas que a Easy House tem disponíveis hoje</strong> em ${cidades} cidades de ${provs}, o preço mediano é de <strong>${yen(mediana)}</strong>. Metade custa menos que isso.</p>
       <p>A faixa vai de <strong>${yen(p[0])}</strong> a <strong>${yen(p[p.length - 1])}</strong>. Além do preço do imóvel, some cerca de <strong>${Math.round(taxaAquisicao * 100)}%</strong> em custos de aquisição — impostos de registro, escritura e taxas.</p>`,
     corpo: `
 <h2>Os preços que existem de verdade hoje</h2>
@@ -210,7 +292,7 @@ function paginaQuantoCusta(casas) {
 
 <h3>O que se recebe por esse preço</h3>
 <p>A casa mediana desse acervo tem <strong>${med(areas)} m² construídos</strong> e <strong>${med(terrenos)} m² de terreno</strong> — medidas bem acima do que o mesmo valor compra em uma capital brasileira. ${novas} das ${casas.length} são construção nova ou de até dois anos.</p>
-<p>A planta mais comum é <strong>4LDK</strong> (quatro quartos mais sala, copa e cozinha), seguida de 3LDK.</p>
+<p>A planta mais comum é <strong>${D.plantas[0][0]}</strong> (${D.plantas[0][1]} casas)${D.plantas[1] ? `, seguida de ${D.plantas[1][0]} (${D.plantas[1][1]})` : ''}. No Japão, o número são os quartos e LDK é a sala com copa e cozinha.</p>
 
 <h2>O preço não é o custo total</h2>
 <p>Comprar um imóvel no Japão envolve despesas além do valor anunciado. A conta que a Easy House usa nas simulações reserva <strong>${Math.round(taxaAquisicao * 100)}% do valor do imóvel</strong> para esses custos, que incluem:</p>
@@ -399,7 +481,7 @@ function paginaFinanciamento(casas) {
 
 <h2>O que a Easy House faz — e o que não faz</h2>
 <p>A Easy House <strong>não é instituição financeira e não aprova crédito</strong>. O que ela faz é organizar o caso antes de apresentá-lo: verificar o que pesa contra, orientar sobre documentos, explicar o contrato em português e conversar em japonês com as instituições.</p>
-<p>O atendimento é feito por consultor com certificação de <strong>住宅ローンアドバイザー</strong> (consultor de financiamento habitacional), qualificação que a maior parte dos corretores não possui.</p>
+${certificadoValido() ? '<p>O atendimento é feito por consultor com certificação de <strong>住宅ローンアドバイザー</strong> (consultor de financiamento habitacional), qualificação que a maior parte dos corretores não possui.</p>' : ''}
 <p>Para uma estimativa com os seus números, o <a href="/simular" style="color:var(--teal)">simulador</a> leva cerca de um minuto e não pede documento nenhum.</p>`,
     faq: [
       ['Estrangeiro consegue financiamento imobiliário no Japão?',
