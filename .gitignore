@@ -40,3 +40,8 @@ Imoveis/removidos_*.json
 Imoveis/debug_*.json
 Imoveis/debug_*.png
 images/originais/
+
+# Mapa de contas, acessos e infraestrutura. Não tem senha, mas é para ficar em
+# local reservado (o próprio documento pede). Entrou no repositório público por
+# engano no commit f71c2b9 (31/08/2026) e saiu em 31/10/2026.
+docs/PLATAFORMAS.html

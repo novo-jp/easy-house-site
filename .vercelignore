@@ -1,2 +1,8 @@
 # Evidências de QA da busca de imóveis (capturas e scripts): não são páginas do site.
 docs/easy-house-marketplace/
+
+# Documentação interna (funil, marketing, SEO, SQL, mapa de plataformas): não
+# são páginas do site. Até 31/10/2026 a pasta inteira era servida — inclusive
+# /docs/PLATAFORMAS, o mapa de contas e infraestrutura, e /docs/FUNIL.md com
+# números de conversão. Nenhuma página nem função lê esta pasta.
+docs/
