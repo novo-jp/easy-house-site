@@ -1,0 +1,3103 @@
+{
+  "gerado": "2026-11-02",
+  "fonte": "MANIFESTO_EDITORIAL_EASYHOUSE_2026.json (125 candidatos)",
+  "legenda": {
+    "publicado_novo": "URL nova indexável, no sitemap",
+    "publicado_no_hub": "respondido dentro de um hub (âncora), sem URL própria",
+    "existente_mantido": "a URL já existia; mantida sem duplicar",
+    "consolidado": "mesma intenção de outro item (duplicateOf)",
+    "rascunho": "texto escrito, fora do site até a validação",
+    "adiado": "não escrito: depende de validação ou dados",
+    "nao_criado": "fora do escopo/estoque"
+  },
+  "contagem": {
+    "publicado_novo": 31,
+    "existente_mantido": 17,
+    "rascunho": 5,
+    "adiado": 13,
+    "consolidado": 21,
+    "publicado_no_hub": 36,
+    "nao_criado": 2
+  },
+  "itens": [
+    {
+      "id": "EH-ED-001",
+      "type": "hub",
+      "priority": "P0",
+      "title": "Guias para comprar casa no Japão",
+      "proposedPath": "/pt/guias/",
+      "actualPath": "/guias",
+      "canonical": "https://easyhouse.homes/guias",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5",
+          "12",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Explorar os guias por etapas de compra",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: hub de navegação; conteúdo vem de páginas já validadas"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-002",
+      "type": "hub",
+      "priority": "P0",
+      "title": "Dúvidas sobre comprar casa no Japão",
+      "proposedPath": "/pt/duvidas/",
+      "actualPath": "/duvidas",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5",
+          "12",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Encontrar respostas organizadas por assunto",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: hub de navegação; conteúdo vem de páginas já validadas"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-003",
+      "type": "hub",
+      "priority": "P0",
+      "title": "Dicionário Imobiliário Japonês-Português",
+      "proposedPath": "/pt/dicionario-imobiliario/",
+      "actualPath": "/dicionario-imobiliario",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5",
+          "12",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/dicionario-indice.json"
+      },
+      "targetIntent": "Entender termos e documentos do mercado imobiliário japonês",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: hub de navegação; conteúdo vem de páginas já validadas"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-004",
+      "type": "hub",
+      "priority": "P0",
+      "title": "Blog da EASY HOUSE: imóveis e financiamento no Japão",
+      "proposedPath": "/pt/blog/",
+      "actualPath": "/blog",
+      "canonical": "https://easyhouse.homes/blog",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5",
+          "12",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Ler artigos práticos, comparações e orientações atualizadas",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: hub de navegação; conteúdo vem de páginas já validadas"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-005",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Como comprar uma casa no Japão: guia completo para brasileiros",
+      "proposedPath": "/pt/guias/guia-completo-comprar-casa-no-japao/",
+      "actualPath": "/guia-comprar-casa-japao",
+      "canonical": "https://easyhouse.homes/guia-comprar-casa-japao",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "1",
+          "5",
+          "14"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender toda a jornada desde planejamento ate entrega das chaves",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-006",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Financiamento imobiliário no Japão: como funciona",
+      "proposedPath": "/pt/guias/financiamento-imobiliario-no-japao/",
+      "actualPath": "/financiamento-imovel-japao",
+      "canonical": "https://easyhouse.homes/financiamento-imovel-japao",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "6"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender opcoes bancarias, simulacao e compromissos",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-007",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Quanto posso financiar para comprar uma casa no Japão?",
+      "proposedPath": "/pt/guias/quanto-posso-financiar-com-minha-renda/",
+      "actualPath": "/renda-minima-financiamento",
+      "canonical": "https://easyhouse.homes/renda-minima-financiamento",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Planejar faixa de compra e renda comprometida",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-008",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Documentos necessários para comprar uma casa no Japão",
+      "proposedPath": "/pt/guias/documentos-para-comprar-casa-japao/",
+      "actualPath": "/documentos-financiamento",
+      "canonical": "https://easyhouse.homes/documentos-financiamento",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "5",
+          "14"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Montar lista de documentos do comprador e do imovel",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-009",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Casa nova, usada ou sob encomenda no Japão: qual a diferença?",
+      "proposedPath": "/pt/guias/casa-nova-usada-ou-sob-encomenda/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/guias/casa-nova-usada-ou-sob-encomenda.md"
+      },
+      "targetIntent": "Comparar os tipos de casa e seus riscos",
+      "status": "rascunho",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+      },
+      "nota": "URL planejada /casa-nova-usada-ou-sob-encomenda — fora do site e do sitemap"
+    },
+    {
+      "id": "EH-ED-010",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Como analisar terreno e direitos de propriedade no Japão",
+      "proposedPath": "/pt/guias/como-analisar-terreno-e-direitos-no-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/guias/terreno-e-direitos-imovel-japao.md"
+      },
+      "targetIntent": "Interpretar propriedade, restricoes e riscos de terreno",
+      "status": "rascunho",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+      },
+      "nota": "URL planejada /terreno-e-direitos-imovel-japao — fora do site e do sitemap"
+    },
+    {
+      "id": "EH-ED-011",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Contrato de compra de imóvel no Japão: etapas e cuidados",
+      "proposedPath": "/pt/guias/como-funciona-contrato-de-compra-no-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/guias/contrato-compra-imovel-japao.md"
+      },
+      "targetIntent": "Entender proposta, explicacoes legais e assinatura",
+      "status": "rascunho",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+      },
+      "nota": "URL planejada /contrato-compra-imovel-japao — fora do site e do sitemap"
+    },
+    {
+      "id": "EH-ED-012",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Quanto custa comprar uma casa no Japão além do preço?",
+      "proposedPath": "/pt/guias/quanto-custa-comprar-casa-no-japao/",
+      "actualPath": "/quanto-custa-casa-japao",
+      "canonical": "https://easyhouse.homes/quanto-custa-casa-japao",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender taxas e custos de aquisicao",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-013",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Impostos na compra e propriedade de uma casa no Japão",
+      "proposedPath": "/pt/guias/impostos-da-casa-no-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "7",
+          "8",
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender impostos de compra e anuais",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "impostos: regras e reduções mudam a cada reforma tributária; exige conferência com 国税庁 / províncias antes de virar página. Termos no índice do dicionário e resposta em /duvidas."
+    },
+    {
+      "id": "EH-ED-014",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Juros fixos ou variáveis no Japão: como comparar",
+      "proposedPath": "/pt/guias/juros-fixos-ou-variaveis-no-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "6"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Decidir entre tipos de juros e analisar riscos",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "juros: taxas do DOCX são de julho/2026 e não podem ser apresentadas como atuais; precisa fonte de taxa datada e revisão."
+    },
+    {
+      "id": "EH-ED-015",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Como avaliar uma casa antes de comprar no Japão",
+      "proposedPath": "/pt/guias/como-avaliar-casa-antes-de-comprar/",
+      "actualPath": "/blog/checklist-primeira-visita-casa",
+      "canonical": "https://easyhouse.homes/blog/checklist-primeira-visita-casa",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "3",
+          "5",
+          "14"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Vistoriar imovel e risco do entorno",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-100",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "avaliar a casa na visita: checklist da primeira visita + casa usada e terremoto"
+    },
+    {
+      "id": "EH-ED-016",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Depois de comprar a casa no Japão: o que fazer?",
+      "proposedPath": "/pt/guias/depois-de-comprar-casa-no-japao/",
+      "actualPath": "/duvidas#o-que-fazer-depois-de-receber-as-chaves",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "10",
+          "14"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Planejar responsabilidades depois da entrega",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "guia P1 reduzido a resposta curta em /duvidas; guia completo adiado"
+    },
+    {
+      "id": "EH-ED-017",
+      "type": "guias",
+      "priority": "P0",
+      "title": "O que é 事前審査 e como funciona a pré-análise?",
+      "proposedPath": "/pt/guias/jizen-shinsa-pre-analise/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/guias/pre-analise-e-analise-final-financiamento.md"
+      },
+      "targetIntent": "Saber como se preparar para a analise inicial",
+      "status": "rascunho",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+      },
+      "nota": "URL planejada /pre-analise-e-analise-final-financiamento — fora do site e do sitemap"
+    },
+    {
+      "id": "EH-ED-018",
+      "type": "guias",
+      "priority": "P0",
+      "title": "O que acontece na análise final 本審査?",
+      "proposedPath": "/pt/guias/honshinsa-aprovacao-definitiva/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender etapas e documentos apos contrato",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-017",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "pré-análise e análise final num guia só; o verbete 本審査 (EH-ED-049) está publicado"
+    },
+    {
+      "id": "EH-ED-019",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Gensen e Kazei Shomeisho: quais documentos de renda são necessários?",
+      "proposedPath": "/pt/guias/documentos-gensen-kazei/",
+      "actualPath": "/documentos-financiamento",
+      "canonical": "https://easyhouse.homes/documentos-financiamento",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Distinguir documentos de renda e impostos",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-008",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "gensen e kazei shōmeisho já estão em /documentos-financiamento"
+    },
+    {
+      "id": "EH-ED-020",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Financiamento imobiliário para quem trabalha de haken no Japão",
+      "proposedPath": "/pt/guias/financiamento-para-haken/",
+      "actualPath": "/financiamento-trabalho-haken",
+      "canonical": "https://easyhouse.homes/financiamento-trabalho-haken",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Ver como comprovar renda e tipo de emprego",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-021",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Financiamento imobiliário para autônomos (kojin jigyō)",
+      "proposedPath": "/pt/guias/financiamento-para-autonomos/",
+      "actualPath": "/financiamento-autonomo",
+      "canonical": "https://easyhouse.homes/financiamento-autonomo",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "12"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Compreender declaracoes de autônomo para credito",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "já aprovado antes"
+      },
+      "nota": "página já publicada (build-conteudo, revisada em 31/10/2026); não duplicada nem alterada, só ganhou link nos hubs"
+    },
+    {
+      "id": "EH-ED-022",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Renda conjunta para financiamento no Japão: 収入合算 e pair loan",
+      "proposedPath": "/pt/guias/financiamento-com-renda-do-casal/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "12"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/guias/financiamento-renda-do-casal.md"
+      },
+      "targetIntent": "Comparar modalidades de renda familiar",
+      "status": "rascunho",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+      },
+      "nota": "URL planejada /financiamento-renda-do-casal — fora do site e do sitemap"
+    },
+    {
+      "id": "EH-ED-023",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Como funciona a carta de proposta de compra 買付証明書?",
+      "proposedPath": "/pt/guias/carta-proposta-kaitsuke/",
+      "actualPath": "/dicionario-imobiliario/kaitsuke-shomeisho",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/kaitsuke-shomeisho",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender oferta e negociacao sem confundir com contrato",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-050",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do verbete 買付証明書"
+    },
+    {
+      "id": "EH-ED-024",
+      "type": "guias",
+      "priority": "P0",
+      "title": "O que é 重要事項説明 antes da compra da casa?",
+      "proposedPath": "/pt/guias/juuyo-jikou-setsumei/",
+      "actualPath": "/dicionario-imobiliario/juuyo-jiko-setsumei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/juuyo-jiko-setsumei",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Compreender explicacao obrigatoria do imovel",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-051",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do verbete 重要事項説明"
+    },
+    {
+      "id": "EH-ED-025",
+      "type": "guias",
+      "priority": "P0",
+      "title": "手付金: como funciona o sinal na compra de casa no Japão?",
+      "proposedPath": "/pt/guias/tetsukekin-sinal-compra/",
+      "actualPath": "/dicionario-imobiliario/tetsukekin",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/tetsukekin",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender sinal, data e consequencias contratuais",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-053",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do verbete 手付金"
+    },
+    {
+      "id": "EH-ED-026",
+      "type": "guias",
+      "priority": "P0",
+      "title": "Cláusula de financiamento ローン特約: o que verificar?",
+      "proposedPath": "/pt/guias/clausula-financiamento-loan-tokuyaku/",
+      "actualPath": "/dicionario-imobiliario/loan-tokuyaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/loan-tokuyaku",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Compreender condicoes de rescisao por credito",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-054",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do verbete ローン特約"
+    },
+    {
+      "id": "EH-ED-027",
+      "type": "guias",
+      "priority": "P1",
+      "title": "O que é 金銭消費貸借契約 na compra de casa?",
+      "proposedPath": "/pt/guias/kinsen-shohi-taishaku-keiyaku/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender contrato do banco e itens a conferir",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-011",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "o contrato do banco é uma etapa do guia de contrato; termo no índice do dicionário"
+    },
+    {
+      "id": "EH-ED-028",
+      "type": "guias",
+      "priority": "P1",
+      "title": "決済 e 引渡し: como funciona o dia da entrega das chaves?",
+      "proposedPath": "/pt/guias/kessai-entrega-chaves/",
+      "actualPath": "/dicionario-imobiliario/kessai",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/kessai",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Organizar documentos, pagamento e registro",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-056",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "verbetes 決済 e 引渡し publicados"
+    },
+    {
+      "id": "EH-ED-029",
+      "type": "guias",
+      "priority": "P1",
+      "title": "所有権 e 借地権: qual diferença entre terreno próprio e arrendado?",
+      "proposedPath": "/pt/guias/propriedade-plena-ou-terreno-arrendado/",
+      "actualPath": "/dicionario-imobiliario/shoyuken",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shoyuken",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Compreender direitos sobre terreno",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-058",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "verbetes 所有権 e 借地権 publicados"
+    },
+    {
+      "id": "EH-ED-030",
+      "type": "guias",
+      "priority": "P1",
+      "title": "市街化区域 e 市街化調整区域: o que muda na compra de casa?",
+      "proposedPath": "/pt/guias/area-urbanizacao-e-restricoes/",
+      "actualPath": "/dicionario-imobiliario/shigaika-chosei-kuiki",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shigaika-chosei-kuiki",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender restricoes urbanas de terreno",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-088",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do verbete 市街化調整区域"
+    },
+    {
+      "id": "EH-ED-031",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Setback e acesso à rua: cuidados com terrenos no Japão",
+      "proposedPath": "/pt/guias/setback-e-acesso-via/",
+      "actualPath": "/dicionario-imobiliario/setback",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/setback",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender restricoes de acesso e recuo",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-091",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "verbetes セットバック e 接道義務 publicados"
+    },
+    {
+      "id": "EH-ED-032",
+      "type": "guias",
+      "priority": "P1",
+      "title": "不動産取得税: quando vem o imposto de aquisição de casa?",
+      "proposedPath": "/pt/guias/imposto-aquisicao-imovel/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "8"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender cobranca unica e possiveis reducoes",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "imposto de aquisição: alíquotas e reduções exigem conferência com a lei vigente e as províncias."
+    },
+    {
+      "id": "EH-ED-033",
+      "type": "guias",
+      "priority": "P1",
+      "title": "住宅ローン控除: como funciona a dedução do financiamento?",
+      "proposedPath": "/pt/guias/deducao-tributaria-financiamento/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "7"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender requisitos e declaracao com ressalvas",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "dedução do financiamento: condições mudam por ano; confirmar no 国税庁 antes de publicar."
+    },
+    {
+      "id": "EH-ED-034",
+      "type": "guias",
+      "priority": "P1",
+      "title": "固定資産税: quanto custa o imposto anual da casa?",
+      "proposedPath": "/pt/guias/imposto-anual-casa-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Planejar custo anual e diferenciar tributos",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "imposto anual: cálculo e reduções exigem conferência com a lei vigente."
+    },
+    {
+      "id": "EH-ED-035",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Checklist de inspeção de uma casa usada no Japão",
+      "proposedPath": "/pt/guias/inspecao-casa-usada/",
+      "actualPath": "/blog/checklist-primeira-visita-casa",
+      "canonical": "https://easyhouse.homes/blog/checklist-primeira-visita-casa",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3",
+          "14"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Verificar manutencao, sismo, cupins e documentacao",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-100",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "checklist da primeira visita cobre a inspeção; norma sísmica no EH-ED-102"
+    },
+    {
+      "id": "EH-ED-036",
+      "type": "guias",
+      "priority": "P1",
+      "title": "Seguro residencial no Japão: incêndio e terremoto",
+      "proposedPath": "/pt/guias/seguro-incendio-terremoto/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Comparar riscos, coberturas e exclusoes",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "seguro: condições variam por seguradora; resposta curta em /duvidas."
+    },
+    {
+      "id": "EH-ED-037",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Quanto tempo leva para comprar uma casa no Japão?",
+      "proposedPath": "/pt/duvidas/quanto-tempo-leva-comprar-casa/",
+      "actualPath": "/duvidas#quanto-tempo-leva-para-comprar-uma-casa",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "1",
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Estimativa de prazo e o que pode atrasar",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-038",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Preciso dar entrada para comprar uma casa no Japão?",
+      "proposedPath": "/pt/duvidas/preciso-pagar-entrada/",
+      "actualPath": "/duvidas#preciso-dar-entrada",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "9",
+          "12"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Diferenciar entrada, custos e sinal",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-039",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Quando preciso pagar o sinal da casa no Japão?",
+      "proposedPath": "/pt/duvidas/quando-pago-o-sinal/",
+      "actualPath": "/duvidas#quando-pago-o-sinal",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Entender o momento de tetsukekin",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-040",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "É possível negociar o preço de uma casa no Japão?",
+      "proposedPath": "/pt/duvidas/posso-negociar-preco-casa/",
+      "actualPath": "/duvidas#da-para-negociar-o-preco",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Entender como funciona proposta e negociacao",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-041",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Preciso registrar um inkan para comprar uma casa no Japão?",
+      "proposedPath": "/pt/duvidas/preciso-registrar-inkan/",
+      "actualPath": "/duvidas#preciso-registrar-um-carimbo-inkan",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "11"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Saber quando selo e certificado sao necessarios",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-042",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Quando recebo as chaves depois de assinar o contrato?",
+      "proposedPath": "/pt/duvidas/quando-recebo-as-chaves/",
+      "actualPath": "/duvidas#quando-recebo-as-chaves",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Separar contrato, analise e liquidacao",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-043",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Quanto custa a comissão da imobiliária no Japão?",
+      "proposedPath": "/pt/duvidas/quanto-custa-corretagem/",
+      "actualPath": "/duvidas#quanto-e-a-comissao-da-imobiliaria",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Entender calculo e quando e devida",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-044",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Vale a pena comprar casa usada no Japão?",
+      "proposedPath": "/pt/duvidas/posso-comprar-casa-usada/",
+      "actualPath": "/duvidas#vale-a-pena-comprar-casa-usada",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Considerar idade, inspecao e custo total",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-045",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Como saber se uma casa fica em área de enchente no Japão?",
+      "proposedPath": "/pt/duvidas/como-consultar-risco-enchente/",
+      "actualPath": "/duvidas#como-saber-se-a-casa-fica-em-area-de-enchente",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Usar hazard map oficial antes de comprar",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-046",
+      "type": "duvidas",
+      "priority": "P1",
+      "title": "Preciso contratar seguro ao financiar uma casa?",
+      "proposedPath": "/pt/duvidas/casa-precisa-seguro/",
+      "actualPath": "/duvidas#preciso-contratar-seguro-ao-financiar",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/duvidas.md"
+      },
+      "targetIntent": "Diferenciar danos do imovel e seguro ligado a credito",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: resposta curta com redação já aprovada ou conferida"
+      },
+      "nota": "pergunta respondida em /duvidas com link para a explicação completa; sem URL própria"
+    },
+    {
+      "id": "EH-ED-047",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "O que é 内見 (naiken) na visita ao imóvel?",
+      "proposedPath": "/pt/dicionario-imobiliario/naiken/",
+      "actualPath": "/dicionario-imobiliario/naiken",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/naiken",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/naiken.md"
+      },
+      "targetIntent": "Interpretar visita a imovel",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-048",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "事前審査: o que significa jizen shinsa?",
+      "proposedPath": "/pt/dicionario-imobiliario/jizen-shinsa/",
+      "actualPath": "/dicionario-imobiliario/jizen-shinsa",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/jizen-shinsa",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/jizen-shinsa.md"
+      },
+      "targetIntent": "Entender pre-analise",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-049",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "本審査: o que é análise final do financiamento?",
+      "proposedPath": "/pt/dicionario-imobiliario/hon-shinsa/",
+      "actualPath": "/dicionario-imobiliario/hon-shinsa",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/hon-shinsa",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/hon-shinsa.md"
+      },
+      "targetIntent": "Entender aprovacao final",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-050",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "買付証明書: o que é carta de intenção de compra?",
+      "proposedPath": "/pt/dicionario-imobiliario/kaitsuke-shomeisho/",
+      "actualPath": "/dicionario-imobiliario/kaitsuke-shomeisho",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/kaitsuke-shomeisho",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/kaitsuke-shomeisho.md"
+      },
+      "targetIntent": "Entender a proposta",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-051",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "重要事項説明: explicação obrigatória do imóvel",
+      "proposedPath": "/pt/dicionario-imobiliario/juuyo-jiko-setsumei/",
+      "actualPath": "/dicionario-imobiliario/juuyo-jiko-setsumei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/juuyo-jiko-setsumei",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/juuyo-jiko-setsumei.md"
+      },
+      "targetIntent": "Entender explicacao de aspectos importantes",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-052",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "売買契約: contrato de compra e venda",
+      "proposedPath": "/pt/dicionario-imobiliario/baibai-keiyaku/",
+      "actualPath": "/dicionario-imobiliario/baibai-keiyaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/baibai-keiyaku",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/baibai-keiyaku.md"
+      },
+      "targetIntent": "Entender o contrato",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-053",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "手付金: sinal de compra de imóvel",
+      "proposedPath": "/pt/dicionario-imobiliario/tetsukekin/",
+      "actualPath": "/dicionario-imobiliario/tetsukekin",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/tetsukekin",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/tetsukekin.md"
+      },
+      "targetIntent": "Distinguir sinal de entrada",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-054",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "ローン特約: cláusula sobre financiamento",
+      "proposedPath": "/pt/dicionario-imobiliario/loan-tokuyaku/",
+      "actualPath": "/dicionario-imobiliario/loan-tokuyaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/loan-tokuyaku",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/loan-tokuyaku.md"
+      },
+      "targetIntent": "Compreender condicionantes do contrato",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-055",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "金銭消費貸借契約: contrato bancário",
+      "proposedPath": "/pt/dicionario-imobiliario/kinsho-keiyaku/",
+      "actualPath": "/dicionario-imobiliario#termo-kinsen-shohi-taishaku-keiyaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Identificar o contrato de emprestimo",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (金銭消費貸借契約); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-056",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "決済: liquidação do pagamento",
+      "proposedPath": "/pt/dicionario-imobiliario/kessai/",
+      "actualPath": "/dicionario-imobiliario/kessai",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/kessai",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/kessai.md"
+      },
+      "targetIntent": "Entender dia da liquidacao",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-057",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "引渡し: entrega da propriedade",
+      "proposedPath": "/pt/dicionario-imobiliario/hikiwatashi/",
+      "actualPath": "/dicionario-imobiliario/hikiwatashi",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/hikiwatashi",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/hikiwatashi.md"
+      },
+      "targetIntent": "Entender entrega das chaves",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-058",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "所有権: propriedade plena",
+      "proposedPath": "/pt/dicionario-imobiliario/shoyuken/",
+      "actualPath": "/dicionario-imobiliario/shoyuken",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shoyuken",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/shoyuken.md"
+      },
+      "targetIntent": "Distinguir direito de propriedade",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-059",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "借地権: direito de terreno arrendado",
+      "proposedPath": "/pt/dicionario-imobiliario/shakuchiken/",
+      "actualPath": "/dicionario-imobiliario/shakuchiken",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shakuchiken",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/shakuchiken.md"
+      },
+      "targetIntent": "Distinguir regime de terreno",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-060",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "頭金: valor de entrada",
+      "proposedPath": "/pt/dicionario-imobiliario/atamakin/",
+      "actualPath": "/dicionario-imobiliario#termo-atamakin",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender pagamento inicial",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (頭金); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-061",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "諸費用: despesas adicionais da compra",
+      "proposedPath": "/pt/dicionario-imobiliario/shohiyo/",
+      "actualPath": "/dicionario-imobiliario#termo-shohiyo",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender custos acessorios",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (諸費用); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-062",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "返済負担率: comprometimento de renda",
+      "proposedPath": "/pt/dicionario-imobiliario/hensai-futanritsu/",
+      "actualPath": "/dicionario-imobiliario#termo-hensai-futanritsu",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender relacao parcelas-renda",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (返済負担率); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-063",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "収入合算: composição de renda",
+      "proposedPath": "/pt/dicionario-imobiliario/shunyu-gassan/",
+      "actualPath": "/dicionario-imobiliario#termo-shunyu-gassan",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender renda conjunta",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (収入合算); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-064",
+      "type": "dicionario-imobiliario",
+      "priority": "P0",
+      "title": "ペアローン: financiamento em casal",
+      "proposedPath": "/pt/dicionario-imobiliario/pair-loan/",
+      "actualPath": "/dicionario-imobiliario#termo-pea-ron",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Comparar dois contratos de emprestimo",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (ペアローン); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-065",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "変動金利: taxa de juros variável",
+      "proposedPath": "/pt/dicionario-imobiliario/hendo-kinri/",
+      "actualPath": "/dicionario-imobiliario#termo-hendo-kinri",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "6",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Compreender risco de juros",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (変動金利); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-066",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "固定金利: taxa de juros fixa",
+      "proposedPath": "/pt/dicionario-imobiliario/kotei-kinri/",
+      "actualPath": "/dicionario-imobiliario#termo-kotei-kinri",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "6",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Compreender taxa fixa",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (固定金利); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-067",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "団信: seguro de vida do financiamento",
+      "proposedPath": "/pt/dicionario-imobiliario/danshin/",
+      "actualPath": "/dicionario-imobiliario#termo-danshin",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender cobertura ligada ao emprestimo",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (団体信用生命保険); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-068",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "繰り上げ返済: amortização antecipada",
+      "proposedPath": "/pt/dicionario-imobiliario/kuriage-hensai/",
+      "actualPath": "/dicionario-imobiliario#termo-kuriage-hensai",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "6",
+          "10",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Saber sobre pagamentos extras",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (繰り上げ返済); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-069",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "住宅ローン控除: dedução fiscal do financiamento",
+      "proposedPath": "/pt/dicionario-imobiliario/jutaku-loan-kojo/",
+      "actualPath": "/dicionario-imobiliario#termo-jutaku-ron-kojo",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "7",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender incentivo tributario",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (住宅ローン控除); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-070",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "不動産取得税: imposto de aquisição imobiliária",
+      "proposedPath": "/pt/dicionario-imobiliario/fudosan-shutokuzei/",
+      "actualPath": "/dicionario-imobiliario#termo-fudosan-shutokuzei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "8",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender tributo de aquisicao",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (不動産取得税); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-071",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "固定資産税: imposto sobre propriedade",
+      "proposedPath": "/pt/dicionario-imobiliario/kotei-shisanzei/",
+      "actualPath": "/dicionario-imobiliario#termo-kotei-shisanzei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender tributo anual",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (固定資産税); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-072",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "都市計画税: imposto de planejamento urbano",
+      "proposedPath": "/pt/dicionario-imobiliario/toshi-keikakuzei/",
+      "actualPath": "/dicionario-imobiliario#termo-toshi-keikakuzei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender tributo local",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (都市計画税); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-073",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "仲介手数料: comissão de corretagem",
+      "proposedPath": "/pt/dicionario-imobiliario/chukai-tesuryo/",
+      "actualPath": "/dicionario-imobiliario/chukai-tesuryo",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/chukai-tesuryo",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/chukai-tesuryo.md"
+      },
+      "targetIntent": "Distinguir corretagem de outras taxas",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-074",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "印紙税: imposto de selo",
+      "proposedPath": "/pt/dicionario-imobiliario/inji-zei/",
+      "actualPath": "/dicionario-imobiliario#termo-inshizei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Identificar tributo de contratos",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (印紙税); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-075",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "登録免許税: imposto de registro",
+      "proposedPath": "/pt/dicionario-imobiliario/toroku-menkyozei/",
+      "actualPath": "/dicionario-imobiliario#termo-toroku-menkyozei",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender tributo de registro",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (登録免許税); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-076",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "司法書士: profissional de registro imobiliário",
+      "proposedPath": "/pt/dicionario-imobiliario/shihoshoshi/",
+      "actualPath": "/dicionario-imobiliario/shihoshoshi",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shihoshoshi",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/shihoshoshi.md"
+      },
+      "targetIntent": "Entender papel do profissional",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-077",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "実印: carimbo registrado",
+      "proposedPath": "/pt/dicionario-imobiliario/jitsuin/",
+      "actualPath": "/dicionario-imobiliario/jitsuin",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/jitsuin",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "11"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/jitsuin.md"
+      },
+      "targetIntent": "Distinguir carimbo oficial",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-078",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "印鑑証明書: certificado do carimbo",
+      "proposedPath": "/pt/dicionario-imobiliario/inkan-shomeisho/",
+      "actualPath": "/dicionario-imobiliario#termo-inkan-shomeisho",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "11"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender comprovante de inkan",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (印鑑証明書); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-079",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "住民票: certificado de residência",
+      "proposedPath": "/pt/dicionario-imobiliario/juminhyo/",
+      "actualPath": "/dicionario-imobiliario#termo-juminhyo",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "repo_only"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender documento da prefeitura",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_repository_dictionary_source_and_verified_term",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (住民票); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-080",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "源泉徴収票: comprovante anual de remuneração",
+      "proposedPath": "/pt/dicionario-imobiliario/gensen-choshuhyo/",
+      "actualPath": "/dicionario-imobiliario#termo-gensen-choshuhyo",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "7"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender comprovante de renda",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (源泉徴収票); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-081",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "課税証明書: comprovante de tributação",
+      "proposedPath": "/pt/dicionario-imobiliario/kazei-shomeisho/",
+      "actualPath": "/dicionario-imobiliario#termo-shotoku-kazei-shomeisho",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "repo_only"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender informacao fiscal",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_repository_dictionary_source_and_verified_term",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (所得・課税証明書); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-082",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "確定申告: declaração de imposto de renda",
+      "proposedPath": "/pt/dicionario-imobiliario/kakutei-shinkoku/",
+      "actualPath": "/dicionario-imobiliario#termo-kakutei-shinkoku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "7"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender declaracao fiscal",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (確定申告); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-083",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "建売住宅: casa pronta de construtora",
+      "proposedPath": "/pt/dicionario-imobiliario/tateuri/",
+      "actualPath": "/dicionario-imobiliario#termo-tateuri-jutaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender casa pronta",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (建売住宅); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-084",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "中古住宅: casa usada",
+      "proposedPath": "/pt/dicionario-imobiliario/chuko-jutaku/",
+      "actualPath": "/dicionario-imobiliario#termo-chuko-jutaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender imovel usado",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (中古住宅); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-085",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "注文住宅: casa sob encomenda",
+      "proposedPath": "/pt/dicionario-imobiliario/chumon-jutaku/",
+      "actualPath": "/dicionario-imobiliario#termo-chumon-jutaku",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender construcao personalizada",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (注文住宅); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-086",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "新耐震基準: norma sísmica moderna",
+      "proposedPath": "/pt/dicionario-imobiliario/shin-taishin/",
+      "actualPath": "/dicionario-imobiliario/shin-taishin",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shin-taishin",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/shin-taishin.md"
+      },
+      "targetIntent": "Entender classificacao sismica",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-087",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "耐震基準適合証明書: certificado sísmico",
+      "proposedPath": "/pt/dicionario-imobiliario/taishin-tekigo-shomeisho/",
+      "actualPath": "/dicionario-imobiliario#termo-taishin-kijun-tekigo-shomeisho",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender documento tecnico",
+      "status": "publicado_no_hub",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado como entrada do índice (definição neutra, sem número a validar)"
+      },
+      "nota": "definição curta no índice do dicionário (耐震基準適合証明書); página própria só quando houver conteúdo único e fonte"
+    },
+    {
+      "id": "EH-ED-088",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "市街化調整区域: área com restrição urbanística",
+      "proposedPath": "/pt/dicionario-imobiliario/shigaika-chosei-kuiki/",
+      "actualPath": "/dicionario-imobiliario/shigaika-chosei-kuiki",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/shigaika-chosei-kuiki",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/shigaika-chosei-kuiki.md"
+      },
+      "targetIntent": "Entender limite de uso de terreno",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-089",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "建ぺい率: taxa de ocupação do terreno",
+      "proposedPath": "/pt/dicionario-imobiliario/kenpeiritsu/",
+      "actualPath": "/dicionario-imobiliario/kenpeiritsu",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/kenpeiritsu",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/kenpeiritsu.md"
+      },
+      "targetIntent": "Entender limite de ocupacao",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-090",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "容積率: coeficiente de aproveitamento",
+      "proposedPath": "/pt/dicionario-imobiliario/yosekiritsu/",
+      "actualPath": "/dicionario-imobiliario/yosekiritsu",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/yosekiritsu",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/yosekiritsu.md"
+      },
+      "targetIntent": "Entender limite de area",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-091",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "セットバック: recuo obrigatório",
+      "proposedPath": "/pt/dicionario-imobiliario/setback/",
+      "actualPath": "/dicionario-imobiliario/setback",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/setback",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "repo_only"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/setback.md"
+      },
+      "targetIntent": "Entender recuo e acesso",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_repository_dictionary_source_and_verified_term",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-092",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "ハザードマップ: mapa de riscos do imóvel",
+      "proposedPath": "/pt/dicionario-imobiliario/hazard-map/",
+      "actualPath": "/blog/hazard-map-antes-de-comprar",
+      "canonical": "https://easyhouse.homes/blog/hazard-map-antes-de-comprar",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender consulta de risco",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-109",
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "hazard map virou artigo do blog com passo a passo"
+    },
+    {
+      "id": "EH-ED-093",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "間取り: planta e distribuição dos ambientes",
+      "proposedPath": "/pt/dicionario-imobiliario/madori/",
+      "actualPath": "/blog/o-que-significa-3ldk",
+      "canonical": "https://easyhouse.homes/blog/o-que-significa-3ldk",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "11",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender planta do imovel",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-099",
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "planta (間取り) explicada no artigo sobre 3LDK; termo no índice"
+    },
+    {
+      "id": "EH-ED-094",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "3LDK: como ler a planta de uma casa",
+      "proposedPath": "/pt/dicionario-imobiliario/ldk/",
+      "actualPath": "/blog/o-que-significa-3ldk",
+      "canonical": "https://easyhouse.homes/blog/o-que-significa-3ldk",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "11",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Interpretar codigo de comodos",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-099",
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do artigo sobre 3LDK"
+    },
+    {
+      "id": "EH-ED-095",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "坪: medida de área usada no Japão",
+      "proposedPath": "/pt/dicionario-imobiliario/tsubo/",
+      "actualPath": "/dicionario-imobiliario/tsubo",
+      "canonical": "https://easyhouse.homes/dicionario-imobiliario/tsubo",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "11",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/verbetes/tsubo.md"
+      },
+      "targetIntent": "Converter medida de imovel",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-096",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "万円: como ler preços em anúncios japoneses",
+      "proposedPath": "/pt/dicionario-imobiliario/man-en/",
+      "actualPath": "/blog/como-ler-anuncio-imobiliario-japones",
+      "canonical": "https://easyhouse.homes/blog/como-ler-anuncio-imobiliario-japones",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "1",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Interpretar precos em man-en",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-098",
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "leitura de preço em 万円 no artigo de anúncio; termo no índice"
+    },
+    {
+      "id": "EH-ED-097",
+      "type": "dicionario-imobiliario",
+      "priority": "P1",
+      "title": "築年数: idade da construção",
+      "proposedPath": "/pt/dicionario-imobiliario/chikunensu/",
+      "actualPath": "/blog/como-ler-anuncio-imobiliario-japones",
+      "canonical": "https://easyhouse.homes/blog/como-ler-anuncio-imobiliario-japones",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender ano do imovel",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-098",
+      "publicationGate": {
+        "original": "needs_dictionary_review_and_unique_content",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "idade da construção no artigo de anúncio; termo no índice"
+    },
+    {
+      "id": "EH-ED-098",
+      "type": "blog",
+      "priority": "P0",
+      "title": "Como ler um anúncio de casa em japonês: valores, plantas e detalhes",
+      "proposedPath": "/pt/blog/como-ler-anuncio-imobiliario-japones/",
+      "actualPath": "/blog/como-ler-anuncio-imobiliario-japones",
+      "canonical": "https://easyhouse.homes/blog/como-ler-anuncio-imobiliario-japones",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "1",
+          "11",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/blog/como-ler-anuncio-imobiliario-japones.md"
+      },
+      "targetIntent": "Decodificar os campos comuns de um anuncio",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-099",
+      "type": "blog",
+      "priority": "P0",
+      "title": "O que significa 3LDK, 4LDK e S em plantas japonesas?",
+      "proposedPath": "/pt/blog/o-que-significa-3ldk/",
+      "actualPath": "/blog/o-que-significa-3ldk",
+      "canonical": "https://easyhouse.homes/blog/o-que-significa-3ldk",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "11",
+          "13"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/blog/o-que-significa-3ldk.md"
+      },
+      "targetIntent": "Interpretar layouts de anuncios",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-100",
+      "type": "blog",
+      "priority": "P0",
+      "title": "Checklist da primeira visita a uma casa no Japão",
+      "proposedPath": "/pt/blog/checklist-primeira-visita-casa/",
+      "actualPath": "/blog/checklist-primeira-visita-casa",
+      "canonical": "https://easyhouse.homes/blog/checklist-primeira-visita-casa",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "14"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/blog/checklist-primeira-visita-casa.md"
+      },
+      "targetIntent": "Fazer perguntas importantes em visita",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-101",
+      "type": "blog",
+      "priority": "P0",
+      "title": "Casa perto da estação no Japão: vantagens e cuidados",
+      "proposedPath": "/pt/blog/casa-perto-da-estacao-vale-mais/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "11"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Analisar mobilidade sem prometer valorizacao",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "casa perto da estação: depende de dados locais verificados (preço × distância) que ainda não existem."
+    },
+    {
+      "id": "EH-ED-102",
+      "type": "blog",
+      "priority": "P0",
+      "title": "Casa usada no Japão: o que verificar sobre terremotos?",
+      "proposedPath": "/pt/blog/casa-usada-antiga-e-terremoto/",
+      "actualPath": "/blog/casa-usada-antiga-e-terremoto",
+      "canonical": "https://easyhouse.homes/blog/casa-usada-antiga-e-terremoto",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3",
+          "14"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/blog/casa-usada-antiga-e-terremoto.md"
+      },
+      "targetIntent": "Entender epoca de construcao e vistorias",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-103",
+      "type": "blog",
+      "priority": "P0",
+      "title": "Comprar ou alugar casa no Japão: como comparar custos e planos",
+      "proposedPath": "/pt/blog/comprar-ou-alugar-casa-no-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "12"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Comparar compra e aluguel de forma equilibrada",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "comprar × alugar: compara custos com taxas e impostos que precisam de revisão financeira."
+    },
+    {
+      "id": "EH-ED-104",
+      "type": "blog",
+      "priority": "P0",
+      "title": "Erros comuns de quem compra a primeira casa no Japão",
+      "proposedPath": "/pt/blog/erros-comuns-compra-casa-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5",
+          "14"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Evitar falhas de contrato, documentos e orcamento",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "erros comuns: o texto do DOCX traz promessas e números não verificados; reescrever com fontes."
+    },
+    {
+      "id": "EH-ED-105",
+      "type": "blog",
+      "priority": "P1",
+      "title": "7 verificações importantes ao visitar uma casa usada no Japão",
+      "proposedPath": "/pt/blog/o-que-verificar-em-casa-usada/",
+      "actualPath": "/blog/checklist-primeira-visita-casa",
+      "canonical": "https://easyhouse.homes/blog/checklist-primeira-visita-casa",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "3",
+          "14"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Priorizar manutencao e riscos reais",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-100",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "mesma intenção do checklist da primeira visita"
+    },
+    {
+      "id": "EH-ED-106",
+      "type": "blog",
+      "priority": "P1",
+      "title": "O que organizar depois de receber as chaves no Japão",
+      "proposedPath": "/pt/blog/planejamento-mudanca-depois-chaves/",
+      "actualPath": "/duvidas#o-que-fazer-depois-de-receber-as-chaves",
+      "canonical": "https://easyhouse.homes/duvidas",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "10"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Planejar mudanca e servicos",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-016",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "virou resposta em /duvidas (depois da compra)"
+    },
+    {
+      "id": "EH-ED-107",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Seguro contra incêndio e terremoto: perguntas antes de contratar",
+      "proposedPath": "/pt/blog/seguro-residencial-japao/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Entender cobertura sem exagerar protecao",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "seguro: idem EH-ED-036."
+    },
+    {
+      "id": "EH-ED-108",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Quanto custa manter uma casa por ano no Japão?",
+      "proposedPath": "/pt/blog/encargos-anuais-casa-propria/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "9",
+          "10"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Planejar gastos recorrentes e reparos",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "custo anual da casa: impostos e seguros a validar."
+    },
+    {
+      "id": "EH-ED-109",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Como consultar o Hazard Map de Aichi antes de comprar",
+      "proposedPath": "/pt/blog/hazard-map-aichi/",
+      "actualPath": "/blog/hazard-map-antes-de-comprar",
+      "canonical": "https://easyhouse.homes/blog/hazard-map-antes-de-comprar",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "5"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/blog/hazard-map-antes-de-comprar.md"
+      },
+      "targetIntent": "Consultar fonte publica e interpretar limites",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-110",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Termos de terreno que merecem atenção nos anúncios japoneses",
+      "proposedPath": "/pt/blog/tipos-de-terreno-nos-anuncios/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "2",
+          "13"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Identificar riscos juridicos do terreno",
+      "status": "consolidado",
+      "duplicateOf": "EH-ED-010",
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "sem URL própria (uma intenção por URL canônica)"
+      },
+      "nota": "termos de terreno: guia de terreno (rascunho) + verbetes publicados"
+    },
+    {
+      "id": "EH-ED-111",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Como se apresentar aos vizinhos depois de mudar no Japão",
+      "proposedPath": "/pt/blog/mudanca-para-casa-propria-vizinhos/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "10"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Conhecer regras de convivencia",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "vizinhos: baixa prioridade; sem fonte oficial definida."
+    },
+    {
+      "id": "EH-ED-112",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Parcela baixa nem sempre significa financiamento mais barato",
+      "proposedPath": "/pt/blog/bancos-e-juro-total/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "4",
+          "6",
+          "9"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Comparar custo total do emprestimo",
+      "status": "adiado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "bloqueado: precisa de validação editorial/financeira antes de escrever"
+      },
+      "nota": "parcela × custo total: exige exemplos com taxa datada e revisão financeira."
+    },
+    {
+      "id": "EH-ED-113",
+      "type": "blog",
+      "priority": "P1",
+      "title": "Perguntas essenciais para fazer à imobiliária antes de assinar",
+      "proposedPath": "/pt/blog/perguntas-para-imobiliaria-antes-contrato/",
+      "actualPath": "/blog/perguntas-para-imobiliaria-antes-contrato",
+      "canonical": "https://easyhouse.homes/blog/perguntas-para-imobiliaria-antes-contrato",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "5",
+          "14"
+        ],
+        "arquivo": "docs/seo/portal-guias/conteudo/blog/perguntas-para-imobiliaria-antes-contrato.md"
+      },
+      "targetIntent": "Preparar perguntas neutras sobre contrato e custos",
+      "status": "publicado_novo",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "needs_repo_inspection_and_editorial_validation",
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
+      },
+      "nota": null
+    },
+    {
+      "id": "EH-ED-114",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Toyota: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/toyota/",
+      "actualPath": "/casas-a-venda/toyota",
+      "canonical": "https://easyhouse.homes/casas-a-venda/toyota",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Toyota",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-115",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Okazaki: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/okazaki/",
+      "actualPath": "/casas-a-venda/okazaki",
+      "canonical": "https://easyhouse.homes/casas-a-venda/okazaki",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Okazaki",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-116",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Hekinan: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/hekinan/",
+      "actualPath": "/casas-a-venda/hekinan",
+      "canonical": "https://easyhouse.homes/casas-a-venda/hekinan",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Hekinan",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-117",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Anjo: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/anjo/",
+      "actualPath": "/casas-a-venda/anjo",
+      "canonical": "https://easyhouse.homes/casas-a-venda/anjo",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Anjo",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-118",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Kariya: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/kariya/",
+      "actualPath": "/casas-a-venda/kariya",
+      "canonical": "https://easyhouse.homes/casas-a-venda/kariya",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Kariya",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-119",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Nishio: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/nishio/",
+      "actualPath": "/casas-a-venda/nishio",
+      "canonical": "https://easyhouse.homes/casas-a-venda/nishio",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Nishio",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-120",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Nagoya: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/nagoya/",
+      "actualPath": "/casas-a-venda/nagoya",
+      "canonical": "https://easyhouse.homes/casas-a-venda/nagoya",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Nagoya",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-121",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Chiryu: guia local e imóveis",
+      "proposedPath": "/pt/regioes/aichi/chiryu/",
+      "actualPath": "/casas-a-venda/chiryu",
+      "canonical": "https://easyhouse.homes/casas-a-venda/chiryu",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Chiryu",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-122",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Suzuka: guia local e imóveis",
+      "proposedPath": "/pt/regioes/mie/suzuka/",
+      "actualPath": "/casas-a-venda/suzuka",
+      "canonical": "https://easyhouse.homes/casas-a-venda/suzuka",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Suzuka",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-123",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Yokkaichi: guia local e imóveis",
+      "proposedPath": "/pt/regioes/mie/yokkaichi/",
+      "actualPath": "/casas-a-venda/yokkaichi",
+      "canonical": "https://easyhouse.homes/casas-a-venda/yokkaichi",
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Yokkaichi",
+      "status": "existente_mantido",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "já aprovado antes (dados locais = acervo real)"
+      },
+      "nota": "página regional já existe, gerada do acervo real (com trava de estoque); não criada em /pt/regioes"
+    },
+    {
+      "id": "EH-ED-124",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Kani: guia local e imóveis",
+      "proposedPath": "/pt/regioes/gifu/kani/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Kani",
+      "status": "nao_criado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "bloqueado: requires_verified_local_data_and_real_inventory"
+      },
+      "nota": "Gifu sem casas no acervo: página regional sem estoque real viraria página vazia"
+    },
+    {
+      "id": "EH-ED-125",
+      "type": "regioes",
+      "priority": "P2",
+      "title": "Comprar casa em Minokamo: guia local e imóveis",
+      "proposedPath": "/pt/regioes/gifu/minokamo/",
+      "actualPath": null,
+      "canonical": null,
+      "language": "pt-BR",
+      "source": {
+        "chapters": [
+          "local"
+        ],
+        "arquivo": null
+      },
+      "targetIntent": "Encontrar informacao sobre compra em Minokamo",
+      "status": "nao_criado",
+      "duplicateOf": null,
+      "publicationGate": {
+        "original": "requires_verified_local_data_and_real_inventory",
+        "resultado": "bloqueado: requires_verified_local_data_and_real_inventory"
+      },
+      "nota": "Gifu sem casas no acervo: página regional sem estoque real viraria página vazia"
+    }
+  ]
+}

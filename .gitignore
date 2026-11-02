@@ -45,3 +45,6 @@ images/originais/
 # local reservado (o próprio documento pede). Entrou no repositório público por
 # engano no commit f71c2b9 (31/08/2026) e saiu em 31/10/2026.
 docs/PLATAFORMAS.html
+
+# Prévia dos rascunhos do portal (gerada por build-portal.mjs --previa; só para revisão local)
+docs/seo/portal-guias/previa-rascunhos.html

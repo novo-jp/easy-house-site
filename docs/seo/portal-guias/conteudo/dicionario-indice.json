@@ -1,0 +1,995 @@
+{
+ "atualizado": "2026-11-02",
+ "nota": "Índice do /dicionario-imobiliario. 'definicao' dos termos com 'fonte' easyhouse-token-* é o texto do Dicionário da Casa (Instagram), já publicado. 'pagina' = slug do verbete em conteudo/verbetes/ (só vira link quando publicado).",
+ "categorias": [
+  {
+   "id": "compra",
+   "titulo": "Busca e visita"
+  },
+  {
+   "id": "anuncio",
+   "titulo": "Anúncios e plantas"
+  },
+  {
+   "id": "terreno",
+   "titulo": "Terreno e urbanismo"
+  },
+  {
+   "id": "construcao",
+   "titulo": "Construção e estrutura"
+  },
+  {
+   "id": "contrato",
+   "titulo": "Contrato, registro e chaves"
+  },
+  {
+   "id": "financiamento",
+   "titulo": "Financiamento"
+  },
+  {
+   "id": "documentos",
+   "titulo": "Documentos"
+  },
+  {
+   "id": "impostos",
+   "titulo": "Impostos e custos"
+  },
+  {
+   "id": "aluguel",
+   "titulo": "Aluguel"
+  }
+ ],
+ "termos": [
+  {
+   "termJa": "RC造",
+   "romaji": "RC-zō",
+   "titulo": "Estrutura de concreto armado",
+   "definicao": "RC é a abreviação de concreto armado: aço e concreto trabalham juntos na estrutura do edifício.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-001-rc-zo"
+  },
+  {
+   "termJa": "基礎",
+   "romaji": "kiso",
+   "titulo": "A fundação da construção",
+   "definicao": "A fundação é a parte inferior que transfere com segurança o peso e outras forças da construção para o terreno.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-002-kiso"
+  },
+  {
+   "termJa": "高気密・高断熱住宅",
+   "romaji": "kōkimitsu kōdannetsu jūtaku",
+   "titulo": "Casa com alta vedação e isolamento",
+   "definicao": "O termo descreve uma casa projetada para reduzir frestas e perdas de calor, combinando vedação, isolamento e ventilação planejada.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-003-koumitsu"
+  },
+  {
+   "termJa": "建ぺい率",
+   "romaji": "kenpeiritsu",
+   "titulo": "Taxa de ocupação do terreno",
+   "definicao": "É a proporção entre a área ocupada pela projeção da construção e a área total do terreno.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-004-kenpeiritsu",
+   "pagina": "kenpeiritsu"
+  },
+  {
+   "termJa": "容積率",
+   "romaji": "yōsekiritsu",
+   "titulo": "Índice de área construída",
+   "definicao": "É a proporção entre a soma das áreas dos pavimentos e a área do terreno.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-005-yosekiritsu",
+   "pagina": "yosekiritsu"
+  },
+  {
+   "termJa": "木造",
+   "romaji": "mokuzō",
+   "titulo": "Construção com estrutura de madeira",
+   "definicao": "O termo identifica construções cujas partes estruturais principais, como pilares e vigas, são feitas de madeira.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-006-mokuzou"
+  },
+  {
+   "termJa": "間取り",
+   "romaji": "madori",
+   "titulo": "Planta do imóvel",
+   "definicao": "Indica três cômodos separados, além de um espaço integrado de sala, jantar e cozinha.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-007-3ldk",
+   "leiaMais": [
+    "/blog/o-que-significa-3ldk",
+    "Como ler 3LDK, 4LDK e S"
+   ]
+  },
+  {
+   "termJa": "S造",
+   "romaji": "S-zō",
+   "titulo": "Estrutura de aço",
+   "definicao": "S造 é uma indicação usada para construções cuja estrutura principal emprega aço.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-008-s-zou"
+  },
+  {
+   "termJa": "足場",
+   "romaji": "ashiba",
+   "titulo": "Andaime de obra",
+   "definicao": "É a estrutura temporária montada para dar acesso e segurança ao trabalho em altura durante uma obra.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-009-ashiba"
+  },
+  {
+   "termJa": "LDK",
+   "romaji": "LDK",
+   "titulo": "Sala, jantar e cozinha integrados",
+   "definicao": "LDK reúne living, dining e kitchen: sala de estar, espaço de jantar e cozinha em uma área integrada.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-010-ldk",
+   "leiaMais": [
+    "/blog/o-que-significa-3ldk",
+    "Como ler 3LDK, 4LDK e S"
+   ]
+  },
+  {
+   "termJa": "接道義務",
+   "romaji": "setsudō gimu",
+   "titulo": "Obrigação de frente para a via",
+   "definicao": "O terreno precisa encostar em uma via de pelo menos 4 m de largura, com no mínimo 2 m de frente, para receber construção.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-011-setsudo-gimu",
+   "pagina": "setsudo-gimu"
+  },
+  {
+   "termJa": "旗竿地",
+   "romaji": "hatazaochi",
+   "titulo": "Terreno em forma de bandeira",
+   "definicao": "Um corredor estreito liga a rua a um lote maior nos fundos. O corredor quase sempre só serve de passagem, então a área útil é menor que a área total.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-012-hatazao-chi"
+  },
+  {
+   "termJa": "再建築不可",
+   "romaji": "saikenchiku fuka",
+   "titulo": "Terreno sem direito de reconstruir",
+   "definicao": "Terreno onde a lei não permite erguer uma construção nova. O motivo mais comum é não cumprir a frente mínima para a via.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-013-saikenchiku-fuka",
+   "leiaMais": [
+    "/dicionario-imobiliario/setsudo-gimu",
+    "Por que acontece: 接道義務"
+   ]
+  },
+  {
+   "termJa": "新耐震基準",
+   "romaji": "shin taishin kijun",
+   "titulo": "Nova norma sísmica",
+   "definicao": "Norma de resistência a terremotos aplicada às aprovações de obra a partir de 1º de junho de 1981. Projeta a estrutura para não desabar em tremor de intensidade 6 forte a 7.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-014-shin-taishin",
+   "pagina": "shin-taishin"
+  },
+  {
+   "termJa": "手付金",
+   "romaji": "tetsukekin",
+   "titulo": "Sinal na assinatura",
+   "definicao": "Valor que o comprador entrega ao vendedor ao assinar o contrato. No formato mais usado, quem desiste paga por isso.",
+   "categoria": "contrato",
+   "fonte": "easyhouse-token-015-tetsukekin",
+   "pagina": "tetsukekin"
+  },
+  {
+   "termJa": "重要事項説明",
+   "romaji": "jūyō jikō setsumei",
+   "titulo": "Explicação obrigatória antes do contrato",
+   "definicao": "Antes de assinar, a imobiliária entrega um documento e um corretor registrado explica as condições do imóvel. É exigência do artigo 35 da lei do setor.",
+   "categoria": "contrato",
+   "fonte": "easyhouse-token-016-juyo-jiko-setsumei",
+   "pagina": "juuyo-jiko-setsumei"
+  },
+  {
+   "termJa": "団体信用生命保険",
+   "romaji": "danshin",
+   "titulo": "Seguro que quita o financiamento",
+   "definicao": "Seguro ligado ao financiamento: se o titular morre, a seguradora paga ao banco o saldo devedor. O banco é o contratante e quem recebe.",
+   "categoria": "financiamento",
+   "fonte": "easyhouse-token-017-danshin"
+  },
+  {
+   "termJa": "セットバック",
+   "romaji": "setto bakku",
+   "titulo": "Recuo do terreno para alargar a via",
+   "definicao": "Quando a via em frente tem menos de 4 m, parte do terreno recua para que ela chegue a essa largura. A faixa recuada passa a ser via.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-018-setback",
+   "pagina": "setback"
+  },
+  {
+   "termJa": "角地",
+   "romaji": "kadochi",
+   "titulo": "Terreno de esquina",
+   "definicao": "Terreno com frente para duas vias que se cruzam. Cumprindo as condições da prefeitura, a taxa de ocupação pode subir 10 pontos.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-019-kadochi"
+  },
+  {
+   "termJa": "道路斜線制限",
+   "romaji": "dōro shasen seigen",
+   "titulo": "Limite de altura pela via",
+   "definicao": "Uma linha inclinada que sai do outro lado da via limita a altura da construção. Quanto mais perto da rua, mais baixa ela precisa ser.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-020-doro-shasen"
+  },
+  {
+   "termJa": "契約不適合責任",
+   "romaji": "keiyaku futekigō sekinin",
+   "titulo": "Responsabilidade do vendedor por defeitos",
+   "definicao": "Se o imóvel entregue não confere com o que está no contrato, o comprador pode cobrar do vendedor. Até março de 2020 se chamava 瑕疵担保責任.",
+   "categoria": "contrato",
+   "fonte": "easyhouse-token-021-keiyaku-futekigo",
+   "pagina": "keiyaku-futekigo-sekinin"
+  },
+  {
+   "termJa": "ローン特約",
+   "romaji": "rōn tokuyaku",
+   "titulo": "Cláusula de financiamento",
+   "definicao": "Se o financiamento previsto não sair dentro do prazo, o contrato é desfeito sem penalidade e o sinal volta inteiro para o comprador.",
+   "categoria": "contrato",
+   "fonte": "easyhouse-token-022-loan-tokuyaku",
+   "pagina": "loan-tokuyaku"
+  },
+  {
+   "termJa": "固定資産税",
+   "romaji": "kotei shisanzei",
+   "titulo": "Imposto anual sobre o imóvel",
+   "definicao": "Imposto que a prefeitura cobra todo ano de quem é dono do imóvel em 1º de janeiro. A alíquota padrão é 1,4% da base de cálculo, não do preço pago.",
+   "categoria": "impostos",
+   "fonte": "easyhouse-token-023-kotei-shisanzei",
+   "leiaMais": [
+    "/quanto-custa-casa-japao",
+    "Custos da compra"
+   ]
+  },
+  {
+   "termJa": "元利均等返済",
+   "romaji": "ganri kintō hensai",
+   "titulo": "Parcela fixa no financiamento",
+   "definicao": "A parcela é a mesma do começo ao fim. No início ela é quase toda juros, e a dívida vai caindo devagar.",
+   "categoria": "financiamento",
+   "fonte": "easyhouse-token-024-ganri-kinto"
+  },
+  {
+   "termJa": "市街化調整区域",
+   "romaji": "shigaika chōsei kuiki",
+   "titulo": "Área onde a construção é controlada",
+   "definicao": "Área definida para conter a urbanização. Em regra, não se pode construir casa nova nem ampliar sem autorização especial.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-025-shigaika-chosei",
+   "pagina": "shigaika-chosei-kuiki"
+  },
+  {
+   "termJa": "抵当権",
+   "romaji": "teitōken",
+   "titulo": "Garantia do banco sobre o imóvel",
+   "definicao": "Direito que o banco registra sobre a casa financiada. Se as parcelas deixarem de ser pagas, ele pode leiloar o imóvel para cobrir a dívida.",
+   "categoria": "contrato",
+   "fonte": "easyhouse-token-026-teitoken",
+   "pagina": "teitoken"
+  },
+  {
+   "termJa": "坪",
+   "romaji": "tsubo",
+   "titulo": "A medida tsubo",
+   "definicao": "Unidade tradicional de área, ainda muito usada em anúncios. 1 坪 equivale a cerca de 3,3 m², o espaço de dois tatames.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-027-tsubo",
+   "pagina": "tsubo"
+  },
+  {
+   "termJa": "畳",
+   "romaji": "tatami / jō",
+   "titulo": "Tatame, a medida dos cômodos",
+   "definicao": "Piso tradicional japonês, na proporção de 2 por 1. Nos anúncios, o tamanho de um cômodo é dado em quantos tatames caberiam nele.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-028-tatami",
+   "leiaMais": [
+    "/blog/o-que-significa-3ldk",
+    "Tamanho dos cômodos em tatames"
+   ]
+  },
+  {
+   "termJa": "内法",
+   "romaji": "uchinori",
+   "titulo": "Área medida por dentro das paredes",
+   "definicao": "Medida tomada da face interna das paredes. No apartamento, é a área que vai para o registro — menor que a do anúncio, medida pelo meio da parede (壁芯).",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-029-uchinori"
+  },
+  {
+   "termJa": "借地権",
+   "romaji": "shakuchiken",
+   "titulo": "Casa própria em terreno alheio",
+   "definicao": "Direito de usar o terreno de outra pessoa para ter uma casa nele. A casa é sua; o terreno continua sendo de outro dono.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-030-shakuchiken",
+   "pagina": "shakuchiken"
+  },
+  {
+   "termJa": "検査済証",
+   "romaji": "kensazumi-shō",
+   "titulo": "Certificado de vistoria final da obra",
+   "definicao": "Documento emitido quando a obra pronta passa na vistoria final e confere com a lei. Por muitos anos, essa vistoria foi pouco feita.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-031-kensazumisho",
+   "pagina": "kensazumisho"
+  },
+  {
+   "termJa": "仲介手数料",
+   "romaji": "chūkai tesūryō",
+   "titulo": "Comissão da imobiliária na compra",
+   "definicao": "Valor pago à imobiliária quando a compra se concretiza. A lei fixa o máximo por faixas do preço: 5%, 4% e 3%, mais imposto.",
+   "categoria": "impostos",
+   "fonte": "easyhouse-token-032-chukai-tesuryo",
+   "pagina": "chukai-tesuryo"
+  },
+  {
+   "termJa": "隅切り",
+   "romaji": "sumikiri",
+   "titulo": "Canto cortado no terreno de esquina",
+   "definicao": "Em terreno de esquina, o canto junto ao cruzamento é cortado e passa a funcionar como via, para quem dirige enxergar melhor.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-033-sumikiri"
+  },
+  {
+   "termJa": "地盤改良",
+   "romaji": "jiban kairyō",
+   "titulo": "Reforço do solo antes da obra",
+   "definicao": "Quando a sondagem mostra que o solo não aguenta o peso da casa, ele é reforçado antes da fundação, para a casa não afundar nem inclinar.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-034-jiban-kairyo"
+  },
+  {
+   "termJa": "不動産登記",
+   "romaji": "fudōsan tōki",
+   "titulo": "Registro do imóvel",
+   "definicao": "Registro oficial de cada terreno e casa. Mostra o imóvel (表題部), quem é o dono (甲区) e os outros direitos sobre ele, como o do banco (乙区).",
+   "categoria": "contrato",
+   "fonte": "easyhouse-token-035-fudosan-tokibo",
+   "pagina": "toki"
+  },
+  {
+   "termJa": "用途地域",
+   "romaji": "yōto chiiki",
+   "titulo": "Zoneamento da cidade",
+   "definicao": "A área urbana é dividida em zonas residenciais, comerciais e industriais, e cada uma tem suas próprias regras de uso, ocupação e tamanho.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-036-yoto-chiiki",
+   "pagina": "yoto-chiiki"
+  },
+  {
+   "termJa": "耐震等級",
+   "romaji": "taishin tōkyū",
+   "titulo": "Grau de resistência a terremoto",
+   "definicao": "Nota de 1 a 3 para a resistência da casa a terremotos. O grau 1 é o mínimo da lei; o 3 aguenta um tremor 1,5 vez mais forte.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-037-taishin-tokyu",
+   "leiaMais": [
+    "/blog/casa-usada-antiga-e-terremoto",
+    "Casa usada e terremoto"
+   ]
+  },
+  {
+   "termJa": "耐用年数",
+   "romaji": "taiyō nensū",
+   "titulo": "Vida útil para o imposto",
+   "definicao": "O 法定耐用年数 é um prazo contábil fixado pelo governo para calcular a depreciação. Não é quanto tempo a casa dura de verdade.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-038-taiyo-nensu"
+  },
+  {
+   "termJa": "住宅瑕疵担保履行法",
+   "romaji": "jūtaku kashi tanpo rikō-hō",
+   "titulo": "Garantia de 10 anos da casa nova",
+   "definicao": "Desde outubro de 2009, quem vende casa nova precisa garantir por 10 anos a estrutura e a proteção contra entrada de chuva, com seguro ou depósito.",
+   "categoria": "construcao",
+   "fonte": "easyhouse-token-039-kashi-tanpo"
+  },
+  {
+   "termJa": "ハザードマップ",
+   "romaji": "hazādo mappu",
+   "titulo": "Mapa de risco de desastres",
+   "definicao": "Mapa da prefeitura que mostra onde há risco de enchente, deslizamento ou liquefação, e onde ficam os abrigos e as rotas até eles.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-040-hazard-map",
+   "leiaMais": [
+    "/blog/hazard-map-antes-de-comprar",
+    "Como consultar o hazard map"
+   ]
+  },
+  {
+   "termJa": "液状化",
+   "romaji": "ekijōka",
+   "titulo": "Quando o solo vira líquido",
+   "definicao": "No terremoto, o solo arenoso encharcado se separa da água e perde a firmeza. A água sobe, e casas e postes podem afundar ou inclinar.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-041-ekijoka",
+   "leiaMais": [
+    "/blog/hazard-map-antes-de-comprar",
+    "Como consultar o hazard map"
+   ]
+  },
+  {
+   "termJa": "地目",
+   "romaji": "chimoku",
+   "titulo": "Classificação do terreno no registro",
+   "definicao": "Categoria do terreno anotada no registro, como 宅地 (residencial), 田 (arrozal) ou 畑 (lavoura). O registro nem sempre bate com o uso real.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-042-chimoku"
+  },
+  {
+   "termJa": "更地",
+   "romaji": "sarachi",
+   "titulo": "Terreno limpo, pronto para construir",
+   "definicao": "Terreno sem construção e sem direitos de terceiros que limitem o uso. Árvore, lanterna de pedra ou pedras de jardim já tiram o terreno dessa condição.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-043-sarachi"
+  },
+  {
+   "termJa": "位置指定道路",
+   "romaji": "ichi shitei dōro",
+   "titulo": "Via particular aprovada pela prefeitura",
+   "definicao": "Via particular de loteamento que a prefeitura aprovou como via oficial. Os lotes de frente para ela cumprem a regra de acesso e podem construir.",
+   "categoria": "terreno",
+   "fonte": "easyhouse-token-044-ichi-shitei-doro"
+  },
+  {
+   "termJa": "繰り上げ返済",
+   "romaji": "kuriage hensai",
+   "titulo": "Amortização antecipada",
+   "definicao": "Pagar parte da dívida antes do previsto. O valor vai direto para o saldo, e os juros que incidiriam sobre ele deixam de existir.",
+   "categoria": "financiamento",
+   "fonte": "easyhouse-token-045-kuriage-hensai"
+  },
+  {
+   "termJa": "フラット35",
+   "romaji": "furatto sanjūgo",
+   "titulo": "Financiamento de taxa fixa por até 35 anos",
+   "definicao": "Financiamento da agência pública 住宅金融支援機構 com bancos parceiros. A taxa fica fixa por até 35 anos, sem taxa de garantia nem multa por antecipar.",
+   "categoria": "financiamento",
+   "fonte": "easyhouse-token-046-flat35",
+   "leiaMais": [
+    "/financiamento-imovel-japao",
+    "Flat 35 × banco privado"
+   ]
+  },
+  {
+   "termJa": "敷金",
+   "romaji": "shikikin",
+   "titulo": "Caução do aluguel",
+   "definicao": "Valor deixado com o dono na entrada do aluguel. Na saída, ele desconta aluguel atrasado e reparos de danos, e devolve o resto.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-047-shikikin",
+   "leiaMais": [
+    "/custo-inicial-aluguel-japao",
+    "Custo de entrada do aluguel"
+   ]
+  },
+  {
+   "termJa": "礼金",
+   "romaji": "reikin",
+   "titulo": "Luvas pagas ao dono",
+   "definicao": "Pagamento feito ao dono na assinatura do aluguel, que não é devolvido no fim do contrato. Não vem de lei: é costume, e há regiões onde não se cobra.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-048-reikin",
+   "leiaMais": [
+    "/custo-inicial-aluguel-japao",
+    "Custo de entrada do aluguel"
+   ]
+  },
+  {
+   "termJa": "更新料",
+   "romaji": "kōshinryō",
+   "titulo": "Taxa de renovação do aluguel",
+   "definicao": "Valor pago para renovar o contrato quando ele vence, em geral a cada 2 anos. O mais comum é cerca de 1 mês de aluguel.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-049-koshinryo"
+  },
+  {
+   "termJa": "原状回復",
+   "romaji": "genjō kaifuku",
+   "titulo": "Devolver o imóvel como recebeu",
+   "definicao": "Na saída do aluguel, o inquilino repara o que estragou por culpa sua. O desgaste natural do tempo e do uso normal não entra nessa conta.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-050-genjo-kaifuku"
+  },
+  {
+   "termJa": "家賃保証会社",
+   "romaji": "yachin hoshō gaisha",
+   "titulo": "Empresa que garante o aluguel",
+   "definicao": "Empresa que paga o aluguel ao dono se o inquilino atrasar, e depois cobra dele. Faz o papel do fiador pessoa física.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-051-yachin-hosho",
+   "leiaMais": [
+    "/custo-inicial-aluguel-japao",
+    "Custo de entrada do aluguel"
+   ]
+  },
+  {
+   "termJa": "定期借家契約",
+   "romaji": "teiki shakka keiyaku",
+   "titulo": "Aluguel com data para acabar",
+   "definicao": "Contrato de aluguel que termina na data marcada, sem renovação. Para continuar, só com um contrato novo, se o dono concordar.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-052-teiki-shakka"
+  },
+  {
+   "termJa": "サービスルーム",
+   "romaji": "sābisu rūmu",
+   "titulo": "O “S” de 3SLDK",
+   "definicao": "Cômodo sem janela suficiente para a lei considerar um quarto. Nos anúncios aparece como S, 納戸 ou “free room”.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-053-service-room",
+   "leiaMais": [
+    "/blog/o-que-significa-3ldk",
+    "O “S” de 3SLDK"
+   ]
+  },
+  {
+   "termJa": "ベランダ",
+   "romaji": "beranda",
+   "titulo": "Varanda: o que muda é o teto",
+   "definicao": "No Japão, ベランダ é a área externa com cobertura própria; sem cobertura, chama-se バルコニー. O tamanho não define o nome.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-054-veranda"
+  },
+  {
+   "termJa": "ロフト",
+   "romaji": "rofuto",
+   "titulo": "Mezanino que não conta como cômodo",
+   "definicao": "Andar extra dentro do cômodo, sob o telhado ou com pé-direito alto. Por não atender às regras de luz e ventilação, não é considerado cômodo.",
+   "categoria": "anuncio",
+   "fonte": "easyhouse-token-055-loft"
+  },
+  {
+   "termJa": "フリーレント",
+   "romaji": "furī rento",
+   "titulo": "Meses iniciais sem aluguel",
+   "definicao": "Oferta em que os primeiros meses do contrato não têm aluguel. O mais comum é 1 ou 2 meses, e há casos de 3 meses ou mais.",
+   "categoria": "aluguel",
+   "fonte": "easyhouse-token-056-free-rent"
+  },
+  {
+   "termJa": "内見",
+   "romaji": "naiken",
+   "titulo": "Visita ao imóvel",
+   "definicao": "A visita para ver o imóvel por dentro antes de decidir. Na compra, costuma ser marcada pela imobiliária com o vendedor ou a construtora.",
+   "categoria": "compra",
+   "pagina": "naiken",
+   "fonte": "Guia EasyHouse 2026, cap. 13; manifesto EH-ED-047"
+  },
+  {
+   "termJa": "買付証明書",
+   "romaji": "kaitsuke shōmeisho",
+   "titulo": "Proposta de compra por escrito",
+   "definicao": "Documento em que o comprador declara ao vendedor o preço e as condições com que quer comprar. Não é o contrato e não reserva o imóvel com garantia.",
+   "categoria": "compra",
+   "pagina": "kaitsuke-shomeisho",
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-050"
+  },
+  {
+   "termJa": "売買契約",
+   "romaji": "baibai keiyaku",
+   "titulo": "Contrato de compra e venda",
+   "definicao": "O contrato que obriga vendedor e comprador: preço, forma de pagamento, data de entrega, sinal e as condições para desfazer o negócio.",
+   "categoria": "contrato",
+   "pagina": "baibai-keiyaku",
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-052"
+  },
+  {
+   "termJa": "決済",
+   "romaji": "kessai",
+   "titulo": "Liquidação: o dia do pagamento",
+   "definicao": "O dia em que o banco libera o financiamento, o vendedor recebe o restante do preço e o 司法書士 encaminha o registro em nome do comprador.",
+   "categoria": "contrato",
+   "pagina": "kessai",
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-056"
+  },
+  {
+   "termJa": "引渡し",
+   "romaji": "hikiwatashi",
+   "titulo": "Entrega do imóvel",
+   "definicao": "A entrega das chaves e da posse do imóvel ao comprador. Na compra com financiamento, costuma acontecer no mesmo dia do 決済.",
+   "categoria": "contrato",
+   "pagina": "hikiwatashi",
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-057"
+  },
+  {
+   "termJa": "司法書士",
+   "romaji": "shihō shoshi",
+   "titulo": "Profissional que faz o registro",
+   "definicao": "Profissional habilitado que prepara e entrega ao cartório de registro (法務局) a transferência do imóvel e a hipoteca do banco. Às vezes traduzido como escrivão judicial.",
+   "categoria": "contrato",
+   "pagina": "shihoshoshi",
+   "fonte": "manifesto EH-ED-076"
+  },
+  {
+   "termJa": "実印",
+   "romaji": "jitsuin",
+   "titulo": "Carimbo registrado na prefeitura",
+   "definicao": "O carimbo pessoal registrado na prefeitura do endereço. É exigido, junto com a certidão, no contrato do financiamento e no registro da hipoteca.",
+   "categoria": "contrato",
+   "pagina": "jitsuin",
+   "fonte": "manifesto EH-ED-077"
+  },
+  {
+   "termJa": "印鑑証明書",
+   "romaji": "inkan shōmeisho",
+   "titulo": "Certidão do carimbo",
+   "definicao": "Certidão da prefeitura que comprova que o carimbo é o registrado (実印). Para o registro do imóvel, precisa ser recente.",
+   "categoria": "contrato",
+   "leiaMais": [
+    "/dicionario-imobiliario/jitsuin",
+    "Como registrar o carimbo"
+   ],
+   "fonte": "manifesto EH-ED-078"
+  },
+  {
+   "termJa": "所有権",
+   "romaji": "shoyūken",
+   "titulo": "Propriedade plena",
+   "definicao": "O direito de ser dono do terreno e da casa, sem prazo. É o que a maioria das casas à venda transmite ao comprador.",
+   "categoria": "terreno",
+   "pagina": "shoyuken",
+   "fonte": "Guia EasyHouse 2026, cap. 2; manifesto EH-ED-058"
+  },
+  {
+   "termJa": "事前審査",
+   "romaji": "jizen shinsa",
+   "titulo": "Pré-análise do financiamento",
+   "definicao": "A primeira análise do banco, com os seus dados e os do imóvel pretendido. Indica se o pedido tem chance e até quanto, mas não é a aprovação.",
+   "categoria": "financiamento",
+   "pagina": "jizen-shinsa",
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-048"
+  },
+  {
+   "termJa": "本審査",
+   "romaji": "hon shinsa",
+   "titulo": "Análise final do financiamento",
+   "definicao": "A análise completa do banco, feita depois do contrato de compra, com todos os documentos, o imóvel escolhido e a declaração de saúde do seguro.",
+   "categoria": "financiamento",
+   "pagina": "hon-shinsa",
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-049"
+  },
+  {
+   "termJa": "住宅ローン",
+   "romaji": "jūtaku rōn",
+   "titulo": "Financiamento imobiliário",
+   "definicao": "Empréstimo para comprar ou construir a casa onde a pessoa vai morar, com o imóvel como garantia do banco.",
+   "categoria": "financiamento",
+   "leiaMais": [
+    "/financiamento-imovel-japao",
+    "Como funciona o financiamento"
+   ],
+   "fonte": "páginas do site"
+  },
+  {
+   "termJa": "金銭消費貸借契約",
+   "romaji": "kinsen shōhi taishaku keiyaku",
+   "titulo": "Contrato do financiamento",
+   "definicao": "O contrato com o banco: valor, prazo, taxa e forma de pagamento. É assinado depois da aprovação final (本審査) e antes da liberação do dinheiro. Também chamado de 金消契約.",
+   "categoria": "financiamento",
+   "leiaMais": [
+    "/dicionario-imobiliario/hon-shinsa",
+    "Depois da análise final"
+   ],
+   "fonte": "Guia EasyHouse 2026, cap. 5; manifesto EH-ED-055"
+  },
+  {
+   "termJa": "頭金",
+   "romaji": "atamakin",
+   "titulo": "Entrada",
+   "definicao": "A parte do preço paga com dinheiro próprio, sem financiamento. Quanto o banco exige varia por produto e por perfil.",
+   "categoria": "financiamento",
+   "leiaMais": [
+    "/financiamento-imovel-japao",
+    "Financiamento e entrada"
+   ],
+   "fonte": "manifesto EH-ED-060"
+  },
+  {
+   "termJa": "諸費用",
+   "romaji": "shohiyō",
+   "titulo": "Custos da compra além do preço",
+   "definicao": "Impostos, registro, honorários do 司法書士, seguro, comissão e taxas do banco: tudo o que se paga além do preço do imóvel.",
+   "categoria": "impostos",
+   "leiaMais": [
+    "/quanto-custa-casa-japao",
+    "Quanto custa comprar"
+   ],
+   "fonte": "manifesto EH-ED-061"
+  },
+  {
+   "termJa": "返済負担率",
+   "romaji": "hensai futanritsu",
+   "titulo": "Comprometimento da renda",
+   "definicao": "A parte da renda anual bruta que vai para as parcelas de todos os financiamentos — casa, carro, cartão parcelado. Cada banco define o limite. Também chamado de 返済比率.",
+   "categoria": "financiamento",
+   "leiaMais": [
+    "/renda-minima-financiamento",
+    "A régua da renda"
+   ],
+   "fonte": "manifesto EH-ED-062"
+  },
+  {
+   "termJa": "収入合算",
+   "romaji": "shūnyū gassan",
+   "titulo": "Soma de renda",
+   "definicao": "Somar a renda de outra pessoa da família, em geral o cônjuge, à do titular para aumentar o valor do financiamento. Há formatos com responsabilidades diferentes para quem soma a renda.",
+   "categoria": "financiamento",
+   "fonte": "manifesto EH-ED-063"
+  },
+  {
+   "termJa": "ペアローン",
+   "romaji": "pea rōn",
+   "titulo": "Financiamento em dupla",
+   "definicao": "Dois financiamentos, um para cada pessoa do casal, para a mesma casa. Cada um paga o seu contrato e, em geral, garante o do outro.",
+   "categoria": "financiamento",
+   "fonte": "manifesto EH-ED-064"
+  },
+  {
+   "termJa": "変動金利",
+   "romaji": "hendō kinri",
+   "titulo": "Juros variáveis",
+   "definicao": "Taxa que acompanha a taxa de referência do banco e é revista de tempos em tempos. Começa mais baixa que a fixa, mas pode subir.",
+   "categoria": "financiamento",
+   "leiaMais": [
+    "/financiamento-imovel-japao",
+    "Taxa fixa ou variável"
+   ],
+   "fonte": "manifesto EH-ED-065"
+  },
+  {
+   "termJa": "固定金利",
+   "romaji": "kotei kinri",
+   "titulo": "Juros fixos",
+   "definicao": "Taxa que não muda: pelo prazo inteiro (全期間固定) ou por um período escolhido no contrato (固定期間選択型).",
+   "categoria": "financiamento",
+   "leiaMais": [
+    "/financiamento-imovel-japao",
+    "Taxa fixa ou variável"
+   ],
+   "fonte": "manifesto EH-ED-066"
+  },
+  {
+   "termJa": "住宅ローン控除",
+   "romaji": "jūtaku rōn kōjo",
+   "titulo": "Dedução do financiamento no imposto",
+   "definicao": "Dedução no imposto de renda para quem financia a casa onde mora, por um número de anos definido em lei. As condições mudam com a reforma tributária de cada ano: confira a regra vigente na Receita (国税庁).",
+   "categoria": "impostos",
+   "fonte": "manifesto EH-ED-069"
+  },
+  {
+   "termJa": "不動産取得税",
+   "romaji": "fudōsan shutokuzei",
+   "titulo": "Imposto de aquisição",
+   "definicao": "Imposto da província pago uma vez, alguns meses depois da compra. Há reduções para moradia; em algumas províncias, é preciso pedir.",
+   "categoria": "impostos",
+   "leiaMais": [
+    "/quanto-custa-casa-japao",
+    "Custos da compra"
+   ],
+   "fonte": "manifesto EH-ED-070"
+  },
+  {
+   "termJa": "都市計画税",
+   "romaji": "toshi keikakuzei",
+   "titulo": "Imposto de planejamento urbano",
+   "definicao": "Imposto municipal anual cobrado junto com o 固定資産税 nas áreas urbanizadas. A lei limita a alíquota a 0,3%.",
+   "categoria": "impostos",
+   "fonte": "manifesto EH-ED-072"
+  },
+  {
+   "termJa": "印紙税",
+   "romaji": "inshizei",
+   "titulo": "Imposto do selo",
+   "definicao": "Imposto pago com um selo (印紙) colado no contrato de compra e no do financiamento. O valor depende do valor escrito no contrato.",
+   "categoria": "impostos",
+   "fonte": "manifesto EH-ED-074"
+  },
+  {
+   "termJa": "登録免許税",
+   "romaji": "tōroku menkyozei",
+   "titulo": "Imposto de registro",
+   "definicao": "Imposto pago ao registrar a transferência do imóvel e a hipoteca do banco. Moradia própria tem alíquota reduzida, com prazo definido em lei.",
+   "categoria": "impostos",
+   "fonte": "manifesto EH-ED-075"
+  },
+  {
+   "termJa": "固定資産税評価額",
+   "romaji": "kotei shisanzei hyōkagaku",
+   "titulo": "Valor venal do imóvel",
+   "definicao": "O valor que a prefeitura atribui ao imóvel para cobrar impostos, em geral abaixo do preço de mercado. É a base do 固定資産税, do 不動産取得税 e do imposto de registro.",
+   "categoria": "impostos",
+   "fonte": "Guia EasyHouse 2026, cap. 8"
+  },
+  {
+   "termJa": "住民票",
+   "romaji": "jūminhyō",
+   "titulo": "Certificado de residência",
+   "definicao": "Certidão da prefeitura com o endereço registrado. Para financiar, o banco costuma pedir o familiar completo, sem o número do My Number.",
+   "categoria": "documentos",
+   "leiaMais": [
+    "/documentos-financiamento",
+    "Documentos por etapa"
+   ],
+   "fonte": "manifesto EH-ED-079"
+  },
+  {
+   "termJa": "源泉徴収票",
+   "romaji": "gensen chōshūhyō",
+   "titulo": "Comprovante anual de salário",
+   "definicao": "O comprovante do salário do ano e do imposto retido, que a empresa entrega no fim do ano ou quando a pessoa sai do emprego.",
+   "categoria": "documentos",
+   "leiaMais": [
+    "/documentos-financiamento",
+    "Documentos por etapa"
+   ],
+   "fonte": "manifesto EH-ED-080"
+  },
+  {
+   "termJa": "所得・課税証明書",
+   "romaji": "shotoku kazei shōmeisho",
+   "titulo": "Certidão de renda e imposto",
+   "definicao": "Certidão da prefeitura com a renda e o imposto municipal (住民税) de um ano. O banco usa para conferir a renda declarada.",
+   "categoria": "documentos",
+   "leiaMais": [
+    "/documentos-financiamento",
+    "Documentos por etapa"
+   ],
+   "fonte": "manifesto EH-ED-081"
+  },
+  {
+   "termJa": "確定申告",
+   "romaji": "kakutei shinkoku",
+   "titulo": "Declaração do imposto de renda",
+   "definicao": "A declaração anual do imposto de renda, entregue entre fevereiro e março do ano seguinte. Autônomos declaram todo ano; assalariados, em casos como o primeiro ano da dedução do financiamento.",
+   "categoria": "documentos",
+   "fonte": "manifesto EH-ED-082"
+  },
+  {
+   "termJa": "在留カード",
+   "romaji": "zairyū kādo",
+   "titulo": "Cartão de residência",
+   "definicao": "O cartão de residência do estrangeiro, com o status e o prazo de permanência. É o primeiro documento que o banco e a imobiliária pedem.",
+   "categoria": "documentos",
+   "leiaMais": [
+    "/documentos-financiamento",
+    "Documentos por etapa"
+   ],
+   "fonte": "páginas do site"
+  },
+  {
+   "termJa": "建売住宅",
+   "romaji": "tateuri jūtaku",
+   "titulo": "Casa nova vendida pronta",
+   "definicao": "Casa nova vendida junto com o terreno, pronta ou em fase final de obra, pela construtora ou incorporadora.",
+   "categoria": "anuncio",
+   "leiaMais": [
+    "/casas-novas",
+    "Casas novas à venda"
+   ],
+   "fonte": "Guia EasyHouse 2026, cap. 3; manifesto EH-ED-083"
+  },
+  {
+   "termJa": "中古住宅",
+   "romaji": "chūko jūtaku",
+   "titulo": "Casa usada",
+   "definicao": "Casa que já foi habitada ou que terminou de ser construída há mais de um ano.",
+   "categoria": "anuncio",
+   "leiaMais": [
+    "/casas-usadas",
+    "Casas usadas à venda"
+   ],
+   "fonte": "Guia EasyHouse 2026, cap. 3; manifesto EH-ED-084"
+  },
+  {
+   "termJa": "注文住宅",
+   "romaji": "chūmon jūtaku",
+   "titulo": "Casa sob encomenda",
+   "definicao": "Casa construída num terreno do comprador, com projeto definido junto com a construtora. Leva mais tempo e o pagamento costuma ser feito em parcelas durante a obra.",
+   "categoria": "anuncio",
+   "fonte": "Guia EasyHouse 2026, cap. 3; manifesto EH-ED-085"
+  },
+  {
+   "termJa": "新築",
+   "romaji": "shinchiku",
+   "titulo": "Nova (no anúncio)",
+   "definicao": "No anúncio, “nova” quer dizer construída há menos de um ano e nunca habitada. É regra do código de publicidade do setor imobiliário.",
+   "categoria": "anuncio",
+   "leiaMais": [
+    "/blog/como-ler-anuncio-imobiliario-japones",
+    "Como ler um anúncio"
+   ],
+   "fonte": "不動産の表示に関する公正競争規約"
+  },
+  {
+   "termJa": "耐震基準適合証明書",
+   "romaji": "taishin kijun tekigō shōmeisho",
+   "titulo": "Laudo de conformidade sísmica",
+   "definicao": "Laudo de que uma casa antiga atende à norma sísmica atual, emitido por arquiteto ou inspetor habilitado. É pedido em alguns benefícios fiscais e por alguns bancos.",
+   "categoria": "construcao",
+   "leiaMais": [
+    "/blog/casa-usada-antiga-e-terremoto",
+    "Casa usada e terremoto"
+   ],
+   "fonte": "Guia EasyHouse 2026, cap. 3; manifesto EH-ED-087"
+  },
+  {
+   "termJa": "万円",
+   "romaji": "man-en",
+   "titulo": "Dez mil ienes",
+   "definicao": "A unidade dos preços nos anúncios: 2.980万円 são ¥29.800.000.",
+   "categoria": "anuncio",
+   "leiaMais": [
+    "/blog/como-ler-anuncio-imobiliario-japones",
+    "Como ler um anúncio"
+   ],
+   "fonte": "Guia EasyHouse 2026, cap. 1; manifesto EH-ED-096"
+  },
+  {
+   "termJa": "築年数",
+   "romaji": "chikunensū",
+   "titulo": "Idade da construção",
+   "definicao": "Quantos anos a casa tem, contados da conclusão da obra. Nos anúncios aparece como 築15年 (15 anos) ou com o ano e o mês.",
+   "categoria": "anuncio",
+   "leiaMais": [
+    "/blog/como-ler-anuncio-imobiliario-japones",
+    "Como ler um anúncio"
+   ],
+   "fonte": "Guia EasyHouse 2026, cap. 13; manifesto EH-ED-097"
+  },
+  {
+   "termJa": "徒歩◯分",
+   "romaji": "toho ◯-fun",
+   "titulo": "Minutos a pé",
+   "definicao": "A distância a pé até a estação, calculada pela regra do setor: 80 metros por minuto, arredondando para cima.",
+   "categoria": "anuncio",
+   "leiaMais": [
+    "/blog/como-ler-anuncio-imobiliario-japones",
+    "Como ler um anúncio"
+   ],
+   "fonte": "不動産の表示に関する公正競争規約 施行規則"
+  },
+  {
+   "termJa": "宅地建物取引士",
+   "romaji": "takuchi tatemono torihikishi",
+   "titulo": "Corretor registrado",
+   "definicao": "O profissional registrado que, por lei, explica o 重要事項説明 ao comprador e assina os documentos da transação. Também chamado de 宅建士.",
+   "categoria": "contrato",
+   "leiaMais": [
+    "/dicionario-imobiliario/juuyo-jiko-setsumei",
+    "O que ele explica"
+   ],
+   "fonte": "宅地建物取引業法"
+  },
+  {
+   "termJa": "登記事項証明書",
+   "romaji": "tōki jikō shōmeisho",
+   "titulo": "Certidão do registro",
+   "definicao": "A certidão do registro do imóvel: quem é o dono e que direitos pesam sobre ele, como a hipoteca de um banco. Qualquer pessoa pode pedir.",
+   "categoria": "contrato",
+   "leiaMais": [
+    "/dicionario-imobiliario/toki",
+    "Como ler o registro"
+   ],
+   "fonte": "不動産登記法"
+  },
+  {
+   "termJa": "火災保険",
+   "romaji": "kasai hoken",
+   "titulo": "Seguro contra incêndio",
+   "definicao": "Seguro do imóvel contra incêndio e outros danos previstos na apólice. Na compra com financiamento, os bancos costumam exigir. O seguro contra terremoto (地震保険) é contratado junto, como complemento.",
+   "categoria": "financiamento",
+   "fonte": "Guia EasyHouse 2026, cap. 9"
+  }
+ ]
+}

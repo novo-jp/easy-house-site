@@ -69,6 +69,19 @@ Respostas completas em: /simular (ferramenta), /entregas (casos reais),
   /es/financiamiento-hipotecario-tokai
 - Sitemaps: /sitemap.xml, /sitemap-casas.xml e /sitemap-aluguel.xml
 
+## Portal educativo (em português)
+
+- /guias — a compra em 5 etapas, com os guias, verbetes e artigos de cada uma
+- /duvidas — respostas curtas sobre compra, financiamento, contrato, custos e o
+  que fazer depois das chaves, cada uma com link para a explicação completa
+- /dicionario-imobiliario — termos japoneses de anúncio, contrato, banco e
+  impostos, com escrita em japonês, leitura em romaji e significado; os termos
+  principais têm página própria em /dicionario-imobiliario/<termo> (ex.:
+  /dicionario-imobiliario/tetsukekin, /dicionario-imobiliario/jizen-shinsa),
+  com exemplo, erro comum e fontes oficiais (lei no e-Gov, ministérios)
+- /blog — artigos práticos: ler anúncio japonês, plantas LDK, primeira visita,
+  hazard map, casa usada e terremoto, perguntas antes do contrato; RSS em /rss.xml
+
 A estimativa de parcela usa {{TAXA}} em até {{PRAZO}} anos, sobre o preço do imóvel.
 É valor indicativo, não oferta de crédito: a parcela real depende do banco, da
 entrada, do prazo e da análise do perfil.

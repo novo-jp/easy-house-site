@@ -41,7 +41,7 @@
     });
 
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 900) closeDrawer();
+      if (window.innerWidth > 1000) closeDrawer();
     });
   }
 
