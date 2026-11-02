@@ -1,5 +1,9 @@
 # Auditoria antes da implementação — SEO Tokai
 
+> **Escopo revisado em 02/11/2026:** o tema "financiamento sem visto permanente" saiu do
+> briefing (132 páginas e 525 palavras-chave). Esta auditoria é de 31/10 e fica como
+> registro; o estado atual está em `relatorio_final.md`.
+
 **Data:** 31/10/2026 · **Briefing:** `EASY_HOUSE_SEO_TOKAI_CLAUDE_CODE.md` (fora do repositório,
 que é público — ver relatório final) · **Fase 0 do briefing:** descobrir o site real antes de mudar.
 
@@ -27,7 +31,7 @@ que é público — ver relatório final) · **Fase 0 do briefing:** descobrir o
 | Financiamento (pilar) | `/financiamento-imovel-japao` (gerada do banco) | Reaproveitar e corrigir (Flat 35) |
 | Cidades | `/casas-a-venda/<cidade>` (criadas na manhã de 31/10) | Reaproveitar e ampliar |
 | Províncias, novas, usadas, tudo em ES | — | Criar |
-| Guias editoriais (eijuken, haken, autônomo…) | — | Rascunho com revisão humana |
+| Guias editoriais (haken, autônomo, renda…) | — | Rascunho com revisão humana |
 
 **Por que não `/pt/...`:** o briefing sugere prefixo de idioma e província no caminho
 (`/pt/casas-a-venda/aichi/nishio/`). As páginas em português já existem sem prefixo;

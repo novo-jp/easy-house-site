@@ -27,8 +27,9 @@ O simulador da Easy House trata assim, como ponto de partida:
 
 Isso é a regra da ferramenta, não de um banco. Cada instituição tem o seu critério.
 
-**Atenção:** sem visto permanente, o Flat 35 não está disponível — a JHF aceita
-estrangeiros só com 永住者 ou 特別永住者. Para o haken sem 永住, o caminho é banco privado.
+**Atenção:** o Flat 35 tem exigências próprias de status de residência para estrangeiros,
+definidas pela JHF — veja o quadro na [página de financiamento](/financiamento-imovel-japao).
+Fora do Flat 35, a análise é de banco privado, caso a caso.
 
 ## O que ajuda na análise
 

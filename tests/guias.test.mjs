@@ -21,7 +21,6 @@ const PARES = [
   ['quanto-custa-casa-japao', 'es/gastos-comprar-vivienda'],
   ['financiamento-imovel-japao', 'es/financiamiento-hipotecario-tokai'],
   ['guia-comprar-casa-japao', 'es/guia-comprar-casa-japon'],
-  ['financiamento-sem-eijuken', 'es/hipoteca-sin-residencia-permanente'],
   ['financiamento-trabalho-haken', 'es/hipoteca-trabajo-haken'],
   ['financiamento-autonomo', 'es/hipoteca-trabajador-independiente'],
   ['renda-minima-financiamento', 'es/ingresos-para-hipoteca'],
@@ -51,19 +50,23 @@ describe('páginas de conteúdo bilíngues', () => {
     });
   }
 
-  test('o guia sem visto permanente diz a regra do Flat 35, com fonte, nas duas línguas', () => {
-    for (const rel of ['financiamento-sem-eijuken', 'es/hipoteca-sin-residencia-permanente']) {
-      const t = texto(ler(rel));
-      assert.match(t, /永住者/);
-      assert.match(t, /特別永住者/);
-      assert.match(t, /308/, 'cita a pergunta 308 da JHF');
+  test('haken e autônomo citam a exigência do Flat 35 e levam ao quadro com a regra', () => {
+    for (const [rel, quadro] of [
+      ['financiamento-trabalho-haken', '/financiamento-imovel-japao'],
+      ['financiamento-autonomo', '/financiamento-imovel-japao'],
+      ['es/hipoteca-trabajo-haken', '/es/financiamiento-hipotecario-tokai'],
+      ['es/hipoteca-trabajador-independiente', '/es/financiamiento-hipotecario-tokai'],
+    ]) {
+      const h = ler(rel);
+      assert.match(texto(h), /status de residência|estatus de residencia/);
+      assert.ok(h.includes(`href="${quadro}"`), `${rel} não linka ${quadro}`);
     }
   });
 
   test('nas páginas em espanhol, os links internos levam ao par em espanhol', () => {
     for (const [, es] of PARES) {
       const h = ler(es).replace(/<footer[\s\S]*<\/footer>/, '').replace(/<nav[\s\S]*?<\/nav>/g, '');
-      for (const pt of ['/simular"', '/financiamento-sem-eijuken"', '/quanto-custa-casa-japao"', '/guia-comprar-casa-japao"']) {
+      for (const pt of ['/simular"', '/financiamento-trabalho-haken"', '/quanto-custa-casa-japao"', '/guia-comprar-casa-japao"']) {
         assert.ok(!h.includes(`href="${pt}`), `${es} ainda linka ${pt}`);
       }
     }

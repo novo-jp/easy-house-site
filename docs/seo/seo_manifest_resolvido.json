@@ -1,10 +1,10 @@
 {
  "resumo": {
   "gerado_em": "2026-10-31",
-  "fonte": "EASY_HOUSE_SEO_TOKAI_CLAUDE_CODE.md (Anexos B e G) + acervo de 31/10/2026",
-  "paginas_total": 134,
+  "fonte": "EASY_HOUSE_SEO_TOKAI_CLAUDE_CODE_REVISADO_2026_11_02.md (Anexos B e G) + regras SEO de 02/11/2026 + acervo de 31/10/2026",
+  "paginas_total": 132,
   "paginas_por_estado": {
-   "publicado": 66,
+   "publicado": 64,
    "planejado (backlog)": 34,
    "bloqueado por dados externos": 26,
    "sem necessidade por já existir": 7,
@@ -12,19 +12,44 @@
   },
   "paginas_por_acao": {
    "nenhuma": 61,
-   "criada": 47,
+   "criada": 45,
    "atualizada": 26
   },
-  "keywords_total": 537,
+  "keywords_total": 525,
   "keywords_por_estado": {
-   "publicado": 313,
+   "publicado": 304,
    "bloqueado por dados externos": 129,
-   "planejado (backlog)": 54,
+   "planejado (backlog)": 51,
    "sem necessidade por já existir": 38,
    "alterado/redirect": 3
   },
-  "keywords_com_destino_existente_ou_planejado": 537,
-  "atualizado_em": "2026-10-31 (tarde)"
+  "keywords_com_destino_existente_ou_planejado": 525,
+  "atualizado_em": "2026-11-02",
+  "filtro_negativo": {
+   "aplicado_em": "2026-11-02",
+   "motivo": "Tema excluído do escopo de SEO e conteúdo por decisão da Easy House; a lista de trechos vetados está em lib/tema-excluido.mjs.",
+   "paginas_retiradas": 2,
+   "keywords_retiradas": 12,
+   "keywords_remapeadas": [
+    {
+     "keyword": "hipoteca para trabajadores temporales Japón",
+     "para": "/es/hipoteca-trabajo-haken/"
+    },
+    {
+     "keyword": "haken financiamento casa",
+     "para": "/pt/financiamento-trabalho-haken/"
+    },
+    {
+     "keyword": "kojin financiamento imóvel",
+     "para": "/pt/financiamento-autonomo/"
+    },
+    {
+     "keyword": "quanto banco libera para financiar casa",
+     "para": "/pt/renda-minima-financiamento/"
+    }
+   ],
+   "regra_no_codigo": "lib/tema-excluido.mjs"
+  }
  },
  "paginas": [
   {
@@ -113,16 +138,6 @@
    "proposed_path": "/es/guia-comprar-casa-japon/",
    "keyword_central": "cómo comprar casa en Japón siendo extranjero",
    "url_real": "/es/guia-comprar-casa-japon",
-   "estado": "publicado",
-   "acao": "criada",
-   "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
-  },
-  {
-   "fase": "P0",
-   "idioma": "es",
-   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "keyword_central": "hipoteca sin residencia permanente Japón",
-   "url_real": "/es/hipoteca-sin-residencia-permanente",
    "estado": "publicado",
    "acao": "criada",
    "observacao": "Versão em espanhol publicada em 31/10/2026 (build-conteudo.mjs), com hreflang para o par em português."
@@ -250,16 +265,6 @@
   {
    "fase": "P0",
    "idioma": "pt-BR",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "keyword_central": "financiamento casa Japão sem visto permanente",
-   "url_real": "/financiamento-sem-eijuken",
-   "estado": "publicado",
-   "acao": "criada",
-   "observacao": "Guia aprovado pela Easy House em 31/10/2026; fonte em docs/seo/guias/pt, gerado por build-conteudo.mjs."
-  },
-  {
-   "fase": "P0",
-   "idioma": "pt-BR",
    "proposed_path": "/pt/financiamento-trabalho-haken/",
    "keyword_central": "haken pode financiar casa no Japão",
    "url_real": "/financiamento-trabalho-haken",
@@ -305,7 +310,7 @@
    "url_real": "/simular",
    "estado": "sem necessidade por já existir",
    "acao": "atualizada",
-   "observacao": "Simulador existente. Atualizado em 31/10: o cenário Flat 35 não aparece mais como produto para quem não tem 永住."
+   "observacao": "Simulador existente. Atualizado em 31/10: o cenário Flat 35 só aparece como produto para quem atende à exigência de status de residência da JHF; para os demais, vira referência com aviso."
   },
   {
    "fase": "P0",
@@ -1901,32 +1906,8 @@
    "prioridade": "P0",
    "idioma": "ES",
    "keyword": "hipoteca para trabajadores temporales Japón",
-   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "ES",
-   "keyword": "hipoteca sin residencia permanente en Japón",
-   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "ES",
-   "keyword": "hipoteca sin residencia permanente Japón",
-   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "ES",
-   "keyword": "hipoteca sin visa permanente Japón",
-   "proposed_path": "/es/hipoteca-sin-residencia-permanente/",
-   "url_real": "/es/hipoteca-sin-residencia-permanente",
+   "proposed_path": "/es/hipoteca-trabajo-haken/",
+   "url_real": "/es/hipoteca-trabajo-haken",
    "estado": "publicado"
   },
   {
@@ -2180,14 +2161,6 @@
   {
    "prioridade": "P0",
    "idioma": "JP-misto",
-   "keyword": "住宅ローン 永住権なし",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "JP-misto",
    "keyword": "可児市 casa brasileiro",
    "proposed_path": "/pt/casas-a-venda/gifu/kani/",
    "url_real": "/casas-a-venda/kani",
@@ -2239,14 +2212,6 @@
    "keyword": "新築一戸建て 愛知 外国人",
    "proposed_path": "/pt/casas-novas/",
    "url_real": "/casas-novas",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "JP-misto",
-   "keyword": "永住権 住宅ローン 外国人",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
    "estado": "publicado"
   },
   {
@@ -2964,26 +2929,10 @@
   {
    "prioridade": "P0",
    "idioma": "PT",
-   "keyword": "eijuken financiamento imobiliário",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "PT",
    "keyword": "entrada casa Japão",
    "proposed_path": "/pt/custos-comprar-casa/",
    "url_real": "/quanto-custa-casa-japao",
    "estado": "sem necessidade por já existir"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "PT",
-   "keyword": "financiamento casa Japão sem visto permanente",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
-   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3156,14 +3105,6 @@
   {
    "prioridade": "P0",
    "idioma": "PT",
-   "keyword": "financiamento para estrangeiro sem eijuken",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
-   "estado": "publicado"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "PT",
    "keyword": "financiamento para estrangeiros Aichi",
    "proposed_path": "/pt/financiamento-imobiliario-tokai/",
    "url_real": "/financiamento-imovel-japao",
@@ -3176,14 +3117,6 @@
    "proposed_path": "/pt/financiamento-imobiliario-tokai/",
    "url_real": "/financiamento-imovel-japao",
    "estado": "sem necessidade por já existir"
-  },
-  {
-   "prioridade": "P0",
-   "idioma": "PT",
-   "keyword": "financiar casa no Japão sem visto permanente",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
-   "estado": "publicado"
   },
   {
    "prioridade": "P0",
@@ -3213,8 +3146,8 @@
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "haken financiamento casa",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
+   "proposed_path": "/pt/financiamento-trabalho-haken/",
+   "url_real": "/financiamento-trabalho-haken",
    "estado": "publicado"
   },
   {
@@ -3413,8 +3346,8 @@
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "kojin financiamento imóvel",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
+   "proposed_path": "/pt/financiamento-autonomo/",
+   "url_real": "/financiamento-autonomo",
    "estado": "publicado"
   },
   {
@@ -3461,8 +3394,8 @@
    "prioridade": "P0",
    "idioma": "PT",
    "keyword": "quanto banco libera para financiar casa",
-   "proposed_path": "/pt/financiamento-sem-eijuken/",
-   "url_real": "/financiamento-sem-eijuken",
+   "proposed_path": "/pt/renda-minima-financiamento/",
+   "url_real": "/renda-minima-financiamento",
    "estado": "publicado"
   },
   {
@@ -3788,14 +3721,6 @@
   {
    "prioridade": "P1",
    "idioma": "ES",
-   "keyword": "flat 35 extranjeros residencia permanente",
-   "proposed_path": "/es/flat35-extranjeros/",
-   "url_real": "/es/flat35-extranjeros (não publicada)",
-   "estado": "planejado (backlog)"
-  },
-  {
-   "prioridade": "P1",
-   "idioma": "ES",
    "keyword": "flat 35 hipoteca extranjeros Japón",
    "proposed_path": "/es/flat35-extranjeros/",
    "url_real": "/es/flat35-extranjeros (não publicada)",
@@ -4031,14 +3956,6 @@
    "keyword": "términos inmobiliarios japoneses en español",
    "proposed_path": "/es/glosario-inmobiliario-japones/",
    "url_real": "/es/glosario-inmobiliario-japones (não publicada)",
-   "estado": "planejado (backlog)"
-  },
-  {
-   "prioridade": "P1",
-   "idioma": "JP-misto",
-   "keyword": "フラット35 外国籍 永住",
-   "proposed_path": "/pt/flat35-estrangeiros/",
-   "url_real": "/flat35-estrangeiros (não publicada)",
    "estado": "planejado (backlog)"
   },
   {
@@ -4552,14 +4469,6 @@
    "proposed_path": "/pt/casas-a-venda/mie/tsu/",
    "url_real": "/casas-a-venda/tsu",
    "estado": "publicado"
-  },
-  {
-   "prioridade": "P1",
-   "idioma": "PT",
-   "keyword": "Flat 35 estrangeiro sem eijuken",
-   "proposed_path": "/pt/flat35-estrangeiros/",
-   "url_real": "/flat35-estrangeiros (não publicada)",
-   "estado": "planejado (backlog)"
   },
   {
    "prioridade": "P1",

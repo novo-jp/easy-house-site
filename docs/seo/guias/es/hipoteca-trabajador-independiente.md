@@ -26,9 +26,9 @@ Quien planea comprar casa suele necesitar 2 o 3 años de declaraciones con ingre
 
 El simulador de Easy House calcula al independiente con las condiciones de Flat 35 como
 referencia, porque los bancos privados suelen ser más restrictivos con ingresos variables.
-Pero Flat 35, para extranjeros, exige **residencia permanente (永住者) o residencia
-permanente especial (特別永住者)**, según la JHF. Sin 永住, el camino es un banco privado,
-con análisis individual.
+Flat 35 tiene requisitos propios de estatus de residencia para extranjeros, definidos por
+la JHF: mira el cuadro en la [página de hipoteca](/financiamento-imovel-japao). Fuera de
+Flat 35, el análisis es de un banco privado, caso por caso.
 
 ## Documentos que suelen pedir
 

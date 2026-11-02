@@ -3,6 +3,11 @@
 Como transformar a landing page de simulação em uma máquina de leads pagos.
 Documento de trabalho, não de teoria.
 
+> **02/11/2026 — tema vetado.** Financiamento sem visto permanente saiu do escopo de
+> conteúdo, SEO e campanhas (decisão da Easy House). As peças abaixo marcadas com ⛔ não
+> devem ser produzidas como estão. A objeção continua real no atendimento; só não vira
+> pauta pública. Regra completa: `lib/tema-excluido.mjs`.
+
 ---
 
 ## 1. Diagnóstico antes de gastar o primeiro iene
@@ -311,7 +316,7 @@ E fecha na privacidade, que é o bloqueio real.
 
 ---
 
-**V2 — "As três frases que eu mais ouço"** · 30s · *autoridade*
+**V2 — "As três frases que eu mais ouço"** · 30s · *autoridade* · ⛔ trocar a primeira frase antes de gravar
 
 O consultor 住宅ローンアドバイザー falando direto para a câmera:
 
@@ -404,7 +409,8 @@ Mídia paga em público pequeno satura. O orgânico é o que segura o custo.
 4. **Mídia da comunidade** — [Portal Mie](https://portalmie.com/) e
    [Revista Alternativa](https://alternativa.co.jp/) são os dois veículos com
    audiência consolidada em português no Japão. Vale cotar publieditorial sobre
-   *"o que muda para quem quer comprar casa sem visto permanente"*, linkando o
+   ⛔ ~~*"o que muda para quem quer comprar casa sem visto permanente"*~~ (tema vetado em
+   02/11/2026 — usar haken, autônomo ou entrada), linkando o
    simulador. Conteúdo educativo em veículo com credibilidade converte melhor
    que banner.
 

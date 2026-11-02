@@ -21,7 +21,6 @@ cuota que cabe en tu mes.
 Pesan en el análisis del banco: **visa, tiempo de empleo, ingresos declarados y deudas
 actuales**. Lee también:
 
-- [Hipoteca sin residencia permanente](/financiamento-sem-eijuken)
 - [Trabajo por contratista (haken)](/financiamento-trabalho-haken)
 - [Trabajador independiente (個人事業主)](/financiamento-autonomo)
 - [Cuánto necesito ganar](/renda-minima-financiamento)

@@ -24,8 +24,6 @@ corretores não possui.
 
 - Estrangeiro pode comprar imóvel no Japão? — sim, não há restrição de nacionalidade
   para a compra. O que varia é a análise de crédito de cada banco.
-- É obrigatório ter visto permanente (永住) para financiar? — não é uma regra única:
-  cada banco define seus critérios, e há caminhos para quem ainda não tem 永住.
 - Preciso falar japonês? — não. O atendimento é em português, e a Easy House fala
   com bancos, proprietários e imobiliárias em japonês pelo cliente.
 - Preciso de fiador japonês para alugar? — normalmente há alternativas por empresa
@@ -62,14 +60,12 @@ Respostas completas em: /simular (ferramenta), /entregas (casos reais),
 ## Guias de financiamento (revisados pela Easy House)
 
 - /guia-comprar-casa-japao — como comprar sendo estrangeiro, as 7 etapas
-- /financiamento-sem-eijuken — financiar sem visto permanente (o Flat 35 exige 永住者 ou
-  特別永住者; bancos privados têm critérios próprios)
 - /financiamento-trabalho-haken, /financiamento-autonomo — empreiteira e autônomo
 - /renda-minima-financiamento — a regra de comprometimento da renda
 - /documentos-financiamento — documentos por etapa, banco privado e Flat 35
-- Em espanhol: /es/guia-comprar-casa-japon, /es/hipoteca-sin-residencia-permanente,
-  /es/hipoteca-trabajo-haken, /es/hipoteca-trabajador-independiente,
-  /es/ingresos-para-hipoteca, /es/documentos-hipoteca, /es/gastos-comprar-vivienda,
+- Em espanhol: /es/guia-comprar-casa-japon, /es/hipoteca-trabajo-haken,
+  /es/hipoteca-trabajador-independiente, /es/ingresos-para-hipoteca,
+  /es/documentos-hipoteca, /es/gastos-comprar-vivienda,
   /es/financiamiento-hipotecario-tokai
 - Sitemaps: /sitemap.xml, /sitemap-casas.xml e /sitemap-aluguel.xml
 

@@ -238,8 +238,11 @@ describe('as duas línguas', () => {
     assert.doesNotMatch(texto(es), /4\.107/);
   });
 
-  test('nenhuma das duas afirma que o Flat 35 aceita quem não tem visto permanente', () => {
-    for (const h of [pt, es]) assert.match(texto(h), /永住者.*特別永住者/);
+  test('o Flat 35 aparece com a ressalva de status de residência, sem virar pauta de visto', () => {
+    // A regra exata mora só no quadro da página de financiamento
+    // (tests/tema-excluido.test.mjs); aqui basta não sugerir que vale para todos.
+    assert.match(texto(pt), /Flat 35, por exemplo, tem exigências de status de residência para estrangeiros/);
+    assert.match(texto(es), /Flat 35, por ejemplo, tiene requisitos de estatus de residencia para extranjeros/);
   });
 
   test('a mensagem pré-preenchida do WhatsApp diz só a cidade', () => {

@@ -21,7 +21,6 @@ que cabe no seu mês.
 Pesam na análise do banco: **visto, tempo de emprego, renda declarada e dívidas atuais**.
 Leia também:
 
-- [Financiar sem visto permanente](/financiamento-sem-eijuken)
 - [Trabalho em empreiteira (haken)](/financiamento-trabalho-haken)
 - [Autônomo (個人事業主)](/financiamento-autonomo)
 - [Quanto preciso ganhar](/renda-minima-financiamento)

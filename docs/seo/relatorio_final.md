@@ -8,26 +8,33 @@ Aichi, Mie e Gifu para o público brasileiro (pt-BR) e latino (es). Auditoria pr
 > de Mie verificadas), então o prazo de 8/11 deixou de valer. Ele volta sempre que a coleta
 > parar: casa não verificada há 30 dias sai do site. Os 6 guias foram aprovados e publicados,
 > com as versões em espanhol, e as decisões abertas foram fechadas (ver "Decisões").
+>
+> **Escopo revisado em 02/11/2026.** Briefing `..._REVISADO_2026_11_02.md` e regras SEO da
+> mesma data: financiamento sem visto permanente saiu do escopo de SEO e conteúdo, em
+> todas as línguas. As duas páginas do tema saíram do ar (404) e o assunto foi retirado de
+> FAQ, links internos, sitemap, dados estruturados e `llms.txt`. A regra do Flat 35
+> continua verdadeira num lugar só — o quadro "Flat 35 × banco" das páginas de
+> financiamento —, e o simulador segue igual (funil pago). Detalhes em "Escopo revisado".
 
 ## Números que o briefing pede
 
 | | Quantidade |
 |---|---|
-| Páginas do briefing (Anexo B) | 134 |
-| — publicadas e verificadas em produção | **66** |
+| Páginas do briefing (Anexo B, revisado) | 132 |
+| — publicadas e verificadas em produção | **64** |
 | — já cobertas por página existente | 7 |
 | — redirecionamento | 1 (`/es` → `/es/casas-en-venta`) |
 | — bloqueadas por dados externos (sem estoque) | 26 |
 | — planejadas (backlog) | 34 |
-| Rotas **criadas** (URLs novas indexáveis no ar) | **61** — 47 regionais, 6 guias em português, 6 guias e 2 páginas-pilar em espanhol |
+| Rotas **criadas** (URLs novas indexáveis no ar) | **59** — 47 regionais, 5 guias em português, 5 guias e 2 páginas-pilar em espanhol |
 | Rotas **atualizadas** | 37 páginas de cidade PT, `/simular`, `/simular-es`, `/financiamento-imovel-japao`, `/quanto-custa-casa-japao`, `/custo-inicial-aluguel-japao`, `/comprar/imoveis`, rodapé compartilhado, sitemaps, llms.txt |
 | URLs regionais no sitemap | 84 (42 pares pt/es, com hreflang) |
-| Páginas de conteúdo bilíngues | 16 (8 pares pt/es, com hreflang) |
-| Palavras-chave (Anexo G) | 537, **todas com destino** |
-| — destino publicado ou existente | **354 (65%)** |
+| Páginas de conteúdo bilíngues | 14 (7 pares pt/es, com hreflang) |
+| Palavras-chave (Anexo G, revisado) | 525, **todas com destino** |
+| — destino publicado ou existente | **345 (66%)** |
 | — destino bloqueado por estoque | 129 |
-| — destino planejado | 54 |
-| Testes do site | 223, todos passando |
+| — destino planejado | 51 |
+| Testes do site | 230, todos passando |
 
 **Por que 37 cidades e não 21:** o acervo tem mais cidades de Aichi e Mie com 5+ casas do
 que o briefing listou (Seto, Inuyama, Ama…). Estão nas províncias do escopo e passam no
@@ -64,7 +71,7 @@ novas, usadas e Español; a busca de casas leva às províncias e tipos; `/simul
 
 ## Testes e verificação
 
-- `node --test tests/` — 205 testes. Novos: escopo (Shizuoka fora, Gifu sem página),
+- `node --test 'tests/*.test.mjs'` — 230 testes (eram 205 na primeira entrega). Novos: escopo (Shizuoka fora, Gifu sem página),
   colisão cidade/província (`gifu-shi`), bairro (区) fora do nome, nova = 新築 do anúncio,
   hreflang recíproco, nada de português nas páginas em espanhol, comunidade só em PT com
   fonte, regra do Flat 35 nas duas línguas, WhatsApp só com a cidade, sitemap só com o que
@@ -85,13 +92,15 @@ novas, usadas e Español; a busca de casas leva às províncias e tipos; `/simul
 | Português | Espanhol |
 |---|---|
 | `/guia-comprar-casa-japao` | `/es/guia-comprar-casa-japon` |
-| `/financiamento-sem-eijuken` | `/es/hipoteca-sin-residencia-permanente` |
 | `/financiamento-trabalho-haken` | `/es/hipoteca-trabajo-haken` |
 | `/financiamento-autonomo` | `/es/hipoteca-trabajador-independiente` |
 | `/renda-minima-financiamento` | `/es/ingresos-para-hipoteca` |
 | `/documentos-financiamento` | `/es/documentos-hipoteca` |
 | `/quanto-custa-casa-japao` (já existia) | `/es/gastos-comprar-vivienda` |
 | `/financiamento-imovel-japao` (já existia) | `/es/financiamiento-hipotecario-tokai` |
+
+O sexto par (`/financiamento-sem-eijuken` e `/es/hipoteca-sin-residencia-permanente`) foi
+retirado em 02/11/2026 — ver "Escopo revisado".
 
 Aprovados sem resposta às marcas [CONFIRMAR]: saíram as perguntas; ficou só a versão
 genérica das frases que dependiam delas (ex.: "cada banco tem regras para compor
@@ -107,6 +116,26 @@ renda"), e os valores de selo, não confirmados, saíram. Texto-fonte em
 | Atendimento em Mie | Confirmado: Suzuka, Yokkaichi e Tsu |
 | Guias | Aprovados e publicados |
 | Certificado 住宅ローンアドバイザー | Renovado — **falta a nova data de validade** (ver abaixo) |
+| Financiamento sem visto permanente (02/11) | Fora do escopo de SEO e conteúdo — ver "Escopo revisado" |
+| Identidade institucional (02/11) | Preservada como está no site, sem correção societária |
+
+## Escopo revisado (02/11/2026)
+
+| O quê | Como ficou |
+|---|---|
+| `/financiamento-sem-eijuken`, `/es/hipoteca-sin-residencia-permanente` | Removidas: **404**, como as landings de 10/10. Ficaram no ar 2 dias; sem redirecionamento, para o tema não sobreviver num endereço |
+| Manifesto | 132 páginas e 525 palavras-chave, conferidos linha a linha com os Anexos B e G revisados; 12 palavras-chave retiradas, 4 remapeadas (haken, kojin, limite do banco, trabajadores temporales) |
+| `/financiamento-imovel-japao` e `/es/financiamiento-hipotecario-tokai` | Saíram a seção sobre visto e a pergunta frequente (também do `FAQPage`); a meta description fala do que o banco analisa. Fica a linha do quadro do Flat 35, marcada com `data-fato-produto`, com fonte (JHF, pergunta 308) e data |
+| Guias haken e autônomo (pt/es) | Citam que o Flat 35 tem exigência de status de residência e levam ao quadro, sem repetir a regra |
+| Hub, províncias, cidades, novas e usadas | Pergunta "consegue financiar?" sem o tema; lista de guias sem o par retirado |
+| `llms.txt`, `sitemap.xml` | Pergunta e links retirados (sitemap: 24 URLs) |
+| Simulador (`/simular`, `/simular-es`) | **Sem mudança.** A pergunta do tipo de visto qualifica o lead e o aviso do Flat 35 é regra do produto; é o funil pago, que a Easy House pediu para não mexer |
+| `docs/MARKETING.md` | Duas peças marcadas como vetadas (roteiro V2 e o publieditorial) |
+
+**Trava:** `lib/tema-excluido.mjs` tem os trechos vetados. `build-conteudo.mjs` não grava
+nada se uma página os trouxer fora do quadro marcado, e `tests/tema-excluido.test.mjs`
+varre todo arquivo publicado, as páginas regionais geradas na hora e o manifesto. Os
+arquivos que podem citar o tema estão listados no teste, cada um com o motivo.
 
 ## Pendências
 
@@ -114,7 +143,7 @@ renda"), e os valores de selo, não confirmados, saíram. Texto-fonte em
 |---|---|---|
 | 1 | **Nova validade do certificado.** A `/entregas` esconde o bloco a partir de 1/11, e a frase da página de financiamento só sai se gerada dentro da validade. Com a foto do certificado novo: atualizar `validoAte` (app, `lib/content/claims.ts`), `CERTIFICADO_VALIDO_ATE` (`build-conteudo.mjs`) e a foto | Easy House envia; equipe aplica |
 | 2 | **Gifu**: estender o scraper do ATBB à província | 16 páginas do briefing e 79 palavras-chave dependem disso |
-| 3 | **Faixa de preço para quem não tem 永住** no cenário Flat 35 — hoje rotulada "referência", com aviso | decisão de produto |
+| 3 | **Faixa de preço no cenário Flat 35** para quem não atende à exigência de status de residência — hoje rotulada "referência", com aviso | decisão de produto |
 | 4 | **`PLATAFORMAS.html` no histórico do git** (commit `f71c2b9`) | reescrever o histórico do repositório público é decisão do dono |
 | 5 | **Repositório público**: `docs/seo/` (palavras-chave, estratégia) está visível no GitHub, não no site | dono |
 
@@ -142,6 +171,8 @@ Não feitas aqui — exigem login nas contas.
    por página (`/es/`, `/casas-a-venda/`) e por país Japão.
 5. Ver se aparecem erros de hreflang em "Segmentação internacional" (se o relatório
    existir na conta).
+6. As duas páginas retiradas em 02/11 devolvem 404 e saem do índice sozinhas. Se
+   aparecerem na busca, "Remoções" → remoção temporária acelera.
 
 **Google Business Profile**
 1. Endereço igual ao do site: 愛知県碧南市入船町4-37-2.
@@ -156,8 +187,11 @@ Não feitas aqui — exigem login nas contas.
   vigente desde 05/08/2026). Mudou a taxa de referência ou o comprometimento? Mude lá: o
   simulador, `/financiamento-imovel-japao` (rodar `node build-conteudo.mjs`) e as páginas
   regionais usam o mesmo número.
-- **Regra do Flat 35 para estrangeiros** (só 永住者/特別永住者): JHF FAQ 308. Reconferir a
-  cada 6 meses; se mudar, mudar `residencyStatusesAccepted` e o aviso em `lib/financing.js`.
+- **Regra do Flat 35 para estrangeiros**: JHF FAQ 308. Reconferir a cada 6 meses; se
+  mudar, mudar `residencyStatusesAccepted`, o aviso em `lib/financing.js` e o quadro das
+  páginas de financiamento (`build-conteudo.mjs`, linha com `data-fato-produto`).
+- **Tema vetado:** financiamento sem visto permanente não vira página, FAQ, metadado, link,
+  campanha nem texto para IA (02/11/2026). A regra está em `lib/tema-excluido.mjs`.
 - **Residentes brasileiros por cidade** (`BRASILEIROS` em `lib/casas-cidade.mjs`): o
   在留外国人統計 sai duas vezes por ano no e-Stat. Atualizar os números e a data juntos.
 - **Etapas da compra** vêm de `lib/acompanhamento-modelos.json`; se o processo mudar no

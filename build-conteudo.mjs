@@ -15,6 +15,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { carregarCasas, financingConfig, casasConfig } from './lib/casas-fonte.mjs';
 import { formatarYen } from './lib/casas.mjs';
 import { navEs, drawerEs, footEs } from './lib/layout-es.mjs';
+import { trechosVetados } from './lib/tema-excluido.mjs';
 
 if (existsSync('.env.local')) {
   for (const linha of readFileSync('.env.local', 'utf8').split('\n')) {
@@ -57,7 +58,6 @@ const PARES = {
   'quanto-custa-casa-japao': 'es/gastos-comprar-vivienda',
   'financiamento-imovel-japao': 'es/financiamiento-hipotecario-tokai',
   'guia-comprar-casa-japao': 'es/guia-comprar-casa-japon',
-  'financiamento-sem-eijuken': 'es/hipoteca-sin-residencia-permanente',
   'financiamento-trabalho-haken': 'es/hipoteca-trabajo-haken',
   'financiamento-autonomo': 'es/hipoteca-trabajador-independiente',
   'renda-minima-financiamento': 'es/ingresos-para-hipoteca',
@@ -435,7 +435,7 @@ function paginaFinanciamento(casas) {
   return pagina({
     slug: 'financiamento-imovel-japao',
     titulo: 'Financiamento imobiliário no Japão para estrangeiros (住宅ローン) | Easy House',
-    descricao: 'Como funciona o 住宅ローン para quem é estrangeiro no Japão: prazos, taxas de referência, limite de comprometimento da renda e o peso do visto. Explicado em português.',
+    descricao: 'Como funciona o 住宅ローン para quem é estrangeiro no Japão: prazos, taxas de referência, limite de comprometimento da renda e o que o banco analisa. Explicado em português.',
     h1: 'Financiamento imobiliário no Japão para estrangeiros',
     resposta: `<p><strong>Comprar e financiar são coisas diferentes.</strong> Não há restrição de nacionalidade para comprar um imóvel no Japão. A dificuldade, quando existe, está no crédito — e cada banco decide pelos seus próprios critérios.</p>
       <p>Os fatores que mais pesam na análise são <strong>tipo de visto, tempo no emprego atual, renda declarada e dívidas existentes</strong>. Não existe uma regra única que valha para todas as instituições, e nenhuma imobiliária pode garantir aprovação — quem aprova é o banco.</p>`,
@@ -447,12 +447,12 @@ function paginaFinanciamento(casas) {
   <tbody>
     <tr><td>Taxa de referência</td><td>${f.rateDisplayLabel.replace(' (taxa fixa de referência)', '')}</td><td>${b.rateDisplayLabel.replace(' (taxa de referência)', '')}</td></tr>
     <tr><td>Tipo de taxa</td><td>Fixa por todo o prazo</td><td>Geralmente variável</td></tr>
-    <tr><td>Estrangeiros</td><td>Só com visto permanente (永住者) ou permanente especial (特別永住者)</td><td>Critério de cada banco</td></tr>
+    <tr data-fato-produto="flat35"><td>Estrangeiros</td><td>Só com visto permanente (永住者) ou permanente especial (特別永住者)</td><td>Critério de cada banco</td></tr>
     <tr><td>Prazo máximo</td><td>${f.maximumTermYears} anos</td><td>${b.maximumTermYears} anos</td></tr>
     <tr><td>Idade limite na quitação</td><td>${f.payoffAgeLimit} anos</td><td>${b.payoffAgeLimit} anos</td></tr>
   </tbody>
 </table>
-<p class="nota-fonte">Taxas de referência usadas nas simulações da Easy House. Valores de mercado mudam; a condição real vem da instituição na análise.</p>
+<p class="nota-fonte">Taxas de referência usadas nas simulações da Easy House. Valores de mercado mudam; a condição real vem da instituição na análise. O critério do Flat 35 para estrangeiros é da JHF (pergunta nº 308), conferido em 31/10/2026.</p>
 
 <h3>Taxa fixa ou variável?</h3>
 <p>A taxa fixa protege de aumentos: a parcela de hoje é a mesma daqui a vinte anos. A variável começa mais baixa, mas pode subir. Para quem tem orçamento apertado e nenhuma folga para surpresas, a previsibilidade da fixa costuma valer o custo maior.</p>
@@ -465,13 +465,15 @@ function paginaFinanciamento(casas) {
 </ul>
 <p>Atenção: esse limite conta <strong>todas</strong> as parcelas, não só a da casa. Financiamento de carro, cartão parcelado, キャッシング e リボ払い entram na conta e reduzem o quanto sobra para o imóvel. É por isso que organizar dívidas antes de pedir muda o resultado — o <a href="/simular" style="color:var(--teal)">simulador</a> pergunta pelas parcelas atuais justamente por isso.</p>
 
-<h2>O peso do visto</h2>
-<p>O tipo de visto é o fator que mais varia entre instituições:</p>
+<h2>O que o banco analisa</h2>
+<p>Cada instituição pesa os mesmos fatores do seu jeito: o tempo no emprego atual e a forma de contrato, a renda declarada, o histórico de crédito e as dívidas em aberto. Estes guias mostram como isso funciona nos casos mais comuns:</p>
 <ul>
-  <li><strong>Visto permanente (永住) ou permanente especial</strong>: aceito pela maior parte das instituições, inclusive no Flat 35, em geral nas mesmas condições de um cidadão japonês</li>
-  <li><strong>Cônjuge de japonês (日本人の配偶者)</strong>, <strong>residente de longa permanência (定住者)</strong> e <strong>vistos de trabalho</strong>: o Flat 35 não aceita — a JHF, que opera o produto, exige 永住者 ou 特別永住者 de quem é estrangeiro. Nos bancos privados, depende de análise individual: algumas instituições atendem, outras não</li>
+  <li><a href="/financiamento-trabalho-haken" style="color:var(--teal)">Trabalho em empreiteira (haken)</a></li>
+  <li><a href="/financiamento-autonomo" style="color:var(--teal)">Autônomo (個人事業主)</a></li>
+  <li><a href="/renda-minima-financiamento" style="color:var(--teal)">Quanto preciso ganhar para financiar</a></li>
+  <li><a href="/documentos-financiamento" style="color:var(--teal)">Documentos, por etapa</a></li>
 </ul>
-<p>Não ter 永住 não encerra o assunto — muda quais portas fazem sentido bater. O <a href="/simular" style="color:var(--teal)">simulador</a> pergunta pelo tipo de visto e já considera isso no cenário que devolve.</p>
+<p>O <a href="/simular" style="color:var(--teal)">simulador</a> pergunta por esses pontos e já considera as respostas no cenário que devolve.</p>
 
 <h2>Exemplo: uma casa de ${yen(exemplo)}</h2>
 <table class="tabela-dados">
@@ -491,9 +493,7 @@ ${certificadoValido() ? '<p>O atendimento é feito por consultor com certificaç
 <p>Para uma estimativa com os seus números, o <a href="/simular" style="color:var(--teal)">simulador</a> leva cerca de um minuto e não pede documento nenhum.</p>`,
     faq: [
       ['Estrangeiro consegue financiamento imobiliário no Japão?',
-       'Sim, é possível. As condições variam bastante conforme o tipo de visto, o tempo no emprego atual, a renda e as dívidas existentes. Quem tem visto permanente (永住) costuma ter acesso às mesmas condições de um cidadão japonês; outros vistos dependem de análise individual em cada instituição.'],
-      ['Preciso ter visto permanente (永住) para financiar?',
-       'No Flat 35, sim: a JHF aceita estrangeiros só com visto permanente (永住者) ou permanente especial (特別永住者). Nos bancos privados não é uma regra única — parte exige, outras analisam caso a caso vistos de trabalho, de cônjuge de japonês e de residente de longa permanência. Não ter 永住 muda quais instituições fazem sentido procurar, mas não encerra a possibilidade.'],
+       'Sim, é possível. As condições variam conforme o tipo de visto, o tempo no emprego atual, a renda e as dívidas existentes, e cada instituição aplica critérios próprios. Não existe uma regra única que valha para todos os bancos.'],
       ['Quanto tempo de trabalho preciso comprovar?',
        'Varia por instituição. Em geral, quanto mais tempo no mesmo empregador e mais estável o vínculo, melhor a análise. Trocar de emprego às vésperas de pedir financiamento costuma atrapalhar.'],
       ['Ter キャッシング ou リボ払い impede o financiamento?',
@@ -505,7 +505,7 @@ ${certificadoValido() ? '<p>O atendimento é feito por consultor com certificaç
     ],
     relacionadas: [
       ['/simular', 'Simular qual faixa de imóvel cabe no seu orçamento'],
-      ['/financiamento-sem-eijuken', 'Financiar casa no Japão sem visto permanente'],
+      ['/financiamento-trabalho-haken', 'Trabalho em empreiteira (haken) pode financiar?'],
       ['/renda-minima-financiamento', 'Quanto preciso ganhar para financiar'],
       ['/documentos-financiamento', 'Documentos para financiar, por etapa'],
       ['/quanto-custa-casa-japao', 'Quanto custa comprar uma casa no Japão'],
@@ -608,7 +608,7 @@ function paginaFinanciamentoEs(casas) {
     lang: 'es',
     slug: 'es/financiamiento-hipotecario-tokai',
     titulo: 'Hipoteca en Japón para extranjeros (住宅ローン) | Easy House',
-    descricao: 'Cómo funciona el 住宅ローン para extranjeros en Japón: plazos, tasas de referencia, límite de endeudamiento y el peso de la visa. Explicado en español.',
+    descricao: 'Cómo funciona el 住宅ローン para extranjeros en Japón: plazos, tasas de referencia, límite de endeudamiento y lo que analiza el banco. Explicado en español.',
     h1: 'Hipoteca en Japón para extranjeros',
     resposta: `<p><strong>Comprar y financiar son cosas distintas.</strong> No hay restricción de nacionalidad para comprar una vivienda en Japón. La dificultad, cuando existe, está en el crédito, y cada banco decide con sus propios criterios.</p>
       <p>Los factores que más pesan en el análisis son <strong>tipo de visa, tiempo en el empleo actual, ingresos declarados y deudas existentes</strong>. No hay una regla única para todas las instituciones, y ninguna inmobiliaria puede garantizar la aprobación: quien aprueba es el banco.</p>`,
@@ -620,12 +620,12 @@ function paginaFinanciamentoEs(casas) {
   <tbody>
     <tr><td>Tasa de referencia</td><td>${pct(f.referenceAnnualRate)} anual</td><td>${pct(b.referenceAnnualRate)} anual</td></tr>
     <tr><td>Tipo de tasa</td><td>Fija durante todo el plazo</td><td>Generalmente variable</td></tr>
-    <tr><td>Extranjeros</td><td>Solo con residencia permanente (永住者) o residencia permanente especial (特別永住者)</td><td>Criterio de cada banco</td></tr>
+    <tr data-fato-produto="flat35"><td>Extranjeros</td><td>Solo con residencia permanente (永住者) o residencia permanente especial (特別永住者)</td><td>Criterio de cada banco</td></tr>
     <tr><td>Plazo máximo</td><td>${f.maximumTermYears} años</td><td>${b.maximumTermYears} años</td></tr>
     <tr><td>Edad límite al terminar de pagar</td><td>${f.payoffAgeLimit} años</td><td>${b.payoffAgeLimit} años</td></tr>
   </tbody>
 </table>
-<p class="nota-fonte">Tasas de referencia usadas en las simulaciones de Easy House. Los valores del mercado cambian; la condición real la da la institución en el análisis.</p>
+<p class="nota-fonte">Tasas de referencia usadas en las simulaciones de Easy House. Los valores del mercado cambian; la condición real la da la institución en el análisis. El criterio de Flat 35 para extranjeros es de la JHF (pregunta n.º 308), verificado el 31/10/2026.</p>
 
 <h3>¿Tasa fija o variable?</h3>
 <p>La tasa fija protege de aumentos: la cuota de hoy es la misma dentro de veinte años. La variable empieza más baja, pero puede subir. Para quien tiene un presupuesto ajustado y ningún margen para sorpresas, la previsibilidad de la fija suele valer su costo mayor.</p>
@@ -638,13 +638,15 @@ function paginaFinanciamentoEs(casas) {
 </ul>
 <p>Atención: ese límite cuenta <strong>todas</strong> las cuotas, no solo la de la casa. Préstamo de auto, tarjeta en cuotas, キャッシング y リボ払い entran en la cuenta y reducen lo que queda para la vivienda. Por eso ordenar las deudas antes de solicitar cambia el resultado; el <a href="/simular-es" style="color:var(--teal)">simulador</a> pregunta por las cuotas actuales justamente por eso.</p>
 
-<h2>El peso de la visa</h2>
-<p>El tipo de visa es el factor que más varía entre instituciones:</p>
+<h2>Lo que analiza el banco</h2>
+<p>Cada institución pesa los mismos factores a su manera: el tiempo en el empleo actual y el tipo de contrato, los ingresos declarados, el historial de crédito y las deudas abiertas. Estas guías muestran cómo funciona en los casos más comunes:</p>
 <ul>
-  <li><strong>Residencia permanente (永住) o residencia permanente especial</strong>: aceptada por la mayoría de las instituciones, incluso en Flat 35, en general en las mismas condiciones que un ciudadano japonés</li>
-  <li><strong>Cónyuge de japonés (日本人の配偶者)</strong>, <strong>residente de larga estancia (定住者)</strong> y <strong>visas de trabajo</strong>: Flat 35 no las acepta —la JHF, que opera el producto, exige 永住者 o 特別永住者 a los extranjeros—. En los bancos privados depende de un análisis individual: algunas instituciones atienden y otras no</li>
+  <li><a href="/es/hipoteca-trabajo-haken" style="color:var(--teal)">Trabajo por contratista (haken)</a></li>
+  <li><a href="/es/hipoteca-trabajador-independiente" style="color:var(--teal)">Trabajador independiente (個人事業主)</a></li>
+  <li><a href="/es/ingresos-para-hipoteca" style="color:var(--teal)">Cuánto necesito ganar para una hipoteca</a></li>
+  <li><a href="/es/documentos-hipoteca" style="color:var(--teal)">Documentos, por etapa</a></li>
 </ul>
-<p>No tener 永住 no cierra el tema: cambia a qué puertas tiene sentido tocar. Lee <a href="/es/hipoteca-sin-residencia-permanente" style="color:var(--teal)">hipoteca sin residencia permanente</a>.</p>
+<p>El <a href="/simular-es" style="color:var(--teal)">simulador</a> pregunta por esos puntos y ya considera las respuestas en el escenario que devuelve.</p>
 
 <h2>Ejemplo: una casa de ${yen(exemplo)}</h2>
 <table class="tabela-dados">
@@ -664,9 +666,7 @@ ${certificadoValido() ? '<p>La atención la hace un asesor con certificación de
 <p>Para una estimación con tus números, el <a href="/simular-es" style="color:var(--teal)">simulador</a> toma cerca de un minuto y no pide ningún documento.</p>`,
     faq: [
       ['¿Un extranjero puede conseguir una hipoteca en Japón?',
-       'Sí, es posible. Las condiciones varían mucho según el tipo de visa, el tiempo en el empleo actual, los ingresos y las deudas existentes. Quien tiene residencia permanente (永住) suele acceder a las mismas condiciones que un ciudadano japonés; las otras visas dependen de un análisis individual en cada institución.'],
-      ['¿Necesito residencia permanente (永住) para financiar?',
-       'En Flat 35, sí: la JHF acepta extranjeros solo con residencia permanente (永住者) o residencia permanente especial (特別永住者). En los bancos privados no hay una regla única: algunos la exigen y otros analizan caso por caso las visas de trabajo, de cónyuge de japonés y de residente de larga estancia.'],
+       'Sí, es posible. Las condiciones varían según el tipo de visa, el tiempo en el empleo actual, los ingresos y las deudas existentes, y cada institución aplica criterios propios. No hay una regla única que valga para todos los bancos.'],
       ['¿Cuánto tiempo de trabajo necesito demostrar?',
        'Varía según la institución. En general, cuanto más tiempo con el mismo empleador y más estable el vínculo, mejor el análisis. Cambiar de empleo justo antes de solicitar suele perjudicar.'],
       ['¿Tener キャッシング o リボ払い impide la hipoteca?',
@@ -678,7 +678,7 @@ ${certificadoValido() ? '<p>La atención la hace un asesor con certificación de
     ],
     relacionadas: [
       ['/simular-es', 'Simular qué rango de vivienda cabe en tu presupuesto'],
-      ['/es/hipoteca-sin-residencia-permanente', 'Hipoteca sin residencia permanente'],
+      ['/es/hipoteca-trabajo-haken', '¿Un trabajador por contratista (haken) puede tener hipoteca?'],
       ['/es/ingresos-para-hipoteca', '¿Cuánto necesito ganar para una hipoteca?'],
       ['/es/gastos-comprar-vivienda', 'Cuánto cuesta comprar una casa en Japón'],
       ['/es/casas-en-venta', `Ver las ${casas.length} casas en venta por ciudad`]
@@ -699,7 +699,6 @@ ${certificadoValido() ? '<p>La atención la hace un asesor con certificación de
 const GUIAS = [
   // [slug pt, slug es]
   ['guia-comprar-casa-japao', 'guia-comprar-casa-japon'],
-  ['financiamento-sem-eijuken', 'hipoteca-sin-residencia-permanente'],
   ['financiamento-trabalho-haken', 'hipoteca-trabajo-haken'],
   ['financiamento-autonomo', 'hipoteca-trabajador-independiente'],
   ['renda-minima-financiamento', 'ingresos-para-hipoteca'],
@@ -850,6 +849,14 @@ const paginas = [
   ['es/financiamiento-hipotecario-tokai.html', paginaFinanciamentoEs(casas)],
   ...paginasGuias(),
 ];
+// Filtro negativo (lib/tema-excluido.mjs): nada é gravado se alguma página
+// trouxer o tema excluído fora do quadro do Flat 35.
+const vetadas = paginas.map(([arquivo, html]) => [arquivo, trechosVetados(html)]).filter(([, v]) => v.length);
+if (vetadas.length) {
+  for (const [arquivo, v] of vetadas) console.error(`  ✗ ${arquivo}: ${v.join(', ')}`);
+  console.error('\n  Tema fora do escopo (financiamento sem visto permanente). Nada foi gravado.');
+  process.exit(1);
+}
 for (const [arquivo, html] of paginas) {
   writeFileSync(arquivo, html);
   console.log(`  ${arquivo.padEnd(36)} ${(html.length / 1024).toFixed(1)} KB`);
