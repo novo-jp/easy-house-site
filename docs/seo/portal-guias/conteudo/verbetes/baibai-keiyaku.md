@@ -24,6 +24,7 @@ publishedAt: 2026-11-02
 updatedAt: 2026-11-02
 status: publicado
 relatedIds:
+  - EH-ED-011
   - EH-ED-051
   - EH-ED-053
   - EH-ED-054

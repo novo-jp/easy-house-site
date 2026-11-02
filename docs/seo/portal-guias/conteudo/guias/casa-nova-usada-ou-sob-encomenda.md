@@ -19,7 +19,7 @@ author: EASY HOUSE
 reviewer: sem revisor nomeado
 publishedAt: 2026-11-02
 updatedAt: 2026-11-02
-status: rascunho
+status: publicado
 relatedIds:
   - EH-ED-102
   - EH-ED-086
@@ -28,7 +28,7 @@ relatedIds:
   - /casas-usadas
 tags:
   - escolha-do-imovel
-needsFactCheck: true
+needsFactCheck: false
 ---
 **No Japão há três caminhos: a casa pronta vendida pela construtora (建売住宅, tateuri), a casa usada (中古住宅, chūko) e a casa construída sob encomenda num terreno seu (注文住宅, chūmon).** Mudam o prazo até a mudança, o que você consegue escolher e onde está o risco.
 
@@ -51,7 +51,7 @@ Costuma dar mais terreno pelo mesmo dinheiro, em bairros prontos. O cuidado prin
 
 ## Casa sob encomenda (注文住宅)
 
-Você compra o terreno e contrata a construtora para o projeto. O financiamento é diferente: o banco libera o dinheiro em partes ao longo da obra, e as condições variam por banco. É o caminho mais longo e o que mais exige acompanhar orçamento e prazo.
+Você compra o terreno e contrata a construtora para o projeto. O financiamento é diferente: o terreno e a construtora são pagos em etapas antes de a casa existir, e cada banco resolve isso de um jeito — liberando o dinheiro em partes (分割融資) ou com um empréstimo-ponte até a entrega (つなぎ融資). Pergunte ao banco antes de fechar o terreno. É o caminho mais longo e o que mais exige acompanhar orçamento e prazo.
 
 ## Qual escolher
 

@@ -11,12 +11,12 @@
     "nao_criado": "fora do escopo/estoque"
   },
   "contagem": {
-    "publicado_novo": 31,
+    "publicado_novo": 34,
     "existente_mantido": 17,
-    "rascunho": 5,
     "adiado": 13,
     "consolidado": 21,
     "publicado_no_hub": 36,
+    "rascunho": 2,
     "nao_criado": 2
   },
   "itens": [
@@ -235,8 +235,8 @@
       "priority": "P0",
       "title": "Casa nova, usada ou sob encomenda no Japão: qual a diferença?",
       "proposedPath": "/pt/guias/casa-nova-usada-ou-sob-encomenda/",
-      "actualPath": null,
-      "canonical": null,
+      "actualPath": "/casa-nova-usada-ou-sob-encomenda",
+      "canonical": "https://easyhouse.homes/casa-nova-usada-ou-sob-encomenda",
       "language": "pt-BR",
       "source": {
         "chapters": [
@@ -245,13 +245,13 @@
         "arquivo": "docs/seo/portal-guias/conteudo/guias/casa-nova-usada-ou-sob-encomenda.md"
       },
       "targetIntent": "Comparar os tipos de casa e seus riscos",
-      "status": "rascunho",
+      "status": "publicado_novo",
       "duplicateOf": null,
       "publicationGate": {
         "original": "needs_repo_inspection_and_editorial_validation",
-        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
       },
-      "nota": "URL planejada /casa-nova-usada-ou-sob-encomenda — fora do site e do sitemap"
+      "nota": null
     },
     {
       "id": "EH-ED-010",
@@ -259,8 +259,8 @@
       "priority": "P0",
       "title": "Como analisar terreno e direitos de propriedade no Japão",
       "proposedPath": "/pt/guias/como-analisar-terreno-e-direitos-no-japao/",
-      "actualPath": null,
-      "canonical": null,
+      "actualPath": "/terreno-e-direitos-imovel-japao",
+      "canonical": "https://easyhouse.homes/terreno-e-direitos-imovel-japao",
       "language": "pt-BR",
       "source": {
         "chapters": [
@@ -269,13 +269,13 @@
         "arquivo": "docs/seo/portal-guias/conteudo/guias/terreno-e-direitos-imovel-japao.md"
       },
       "targetIntent": "Interpretar propriedade, restricoes e riscos de terreno",
-      "status": "rascunho",
+      "status": "publicado_novo",
       "duplicateOf": null,
       "publicationGate": {
         "original": "needs_repo_inspection_and_editorial_validation",
-        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
       },
-      "nota": "URL planejada /terreno-e-direitos-imovel-japao — fora do site e do sitemap"
+      "nota": null
     },
     {
       "id": "EH-ED-011",
@@ -283,8 +283,8 @@
       "priority": "P0",
       "title": "Contrato de compra de imóvel no Japão: etapas e cuidados",
       "proposedPath": "/pt/guias/como-funciona-contrato-de-compra-no-japao/",
-      "actualPath": null,
-      "canonical": null,
+      "actualPath": "/contrato-compra-imovel-japao",
+      "canonical": "https://easyhouse.homes/contrato-compra-imovel-japao",
       "language": "pt-BR",
       "source": {
         "chapters": [
@@ -293,13 +293,13 @@
         "arquivo": "docs/seo/portal-guias/conteudo/guias/contrato-compra-imovel-japao.md"
       },
       "targetIntent": "Entender proposta, explicacoes legais e assinatura",
-      "status": "rascunho",
+      "status": "publicado_novo",
       "duplicateOf": null,
       "publicationGate": {
         "original": "needs_repo_inspection_and_editorial_validation",
-        "resultado": "bloqueado: needsFactCheck=true; ver pendencias-validacao-editorial.md"
+        "resultado": "aprovado: fatos conferidos em fonte oficial (e-Gov, ministérios, órgãos); needsFactCheck=false"
       },
-      "nota": "URL planejada /contrato-compra-imovel-japao — fora do site e do sitemap"
+      "nota": null
     },
     {
       "id": "EH-ED-012",
@@ -678,8 +678,8 @@
       "priority": "P1",
       "title": "O que é 金銭消費貸借契約 na compra de casa?",
       "proposedPath": "/pt/guias/kinsen-shohi-taishaku-keiyaku/",
-      "actualPath": null,
-      "canonical": null,
+      "actualPath": "/contrato-compra-imovel-japao",
+      "canonical": "https://easyhouse.homes/contrato-compra-imovel-japao",
       "language": "pt-BR",
       "source": {
         "chapters": [
@@ -2717,8 +2717,8 @@
       "priority": "P1",
       "title": "Termos de terreno que merecem atenção nos anúncios japoneses",
       "proposedPath": "/pt/blog/tipos-de-terreno-nos-anuncios/",
-      "actualPath": null,
-      "canonical": null,
+      "actualPath": "/terreno-e-direitos-imovel-japao",
+      "canonical": "https://easyhouse.homes/terreno-e-direitos-imovel-japao",
       "language": "pt-BR",
       "source": {
         "chapters": [

@@ -22,6 +22,7 @@ publishedAt: 2026-11-02
 updatedAt: 2026-11-02
 status: publicado
 relatedIds:
+  - EH-ED-009
   - EH-ED-086
   - EH-DIC-KENSAZUMI
   - EH-ED-100

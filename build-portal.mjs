@@ -54,7 +54,9 @@ const repetidos = (campo) => {
 };
 ['caminho', 'title', 'h1', 'description', 'id'].forEach(repetidos);
 for (const i of itens) {
-  if (i.contentType === 'guia' && existsSync(`${i.slug}.html`) && !i.substitui) {
+  // Página já gravada por este script (tem o CSS do portal) não conta como duplicata.
+  if (i.contentType === 'guia' && existsSync(`${i.slug}.html`) && !i.substitui
+      && !readFileSync(`${i.slug}.html`, 'utf8').includes('.nota-portal {')) {
     erros.push(`${i.origem}: /${i.slug} já existe como página do build-conteudo — não duplicar`);
   }
 }

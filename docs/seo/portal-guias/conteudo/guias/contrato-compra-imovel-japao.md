@@ -20,7 +20,7 @@ author: EASY HOUSE
 reviewer: sem revisor nomeado
 publishedAt: 2026-11-02
 updatedAt: 2026-11-02
-status: rascunho
+status: publicado
 relatedIds:
   - EH-ED-050
   - EH-ED-051
@@ -32,7 +32,7 @@ relatedIds:
   - EH-ED-113
 tags:
   - contrato
-needsFactCheck: true
+needsFactCheck: false
 ---
 **A compra de uma casa no Japão passa por quatro documentos principais: a proposta (買付証明書), a explicação obrigatória (重要事項説明), o contrato de compra e venda (売買契約) e, no fim, o registro (登記).** Entre o contrato e as chaves, o banco faz a análise final e assina o contrato do financiamento.
 

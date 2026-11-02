@@ -24,7 +24,7 @@ O que mais varia é a busca: há quem encontre a casa na primeira semana e quem 
 Dá para propor. A proposta de compra (買付証明書) pode trazer um valor menor que o anunciado. Se o vendedor aceita depende do tempo de anúncio, do interesse de outros compradores e das condições da sua proposta — pagar sem depender de financiamento, por exemplo, pesa. [O que vai escrito na proposta](/dicionario-imobiliario/kaitsuke-shomeisho)
 
 ### Vale a pena comprar casa usada?
-Pode valer: mais terreno e bairros prontos pelo mesmo dinheiro. Em troca, é preciso conferir a data da aprovação do projeto (a norma sísmica mudou em 1981 e, para casas de madeira, em 2000), o estado real da casa e o que o vendedor responde por defeitos. [Casa usada e terremoto](/blog/casa-usada-antiga-e-terremoto) · [Casas usadas à venda](/casas-usadas)
+Pode valer: mais terreno e bairros prontos pelo mesmo dinheiro. Em troca, é preciso conferir a data da aprovação do projeto (a norma sísmica mudou em 1981 e, para casas de madeira, em 2000), o estado real da casa e o que o vendedor responde por defeitos. [Casa nova, usada ou sob encomenda](/casa-nova-usada-ou-sob-encomenda) · [Casa usada e terremoto](/blog/casa-usada-antiga-e-terremoto)
 
 ### Como saber se a casa fica em área de enchente?
 Pelo mapa de riscos (ハザードマップ), público e gratuito: digite o endereço no 重ねるハザードマップ do governo e ligue as camadas de enchente, deslizamento e tsunami. A imobiliária também precisa mostrar o risco de enchente na explicação antes do contrato. [Como consultar o hazard map](/blog/hazard-map-antes-de-comprar)
@@ -70,7 +70,7 @@ Para comprar com financiamento, sim. O contrato do financiamento e o registro da
 No dia do pagamento (決済), em geral logo depois que o banco libera o dinheiro e o vendedor recebe. A data está no contrato. Antes, faz-se a vistoria da casa. [決済](/dicionario-imobiliario/kessai) · [引渡し](/dicionario-imobiliario/hikiwatashi)
 
 ### O que perguntar antes de assinar?
-Quem é o dono no registro, se o terreno é próprio ou arrendado, a frente para a rua, os riscos do endereço, o sinal, a cláusula de financiamento, a responsabilidade por defeitos, os custos e as datas. [15 perguntas antes de assinar](/blog/perguntas-para-imobiliaria-antes-contrato)
+Quem é o dono no registro, se o terreno é próprio ou arrendado, a frente para a rua, os riscos do endereço, o sinal, a cláusula de financiamento, a responsabilidade por defeitos, os custos e as datas. [15 perguntas antes de assinar](/blog/perguntas-para-imobiliaria-antes-contrato) · [O contrato, da proposta às chaves](/contrato-compra-imovel-japao)
 
 ## Custos e impostos
 

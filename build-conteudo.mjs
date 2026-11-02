@@ -44,13 +44,13 @@ const yen = (v) => '¥' + Math.round(v).toLocaleString('ja-JP');
 
 /**
  * Registro de 住宅ローンアドバイザー do consultor (一般財団法人住宅金融普及協会,
- * nº (1)第2455204号). Mesma data do claim `certificado-advisor` no app da
+ * nº (2)第2455204号, renovado em out/2026). Mesma data do claim `certificado-advisor` no app da
  * /entregas (easyhouse-raiox, lib/content/claims.ts): lá o bloco some sozinho
  * no dia seguinte; aqui a página é estática, então a frase só entra se a
  * geração acontecer dentro da validade. Renovou? Atualizar as duas datas e
  * rodar este script de novo.
  */
-const CERTIFICADO_VALIDO_ATE = '2026-10-31';
+const CERTIFICADO_VALIDO_ATE = '2029-10-31';
 const certificadoValido = () => new Date().toISOString().slice(0, 10) <= CERTIFICADO_VALIDO_ATE;
 
 /** Pares português ↔ espanhol (hreflang). Só páginas que existem nas duas línguas. */

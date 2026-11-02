@@ -23,6 +23,7 @@ publishedAt: 2026-11-02
 updatedAt: 2026-11-02
 status: publicado
 relatedIds:
+  - EH-ED-010
   - EH-ED-059
   - EH-DIC-TOKI
   - /guia-comprar-casa-japao

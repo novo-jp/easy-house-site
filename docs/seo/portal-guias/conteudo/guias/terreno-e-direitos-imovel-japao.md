@@ -20,7 +20,7 @@ author: EASY HOUSE
 reviewer: sem revisor nomeado
 publishedAt: 2026-11-02
 updatedAt: 2026-11-02
-status: rascunho
+status: publicado
 relatedIds:
   - EH-ED-058
   - EH-ED-059
@@ -32,13 +32,13 @@ relatedIds:
   - EH-ED-109
 tags:
   - terreno
-needsFactCheck: true
+needsFactCheck: false
 ---
 **No Japão, o terreno costuma valer tanto quanto a casa — e é nele que estão as regras que limitam reformar, reconstruir e vender depois.** Antes da proposta, vale conferir seis pontos.
 
 ## 1. Propriedade ou arrendamento
 
-Terreno próprio (所有権) é seu, com registro. Terreno arrendado (借地権) é de outra pessoa: você paga um aluguel do terreno e o contrato tem prazo. O preço é menor, mas o banco pode tratar diferente e a venda futura exige o acordo do dono do terreno.
+Terreno próprio (所有権) é seu, com registro. Terreno arrendado (借地権) é de outra pessoa: você paga um aluguel do terreno e o contrato tem prazo. O preço é menor, mas o banco pode tratar diferente e, para vender depois, em geral é preciso o acordo do dono do terreno.
 
 ## 2. Zona urbanística
 
@@ -50,7 +50,7 @@ Para construir, o terreno precisa tocar pelo menos 2 m numa via reconhecida pela
 
 ## 4. Recuo
 
-Se a rua tem menos de 4 m, parte da frente do terreno precisa ficar livre para alargar a via (セットバック). Essa faixa não conta para a área útil do terreno.
+Se a rua tem menos de 4 m e é reconhecida como via pela lei, parte da frente do terreno precisa ficar livre para alargar a via (セットバック) quando se constrói ou reconstrói. Essa faixa não conta para a área útil do terreno.
 
 ## 5. Taxa de ocupação e coeficiente
 
@@ -58,4 +58,4 @@ Se a rua tem menos de 4 m, parte da frente do terreno precisa ficar livre para a
 
 ## 6. Riscos naturais
 
-Enchente, deslizamento e tsunami: consulte o mapa de riscos pelo endereço antes de visitar.
+Enchente, deslizamento e tsunami: consulte o mapa de riscos pelo endereço antes de visitar. [Como consultar o hazard map](/blog/hazard-map-antes-de-comprar)

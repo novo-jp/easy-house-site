@@ -26,15 +26,17 @@ Status: **aberta** (falta conferir), **corrigida** (o texto novo já traz a vers
 | 16 | "Há financeiras que aceitam a partir de 1 mês no emprego" | cap. 4 | Sem fonte; promessa de aprovação | — | fora do escopo |
 | 17 | Trechos sobre financiamento sem visto permanente | cap. 1 (pp. 19–20), cap. 11 (último item), cap. 12 (FAQ) | **Tema excluído** por decisão editorial | — | fora do escopo (bloqueado pelo filtro) |
 
-## 2. Rascunhos escritos (fora do site)
+## 2. Rascunhos escritos
+
+Em 02/11/2026 o responsável revisou os cinco e liberou os três que não são de financiamento. Os dois de financiamento continuam fora do site.
 
 Prévia para revisão: `docs/seo/portal-guias/previa-rascunhos.html` (gerada com `node build-portal.mjs --previa`).
 
 | Rascunho | URL planejada | O que conferir antes de publicar | Fonte proposta | Status |
 |---|---|---|---|---|
-| EH-ED-009 casa nova, usada ou sob encomenda | `/casa-nova-usada-ou-sob-encomenda` | Garantia de 10 anos do 品確法 (quem responde e de quê); liberação do financiamento em partes na obra (varia por banco); comissão na compra direta | 品確法 art. 94–95 (e-Gov); bancos | aberta |
-| EH-ED-010 terreno e direitos | `/terreno-e-direitos-imovel-japao` | Tratamento do 借地権 pelos bancos; 再建築不可; regra de recuo (art. 42, item 2) | 建築基準法 art. 42, 43; 借地借家法 (e-Gov) | aberta |
-| EH-ED-011 contrato de compra | `/contrato-compra-imovel-japao` | Ordem das etapas (análise final × contrato do banco); quem marca o 決済 | 宅建業法 art. 35, 37, 39; 民法 art. 557 | aberta |
+| EH-ED-009 casa nova, usada ou sob encomenda | `/casa-nova-usada-ou-sob-encomenda` | revisado pelo responsável | 品確法 art. 94–95 (e-Gov) | **publicado em 02/11/2026** |
+| EH-ED-010 terreno e direitos | `/terreno-e-direitos-imovel-japao` | revisado pelo responsável | 建築基準法 art. 42, 43; 借地借家法 (e-Gov) | **publicado em 02/11/2026** |
+| EH-ED-011 contrato de compra | `/contrato-compra-imovel-japao` | revisado pelo responsável | 宅建業法 art. 35, 37, 39; 民法 art. 557 | **publicado em 02/11/2026** |
 | EH-ED-017 pré-análise e análise final (inclui 018) | `/pre-analise-e-analise-final-financiamento` | Prazos típicos de cada análise; o que o banco consulta no histórico de crédito | bancos; CIC | aberta |
 | EH-ED-022 renda do casal | `/financiamento-renda-do-casal` | Quem tem 団信 e dedução em cada modalidade; quanto da 2ª renda conta | bancos; 国税庁 No.1211-1 | aberta |
 
@@ -46,5 +48,5 @@ EH-ED-013 (impostos), 014 (juros), 032 (不動産取得税), 033 (dedução), 03
 
 ## 4. Fora do portal, ainda em aberto
 
-- Validade nova do certificado de 住宅ローンアドバイザー (renovado em out/2026): `CERTIFICADO_VALIDO_ATE` no `build-conteudo.mjs` e `validoAte` em /entregas.
+- ~~Validade do certificado de 住宅ローンアドバイザー~~ — resolvido em 02/11/2026: registro (2)第2455204号, válido até 31/10/2029. Falta a foto do certificado novo (as páginas ainda mostram a do registro anterior).
 - Revisor humano nomeado para as páginas (hoje "sem revisor nomeado").

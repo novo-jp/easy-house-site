@@ -72,6 +72,8 @@ Respostas completas em: /simular (ferramenta), /entregas (casos reais),
 ## Portal educativo (em português)
 
 - /guias — a compra em 5 etapas, com os guias, verbetes e artigos de cada uma
+- Guias de escolha e contrato: /casa-nova-usada-ou-sob-encomenda,
+  /terreno-e-direitos-imovel-japao, /contrato-compra-imovel-japao
 - /duvidas — respostas curtas sobre compra, financiamento, contrato, custos e o
   que fazer depois das chaves, cada uma com link para a explicação completa
 - /dicionario-imobiliario — termos japoneses de anúncio, contrato, banco e
