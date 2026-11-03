@@ -220,10 +220,10 @@ writeFileSync('404.html', documento({
   descricao: 'Esta página não existe ou mudou de endereço.',
   canonical: `${SITE}/404`,
   robots: 'noindex, follow',
-  corpo: `<main id="main" class="conteudo-hub" style="max-width:var(--wrap-narrow);margin:0 auto;padding:48px var(--pad-x) 64px">
+  corpo: `<main id="main" style="max-width:var(--wrap-narrow);margin:0 auto;padding:calc(var(--nav-h) + 40px) var(--pad-x) 64px">
   <h1>Página não encontrada</h1>
   <p>O endereço pode ter mudado ou o imóvel saiu do ar. Por aqui você continua:</p>
-  <ul>
+  <ul style="margin:18px 0 0 20px;line-height:2">
     <li><a href="/comprar/imoveis">Casas à venda</a></li>
     <li><a href="/imoveis">Apartamentos para alugar</a></li>
     <li><a href="/casas-a-venda">Casas por cidade</a></li>
