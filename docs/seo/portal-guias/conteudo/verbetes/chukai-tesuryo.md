@@ -27,6 +27,7 @@ relatedIds:
   - /quanto-custa-casa-japao
   - EH-ED-052
   - EH-ED-056
+  - EH-ED-011
 tags:
   - custos
 needsFactCheck: false

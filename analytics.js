@@ -383,6 +383,12 @@
     ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid']
       .forEach(function (k) { var v = p.get(k); if (v) f[k] = v; });
     f.landing = location.pathname;
+    // Só o domínio de quem trouxe a visita (google.com, chatgpt.com, bing.com):
+    // sem ele, tráfego orgânico e de assistentes de IA não aparece em funnel_event.
+    try {
+      var ref = document.referrer ? new URL(document.referrer).hostname : '';
+      if (ref && ref !== location.hostname) f.referrer = ref.replace(/^www\./, '');
+    } catch (e) { /* referrer inválido: segue sem */ }
     return f;
   }
 

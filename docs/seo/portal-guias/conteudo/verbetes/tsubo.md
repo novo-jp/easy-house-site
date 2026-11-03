@@ -27,6 +27,7 @@ relatedIds:
   - EH-ED-098
   - EH-ED-099
   - EH-ED-089
+  - EH-ED-010
 tags:
   - anuncios
 needsFactCheck: false

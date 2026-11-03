@@ -28,6 +28,7 @@ relatedIds:
   - EH-ED-109
   - EH-ED-050
   - /casas-a-venda
+  - EH-ED-009
 tags:
   - visita
 needsFactCheck: false

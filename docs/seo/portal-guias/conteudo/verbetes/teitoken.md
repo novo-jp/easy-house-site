@@ -26,6 +26,7 @@ relatedIds:
   - EH-DIC-TOKI
   - EH-ED-056
   - EH-ED-076
+  - EH-ED-011
 tags:
   - registro
 needsFactCheck: false

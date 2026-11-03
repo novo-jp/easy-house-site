@@ -28,6 +28,7 @@ relatedIds:
   - EH-ED-054
   - EH-ED-050
   - /documentos-financiamento
+  - EH-ED-011
 tags:
   - contrato
 needsFactCheck: false

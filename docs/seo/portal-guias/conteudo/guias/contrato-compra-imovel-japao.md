@@ -30,6 +30,7 @@ relatedIds:
   - EH-ED-056
   - EH-ED-057
   - EH-ED-113
+  - /guia-comprar-casa-japao
 tags:
   - contrato
 needsFactCheck: false

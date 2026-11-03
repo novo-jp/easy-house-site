@@ -18,6 +18,7 @@ import {
   paginaHubBlog, rss, caminhoDe, arquivoDe, linksInternos, ROTAS_DINAMICAS, HUBS, SITE, md, ancora, esc,
 } from './lib/portal.mjs';
 import { trechosVetados } from './lib/tema-excluido.mjs';
+import { documento } from './lib/casas-html.mjs';
 
 const RAIZ_CONTEUDO = 'docs/seo/portal-guias/conteudo';
 const PASTAS = { verbete: 'verbetes', blog: 'blog', guia: 'guias' };
@@ -211,6 +212,27 @@ for (const [arquivo, html] of paginas) {
   writeFileSync(arquivo, html);
 }
 if (posts.length) writeFileSync('rss.xml', rss(posts));
+
+// 404 estático: a Vercel serve /404.html (com status 404) para qualquer caminho
+// sem arquivo nem rota. Sem ele, quem caía num link velho via só texto puro.
+writeFileSync('404.html', documento({
+  titulo: 'Página não encontrada | Easy House',
+  descricao: 'Esta página não existe ou mudou de endereço.',
+  canonical: `${SITE}/404`,
+  robots: 'noindex, follow',
+  corpo: `<main id="main" class="conteudo-hub" style="max-width:var(--wrap-narrow);margin:0 auto;padding:48px var(--pad-x) 64px">
+  <h1>Página não encontrada</h1>
+  <p>O endereço pode ter mudado ou o imóvel saiu do ar. Por aqui você continua:</p>
+  <ul>
+    <li><a href="/comprar/imoveis">Casas à venda</a></li>
+    <li><a href="/imoveis">Apartamentos para alugar</a></li>
+    <li><a href="/casas-a-venda">Casas por cidade</a></li>
+    <li><a href="${HUBS.guias}">Guias para comprar casa no Japão</a></li>
+    <li><a href="${HUBS.duvidas}">Dúvidas frequentes</a></li>
+    <li><a href="/entregas">Página inicial</a></li>
+  </ul>
+</main>`,
+}));
 
 // Sitemap: o trecho entre os marcadores é deste script; o resto é escrito à mão.
 const INICIO = '  <!-- portal: gerado por build-portal.mjs -->';

@@ -69,7 +69,13 @@ function paginaImovel(casa, parecidas) {
   const est = casa.estimativa;
   const local = [casa.cidade, casa.prefeitura].filter(Boolean).join(', ');
 
-  const titulo = `Casa ${casa.planta} à venda em ${casa.cidade || casa.prefeitura} por ${casa.precoFormatado} | Easy House`;
+  // Área e ano diferenciam casas da mesma planta na mesma cidade: sem eles, o
+  // title e o H1 se repetiam entre fichas (auditoria de 02/11/2026).
+  const area = formatarArea(casa.areaConstruida);
+  const ano = casa.ano?.ano || null;
+  const detalhes = [area, ano].filter(Boolean).join(', ');
+  const titulo = `Casa ${casa.planta} à venda em ${casa.cidade || casa.prefeitura} por ${casa.precoFormatado}${detalhes ? ` — ${detalhes}` : ''} | Easy House`;
+  const h1 = `${casa.titulo}${area ? `, ${area}` : ''}${ano ? ` (${ano})` : ''}`;
   const descricao = `Casa ${casa.planta} à venda em ${local}${casa.areaConstruida ? `, ${formatarArea(casa.areaConstruida)} construídos` : ''}${casa.areaTerreno ? ` em terreno de ${formatarArea(casa.areaTerreno)}` : ''}.`
     + ` ${casa.totalFotos} ${casa.totalFotos === 1 ? 'foto' : 'fotos'}, dados do anúncio em português e atendimento pela Easy House.`;
 
@@ -269,7 +275,7 @@ function paginaImovel(casa, parecidas) {
   const corpo = `
 <nav class="migalhas" aria-label="Você está em">
   <ol>
-    <li><a href="/">Início</a></li>
+    <li><a href="/entregas">Início</a></li>
     <li><a href="${LISTA}" id="voltarBusca" data-voltar-busca>Casas à venda</a></li>
     ${casa.cidade ? `<li><a href="${LISTA}?cidade=${encodeURIComponent(casa.cidade.toLowerCase())}">${e(casa.cidade)}</a></li>` : ''}
     <li aria-current="page">${e(casa.codigo)}</li>
@@ -283,7 +289,7 @@ function paginaImovel(casa, parecidas) {
 
   <div class="imovel__topo">
     <div>
-      <h1 class="imovel__titulo">${e(casa.titulo)}</h1>
+      <h1 class="imovel__titulo">${e(h1)}</h1>
       <p class="imovel__local">${e(local)}${casa.cidadeJp ? ` <span lang="ja">${e(casa.cidadeJp)}</span>` : ''}</p>
       <p class="imovel__estado">
         ${casa.verificadoEm ? `<span class="imovel__verificado">Anúncio verificado em ${e(dataPt(casa.verificadoEm))}</span>` : ''}

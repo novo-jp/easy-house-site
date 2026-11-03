@@ -27,6 +27,7 @@ relatedIds:
   - EH-DIC-YOTO
   - EH-DIC-SETSUDO
   - EH-ED-051
+  - EH-ED-010
 tags:
   - terreno
 needsFactCheck: false

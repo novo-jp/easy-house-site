@@ -25,6 +25,7 @@ relatedIds:
   - EH-ED-086
   - EH-ED-102
   - EH-ED-113
+  - EH-ED-009
 tags:
   - construcao
 needsFactCheck: false

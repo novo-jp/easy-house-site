@@ -27,6 +27,7 @@ relatedIds:
   - EH-ED-102
   - EH-DIC-KENSAZUMI
   - EH-ED-100
+  - EH-ED-009
 tags:
   - construcao
 needsFactCheck: false

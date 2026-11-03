@@ -30,6 +30,7 @@ relatedIds:
   - EH-ED-089
   - EH-ED-090
   - EH-ED-109
+  - /guia-comprar-casa-japao
 tags:
   - terreno
 needsFactCheck: false

@@ -28,6 +28,7 @@ relatedIds:
   - EH-ED-052
   - EH-ED-049
   - EH-ED-048
+  - EH-ED-011
 tags:
   - contrato
 needsFactCheck: false

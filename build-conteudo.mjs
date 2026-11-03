@@ -12,6 +12,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { carregarCasas, financingConfig, casasConfig } from './lib/casas-fonte.mjs';
 import { formatarYen } from './lib/casas.mjs';
 import { navEs, drawerEs, footEs } from './lib/layout-es.mjs';
@@ -68,7 +69,7 @@ const PAR_DE = Object.fromEntries(Object.entries(PARES).flatMap(([pt, es]) => [[
 /** Textos da casca, nas duas línguas. */
 const CASCA = {
   pt: {
-    lang: 'pt-BR', locale: 'pt_BR', skip: 'Ir para o conteúdo', voceEsta: 'Você está em', inicio: 'Início', inicioHref: '/',
+    lang: 'pt-BR', locale: 'pt_BR', skip: 'Ir para o conteúdo', voceEsta: 'Você está em', inicio: 'Início', inicioHref: '/entregas',
     atualizado: (d) => `Atualizado em ${d} · 株式会社EASY HOUSE, imobiliária licenciada no Japão`,
     data: () => new Date().toLocaleDateString('pt-BR'),
     perguntas: 'Perguntas frequentes', ctaTitulo: 'Quer ver isso aplicado ao seu caso?',
@@ -90,6 +91,28 @@ const CASCA = {
 };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+/** Data da primeira publicação = o commit que criou o arquivo; página nova sai com a data de hoje. */
+function publicadoEm(arquivo) {
+  const hoje = new Date().toISOString().slice(0, 10);
+  try {
+    const datas = execFileSync('git', ['log', '--diff-filter=A', '--follow', '--format=%as', '--', arquivo], { encoding: 'utf8' }).trim();
+    return datas.split('\n').pop() || hoje;
+  } catch { return hoje; }
+}
+
+/**
+ * Leitura seguinte, só em português: os guias do portal e os verbetes das etapas
+ * que estas páginas citam sem explicar. Fica fora da página de aluguel.
+ */
+const APROFUNDAR_PT = [
+  ['/contrato-compra-imovel-japao', 'Contrato de compra: o que acontece em cada etapa'],
+  ['/terreno-e-direitos-imovel-japao', 'Terreno e direitos: o que conferir antes de comprar'],
+  ['/casa-nova-usada-ou-sob-encomenda', 'Casa nova, usada ou sob encomenda: como escolher'],
+  ['/dicionario-imobiliario/jizen-shinsa', '事前審査 (pré-análise do financiamento)'],
+  ['/dicionario-imobiliario/tetsukekin', '手付金 (sinal pago no contrato)'],
+  ['/blog/checklist-primeira-visita-casa', 'Checklist para a primeira visita a uma casa'],
+];
+
 function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionadas, lang = 'pt' }) {
   const url = `${SITE}/${slug}`;
   const C = CASCA[lang];
@@ -101,18 +124,21 @@ function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionada
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      {
+      // FAQPage só com perguntas: vazio é erro no validador do Google.
+      ...(faq.length ? [{
         '@type': 'FAQPage',
         mainEntity: faq.map(([p, r]) => ({
           '@type': 'Question', name: p,
           acceptedAnswer: { '@type': 'Answer', text: r.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() }
         }))
-      },
+      }] : []),
       {
         '@type': 'Article',
         headline: h1,
         description: descricao,
         inLanguage: C.lang,
+        image: `${SITE}/images/opt/consultoria-1024.jpg`,
+        datePublished: publicadoEm(`${slug}.html`),
         dateModified: new Date().toISOString().slice(0, 10),
         author: { '@type': 'Organization', name: '株式会社EASY HOUSE', url: SITE },
         publisher: { '@type': 'Organization', name: '株式会社EASY HOUSE', url: SITE },
@@ -192,10 +218,10 @@ ${lang === 'es' ? drawerEs : L.drawer}
 
   ${corpo}
 
-  <h2>${C.perguntas}</h2>
+  ${faq.length ? `<h2>${C.perguntas}</h2>
   <div class="faq">
     ${faq.map(([p, r]) => `<div class="faq__item"><p class="faq__q">${esc(p)}</p><div class="faq__a">${r}</div></div>`).join('\n    ')}
-  </div>
+  </div>` : ''}
 
   <section class="simular" style="margin:36px 0">
     <h3>${C.ctaTitulo}</h3>
@@ -209,6 +235,8 @@ ${lang === 'es' ? drawerEs : L.drawer}
 
   <h2>${C.continue}</h2>
   <ul>${relacionadas.map(([href, txt]) => `<li><a href="${href}" style="color:var(--teal)">${esc(txt)}</a></li>`).join('')}</ul>
+  ${lang === 'pt' && slug !== 'custo-inicial-aluguel-japao' ? `<h2>Para aprofundar</h2>
+  <ul>${APROFUNDAR_PT.map(([href, txt]) => `<li><a href="${href}" style="color:var(--teal)">${esc(txt)}</a></li>`).join('')}</ul>` : ''}
   <p style="margin-top:28px"></p>
 </div>
 </main>

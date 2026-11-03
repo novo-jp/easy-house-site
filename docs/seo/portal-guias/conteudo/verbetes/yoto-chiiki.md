@@ -27,6 +27,7 @@ relatedIds:
   - EH-ED-089
   - EH-ED-090
   - EH-ED-088
+  - EH-ED-010
 tags:
   - terreno
 needsFactCheck: false

@@ -90,7 +90,7 @@ entrada, do prazo e da análise do perfil.
 
 ## Páginas
 
-- [Início](https://easyhouse.homes/): apresentação e canais de contato
+- [Início](https://easyhouse.homes/entregas): apresentação e canais de contato
 - [Casas à venda](https://easyhouse.homes/comprar/imoveis): busca com filtro por
   cidade, preço, planta, vagas e distância da estação
 - [Apartamentos para alugar](https://easyhouse.homes/imoveis): busca de aluguel

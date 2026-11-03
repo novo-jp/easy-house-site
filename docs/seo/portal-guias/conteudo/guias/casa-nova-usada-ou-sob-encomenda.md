@@ -26,6 +26,7 @@ relatedIds:
   - EH-ED-100
   - /casas-novas
   - /casas-usadas
+  - /guia-comprar-casa-japao
 tags:
   - escolha-do-imovel
 needsFactCheck: false

@@ -29,6 +29,7 @@ relatedIds:
   - EH-ED-054
   - /documentos-financiamento
   - EH-ED-056
+  - /financiamento-imovel-japao
 tags:
   - financiamento
 needsFactCheck: false

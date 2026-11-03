@@ -28,6 +28,7 @@ relatedIds:
   - EH-ED-058
   - EH-ED-059
   - EH-ED-076
+  - EH-ED-011
 tags:
   - registro
 needsFactCheck: false

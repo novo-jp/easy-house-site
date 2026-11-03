@@ -6,3 +6,15 @@ docs/easy-house-marketplace/
 # /docs/PLATAFORMAS, o mapa de contas e infraestrutura, e /docs/FUNIL.md com
 # números de conversão. Nenhuma página nem função lê esta pasta.
 docs/
+
+# Geradores, testes e ferramentas locais (auditoria SEO de 02/11/2026): eram
+# servidos como arquivos públicos (/build-portal.mjs, /tests/...). Nenhuma
+# página nem função lê estes caminhos; as funções levam só lib/** (vercel.json).
+build-conteudo.mjs
+build-pages.mjs
+build-portal.mjs
+dev-server.mjs
+verificar-funil.sh
+tests/
+scripts/
+sql/

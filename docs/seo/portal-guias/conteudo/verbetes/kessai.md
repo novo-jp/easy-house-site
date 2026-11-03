@@ -28,6 +28,7 @@ relatedIds:
   - EH-ED-076
   - EH-DIC-TEITOKEN
   - EH-ED-077
+  - EH-ED-011
 tags:
   - contrato
 needsFactCheck: false

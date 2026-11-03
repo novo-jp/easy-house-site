@@ -29,6 +29,7 @@ relatedIds:
   - /documentos-financiamento
   - /renda-minima-financiamento
   - /simular
+  - /financiamento-imovel-japao
 tags:
   - financiamento
 needsFactCheck: false

@@ -27,6 +27,7 @@ relatedIds:
   - EH-ED-058
   - EH-DIC-TOKI
   - EH-ED-051
+  - EH-ED-010
 tags:
   - terreno
 needsFactCheck: false
