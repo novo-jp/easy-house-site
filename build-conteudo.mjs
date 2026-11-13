@@ -52,7 +52,11 @@ const yen = (v) => '¥' + Math.round(v).toLocaleString('ja-JP');
  * rodar este script de novo.
  */
 const CERTIFICADO_VALIDO_ATE = '2029-10-31';
-const certificadoValido = () => new Date().toISOString().slice(0, 10) <= CERTIFICADO_VALIDO_ATE;
+/** Hoje no Japão (AAAA-MM-DD). toISOString() daria o dia em UTC: gerando a
+ *  página antes das 09:00 de Tóquio, o dateModified saía com a data de ontem
+ *  enquanto o texto visível mostrava a de hoje. */
+const hojeNoJapao = () => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Tokyo' }).format(new Date());
+const certificadoValido = () => hojeNoJapao() <= CERTIFICADO_VALIDO_ATE;
 
 /** Pares português ↔ espanhol (hreflang). Só páginas que existem nas duas línguas. */
 const PARES = {
@@ -93,7 +97,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 
 /** Data da primeira publicação = o commit que criou o arquivo; página nova sai com a data de hoje. */
 function publicadoEm(arquivo) {
-  const hoje = new Date().toISOString().slice(0, 10);
+  const hoje = hojeNoJapao();
   try {
     const datas = execFileSync('git', ['log', '--diff-filter=A', '--follow', '--format=%as', '--', arquivo], { encoding: 'utf8' }).trim();
     return datas.split('\n').pop() || hoje;
@@ -139,7 +143,7 @@ function pagina({ slug, titulo, descricao, h1, resposta, corpo, faq, relacionada
         inLanguage: C.lang,
         image: `${SITE}/images/opt/consultoria-1024.jpg`,
         datePublished: publicadoEm(`${slug}.html`),
-        dateModified: new Date().toISOString().slice(0, 10),
+        dateModified: hojeNoJapao(),
         author: { '@type': 'Organization', name: '株式会社EASY HOUSE', url: SITE },
         publisher: { '@type': 'Organization', name: '株式会社EASY HOUSE', url: SITE },
         mainEntityOfPage: url
@@ -551,7 +555,8 @@ ${certificadoValido() ? '<p>O atendimento é feito por consultor com certificaç
    /simular-es — "cuota", "pago inicial", "residente de larga estancia".
    ═══════════════════════════════════════════════════════════════ */
 
-const pct = (taxa) => `${(taxa * 100).toFixed(1).replace('.', ',')}%`;
+// Até duas casas, sem zero sobrando: 3,92% e 2,9% — com uma casa só, 3,92% virava "3,9%".
+const pct = (taxa) => `${String(Number((taxa * 100).toFixed(2))).replace('.', ',')}%`;
 
 function paginaQuantoCustaEs(casas) {
   const D = dadosQuantoCusta(casas);

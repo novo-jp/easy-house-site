@@ -254,6 +254,9 @@ const MOTOR_EXATO = {
   'Cenário bancário': 'Escenario bancario',
   'Análise conjunta de dívidas': 'Análisis conjunto de deudas',
   'Flat 35': 'Flat 35',
+  // Versão 3 (14/11/2026). As da versão 2 ficam: simulações antigas ainda as trazem.
+  '3,92% ao ano (taxa fixa de referência)': '3,92% anual (tasa fija de referencia)',
+  '1,84% ao ano (taxa de referência)': '1,84% anual (tasa de referencia)',
   '2,9% ao ano (taxa fixa de referência)': '2,9% anual (tasa fija de referencia)',
   '1,4% ao ano (taxa de referência)': '1,4% anual (tasa de referencia)'
 };

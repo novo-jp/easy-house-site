@@ -8,7 +8,7 @@
  */
 
 import { runSimulation, formatYen } from './lib/financing.js?v=8';
-import { t, tm } from './i18n.js?v=3';
+import { t, tm } from './i18n.js?v=4';
 
 /* ============================================================
    Estado

@@ -9,8 +9,8 @@ import {
   track, yen, parseYen, bindYenInput
 } from './funnel.js?v=11';
 
-import config from './lib/financing-config.json?v=7' with { type: 'json' };
-import { t, tm } from './i18n.js?v=3';
+import config from './lib/financing-config.json?v=8' with { type: 'json' };
+import { t, tm } from './i18n.js?v=4';
 import { compareWithRent } from './lib/financing.js?v=8';
 
 const $ = s => document.querySelector(s);

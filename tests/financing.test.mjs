@@ -34,9 +34,9 @@ function approx(actual, expected, tolerance = 5) {
 }
 
 describe('Configuração vigente', () => {
-  test('Flat 35 usa 2,9% ao ano', () => {
-    assert.equal(config.flat35.referenceAnnualRate, 0.029);
-    assert.ok(config.flat35.rateDisplayLabel.includes('2,9%'));
+  test('Flat 35 usa 3,92% ao ano (versão 3, 14/11/2026)', () => {
+    assert.equal(config.flat35.referenceAnnualRate, 0.0392);
+    assert.ok(config.flat35.rateDisplayLabel.includes('3,92%'));
   });
 
   test('Flat 35 está configurado com 35 anos', () => {
