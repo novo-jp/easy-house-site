@@ -21,6 +21,9 @@ import {
   normalizarUsuario, gerarSenha, criarContaAuth, trocarSenhaAuth, apagarContaAuth,
 } from '../lib/painel-sessao.mjs';
 import { calcular, validarEntrada, entradaPadrao, MODELOS_SIMULACAO } from '../lib/acompanhamento-simulacao.mjs';
+import {
+  fichaNova, limparParte, PARTES_DA_FICHA, statusValido, limparBancos, completarBancos, jurosDoProcesso,
+} from '../lib/acompanhamento-credito.mjs';
 
 const MODELOS = JSON.parse(readFileSync(new URL('../lib/acompanhamento-modelos.json', import.meta.url), 'utf8'));
 const BUCKET = 'acompanhamento';
@@ -109,11 +112,14 @@ async function carregarProcesso(perfil, id) {
   await exigirProcesso(perfil, id);
   const equipe = ehEquipe(perfil);
 
-  const [[p], etapas, documentos, notasTodas] = await Promise.all([
+  // A tabela de bancos só interessa à equipe: dela sai o juro padrão do
+  // formulário de simulação. Se falhar, o formulário abre com o padrão fixo.
+  const [[p], etapas, documentos, notasTodas, tabelaBancos] = await Promise.all([
     sb(`acomp_processo?select=*&id=eq.${id}`),
     sb(`acomp_etapa?select=*&processo_id=eq.${id}&order=ordem`),
     sb(`acomp_documento?select=*&processo_id=eq.${id}&order=grupo,ordem,atualizado_em`),
     sb(`acomp_nota?select=*&processo_id=eq.${id}&order=criado_em.desc`),
+    equipe ? bancosCredito().catch(() => null) : null,
   ]);
   if (!p) throw new Recusa(404, 'processo não encontrado');
 
@@ -183,7 +189,11 @@ async function carregarProcesso(perfil, id) {
     simulacao,
     eventos: (eventosGuardados || []).filter((e) => e && e.data),
     ...(equipe ? {
-      simulacao_modelo: { caminho: banco?.caminho, campos: MODELOS_SIMULACAO[banco?.caminho], padrao: entradaPadrao(banco?.caminho) },
+      simulacao_modelo: {
+        caminho: banco?.caminho,
+        campos: MODELOS_SIMULACAO[banco?.caminho],
+        padrao: entradaPadrao(banco?.caminho, jurosDoProcesso(tabelaBancos?.bancos, p.banco)),
+      },
     } : {}),
     orientacoes: MODELOS.orientacoes?.[banco?.caminho] || {},
     avisos: MODELOS.avisos,
@@ -631,6 +641,168 @@ async function salvarSimulacao(perfil, b) {
   return { ok: true, resultado: extras.simulacao ? calcular(extras.simulacao.entrada) : null };
 }
 
+// ── ficha de crédito (área do corretor) ─────────────────────────────────────
+
+/**
+ * Ficha do cliente antes do processo: dados pessoais, co-devedor, limite por
+ * banco e 資金計画書 (lib/acompanhamento-credito.mjs). Tabelas acomp_ficha e
+ * acomp_config — sql/acompanhamento-credito.sql.
+ *
+ * Quem vê: cada corretor só as fichas dele; o administrador, todas. A regra
+ * mora em exigirFicha() e no filtro de listarFichas() — as ações são de nível
+ * 'equipe', e o dono é conferido aqui, a cada chamada. Cliente nunca chega
+ * perto: a ficha tem renda, dívidas, visto e família.
+ */
+const CAMPOS_FICHA = 'id,corretor_id,nome,status,ficha,codevedor,credito,simulacao,processo_id,versao,criado_em,atualizado_em';
+const SQL_CREDITO = 'falta rodar sql/acompanhamento-credito.sql no Supabase';
+
+const filtroDono = (perfil) => (perfil.papel === 'admin' ? '' : `&corretor_id=eq.${perfil.user_id}`);
+const corretoresDaEquipe = () => sb('acomp_usuario?select=user_id,nome,ativo,whatsapp&papel=in.(admin,corretor)&order=nome');
+
+/** 404 e não 403: não confirmar a outro corretor que a ficha existe. */
+async function exigirFicha(perfil, id, select = CAMPOS_FICHA) {
+  exigirUuid(id, 'ficha');
+  const [f] = await sb(`acomp_ficha?select=${select}&id=eq.${id}${filtroDono(perfil)}`);
+  if (!f) throw new Recusa(404, 'ficha não encontrada');
+  return f;
+}
+
+/**
+ * Tabela de bancos e taxas. Enquanto ninguém salvar (ou antes de o SQL
+ * rodar), valem os padrões do código — a tela funciona nos dois casos.
+ */
+async function bancosCredito() {
+  const linhas = await sb('acomp_config?select=valor,atualizado_em,atualizado_por&chave=eq.bancos_credito')
+    .catch((e) => { if (tabelaAusente(e)) return null; throw e; });
+  const gravado = linhas?.[0];
+  return {
+    bancos: completarBancos(gravado?.valor),
+    padrao: !gravado,
+    disponivel: linhas !== null,
+    atualizado_em: gravado?.atualizado_em || null,
+    atualizado_por: gravado?.atualizado_por || null,
+  };
+}
+
+async function listarFichas(perfil) {
+  const admin = perfil.papel === 'admin';
+  // Só o que a lista mostra: nada de ficha inteira (e a renda sai por caminho
+  // JSON, sem trazer o resto dos dados pessoais).
+  const fichas = await sb(`acomp_ficha?select=id,corretor_id,nome,status,processo_id,atualizado_em,renda_anual:ficha->renda_anual${filtroDono(perfil)}&order=atualizado_em.desc&limit=1000`)
+    .catch((e) => { if (tabelaAusente(e)) return null; throw e; });
+  if (fichas === null) return { disponivel: false, fichas: [], corretores: [] };
+  return { disponivel: true, fichas, corretores: admin ? await corretoresDaEquipe() : [] };
+}
+
+async function carregarFicha(perfil, b) {
+  const [f, tabela] = await Promise.all([exigirFicha(perfil, b.id), bancosCredito()]);
+  const [corretores, [responsavel]] = await Promise.all([
+    perfil.papel === 'admin' ? corretoresDaEquipe() : [],
+    // 融資担当 dos documentos impressos: o corretor da ficha, não quem imprime.
+    f.corretor_id ? sb(`acomp_usuario?select=nome,whatsapp&user_id=eq.${f.corretor_id}`) : [],
+  ]);
+  return { ficha: f, bancos: tabela.bancos, corretores, responsavel: responsavel || null };
+}
+
+async function criarFicha(perfil, b) {
+  const nome = txt(b.nome, 120) || '';
+  const partes = fichaNova();
+  if (nome) partes.ficha.nome = nome;
+  const [f] = await sb('acomp_ficha?select=id', {
+    method: 'POST', prefer: 'return=representation',
+    body: { corretor_id: perfil.user_id, nome, status: 'lead', ...partes },
+  }).catch((e) => { if (tabelaAusente(e)) throw new Recusa(409, SQL_CREDITO); throw e; });
+  return { id: f.id };
+}
+
+/**
+ * Salvamento automático, por partes. A página manda só o que mudou, com a
+ * versão que ela carregou; se outra tela gravou no meio, a versão não bate e
+ * nada é gravado — em vez de uma tela apagar em silêncio o que a outra fez.
+ */
+async function salvarFicha(perfil, b) {
+  const atual = await exigirFicha(perfil, b.id, 'id');
+  const versao = Number(b.versao);
+  if (!Number.isInteger(versao) || versao < 1) throw new Recusa(400, 'versão inválida');
+  const m = b.mudanca && typeof b.mudanca === 'object' ? b.mudanca : {};
+
+  const mudanca = {};
+  for (const parte of PARTES_DA_FICHA) {
+    if (parte in m) mudanca[parte] = limparParte(parte, m[parte]);
+  }
+  // O nome da lista é o nome da ficha: um campo só para o corretor manter.
+  if (mudanca.ficha) mudanca.nome = mudanca.ficha.nome || '';
+  if ('status' in m) {
+    if (!statusValido(m.status)) throw new Recusa(422, 'status inválido');
+    mudanca.status = m.status;
+  }
+  if ('corretor_id' in m) {
+    if (perfil.papel !== 'admin') throw new Recusa(403, 'só o administrador troca o corretor da ficha');
+    const c = exigirUuid(m.corretor_id, 'corretor');
+    const [ok] = await sb(`acomp_usuario?select=user_id&user_id=eq.${c}&papel=in.(admin,corretor)`);
+    if (!ok) throw new Recusa(422, 'corretor inválido');
+    mudanca.corretor_id = c;
+  }
+  if (!Object.keys(mudanca).length) throw new Recusa(400, 'nada para salvar');
+
+  mudanca.versao = versao + 1;
+  mudanca.atualizado_em = agora();
+  const linhas = await sb(`acomp_ficha?id=eq.${atual.id}&versao=eq.${versao}&select=versao,atualizado_em`, {
+    method: 'PATCH', prefer: 'return=representation', body: mudanca,
+  });
+  if (!linhas.length) {
+    throw new Recusa(409, 'Esta ficha foi alterada em outra tela. Recarregue para ver a versão atual — o que você digitou agora não foi salvo.');
+  }
+  return { versao: linhas[0].versao, atualizado_em: linhas[0].atualizado_em };
+}
+
+async function apagarFicha(perfil, b) {
+  const f = await exigirFicha(perfil, b.id, 'id,nome');
+  if (String(b.confirmacao || '').trim().toLowerCase() !== 'apagar') throw new Recusa(422, 'confirmação ausente');
+  await sb(`acomp_ficha?id=eq.${f.id}`, { method: 'DELETE' });
+  console.log('[painel] ficha de crédito apagada', { id: f.id, por: perfil.usuario });
+  return { ok: true };
+}
+
+async function salvarBancos(perfil, b) {
+  const semTabela = (e) => { if (tabelaAusente(e)) throw new Recusa(409, SQL_CREDITO); throw e; };
+  if (b.operacao === 'restaurar') {
+    await sb('acomp_config?chave=eq.bancos_credito', { method: 'DELETE' }).catch(semTabela);
+    return bancosCredito();
+  }
+  let valor;
+  try { valor = limparBancos(b.bancos); } catch (e) { throw new Recusa(422, e.message); }
+  await sb('acomp_config?on_conflict=chave', {
+    method: 'POST', prefer: 'resolution=merge-duplicates',
+    body: { chave: 'bancos_credito', valor, atualizado_em: agora(), atualizado_por: perfil.nome },
+  }).catch(semTabela);
+  return bancosCredito();
+}
+
+/**
+ * Ponte ficha → processo: a pré-avaliação passou, o cliente vira processo
+ * com o nome, o corretor e a casa do 資金計画書 já preenchidos. O processo
+ * segue a regra dele (a equipe inteira vê); a ficha continua só do corretor.
+ */
+async function fichaParaProcesso(perfil, b) {
+  const f = await exigirFicha(perfil, b.ficha_id, 'id,nome,corretor_id,processo_id,simulacao');
+  if (f.processo_id) throw new Recusa(409, 'esta ficha já tem um processo');
+  if (!txt(f.nome, 120)) throw new Recusa(422, 'preencha o nome do cliente na Ficha antes de criar o processo');
+
+  const { id } = await criarProcesso(perfil, {
+    cliente_nome: f.nome, banco: b.banco, corretor_id: f.corretor_id || perfil.user_id,
+  });
+  const s = f.simulacao || {};
+  const casa = {};
+  if (txt(s.imovel, 160)) casa.casa_titulo = txt(s.imovel, 160);
+  if (Number(s.preco) >= 1_000_000 && Number(s.preco) <= 10_000_000_000) casa.casa_preco_yen = Math.round(Number(s.preco));
+  await Promise.all([
+    Object.keys(casa).length ? sb(`acomp_processo?id=eq.${id}`, { method: 'PATCH', body: casa }) : null,
+    sb(`acomp_ficha?id=eq.${f.id}`, { method: 'PATCH', body: { processo_id: id } }),
+  ]);
+  return { id };
+}
+
 // ── usuários ────────────────────────────────────────────────────────────────
 
 /**
@@ -737,6 +909,16 @@ const ACOES = {
   equipe:           ['GET',  'equipe', () => listarEquipe()],
   modelos:          ['GET',  'equipe', () => ({ bancos: MODELOS.bancos, etapas: MODELOS.etapas })],
   agenda_equipe:    ['GET',  'equipe', () => agendaEquipe()],
+
+  // ficha de crédito: nível 'equipe', e o dono é conferido em exigirFicha()
+  fichas:           ['GET',  'equipe', listarFichas],
+  ficha:            ['GET',  'equipe', carregarFicha],
+  bancos_credito:   ['GET',  'equipe', () => bancosCredito()],
+  criar_ficha:      ['POST', 'equipe', criarFicha],
+  salvar_ficha:     ['POST', 'equipe', salvarFicha],
+  apagar_ficha:     ['POST', 'admin',  apagarFicha],
+  salvar_bancos:    ['POST', 'admin',  salvarBancos],
+  ficha_processo:   ['POST', 'equipe', fichaParaProcesso],
 
   criar_processo:   ['POST', 'equipe', criarProcesso],
   editar_processo:  ['POST', 'equipe', editarProcesso],

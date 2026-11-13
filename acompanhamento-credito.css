@@ -1,0 +1,171 @@
+/* acompanhamento-credito.css — ficha de crédito do corretor.
+   Carregado junto com acompanhamento-credito.js, só para a equipe.
+   Usa os tokens do acompanhamento.css (papel, tinta, teal, latão). */
+
+/* A ficha tem tabelas largas: a área de crédito ganha mais largura. */
+body.modo-credito { --wrap: 1180px; }
+
+.cred-filtros { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cred-filtros input, .cred-filtros select,
+.cred-cabeca select {
+  background: var(--papel-alto); border: 1px solid var(--linha-forte);
+  border-radius: var(--r-p); padding: 8px 12px; min-height: 42px;
+}
+.cred-filtros input { flex: 1 1 220px; min-width: 0; }
+.cred-filtros .link { margin-left: auto; }
+
+/* selo de status na lista */
+.cred-selo {
+  justify-self: end; font-size: .76rem; font-weight: 600; padding: 3px 11px;
+  border-radius: var(--r-pill); background: var(--papel-fundo); color: var(--tinta-media); white-space: nowrap;
+}
+.cred-selo--aprovado, .cred-selo--entregue { background: var(--teal-claro); color: var(--teal-escuro); }
+.cred-selo--pre, .cred-selo--contrato, .cred-selo--honshinsa { background: var(--latao-claro); color: var(--latao-texto); }
+.cred-selo--perdido { background: var(--erro-claro); color: var(--erro); }
+
+/* cabeçalho da ficha */
+.cred-cabeca { display: grid; gap: 10px; }
+.cred-titulo { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+.cred-cabeca__linha { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cred-salvar { font-size: .86rem; color: var(--tinta-fraca); }
+.cred-salvar.erro { color: var(--erro); font-weight: 600; margin: 0; }
+
+.cred-abas {
+  display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--linha-forte);
+  position: sticky; top: 52px; z-index: 10; background: var(--papel); padding-top: 6px;
+}
+.cred-aba {
+  padding: 10px 16px; text-decoration: none; color: var(--tinta-fraca); font-weight: 600;
+  border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap;
+}
+.cred-aba small { font-weight: 400; margin-left: 6px; font-size: .78rem; }
+.cred-aba[aria-current="page"] { color: var(--tinta); border-bottom-color: var(--latao); }
+.cred-aba:focus-visible, .cred-x:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* cartões e campos */
+.cred-h {
+  font-family: var(--fonte-texto); font-weight: 600; font-size: 1.05rem; letter-spacing: 0;
+  margin: 0 0 16px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+}
+.cred-jp { font-weight: 400; color: var(--tinta-fraca); font-size: .78rem; margin-left: 6px; }
+.cred-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 16px; align-items: start; }
+.cred-grade .c2 { grid-column: span 2; }
+.cred-grade .c4 { grid-column: 1 / -1; }
+.cred-sub { margin: 4px 0 12px; color: var(--tinta-media); font-size: .9rem; }
+.cred-forte span { font-weight: 600; }
+@media (max-width: 860px) {
+  .cred-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .cred-grade { grid-template-columns: 1fr; }
+  .cred-grade .c2 { grid-column: auto; }
+}
+input.num, td.num, th.num, .num { text-align: right; font-variant-numeric: tabular-nums; }
+/* Rótulo com o termo japonês às vezes quebra em duas linhas: todos reservam
+   as duas, para os campos de uma mesma fileira ficarem alinhados. */
+@media (min-width: 521px) {
+  .cred-grade .campo > span {
+    display: flex; flex-wrap: wrap; align-content: flex-end; column-gap: 6px; min-height: 3.2em;
+  }
+  .cred-grade .campo > span .cred-jp { margin-left: 0; }
+}
+
+/* tabelas editáveis */
+.cred-rolagem { overflow-x: auto; margin-bottom: 10px; overflow-wrap: normal; }
+.cred-tabela { width: 100%; border-collapse: collapse; }
+.cred-tabela th {
+  font-size: .74rem; color: var(--tinta-fraca); font-weight: 600; text-align: left;
+  padding: 6px; border-bottom: 1px solid var(--linha-forte); white-space: nowrap;
+}
+.cred-tabela th.num { text-align: right; }
+.cred-tabela td { padding: 4px; border-bottom: 1px solid var(--linha); vertical-align: middle; white-space: nowrap; }
+.cred-tabela td.centro { text-align: center; }
+.cred-tabela td.forte { font-weight: 700; }
+.cred-tabela input:not([type="checkbox"]), .cred-tabela select {
+  width: 100%; background: var(--papel-alto); border: 1px solid var(--linha-forte);
+  border-radius: var(--r-p); padding: 7px 9px; min-height: 38px;
+}
+.cred-tabela input[readonly] { background: var(--papel); color: var(--tinta-media); }
+.cred-tabela input:focus, .cred-tabela select:focus,
+.cred-filtros input:focus, .cred-filtros select:focus, .cred-cabeca select:focus {
+  outline: 2px solid var(--teal); outline-offset: 1px;
+}
+.cred-x {
+  border: 1px solid transparent; background: none; color: var(--erro); cursor: pointer;
+  border-radius: var(--r-p); min-width: 32px; min-height: 32px;
+}
+.cred-x:hover { border-color: #b3261e66; }
+
+.cred-soma {
+  display: flex; justify-content: space-between; gap: 14px; padding: 9px 0;
+  border-top: 1px solid var(--linha); font-weight: 600;
+}
+.cred-soma:first-of-type { margin-top: 12px; }
+.cred-soma--grande { font-size: 1.12rem; color: var(--teal-escuro); }
+.cred-planos { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+
+/* crédito: alertas, números-chave e bancos */
+.cred-alertas { display: grid; gap: 8px; }
+.cred-alertas:empty { display: none; }
+.cred-alerta { margin: 0; padding: 10px 14px; border-radius: var(--r-p); border-left: 4px solid; font-size: .93rem; }
+.cred-alerta--erro { background: var(--erro-claro); border-color: var(--erro); }
+.cred-alerta--aviso { background: var(--latao-claro); border-color: var(--latao); }
+.cred-alerta--info { background: var(--teal-claro); border-color: var(--teal); }
+
+.cred-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.cred-kpi {
+  background: var(--papel-alto); border: 1px solid var(--linha); border-radius: var(--r-m);
+  padding: 14px 16px; display: grid; gap: 2px;
+}
+.cred-kpi span { font-size: .76rem; color: var(--tinta-fraca); }
+.cred-kpi strong { font-family: var(--fonte-display); font-weight: 400; font-size: 1.5rem; }
+.cred-kpi small { font-size: .76rem; color: var(--tinta-fraca); }
+@media (max-width: 760px) { .cred-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.cred-bancos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.cred-banco {
+  border: 1px solid var(--linha); border-top: 4px solid var(--teal); border-radius: var(--r-m);
+  padding: 14px 16px; background: var(--papel); display: grid; gap: 2px;
+}
+.cred-banco--zero { border-top-color: var(--erro); opacity: .8; }
+.cred-banco h3 {
+  font-family: var(--fonte-texto); font-weight: 700; font-size: 1rem; letter-spacing: 0;
+  display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px;
+}
+.cred-banco h3 small { font-weight: 400; color: var(--tinta-fraca); }
+.cred-banco__valor { font-family: var(--fonte-display); font-weight: 400; font-size: 1.7rem; line-height: 1.1; }
+.cred-banco__seguro { font-size: .88rem; color: var(--teal-escuro); font-weight: 600; }
+.cred-banco dl { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; margin: 10px 0 0; font-size: .8rem; }
+.cred-banco dt { color: var(--tinta-fraca); }
+.cred-banco dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ── impressão: A4, em japonês ────────────────────────────────────────── */
+#impressao { display: none; }
+@media print {
+  @page { size: A4; margin: 12mm; }
+  html, body { background: #fff !important; }
+  body > *:not(#impressao) { display: none !important; }
+  #impressao {
+    display: block; color: #000;
+    font: 10pt/1.4 "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", "Meiryo", sans-serif;
+  }
+  .pg { break-after: page; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pg:last-child { break-after: auto; }
+}
+.pg h1 {
+  font-family: inherit; font-weight: 700; text-align: center; font-size: 17pt; letter-spacing: 6px;
+  margin: 0 0 4mm; border-bottom: 2px solid #000; padding-bottom: 1.5mm;
+}
+.pg table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; }
+.pg td, .pg th { border: 1px solid #444; padding: 1.1mm 2mm; font-size: 9pt; vertical-align: top; }
+.pg th { background: #eef1f4; text-align: left; font-weight: 600; width: 22%; }
+.pg tr.cab th { width: auto; white-space: nowrap; }
+.pg .meia th { width: 42%; }
+.pg td.r { text-align: right; }
+.pg td.sec { background: #1b3a5c; color: #fff; font-weight: 700; }
+.pg__topo { display: flex; justify-content: space-between; margin: 0 0 4mm; font-size: 9.5pt; }
+.pg__topo .direita { text-align: right; }
+.pg__cliente { margin: 0 0 3mm; font-size: 11pt; }
+.pg__nota { font-size: 9pt; margin: 0 0 3mm; }
+.pg__sub { font-weight: 700; margin: 3mm 0; }
+.pg__duas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4mm; }

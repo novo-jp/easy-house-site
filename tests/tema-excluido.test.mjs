@@ -37,6 +37,11 @@ const PODEM_CITAR = new Map([
   ['lib/financing-config.json', 'regra do Flat 35 do simulador (residencyStatusesAccepted)'],
   ['i18n.js', 'tradução do aviso do simulador'],
   ['lib/notificar.js', 'e-mail interno para a equipe com o tipo de visto do lead'],
+  // Ferramenta interna do corretor, atrás do login do /acompanhamento e com
+  // noindex (vercel.json): a ficha que vai ao banco tem o campo 永住権, e o
+  // alerta lembra o corretor de que o Flat 35 exige. Não é conteúdo de busca.
+  ['acompanhamento-credito.js', 'ficha de crédito do corretor: campo 永住権 da 審査シート'],
+  ['lib/acompanhamento-credito.mjs', 'ficha de crédito do corretor: opções do campo e alerta interno'],
 ]);
 
 // docs/ não é publicada (.vercelignore); _next/ é o pacote do app da /entregas,

@@ -4,6 +4,8 @@
  * Rotas pelo hash:  #/            lista (equipe) ou o processo do cliente
  *                   #/p/<id>      um processo
  *                   #/equipe      membros da equipe (admin)
+ *                   #/credito…    fichas de crédito do corretor (só equipe;
+ *                                 a tela mora em acompanhamento-credito.js)
  *
  * Tudo que vem do banco entra na página por textContent (ver h()). Nada de
  * innerHTML com dado: nome de cliente, nota do corretor ou nome de documento
@@ -130,6 +132,7 @@
     const alvo = ev.target.closest('[data-acao]');
     if (!alvo) return;
     if (alvo.dataset.acao === 'sair') {
+      await sairDoCredito();   // grava a ficha aberta antes de derrubar a sessão
       await post('logout').catch(() => {});
       estado.eu = null;
       atualizarTopo();
@@ -190,10 +193,13 @@
     const hash = location.hash;
     const m = hash.match(/^#\/p\/([0-9a-f-]{36})(?:\/([a-z]+))?$/i);
     const equipe = estado.eu.papel !== 'cliente';
+    const cred = equipe ? hash.match(/^#\/credito(?:\/(.*))?$/) : null;
     document.body.classList.remove('modo-cliente');
     estado.cli = null;
 
     try {
+      if (!cred) await sairDoCredito();
+      if (cred) return await (await carregarCredito()).rota(cred[1] || '');
       if (m && !equipe) return await telaCliente(m[1], { aba: m[2] });
       if (m && m[2] === 'cliente') return await telaCliente(m[1], { previa: true });
       if (m) return await telaProcesso(m[1]);
@@ -225,9 +231,36 @@
   // ── lista de processos (equipe) ────────────────────────────────────────────
 
   function barraEquipe(atual) {
-    const abas = [h('a', { class: 'aba', href: '#/', 'aria-current': atual === 'processos' ? 'page' : false }, 'Processos')];
-    abas.push(h('a', { class: 'aba', href: '#/equipe', 'aria-current': atual === 'equipe' ? 'page' : false }, 'Equipe'));
-    return h('nav', { class: 'abas', 'aria-label': 'Seções' }, abas);
+    const aba = (chave, href, rotulo) =>
+      h('a', { class: 'aba', href, 'aria-current': atual === chave ? 'page' : false }, rotulo);
+    return h('nav', { class: 'abas', 'aria-label': 'Seções' },
+      aba('processos', '#/', 'Processos'), aba('credito', '#/credito', 'Crédito'), aba('equipe', '#/equipe', 'Equipe'));
+  }
+
+  // ── crédito (área do corretor) ─────────────────────────────────────────────
+  //
+  // Ficha do cliente, co-devedor, limite por banco e 資金計画書. É bastante
+  // tela e só a equipe usa: fica em outro arquivo, baixado na primeira vez
+  // que alguém abre a aba Crédito. O cliente nunca carrega.
+
+  let modCredito = null;
+  function carregarCredito() {
+    modCredito ||= import('/acompanhamento-credito.js?v=1').then(async (m) => {
+      await m.iniciar({
+        h, get, post, app, dlg, estado, avisar, acao, abrirDialogo, barraEquipe, fmtDataHora,
+        modelos: async () => (estado.modelos ||= await get('modelos')),
+      });
+      return m;
+    });
+    // Falhou o download (sem rede): a próxima visita tenta de novo.
+    modCredito.catch(() => { modCredito = null; });
+    return modCredito;
+  }
+
+  /** Saiu da área de crédito: grava o que a ficha aberta ainda não gravou. */
+  async function sairDoCredito() {
+    if (!modCredito) return;
+    try { await (await modCredito).sair(); } catch { /* módulo não carregou: nada aberto */ }
   }
 
   async function carregarApoio() {
@@ -1313,7 +1346,7 @@
       h('div', { class: 'grade2' },
         campo('Preço da casa (¥)', preco),
         campo('Prazo (anos)', prazo),
-        juros.map(([, j, el]) => campo(`${j.rotulo} — % ao ano`, el, 'Ex.: 1,79'))),
+        juros.map(([, j, el]) => campo(`${j.rotulo} — % ao ano`, el, 'Ex.: 1,84'))),
       h('p', { class: 'sobre', style: 'margin:6px 0 12px' }, 'Taxas'),
       h('div', { class: 'grade2' },
         fixas.map(([, t, el]) => campo(`${t.rotulo} (¥)`, el)),
@@ -1898,6 +1931,7 @@
   function dialogoConta() {
     const sair = h('button', { class: 'btn btn--perigo btn--bloco', type: 'button' }, 'Sair');
     sair.onclick = async () => {
+      await sairDoCredito();
       await post('logout').catch(() => {});
       dlg.close();
       estado.eu = null; estado.cli = null;
