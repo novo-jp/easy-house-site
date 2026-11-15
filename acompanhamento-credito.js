@@ -14,7 +14,7 @@
  * textContent (o h() do acompanhamento.js). Nada de innerHTML com dado.
  */
 
-import * as L from '/lib/acompanhamento-credito.mjs?v=1';
+import * as L from '/lib/acompanhamento-credito.mjs?v=2';
 
 let h, get, post, app, dlg, estado, avisar, acao, abrirDialogo, barraEquipe, fmtDataHora, modelos;
 
@@ -67,7 +67,7 @@ export function iniciar(ctx) {
   pronto ||= new Promise((ok) => {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/acompanhamento-credito.css?v=1';
+    link.href = '/acompanhamento-credito.css?v=2';
     link.onload = link.onerror = () => ok();
     document.head.append(link);
   });
@@ -361,6 +361,13 @@ function entrada(caminho, o = {}) {
 }
 
 /** Campo com rótulo. o.jp = termo japonês ao lado; o.saida = texto calculado embaixo. */
+/** Campo com texto em japonês: o português aparece embaixo, em letra pequena. */
+function comPortugues(el) {
+  const pt = h('small', { class: 'cred-pt' }, L.emPortugues(el.value));
+  el.addEventListener('input', () => { pt.textContent = L.emPortugues(el.value); });
+  return [el, pt];
+}
+
 function campo(caminho, rotulo, o = {}) {
   let saida = null;
   if (o.saida) { saida = h('small', { class: 'mudo pequeno' }); S.el[o.saida] = saida; }
@@ -591,9 +598,9 @@ function abaSimulacao() {
       ligar(auto, `simulacao.custos.${i}.auto`, 'check', true);
     }
     return h('tr', {},
-      h('td', { style: 'min-width:150px' }, entrada(`simulacao.custos.${i}.nome`, { max: 60, aria: '名目' })),
-      h('td', { style: 'min-width:170px' }, entrada(`simulacao.custos.${i}.obs`, { max: 120, aria: '備考' })),
-      h('td', { style: 'min-width:110px' }, entrada(`simulacao.custos.${i}.pagar`, { max: 60, aria: '支払先' })),
+      h('td', { style: 'min-width:150px' }, comPortugues(entrada(`simulacao.custos.${i}.nome`, { max: 60, aria: '名目' }))),
+      h('td', { style: 'min-width:170px' }, comPortugues(entrada(`simulacao.custos.${i}.obs`, { max: 120, aria: '備考' }))),
+      h('td', { style: 'min-width:110px' }, comPortugues(entrada(`simulacao.custos.${i}.pagar`, { max: 60, aria: '支払先' }))),
       h('td', { style: 'min-width:130px' }, valor),
       h('td', { class: 'centro' }, auto),
       h('td', {}, botaoRemover('simulacao.custos', i)));
@@ -612,11 +619,11 @@ function abaSimulacao() {
     const valor = h('td', { class: 'num' }); const mensal = h('td', { class: 'num forte' });
     S.el.trValor[i] = valor; S.el.trMensal[i] = mensal;
     return h('tr', {},
-      h('td', { style: 'min-width:160px' }, entrada(`${p}.nome`, { max: 60, aria: 'Empréstimo' })),
+      h('td', { style: 'min-width:160px' }, comPortugues(entrada(`${p}.nome`, { max: 60, aria: 'Empréstimo' }))),
       h('td', { style: 'min-width:120px' }, modo),
       h('td', { style: 'min-width:110px' }, quanto),
       h('td', { style: 'min-width:70px' }, entrada(`${p}.prazo`, { tipo: 'dec', aria: 'Prazo em anos' })),
-      h('td', { style: 'min-width:100px' }, entrada(`${p}.tipo`, { opcoes: L.TIPO_JUROS.map((k) => [k, k]) })),
+      h('td', { style: 'min-width:130px' }, entrada(`${p}.tipo`, { opcoes: L.TIPO_JUROS.map((k) => [k, `${k} (${L.emPortugues(k)})`]) })),
       h('td', { style: 'min-width:80px' }, entrada(`${p}.taxa`, { tipo: 'dec', aria: 'Taxa % ao ano' })),
       valor, mensal,
       h('td', {}, botaoRemover('simulacao.tranches', i)));
@@ -647,8 +654,8 @@ function abaSimulacao() {
       campo('simulacao.proprio', 'Entrada / recursos próprios (¥)', { jp: '自己資金', tipo: 'iene' }))),
 
     cartao('Custos', '諸費用',
-      h('div', { class: 'cred-rolagem' }, h('table', { class: 'cred-tabela' },
-        h('thead', {}, h('tr', {}, h('th', {}, '名目'), h('th', {}, '備考'), h('th', {}, '支払先'),
+      h('div', { class: 'cred-rolagem' }, h('table', { class: 'cred-tabela cred-tabela--pt' },
+        h('thead', {}, h('tr', {}, h('th', {}, 'Item 名目'), h('th', {}, 'Observação 備考'), h('th', {}, 'Pago a 支払先'),
           h('th', { class: 'num' }, 'Valor 金額'), h('th', {}, 'Auto'), h('th', {}))),
         h('tbody', {}, custos))),
       novoCusto,
@@ -660,7 +667,7 @@ function abaSimulacao() {
 
     cartao('Plano de pagamento', '返済計画',
       h('div', { class: 'cred-planos' }, h('span', { class: 'mudo pequeno' }, 'Modelo:'), planos),
-      tranches.length ? h('div', { class: 'cred-rolagem' }, h('table', { class: 'cred-tabela' },
+      tranches.length ? h('div', { class: 'cred-rolagem' }, h('table', { class: 'cred-tabela cred-tabela--pt' },
         h('thead', {}, h('tr', {}, h('th', {}, 'Empréstimo'), h('th', {}, 'Modo'), h('th', { class: 'num' }, '% / Valor'),
           h('th', { class: 'num' }, 'Prazo (anos)'), h('th', {}, 'Tipo'), h('th', { class: 'num' }, 'Taxa %'),
           h('th', { class: 'num' }, 'Valor'), h('th', { class: 'num' }, 'Parcela 月々'), h('th', {}))),

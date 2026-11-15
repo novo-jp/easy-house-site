@@ -245,7 +245,7 @@
 
   let modCredito = null;
   function carregarCredito() {
-    modCredito ||= import('/acompanhamento-credito.js?v=1').then(async (m) => {
+    modCredito ||= import('/acompanhamento-credito.js?v=2').then(async (m) => {
       await m.iniciar({
         h, get, post, app, dlg, estado, avisar, acao, abrirDialogo, barraEquipe, fmtDataHora,
         modelos: async () => (estado.modelos ||= await get('modelos')),

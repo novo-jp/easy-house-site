@@ -202,6 +202,45 @@ describe('資金計画書', () => {
     const r = L.simulacao(casa(L.montarPlano('flat9010', cliente(), L.BANCOS_PADRAO, REF)));
     assert.equal(Math.round(r.mensal), 119191);   // ¥24.435.000 a 3,92% + ¥2.715.000 a 4,09%
   });
+
+  test('sem preço do imóvel não há arredondamento negativo', () => {
+    const c = casa([]); c.simulacao.preco = '';
+    const r = L.simulacao(c);
+    assert.equal(r.total, 0);
+    assert.equal(r.arredondamento, 0);
+    assert.equal(r.custos, 760000);   // os custos fixos continuam somados
+  });
+});
+
+describe('português na tela da simulação', () => {
+  test('todo custo padrão tem tradução (名目, 備考, 支払先)', () => {
+    for (const l of L.custosPadrao()) {
+      for (const k of ['nome', 'obs', 'pagar']) {
+        if (l[k]) assert.ok(L.emPortugues(l[k]), `${k}: ${l[k]}`);
+      }
+    }
+    assert.equal(L.emPortugues('仲介手数料'), 'Comissão da imobiliária');
+    assert.equal(L.emPortugues(' 火災保険料 '), 'Seguro de incêndio');
+  });
+
+  test('empréstimos dos planos prontos e tipos de juros também', () => {
+    const c = cliente({ emprestimos: [{ saldo: 1000000, parcela: 30000, quitar: true }] });
+    for (const plano of ['unico:rokin', 'flat9010', 'matome']) {
+      for (const t of L.montarPlano(plano, c, L.BANCOS_PADRAO, REF)) {
+        assert.ok(L.emPortugues(t.nome), `${plano}: ${t.nome}`);
+        assert.ok(L.emPortugues(t.tipo), `${plano}: ${t.tipo}`);
+      }
+    }
+    for (const k of L.TIPO_JUROS) assert.ok(L.emPortugues(k), k);
+  });
+
+  test('taxa do banco com outro percentual; texto desconhecido fica sem tradução', () => {
+    assert.equal(L.emPortugues('借入金額 × 2.2%'), 'Valor financiado × 2,2%');
+    assert.equal(L.emPortugues('借入金額×2.75%'), 'Valor financiado × 2,75%');
+    assert.equal(L.emPortugues('解体費用'), '');
+    assert.equal(L.emPortugues(''), '');
+    assert.equal(L.emPortugues(null), '');
+  });
 });
 
 describe('números e datas', () => {

@@ -85,6 +85,16 @@ input.num, td.num, th.num, .num { text-align: right; font-variant-numeric: tabul
   width: 100%; background: var(--papel-alto); border: 1px solid var(--linha-forte);
   border-radius: var(--r-p); padding: 7px 9px; min-height: 38px;
 }
+.cred-tabela .cred-pt {
+  display: block; white-space: normal; font-size: .72rem; line-height: 1.25;
+  color: var(--tinta-fraca); padding: 3px 2px 0;
+}
+.cred-tabela .cred-pt:empty { display: none; }
+/* Com a legenda embaixo, as linhas crescem: alinhar tudo pelo topo do campo. */
+.cred-tabela--pt td { vertical-align: top; }
+.cred-tabela--pt td.centro { padding-top: 16px; }
+.cred-tabela--pt td.num { padding-top: 13px; }
+.cred-tabela--pt td:last-child { padding-top: 7px; }
 .cred-tabela input[readonly] { background: var(--papel); color: var(--tinta-media); }
 .cred-tabela input:focus, .cred-tabela select:focus,
 .cred-filtros input:focus, .cred-filtros select:focus, .cred-cabeca select:focus {
